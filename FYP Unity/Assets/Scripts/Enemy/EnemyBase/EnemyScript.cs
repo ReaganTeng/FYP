@@ -5,14 +5,17 @@ using UnityEngine;
 public class EnemyScript : MonoBehaviour
 {
     [SerializeField] float EnemyHealth;
-
+    public float AttackDamage;
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag("Enemy") || other.CompareTag("Floor"))
+            return;
+
         // If its from player attack
-        if (other == GameObject.FindGameObjectWithTag("Attack").GetComponent<Collider>())
+        if (other.CompareTag("Attack"))
         {
-            EnemyHealth -= 10;
+            EnemyHealth -= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().GetPlayerAttack();
 
             Debug.Log("Enemy Health Left: " + EnemyHealth);
             // Precise Kill
