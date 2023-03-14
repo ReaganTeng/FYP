@@ -10,16 +10,16 @@ using UnityEngine.UI;
 
 public class CraftimgManager : MonoBehaviour
 {
-    private Item currentItem;
+    private Item_Reagan currentItem;
     public Image customCursor;
 
-    public List<Item> itemList;
+    public List<Item_Reagan> itemList;
 
 
     public string[] recipes;
 
     public List<string[]> recipeList;
-    public Item[] recipeResults;
+    public Item_Reagan[] recipeResults;
 
     public Slots resultslot;
 
@@ -256,7 +256,7 @@ public class CraftimgManager : MonoBehaviour
 
     }
 
-    public void OnMouseDownItem(Item item)
+    public void OnMouseDownItem(Item_Reagan item)
     {
         if(currentItem == null)
         {

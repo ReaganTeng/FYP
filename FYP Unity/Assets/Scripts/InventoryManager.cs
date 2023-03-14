@@ -6,11 +6,11 @@ using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
-    private Item currentItem;
+    private Item_Reagan currentItem;
     public Image customCursor;
 
 
-    public List<Item> itemList;
+    public List<Item_Reagan> itemList;
 
     public Slots[] InventorySlots;
 
@@ -64,7 +64,7 @@ public class InventoryManager : MonoBehaviour
     //}
 
 
-    public void AddItem(Item item)
+    public void AddItem(Item_Reagan item)
     {
         for (int i = 0; i < InventorySlots.Length;)
         {

@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class Slots : MonoBehaviour
 {
-    public Item item;
+    public Item_Reagan item;
     public int index;
 }

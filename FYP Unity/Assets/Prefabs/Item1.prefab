@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3853262379267464809}
   - component: {fileID: 3853262379267464814}
   - component: {fileID: 3853262379267464815}
-  - component: {fileID: 3853262379267464808}
+  - component: {fileID: 4269103225294202715}
   - component: {fileID: 3853262379267464813}
   m_Layer: 5
   m_Name: Item1
@@ -78,7 +78,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3853262379267464808
+--- !u!114 &4269103225294202715
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9dfda36e349f7b439db3f74b4b31c1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: 1
+  itemName: 
 --- !u!114 &3853262379267464813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,7 +113,7 @@ MonoBehaviour:
           m_MethodName: OnMouseDownItem
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 3853262379267464808}
+            m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
             m_IntArgument: 0
             m_FloatArgument: 0
