@@ -177,6 +177,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyHealth: 50
   AttackDamage: 5
+  prepPrefab: {fileID: 5640140278021557923, guid: 877aad5ebbb5f7b4ea17dd738c22f5fa, type: 3}
+  choppedPefab: {fileID: 568297875779090178, guid: 9031fceed79e84b4ea688fbd77c831c0, type: 3}
+  smashedPrefab: {fileID: 3320338801699120423, guid: 74500f70982b1624f91594f2616f5dd0, type: 3}
+  Mush: {fileID: 8494874157540663937, guid: 4255f020537c20a48857eb56b1b0f6d5, type: 3}
 --- !u!1 &4309510449923280359
 GameObject:
   m_ObjectHideFlags: 0

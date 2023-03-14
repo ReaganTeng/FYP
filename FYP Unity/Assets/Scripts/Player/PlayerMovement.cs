@@ -73,6 +73,33 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    public int GetDirection(float horizontalInput, float verticalInput)
+    {
+        // 1 suggest back, 2 suggest right, 3 suggest front, 4 suggest left
+        // if moving towards the right
+        if (horizontalInput > 0)
+        {
+            return 2;
+        }
+
+        else if (horizontalInput < 0)
+        {
+            return 4;
+        }
+
+        else if (verticalInput > 0)
+        {
+            return 1;
+        }
+
+        else if (verticalInput < 0)
+        {
+            return 3;
+        }
+
+        return 0;
+    }
+
     private void Update()
     {
         if (IFrameStart)
