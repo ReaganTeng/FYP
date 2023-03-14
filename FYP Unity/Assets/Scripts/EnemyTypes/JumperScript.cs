@@ -13,6 +13,7 @@ public class JumperScript : MonoBehaviour
     private GameObject playerGO;
 
     private float speedfactor;
+    private float timer;
 
     // Start is called before the first frame update
     void Start()
@@ -21,11 +22,14 @@ public class JumperScript : MonoBehaviour
 
         jumpcooldown = 4.0f;
 
+        timer = 0.0f;
+
         navMeshAgent.SetDestination(playerGO.transform.position);
 
-        navMeshAgent.acceleration = 5.0f * Vector3.Distance(navMeshAgent.destination, navMeshAgent.transform.position);
+        navMeshAgent.acceleration = 20.0f/* 5.0f * Vector3.Distance(navMeshAgent.destination, navMeshAgent.transform.position)*/;
 
-        speedfactor = Vector3.Distance(navMeshAgent.destination, navMeshAgent.transform.position);
+        //speedfactor = Vector3.Distance(navMeshAgent.destination, navMeshAgent.transform.position);
+        speedfactor = 20.0f;
     }
 
     // Update is called once per frame
@@ -33,19 +37,20 @@ public class JumperScript : MonoBehaviour
     {
 
 
-        if (Vector3.Distance(navMeshAgent.destination, navMeshAgent.transform.position) <= 0.5f)
+        //if (Vector3.Distance(navMeshAgent.destination, navMeshAgent.transform.position) <= 0.5f)
+        if (timer >= 1.0f)
         {
             jumprest();
         }
         else
         {
+            timer += 1 * Time.deltaTime;
+
             //while it's jumping, disable collider;
             gameObject.GetComponent<BoxCollider>().enabled = false;
-
             navMeshAgent.speed = 30.0f * speedfactor;
-
         }
-        //Debug.Log("SPEED " + navMeshAgent.speed);
+        //Debug.Log("TIMER " + timer);
 
 
     }
@@ -62,9 +67,11 @@ public class JumperScript : MonoBehaviour
         if (jumpcooldown <= 0.0f)
         {
             jumpcooldown = 4.1f;
-            navMeshAgent.SetDestination(playerGO.transform.position);
-            speedfactor = Vector3.Distance(navMeshAgent.destination, navMeshAgent.transform.position);
+            timer = 0.0f;
 
+            navMeshAgent.SetDestination(playerGO.transform.position);
+            //speedfactor = Vector3.Distance(navMeshAgent.destination, navMeshAgent.transform.position);
+            speedfactor = 20.0f;
         }
     }
 
