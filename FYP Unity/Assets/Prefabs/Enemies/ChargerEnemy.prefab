@@ -74,8 +74,9 @@ GameObject:
   - component: {fileID: 1888417120424642196}
   - component: {fileID: 6454972794970313325}
   - component: {fileID: 5249369353892626731}
+  - component: {fileID: 8301357474681861008}
   m_Layer: 7
-  m_Name: Enemy
+  m_Name: ChargerEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -177,6 +178,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyHealth: 50
   AttackDamage: 5
+--- !u!114 &8301357474681861008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3824151877362138808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87d1958d059d9c84aa331df7920cee67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  navMeshAgent: {fileID: 1888417120424642196}
 --- !u!1 &4309510449923280359
 GameObject:
   m_ObjectHideFlags: 0
