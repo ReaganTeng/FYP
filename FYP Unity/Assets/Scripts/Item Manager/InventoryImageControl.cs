@@ -141,9 +141,13 @@ public class InventoryImageControl : MonoBehaviour
                 }
             }
 
-            inventorySlots[pos].inventorySlot.GetComponent<Image>().sprite = SelectedHotBar;
-            inventorySlots[pos].Selected = true;
-            Debug.Log(inventorySlots[pos].itemid);
+            // Ignore this if the selected is negative
+            if (pos != -1)
+            {
+                inventorySlots[pos].inventorySlot.GetComponent<Image>().sprite = SelectedHotBar;
+                inventorySlots[pos].Selected = true;
+                Debug.Log(inventorySlots[pos].itemid);
+            }
         }
     }
 
@@ -171,7 +175,12 @@ public class InventoryImageControl : MonoBehaviour
             }
             else
             {
-                ChangeSelectedHotBar(i - 1);
+                // if the selected is the last slot, change the cursor
+                if (pos + 1 == GetUsedInventorySlot())
+                {
+                    ChangeSelectedHotBar(i - 1);
+                }
+
                 inventorySlots[i].ingredientSlot.SetActive(false);
                 inventorySlots[i].itemid = -1;
             }
