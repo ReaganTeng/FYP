@@ -41,10 +41,7 @@ public class InventoryManager : MonoBehaviour
             AddItem(itemList[3]);
 
         }
-
-
     }
-
 
     public void OnClickSlot(Slots slot)
     {
@@ -82,6 +79,5 @@ public class InventoryManager : MonoBehaviour
                 i++;
             }
         }
-
     }
 }
