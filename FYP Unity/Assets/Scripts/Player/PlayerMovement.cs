@@ -10,6 +10,15 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float DashCD;
     [SerializeField] float DashBy;
     [SerializeField] float IFrame;
+
+
+    [SerializeField]
+    private Animator animator = null;
+
+    [SerializeField]
+    private SpriteRenderer spriteRenderer = null;
+
+
     private float dashcdtimer;
     private float Forwardrun;
     private float Rightrun;
@@ -33,6 +42,16 @@ public class PlayerMovement : MonoBehaviour
             CheckDirection(ref Forwardrun, ref Rightrun, horizontalInput, verticalInput);
         }
 
+        if (Input.GetKey(KeyCode.A))
+        {
+            spriteRenderer.flipX = false;
+        }
+
+        if (Input.GetKey(KeyCode.D))
+        {
+            spriteRenderer.flipX = true;
+        }
+
         if (dashcdtimer > 0)
             dashcdtimer -= Time.deltaTime;
         
@@ -46,6 +65,7 @@ public class PlayerMovement : MonoBehaviour
                 iframetimer = IFrame;
                 IFrameStart = true;
                 Physics.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer("Enemy"), true);
+                
             }
         }
     }
