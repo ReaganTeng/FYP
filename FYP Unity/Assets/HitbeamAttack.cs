@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAttack : MonoBehaviour
+public class HitbeamAttack : MonoBehaviour
 {
-    [SerializeField] EnemyScript es;
     [SerializeField] float AttackCD;
     float Attackcdtimer;
 
@@ -27,7 +26,7 @@ public class EnemyAttack : MonoBehaviour
         if (other.CompareTag("Player") && Attackcdtimer <= 0)
         {
             //Debug.Log("PLAYER ATTACKED");
-            other.GetComponent<PlayerStats>().ChangeHealth(-es.AttackDamage);
+            other.GetComponent<PlayerStats>().ChangeHealth(-5);
             Attackcdtimer = AttackCD;
         }
     }

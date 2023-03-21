@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
 {
-    [SerializeField] float EnemyHealth;
+    [SerializeField] public float EnemyHealth;
     public float AttackDamage;
     [SerializeField] GameObject prepPrefab;
     [SerializeField] GameObject choppedPefab;
@@ -16,6 +16,37 @@ public class EnemyScript : MonoBehaviour
     bool FirstAttack = false;
     int AttackByWhatWeapon = 0;
     bool AttackByOtherWeapon = false;
+
+
+    //public GameObject[] zones;
+    //public int zone_no;
+    float timer;
+    [SerializeField] public float cooldownend;
+    [SerializeField] public float abouttoattackend;
+
+    int attack_type;
+
+    public enum Phases
+    {
+        ABOUT_TO_ATTACK,
+        COOLDOWN,
+        ATTACK_TYPE_1,
+        ATTACK_TYPE_2,
+        
+        TOTAL
+    }
+
+
+    [SerializeField] public Phases phase;
+
+    void Start()
+    {
+        //phase = Phases.PHASE_3;
+
+        phase = Phases.ATTACK_TYPE_1;
+        timer = 0.0f;
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -75,7 +106,55 @@ public class EnemyScript : MonoBehaviour
                 Iframe = false;
             }
         }
+
+        switch (phase)
+        {
+            case Phases.ABOUT_TO_ATTACK:
+                {
+                    Debug.Log("ABOUT TO ATTACK");
+                    timer += 1.0f * Time.deltaTime;
+
+                    if (timer >= abouttoattackend)
+                    {
+                        timer = 0.0f;
+                        attack_type = Random.Range(1, 3);
+
+
+                        if (attack_type == 1)
+                        {
+                            phase = Phases.ATTACK_TYPE_1;
+                        }
+                        else /*if (attack_type == 2)*/
+                        {
+                            phase = Phases.ATTACK_TYPE_2;
+                        }
+                    }
+                    break;
+                }
+            case Phases.COOLDOWN:
+                {
+                    Debug.Log("COOLDOWN");
+
+                    timer += 1.0f * Time.deltaTime;
+
+                    if (timer >= cooldownend)
+                    {
+                        timer = 0.0f;
+                        phase = Phases.ABOUT_TO_ATTACK;
+
+
+                    }
+
+                    break;
+                }
+        }
+
     }
+
+
+
+    
+
 
     void EnemyDie()
     {
