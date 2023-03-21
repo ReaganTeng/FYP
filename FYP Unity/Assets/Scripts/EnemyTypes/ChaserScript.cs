@@ -53,6 +53,8 @@ public class ChaserScript : MonoBehaviour
         navMeshAgent.speed = chasingspeed;
         navMeshAgent.acceleration = chasingspeed;
 
+        GetComponent<EnemyScript>().setabouttoattackend(3.0f);
+        GetComponent<EnemyScript>().setCoolDownEnd(3.0f);
     }
 
     // Update is called once per frame

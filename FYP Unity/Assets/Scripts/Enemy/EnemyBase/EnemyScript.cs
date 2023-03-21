@@ -21,8 +21,8 @@ public class EnemyScript : MonoBehaviour
     //public GameObject[] zones;
     //public int zone_no;
     float timer;
-    [SerializeField] public float cooldownend;
-    [SerializeField] public float abouttoattackend;
+     float cooldownend;
+    float abouttoattackend;
 
     int attack_type;
 
@@ -154,7 +154,15 @@ public class EnemyScript : MonoBehaviour
 
 
     
+    public void setCoolDownEnd(float time)
+    {
+        cooldownend = time;
+    }
 
+    public void setabouttoattackend(float time)
+    {
+        abouttoattackend = time;
+    }
 
     void EnemyDie()
     {
