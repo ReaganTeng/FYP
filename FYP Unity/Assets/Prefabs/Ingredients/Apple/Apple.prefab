@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43a657e03a773364391ebd1ebdb6a1e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemID: 0
+  itemID: 1
 --- !u!1 &2616430958414959893
 GameObject:
   m_ObjectHideFlags: 0
@@ -109,7 +109,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 20b9ac84f3c9e5147bf7c7a23633f173, type: 2}
+  - {fileID: 2100000, guid: 80689467d5786b64f8f6c566afc80ce7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -143,8 +143,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d37105ca49bb3249b7a0676f9ef56f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  noglow: {fileID: 2100000, guid: 20b9ac84f3c9e5147bf7c7a23633f173, type: 2}
-  glow: {fileID: 2100000, guid: ae10150ac4bb8074d9fee2bbe7c451a0, type: 2}
+  noglow: {fileID: 2800000, guid: 71ee5772aed3e9f4aa38240503277098, type: 3}
+  glow: {fileID: 2800000, guid: 04d2fc20a354b1b458d43703a58091f6, type: 3}
 --- !u!65 &5508096052123728057
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -66,17 +66,17 @@ public class PlayerAttack : MonoBehaviour
         }
 
         // To swap between weapons
-        if (Input.GetKey(KeyCode.Alpha1))
+        if (Input.GetKey(KeyCode.Z))
         {
             currentweapon = Weapon.SPATULA;
             text.text = "Weapon: Spatula";
         }
-        else if (Input.GetKey(KeyCode.Alpha2))
+        else if (Input.GetKey(KeyCode.X))
         {
             currentweapon = Weapon.KNIFE;
             text.text = "Weapon: Knife";
         }
-        else if (Input.GetKey(KeyCode.Alpha3))
+        else if (Input.GetKey(KeyCode.C))
         {
             currentweapon = Weapon.ROLLINGPIN;
             text.text = "Weapon: RollingPin";

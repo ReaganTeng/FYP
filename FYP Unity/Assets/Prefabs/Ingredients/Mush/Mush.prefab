@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1339234bc86884b48b20837df54029ec, type: 2}
+  - {fileID: 2100000, guid: a4b5be25989e4aa448f1f2db42f646a4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -97,8 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d37105ca49bb3249b7a0676f9ef56f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  noglow: {fileID: 2100000, guid: 1339234bc86884b48b20837df54029ec, type: 2}
-  glow: {fileID: 2100000, guid: 67aa2010e80028047a6cab292c83d074, type: 2}
+  noglow: {fileID: 2800000, guid: 7fde444bcb6262e40b815febe1f24874, type: 3}
+  glow: {fileID: 2800000, guid: 6ace1024cf7e58047991ef5a2621a2f5, type: 3}
 --- !u!65 &5054975591647116496
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -121,6 +121,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6138386425349866240}
+  - component: {fileID: 6803724735226914738}
   m_Layer: 0
   m_Name: Mush
   m_TagString: Untagged
@@ -144,3 +145,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6803724735226914738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8494874157540663937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43a657e03a773364391ebd1ebdb6a1e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemID: 0

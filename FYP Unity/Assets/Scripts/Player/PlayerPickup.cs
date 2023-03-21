@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class PlayerPickup : MonoBehaviour
 {
+    [SerializeField] Inventory PlayerInventory;
     List<GameObject> IngredientInRangeList = new List<GameObject>();
-    Material mat;
+    InventoryImageControl ic;
+
+    private void Start()
+    {
+        ic = GameObject.FindGameObjectWithTag("GameManager").GetComponent<InventoryImageControl>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -32,56 +38,88 @@ public class PlayerPickup : MonoBehaviour
 
     private void Update()
     {
-        // if there is only one object, highlight that
-        if (IngredientInRangeList.Count == 1)
+        // If Inventory is not full, then do item highlight to indicate that items can be picked
+        if (!PlayerInventory.InventoryFull)
         {
-            // switch the item color or make it glow maybe?
-            IngredientInRangeList[0].GetComponent<ItemGlow>().TurnOnHighlight();
-        }
-
-        // if there is more than one object, check the closest distance between those and take the nearest one
-        else if (IngredientInRangeList.Count > 1)
-        {
-            GameObject nearestGameObject = FindNearestGameObject();
-
-            for (int i = 0; i < IngredientInRangeList.Count; i++)
+            // if there is only one object, highlight that
+            if (IngredientInRangeList.Count == 1)
             {
-                if (nearestGameObject == IngredientInRangeList[i].gameObject)
-                {
-                    // make the item glow
-                    IngredientInRangeList[i].GetComponent<ItemGlow>().TurnOnHighlight();
-                }
+                // switch the item color or make it glow maybe?
+                IngredientInRangeList[0].GetComponent<ItemGlow>().TurnOnHighlight();
+            }
 
-                // if its not the closest, dont make it glow
-                else
+            // if there is more than one object, check the closest distance between those and take the nearest one
+            else if (IngredientInRangeList.Count > 1)
+            {
+                GameObject nearestGameObject = FindNearestGameObject();
+
+                for (int i = 0; i < IngredientInRangeList.Count; i++)
                 {
-                    IngredientInRangeList[i].GetComponent<ItemGlow>().TurnOffHighlight();
+                    if (nearestGameObject == IngredientInRangeList[i].gameObject)
+                    {
+                        // make the item glow
+                        IngredientInRangeList[i].GetComponent<ItemGlow>().TurnOnHighlight();
+                    }
+
+                    // if its not the closest, dont make it glow
+                    else
+                    {
+                        IngredientInRangeList[i].GetComponent<ItemGlow>().TurnOffHighlight();
+                    }
                 }
             }
 
             // Do something wif the gameobject that has the shortest distance
+            // Check to see if player wants to pick up an item
+            if (Input.GetKeyDown(KeyCode.E) && IngredientInRangeList.Count > 0)
+            {
+                GameObject pickupobject;
+                if (IngredientInRangeList.Count == 1)
+                {
+                    pickupobject = IngredientInRangeList[0];
+                    IngredientInRangeList.Remove(pickupobject);
+                    Destroy(pickupobject);
+                    // Add the item into ur inventory
+                    PlayerInventory.AddToInventory(pickupobject.GetComponent<Item>());
+                    ic.AddItem(pickupobject.GetComponentInParent<Item>());
+                }
+                else
+                {
+                    pickupobject = FindNearestGameObject();
+                    IngredientInRangeList.Remove(pickupobject);
+                    Destroy(pickupobject);
+                    // Add the item into ur inventory
+                    PlayerInventory.AddToInventory(pickupobject.GetComponent<Item>());
+                    ic.AddItem(pickupobject.GetComponentInParent<Item>());
+                }
+            }
         }
 
-        // Check to see if player wants to pick up an item
-        if (Input.GetKeyDown(KeyCode.E) && IngredientInRangeList.Count > 0)
+        // switch between selected items
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            GameObject pickupobject;
-            if (IngredientInRangeList.Count == 1)
-            {
-                pickupobject = IngredientInRangeList[0];
-                IngredientInRangeList.Remove(pickupobject);
-                Destroy(pickupobject);
-                // Add the item into ur inventory
-                Debug.Log("Item added to Inventory");
-            }
-            else
-            {
-                pickupobject = FindNearestGameObject();
-                IngredientInRangeList.Remove(pickupobject);
-                Destroy(pickupobject);
-                // Add the item into ur inventory
-                Debug.Log("Item added to Inventory");
-            }
+            ic.ChangeSelectedHotBar(0);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            ic.ChangeSelectedHotBar(1);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            ic.ChangeSelectedHotBar(2);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            ic.ChangeSelectedHotBar(3);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            ic.ChangeSelectedHotBar(4);
+        }
+        // Remove selected
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            ic.RemoveSelected();
         }
     }
 

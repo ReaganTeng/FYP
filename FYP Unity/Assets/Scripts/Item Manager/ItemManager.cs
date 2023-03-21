@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ItemManager : MonoBehaviour
 {
+
     public static ItemManager instance;
     public enum Items
     {
+        MUSH,
         POTATO_CHOPPED,
         POTATO_MASHED,
         POTATO_PREP,

@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 762d242af1c681b4aa74d126cf75d353, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerInventory: {fileID: 7325610877755395897}
 --- !u!1 &2814169524916265940
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,6 +230,7 @@ GameObject:
   - component: {fileID: 6217062683001702244}
   - component: {fileID: 8789024696745996252}
   - component: {fileID: 5971404912817744301}
+  - component: {fileID: 7325610877755395897}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -315,6 +317,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerHealth: 100
   PlayerAttack: 10
+--- !u!114 &7325610877755395897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3324953753049958943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a6a8bc09a56f61409f68a9556bea87b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxInventorySize: 2
+  InventoryFull: 0
 --- !u!1 &3592055039083212300
 GameObject:
   m_ObjectHideFlags: 0

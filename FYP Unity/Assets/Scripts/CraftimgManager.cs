@@ -157,10 +157,6 @@ public class CraftimgManager : MonoBehaviour
                     }
                     
                 }
-
-                
-
-
                 currentItem = null;
             }
             CheckCreatedRecipes();
