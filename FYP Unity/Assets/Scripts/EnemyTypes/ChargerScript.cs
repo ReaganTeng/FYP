@@ -43,6 +43,10 @@ public class ChargerScript : MonoBehaviour
         resultingVector = playerPos - transform.position;
 
         chargingtime = 0.0f;
+
+        GetComponent<EnemyScript>().setabouttoattackend(3.0f);
+        GetComponent<EnemyScript>().setCoolDownEnd(3.0f);
+
     }
 
     // Update is called once per frame
@@ -81,7 +85,6 @@ public class ChargerScript : MonoBehaviour
         {
             case EnemyScript.Phases.ATTACK_TYPE_1:
                 {
-                    Debug.Log("ATTACK 1");
                     chargingtime += 1.0f * Time.deltaTime;
                     if (chargingtime >= 1.0f)
                     {
@@ -92,8 +95,6 @@ public class ChargerScript : MonoBehaviour
                 }
             case EnemyScript.Phases.ATTACK_TYPE_2:
                 {
-                    Debug.Log("ATTACK 2");
-
                     chargingtime += 1.0f * Time.deltaTime;
                     if (chargingtime >= 1.0f)
                     { 
@@ -149,14 +150,14 @@ public class ChargerScript : MonoBehaviour
         //normalise resulting vector
         resultingVector.Normalize();
         //CHARGE TOWARDS THE PLAYER'S OVERALL DIRECTION, velocity = resulting vector
-        gameObject.GetComponent<Rigidbody>().velocity = resultingVector  * velocityspeed ;
+        GetComponent<Rigidbody>().velocity = resultingVector  * velocityspeed ;
 
     }
 
 
     public void recovering()
     {
-        gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
+        GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
 
         chargecooldown -= 1.0f * Time.deltaTime;
 
