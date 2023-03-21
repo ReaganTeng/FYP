@@ -20,11 +20,13 @@ public class EnemyAttack : MonoBehaviour
             Attackcdtimer -= Time.deltaTime;
     }
 
+    //change collider size if want to increase attack range
     private void OnTriggerStay(Collider other)
     {
         // if it is the player
         if (other.CompareTag("Player") && Attackcdtimer <= 0)
         {
+            //Debug.Log("PLAYER ATTACKED");
             other.GetComponent<PlayerStats>().ChangeHealth(-es.AttackDamage);
             Attackcdtimer = AttackCD;
         }

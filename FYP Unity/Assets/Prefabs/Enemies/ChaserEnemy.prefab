@@ -178,6 +178,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyHealth: 50
   AttackDamage: 5
+  prepPrefab: {fileID: 5640140278021557923, guid: 877aad5ebbb5f7b4ea17dd738c22f5fa, type: 3}
+  choppedPefab: {fileID: 568297875779090178, guid: 9031fceed79e84b4ea688fbd77c831c0, type: 3}
+  smashedPrefab: {fileID: 3320338801699120423, guid: 74500f70982b1624f91594f2616f5dd0, type: 3}
+  Mush: {fileID: 8494874157540663937, guid: 4255f020537c20a48857eb56b1b0f6d5, type: 3}
+  cooldownend: 3
+  abouttoattackend: 3
+  phase: 0
 --- !u!114 &9021957426161983494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,11 +200,15 @@ MonoBehaviour:
   targetVelocity: 10
   numberOfRays: 30
   angle: 90
-  rayRange: 5
+  rayRange: 0.1
   lm:
     serializedVersion: 2
     m_Bits: 64
+  GO: {fileID: 3468584897928907086, guid: 9888e04e85b6dc542b4ae39daf5cf595, type: 3}
+  hit: {fileID: 3468584897928907086, guid: 4470e1b54d7769145b12b5c74b4d7837, type: 3}
   navMeshAgent: {fileID: 1888417120424642196}
+  box: {fileID: 7714765143087656290}
+  enemyPhase: 0
 --- !u!1 &4309510449923280359
 GameObject:
   m_ObjectHideFlags: 0

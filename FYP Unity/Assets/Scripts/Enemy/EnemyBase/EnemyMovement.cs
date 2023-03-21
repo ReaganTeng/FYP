@@ -7,8 +7,10 @@ public class EnemyMovement : MonoBehaviour
 {
     GameObject Player;
     [SerializeField] NavMeshAgent navMeshAgent;
-    [SerializeField] float DetectionRange;
+    [SerializeField] public float DetectionRange;
     float ClampedYPos;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,11 +27,11 @@ public class EnemyMovement : MonoBehaviour
 
         float distanceBetweenPlayer = Vector3.Distance(Playerpos, Enemypos);
 
-        if (distanceBetweenPlayer < DetectionRange)
+       /* if (distanceBetweenPlayer < DetectionRange)
         {
             navMeshAgent.SetDestination(Player.transform.position);
             Vector3 thenewpos = new Vector3(navMeshAgent.transform.position.x, ClampedYPos, navMeshAgent.transform.position.z);
             navMeshAgent.transform.position = thenewpos;
-        }
+        }*/
     }
 }

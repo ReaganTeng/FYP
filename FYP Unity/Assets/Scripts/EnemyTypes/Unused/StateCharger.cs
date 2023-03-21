@@ -7,8 +7,6 @@ public class StateCharger : StateBase
     private float chargecooldown;
     private bool collided;
 
-
-
     public override void EnterState(StateManager enemy)
     {
         Debug.Log("CHARGER");
