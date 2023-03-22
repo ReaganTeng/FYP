@@ -43,7 +43,7 @@ public class EnemyScript : MonoBehaviour
     {
         //phase = Phases.PHASE_3;
 
-        phase = Phases.ATTACK_TYPE_1;
+        //phase = Phases.ATTACK_TYPE_1;
         timer = 0.0f;
     }
 
@@ -124,7 +124,7 @@ public class EnemyScript : MonoBehaviour
                         {
                             phase = Phases.ATTACK_TYPE_1;
                         }
-                        else /*if (attack_type == 2)*/
+                        else
                         {
                             phase = Phases.ATTACK_TYPE_2;
                         }
