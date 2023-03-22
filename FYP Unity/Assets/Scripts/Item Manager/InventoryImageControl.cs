@@ -19,9 +19,6 @@ public class InventoryImageControl : MonoBehaviour
 
     [SerializeField] Sprite NotSelectedHotBar;
     [SerializeField] Sprite SelectedHotBar;
-    [SerializeField] Sprite ChoppedApple;
-    [SerializeField] Sprite MashedApple;
-    [SerializeField] Sprite PrepApple;
 
     List<item> inventorySlots = new List<item>();
     Inventory inv;
@@ -30,8 +27,16 @@ public class InventoryImageControl : MonoBehaviour
     {
         public GameObject inventorySlot;
         public GameObject ingredientSlot;
+        // if the item is currently being selected
         public bool Selected;
+        // id for the ingredients
         public int itemid;
+        // a bool to check to see if its an ingredient or a dish
+        public bool IsADish;
+        // id for the dishes
+        public int dishid;
+        // to store the item reference itself to be used for mixer
+        public Item theItem;
     }
 
     private void Start()
@@ -49,34 +54,37 @@ public class InventoryImageControl : MonoBehaviour
             tempItem.ingredientSlot.SetActive(false);
             tempItem.Selected = false;
             tempItem.itemid = -1;
+            tempItem.IsADish = false;
+            tempItem.dishid = -1;
+            tempItem.theItem = null;
             inventorySlots.Add(tempItem);
 
         }
         ModifyItemSlots(inv.GetMaxInventorySize());
     }
 
-
+    // Add ingredient into inventory
     public void AddItem(Item item)
     {
-        int itemid = item.GetItemID();
-        UpdateImage(itemid);
+        UpdateImage(item.gameObject, false);
     }
 
-    void AddImage(GameObject image, int ItemID)
+    // Overloaded function, add dish into inventory
+    public void AddItem(Dish dish)
     {
-        switch ((ItemManager.Items)ItemID)
+        UpdateImage(dish.gameObject, true);
+    }
+
+    void AddImage(GameObject image, GameObject ItemID, bool UseDishImage)
+    {
+        if (UseDishImage)
         {
-            case ItemManager.Items.POTATO_CHOPPED:
-                image.GetComponent<Image>().sprite = ChoppedApple;
-                break;
+            image.GetComponent<Image>().sprite = ItemID.GetComponent<Dish>().GetImage();
+        }
 
-            case ItemManager.Items.POTATO_MASHED:
-                image.GetComponent<Image>().sprite = MashedApple;
-                break;
-
-            case ItemManager.Items.POTATO_PREP:
-                image.GetComponent<Image>().sprite = PrepApple;
-                break;
+        else
+        {
+            image.GetComponent<Image>().sprite = ItemID.GetComponent<Item>().GetImage();
         }
     }
 
@@ -91,7 +99,7 @@ public class InventoryImageControl : MonoBehaviour
         }
     }
 
-    void UpdateImage(int itemid)
+    void UpdateImage(GameObject item, bool IsADish)
     {
         for (int i = 0; i < inventorySlots.Count; i++)
         {
@@ -99,8 +107,20 @@ public class InventoryImageControl : MonoBehaviour
             if (!inventorySlots[i].ingredientSlot.activeSelf)
             {
                 inventorySlots[i].ingredientSlot.SetActive(true);
-                inventorySlots[i].itemid = itemid;
-                AddImage(inventorySlots[i].ingredientSlot, itemid);
+                // If it is a dish, add as a dish instead
+                if (IsADish)
+                {
+                    inventorySlots[i].dishid = item.GetComponent<Dish>().GetItemID();
+                    inventorySlots[i].IsADish = true;
+                }
+                else
+                {
+                    inventorySlots[i].itemid = item.GetComponent<Item>().GetItemID();
+                    inventorySlots[i].IsADish = false;
+                    inventorySlots[i].theItem = item.GetComponent<Item>();
+                }
+
+                AddImage(inventorySlots[i].ingredientSlot, item, IsADish);
 
                 if (GetUsedInventorySlot() == 1)
                 {
@@ -146,7 +166,10 @@ public class InventoryImageControl : MonoBehaviour
             {
                 inventorySlots[pos].inventorySlot.GetComponent<Image>().sprite = SelectedHotBar;
                 inventorySlots[pos].Selected = true;
-                Debug.Log(inventorySlots[pos].itemid);
+                if (!inventorySlots[pos].IsADish)
+                    Debug.Log("ItemID: " + inventorySlots[pos].itemid);
+                else
+                    Debug.Log("DishID: " + inventorySlots[pos].dishid);
             }
         }
     }
@@ -158,10 +181,48 @@ public class InventoryImageControl : MonoBehaviour
             // change previous selected back to not selected sprite
             if (inventorySlots[i].Selected)
             {
+                inv.RemoveFromInventory(i);
                 SortList(i);
                 break;
             }
         }
+    }
+
+    public int GetSelectedInventory(bool IsItADish)
+    {
+        for (int i = 0; i < inventorySlots.Count; i++)
+        {
+            // get the selected one
+            if (inventorySlots[i].Selected)
+            {
+                // if it is a dish, return the dish id
+                if (IsItADish)
+                {
+                    return inventorySlots[i].dishid;
+                }
+                // if it is not a dish, return ingredient id instead
+                else
+                {
+                    return inventorySlots[i].itemid;
+                }
+            }
+        }
+
+        return -1;
+    }
+
+    public Item GetItem()
+    {
+        for (int i = 0; i < inventorySlots.Count; i++)
+        {
+            // get the selected one
+            if (inventorySlots[i].Selected)
+            {
+                return inventorySlots[i].theItem;
+            }
+        }
+
+        return null;
     }
 
     public void SortList(int pos)
@@ -172,6 +233,9 @@ public class InventoryImageControl : MonoBehaviour
             {
                 inventorySlots[i].ingredientSlot.GetComponent<Image>().sprite = inventorySlots[i + 1].ingredientSlot.GetComponent<Image>().sprite;
                 inventorySlots[i].itemid = inventorySlots[i + 1].itemid;
+                inventorySlots[i].dishid = inventorySlots[i + 1].dishid;
+                inventorySlots[i].IsADish = inventorySlots[i + 1].IsADish;
+                inventorySlots[i].theItem = inventorySlots[i + 1].theItem;
             }
             else
             {
@@ -183,6 +247,9 @@ public class InventoryImageControl : MonoBehaviour
 
                 inventorySlots[i].ingredientSlot.SetActive(false);
                 inventorySlots[i].itemid = -1;
+                inventorySlots[i].dishid = -1;
+                inventorySlots[i].IsADish = false;
+                inventorySlots[i].theItem = null;
             }
         }
     }

@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Item : MonoBehaviour
 {
     [SerializeField] int itemID;
+    [SerializeField] Sprite image;
     private ItemManager.Items itemtype;
 
     private void Start()
@@ -20,5 +22,10 @@ public class Item : MonoBehaviour
     public int GetItemID()
     {
         return itemID;
+    }
+
+    public Sprite GetImage()
+    {
+        return image;
     }
 }

@@ -9,35 +9,35 @@ public class ItemManager : MonoBehaviour
     public static ItemManager instance;
     public enum Items
     {
-        MUSH,
-        POTATO_CHOPPED,
-        POTATO_MASHED,
-        POTATO_PREP,
-        RICE_CHOPPED,
-        RICE_MASHED,
-        RICE_PREP,
-        EGG_CHOPPED,
-        EGG_MASHED,
-        EGG_PREP,
-        SALMON_CHOPPED,
-        SALMON_MASHED,
-        SALMON_PREP,
-        CHICKEN_CHOPPED,
-        CHICKEN_MASHED,
-        CHICKEN_PREP,
-        COW_CHOPPED,
-        COW_MASHED,
-        COW_PREP,
-        CARROT_CHOPPED,
-        CARROT_MASHED,
-        CARROT_COOKED,
-        APPLE_CHOPPED,
-        APPLE_MASHED,
-        APPLE_COOKED,
-        SPANICH_CHOPPED,
-        SPANICH_MASHED,
-        SPANICH_PREP,
-        TOTAL,
+        MUSH, //0
+        POTATO_CHOPPED, // 1
+        POTATO_MASHED, //2
+        POTATO_PREP, //3
+        RICE_CHOPPED, //4
+        RICE_MASHED, //5
+        RICE_PREP, //6
+        EGG_CHOPPED, //7
+        EGG_MASHED, //8
+        EGG_PREP, //9
+        SALMON_CHOPPED, //10
+        SALMON_MASHED, //11
+        SALMON_PREP, //12
+        CHICKEN_CHOPPED, //13
+        CHICKEN_MASHED, //14
+        CHICKEN_PREP, //15
+        COW_CHOPPED, //16
+        COW_MASHED, //17
+        COW_PREP, //18
+        CARROT_CHOPPED, //19
+        CARROT_MASHED, //20
+        CARROT_PREP, //21
+        APPLE_CHOPPED, //22
+        APPLE_MASHED, //23
+        APPLE_PREP, //24
+        SPANICH_CHOPPED, //25
+        SPANICH_MASHED, //26
+        SPANICH_PREP, //27
+        TOTAL, //28
     }
 
     public Items GetItemType(int itemID)
@@ -50,7 +50,7 @@ public class ItemManager : MonoBehaviour
         return (int)item;
     }
 
-    private void Start()
+    private void Awake()
     {
         instance = this;
     }

@@ -5,10 +5,10 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     [SerializeField] int MaxInventorySize;
-    List<Item> InventoryList = new List<Item>();
+    List<GameObject> InventoryList = new List<GameObject>();
     public bool InventoryFull = false;
 
-    public bool AddToInventory(Item ItemToAdd)
+    public bool AddToInventory(GameObject ItemToAdd)
     {
         // Check to see if there is slots to put item into inventory
         if (InventoryList.Count < MaxInventorySize)
@@ -23,9 +23,9 @@ public class Inventory : MonoBehaviour
         return false;
     }
 
-    public void RemoveFromInventory(Item ItemToRemove)
+    public void RemoveFromInventory(int Itempos)
     {
-        InventoryList.Remove(ItemToRemove);
+        InventoryList.RemoveAt(Itempos);
         IsInventoryFull();
     }
 

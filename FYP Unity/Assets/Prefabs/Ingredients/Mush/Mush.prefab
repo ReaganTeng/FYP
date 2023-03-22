@@ -121,7 +121,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6138386425349866240}
-  - component: {fileID: 6803724735226914738}
+  - component: {fileID: 1321261436961672856}
   m_Layer: 0
   m_Name: Mush
   m_TagString: Untagged
@@ -136,7 +136,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8494874157540663937}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -144,8 +144,8 @@ Transform:
   - {fileID: 2324906612689374189}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6803724735226914738
+  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
+--- !u!114 &1321261436961672856
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -154,7 +154,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8494874157540663937}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43a657e03a773364391ebd1ebdb6a1e3, type: 3}
+  m_Script: {fileID: 11500000, guid: 7e02a72b7ccbc9243b33cd7f74e2488e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemID: 0
+  dishID: 0
+  dishName: Mush
+  image: {fileID: 21300000, guid: 7fde444bcb6262e40b815febe1f24874, type: 3}
+  BaseScore: 0
