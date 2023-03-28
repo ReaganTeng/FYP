@@ -12,7 +12,6 @@ public class OrderSystem : MonoBehaviour
     [SerializeField] float OrderIntervalTiming;
     [SerializeField] int MaxOrderAtOnce;
     [SerializeField] EndOfDay eod;
-    [SerializeField] TextMeshProUGUI text;
     float beforefirstordertimer;
     float orderintervaltimer;
     bool StartOrdering;
@@ -43,7 +42,6 @@ public class OrderSystem : MonoBehaviour
         StartOrdering = false;
         IncurPenalty = false;
         icDelay = false;
-        text.text = "Score: 0";
     }
 
     private void Update()
@@ -58,11 +56,11 @@ public class OrderSystem : MonoBehaviour
             }
         }
 
-        else
+        else if (orderList.Count < MaxOrderAtOnce)
         {
             orderintervaltimer -= Time.deltaTime;
 
-            if (orderintervaltimer <= 0 && orderList.Count < MaxOrderAtOnce)
+            if (orderintervaltimer <= 0)
             {
                 // Create an order list
                 GameObject temp = Instantiate(OrderPrefab);
@@ -82,7 +80,6 @@ public class OrderSystem : MonoBehaviour
                 IncurPenalty = false;
                 CheckOrderList();
             }
-
             icDelay = true;
         }
     }
@@ -93,9 +90,9 @@ public class OrderSystem : MonoBehaviour
         float WaitingTime = OrderManager.instance.GetCurrentDayWaitingTime();
         Recipes.recipes theorder = OrderManager.instance.GetRandomOrderFromCurrentDay();
         if (WaitingTime == 0)
-            orderPanel.SetOrder(theorder.ingredient1.GetImage(), theorder.ingredient2.GetImage(), theorder.Result.GetImage(), theorder);
+            orderPanel.SetOrder(FoodManager.instance.GetImage(theorder.ingredient1), FoodManager.instance.GetImage(theorder.ingredient2), FoodManager.instance.GetImage(theorder.Result), theorder);
         else
-            orderPanel.SetOrder(theorder.ingredient1.GetImage(), theorder.ingredient2.GetImage(), theorder.Result.GetImage(), theorder, WaitingTime);
+            orderPanel.SetOrder(FoodManager.instance.GetImage(theorder.ingredient1), FoodManager.instance.GetImage(theorder.ingredient2), FoodManager.instance.GetImage(theorder.Result), theorder, WaitingTime);
     }
 
     public void Serving()
@@ -106,7 +103,7 @@ public class OrderSystem : MonoBehaviour
         for (int i = 0; i < orderList.Count; i++)
         {
             // check to see if the dish u holding can be served
-            if (inventory.GetSelectedInventory(true) == orderList[i].GetComponent<OrderPanel>().GetDishID())
+            if (inventory.GetSelectedFoodID(FoodManager.FoodType.DISH) == orderList[i].GetComponent<OrderPanel>().GetDishID())
             {
                 CanBeServed = true;
                 break;
@@ -133,14 +130,40 @@ public class OrderSystem : MonoBehaviour
             if (index != -1)
             {
                 OrderPanel TheOrder = orderList[index].GetComponent<OrderPanel>();
+
+                // Get score base on stars obtained
+                int starsobtained = inventory.GetSelectedStarAmount();
+                float Score = TheOrder.GetScore();
+                switch (starsobtained)
+                {
+                    case 0:
+                        Score *= 0.25f;
+                        break;
+                    case 1:
+                        Score *= 0.5f;
+                        break;
+                    case 2:
+                        Score *= 0.75f;
+                        break;
+                    case 3:
+                        Score *= 1.0f;
+                        break;
+                    case 4:
+                        Score *= 1.25f;
+                        break;
+                    case 5:
+                        Score *= 2.0f;
+                        break;
+                }
+
                 // award score to player
-                eod.ChangeScore(TheOrder.GetScore());
-                // change the score for the ui
-                text.text = "Score: " + eod.GetScore().ToString();
+                eod.ChangeScore((int)Score);
                 // remove the order
                 TheOrder.Served();
                 // remove from the list
                 orderList.RemoveAt(index);
+                // Remove from scene first
+                Destroy(inventory.GetSelectedGameObject());
                 // Remove it from player inventory
                 inventory.RemoveSelected();
             }
@@ -151,10 +174,12 @@ public class OrderSystem : MonoBehaviour
         }
     }
 
-    public void PlayerIncurPenalty(int penaltyby)
+    public void PlayerIncurPenalty()
     {
+        int penaltyby = GameObject.FindGameObjectWithTag("GameManager").GetComponent<OrderManager>().GetPenalty();
         IncurPenalty = true;
-        eod.ChangeScore(penaltyby);
+        eod.ChangeScore(-penaltyby);
+        CheckOrderList();
     }
 
     // clear out any deleted order panel from the list

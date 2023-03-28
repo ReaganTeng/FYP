@@ -122,6 +122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4575915585617722716}
   - component: {fileID: 5261345172073189808}
+  - component: {fileID: -3439902632046633264}
   m_Layer: 0
   m_Name: Potato_Fries
   m_TagString: Untagged
@@ -157,5 +158,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43a657e03a773364391ebd1ebdb6a1e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemID: 3
+  itemtype: 3
   image: {fileID: 21300000, guid: f8ca1187db027664889f0d26c5a9511d, type: 3}
+--- !u!114 &-3439902632046633264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1383321896429455901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d5d1825d182a194897640c1a97ff6aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodtype: 0

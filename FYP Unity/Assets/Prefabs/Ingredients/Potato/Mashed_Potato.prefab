@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1026888575172223985}
   - component: {fileID: 6250172052479209444}
+  - component: {fileID: -8254315091860391651}
   m_Layer: 0
   m_Name: Mashed_Potato
   m_TagString: Untagged
@@ -45,8 +46,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43a657e03a773364391ebd1ebdb6a1e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemID: 2
+  itemtype: 2
   image: {fileID: 21300000, guid: 8e32ab42f5135894ea307da7079ea6a9, type: 3}
+--- !u!114 &-8254315091860391651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7510281840356330337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d5d1825d182a194897640c1a97ff6aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodtype: 0
 --- !u!1 &7599526658557604552
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,6 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d37105ca49bb3249b7a0676f9ef56f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  theparent: {fileID: 7510281840356330337}
   noglow: {fileID: 2800000, guid: 8e32ab42f5135894ea307da7079ea6a9, type: 3}
   glow: {fileID: 2800000, guid: 87031cbe3b32dbc47827548a12e4bbde, type: 3}
 --- !u!65 &3251852648539547450

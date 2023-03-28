@@ -5,13 +5,13 @@ using UnityEngine.UI;
 
 public class Item : MonoBehaviour
 {
-    [SerializeField] int itemID;
+    [SerializeField] ItemManager.Items itemtype;
     [SerializeField] Sprite image;
-    private ItemManager.Items itemtype;
+    private int itemID;
 
     private void Start()
     {
-        itemtype = ItemManager.instance.GetItemType(itemID);
+        itemID = ItemManager.instance.GetItemID(itemtype);
     }
 
     public ItemManager.Items GetItemType()

@@ -5,6 +5,13 @@ using UnityEngine.UI;
 
 public class Mixer : MonoBehaviour
 {
+    enum MixerType
+    {
+        REFINER,
+        COOKER,
+    }
+
+    [SerializeField] MixerType mixerType;
     [SerializeField] GameObject mixingBG;
     [SerializeField] GameObject ingredient1;
     [SerializeField] GameObject ingredient2;
@@ -12,15 +19,14 @@ public class Mixer : MonoBehaviour
     [SerializeField] Text text;
     [SerializeField] GameObject doneBG;
     [SerializeField] int MixingTime;
-    [SerializeField] Dish SusDish;
     float mixingtimer;
     bool IsMixing;
-    int RecipeResultID = 0;
+    GameObject RecipeResultObject = null;
     bool CanPutIntoMixer;
     bool MixerDone;
 
     // List that contains the ingredients inputted into the mixer
-    List<Item> mixercontent = new List<Item>();
+    List<GameObject> mixercontent = new List<GameObject>();
 
     private void Start()
     {
@@ -29,29 +35,69 @@ public class Mixer : MonoBehaviour
         MixerDone = false;
     }
 
-    public bool AddIntoMixer()
+    public void InteractWithMixer()
+    {
+        // If u can toss ingredients into the mixer, allow player to toss it inside
+        if (CanPutIntoMixer)
+        {
+            AddIntoMixer();
+        }
+
+        // check to see if the mixer is done, if it is done, grab it
+        if (MixerDone)
+        {
+            GetDishFromMixer();
+        }
+    }
+
+    void AddIntoMixer()
     {
         InventoryImageControl inventory = GameObject.FindGameObjectWithTag("GameManager").GetComponent<InventoryImageControl>();
 
-        // make sure player has something selected and the mixer contains less than 2 ingredient inside
-        if (inventory.GetSelectedInventory(false) != -1 && mixercontent.Count < 2)
-        {
-            mixercontent.Add(inventory.GetItem());
-            RenderMixingMenu();
-            return true;
-        }
-        return false;
-    }
+        // if there is already 2 ingredients inside the mixer, do not allow player to put anymore ingredient
+        // instead, mix them the next time they interact with it
+        if (mixercontent.Count == 2)
+            StartMixing();
 
-    public int GetMixerAmount()
-    {
-        return mixercontent.Count;
+        // if u can put, put it in
+        else
+        {
+            // check to see what player has according to ther type of mixer
+            switch (mixerType)
+            {
+                case MixerType.REFINER:
+                    // make sure that the player is holding an ingredient
+                    if (inventory.GetSelectedFoodID(FoodManager.FoodType.INGREDIENT) != -1)
+                    {
+                        mixercontent.Add(inventory.GetSelectedGameObject());
+                        inventory.RemoveSelected();
+                        RenderMixingMenu();
+                    }
+                    break;
+                case MixerType.COOKER:
+                    // make sure that the player is holding an ingredient
+                    if (inventory.GetSelectedFoodID(FoodManager.FoodType.REFINED_INGREDIENT) != -1)
+                    {
+                        mixercontent.Add(inventory.GetSelectedGameObject());
+                        inventory.RemoveSelected();
+                        RenderMixingMenu();
+                    }
+                    break;
+            }
+        }
     }
 
     public void StartMixing()
     {
-        RecipeResultID = Recipes.instance.GetRecipeResult(mixercontent[0].GetItemID(), mixercontent[1].GetItemID());
-        Debug.Log("DishID result: " + RecipeResultID);
+        if (mixercontent[0] != null)
+            Destroy(mixercontent[0]);
+        if (mixercontent[1] != null)
+            Destroy(mixercontent[1]);
+
+        RecipeResultObject = CheckWhatIsOutput();
+        //InventoryImageControl inventory = GameObject.FindGameObjectWithTag("GameManager").GetComponent<InventoryImageControl>();
+        //GameObject temp = inventory.GetSelectedGameObject();
+        Debug.Log("Dish result: " + RecipeResultObject);
         ResetMixer();
         Mixing();
         Debug.Log("Mixing in process, please stand by..");
@@ -84,13 +130,13 @@ public class Mixer : MonoBehaviour
         if (mixercontent.Count >= 1)
         {
             ingredient1.SetActive(true);
-            ingredient1.GetComponent<Image>().sprite = mixercontent[0].GetImage();
+            ingredient1.GetComponent<Image>().sprite = FoodManager.instance.GetImage(mixercontent[0]);
         }
 
         if (mixercontent.Count >= 2)
         {
             ingredient2.SetActive(true);
-            ingredient2.GetComponent<Image>().sprite = mixercontent[1].GetImage();
+            ingredient2.GetComponent<Image>().sprite = FoodManager.instance.GetImage(mixercontent[1]);
         }
     }
 
@@ -122,33 +168,46 @@ public class Mixer : MonoBehaviour
         MixerDone = false;
     }
 
-    public Dish GetDishFromMixer()
+    void GetDishFromMixer()
     {
-        Dish dish;
-        if (RecipeResultID >= 0)
+        InventoryImageControl inv = GameObject.FindGameObjectWithTag("GameManager").GetComponent<InventoryImageControl>();
+
+        // Check to see what type of mixer is it, if it is refiner, just give the ingredient, if it is cooker, go qte
+        bool Successful = false;
+        switch (mixerType)
         {
-            dish = Recipes.instance.GetRecipe(RecipeResultID).Result;
+            case MixerType.REFINER:
+                // Check to see player inventory is not full
+                if (!Inventory.instance.InventoryFull)
+                {
+                    inv.AddItem(RecipeResultObject);
+                    Successful = true;
+                }
+
+                break;
+            case MixerType.COOKER:
+                // Check to see player inventory is not full
+                if (!Inventory.instance.InventoryFull)
+                {
+                    inv.AddItem(RecipeResultObject);
+                    Successful = true;
+                }
+                break;
         }
 
-        else
+        if (Successful)
         {
-            dish = SusDish;
+            // reset it
+            RecipeResultObject = null;
+            ResetMixerEntirely();
         }
-
-        // reset it
-        RecipeResultID = 0;
-        ResetMixerEntirely();
-        return dish;
     }
 
-    public bool GetCanPutIntoMixer()
+    GameObject CheckWhatIsOutput()
     {
-        return CanPutIntoMixer;
-    }
+        GameObject temp = Recipes.instance.GetRecipeResult(mixercontent[0], mixercontent[1]);
 
-    public bool GetIsMixerDone()
-    {
-        return MixerDone;
+        return temp;
     }
 
     private void Update()

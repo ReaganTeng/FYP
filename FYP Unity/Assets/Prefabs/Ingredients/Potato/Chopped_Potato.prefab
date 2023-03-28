@@ -122,6 +122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3647582716503194524}
   - component: {fileID: 4110157539680756857}
+  - component: {fileID: -6617183426967409894}
   m_Layer: 0
   m_Name: Chopped_Potato
   m_TagString: Untagged
@@ -157,5 +158,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43a657e03a773364391ebd1ebdb6a1e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemID: 1
+  itemtype: 1
   image: {fileID: 21300000, guid: 5e4463f82fd4cee4e9a24c50836326ce, type: 3}
+--- !u!114 &-6617183426967409894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9042526649571803264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d5d1825d182a194897640c1a97ff6aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodtype: 0

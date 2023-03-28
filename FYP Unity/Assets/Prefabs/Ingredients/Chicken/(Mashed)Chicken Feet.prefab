@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2870302114171852718}
   - component: {fileID: 1755983465450218967}
+  - component: {fileID: -3000461277105504843}
   m_Layer: 0
   m_Name: (Mashed)Chicken Feet
   m_TagString: Untagged
@@ -45,8 +46,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43a657e03a773364391ebd1ebdb6a1e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemID: 14
+  itemtype: 14
   image: {fileID: 21300000, guid: 43b16bd9ff125754890431e995f2ed92, type: 3}
+--- !u!114 &-3000461277105504843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5573117200234300533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d5d1825d182a194897640c1a97ff6aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodtypeid: 0
 --- !u!1 &6529016454787347425
 GameObject:
   m_ObjectHideFlags: 0

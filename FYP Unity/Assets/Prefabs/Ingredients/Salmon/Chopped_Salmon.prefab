@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3508744064779685479}
   - component: {fileID: -3115887080230087820}
+  - component: {fileID: -2146428541414326510}
   m_Layer: 0
   m_Name: Chopped_Salmon
   m_TagString: Untagged
@@ -45,8 +46,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43a657e03a773364391ebd1ebdb6a1e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemID: 10
+  itemtype: 10
   image: {fileID: 21300000, guid: 67026be33cac00044a00fb7b58650350, type: 3}
+--- !u!114 &-2146428541414326510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 230456148176578982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d5d1825d182a194897640c1a97ff6aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodtype: 0
 --- !u!1 &1512126695901636384
 GameObject:
   m_ObjectHideFlags: 0
