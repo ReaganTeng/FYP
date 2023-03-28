@@ -1182,7 +1182,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3824151877362138808, guid: bdbf8082303bac740ae89242e29fbdb4, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5249369353892626731, guid: bdbf8082303bac740ae89242e29fbdb4, type: 3}
+      propertyPath: phase
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6454972794970313325, guid: bdbf8082303bac740ae89242e29fbdb4, type: 3}
       propertyPath: m_Enabled
@@ -1197,8 +1201,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 829053704}
     - target: {fileID: 9021957426161983494, guid: bdbf8082303bac740ae89242e29fbdb4, type: 3}
+      propertyPath: lockon
+      value: 
+      objectReference: {fileID: 3468584897928907086, guid: 9888e04e85b6dc542b4ae39daf5cf595, type: 3}
+    - target: {fileID: 9021957426161983494, guid: bdbf8082303bac740ae89242e29fbdb4, type: 3}
       propertyPath: lm.m_Bits
       value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 9021957426161983494, guid: bdbf8082303bac740ae89242e29fbdb4, type: 3}
+      propertyPath: enemyPhase
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bdbf8082303bac740ae89242e29fbdb4, type: 3}

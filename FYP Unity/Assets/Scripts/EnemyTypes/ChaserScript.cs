@@ -13,7 +13,7 @@ public class ChaserScript : MonoBehaviour
     public LayerMask lm;
 
 
-    public GameObject GO;
+    public GameObject lockon;
     public GameObject hit;
 
     /*var rotation ;
@@ -29,7 +29,9 @@ public class ChaserScript : MonoBehaviour
     float chasingspeed;
     public EnemyScript.Phases enemyPhase;
 
-    private float time;
+    private float time_att_1;
+    private float time_att_2;
+
     private Transform starting_location;
     private Transform ending_location;
     private float dist;
@@ -37,14 +39,18 @@ public class ChaserScript : MonoBehaviour
 
     private GameObject lockonbeam;
     private GameObject hitbeam;
+    public GameObject pivotpoint;
+    private GameObject pivot;
 
     // Start is called before the first frame update
     void Start()
     {
         lockonbeam = null;
         hitbeam = null;
+        pivot = null;
 
-        time = 0;
+        time_att_1 = 0;
+        time_att_2 = 0;
         playerGO = GameObject.FindGameObjectWithTag("Player");
 
         //gameObject.transform.rotation = Quaternion.Euler(-90.0f, 0.0f, 0.0f);
@@ -71,65 +77,62 @@ public class ChaserScript : MonoBehaviour
         {
             case EnemyScript.Phases.ATTACK_TYPE_2:
                 {
+                    time_att_1 = 0;
                     if (distance <= 5.0f)
                     {
-                        time += 1 * Time.deltaTime;
-
+                        time_att_2 += 1 * Time.deltaTime;
                         chasingspeed = 0.0f;
 
-                        if (time < 5.1f)
+                        if (time_att_2 < 5.1f && time_att_2 > 5.0f)
                         {
                             starting_location = transform;
                             ending_location = playerGO.transform;
-                            //Debug.Log("Position " + ending_location.position);
-
                             dist = Vector3.Distance(starting_location.position, ending_location.position);
-
 
                             if (lockonbeam == null)
                             {
-                                //Debug.Log("BEAM INSTANTIATED");
-                                lockonbeam = Instantiate(GO,
-                                     /*new Vector3(0.0f, 0.0f, 0.0f)*/ transform.position,
-                                    transform.rotation
-                                    );
+                                pivot = Instantiate(pivotpoint,
+                                   transform.position,
+                                   Quaternion.identity
+                                   );
 
-                                lockonbeam.transform.LookAt(ending_location);
-                                lockonbeam.transform.position -= new Vector3(0.0f, 0.0f,
+                                lockonbeam = Instantiate(lockon,
+                                    transform.position,
+                                    Quaternion.identity
+                                    );
+                                lockonbeam.transform.position += new Vector3(0.0f, 0.0f,
                                     dist / 2);
                                 lockonbeam.transform.localScale +=
                                     new Vector3(0.0f, 0.0f, 1.0f)
-                                    * ((dist /*/ 2*/ ) * 0.1f);
-                                lockonbeam.transform.SetParent(transform);
+                                    * (dist * 0.1f);
+                                lockonbeam.transform.SetParent(pivot.transform);
 
+                                pivot.transform.LookAt(ending_location);
 
+                                pivot.transform.SetParent(transform);
                             }
                         }
 
 
-                        if (time > 8.0f)
+                        if (time_att_2 > 6.3f)
                         {
                             if (hitbeam == null)
                             {
-                                hitbeam = Instantiate(hit, transform.position,
-                                    transform.rotation);
-                                hitbeam.transform.position -= new Vector3(0.0f, 0.0f,
-                                     dist / 2);
-                                hitbeam.transform.localScale +=
-                                       new Vector3(0.0f, 0.0f, 1.0f)
-                                       * dist;
+                                hitbeam = Instantiate(hit,
+                                    lockonbeam.transform.position,
+                                    lockonbeam.transform.rotation
+                                    );
+                                hitbeam.transform.localScale += 
+                                    new Vector3(0.0f, 0.0f, 1.0f) * dist;
                                 hitbeam.transform.SetParent(transform);
                             }
-
                         }
 
-                        if (time > 8.5f)
+                        if (time_att_2 > 8.5f)
                         {
                             Destroy(lockonbeam);
                             Destroy(hitbeam);
-
-                            time = 0;
-
+                            Destroy(pivot);
                             GetComponent<EnemyScript>().phase = EnemyScript.Phases.COOLDOWN;
                         }
                     }
@@ -141,11 +144,11 @@ public class ChaserScript : MonoBehaviour
                 }
             case EnemyScript.Phases.ATTACK_TYPE_1:
                 {
-                    time += 1 * Time.deltaTime;
-
+                    time_att_2 = 0;
+                    time_att_1 += 1 * Time.deltaTime;
                     navMeshAgent.SetDestination(playerGO.transform.position);
 
-                    if(time > 20.0f)
+                    if(time_att_1 > 20.0f)
                     {
                         GetComponent<EnemyScript>().phase = EnemyScript.Phases.COOLDOWN;
                     }
