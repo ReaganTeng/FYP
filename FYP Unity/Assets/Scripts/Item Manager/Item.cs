@@ -21,6 +21,7 @@ public class Item : MonoBehaviour
 
     public int GetItemID()
     {
+        itemID = ItemManager.instance.GetItemID(itemtype);
         return itemID;
     }
 

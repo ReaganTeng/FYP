@@ -27,6 +27,7 @@ public class RefinedItem : MonoBehaviour
 
     public int GetItemID()
     {
+        RitemID = RefinedItemManager.instance.GetItemID(Ritemtype);
         return RitemID;
     }
 

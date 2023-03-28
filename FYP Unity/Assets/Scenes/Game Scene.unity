@@ -2572,7 +2572,7 @@ MonoBehaviour:
   - dishName:
     - Mash Potato
     whatday: 1
-    WaitingTime: 4
+    WaitingTime: 0
     penalty: 10
     Fixed: 1
     AmtOfDishes: 0
@@ -2592,8 +2592,8 @@ MonoBehaviour:
   inventory: {fileID: 1799302673}
   OrderZone: {fileID: 1924857675}
   OrderPrefab: {fileID: 1816805389690346665, guid: 8b07011991067364aa0fa3d63c9a1cd6, type: 3}
-  TimeBeforeFirstOrder: 2
-  OrderIntervalTiming: 1
+  TimeBeforeFirstOrder: 5
+  OrderIntervalTiming: 4
   MaxOrderAtOnce: 3
   eod: {fileID: 1799302677}
 --- !u!114 &1799302677

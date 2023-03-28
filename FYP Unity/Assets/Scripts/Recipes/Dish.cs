@@ -31,6 +31,7 @@ public class Dish : MonoBehaviour
 
     public int GetItemID()
     {
+        dishID = DishManager.instance.GetItemID(dishtype);
         return dishID;
     }
 
