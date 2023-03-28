@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.AI;
+using UnityEngine.UI;
 public class EnemyScript : MonoBehaviour
 {
     [SerializeField] public float EnemyHealth;
@@ -17,6 +18,8 @@ public class EnemyScript : MonoBehaviour
     int AttackByWhatWeapon = 0;
     bool AttackByOtherWeapon = false;
 
+    [SerializeField] Slider healthbar;
+    [SerializeField] GameObject player;
 
     //public GameObject[] zones;
     //public int zone_no;
@@ -25,6 +28,8 @@ public class EnemyScript : MonoBehaviour
     float abouttoattackend;
 
     int attack_type;
+
+    public GameObject attackhitbox;
 
     public enum Phases
     {
@@ -42,6 +47,9 @@ public class EnemyScript : MonoBehaviour
     void Start()
     {
         //phase = Phases.PHASE_3;
+
+        healthbar.maxValue = EnemyHealth;
+        healthbar.minValue = 0;
 
         //phase = Phases.ATTACK_TYPE_1;
         timer = 0.0f;
@@ -61,6 +69,18 @@ public class EnemyScript : MonoBehaviour
         if (other.CompareTag("Attack") && !Iframe)
         {
             EnemyHealth -= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().GetPlayerAttack();
+
+            //for (int i = 0; i < 5; i++)
+            //{
+                player.GetComponent<PlayerStats>().addConsecutiveHit();
+            //}
+            player.GetComponent<PlayerStats>().resetCombo_timer();
+
+            GetComponent<Rigidbody>().AddForce(
+               (GetComponent<Transform>().position - other.GetComponentInParent<Transform>().position).normalized * 50.0f,
+               ForceMode.Impulse
+               );
+
             Iframe = true;
 
             if (!FirstAttack)
@@ -78,6 +98,12 @@ public class EnemyScript : MonoBehaviour
                 }
             }
 
+           
+
+            if (phase != Phases.COOLDOWN)
+            {
+                phase = Phases.COOLDOWN;
+            }
             Debug.Log("Enemy Health Left: " + EnemyHealth);
             // Precise Kill
             if (EnemyHealth == 0)
@@ -96,6 +122,9 @@ public class EnemyScript : MonoBehaviour
 
     private void Update()
     {
+
+        healthbar.value = EnemyHealth;
+
         if (Iframe)
         {
             if (Iframetimer > 0)
@@ -111,8 +140,14 @@ public class EnemyScript : MonoBehaviour
         {
             case Phases.ABOUT_TO_ATTACK:
                 {
-                    Debug.Log("ABOUT TO ATTACK");
                     timer += 1.0f * Time.deltaTime;
+                    GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
+                    GetComponent<NavMeshAgent>().speed = 0.0f;
+
+
+                    attackhitbox.GetComponent<BoxCollider>().enabled = false;
+                    GetComponent<BoxCollider>().enabled = true;
+
 
                     if (timer >= abouttoattackend)
                     {
@@ -134,16 +169,7 @@ public class EnemyScript : MonoBehaviour
             case Phases.COOLDOWN:
                 {
                     Debug.Log("COOLDOWN");
-
-                    timer += 1.0f * Time.deltaTime;
-
-                    if (timer >= cooldownend)
-                    {
-                        timer = 0.0f;
-                        phase = Phases.ABOUT_TO_ATTACK;
-
-
-                    }
+                    cooldownUpdate();
 
                     break;
                 }
@@ -151,9 +177,32 @@ public class EnemyScript : MonoBehaviour
 
     }
 
+    public void cooldownUpdate()
+    {
+        timer += 1.0f * Time.deltaTime;
+        GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
+        GetComponent<NavMeshAgent>().speed = 0.0f;
 
+        attackhitbox.GetComponent<BoxCollider>().enabled = false;
+        GetComponent<BoxCollider>().enabled = true;
 
-    
+        if (timer >= cooldownend)
+        {
+            timer = 0.0f;
+            phase = Phases.ABOUT_TO_ATTACK;
+        }
+    }
+
+    public void settimer(float time)
+    {
+        timer = time;
+    }
+
+    public void addtimer(float time)
+    {
+        timer += time;
+    }
+
     public void setCoolDownEnd(float time)
     {
         cooldownend = time;
@@ -164,6 +213,15 @@ public class EnemyScript : MonoBehaviour
         abouttoattackend = time;
     }
 
+    public float gettimer()
+    {
+        return timer;
+    }
+
+    public float getcooldownend()
+    {
+        return cooldownend;
+    }
     void EnemyDie()
     {
         // if the enemy was attack by another weapon before drop mush

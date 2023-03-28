@@ -70,6 +70,10 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public void SetSRColor(Color c)
+    {
+        spriteRenderer.color = c;
+    }
     void CheckDirection(ref float foward, ref float right, float horizontalInput, float verticalInput)
     {
         // If player is moving foward

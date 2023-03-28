@@ -212,7 +212,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!65 &7481252558881048875
 BoxCollider:
@@ -225,8 +225,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.8, y: 1.2, z: 1}
-  m_Center: {x: 0, y: 0.6, z: 0.5}
+  m_Size: {x: 1.7, y: 2, z: 0.5}
+  m_Center: {x: 0, y: 0.6, z: 0}
 --- !u!114 &5545318540187160410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,6 +241,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerHealth: 100
   PlayerAttack: 10
+  numberConsecutiveHits: 0
+  ConsecutiveHit_Stage1: 0
+  ConsecutiveHit_Stage2: 0
+  ConsecutiveHit_Stage3: 0
+  ConsecutiveHit_Stage4: 0
+  ConsecutiveHit_Stage5: 0
+  fervorBar: {fileID: 0}
+  fervorLevel: 0
+  combo_timer: 0
+  combo_timer_text: {fileID: 0}
 --- !u!114 &8900116384804071886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -365,8 +375,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6670536203559410289}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.4, z: 0.3}
+  m_LocalPosition: {x: -0.01, y: 0, z: 0.17}
+  m_LocalScale: {x: 0.42154688, y: 0.4, z: 0.21450001}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1640764224975875881}

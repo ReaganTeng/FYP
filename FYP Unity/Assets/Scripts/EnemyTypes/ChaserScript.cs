@@ -6,21 +6,19 @@ using UnityEngine.AI;
 
 public class ChaserScript : MonoBehaviour
 {
-    public float targetVelocity = 10.0f;
-    public int numberOfRays = 30;
-    public float angle = 90;
-    public float rayRange = 0.1f;
-    public LayerMask lm;
+    float targetVelocity = 10.0f;
+    int numberOfRays = 30;
+    float angle = 90.0f;
+    float rayRange = .8f;
+    [SerializeField] LayerMask lm;
 
 
     public GameObject lockon;
+    private GameObject lockonbeam;
     public GameObject hit;
-
-    /*var rotation ;
-    var rotationMod ;
-    var direction;
-    var ray;
-    var deltaPosition;*/
+    private GameObject hitbeam;
+    public GameObject pivotpoint;
+    private GameObject pivot;
 
     [SerializeField] NavMeshAgent navMeshAgent;
 
@@ -35,12 +33,10 @@ public class ChaserScript : MonoBehaviour
     private Transform starting_location;
     private Transform ending_location;
     private float dist;
+    
+    
 
-
-    private GameObject lockonbeam;
-    private GameObject hitbeam;
-    public GameObject pivotpoint;
-    private GameObject pivot;
+    public GameObject attackhitbox;
 
     // Start is called before the first frame update
     void Start()
@@ -52,8 +48,6 @@ public class ChaserScript : MonoBehaviour
         time_att_1 = 0;
         time_att_2 = 0;
         playerGO = GameObject.FindGameObjectWithTag("Player");
-
-        //gameObject.transform.rotation = Quaternion.Euler(-90.0f, 0.0f, 0.0f);
 
         chasingspeed = 8.0f;
         navMeshAgent.speed = chasingspeed;
@@ -70,20 +64,20 @@ public class ChaserScript : MonoBehaviour
         playerGO = GameObject.FindGameObjectWithTag("Player");
         navMeshAgent.speed = chasingspeed;
         navMeshAgent.acceleration = chasingspeed;
-        float distance = Vector3.Distance(playerGO.transform.position, transform.position);
 
-
+        //CHASER SHOULD BE SLOWER THAN CHARGER
         switch (enemyPhase)
         {
             case EnemyScript.Phases.ATTACK_TYPE_2:
-                {
+                /*{
+                    attackhitbox.GetComponent<BoxCollider>().enabled = true;
                     time_att_1 = 0;
-                    if (distance <= 5.0f)
+                    if (distance <= 15.0f)
                     {
                         time_att_2 += 1 * Time.deltaTime;
                         chasingspeed = 0.0f;
 
-                        if (time_att_2 < 5.1f && time_att_2 > 5.0f)
+                        if (time_att_2 < 1.1f && time_att_2 > 1.0f)
                         {
                             starting_location = transform;
                             ending_location = playerGO.transform;
@@ -114,7 +108,7 @@ public class ChaserScript : MonoBehaviour
                         }
 
 
-                        if (time_att_2 > 6.3f)
+                        if (time_att_2 > 2.3f)
                         {
                             if (hitbeam == null)
                             {
@@ -122,17 +116,20 @@ public class ChaserScript : MonoBehaviour
                                     lockonbeam.transform.position,
                                     lockonbeam.transform.rotation
                                     );
-                                hitbeam.transform.localScale += 
+                                hitbeam.transform.localScale +=
                                     new Vector3(0.0f, 0.0f, 1.0f) * dist;
                                 hitbeam.transform.SetParent(transform);
                             }
                         }
 
-                        if (time_att_2 > 8.5f)
+                        if (time_att_2 > 3.5f)
                         {
                             Destroy(lockonbeam);
                             Destroy(hitbeam);
                             Destroy(pivot);
+                            //move this somewhere else
+                            //time_att_2 = 0.0f;
+                            //
                             GetComponent<EnemyScript>().phase = EnemyScript.Phases.COOLDOWN;
                         }
                     }
@@ -141,17 +138,30 @@ public class ChaserScript : MonoBehaviour
                         GetComponent<EnemyScript>().phase = EnemyScript.Phases.ATTACK_TYPE_1;
                     }
                     break;
-                }
+                }*/
             case EnemyScript.Phases.ATTACK_TYPE_1:
                 {
+                    Debug.Log("CHASING PLAYER");
+                    attackhitbox.GetComponent<BoxCollider>().enabled = true;
+                    chasingspeed = 5.0f;
                     time_att_2 = 0;
                     time_att_1 += 1 * Time.deltaTime;
                     navMeshAgent.SetDestination(playerGO.transform.position);
+
 
                     if(time_att_1 > 20.0f)
                     {
                         GetComponent<EnemyScript>().phase = EnemyScript.Phases.COOLDOWN;
                     }
+                    break;
+                }
+            case EnemyScript.Phases.COOLDOWN:
+                {
+
+                    time_att_2 = 0.0f;
+                    time_att_1 = 0.0f;
+
+                    GetComponent<EnemyScript>().cooldownUpdate();
                     break;
                 }
         }
@@ -200,74 +210,59 @@ public class ChaserScript : MonoBehaviour
         for (int i = 0; i < numberOfRays; i++)
         {
             //rotate enemy angle
-            var rotation = this.transform.rotation;
+            var rotation = transform.rotation;
             var rotationMod = Quaternion.AngleAxis(
                  (i / ((float)numberOfRays - 1)) * angle * 2 - angle,
-                 this.transform.up);
+                 transform.up);
             var direction = rotation * rotationMod * Vector3.forward;
             var direction2 = rotation * rotationMod * Vector3.back;
 
-            var ray = new Ray(this.transform.position, direction);
-            var ray2 = new Ray(this.transform.position, direction2);
+            var ray = new Ray(transform.position, direction);
+            var ray2 = new Ray(transform.position, direction2);
 
             RaycastHit hitInfo;
             //if hits something
             if (Physics.Raycast(ray, out hitInfo, rayRange
-                , lm))
+                , ~lm))
             {
+                Debug.Log("HIT SOMETHING");
                 deltaPosition -= (1.0f / numberOfRays) * targetVelocity * direction;
-                this.transform.position += deltaPosition * Time.deltaTime;
+                transform.position += deltaPosition * Time.deltaTime;
                
             }
             else if(Physics.Raycast(ray2, out hitInfo, rayRange
-                , lm))
+                , ~lm))
             {
+                Debug.Log("HIT SOMETHING");
+
                 deltaPosition -= (1.0f / numberOfRays) * targetVelocity * direction2;
-                this.transform.position += deltaPosition * Time.deltaTime;
-
+                transform.position += deltaPosition * Time.deltaTime;
             }
-
         }
 
 
-        float distance = Vector3.Distance(playerGO.transform.position, transform.position);
-
+        /*float distance = Vector3.Distance(playerGO.transform.position, transform.position);
         if (distance < 5.0f)
         {
             navMeshAgent.speed = 0.0f;
-            //box.size = new Vector3(box.size.x, box.size.y, box.size.z + 10.0f);
         }
-
         if (distance < 5.0f)
         {
             box.size = new Vector3(box.size.x, box.size.y, 4.0f);
         }
-        else {
+        else
+        {
             box.size = new Vector3(box.size.x, box.size.y, 1.0f);
-
-        }
-
-
-        //var boxcollider = box;
-        //Gizmos.color = Color.blue;
-        //Gizmos.DrawWireCube(boxcollider.center, boxcollider.size);
-        //var boxcollider = box;
-
-        //Debug.DrawLine(boxcollider.center, boxcollider.size);
-
-
-
-        //OnDrawGizmos();
+        }*/
     }
 
-    void OnDrawGizmos()
+    /*void OnDrawGizmos()
     {
         var boxcollider = box;
         Gizmos.color = Color.blue;
         Gizmos.DrawWireCube(boxcollider.center, boxcollider.size);
 
         playerGO = GameObject.FindGameObjectWithTag("Player");
-
 
         Gizmos.color = Color.red;
         Gizmos.DrawRay(this.transform.position, (playerGO.transform.position - this.transform.position).normalized *
@@ -293,5 +288,5 @@ public class ChaserScript : MonoBehaviour
 
 
 
-    }
+    }*/
 }
