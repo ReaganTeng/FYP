@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7718617245308447542}
   - component: {fileID: 6562827016737039453}
+  - component: {fileID: 6558706950758880886}
   m_Layer: 0
   m_Name: Breathing_Sushi
   m_TagString: Untagged
@@ -45,10 +46,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e02a72b7ccbc9243b33cd7f74e2488e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dishID: 2
+  dishtype: 2
   dishName: Sushi
   image: {fileID: 21300000, guid: b1f8a1574f7d80d45a82372180092334, type: 3}
   BaseScore: 35
+--- !u!114 &6558706950758880886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2760707334722670586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d5d1825d182a194897640c1a97ff6aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodtype: 2
 --- !u!1 &6941857186728280501
 GameObject:
   m_ObjectHideFlags: 0

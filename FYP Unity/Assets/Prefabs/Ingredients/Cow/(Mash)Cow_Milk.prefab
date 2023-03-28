@@ -122,6 +122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7129759956941546474}
   - component: {fileID: 952362048502066603}
+  - component: {fileID: 459999916517305247}
   m_Layer: 0
   m_Name: (Mash)Cow_Milk
   m_TagString: Untagged
@@ -157,5 +158,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43a657e03a773364391ebd1ebdb6a1e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemID: 17
+  itemtype: 17
   image: {fileID: 21300000, guid: 62d523902467173468087cbee1288dc4, type: 3}
+--- !u!114 &459999916517305247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6150854108405868152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d5d1825d182a194897640c1a97ff6aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodtypeid: 0

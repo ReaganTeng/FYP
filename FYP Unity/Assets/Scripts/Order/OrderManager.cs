@@ -73,7 +73,7 @@ public class OrderManager : MonoBehaviour
         {
             for (int i = 0; i < presetdaylist[index].dishName.Count; i++)
             {
-                Recipes.recipes temprecipe = Recipes.instance.GetRecipe(presetdaylist[index].dishName[i]);
+                Recipes.recipes temprecipe = Recipes.instance.GetDishRecipe(presetdaylist[index].dishName[i]);
                 currentdayrecipesList.Add(temprecipe);
             }
 
@@ -103,7 +103,7 @@ public class OrderManager : MonoBehaviour
         for (int i = 0; i < GenerateHowMany; i++)
         {
             // Get the amount of possible recipes
-            int PossibleRecipes = Recipes.instance.GetRecipeListCount();
+            int PossibleRecipes = Recipes.instance.GetDishRecipeListCount();
 
             bool PassCheck = false;
 
@@ -116,11 +116,11 @@ public class OrderManager : MonoBehaviour
                 for (int x = 0; x < currentdayrecipesList.Count; x++)
                 {
                     // if the recipe alr exist, do not add, and check again
-                    if (Recipes.instance.GetRecipe(recipeindex) == currentdayrecipesList[x])
+                    if (Recipes.instance.GetDishRecipe(recipeindex) == currentdayrecipesList[x])
                         PassCheck = false;
                 }
             }
-            currentdayrecipesList.Add(Recipes.instance.GetRecipe(recipeindex));
+            currentdayrecipesList.Add(Recipes.instance.GetDishRecipe(recipeindex));
         }
     }
 
@@ -141,5 +141,18 @@ public class OrderManager : MonoBehaviour
             }
         }
         return 0;
+    }
+
+    public int GetPenalty()
+    {
+        for (int i = 0; i < presetdaylist.Count; i++)
+        {
+            if (currentday == presetdaylist[i].whatday)
+            {
+                return presetdaylist[i].penalty;
+            }
+        }
+        // by default -10 for penalty
+        return 10;
     }
 }

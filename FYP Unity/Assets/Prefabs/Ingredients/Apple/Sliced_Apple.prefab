@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3584367296998193558}
   - component: {fileID: 2133025638530797653}
+  - component: {fileID: 2283257718142119564}
   m_Layer: 0
   m_Name: Sliced_Apple
   m_TagString: Untagged
@@ -45,8 +46,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43a657e03a773364391ebd1ebdb6a1e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemID: 22
+  itemtype: 22
   image: {fileID: 21300000, guid: d57b5414bf98d154cae12208d6993a6e, type: 3}
+--- !u!114 &2283257718142119564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 568297875779090178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d5d1825d182a194897640c1a97ff6aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodtypeid: 0
 --- !u!1 &2616430958414959893
 GameObject:
   m_ObjectHideFlags: 0

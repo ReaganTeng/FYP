@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class ItemManager : MonoBehaviour
 {
-
     public static ItemManager instance;
     public enum Items
     {
@@ -37,7 +36,8 @@ public class ItemManager : MonoBehaviour
         SPANICH_CHOPPED, //25
         SPANICH_MASHED, //26
         SPANICH_PREP, //27
-        TOTAL, //28
+        VINEGAR, //28
+        TOTAL, //29
     }
 
     public Items GetItemType(int itemID)

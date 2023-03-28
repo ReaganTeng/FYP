@@ -5,115 +5,100 @@ using UnityEngine;
 public class PlayerPickup : MonoBehaviour
 {
     [SerializeField] Inventory PlayerInventory;
-    List<GameObject> IngredientInRangeList = new List<GameObject>();
+    List<GameObject> InteractableInRangeList = new List<GameObject>();
     InventoryImageControl ic;
-    Mixer mixer;
-    Serving sc;
-    bool NearMixer;
-    bool NearServingCounter;
 
     private void Start()
     {
         ic = GameObject.FindGameObjectWithTag("GameManager").GetComponent<InventoryImageControl>();
-        mixer = GameObject.FindGameObjectWithTag("Mixer").GetComponent<Mixer>();
-        sc = GameObject.FindGameObjectWithTag("Serve").GetComponent<Serving>();
-        NearMixer = false;
     }
 
+    // add the interactable objects into the list
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Ingredient"))
+        if (other.CompareTag("Ingredient") || other.CompareTag("Mixer") || other.CompareTag("Serve"))
         {
-            if (!IngredientInRangeList.Contains(other.gameObject))
+            if (!InteractableInRangeList.Contains(other.gameObject))
             {
-                IngredientInRangeList.Add(other.gameObject);
+                InteractableInRangeList.Add(other.gameObject);
             }
         }
-
-        else if (other.CompareTag("Mixer"))
-            NearMixer = true;
-
-        else if (other.CompareTag("Serve"))
-            NearServingCounter = true;
-            
+           
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Ingredient"))
+        if (other.CompareTag("Ingredient") || other.CompareTag("Mixer") || other.CompareTag("Serve"))
         {
-            if (IngredientInRangeList.Contains(other.gameObject))
+            if (InteractableInRangeList.Contains(other.gameObject))
             {
-                IngredientInRangeList.Remove(other.gameObject);
-                other.GetComponent<ItemGlow>().TurnOffHighlight();
+                InteractableInRangeList.Remove(other.gameObject);
+                if (other.CompareTag("Ingredient"))
+                    other.GetComponent<ItemGlow>().TurnOffHighlight();
             }
         }
-
-        else if (other.CompareTag("Mixer"))
-            NearMixer = false;
-
-        else if (other.CompareTag("Serve"))
-            NearServingCounter = false;
     }
 
     private void Update()
     {
-        bool Ecooldown = false;
         // If Inventory is not full, then do item highlight to indicate that items can be picked
         if (!PlayerInventory.InventoryFull)
         {
             // if there is only one object, highlight that
-            if (IngredientInRangeList.Count == 1)
+            if (InteractableInRangeList.Count == 1)
             {
                 // switch the item color or make it glow maybe?
-                IngredientInRangeList[0].GetComponent<ItemGlow>().TurnOnHighlight();
+                if (InteractableInRangeList[0].CompareTag("Ingredient"))
+                    InteractableInRangeList[0].GetComponent<ItemGlow>().TurnOnHighlight();
             }
 
             // if there is more than one object, check the closest distance between those and take the nearest one
-            else if (IngredientInRangeList.Count > 1)
+            else if (InteractableInRangeList.Count > 1)
             {
                 GameObject nearestGameObject = FindNearestGameObject();
 
-                for (int i = 0; i < IngredientInRangeList.Count; i++)
+                for (int i = 0; i < InteractableInRangeList.Count; i++)
                 {
-                    if (nearestGameObject == IngredientInRangeList[i].gameObject)
+                    if (nearestGameObject == InteractableInRangeList[i].gameObject)
                     {
                         // make the item glow
-                        IngredientInRangeList[i].GetComponent<ItemGlow>().TurnOnHighlight();
+                        if (InteractableInRangeList[i].CompareTag("Ingredient"))
+                            InteractableInRangeList[i].GetComponent<ItemGlow>().TurnOnHighlight();
                     }
 
                     // if its not the closest, dont make it glow
                     else
                     {
-                        IngredientInRangeList[i].GetComponent<ItemGlow>().TurnOffHighlight();
+                        if (InteractableInRangeList[i].CompareTag("Ingredient"))
+                            InteractableInRangeList[i].GetComponent<ItemGlow>().TurnOffHighlight();
                     }
                 }
             }
+        }
 
-            // Do something wif the gameobject that has the shortest distance
-            // Check to see if player wants to pick up an item
-            if (Input.GetKeyDown(KeyCode.E) && IngredientInRangeList.Count > 0)
+        // Do something wif the gameobject that has the shortest distance
+        // Check to see if player wants to pick up an item
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            GameObject pickupobject;
+            pickupobject = FindNearestGameObject();
+
+            if (pickupobject.CompareTag("Ingredient") && !PlayerInventory.InventoryFull && InteractableInRangeList.Count > 0)
             {
-                Ecooldown = true;
-                GameObject pickupobject;
-                if (IngredientInRangeList.Count == 1)
-                {
-                    pickupobject = IngredientInRangeList[0];
-                    IngredientInRangeList.Remove(pickupobject);
-                    Destroy(pickupobject);
-                    // Add the item into ur inventory
-                    PlayerInventory.AddToInventory(pickupobject);
-                    ic.AddItem(pickupobject.GetComponentInParent<Item>());
-                }
-                else
-                {
-                    pickupobject = FindNearestGameObject();
-                    IngredientInRangeList.Remove(pickupobject);
-                    Destroy(pickupobject);
-                    // Add the item into ur inventory
-                    PlayerInventory.AddToInventory(pickupobject);
-                    ic.AddItem(pickupobject.GetComponentInParent<Item>());
-                }
+                InteractableInRangeList.Remove(pickupobject);
+                // Add the item into ur inventory
+                ic.AddItem(pickupobject.GetComponentInParent<Food>().gameObject);
+                pickupobject.SetActive(false);
+            }
+
+            else if (pickupobject.CompareTag("Mixer"))
+            {
+                pickupobject.GetComponent<Mixer>().InteractWithMixer();
+            }
+
+            else if (pickupobject.CompareTag("Serve"))
+            {
+                pickupobject.GetComponent<Serving>().Serve();
             }
         }
 
@@ -138,67 +123,49 @@ public class PlayerPickup : MonoBehaviour
         {
             ic.ChangeSelectedHotBar(4);
         }
+        if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            ic.ChangeSelectedHotBar(5);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            ic.ChangeSelectedHotBar(6);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha8))
+        {
+            ic.ChangeSelectedHotBar(7);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            ic.ChangeSelectedHotBar(8);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            ic.ChangeSelectedHotBar(9);
+        }
         // Remove selected
         if (Input.GetKeyDown(KeyCode.L))
         {
             ic.RemoveSelected();
         }
-
-        // If you interact wif ennvironment objects and there is no ingredients around the player
-        if (Input.GetKeyDown(KeyCode.E) && !Ecooldown && IngredientInRangeList.Count == 0)
-        {
-            if (NearMixer)
-            {
-                if (mixer.GetCanPutIntoMixer())
-                {
-                    // if can add to mixer, remove the selected object
-                    if (mixer.AddIntoMixer())
-                    {
-                        ic.RemoveSelected();
-                    }
-
-                    else if (mixer.GetMixerAmount() == 2)
-                    {
-                        mixer.StartMixing();
-                    }
-                }
-
-                // if mixer is done, and player inventory is not full
-                else if (mixer.GetIsMixerDone())
-                {
-                    if (!PlayerInventory.InventoryFull)
-                    {
-                        Dish thedish = mixer.GetDishFromMixer();
-                        PlayerInventory.AddToInventory(thedish.gameObject);
-                        ic.AddItem(thedish);
-                    }
-                }
-            }
-
-            else if (NearServingCounter)
-            {
-                sc.Serve();
-            }
-        }
-
     }
 
     GameObject FindNearestGameObject()
     {
         // If there is a nearest gameobject, find it
-        if (IngredientInRangeList.Count > 0)
+        if (InteractableInRangeList.Count > 0)
         {
             float shortestDistance = 100;
             GameObject nearestobject = null;
-            for (int i = 0; i < IngredientInRangeList.Count; i++)
+            for (int i = 0; i < InteractableInRangeList.Count; i++)
             {
-                Vector3 Ingredientpos = new Vector3(IngredientInRangeList[i].transform.position.x, 0, IngredientInRangeList[i].transform.position.z);
+                Vector3 Ingredientpos = new Vector3(InteractableInRangeList[i].transform.position.x, 0, InteractableInRangeList[i].transform.position.z);
                 Vector3 Playerpos = new Vector3(transform.position.x, 0, transform.position.z);
                 float Distance = Vector3.Distance(Playerpos, Ingredientpos);
 
                 if (Distance < shortestDistance)
                 {
-                    nearestobject = IngredientInRangeList[i].gameObject;
+                    nearestobject = InteractableInRangeList[i].gameObject;
                     shortestDistance = Distance;
                 }
             }

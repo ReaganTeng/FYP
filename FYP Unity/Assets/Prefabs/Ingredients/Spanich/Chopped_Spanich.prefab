@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 460232497049370197}
   - component: {fileID: 2060095261074929925}
+  - component: {fileID: 2117459291758001790}
   m_Layer: 0
   m_Name: Chopped_Spanich
   m_TagString: Untagged
@@ -45,8 +46,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43a657e03a773364391ebd1ebdb6a1e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemID: 25
+  itemtype: 25
   image: {fileID: 21300000, guid: 0ff9afc50984f13468dd4583b1da2c8e, type: 3}
+--- !u!114 &2117459291758001790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1397868911600884096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d5d1825d182a194897640c1a97ff6aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodtype: 0
 --- !u!1 &5742636466463007758
 GameObject:
   m_ObjectHideFlags: 0

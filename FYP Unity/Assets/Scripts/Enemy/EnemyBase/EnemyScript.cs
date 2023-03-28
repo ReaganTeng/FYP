@@ -109,13 +109,13 @@ public class EnemyScript : MonoBehaviour
             if (EnemyHealth == 0)
             {
                 Debug.Log("Precise Kill!");
-                EnemyDie();
+                EnemyDie(true);
             }
 
             else if (EnemyHealth < 0)
             {
                 Debug.Log("Killed!");
-                EnemyDie();
+                EnemyDie(false);
             }
         }
     }
@@ -222,7 +222,8 @@ public class EnemyScript : MonoBehaviour
     {
         return cooldownend;
     }
-    void EnemyDie()
+
+    void EnemyDie(bool ExactKill)
     {
         // if the enemy was attack by another weapon before drop mush
         if (AttackByOtherWeapon)
@@ -246,7 +247,13 @@ public class EnemyScript : MonoBehaviour
                     whichobject = smashedPrefab;
                     break;
             }
-            Instantiate(whichobject, gameObject.transform.position, Quaternion.identity);
+            GameObject tempobj = Instantiate(whichobject, gameObject.transform.position, Quaternion.identity);
+
+            // if it is exact kill
+            if (ExactKill)
+            {
+                tempobj.GetComponent<Food>().SetPerfect(true);
+            }
         }
 
         Destroy(gameObject);

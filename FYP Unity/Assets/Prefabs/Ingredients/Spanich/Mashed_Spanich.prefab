@@ -122,6 +122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1387776562295608256}
   - component: {fileID: 4631940748119021339}
+  - component: {fileID: -910187310162073954}
   m_Layer: 0
   m_Name: Mashed_Spanich
   m_TagString: Untagged
@@ -157,5 +158,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43a657e03a773364391ebd1ebdb6a1e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemID: 26
+  itemtype: 26
   image: {fileID: 21300000, guid: e44ca786ab5660f4eadc31528e6939f4, type: 3}
+--- !u!114 &-910187310162073954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7613510949900882453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d5d1825d182a194897640c1a97ff6aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodtype: 0

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2712117270592450688}
   - component: {fileID: 8738077004116305080}
+  - component: {fileID: 88071727914491789}
   m_Layer: 0
   m_Name: (Prep)Chicken Wings
   m_TagString: Untagged
@@ -45,8 +46,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43a657e03a773364391ebd1ebdb6a1e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemID: 15
+  itemtype: 15
   image: {fileID: 21300000, guid: 04cfb0922cc49e847b4f7ddbe7475e60, type: 3}
+--- !u!114 &88071727914491789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1391972055667922130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d5d1825d182a194897640c1a97ff6aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodtypeid: 0
 --- !u!1 &9060180440267755962
 GameObject:
   m_ObjectHideFlags: 0

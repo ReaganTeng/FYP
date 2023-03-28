@@ -33,7 +33,7 @@ public class OrderPanel : MonoBehaviour
 
     public int GetDishID()
     {
-        return OrderRecipe.Result.GetItemID();
+        return FoodManager.instance.GetItemID(OrderRecipe.Result);
     }
 
     public int GetTimeTillExpire()
@@ -63,6 +63,7 @@ public class OrderPanel : MonoBehaviour
     void IncurPenalty()
     {
         OrderSystem orderSystem = GameObject.FindGameObjectWithTag("GameManager").GetComponent<OrderSystem>();
+        orderSystem.PlayerIncurPenalty();
     }
 
     public void Served()

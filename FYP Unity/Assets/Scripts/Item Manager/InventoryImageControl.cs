@@ -5,252 +5,226 @@ using UnityEngine.UI;
 
 public class InventoryImageControl : MonoBehaviour
 {
-    [SerializeField] GameObject InventorySlot1;
-    [SerializeField] GameObject InventorySlot2;
-    [SerializeField] GameObject InventorySlot3;
-    [SerializeField] GameObject InventorySlot4;
-    [SerializeField] GameObject InventorySlot5;
+    [SerializeField] Sprite NotSelectedHotbar;
+    [SerializeField] Sprite SelectedHotbar;
+    [SerializeField] Sprite LockedHotbar;
+    [SerializeField] GameObject inventoryEmpty;
+    [SerializeField] Sprite SliverStar;
+    [SerializeField] Sprite GoldStar;
+    [SerializeField] Sprite IridiumStar;
+    [SerializeField] GameObject tempfood;
+    [SerializeField] bool IsPerfect;
+    [SerializeField] int amtofStars;
 
-    [SerializeField] GameObject IngredientSlot1;
-    [SerializeField] GameObject IngredientSlot2;
-    [SerializeField] GameObject IngredientSlot3;
-    [SerializeField] GameObject IngredientSlot4;
-    [SerializeField] GameObject IngredientSlot5;
+    // Stores the Currently selected inventory slot
+    int SelectedSlot;
 
-    [SerializeField] Sprite NotSelectedHotBar;
-    [SerializeField] Sprite SelectedHotBar;
-
-    List<item> inventorySlots = new List<item>();
-    Inventory inv;
-
-    public class item
-    {
-        public GameObject inventorySlot;
-        public GameObject ingredientSlot;
-        // if the item is currently being selected
-        public bool Selected;
-        // id for the ingredients
-        public int itemid;
-        // a bool to check to see if its an ingredient or a dish
-        public bool IsADish;
-        // id for the dishes
-        public int dishid;
-        // to store the item reference itself to be used for mixer
-        public Item theItem;
-    }
+    // stores the reference of inventory slots image
+    List<GameObject> inventorySlots = new List<GameObject>();
 
     private void Start()
     {
-        GameObject[] inventoryArray = { InventorySlot1, InventorySlot2, InventorySlot3, InventorySlot4, InventorySlot5 };
-        GameObject[] ingredientArray = { IngredientSlot1, IngredientSlot2, IngredientSlot3, IngredientSlot4, IngredientSlot5 };
-        inv = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
+        SelectedSlot = -1;
+        Transform[] inventory = inventoryEmpty.GetComponentsInChildren<Transform>();
 
-        for (int i = 0; i < inventoryArray.Length; i++)
+        foreach(var gm in inventory)
         {
-            item tempItem = new item();
-            tempItem.inventorySlot = inventoryArray[i];
-            tempItem.inventorySlot.SetActive(false);
-            tempItem.ingredientSlot = ingredientArray[i];
-            tempItem.ingredientSlot.SetActive(false);
-            tempItem.Selected = false;
-            tempItem.itemid = -1;
-            tempItem.IsADish = false;
-            tempItem.dishid = -1;
-            tempItem.theItem = null;
-            inventorySlots.Add(tempItem);
-
+            gm.gameObject.SetActive(false);
+            inventorySlots.Add(gm.gameObject);
         }
-        ModifyItemSlots(inv.GetMaxInventorySize());
+
+        // Set active
+        inventorySlots[0].SetActive(true);
+
+        SetInventoryDisplay();
     }
 
     // Add ingredient into inventory
-    public void AddItem(Item item)
+    public void AddItem(GameObject item)
     {
-        UpdateImage(item.gameObject, false);
+        Inventory.instance.AddToInventory(item);
+        UpdateImage();
     }
 
-    // Overloaded function, add dish into inventory
-    public void AddItem(Dish dish)
+    void AddImage(GameObject image, GameObject item)
     {
-        UpdateImage(dish.gameObject, true);
+        Sprite theimage = FoodManager.instance.GetImage(item);
+        image.GetComponent<Image>().sprite = theimage;
     }
 
-    void AddImage(GameObject image, GameObject ItemID, bool UseDishImage)
+    // overloaded function for star image
+    void AddImage(GameObject image, int stars)
     {
-        if (UseDishImage)
+        switch (stars)
         {
-            image.GetComponent<Image>().sprite = ItemID.GetComponent<Dish>().GetImage();
-        }
-
-        else
-        {
-            image.GetComponent<Image>().sprite = ItemID.GetComponent<Item>().GetImage();
-        }
-    }
-
-    public void ModifyItemSlots(int openslots)
-    {
-        for (int i = 0; i < inventorySlots.Count; i++)
-        {
-            if (i < openslots)
-                inventorySlots[i].inventorySlot.SetActive(true);
-            else
-                inventorySlots[i].inventorySlot.SetActive(false);
-        }
-    }
-
-    void UpdateImage(GameObject item, bool IsADish)
-    {
-        for (int i = 0; i < inventorySlots.Count; i++)
-        {
-            // if it is not active, add it into the inventory
-            if (!inventorySlots[i].ingredientSlot.activeSelf)
-            {
-                inventorySlots[i].ingredientSlot.SetActive(true);
-                // If it is a dish, add as a dish instead
-                if (IsADish)
-                {
-                    inventorySlots[i].dishid = item.GetComponent<Dish>().GetItemID();
-                    inventorySlots[i].IsADish = true;
-                }
-                else
-                {
-                    inventorySlots[i].itemid = item.GetComponent<Item>().GetItemID();
-                    inventorySlots[i].IsADish = false;
-                    inventorySlots[i].theItem = item.GetComponent<Item>();
-                }
-
-                AddImage(inventorySlots[i].ingredientSlot, item, IsADish);
-
-                if (GetUsedInventorySlot() == 1)
-                {
-                    //inventorySlots[i].inventorySlot;
-                    ChangeSelectedHotBar(i);
-                    inventorySlots[i].Selected = true;
-                }
+            case 1:
+            case 2:
+                image.GetComponent<Image>().sprite = SliverStar;
                 break;
-            }
+            case 3:
+            case 4:
+                image.GetComponent<Image>().sprite = GoldStar;
+                break;
+            case 5:
+                image.GetComponent<Image>().sprite = IridiumStar;
+                break;
+            default:
+                image.GetComponent<Image>().sprite = SliverStar;
+                break;
         }
     }
 
-    int GetUsedInventorySlot()
+    // 0 is not selected, 1 is selected, 2 is locked
+    void AddHotbarImage(GameObject image, int type)
     {
-        int slotused = 0;
-
-        for (int i = 0; i < inv.GetMaxInventorySize(); i++)
+        switch (type)
         {
-            // if it is active reduce slot by 1
-            if (inventorySlots[i].ingredientSlot.activeSelf)
-                slotused++;
+            case 1:
+                image.GetComponent<Image>().sprite = NotSelectedHotbar;
+                break;
+            case 2:
+                image.GetComponent<Image>().sprite = SelectedHotbar;
+                break;
+            case 3:
+                image.GetComponent<Image>().sprite = LockedHotbar;
+                break;
+            default:
+                image.GetComponent<Image>().sprite = LockedHotbar;
+                break;
         }
-        return slotused;
+    }
+
+    // modify the inventory ui to lock or unlock slots
+    public void SetInventoryDisplay()
+    {
+        int index = 0;
+        for (int i = 1; i < inventorySlots.Count; i += 9)
+        {
+            if (index < Inventory.instance.GetMaxInventorySize())
+            {
+                index++;
+                AddHotbarImage(inventorySlots[i], 1);
+            }
+            else
+            {
+                AddHotbarImage(inventorySlots[i], 0);
+            }
+
+            inventorySlots[i].SetActive(true);
+        }
+    }
+
+    // 1 = slots bg, 2 = Display for food, 3 = quality of ingredients, 4 = parent of star quality for dish, 5 to 9 = the stars;
+    void UpdateImage()
+    {
+        ResetImage();
+        for (int i = 0; i < Inventory.instance.GetList().Count; i++)
+        {
+            // Set the dish to render and assign the image
+            inventorySlots[2 + (i * 9)].SetActive(true);
+            AddImage(inventorySlots[2 + (i * 9)], Inventory.instance.GetList()[i].food);
+
+            // Assign quality if its ingredients
+            if (!Inventory.instance.GetList()[i].IsDish)
+            {
+                if (Inventory.instance.GetList()[i].IsPerfect)
+                    inventorySlots[3 + (i * 9)].SetActive(true);
+            }
+            // Assign amount of stars if it is a dish
+            else
+            {
+                // Set the parent to true
+                inventorySlots[4 + (i * 9)].SetActive(true);
+                for (int x = 0; x < 5; x++)
+                {
+                    if (x < Inventory.instance.GetList()[i].Stars)
+                    {
+                        inventorySlots[5 + x + (i * 9)].SetActive(true);
+                        AddImage(inventorySlots[5 + x + (i * 9)], Inventory.instance.GetList()[i].Stars);
+                    }
+                    else
+                        inventorySlots[5 + x + (i * 9)].SetActive(false);
+                }
+            }
+
+            if (Inventory.instance.GetList().Count == 1)
+                ChangeSelectedHotBar(0);
+        }
+    }
+
+    void ResetImage()
+    {
+        for (int i = 1; i < inventorySlots.Count; i++)
+        {
+            if ((i - 1) % 9 == 0)
+                inventorySlots[i].SetActive(true);
+            else
+                inventorySlots[i].SetActive(false);
+        }
     }
 
     public void ChangeSelectedHotBar(int pos)
     {
         // check if its valid, if it is not, do not switch
-        if (pos + 1 <= GetUsedInventorySlot())
+        if (pos + 1 <= Inventory.instance.GetList().Count)
         {
-            for (int i = 0; i < inv.GetMaxInventorySize(); i++)
+            SelectedSlot = pos;
+            for (int i = 0; i < Inventory.instance.GetMaxInventorySize(); i++)
             {
-                // change previous selected back to not selected sprite
-                if (inventorySlots[i].Selected)
-                {
-                    inventorySlots[i].inventorySlot.GetComponent<Image>().sprite = NotSelectedHotBar;
-                    inventorySlots[i].Selected = false;
-                }
-            }
-
-            // Ignore this if the selected is negative
-            if (pos != -1)
-            {
-                inventorySlots[pos].inventorySlot.GetComponent<Image>().sprite = SelectedHotBar;
-                inventorySlots[pos].Selected = true;
-                if (!inventorySlots[pos].IsADish)
-                    Debug.Log("ItemID: " + inventorySlots[pos].itemid);
+                if (i == pos)
+                    AddHotbarImage(inventorySlots[1 + (9 * i)], 2);
                 else
-                    Debug.Log("DishID: " + inventorySlots[pos].dishid);
+                    AddHotbarImage(inventorySlots[1 + (9 * i)], 1);
             }
         }
     }
 
     public void RemoveSelected()
     {
-        for (int i = 0; i < inv.GetMaxInventorySize(); i++)
+        // check to see if the remove is valid
+        if (SelectedSlot <= Inventory.instance.GetList().Count && SelectedSlot != -1)
         {
-            // change previous selected back to not selected sprite
-            if (inventorySlots[i].Selected)
+            Inventory.instance.RemoveFromInventory(SelectedSlot);
+            UpdateImage();
+            // if the item is deleted as its last slot, move it, if cannot move, none are selected
+            if (SelectedSlot >= Inventory.instance.GetList().Count)
             {
-                inv.RemoveFromInventory(i);
-                SortList(i);
-                break;
+                SelectedSlot -= 1;
+                ChangeSelectedHotBar(SelectedSlot);
             }
         }
     }
 
-    public int GetSelectedInventory(bool IsItADish)
+    public int GetSelectedFoodID(FoodManager.FoodType ft)
     {
-        for (int i = 0; i < inventorySlots.Count; i++)
+        if (Inventory.instance.GetList().Count > 0)
         {
-            // get the selected one
-            if (inventorySlots[i].Selected)
+            // check to see if the current sleected ingredient matches the parameter, if it does not match, return -1
+            if (Inventory.instance.GetList()[SelectedSlot].food.GetComponent<Food>().GetFoodType() == ft)
             {
-                // if it is a dish, return the dish id
-                if (IsItADish)
-                {
-                    return inventorySlots[i].dishid;
-                }
-                // if it is not a dish, return ingredient id instead
-                else
-                {
-                    return inventorySlots[i].itemid;
-                }
+                return FoodManager.instance.GetItemID(Inventory.instance.GetList()[SelectedSlot].food);
             }
         }
 
         return -1;
     }
 
-    public Item GetItem()
+    public GameObject GetSelectedGameObject()
     {
-        for (int i = 0; i < inventorySlots.Count; i++)
+        if (Inventory.instance.GetList().Count > 0)
         {
-            // get the selected one
-            if (inventorySlots[i].Selected)
-            {
-                return inventorySlots[i].theItem;
-            }
+            return Inventory.instance.GetList()[SelectedSlot].food;
         }
-
         return null;
     }
 
-    public void SortList(int pos)
+    public int GetSelectedStarAmount()
     {
-        for (int i = pos; i < inv.GetMaxInventorySize(); i++)
+        if (Inventory.instance.GetList()[SelectedSlot].IsDish)
         {
-            if (i + 1 < GetUsedInventorySlot())
-            {
-                inventorySlots[i].ingredientSlot.GetComponent<Image>().sprite = inventorySlots[i + 1].ingredientSlot.GetComponent<Image>().sprite;
-                inventorySlots[i].itemid = inventorySlots[i + 1].itemid;
-                inventorySlots[i].dishid = inventorySlots[i + 1].dishid;
-                inventorySlots[i].IsADish = inventorySlots[i + 1].IsADish;
-                inventorySlots[i].theItem = inventorySlots[i + 1].theItem;
-            }
-            else
-            {
-                // if the selected is the last slot, change the cursor
-                if (pos + 1 == GetUsedInventorySlot())
-                {
-                    ChangeSelectedHotBar(i - 1);
-                }
-
-                inventorySlots[i].ingredientSlot.SetActive(false);
-                inventorySlots[i].itemid = -1;
-                inventorySlots[i].dishid = -1;
-                inventorySlots[i].IsADish = false;
-                inventorySlots[i].theItem = null;
-            }
+            return Inventory.instance.GetList()[SelectedSlot].Stars;
         }
+
+        return 0;
     }
 }

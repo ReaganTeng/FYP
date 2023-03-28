@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4253785905640219694}
   - component: {fileID: 305509437548373541}
+  - component: {fileID: -7282920254030871694}
   m_Layer: 0
   m_Name: Mashed Egg
   m_TagString: Untagged
@@ -45,8 +46,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43a657e03a773364391ebd1ebdb6a1e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemID: 8
+  itemtype: 8
   image: {fileID: 21300000, guid: 449ca56c55d0bb64f99869298242ad35, type: 3}
+--- !u!114 &-7282920254030871694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1651023163865744873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d5d1825d182a194897640c1a97ff6aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodtypeid: 0
 --- !u!1 &5913270387672244258
 GameObject:
   m_ObjectHideFlags: 0
