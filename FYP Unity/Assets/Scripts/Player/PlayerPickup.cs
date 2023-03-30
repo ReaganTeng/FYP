@@ -7,10 +7,12 @@ public class PlayerPickup : MonoBehaviour
     [SerializeField] Inventory PlayerInventory;
     List<GameObject> InteractableInRangeList = new List<GameObject>();
     InventoryImageControl ic;
+    public bool DisableControls;
 
     private void Start()
     {
         ic = GameObject.FindGameObjectWithTag("GameManager").GetComponent<InventoryImageControl>();
+        DisableControls = false;
     }
 
     // add the interactable objects into the list
@@ -41,112 +43,118 @@ public class PlayerPickup : MonoBehaviour
 
     private void Update()
     {
-        // If Inventory is not full, then do item highlight to indicate that items can be picked
-        if (!PlayerInventory.InventoryFull)
+        if (!DisableControls)
         {
-            // if there is only one object, highlight that
-            if (InteractableInRangeList.Count == 1)
+            // If Inventory is not full, then do item highlight to indicate that items can be picked
+            if (!PlayerInventory.InventoryFull)
             {
-                // switch the item color or make it glow maybe?
-                if (InteractableInRangeList[0].CompareTag("Ingredient"))
-                    InteractableInRangeList[0].GetComponent<ItemGlow>().TurnOnHighlight();
-            }
-
-            // if there is more than one object, check the closest distance between those and take the nearest one
-            else if (InteractableInRangeList.Count > 1)
-            {
-                GameObject nearestGameObject = FindNearestGameObject();
-
-                for (int i = 0; i < InteractableInRangeList.Count; i++)
+                // if there is only one object, highlight that
+                if (InteractableInRangeList.Count == 1)
                 {
-                    if (nearestGameObject == InteractableInRangeList[i].gameObject)
-                    {
-                        // make the item glow
-                        if (InteractableInRangeList[i].CompareTag("Ingredient"))
-                            InteractableInRangeList[i].GetComponent<ItemGlow>().TurnOnHighlight();
-                    }
+                    // switch the item color or make it glow maybe?
+                    if (InteractableInRangeList[0].CompareTag("Ingredient"))
+                        InteractableInRangeList[0].GetComponent<ItemGlow>().TurnOnHighlight();
+                }
 
-                    // if its not the closest, dont make it glow
-                    else
+                // if there is more than one object, check the closest distance between those and take the nearest one
+                else if (InteractableInRangeList.Count > 1)
+                {
+                    GameObject nearestGameObject = FindNearestGameObject();
+
+                    for (int i = 0; i < InteractableInRangeList.Count; i++)
                     {
-                        if (InteractableInRangeList[i].CompareTag("Ingredient"))
-                            InteractableInRangeList[i].GetComponent<ItemGlow>().TurnOffHighlight();
+                        if (nearestGameObject == InteractableInRangeList[i].gameObject)
+                        {
+                            // make the item glow
+                            if (InteractableInRangeList[i].CompareTag("Ingredient"))
+                                InteractableInRangeList[i].GetComponent<ItemGlow>().TurnOnHighlight();
+                        }
+
+                        // if its not the closest, dont make it glow
+                        else
+                        {
+                            if (InteractableInRangeList[i].CompareTag("Ingredient"))
+                                InteractableInRangeList[i].GetComponent<ItemGlow>().TurnOffHighlight();
+                        }
                     }
                 }
             }
-        }
 
-        // Do something wif the gameobject that has the shortest distance
-        // Check to see if player wants to pick up an item
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            GameObject pickupobject;
-            pickupobject = FindNearestGameObject();
-
-            if (pickupobject.CompareTag("Ingredient") && !PlayerInventory.InventoryFull && InteractableInRangeList.Count > 0)
+            // Do something wif the gameobject that has the shortest distance
+            // Check to see if player wants to pick up an item
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                InteractableInRangeList.Remove(pickupobject);
-                // Add the item into ur inventory
-                ic.AddItem(pickupobject.GetComponentInParent<Food>().gameObject);
-                pickupobject.SetActive(false);
+                GameObject pickupobject;
+                pickupobject = FindNearestGameObject();
+
+                if (pickupobject != null)
+                {
+                    if (pickupobject.CompareTag("Ingredient") && !PlayerInventory.InventoryFull)
+                    {
+                        InteractableInRangeList.Remove(pickupobject);
+                        // Add the item into ur inventory
+                        ic.AddItem(pickupobject.GetComponentInParent<Food>().gameObject);
+                        pickupobject.SetActive(false);
+                    }
+
+                    else if (pickupobject.CompareTag("Mixer"))
+                    {
+                        pickupobject.GetComponent<Mixer>().InteractWithMixer();
+                    }
+
+                    else if (pickupobject.CompareTag("Serve"))
+                    {
+                        pickupobject.GetComponent<Serving>().Serve();
+                    }
+                }
             }
 
-            else if (pickupobject.CompareTag("Mixer"))
+            // switch between selected items
+            if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                pickupobject.GetComponent<Mixer>().InteractWithMixer();
+                ic.ChangeSelectedHotBar(0);
             }
-
-            else if (pickupobject.CompareTag("Serve"))
+            if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                pickupobject.GetComponent<Serving>().Serve();
+                ic.ChangeSelectedHotBar(1);
             }
-        }
-
-        // switch between selected items
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            ic.ChangeSelectedHotBar(0);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            ic.ChangeSelectedHotBar(1);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            ic.ChangeSelectedHotBar(2);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            ic.ChangeSelectedHotBar(3);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha5))
-        {
-            ic.ChangeSelectedHotBar(4);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha6))
-        {
-            ic.ChangeSelectedHotBar(5);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha7))
-        {
-            ic.ChangeSelectedHotBar(6);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha8))
-        {
-            ic.ChangeSelectedHotBar(7);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha9))
-        {
-            ic.ChangeSelectedHotBar(8);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha0))
-        {
-            ic.ChangeSelectedHotBar(9);
-        }
-        // Remove selected
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            ic.RemoveSelected();
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                ic.ChangeSelectedHotBar(2);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                ic.ChangeSelectedHotBar(3);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha5))
+            {
+                ic.ChangeSelectedHotBar(4);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha6))
+            {
+                ic.ChangeSelectedHotBar(5);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha7))
+            {
+                ic.ChangeSelectedHotBar(6);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha8))
+            {
+                ic.ChangeSelectedHotBar(7);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha9))
+            {
+                ic.ChangeSelectedHotBar(8);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha0))
+            {
+                ic.ChangeSelectedHotBar(9);
+            }
+            // Remove selected
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                ic.RemoveSelected();
+            }
         }
     }
 

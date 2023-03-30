@@ -10,7 +10,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float DashCD;
     [SerializeField] float DashBy;
     [SerializeField] float IFrame;
-
+    [SerializeField] PlayerPickup playerPickUp;
+    bool DisableControls;
 
     [SerializeField]
     private Animator animator = null;
@@ -28,46 +29,62 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         dashcdtimer = 0;
+        DisableControls = false;
     }
     // Update is called once per frame
     void FixedUpdate()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
-        playerRB.AddForce((orientation.forward * verticalInput + orientation.right * horizontalInput) * PlayerSpeed);
-
-        // If user is pressing any movement keys
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+        if (!DisableControls)
         {
-            CheckDirection(ref Forwardrun, ref Rightrun, horizontalInput, verticalInput);
-        }
+            float horizontalInput = Input.GetAxis("Horizontal");
+            float verticalInput = Input.GetAxis("Vertical");
+            playerRB.AddForce((orientation.forward * verticalInput + orientation.right * horizontalInput) * PlayerSpeed);
 
-        if (Input.GetKey(KeyCode.A))
-        {
-            spriteRenderer.flipX = false;
-        }
-
-        if (Input.GetKey(KeyCode.D))
-        {
-            spriteRenderer.flipX = true;
-        }
-
-        if (dashcdtimer > 0)
-            dashcdtimer -= Time.deltaTime;
-        
-        else
-        {
-            // if shift is detected, sprint towards that direction
-            if (Input.GetKey(KeyCode.LeftShift))
+            // If user is pressing any movement keys
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
             {
-                playerRB.AddForce((orientation.forward * Forwardrun + orientation.right * Rightrun) * PlayerSpeed * DashBy);
-                dashcdtimer = DashCD;
-                iframetimer = IFrame;
-                IFrameStart = true;
-                Physics.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer("Enemy"), true);
-                
+                CheckDirection(ref Forwardrun, ref Rightrun, horizontalInput, verticalInput);
+            }
+
+            if (Input.GetKey(KeyCode.A))
+            {
+                spriteRenderer.flipX = false;
+            }
+
+            if (Input.GetKey(KeyCode.D))
+            {
+                spriteRenderer.flipX = true;
+            }
+
+            if (dashcdtimer > 0)
+                dashcdtimer -= Time.deltaTime;
+
+            else
+            {
+                // if shift is detected, sprint towards that direction
+                if (Input.GetKey(KeyCode.LeftShift))
+                {
+                    playerRB.AddForce((orientation.forward * Forwardrun + orientation.right * Rightrun) * PlayerSpeed * DashBy);
+                    dashcdtimer = DashCD;
+                    iframetimer = IFrame;
+                    IFrameStart = true;
+                    Physics.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer("Enemy"), true);
+
+                }
             }
         }
+    }
+
+    public void DisablePlayerControls()
+    {
+        DisableControls = true;
+        playerPickUp.DisableControls = true;
+    }
+
+    public void EnablePlayerControls()
+    {
+        DisableControls = false;
+        playerPickUp.DisableControls = false;
     }
 
     void CheckDirection(ref float foward, ref float right, float horizontalInput, float verticalInput)

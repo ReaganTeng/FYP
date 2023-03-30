@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerInventory: {fileID: 8900116384804071886}
+  DisableControls: 0
 --- !u!1 &3040397883433688811
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,6 +229,7 @@ MonoBehaviour:
   DashCD: 2
   DashBy: 30
   IFrame: 0.3
+  playerPickUp: {fileID: 3801972613150636765}
   animator: {fileID: 0}
   spriteRenderer: {fileID: 516198344771045306}
 --- !u!54 &5218877466719756691
