@@ -70,12 +70,12 @@ public class EnemyScript : MonoBehaviour
         {
             EnemyHealth -= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().GetPlayerAttack();
 
-            //for (int i = 0; i < 5; i++)
-            //{
-                player.GetComponent<PlayerStats>().addConsecutiveHit();
-            //}
-            player.GetComponent<PlayerStats>().resetCombo_timer();
+            //play attacked animation
+            GetComponentInChildren<Animator>().SetBool("attacked", true);
+            //
 
+            player.GetComponent<PlayerStats>().addConsecutiveHit();
+            player.GetComponent<PlayerStats>().resetCombo_timer();
             GetComponent<Rigidbody>().AddForce(
                (GetComponent<Transform>().position - other.GetComponentInParent<Transform>().position).normalized * 50.0f,
                ForceMode.Impulse
@@ -99,29 +99,61 @@ public class EnemyScript : MonoBehaviour
             }
 
            
-
             if (phase != Phases.COOLDOWN)
             {
                 phase = Phases.COOLDOWN;
             }
-            Debug.Log("Enemy Health Left: " + EnemyHealth);
-            // Precise Kill
-            if (EnemyHealth == 0)
-            {
-                Debug.Log("Precise Kill!");
-                EnemyDie(true);
-            }
 
-            else if (EnemyHealth < 0)
-            {
-                Debug.Log("Killed!");
-                EnemyDie(false);
-            }
+            Debug.Log("Enemy Health Left: " + EnemyHealth);
+
+
+
+            // Precise Kill
+            //if (EnemyHealth == 0)
+            //{
+            //    Debug.Log("Precise Kill!");
+            //    EnemyDie(true);
+            //}
+            //else if (EnemyHealth < 0)
+            //{
+            //    Debug.Log("Killed!");
+            //    EnemyDie(false);
+            //}
         }
     }
 
+    
+
     private void Update()
     {
+        GetComponentInChildren<Animator>().SetFloat("health", EnemyHealth);
+
+        Debug.Log("ENEMY " + (int)GetComponentInChildren<Animator>().GetFloat("health"));
+
+        //when to stop hurt animation
+        if (EnemyHealth > 0
+            && GetComponentInChildren<Animator>().GetBool("attacked") == true)
+        {
+            //Debug.Log("STILL HURT!");
+
+            float myTime = GetComponentInChildren<Animator>().GetCurrentAnimatorClipInfo(0)[0].clip.length
+        * GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime;
+
+            //Debug.Log("ANIMATOR REGISTER " + myTime);
+
+            if (myTime >= 0.95f)
+            {
+                //Debug.Log("NOT HURT!");
+
+                GetComponentInChildren<Animator>().SetBool("attacked", false);
+            }
+        }
+        //
+
+
+        //Debug.Log("ANIMATOR REGISTER " + GetComponentInChildren<Animator>().GetCurrentAnimatorClipInfo(0)[0].clip.name);
+
+
 
         healthbar.value = EnemyHealth;
 
@@ -140,15 +172,13 @@ public class EnemyScript : MonoBehaviour
         {
             case Phases.ABOUT_TO_ATTACK:
                 {
-                    timer += 1.0f * Time.deltaTime;
+                    abouttoattackUpdate();
+
+                    /*timer += 1.0f * Time.deltaTime;
                     GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
                     GetComponent<NavMeshAgent>().speed = 0.0f;
-
-
                     attackhitbox.GetComponent<BoxCollider>().enabled = false;
                     GetComponent<BoxCollider>().enabled = true;
-
-
                     if (timer >= abouttoattackend)
                     {
                         timer = 0.0f;
@@ -163,16 +193,47 @@ public class EnemyScript : MonoBehaviour
                         {
                             phase = Phases.ATTACK_TYPE_2;
                         }
-                    }
+                    }*/
+
+
                     break;
                 }
             case Phases.COOLDOWN:
                 {
-                    Debug.Log("COOLDOWN");
+                    
                     cooldownUpdate();
 
                     break;
                 }
+        }
+
+    }
+
+    public void abouttoattackUpdate()
+    {
+        timer += 1.0f * Time.deltaTime;
+        GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
+        GetComponent<NavMeshAgent>().speed = 0.0f;
+
+
+        attackhitbox.GetComponent<BoxCollider>().enabled = false;
+        GetComponent<BoxCollider>().enabled = true;
+
+
+        if (timer >= abouttoattackend)
+        {
+            timer = 0.0f;
+            attack_type = Random.Range(1, 3);
+
+
+            if (attack_type == 1)
+            {
+                phase = Phases.ATTACK_TYPE_1;
+            }
+            else
+            {
+                phase = Phases.ATTACK_TYPE_2;
+            }
         }
 
     }
@@ -256,6 +317,34 @@ public class EnemyScript : MonoBehaviour
             }
         }
 
-        Destroy(gameObject);
+
+        /*float myTime = GetComponentInChildren<Animator>().GetCurrentAnimatorClipInfo(0)[0].clip.length
+           * GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime;
+        //if (myTime >= 0.9f * GetComponentInChildren<Animator>().GetCurrentAnimatorClipInfo(0)[0].clip.length)
+        Debug.Log("ANIMATOR REGISTER " + GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime);*/
+
+        //if (GetComponentInChildren<Animator>().GetComponent<DieFinish>().returnDead() == true)
+        //{
+            GetComponentInChildren<SpriteRenderer>().enabled = false;
+            Debug.Log("DESTROYED");
+            Destroy(gameObject);
+        //}
+    }
+
+    public void Death()
+    {
+        attackhitbox.SetActive(false);
+        //Destroy(attackhitbox);
+
+        if (EnemyHealth == 0)
+        {
+            Debug.Log("Precise Kill!");
+            EnemyDie(true);
+        }
+        else if (EnemyHealth < 0)
+        {
+            Debug.Log("Killed!");
+            EnemyDie(false);
+        }
     }
 }

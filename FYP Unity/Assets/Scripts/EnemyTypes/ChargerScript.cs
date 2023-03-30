@@ -12,7 +12,7 @@ public class ChargerScript : MonoBehaviour
     private float chargecooldown;
     private bool collided;
 
-    private GameObject playerGO;
+   GameObject playerGO;
     Vector3 playerPos;
     Vector3 resultingVector;
 
@@ -41,7 +41,7 @@ public class ChargerScript : MonoBehaviour
 
         playerGO = GameObject.FindGameObjectWithTag("Player");
         playerPos = playerGO.transform.position;
-        
+
         resultingVector = playerPos - transform.position;
         resultingVector.y = 0;
         resultingVector.Normalize();
@@ -87,6 +87,7 @@ public class ChargerScript : MonoBehaviour
         {
             case EnemyScript.Phases.ATTACK_TYPE_1:
                 {
+                    GetComponent<MeshRenderer>().enabled = false;
                     chargingtime += 1.0f * Time.deltaTime;
 
                     if (chargingtime < 0.1f)
@@ -115,8 +116,10 @@ public class ChargerScript : MonoBehaviour
                 }
             case EnemyScript.Phases.ATTACK_TYPE_2:
                 {
-                    chargingtime += 1.0f * Time.deltaTime;
 
+                    GetComponent<MeshRenderer>().enabled = false;
+
+                    chargingtime += 1.0f * Time.deltaTime;
                     if (chargingtime < 0.1f)
                     {
                         playerPos = playerGO.transform.position;
@@ -140,6 +143,14 @@ public class ChargerScript : MonoBehaviour
 
                         chargingtime = 0.0f;
                     }
+                    break;
+                }
+            case EnemyScript.Phases.ABOUT_TO_ATTACK:
+                {
+
+                    GetComponent<MeshRenderer>().enabled = true;
+
+                    GetComponent<EnemyScript>().abouttoattackUpdate();
                     break;
                 }
             /*case EnemyScript.Phases.PHASE_3:
