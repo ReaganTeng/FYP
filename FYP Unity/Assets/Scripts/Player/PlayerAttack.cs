@@ -41,13 +41,21 @@ public class PlayerAttack : MonoBehaviour
             attackcdtimer -= Time.deltaTime;
         else if (attackcdtimer <= 0)
         {
-            if (Input.GetMouseButtonDown(0) && !attacking)
+            if (
+                (Input.GetMouseButtonDown(0) && !attacking)
+                //||
+                //(Input.GetMouseButtonDown(0) && !attacking)
+                )
             {
                 AttackWhichDirection(direction);
                 HitBox.SetActive(true);
                 attacking = true;
                 attackingtimer = attackingtime;
             }
+
+            
+
+
 
             if (attacking)
             {

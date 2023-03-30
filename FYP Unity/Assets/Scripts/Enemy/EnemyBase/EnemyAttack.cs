@@ -8,6 +8,8 @@ public class EnemyAttack : MonoBehaviour
     [SerializeField] float AttackCD;
     float Attackcdtimer;
 
+    public GameObject player;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,8 +18,22 @@ public class EnemyAttack : MonoBehaviour
 
     private void Update()
     {
+        //Debug.Log("Time is "+ Attackcdtimer);
+
         if (Attackcdtimer > 0)
             Attackcdtimer -= Time.deltaTime;
+
+        /*if (player != null)
+        {
+            if (Attackcdtimer <= 0)
+            {
+                player.GetComponentInChildren<PlayerMovement>().SetSRColor(Color.green);
+            }
+            else
+            {
+                player.GetComponentInChildren<PlayerMovement>().SetSRColor(Color.white);
+            }
+        }*/
     }
 
     //change collider size if want to increase attack range
@@ -26,9 +42,20 @@ public class EnemyAttack : MonoBehaviour
         // if it is the player
         if (other.CompareTag("Player") && Attackcdtimer <= 0)
         {
-            //Debug.Log("PLAYER ATTACKED");
+           
             other.GetComponent<PlayerStats>().ChangeHealth(-es.AttackDamage);
+            other.GetComponent<PlayerStats>().ResetConsecutiveHit();
+
+            //other.GetComponent<Rigidbody>().AddForce(
+            //    (other.GetComponent<Transform>().position - GetComponentInParent<Transform>().position).normalized * 50.0f, 
+            //    ForceMode.Impulse
+            //    );
             Attackcdtimer = AttackCD;
         }
+        //else
+        //{
+        //    Debug.Log("NO COLLISSION");
+
+        //}
     }
 }
