@@ -86,7 +86,15 @@ public class ChargerScript : MonoBehaviour
         switch (enemyPhase)
         {
             case EnemyScript.Phases.ATTACK_TYPE_1:
+            //case EnemyScript.Phases.ATTACK_TYPE_2:
+
                 {
+
+                    GetComponentInChildren<Animator>().SetBool("about2charge", true);
+
+                    GetComponentInChildren<Animator>().SetBool("charge", true);
+
+                    //GetComponent<MeshRenderer>().enabled = false;
                     chargingtime += 1.0f * Time.deltaTime;
 
                     if (chargingtime < 0.1f)
@@ -115,6 +123,13 @@ public class ChargerScript : MonoBehaviour
                 }
             case EnemyScript.Phases.ATTACK_TYPE_2:
                 {
+
+
+                    //GetComponent<MeshRenderer>().enabled = false;
+                    GetComponentInChildren<Animator>().SetBool("about2charge", true);
+
+                    GetComponentInChildren<Animator>().SetBool("charge", true);
+
                     chargingtime += 1.0f * Time.deltaTime;
 
                     if (chargingtime < 0.1f)
@@ -140,6 +155,15 @@ public class ChargerScript : MonoBehaviour
 
                         chargingtime = 0.0f;
                     }
+                    break;
+                }
+
+            case EnemyScript.Phases.ABOUT_TO_ATTACK:
+                {
+
+                    //GetComponent<MeshRenderer>().enabled = true;
+                    GetComponentInChildren<Animator>().SetBool("about2charge", true);
+                    GetComponent<EnemyScript>().abouttoattackUpdate();
                     break;
                 }
             /*case EnemyScript.Phases.PHASE_3:
@@ -210,6 +234,10 @@ public class ChargerScript : MonoBehaviour
             resultingVector = playerPos - transform.position;
             chargingtime = 0.0f;
             collided = false;
+
+            GetComponentInChildren<Animator>().SetBool("charge", false);
+            GetComponentInChildren<Animator>().SetBool("about2charge", false);
+
 
             //enemy.gameObject.transform.LookAt(enemy.playerGO.transform);
             GetComponent<EnemyScript>().phase = EnemyScript.Phases.COOLDOWN;

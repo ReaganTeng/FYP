@@ -19,13 +19,15 @@ public class EnemyScript : MonoBehaviour
     bool AttackByOtherWeapon = false;
 
     [SerializeField] Slider healthbar;
-    [SerializeField] GameObject player;
+     GameObject player;
 
     //public GameObject[] zones;
     //public int zone_no;
     float timer;
      float cooldownend;
     float abouttoattackend;
+
+    float transitionFromHurtTimer;
 
     int attack_type;
 
@@ -46,10 +48,12 @@ public class EnemyScript : MonoBehaviour
 
     void Start()
     {
+        transitionFromHurtTimer = 0;
         //phase = Phases.PHASE_3;
 
         healthbar.maxValue = EnemyHealth;
         healthbar.minValue = 0;
+        player = GameObject.FindGameObjectWithTag("Player");
 
         //phase = Phases.ATTACK_TYPE_1;
         timer = 0.0f;
@@ -66,7 +70,8 @@ public class EnemyScript : MonoBehaviour
             return;
 
         // If its from player attack
-        if (other.CompareTag("Attack") && !Iframe)
+        if (other.CompareTag("Attack") && !Iframe
+            && GetComponentInChildren<BoxCollider>().enabled == true)
         {
             EnemyHealth -= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().GetPlayerAttack();
 
@@ -77,7 +82,7 @@ public class EnemyScript : MonoBehaviour
             player.GetComponent<PlayerStats>().resetCombo_timer();
 
             GetComponent<Rigidbody>().AddForce(
-               (GetComponent<Transform>().position - other.GetComponentInParent<Transform>().position).normalized * 50.0f,
+               (GetComponent<Transform>().position - other.GetComponentInParent<Transform>().position).normalized * 100.0f,
                ForceMode.Impulse
                );
 
@@ -104,7 +109,9 @@ public class EnemyScript : MonoBehaviour
             {
                 phase = Phases.COOLDOWN;
             }
+
             Debug.Log("Enemy Health Left: " + EnemyHealth);
+
             // Precise Kill
             if (EnemyHealth == 0)
             {
@@ -122,6 +129,57 @@ public class EnemyScript : MonoBehaviour
 
     private void Update()
     {
+
+        player = GameObject.FindGameObjectWithTag("Player");
+
+        GetComponentInChildren<Animator>().SetFloat("health", EnemyHealth);
+
+        if (GetComponentInChildren<Animator>().GetBool("attacked") == true)
+        {
+            //Debug.Log("OH IM ATTACKED");
+            if (EnemyHealth > 0)
+            {
+                GetComponentInChildren<Animator>().speed = 3;
+                transitionFromHurtTimer += 1.0f * Time.deltaTime;
+
+                if(transitionFromHurtTimer >= 1.0f)
+                {
+                    GetComponentInChildren<Animator>().SetBool("attacked", false);
+                }
+            }
+        }
+        else
+        {
+            GetComponentInChildren<Animator>().speed = 1.5f;
+            transitionFromHurtTimer = 0.0f;
+        }
+
+        
+
+
+        //when to stop hurt animation
+        //if (EnemyHealth > 0
+        //    && GetComponentInChildren<Animator>().GetBool("attacked") == true)
+        {
+            /*float myTime = GetComponentInChildren<Animator>().GetCurrentAnimatorClipInfo(0)[0].clip.length
+        * GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime;*/
+
+            //if (GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+            //if (myTime >= 0.95f)
+            //{
+            //    GetComponentInChildren<Animator>().SetBool("attacked", false);
+            //}
+            /*else
+            {
+                Debug.Log("ANIMATION " + GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime);
+            }*/
+        }
+        //
+
+
+        //Debug.Log("ANIMATOR REGISTER " + GetComponentInChildren<Animator>().GetCurrentAnimatorClipInfo(0)[0].clip.name);
+
+
 
         healthbar.value = EnemyHealth;
 
@@ -177,8 +235,42 @@ public class EnemyScript : MonoBehaviour
 
     }
 
+
+    public void abouttoattackUpdate()
+    {
+        GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
+
+        timer += 1.0f * Time.deltaTime;
+        GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
+        GetComponent<NavMeshAgent>().speed = 0.0f;
+
+
+        attackhitbox.GetComponent<BoxCollider>().enabled = false;
+        GetComponent<BoxCollider>().enabled = true;
+
+
+        if (timer >= abouttoattackend)
+        {
+            timer = 0.0f;
+            attack_type = Random.Range(1, 3);
+
+
+            if (attack_type == 1)
+            {
+                phase = Phases.ATTACK_TYPE_1;
+            }
+            else
+            {
+                phase = Phases.ATTACK_TYPE_2;
+            }
+        }
+
+    }
+
     public void cooldownUpdate()
     {
+        GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
+
         timer += 1.0f * Time.deltaTime;
         GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
         GetComponent<NavMeshAgent>().speed = 0.0f;

@@ -1,0 +1,2929 @@
+fileFormatVersion: 2
+guid: 8c0ab623507cbd2479014d40ee7a7624
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: apple_death_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 1361
+        width: 136
+        height: 181
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14a6b202f217dcd4589a48e2f35ae30a
+      internalID: -570577332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_1
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 1361
+        width: 137
+        height: 181
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d4e4c1559a103d4f8ee8c613285ea5d
+      internalID: -2060859146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_2
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 1361
+        width: 138
+        height: 179
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d74bb5ef1534394b9e29de0d2d89a0e
+      internalID: -916311078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_3
+      rect:
+        serializedVersion: 2
+        x: 643
+        y: 1361
+        width: 138
+        height: 178
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fe3e29ac8eb9c0408e8b548fa2d492d
+      internalID: -1916950154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_4
+      rect:
+        serializedVersion: 2
+        x: 856
+        y: 1362
+        width: 138
+        height: 179
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37471d6bb28a3d34285ad7bee12c9bc9
+      internalID: -1761745816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_5
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 1168
+        width: 143
+        height: 181
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 166645e2818524040a7af63ebbdde64c
+      internalID: 797790118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_6
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 1167
+        width: 146
+        height: 181
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b461aaaa0da8fd489a43e94535fb45a
+      internalID: 24705124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_7
+      rect:
+        serializedVersion: 2
+        x: 443
+        y: 1165
+        width: 160
+        height: 181
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c4eafb3dfdb74f48af127a96f4209f0
+      internalID: -37962952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_8
+      rect:
+        serializedVersion: 2
+        x: 651
+        y: 1163
+        width: 172
+        height: 179
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea979d66ff3eb31458477bcd71262503
+      internalID: -378617145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_9
+      rect:
+        serializedVersion: 2
+        x: 859
+        y: 1164
+        width: 179
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d231c1fde40871489dd71ba56502e3f
+      internalID: -1322376901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_10
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 973
+        width: 183
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 321b5bbe1e1235e45b03d69bada201f8
+      internalID: -230401979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_11
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 975
+        width: 182
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad194a6e4566a394f8fd55bc10fde734
+      internalID: 1178974348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_12
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 976
+        width: 183
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a34b132ea4d3f74d8f1f331ef5248ae
+      internalID: -1769867386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_13
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 975
+        width: 185
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c341adfa227320b4dab66f711f5f7a19
+      internalID: -838529330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_14
+      rect:
+        serializedVersion: 2
+        x: 853
+        y: 973
+        width: 187
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b806d98447b0f1f4cb6bb363d026ff8b
+      internalID: -1961384918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_15
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 780
+        width: 192
+        height: 147
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b7eafddf4195b449800d2dbe6dcf8d8
+      internalID: 1051653952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_16
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 780
+        width: 190
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63953273568d2f04985ec3bcf9a9700f
+      internalID: 551189121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_17
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 778
+        width: 189
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdb7753f4b6876f4ba668661102d4ae7
+      internalID: -576788874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_18
+      rect:
+        serializedVersion: 2
+        x: 648
+        y: 775
+        width: 188
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d32b508d4876aa44bda7eb6bdbb24c3
+      internalID: -1923295723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_19
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 772
+        width: 184
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3be3ecc402148134b93413e451d960a8
+      internalID: -180310267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_20
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 579
+        width: 181
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a6389e481dd6064398911baa191a71a
+      internalID: -2086458466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_21
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 579
+        width: 175
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 570f9b1208082244aad3245d40f5168a
+      internalID: 892636591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_22
+      rect:
+        serializedVersion: 2
+        x: 449
+        y: 579
+        width: 172
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c0335d561140db419cf11d3ffaba616
+      internalID: -391322483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_23
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 581
+        width: 170
+        height: 109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0e3a1e131230b84fa2d4e36edf4ff6c
+      internalID: 543697192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_24
+      rect:
+        serializedVersion: 2
+        x: 870
+        y: 585
+        width: 169
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abc448df7ce424b42af68bea34bc8cb2
+      internalID: 256920884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_25
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 435
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73cc092da9309e54197fcd769b17db3a
+      internalID: -482553947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_26
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 396
+        width: 155
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cd3a182c68a6ac4a81b15e8e8033b8d
+      internalID: 811023408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_27
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 434
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8b0ca129948cb145925a5ca633029a3
+      internalID: 1406959476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_28
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 396
+        width: 155
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 418a8cb2d6a381646b02133b8fa27698
+      internalID: 1763062399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_29
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 433
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 971965294ef463b458cb5d808c991195
+      internalID: 1640783712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_30
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 396
+        width: 153
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3dc3ae540cf5904fa0fbbf3826fd2e3
+      internalID: 1619168565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_31
+      rect:
+        serializedVersion: 2
+        x: 664
+        y: 433
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5aa8ff3156414f4fbfc91f433c955ab
+      internalID: 1645082039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_32
+      rect:
+        serializedVersion: 2
+        x: 669
+        y: 396
+        width: 160
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfca566dd0bcb4d4492ffd410594b3c3
+      internalID: -252754752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_33
+      rect:
+        serializedVersion: 2
+        x: 872
+        y: 431
+        width: 11
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22339f5c2209f914a853cf8f25716db9
+      internalID: -1911711784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_34
+      rect:
+        serializedVersion: 2
+        x: 884
+        y: 396
+        width: 154
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d10d7917dfe8ec3419e89c3f1f0aa26b
+      internalID: -540924656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_35
+      rect:
+        serializedVersion: 2
+        x: 678
+        y: 418
+        width: 7
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57f8276866b1d5841aaac201dc2b3f92
+      internalID: 1167965519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_36
+      rect:
+        serializedVersion: 2
+        x: 889
+        y: 417
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9a955b83eb07b34195c2d0329e8d751
+      internalID: 1505925749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_37
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 11
+        width: 158
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27d1ab3f2da8d114eb36b6d1fe792c2c
+      internalID: -1227520735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_38
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 257
+        width: 7
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42ec59f21badf804a96f84026d8cc22d
+      internalID: 873771177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_39
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 270
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30ca596ff87ef704e8141ab47964ccbb
+      internalID: -353230503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_40
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 252
+        width: 54
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7efb9453118d2d84aafb9890c8d1bc6e
+      internalID: 1018188388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_41
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 255
+        width: 23
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f3f4a02112114643b659c075254bfa4
+      internalID: 586639513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_42
+      rect:
+        serializedVersion: 2
+        x: 347
+        y: 272
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c21363a43e473847987f9fb76fd8386
+      internalID: -1277192016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_43
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 265
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f54b9d4ae9af1b449bbb35b01e5b97b
+      internalID: -2017647691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_44
+      rect:
+        serializedVersion: 2
+        x: 365
+        y: 260
+        width: 19
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d9c990f44511ca4e927874a54c0b43a
+      internalID: -820276583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_45
+      rect:
+        serializedVersion: 2
+        x: 479
+        y: 206
+        width: 102
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b2298132590ef647926e86b93823e95
+      internalID: 444860565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_46
+      rect:
+        serializedVersion: 2
+        x: 565
+        y: 255
+        width: 28
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e83bdb0e2288e6342b6cdabae3f6dcd7
+      internalID: 361938176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_47
+      rect:
+        serializedVersion: 2
+        x: 668
+        y: 205
+        width: 134
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cfa58c219896c744aa21868a594c261
+      internalID: 1956938568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_48
+      rect:
+        serializedVersion: 2
+        x: 877
+        y: 203
+        width: 158
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e571bbdb0c4eec647862d56d33a7ec24
+      internalID: 598788230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_49
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 259
+        width: 15
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 375ae6973fa0e5b4495af8a9c6b67407
+      internalID: 2062400684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_50
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 265
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e79a73ad766bc9544b84560e91200d9e
+      internalID: 1342712188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_51
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 257
+        width: 7
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9601b0aa3fa55364181fa059fde41157
+      internalID: -1682043396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_52
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 259
+        width: 12
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e41d20294952aa1448dea0782207ea41
+      internalID: 1580619076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_53
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 255
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 868de31a5a0ccaa4db71fd752d6df829
+      internalID: 957546870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_54
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 255
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53b53c3ada360b4458db45bfd7fa33dd
+      internalID: -190742616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_55
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 258
+        width: 4
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 300647d87510cd7439dbca750c971b8d
+      internalID: -1242399481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_56
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 252
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4be10dbe93fab0d439e2d8cd70514b0e
+      internalID: -636728987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_57
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 222
+        width: 30
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef238f4f92b11024a96a9350dd0c8f93
+      internalID: 223015064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_58
+      rect:
+        serializedVersion: 2
+        x: 545
+        y: 255
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42ae4879de6cd084f84806a07a38ee7e
+      internalID: 1862946373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_59
+      rect:
+        serializedVersion: 2
+        x: 574
+        y: 247
+        width: 12
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c6778270ee3ccb4d9fb5a518c696b7d
+      internalID: 1580164473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_60
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 239
+        width: 27
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a51b8f690a2b5a4ca4699ea6b7aec19
+      internalID: 2010387362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_61
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 251
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15852c6dd499dc248b59d933fba67d6f
+      internalID: 272074679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_62
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 253
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0469123825c190540855e6dcd5d0f31d
+      internalID: -679183297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_63
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 252
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ee6179421a7d14439fc80b39b22e29c
+      internalID: -630353139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_64
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 250
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5b23d9b2de8b0341ac1cf2f563ce06e
+      internalID: -549981421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_65
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 240
+        width: 39
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7aa7990c9eb0a284d85a67460bcdb4d2
+      internalID: 292377099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_66
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 251
+        width: 7
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 379be9addf95bbe45818c7cc24e6fd70
+      internalID: 78014009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_67
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 253
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d4ff8b000d3a7a4b97e46990f847fd3
+      internalID: -2027427564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_68
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 252
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 764ca2908b222304c826e7ca4ee0d437
+      internalID: -2060368053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_69
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 250
+        width: 12
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5051a7b22020b0541a8d95fec1f1b5b9
+      internalID: -1487457262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_70
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 241
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7e3af22fad7b624e8b7331ac0cac452
+      internalID: 1010313404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_71
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 240
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cb2be9f652060843b5286272d3a79ce
+      internalID: -104032266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_72
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 243
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2120627d31c59a34d9a4b07ba8582dbd
+      internalID: 2014024658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_73
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 247
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd10eb36822159141b931344210fb54c
+      internalID: -1368090336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_74
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 236
+        width: 10
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd9799b490daf9246bded9d612e8daaf
+      internalID: -1501225553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_75
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 243
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bd65740ac790ac468d54919ac58a41d
+      internalID: 471578731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_76
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 247
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75f9a4983f543084bbf7f46a21aa0eea
+      internalID: 410061621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_77
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 240
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be1afb7315c3eb34b86fa4786aa141e5
+      internalID: 698961391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_78
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 243
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41a0f415d0060584e8f89786055d9db5
+      internalID: 1297013487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_79
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 247
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd79a228e3ed5de4c820acb8b0b36c45
+      internalID: -1484677595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_80
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 236
+        width: 10
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a926b1a3165ac4342ac6ce2b03fb0512
+      internalID: -1263828223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_81
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 243
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: baa2e4064017c9143a8fea0d95af6143
+      internalID: 1771549893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_82
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 241
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6f0f6f7f1babdb4dba6292086c9130d
+      internalID: 1846360700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_83
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 243
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8516d3e08c0d3db4d835f211e3d151d5
+      internalID: -1226873113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_84
+      rect:
+        serializedVersion: 2
+        x: 575
+        y: 229
+        width: 44
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99c4975315830b54ea769a10ac94d33d
+      internalID: -546222232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_85
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 235
+        width: 22
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 256665fb9b8288842b0fd29b355abeca
+      internalID: -2086368686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_86
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 214
+        width: 27
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 019dd1efa30617e46a26014f3341d0a2
+      internalID: 473563719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_87
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 233
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19b1438ac9327be448c7155d5f6ca9cf
+      internalID: 180906944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_88
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 212
+        width: 53
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d06c00a19caf2348b38bf999832a793
+      internalID: -2062068296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_89
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 203
+        width: 23
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 367b4e5a1969ab34c8bbfe31caaaeba1
+      internalID: -791484474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_90
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 230
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8862a660e56ef64f856ff5ceffbc863
+      internalID: 2072491586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_91
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 233
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 115381648f82b084fa815c54fb926ff4
+      internalID: -1122412727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_92
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 216
+        width: 33
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90063aaf89724204099cf26b577763dd
+      internalID: 183160880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_93
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 238
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7bf3c73fd77f0c44925eba931f24288
+      internalID: -1116451071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_94
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 234
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b340c79e2972df24095b29d2f316d189
+      internalID: -100277766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_95
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 233
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 645684ef262fc4845a389dde5b150f96
+      internalID: -924696400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_96
+      rect:
+        serializedVersion: 2
+        x: 802
+        y: 219
+        width: 26
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a32018c22b52e148af4d08b630610fc
+      internalID: -574381978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_97
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 230
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 532e02b3c2d6f0c47b710d2f6d4149c0
+      internalID: 888797728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_98
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 231
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9df2c25023eb5f94eb297879f7778e77
+      internalID: 652174350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_99
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 232
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dce609f6e8ecae04abe91d31d40f0636
+      internalID: 726187968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_100
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 218
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e30a990fd18916b4d9840eb9c6ebab24
+      internalID: 65749782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_101
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 203
+        width: 63
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d41910ea3e7ecd64f8d6c1a9918afca4
+      internalID: 549679792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_102
+      rect:
+        serializedVersion: 2
+        x: 586
+        y: 227
+        width: 4
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a229ddf8b7d3f4743b2b19e3c3ae3446
+      internalID: -1917319678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_103
+      rect:
+        serializedVersion: 2
+        x: 595
+        y: 219
+        width: 17
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b23cae830d35264a94f154c1d86665c
+      internalID: -302676106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_104
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 219
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d756511bec5d7ed4f80ed47269e457e2
+      internalID: -1241799870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_105
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 221
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cbc5475d96491a4180c26cd021fb1b4
+      internalID: 1125079095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_106
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 219
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4af4008695374154baf283dbedd20d71
+      internalID: -46519484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_107
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 221
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c65b1f92435133448f3d96ad3c02e0f
+      internalID: -456106330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_108
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 211
+        width: 10
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe63d00b374235d40bc3a01c9ec6769c
+      internalID: -1767698615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_109
+      rect:
+        serializedVersion: 2
+        x: 570
+        y: 223
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e9707b7a52901d45a49c97035d3a19b
+      internalID: 1859456868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_110
+      rect:
+        serializedVersion: 2
+        x: 571
+        y: 215
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e121430b3d56e934ea437dd758bd95c5
+      internalID: 1538054006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_111
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 220
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2d423bbdf07f0144b109fe06ceae1c9
+      internalID: 82570518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_112
+      rect:
+        serializedVersion: 2
+        x: 712
+        y: 203
+        width: 45
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c20d40f8f456fa47858fed50eb20ee1
+      internalID: -1570396066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_113
+      rect:
+        serializedVersion: 2
+        x: 930
+        y: 226
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb841337bd66987419be55b303af39e3
+      internalID: 1538943746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_114
+      rect:
+        serializedVersion: 2
+        x: 933
+        y: 220
+        width: 13
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16fb5671bfbc17141a287a49017f7949
+      internalID: -1064167773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_115
+      rect:
+        serializedVersion: 2
+        x: 481
+        y: 216
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 209a7da0665db0740962b6d827e31411
+      internalID: 805250654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_116
+      rect:
+        serializedVersion: 2
+        x: 927
+        y: 216
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c8028c4b21bbc04fa6fc53b0ae6ddf3
+      internalID: 524513015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_117
+      rect:
+        serializedVersion: 2
+        x: 945
+        y: 220
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30b4ef2c2feb1dc4e9e0b8d27c039322
+      internalID: -1092705212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_118
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 12
+        width: 117
+        height: 207
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebf2aceab397e474e84b8c0509ea0983
+      internalID: -1661631333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_119
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 207
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 224058f7e6f8fe740a385e766a005fdf
+      internalID: -831022158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_120
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 204
+        width: 12
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed2b0b086cf7e6b4f9c0567d256ddc72
+      internalID: -1351151295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_121
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 209
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4328197bd5621dd4fb05349fb0ebf23f
+      internalID: -666658087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_122
+      rect:
+        serializedVersion: 2
+        x: 347
+        y: 208
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 945a2681c4305bc41acde3f9b484eb8c
+      internalID: 851571327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_123
+      rect:
+        serializedVersion: 2
+        x: 349
+        y: 206
+        width: 10
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7375dab9a5fe5541bbad5e1eae3023d
+      internalID: -1067039709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_124
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 208
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a46bc7a8be500b645ae6bbf17eb4ca86
+      internalID: -1963844713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_125
+      rect:
+        serializedVersion: 2
+        x: 501
+        y: 207
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1cc533dbe4e44f4c8acfdc36a9af4b7
+      internalID: 708843239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple_death_126
+      rect:
+        serializedVersion: 2
+        x: 565
+        y: 207
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e45c3b02fc470bc4ebd12ed723292120
+      internalID: 1973104045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 72f9f62921ee3214a9f5bbd96feda587
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      apple_death_44: -820276583
+      apple_death_28: 1763062399
+      apple_death_106: -46519484
+      apple_death_98: 652174350
+      apple_death_35: 1167965519
+      apple_death_18: -1923295723
+      apple_death_59: 1580164473
+      apple_death_41: 586639513
+      apple_death_34: -540924656
+      apple_death_121: -666658087
+      apple_death_72: 2014024658
+      apple_death_75: 471578731
+      apple_death_70: 1010313404
+      apple_death_4: -1761745816
+      apple_death_51: -1682043396
+      apple_death_42: -1277192016
+      apple_death_108: -1767698615
+      apple_death_25: -482553947
+      apple_death_47: 1956938568
+      apple_death_93: -1116451071
+      apple_death_95: -924696400
+      apple_death_90: 2072491586
+      apple_death_81: 1771549893
+      apple_death_80: -1263828223
+      apple_death_56: -636728987
+      apple_death_52: 1580619076
+      apple_death_99: 726187968
+      apple_death_61: 272074679
+      apple_death_112: -1570396066
+      apple_death_26: 811023408
+      apple_death_102: -1917319678
+      apple_death_113: 1538943746
+      apple_death_20: -2086458466
+      apple_death_8: -378617145
+      apple_death_97: 888797728
+      apple_death_77: 698961391
+      apple_death_122: 851571327
+      apple_death_16: 551189121
+      apple_death_123: -1067039709
+      apple_death_11: 1178974348
+      apple_death_68: -2060368053
+      apple_death_10: -230401979
+      apple_death_76: 410061621
+      apple_death_69: -1487457262
+      apple_death_105: 1125079095
+      apple_death_45: 444860565
+      apple_death_115: 805250654
+      apple_death_14: -1961384918
+      apple_death_40: 1018188388
+      apple_death_21: 892636591
+      apple_death_91: -1122412727
+      apple_death_107: -456106330
+      apple_death_126: 1973104045
+      apple_death_78: 1297013487
+      apple_death_33: -1911711784
+      apple_death_39: -353230503
+      apple_death_109: 1859456868
+      apple_death_43: -2017647691
+      apple_death_32: -252754752
+      apple_death_104: -1241799870
+      apple_death_67: -2027427564
+      apple_death_119: -831022158
+      apple_death_62: -679183297
+      apple_death_12: -1769867386
+      apple_death_0: -570577332
+      apple_death_13: -838529330
+      apple_death_54: -190742616
+      apple_death_31: 1645082039
+      apple_death_85: -2086368686
+      apple_death_55: -1242399481
+      apple_death_114: -1064167773
+      apple_death_27: 1406959476
+      apple_death_5: 797790118
+      apple_death_36: 1505925749
+      apple_death_83: -1226873113
+      apple_death_89: -791484474
+      apple_death_120: -1351151295
+      apple_death_71: -104032266
+      apple_death_111: 82570518
+      apple_death_60: 2010387362
+      apple_death_24: 256920884
+      apple_death_124: -1963844713
+      apple_death_6: 24705124
+      apple_death_9: -1322376901
+      apple_death_65: 292377099
+      apple_death_84: -546222232
+      apple_death_117: -1092705212
+      apple_death_96: -574381978
+      apple_death_73: -1368090336
+      apple_death_29: 1640783712
+      apple_death_57: 223015064
+      apple_death_103: -302676106
+      apple_death_118: -1661631333
+      apple_death_49: 2062400684
+      apple_death_125: 708843239
+      apple_death_7: -37962952
+      apple_death_58: 1862946373
+      apple_death_87: 180906944
+      apple_death_15: 1051653952
+      apple_death_30: 1619168565
+      apple_death_48: 598788230
+      apple_death_82: 1846360700
+      apple_death_63: -630353139
+      apple_death_37: -1227520735
+      apple_death_1: -2060859146
+      apple_death_46: 361938176
+      apple_death_100: 65749782
+      apple_death_3: -1916950154
+      apple_death_110: 1538054006
+      apple_death_17: -576788874
+      apple_death_53: 957546870
+      apple_death_92: 183160880
+      apple_death_86: 473563719
+      apple_death_79: -1484677595
+      apple_death_64: -549981421
+      apple_death_19: -180310267
+      apple_death_22: -391322483
+      apple_death_2: -916311078
+      apple_death_50: 1342712188
+      apple_death_94: -100277766
+      apple_death_116: 524513015
+      apple_death_66: 78014009
+      apple_death_38: 873771177
+      apple_death_23: 543697192
+      apple_death_74: -1501225553
+      apple_death_88: -2062068296
+      apple_death_101: 549679792
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

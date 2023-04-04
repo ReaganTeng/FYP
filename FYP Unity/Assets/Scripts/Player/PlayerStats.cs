@@ -6,11 +6,16 @@ using TMPro;
 
 public class PlayerStats : MonoBehaviour
 {
+
     public PlayerProgress playerProgress;
-    private float PlayerHealth;
+
+    //WON'T BE USED FOR NOW
+    [SerializeField] float PlayerHealth;
+    //
+
     [SerializeField] float PlayerAttack;
 
-    [SerializeField] int numberConsecutiveHits;
+    public int numberConsecutiveHits;
     [SerializeField] int ConsecutiveHit_Stage1;
     [SerializeField] int ConsecutiveHit_Stage2;
     [SerializeField] int ConsecutiveHit_Stage3;
@@ -18,17 +23,27 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] int ConsecutiveHit_Stage5;
 
     [SerializeField] Slider fervorBar;
-    [SerializeField] float fervorLevel;
+    float fervorLevel;
     float fervor2Add;
     float fervorMaxLevel;
-    [SerializeField] float combo_timer;
+    float combo_timer;
 
     //If fervorlevel >= 70, this is true, else false
     bool buff_active;
 
     [SerializeField] TextMeshProUGUI combo_timer_text;
 
-    
+    public void Awake()
+    {
+        fervorMaxLevel = 100;
+        fervor2Add = 0;
+        buff_active = false;
+        fervorBar.maxValue = fervorMaxLevel;
+        fervorLevel = 0;
+        numberConsecutiveHits = 0;
+
+        //Debug.Log("CONSECUTIVE HIT " + numberConsecutiveHits);
+    }
 
     public void Start()
     {
@@ -38,7 +53,9 @@ public class PlayerStats : MonoBehaviour
         buff_active = false;
         //fervorBar.maxValue = fervorMaxLevel;
         fervorLevel = 0;
-        
+        numberConsecutiveHits = 0;
+
+        //Debug.Log("CONSECUTIVE HIT " + numberConsecutiveHits);
     }
 
     public void ChangeHealth(float Healthchange)
@@ -50,6 +67,22 @@ public class PlayerStats : MonoBehaviour
         {
             Debug.Log("Imagine dying to ingredients!!");
         }
+    }
+
+    public void ChangeFervor(float Fervorchange)
+    {
+
+        if (fervorLevel > 0)
+        {
+            fervorLevel += Fervorchange;
+
+            if(fervorLevel < 0)
+            {
+                fervorLevel = 0;
+            }
+        }
+
+        Debug.Log("Fervor: " + fervorLevel);
     }
 
 
@@ -67,6 +100,13 @@ public class PlayerStats : MonoBehaviour
         //    numberConsecutiveHits = 0;
             
         //}
+
+        if (combo_timer <= 0
+            && !Input.GetMouseButtonDown(0))
+        {
+            ResetConsecutiveHit();
+            numberConsecutiveHits = 0;
+        }
 
         //if (fervorLevel >= fervorMaxLevel - 30)
         //{
@@ -196,6 +236,7 @@ public class PlayerStats : MonoBehaviour
     public void addConsecutiveHit()
     {
         numberConsecutiveHits += 1;
+        Debug.Log("CONSECUTIVE HIT " + numberConsecutiveHits);
     }
     public float GetPlayerAttack()
     {

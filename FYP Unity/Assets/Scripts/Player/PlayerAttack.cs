@@ -22,6 +22,9 @@ public class PlayerAttack : MonoBehaviour
     int direction;
     Weapon currentweapon = Weapon.SPATULA;
     // Start is called before the first frame update
+
+
+
     void Start()
     {
         HitBox.SetActive(false);
@@ -36,6 +39,8 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
         // Attacking
         if (attackcdtimer > 0)
             attackcdtimer -= Time.deltaTime;
@@ -52,10 +57,6 @@ public class PlayerAttack : MonoBehaviour
                 attacking = true;
                 attackingtimer = attackingtime;
             }
-
-            
-
-
 
             if (attacking)
             {
