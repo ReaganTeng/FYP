@@ -65,8 +65,6 @@ public class JumperScript : MonoBehaviour
                 case EnemyScript.Phases.ATTACK_TYPE_1:
                 case EnemyScript.Phases.ATTACK_TYPE_2:
                 {
-                    GetComponent<MeshRenderer>().enabled = false;
-
                     if (currentdistance < 0.7f)
                     {
                         timer += 1 * Time.deltaTime;
@@ -128,9 +126,6 @@ public class JumperScript : MonoBehaviour
                 }
             case EnemyScript.Phases.COOLDOWN:
                 {
-                    GetComponent<MeshRenderer>().enabled = false;
-
-
                     //jumpcooldown = 4.1f;
                     jumpcooldown = 0.3f;
 
@@ -147,14 +142,6 @@ public class JumperScript : MonoBehaviour
                         GetComponent<EnemyScript>().settimer(0.0f);   
                         GetComponent<EnemyScript>().phase = EnemyScript.Phases.ABOUT_TO_ATTACK;
                     }
-                    break;
-                }
-            case EnemyScript.Phases.ABOUT_TO_ATTACK:
-                {
-
-                    GetComponent<MeshRenderer>().enabled = true;
-
-                    GetComponent<EnemyScript>().abouttoattackUpdate();
                     break;
                 }
             default:

@@ -8,8 +8,6 @@ public class EnemyAttack : MonoBehaviour
     [SerializeField] float AttackCD;
     float Attackcdtimer;
 
-
-    [SerializeField] Animator animator;
     public GameObject player;
 
     // Start is called before the first frame update
@@ -23,20 +21,7 @@ public class EnemyAttack : MonoBehaviour
         //Debug.Log("Time is "+ Attackcdtimer);
 
         if (Attackcdtimer > 0)
-        {
             Attackcdtimer -= Time.deltaTime;
-
-            if (Attackcdtimer < AttackCD / 2)
-            {
-                animator.SetBool("attack", false);
-            }
-        }
-
-
-        //if (Attackcdtimer > AttackCD/2)
-        //{
-        //    animator.SetBool("attack", false);
-        //}
 
         /*if (player != null)
         {
@@ -57,12 +42,9 @@ public class EnemyAttack : MonoBehaviour
         // if it is the player
         if (other.CompareTag("Player") && Attackcdtimer <= 0)
         {
-            //if (animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "run")
-            //{
-                animator.SetBool("attack", true);
-                other.GetComponent<PlayerStats>().ChangeHealth(-es.AttackDamage);
-                other.GetComponent<PlayerStats>().ResetConsecutiveHit();
-            //}
+           
+            other.GetComponent<PlayerStats>().ChangeHealth(-es.AttackDamage);
+            other.GetComponent<PlayerStats>().ResetConsecutiveHit();
 
             //other.GetComponent<Rigidbody>().AddForce(
             //    (other.GetComponent<Transform>().position - GetComponentInParent<Transform>().position).normalized * 50.0f, 
@@ -70,13 +52,6 @@ public class EnemyAttack : MonoBehaviour
             //    );
             Attackcdtimer = AttackCD;
         }
-
-        /*if (other.CompareTag("Player"))
-        {
-            animator.SetBool("attack", true);
-
-        }*/
-
         //else
         //{
         //    Debug.Log("NO COLLISSION");
