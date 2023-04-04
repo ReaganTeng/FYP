@@ -24,7 +24,6 @@ public class Mixer : MonoBehaviour
     GameObject RecipeResultObject = null;
     bool CanPutIntoMixer;
     bool MixerDone;
-    bool QTEDone;
 
     // List that contains the ingredients inputted into the mixer
     List<GameObject> mixercontent = new List<GameObject>();
@@ -34,7 +33,6 @@ public class Mixer : MonoBehaviour
         ResetMixer();
         CanPutIntoMixer = true;
         MixerDone = false;
-        QTEDone = false;
     }
 
     public void InteractWithMixer()
@@ -170,7 +168,7 @@ public class Mixer : MonoBehaviour
         MixerDone = false;
     }
 
-    public void GetDishFromMixer()
+    void GetDishFromMixer()
     {
         InventoryImageControl inv = GameObject.FindGameObjectWithTag("GameManager").GetComponent<InventoryImageControl>();
 
@@ -191,18 +189,8 @@ public class Mixer : MonoBehaviour
                 // Check to see player inventory is not full
                 if (!Inventory.instance.InventoryFull)
                 {
-                    if (!QTEDone)
-                    {
-                        QTE.instance.StartQTE(gameObject, RecipeResultObject);
-                        QTEDone = true;
-                    }
-
-                    else
-                    {
-                        inv.AddItem(RecipeResultObject);
-                        Successful = true;
-                        QTEDone = false;
-                    }
+                    inv.AddItem(RecipeResultObject);
+                    Successful = true;
                 }
                 break;
         }

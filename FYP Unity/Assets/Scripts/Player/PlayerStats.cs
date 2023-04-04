@@ -36,7 +36,7 @@ public class PlayerStats : MonoBehaviour
         fervorMaxLevel = 100;
         fervor2Add = 0;
         buff_active = false;
-        //fervorBar.maxValue = fervorMaxLevel;
+        fervorBar.maxValue = fervorMaxLevel;
         fervorLevel = 0;
         
     }
@@ -55,27 +55,27 @@ public class PlayerStats : MonoBehaviour
 
     public void Update()
     {
-        //combo_timer_text.SetText(((int)combo_timer).ToString());
-        //combo_timer -= 1 * Time.deltaTime;
-        //fervorBar.value = fervorLevel;
-        //fervorLevel -= 1.0f * Time.deltaTime;
+        combo_timer_text.SetText(((int)combo_timer).ToString());
+        combo_timer -= 1 * Time.deltaTime;
+        fervorBar.value = fervorLevel;
+        fervorLevel -= 1.0f * Time.deltaTime;
 
-        //if (combo_timer <= 0
-        //    && !Input.GetMouseButtonDown(0))
-        //{
-        //    ResetConsecutiveHit();
-        //    numberConsecutiveHits = 0;
+        if (combo_timer <= 0
+            && !Input.GetMouseButtonDown(0))
+        {
+            ResetConsecutiveHit();
+            numberConsecutiveHits = 0;
             
-        //}
+        }
 
-        //if (fervorLevel >= fervorMaxLevel - 30)
-        //{
-        //    buff_active = true;
-        //}
-        //else
-        //{
-        //    buff_active = false;
-        //}
+        if (fervorLevel >= fervorMaxLevel - 30)
+        {
+            buff_active = true;
+        }
+        else
+        {
+            buff_active = false;
+        }
 
         //GetComponent<Transform>().localScale += new Vector3(1 * Time.deltaTime, 1 * Time.deltaTime, 0);
         /*if (obtainTimer > 0)

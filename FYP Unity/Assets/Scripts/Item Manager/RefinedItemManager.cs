@@ -13,6 +13,14 @@ public class RefinedItemManager : MonoBehaviour
         MAYONNAISE, //2
         SALAD_BOWL, //3
         BOILED_POTATO, //4
+        APPLE_MUSH,
+        SAHSIMI,
+        RICE_BLOCK,
+        MIX_BEEF,
+        MIX_CHICKEN,
+        CHEESE,
+        COOKED_CARROTS,
+        COOKED_RICE,
     }
 
     public RItems GetItemType(int itemID)
