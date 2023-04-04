@@ -214,6 +214,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 213048543576003090, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
+      propertyPath: level
+      value: 
+      objectReference: {fileID: 11400000, guid: 8b72ac5f104568b49a171af55c8d4a09, type: 2}
     - target: {fileID: 4715829589501241440, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -262,6 +266,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelPoint4
       objectReference: {fileID: 0}
+    - target: {fileID: 5999686475728624559, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
+      propertyPath: level
+      value: 
+      objectReference: {fileID: 11400000, guid: 8b72ac5f104568b49a171af55c8d4a09, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
 --- !u!1 &722112414
@@ -351,6 +359,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 213048543576003090, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
+      propertyPath: level
+      value: 
+      objectReference: {fileID: 11400000, guid: 8b72ac5f104568b49a171af55c8d4a09, type: 2}
     - target: {fileID: 374053796352140189, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -407,6 +419,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelPoint2
       objectReference: {fileID: 0}
+    - target: {fileID: 5999686475728624559, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
+      propertyPath: level
+      value: 
+      objectReference: {fileID: 11400000, guid: 8b72ac5f104568b49a171af55c8d4a09, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
 --- !u!1001 &1328461651
@@ -416,6 +432,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 213048543576003090, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
+      propertyPath: level
+      value: 
+      objectReference: {fileID: 11400000, guid: 8b72ac5f104568b49a171af55c8d4a09, type: 2}
     - target: {fileID: 4715829589501241440, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -464,6 +484,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelPoint3
       objectReference: {fileID: 0}
+    - target: {fileID: 5999686475728624559, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
+      propertyPath: level
+      value: 
+      objectReference: {fileID: 11400000, guid: 8b72ac5f104568b49a171af55c8d4a09, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
 --- !u!1001 &1415920947
@@ -473,6 +497,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 213048543576003090, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
+      propertyPath: Arank
+      value: 
+      objectReference: {fileID: 21300000, guid: ab485750a91f49248ac6dae7ccfd121d, type: 3}
+    - target: {fileID: 213048543576003090, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
+      propertyPath: Brank
+      value: 
+      objectReference: {fileID: 21300000, guid: 883df4b9c652a354ea88b3898472dbd1, type: 3}
+    - target: {fileID: 213048543576003090, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
+      propertyPath: Crank
+      value: 
+      objectReference: {fileID: 21300000, guid: b8a3964cd24c1b5469ba2bd15fc79245, type: 3}
+    - target: {fileID: 213048543576003090, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
+      propertyPath: Drank
+      value: 
+      objectReference: {fileID: 21300000, guid: bc60be3f38b7fd24ca050e34594894d3, type: 3}
+    - target: {fileID: 213048543576003090, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
+      propertyPath: Erank
+      value: 
+      objectReference: {fileID: 21300000, guid: 03803a212d959984da99c555491214fc, type: 3}
+    - target: {fileID: 213048543576003090, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
+      propertyPath: Frank
+      value: 
+      objectReference: {fileID: 21300000, guid: f7bc6d841c1500144b94e26dc7525783, type: 3}
+    - target: {fileID: 213048543576003090, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
+      propertyPath: Srank
+      value: 
+      objectReference: {fileID: 21300000, guid: 4a6ca92b421ab5f48a8530602ee062ba, type: 3}
     - target: {fileID: 374053796352140189, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -529,6 +581,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelPoint1
       objectReference: {fileID: 0}
+    - target: {fileID: 5999686475728624559, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
+      propertyPath: level
+      value: 
+      objectReference: {fileID: 11400000, guid: cf6ba5c86b1d27047ae184024faea28d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
 --- !u!1 &1453892361
@@ -829,6 +885,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 213048543576003090, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
+      propertyPath: level
+      value: 
+      objectReference: {fileID: 11400000, guid: 8b72ac5f104568b49a171af55c8d4a09, type: 2}
     - target: {fileID: 4715829589501241440, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -877,6 +937,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelPoint5
       objectReference: {fileID: 0}
+    - target: {fileID: 5999686475728624559, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
+      propertyPath: level
+      value: 
+      objectReference: {fileID: 11400000, guid: 8b72ac5f104568b49a171af55c8d4a09, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
 --- !u!1 &2051808697

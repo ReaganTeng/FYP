@@ -6,7 +6,8 @@ using TMPro;
 
 public class PlayerStats : MonoBehaviour
 {
-    [SerializeField] float PlayerHealth;
+    public PlayerProgress playerProgress;
+    private float PlayerHealth;
     [SerializeField] float PlayerAttack;
 
     [SerializeField] int numberConsecutiveHits;
@@ -31,6 +32,7 @@ public class PlayerStats : MonoBehaviour
 
     public void Start()
     {
+        PlayerHealth = playerProgress.PlayerMaxHealth;
         fervorMaxLevel = 100;
         fervor2Add = 0;
         buff_active = false;

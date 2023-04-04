@@ -17,6 +17,9 @@ public class OrderSystem : MonoBehaviour
     bool StartOrdering;
     bool IncurPenalty;
     bool icDelay;
+    bool StopComingOrders;
+    private int SuccessfulOrders;
+    private int FailedOrders;
 
     List<GameObject> orderList = new List<GameObject>();
 
@@ -42,6 +45,9 @@ public class OrderSystem : MonoBehaviour
         StartOrdering = false;
         IncurPenalty = false;
         icDelay = false;
+        StopComingOrders = false;
+        SuccessfulOrders = 0;
+        FailedOrders = 0;
     }
 
     private void Update()
@@ -56,7 +62,7 @@ public class OrderSystem : MonoBehaviour
             }
         }
 
-        else if (orderList.Count < MaxOrderAtOnce)
+        else if (orderList.Count < MaxOrderAtOnce && !StopComingOrders)
         {
             orderintervaltimer -= Time.deltaTime;
 
@@ -166,6 +172,10 @@ public class OrderSystem : MonoBehaviour
                 Destroy(inventory.GetSelectedGameObject());
                 // Remove it from player inventory
                 inventory.RemoveSelected();
+                // Count towards a successful serve
+                SuccessfulOrders++;
+                // Check to see if can end day
+                CheckIfCanEndDay();
             }
         }
         else
@@ -179,6 +189,8 @@ public class OrderSystem : MonoBehaviour
         int penaltyby = GameObject.FindGameObjectWithTag("GameManager").GetComponent<OrderManager>().GetPenalty();
         IncurPenalty = true;
         eod.ChangeScore(-penaltyby);
+        // Count towards a failed order
+        FailedOrders++;
         CheckOrderList();
     }
 
@@ -191,8 +203,33 @@ public class OrderSystem : MonoBehaviour
             if (orderList[i] == null)
             {
                 orderList.Remove(orderList[i]);
+                CheckIfCanEndDay();
                 break;
             }
         }
+    }
+
+    public void StopOrders()
+    {
+        StopComingOrders = true;
+        CheckIfCanEndDay();
+    }
+
+    void CheckIfCanEndDay()
+    {
+        if (StopComingOrders & orderList.Count == 0)
+        {
+            eod.EndDay();
+        }
+    }
+
+    public int GetSuccessfulOrders()
+    {
+        return SuccessfulOrders;
+    }
+
+    public int GetFailedOrders()
+    {
+        return FailedOrders;
     }
 }

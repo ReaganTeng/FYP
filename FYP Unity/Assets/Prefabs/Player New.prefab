@@ -273,7 +273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce78690cc40ff984f8d3d5436d68a23d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerHealth: 100
+  playerProgress: {fileID: 11400000, guid: 80203a9d8037ee2449d6c18b30afe1f3, type: 2}
   PlayerAttack: 10
   numberConsecutiveHits: 0
   ConsecutiveHit_Stage1: 0
@@ -297,7 +297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a6a8bc09a56f61409f68a9556bea87b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxInventorySize: 2
+  playerProgress: {fileID: 11400000, guid: 80203a9d8037ee2449d6c18b30afe1f3, type: 2}
   InventoryFull: 0
 --- !u!1 &6056453856304180488
 GameObject:

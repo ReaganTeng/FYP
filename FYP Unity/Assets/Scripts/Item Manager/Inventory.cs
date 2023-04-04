@@ -13,7 +13,10 @@ public class Inventory : MonoBehaviour
     }
 
     public static Inventory instance;
-    [SerializeField] int MaxInventorySize;
+    public PlayerProgress playerProgress;
+    private int MaxInventorySize;
+
+
     List<inventory> InventoryList = new List<inventory>();
     public bool InventoryFull = false;
 
@@ -83,5 +86,6 @@ public class Inventory : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        MaxInventorySize = playerProgress.MaxInventorySlots;
     }
 }

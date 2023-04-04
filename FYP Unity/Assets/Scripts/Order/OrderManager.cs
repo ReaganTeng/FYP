@@ -26,8 +26,10 @@ public class OrderManager : MonoBehaviour
 
     List<Recipes.recipes> currentdayrecipesList = new List<Recipes.recipes>();
 
+    [SerializeField] EndOfDay eod;
+
     // Stores the current day
-    [SerializeField] int currentday;
+    private int currentday;
 
     private void Awake()
     {
@@ -36,6 +38,7 @@ public class OrderManager : MonoBehaviour
 
     private void Start()
     {
+        currentday = eod.GetCurrentDay();
         SetOrdersForTheDay();
     }
 

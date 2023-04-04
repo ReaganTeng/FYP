@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class OrderPanel : MonoBehaviour
 {
     [SerializeField] Image Ingredient1;
     [SerializeField] Image Ingredient2;
     [SerializeField] Image ResultDish;
-    [SerializeField] TextMeshProUGUI text;
     [SerializeField] float OrderTimer;
     [SerializeField] int score;
-    [SerializeField] Recipes.recipes OrderRecipe;
+    [SerializeField] GameObject TimerNeedle;
+    Recipes.recipes OrderRecipe;
+    float RotateBy;
 
     public void SetOrder(Sprite ingre1, Sprite ingre2, Sprite dishresult, Recipes.recipes therecipe)
     {
@@ -46,10 +46,17 @@ public class OrderPanel : MonoBehaviour
         return score;
     }
 
+    private void Start()
+    {
+        RotateBy = 360 / OrderTimer;
+    }
+
     private void Update()
     {
         OrderTimer -= Time.deltaTime;
-        text.text = "Time Left: " + (int)OrderTimer;
+        Quaternion currentRotation = TimerNeedle.transform.rotation;
+        Quaternion newRotation = Quaternion.Euler(0, 0, -RotateBy * Time.deltaTime) * currentRotation;
+        TimerNeedle.transform.rotation = newRotation;
 
         // Destroy itself if timer hits 0;
         if (OrderTimer <= 0.0f)
