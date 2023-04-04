@@ -33,8 +33,14 @@ public class PlayerStats : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI combo_timer_text;
 
+    int zoneno;
+    GameObject[] zone;
+
     public void Awake()
     {
+        zoneno = 0;
+        zone = GameObject.FindGameObjectsWithTag("Zone");
+
         fervorMaxLevel = 100;
         fervor2Add = 0;
         buff_active = false;
@@ -47,6 +53,9 @@ public class PlayerStats : MonoBehaviour
 
     public void Start()
     {
+        zoneno = 0;
+        zone = GameObject.FindGameObjectsWithTag("Zone");
+
         PlayerHealth = playerProgress.PlayerMaxHealth;
         fervorMaxLevel = 100;
         fervor2Add = 0;
@@ -108,14 +117,30 @@ public class PlayerStats : MonoBehaviour
             numberConsecutiveHits = 0;
         }
 
-        //if (fervorLevel >= fervorMaxLevel - 30)
-        //{
-        //    buff_active = true;
-        //}
-        //else
-        //{
-        //    buff_active = false;
-        //}
+
+        zone = GameObject.FindGameObjectsWithTag("Zone");
+        for (int i = 0; i < zone.Length; i++)
+        {
+            if (gameObject.transform.position.x < zone[i].GetComponent<Transform>().position.x + (zone[i].GetComponent<Transform>().localScale.x / 2)
+             && gameObject.transform.position.x > zone[i].GetComponent<Transform>().position.x - (zone[i].GetComponent<Transform>().localScale.x / 2)
+             && gameObject.transform.position.z > zone[i].GetComponent<Transform>().position.z - (zone[i].GetComponent<Transform>().localScale.z / 2)
+            && gameObject.transform.position.z < zone[i].GetComponent<Transform>().position.z + (zone[i].GetComponent<Transform>().localScale.z / 2)
+             )
+            
+            {
+                zoneno = zone[i].GetComponent<WhatZone>().zone_number;
+            }
+        }
+
+
+        if (fervorLevel >= fervorMaxLevel - 30)
+        {
+            buff_active = true;
+        }
+        else
+        {
+            buff_active = false;
+        }
 
         //GetComponent<Transform>().localScale += new Vector3(1 * Time.deltaTime, 1 * Time.deltaTime, 0);
         /*if (obtainTimer > 0)

@@ -33,6 +33,10 @@ public class EnemyScript : MonoBehaviour
 
     public GameObject attackhitbox;
 
+
+    int zoneno;
+    GameObject[] zone;
+
     public enum Phases
     {
         ABOUT_TO_ATTACK,
@@ -48,6 +52,8 @@ public class EnemyScript : MonoBehaviour
 
     void Start()
     {
+        zoneno = 0;
+
         transitionFromHurtTimer = 0;
         //phase = Phases.PHASE_3;
 
@@ -133,6 +139,23 @@ public class EnemyScript : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
 
         GetComponentInChildren<Animator>().SetFloat("health", EnemyHealth);
+
+
+
+        zone = GameObject.FindGameObjectsWithTag("Zone");
+        for (int i = 0; i < zone.Length; i++)
+        {
+            if (gameObject.transform.position.x < zone[i].GetComponent<Transform>().position.x + (zone[i].GetComponent<Transform>().localScale.x / 2)
+             && gameObject.transform.position.x > zone[i].GetComponent<Transform>().position.x - (zone[i].GetComponent<Transform>().localScale.x / 2)
+             && gameObject.transform.position.z > zone[i].GetComponent<Transform>().position.z - (zone[i].GetComponent<Transform>().localScale.z / 2)
+            && gameObject.transform.position.z < zone[i].GetComponent<Transform>().position.z + (zone[i].GetComponent<Transform>().localScale.z / 2)
+             )
+
+            {
+                zoneno = zone[i].GetComponent<WhatZone>().zone_number;
+            }
+        }
+
 
         if (GetComponentInChildren<Animator>().GetBool("attacked") == true)
         {

@@ -334,7 +334,6 @@ MonoBehaviour:
   es: {fileID: 2042661433135484003}
   AttackCD: 1
   animator: {fileID: 8240658424474279918}
-  player: {fileID: 3462924137396006120, guid: d09965bd491c43742a512d3f4207781f, type: 3}
 --- !u!33 &2689928030107387971
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -350,7 +349,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5045888562720546165}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -585,7 +584,6 @@ MonoBehaviour:
   smashedPrefab: {fileID: 3320338801699120423, guid: 74500f70982b1624f91594f2616f5dd0, type: 3}
   Mush: {fileID: 8494874157540663937, guid: 4255f020537c20a48857eb56b1b0f6d5, type: 3}
   healthbar: {fileID: 2980357153712741364}
-  player: {fileID: 3462924137396006120, guid: d09965bd491c43742a512d3f4207781f, type: 3}
   attackhitbox: {fileID: 5045888562720546165}
   phase: 0
 --- !u!114 &3005328288323005774
