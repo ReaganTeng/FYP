@@ -32,13 +32,12 @@ public class PlayerStats : MonoBehaviour
 
     public void Start()
     {
-        PlayerHealth = playerProgress.PlayerMaxHealth;
         fervorMaxLevel = 100;
         fervor2Add = 0;
         buff_active = false;
         //fervorBar.maxValue = fervorMaxLevel;
         fervorLevel = 0;
-        
+        PlayerHealth = 100;
     }
 
     public void ChangeHealth(float Healthchange)

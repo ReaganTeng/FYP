@@ -6,6 +6,7 @@ using TMPro;
 public class DisplayLevelSelect : MonoBehaviour
 {
     public Level level;
+    [SerializeField] PlayerProgress pp;
     [SerializeField] TextMeshPro levelname;
     [SerializeField] TextMeshPro leveldescription;
     [SerializeField] GameObject HighestScore;
@@ -13,6 +14,7 @@ public class DisplayLevelSelect : MonoBehaviour
     [SerializeField] GameObject levelLocked;
     [SerializeField] GameObject DisplayGrade;
     [SerializeField] GameObject PlayButton;
+    [SerializeField] GameObject DisplayReq;
 
     [SerializeField] Sprite Srank;
     [SerializeField] Sprite Arank;
@@ -28,6 +30,7 @@ public class DisplayLevelSelect : MonoBehaviour
             levelSelect.SetActive(false);
             levelLocked.SetActive(true);
             PlayButton.SetActive(false);
+            DisplayReq.GetComponent<TextMeshPro>().text = "LOCKED \n" + pp.GetMaxCC() + "/" + level.CCReq + " TOTAL CC";
         }
         else
         {
