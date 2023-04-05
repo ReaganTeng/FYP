@@ -17,7 +17,7 @@ public class Spawner : MonoBehaviour
         interval = 0;
         time = 2.0f;
         max_enemies = 5;
-        enable = false;
+        enable = true;
     }
 
     // Update is called once per frame
@@ -43,7 +43,7 @@ public class Spawner : MonoBehaviour
                     z_position = Random.Range(-5, 5);
 
                     GameObject enemyObject = Instantiate(enemy,
-                               transform.position + new Vector3(x_position, 2, z_position),
+                               transform.position + new Vector3(x_position, 0, z_position),
                                transform.rotation
                                );
                     enemyObject.transform.SetParent(transform);

@@ -225,7 +225,7 @@ public class ChaserScript : MonoBehaviour
             if (Physics.Raycast(ray, out hitInfo, rayRange
                 , ~lm))
             {
-                Debug.Log("HIT SOMETHING");
+                //Debug.Log("HIT SOMETHING");
                 deltaPosition -= (1.0f / numberOfRays) * targetVelocity * direction;
                 transform.position += deltaPosition * Time.deltaTime;
                
@@ -233,7 +233,7 @@ public class ChaserScript : MonoBehaviour
             else if(Physics.Raycast(ray2, out hitInfo, rayRange
                 , ~lm))
             {
-                Debug.Log("HIT SOMETHING");
+                //Debug.Log("HIT SOMETHING");
 
                 deltaPosition -= (1.0f / numberOfRays) * targetVelocity * direction2;
                 transform.position += deltaPosition * Time.deltaTime;

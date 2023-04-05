@@ -10,6 +10,8 @@ public class JumperScript : MonoBehaviour
     [SerializeField] EnemyScript.Phases enemyPhase;
     [SerializeField] GameObject enemySprite;
     GameObject playerGO;
+    [SerializeField] GameObject spriteRenderer;
+
 
     float speedfactor;
     
@@ -50,8 +52,12 @@ public class JumperScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        playerGO = GameObject.FindGameObjectWithTag("Player");
+
         enemyPhase = gameObject.GetComponent<EnemyScript>().phase;
         currentdistance = Vector3.Distance(playerGO.transform.position, transform.position);
+
+        //Debug.Log("DISTANCE " + (int)currentdistance);
 
         //if (distance < GetComponent<EnemyMovement>().DetectionRange)
         //{
@@ -60,29 +66,38 @@ public class JumperScript : MonoBehaviour
 
         //if (startupdating == true)
         //{
-            switch (enemyPhase)
+        switch (enemyPhase)
             {
+
+
                 case EnemyScript.Phases.ATTACK_TYPE_1:
                 case EnemyScript.Phases.ATTACK_TYPE_2:
                 {
-                    if (currentdistance < 0.7f)
+
+                    if (currentdistance < 7.0f)
                     {
                         timer += 1 * Time.deltaTime;
 
-                        if(timer < 0.3f)
+                        //prepare to jump
+                        if (timer < 1.0f)
                         {
+                            GetComponentInChildren<Animator>().SetBool("about2jump", true);
+
                             navMeshAgent.speed = 0.0f;
                             startpos = transform.position;
                             navMeshAgent.SetDestination(playerGO.transform.position);
                             endpoint = navMeshAgent.destination;
-                            controlPoint = startpos + (endpoint - transform.position) / 2 + Vector3.up * 5.0f;
+                            controlPoint = startpos + (endpoint - transform.position) / 2 + Vector3.up * 15.0f;
                         }
+                        //
 
                         //JUMP
-                        if (timer > 0.5f)
+                        if (timer > 1.5f)
                         {
+                            GetComponentInChildren<Animator>().SetBool("jump", true);
+
                             //while it's jumping, disable collider;
-                            if (currentdistance < 0.1f)
+                            if (currentdistance < 1.0f)
                             {
                                 attackhitbox.GetComponent<BoxCollider>().enabled = true;
                                 GetComponent<BoxCollider>().enabled = true;
@@ -112,20 +127,23 @@ public class JumperScript : MonoBehaviour
                     //continue to chase the player
                     else
                     {
+                        GetComponentInChildren<Animator>().SetBool("chasingPlayer", true);
                         attackhitbox.GetComponent<BoxCollider>().enabled = true;
 
                         navMeshAgent.speed = 5.0f;
                         startpos = transform.position;
                         navMeshAgent.SetDestination(playerGO.transform.position);
                         endpoint = navMeshAgent.destination;
-                        controlPoint = startpos + (endpoint - transform.position) / 2 + Vector3.up * 5.0f;
+                        controlPoint = startpos + (endpoint - transform.position) / 2 + Vector3.up * 15.0f;
                         timer = 0.0f;
                         //startupdating = false;
                     }
+                    //
                     break;
                 }
             case EnemyScript.Phases.COOLDOWN:
                 {
+
                     //jumpcooldown = 4.1f;
                     jumpcooldown = 0.3f;
 
@@ -142,6 +160,22 @@ public class JumperScript : MonoBehaviour
                         GetComponent<EnemyScript>().settimer(0.0f);   
                         GetComponent<EnemyScript>().phase = EnemyScript.Phases.ABOUT_TO_ATTACK;
                     }
+                    break;
+                }
+
+            case EnemyScript.Phases.ABOUT_TO_ATTACK:
+                {
+
+                    //make vibration
+                    var speed = 4.0f; //how fast it shakes
+                    var amount = 0.5f; //how much it shakes
+                    //spriteRenderer.transform.position.x = (Mathf.Sin(Time.time * speed) * amount);
+                    //spriteRenderer.transform.position = new Vector3((Mathf.Sin(Time.time * speed) * amount),
+                    //spriteRenderer.transform.position.y, spriteRenderer.transform.position.z);
+
+                    //GetComponent<MeshRenderer>().enabled = true;
+
+                    GetComponent<EnemyScript>().abouttoattackUpdate();
                     break;
                 }
             default:
@@ -162,10 +196,16 @@ public class JumperScript : MonoBehaviour
             count += 1.0f * Time.deltaTime;
             Vector3 m1 = Vector3.Lerp(startpos, controlPoint, count);
             Vector3 m2 = Vector3.Lerp(controlPoint, endpoint, count);
+
+            spriteRenderer.transform.position = Vector3.Lerp(m1, m2, count);
             enemySprite.transform.position = Vector3.Lerp(m1, m2, count);
         }
         else /*if(count > 1.0f)*/
         {
+            GetComponentInChildren<Animator>().SetBool("about2jump", false);
+            GetComponentInChildren<Animator>().SetBool("jump", false);
+            GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
+
             jumprest();
         }
     }
@@ -221,6 +261,7 @@ public class JumperScript : MonoBehaviour
         /*attackhitbox.GetComponent<BoxCollider>().enabled = true;
         GetComponent<BoxCollider>().enabled = true;*/
 
+        spriteRenderer.transform.position = transform.position + new Vector3(0.0f, 0.6f, 0.0f);
         enemySprite.transform.position = transform.position + new Vector3(0.0f, 0.6f, 0.0f);
 
 
@@ -231,7 +272,7 @@ public class JumperScript : MonoBehaviour
             navMeshAgent.SetDestination(playerGO.transform.position
                 );
             endpoint = navMeshAgent.destination;
-            controlPoint = startpos + (endpoint - transform.position) / 2 + Vector3.up * 5.0f;
+            controlPoint = startpos + (endpoint - transform.position) / 2 + Vector3.up * 15.0f;
             navMeshAgent.acceleration = 20.0f;
             speedfactor = 20.0f;
             count = 0;
