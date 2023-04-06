@@ -6,16 +6,16 @@ using TMPro;
 
 public class PlayerStats : MonoBehaviour
 {
-
     public PlayerProgress playerProgress;
 
     //WON'T BE USED FOR NOW
     [SerializeField] float PlayerHealth;
     //
 
-    [SerializeField] float PlayerAttack;
+    float PlayerAttack;
 
-    public int numberConsecutiveHits;
+
+    [SerializeField] int numberConsecutiveHits;
     [SerializeField] int ConsecutiveHit_Stage1;
     [SerializeField] int ConsecutiveHit_Stage2;
     [SerializeField] int ConsecutiveHit_Stage3;
@@ -23,10 +23,10 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] int ConsecutiveHit_Stage5;
 
     [SerializeField] Slider fervorBar;
-    float fervorLevel;
+    [SerializeField] float fervorLevel;
     float fervor2Add;
     float fervorMaxLevel;
-    float combo_timer;
+    [SerializeField] float combo_timer;
 
     //If fervorlevel >= 70, this is true, else false
     bool buff_active;
@@ -38,8 +38,10 @@ public class PlayerStats : MonoBehaviour
 
     public void Awake()
     {
+        PlayerAttack = 10.0f;
         zoneno = 0;
         zone = GameObject.FindGameObjectsWithTag("Zone");
+        BoundaryCheck();
 
         fervorMaxLevel = 100;
         fervor2Add = 0;
@@ -47,24 +49,36 @@ public class PlayerStats : MonoBehaviour
         fervorBar.maxValue = fervorMaxLevel;
         fervorLevel = 0;
         numberConsecutiveHits = 0;
-
-        //Debug.Log("CONSECUTIVE HIT " + numberConsecutiveHits);
     }
+
+   
+    
 
     public void Start()
     {
+        PlayerAttack = 10.0f;
         zoneno = 0;
         zone = GameObject.FindGameObjectsWithTag("Zone");
+        BoundaryCheck();
 
-        PlayerHealth = playerProgress.PlayerMaxHealth;
+        //PlayerHealth = playerProgress.PlayerMaxHealth;
+
         fervorMaxLevel = 100;
         fervor2Add = 0;
         buff_active = false;
-        //fervorBar.maxValue = fervorMaxLevel;
         fervorLevel = 0;
         numberConsecutiveHits = 0;
+    }
 
-        //Debug.Log("CONSECUTIVE HIT " + numberConsecutiveHits);
+    public void setAttack(float atk)
+    {
+        PlayerAttack = atk;
+    }
+
+    public float getAttack(float additionalAtk = 0)
+    {
+        return PlayerAttack + additionalAtk;
+        PlayerHealth = 100;
     }
 
     public void ChangeHealth(float Healthchange)
@@ -85,7 +99,7 @@ public class PlayerStats : MonoBehaviour
         {
             fervorLevel += Fervorchange;
 
-            if(fervorLevel < 0)
+            if (fervorLevel < 0)
             {
                 fervorLevel = 0;
             }
@@ -102,13 +116,6 @@ public class PlayerStats : MonoBehaviour
         //fervorBar.value = fervorLevel;
         //fervorLevel -= 1.0f * Time.deltaTime;
 
-        //if (combo_timer <= 0
-        //    && !Input.GetMouseButtonDown(0))
-        //{
-        //    ResetConsecutiveHit();
-        //    numberConsecutiveHits = 0;
-            
-        //}
 
         if (combo_timer <= 0
             && !Input.GetMouseButtonDown(0))
@@ -119,18 +126,9 @@ public class PlayerStats : MonoBehaviour
 
 
         zone = GameObject.FindGameObjectsWithTag("Zone");
-        for (int i = 0; i < zone.Length; i++)
-        {
-            if (gameObject.transform.position.x < zone[i].GetComponent<Transform>().position.x + (zone[i].GetComponent<Transform>().localScale.x / 2)
-             && gameObject.transform.position.x > zone[i].GetComponent<Transform>().position.x - (zone[i].GetComponent<Transform>().localScale.x / 2)
-             && gameObject.transform.position.z > zone[i].GetComponent<Transform>().position.z - (zone[i].GetComponent<Transform>().localScale.z / 2)
-            && gameObject.transform.position.z < zone[i].GetComponent<Transform>().position.z + (zone[i].GetComponent<Transform>().localScale.z / 2)
-             )
-            
-            {
-                zoneno = zone[i].GetComponent<WhatZone>().zone_number;
-            }
-        }
+        BoundaryCheck();
+
+        //Debug.Log("CURRENT PLAYER ZONE " + zoneno);
 
 
         if (fervorLevel >= fervorMaxLevel - 30)
@@ -142,6 +140,16 @@ public class PlayerStats : MonoBehaviour
             buff_active = false;
         }
 
+        //if (fervorLevel >= fervorMaxLevel - 30)
+        //{
+        //    buff_active = true;
+        //}
+        //else
+        //{
+        //    buff_active = false;
+        //}
+
+        //SCALE EFFECT FOR TEXT
         //GetComponent<Transform>().localScale += new Vector3(1 * Time.deltaTime, 1 * Time.deltaTime, 0);
         /*if (obtainTimer > 0)
         {
@@ -184,6 +192,11 @@ public class PlayerStats : MonoBehaviour
     }
 
 
+    public int getZoneno()
+    {
+        return zoneno;
+    }
+
     public void decidecombotimer(float consecutive_stage_min, float consecutive_stage_max, float comb_timer)
     {
         if (numberConsecutiveHits >= consecutive_stage_min
@@ -191,6 +204,29 @@ public class PlayerStats : MonoBehaviour
         {
 
             combo_timer = comb_timer;
+        }
+    }
+
+
+
+    public void BoundaryCheck()
+    {
+        for (int i = 0; i < zone.Length; i++)
+        {
+            if (transform.position.x < zone[i].GetComponent<Transform>().position.x + (zone[i].GetComponent<Transform>().localScale.x / 2)
+             && transform.position.x > zone[i].GetComponent<Transform>().position.x - (zone[i].GetComponent<Transform>().localScale.x / 2)
+             && transform.position.z > zone[i].GetComponent<Transform>().position.z - (zone[i].GetComponent<Transform>().localScale.z / 2)
+            && transform.position.z < zone[i].GetComponent<Transform>().position.z + (zone[i].GetComponent<Transform>().localScale.z / 2)
+             )
+
+            {
+                zoneno = zone[i].GetComponent<WhatZone>().zone_number;
+                break;
+            }
+            else
+            {
+                zoneno = 0;
+            }
         }
     }
 
@@ -261,7 +297,6 @@ public class PlayerStats : MonoBehaviour
     public void addConsecutiveHit()
     {
         numberConsecutiveHits += 1;
-        Debug.Log("CONSECUTIVE HIT " + numberConsecutiveHits);
     }
     public float GetPlayerAttack()
     {

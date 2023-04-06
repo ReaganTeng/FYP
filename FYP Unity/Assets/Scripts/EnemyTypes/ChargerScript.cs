@@ -82,115 +82,117 @@ public class ChargerScript : MonoBehaviour
 
             //}
         }
-
-        switch (enemyPhase)
+        if (GetComponent<EnemyScript>().getupdating())
         {
-            case EnemyScript.Phases.ATTACK_TYPE_1:
-            //case EnemyScript.Phases.ATTACK_TYPE_2:
+            switch (enemyPhase)
+            {
+                case EnemyScript.Phases.ATTACK_TYPE_1:
+                    //case EnemyScript.Phases.ATTACK_TYPE_2:
 
-                {
-
-                    GetComponentInChildren<Animator>().SetBool("about2charge", true);
-
-                    GetComponentInChildren<Animator>().SetBool("charge", true);
-
-                    //GetComponent<MeshRenderer>().enabled = false;
-                    chargingtime += 1.0f * Time.deltaTime;
-
-                    if (chargingtime < 0.1f)
                     {
-                        playerPos = playerGO.transform.position;
-                        resultingVector = playerPos - transform.position;
-                    }
 
-                    if (chargingtime >= 1.0f)
-                    {
-                        //if (chargingtime < 1.1f)
-                        //{
-                        //    resultingVector = playerPos - transform.position;
-                        //    resultingVector.y = 0;
-                        //    resultingVector.Normalize();
-                        //}
+                        GetComponentInChildren<Animator>().SetBool("about2charge", true);
 
-                        //if (chargingtime > 1.1f
-                        //    && chargingtime < 1.2f)
-                        //{
-                        chargingtime = 0;
-                        collided = true;
-                        //}
-                    }
-                    break;
-                }
-            case EnemyScript.Phases.ATTACK_TYPE_2:
-                {
+                        GetComponentInChildren<Animator>().SetBool("charge", true);
 
+                        //GetComponent<MeshRenderer>().enabled = false;
+                        chargingtime += 1.0f * Time.deltaTime;
 
-                    //GetComponent<MeshRenderer>().enabled = false;
-                    GetComponentInChildren<Animator>().SetBool("about2charge", true);
-
-                    GetComponentInChildren<Animator>().SetBool("charge", true);
-
-                    chargingtime += 1.0f * Time.deltaTime;
-
-                    if (chargingtime < 0.1f)
-                    {
-                        playerPos = playerGO.transform.position;
-                        resultingVector = playerPos - transform.position;
-                    }
-
-                    if (chargingtime >= 1.0f)
-                    {
-                        if (number_of_bounces >= 2)
+                        if (chargingtime < 0.1f)
                         {
+                            playerPos = playerGO.transform.position;
+                            resultingVector = playerPos - transform.position;
+                        }
+
+                        if (chargingtime >= 1.0f)
+                        {
+                            //if (chargingtime < 1.1f)
+                            //{
+                            //    resultingVector = playerPos - transform.position;
+                            //    resultingVector.y = 0;
+                            //    resultingVector.Normalize();
+                            //}
+
+                            //if (chargingtime > 1.1f
+                            //    && chargingtime < 1.2f)
+                            //{
+                            chargingtime = 0;
                             collided = true;
-                            number_of_bounces = 0;
+                            //}
                         }
-                        else
-                        {
-                            number_of_bounces += 1;
-                            //playerPos = playerGO.transform.position;
-                            //resultingVector = playerPos - transform.position;
-                            chargeAtplayer();
-                        }
-
-                        chargingtime = 0.0f;
+                        break;
                     }
-                    break;
-                }
-
-            case EnemyScript.Phases.ABOUT_TO_ATTACK:
-                {
-
-                    //GetComponent<MeshRenderer>().enabled = true;
-                    GetComponentInChildren<Animator>().SetBool("about2charge", true);
-                    GetComponent<EnemyScript>().abouttoattackUpdate();
-                    break;
-                }
-            /*case EnemyScript.Phases.PHASE_3:
-                {
-                    if(chargingtime >= 1.0f)
+                case EnemyScript.Phases.ATTACK_TYPE_2:
                     {
-                        playerPos = playerGO.transform.position;
-                        resultingVector = playerPos - transform.position;
-                        chargeAtplayer();
-                        chargingtime = 0.0f;
+
+
+                        //GetComponent<MeshRenderer>().enabled = false;
+                        GetComponentInChildren<Animator>().SetBool("about2charge", true);
+
+                        GetComponentInChildren<Animator>().SetBool("charge", true);
+
+                        chargingtime += 1.0f * Time.deltaTime;
+
+                        if (chargingtime < 0.1f)
+                        {
+                            playerPos = playerGO.transform.position;
+                            resultingVector = playerPos - transform.position;
+                        }
+
+                        if (chargingtime >= 1.0f)
+                        {
+                            if (number_of_bounces >= 2)
+                            {
+                                collided = true;
+                                number_of_bounces = 0;
+                            }
+                            else
+                            {
+                                number_of_bounces += 1;
+                                //playerPos = playerGO.transform.position;
+                                //resultingVector = playerPos - transform.position;
+                                chargeAtplayer();
+                            }
+
+                            chargingtime = 0.0f;
+                        }
+                        break;
                     }
+
+                case EnemyScript.Phases.ABOUT_TO_ATTACK:
+                    {
+
+                        //GetComponent<MeshRenderer>().enabled = true;
+                        GetComponentInChildren<Animator>().SetBool("about2charge", true);
+                        GetComponent<EnemyScript>().abouttoattackUpdate();
+                        break;
+                    }
+                /*case EnemyScript.Phases.PHASE_3:
+                    {
+                        if(chargingtime >= 1.0f)
+                        {
+                            playerPos = playerGO.transform.position;
+                            resultingVector = playerPos - transform.position;
+                            chargeAtplayer();
+                            chargingtime = 0.0f;
+                        }
+                        break;
+                    }*/
+                default:
                     break;
-                }*/
-            default:
-                break;
+            }
         }
 
-
-        //KEEP GOING FORWARD UNTIL HITS WALL
-        if (collided)
-        {
-            recovering();
-        }
-        else
-        {
-            chargeAtplayer();
-        }
+            //KEEP GOING FORWARD UNTIL HITS WALL
+            if (collided)
+            {
+                recovering();
+            }
+            else
+            {
+                chargeAtplayer();
+            }
+        
     }
 
 

@@ -16,6 +16,12 @@ public class WhatZone : MonoBehaviour
 
     }
 
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    Debug.Log("NUMBER " + zone_number);
+
+    //}
+
     public int return_zonenumber()
     {
         return zone_number;

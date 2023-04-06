@@ -45,4 +45,9 @@ public class DayTimer : MonoBehaviour
         Quaternion newMinuteRotation = Quaternion.Euler(0, 0, -RotateMinuteBy * Time.deltaTime) * currentMinuteRotation;
         MinuteHand.transform.rotation = newMinuteRotation;
     }
+
+    public void SetTimer(int timer)
+    {
+        thedaytimer = timer;
+    }
 }
