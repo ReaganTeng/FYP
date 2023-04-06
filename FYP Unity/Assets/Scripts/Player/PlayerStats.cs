@@ -51,6 +51,22 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
+    public void ChangeFervor(float Fervorchange)
+    {
+
+        if (fervorLevel > 0)
+        {
+            fervorLevel += Fervorchange;
+
+            if (fervorLevel < 0)
+            {
+                fervorLevel = 0;
+            }
+        }
+
+        Debug.Log("Fervor: " + fervorLevel);
+    }
+
 
     public void Update()
     {
