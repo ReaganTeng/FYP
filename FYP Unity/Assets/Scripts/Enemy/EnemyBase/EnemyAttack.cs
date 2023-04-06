@@ -22,22 +22,13 @@ public class EnemyAttack : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         if (Attackcdtimer > 0)
+        {
             Attackcdtimer -= Time.deltaTime;
 
-        /*if (player != null)
-        {
-            if (Attackcdtimer <= 0)
+            if (Attackcdtimer < AttackCD / 2)
             {
-                player.GetComponentInChildren<PlayerMovement>().SetSRColor(Color.green);
+                animator.SetBool("attack", false);
             }
-            else
-            {
-                player.GetComponentInChildren<PlayerMovement>().SetSRColor(Color.white);
-            }
-        }*/
-        if (Attackcdtimer < AttackCD / 2)
-        {
-            animator.SetBool("attack", false);
         }
         else
         {
@@ -56,25 +47,22 @@ public class EnemyAttack : MonoBehaviour
         // if it is the player
         if (other.CompareTag("Player") /*&& Attackcdtimer <= 0*/)
         {
-           
-            other.GetComponent<PlayerStats>().ChangeHealth(-es.AttackDamage);
-            other.GetComponent<PlayerStats>().ResetConsecutiveHit();
-            
+
             animator.SetBool("attack", true);
             //other.GetComponent<PlayerStats>().ChangeHealth(-es.AttackDamage);
 
             other.GetComponent<PlayerStats>().ResetConsecutiveHit();
             other.GetComponent<PlayerStats>().ChangeFervor(-10.0f);
 
-           other.GetComponent<Rigidbody>().AddForce(
-                (other.GetComponent<Transform>().position - GetComponentInParent<Transform>().position).normalized * 50.0f,
-                ForceMode.Impulse
-                );
+            /*other.GetComponent<Rigidbody>().AddForce(
+                 (other.GetComponent<Transform>().position - GetComponentInParent<Transform>().position).normalized * 50.0f,
+                 ForceMode.Impulse
+                 );*/
+
             other.GetComponent<BoxCollider>().enabled = false;
 
             Attackcdtimer = AttackCD;
         }
-        //else
         //if attack hitbox did not collide with player
         //else if (other.tag != "Player"
         //    && Attackcdtimer > 0 && Attackcdtimer <= AttackCD)

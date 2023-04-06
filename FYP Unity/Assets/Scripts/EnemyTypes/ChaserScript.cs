@@ -5,256 +5,301 @@ using UnityEngine.AI;
 
 
 public class ChaserScript : MonoBehaviour
-{
-    float targetVelocity = 10.0f;
+{ 
+ float targetVelocity = 10.0f;
     int numberOfRays = 30;
     float angle = 90.0f;
     float rayRange = .8f;
     [SerializeField] LayerMask lm;
 
 
-    public GameObject lockon;
-    private GameObject lockonbeam;
-    public GameObject hit;
-    private GameObject hitbeam;
-    public GameObject pivotpoint;
-    private GameObject pivot;
+public GameObject lockon;
+private GameObject lockonbeam;
+public GameObject hit;
+private GameObject hitbeam;
+public GameObject pivotpoint;
+private GameObject pivot;
 
-    [SerializeField] NavMeshAgent navMeshAgent;
+[SerializeField] NavMeshAgent navMeshAgent;
 
-    private GameObject playerGO;
-    public BoxCollider box;
-    float chasingspeed;
-    public EnemyScript.Phases enemyPhase;
+private GameObject playerGO;
+public BoxCollider box;
+float chasingspeed;
+public EnemyScript.Phases enemyPhase;
 
-    private float time_att_1;
-    private float time_att_2;
+private float time_att_1;
+private float time_att_2;
 
-    private Transform starting_location;
-    private Transform ending_location;
-    private float dist;
-    
-    
+private Transform starting_location;
+private Transform ending_location;
+private float dist;
+bool beam_mode;
 
-    public GameObject attackhitbox;
+public GameObject attackhitbox;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        lockonbeam = null;
-        hitbeam = null;
-        pivot = null;
+// Start is called before the first frame update
+void Start()
+{
+    lockonbeam = null;
+    hitbeam = null;
+    pivot = null;
 
-        time_att_1 = 0;
-        time_att_2 = 0;
-        playerGO = GameObject.FindGameObjectWithTag("Player");
+    beam_mode = false;
+    time_att_1 = 0;
+    time_att_2 = 0;
+    playerGO = GameObject.FindGameObjectWithTag("Player");
 
-        chasingspeed = 8.0f;
-        navMeshAgent.speed = chasingspeed;
-        navMeshAgent.acceleration = chasingspeed;
+    chasingspeed = 4.0f;
 
-        GetComponent<EnemyScript>().setabouttoattackend(3.0f);
-        GetComponent<EnemyScript>().setCoolDownEnd(3.0f);
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        enemyPhase = GetComponent<EnemyScript>().phase;
-        playerGO = GameObject.FindGameObjectWithTag("Player");
-        navMeshAgent.speed = chasingspeed;
-        navMeshAgent.acceleration = chasingspeed;
+    GetComponent<EnemyScript>().setabouttoattackend(3.0f);
+    GetComponent<EnemyScript>().setCoolDownEnd(3.0f);
+}
+
+// Update is called once per frame
+void Update()
+{
+    enemyPhase = GetComponent<EnemyScript>().phase;
+    playerGO = GameObject.FindGameObjectWithTag("Player");
+    navMeshAgent.speed = chasingspeed;
+    navMeshAgent.acceleration = chasingspeed;
+
+    dist = Vector3.Distance(transform.position, playerGO.transform.position);
+
 
         //CHASER SHOULD BE SLOWER THAN CHARGER
-        switch (enemyPhase)
+        if (GetComponent<EnemyScript>().getupdating())
         {
-            case EnemyScript.Phases.ATTACK_TYPE_2:
-                /*{
-                    attackhitbox.GetComponent<BoxCollider>().enabled = true;
-                    time_att_1 = 0;
-                    if (distance <= 15.0f)
+            switch (enemyPhase)
+            {
+                case EnemyScript.Phases.ATTACK_TYPE_2:
                     {
-                        time_att_2 += 1 * Time.deltaTime;
-                        chasingspeed = 0.0f;
+                        //GetComponent<SpriteRenderer>().enabled = false;
 
-                        if (time_att_2 < 1.1f && time_att_2 > 1.0f)
+                        attackhitbox.GetComponent<BoxCollider>().enabled = true;
+                        time_att_1 = 0;
+                        if (dist <= 4.0f)
                         {
-                            starting_location = transform;
-                            ending_location = playerGO.transform;
-                            dist = Vector3.Distance(starting_location.position, ending_location.position);
-
-                            if (lockonbeam == null)
-                            {
-                                pivot = Instantiate(pivotpoint,
-                                   transform.position,
-                                   Quaternion.identity
-                                   );
-
-                                lockonbeam = Instantiate(lockon,
-                                    transform.position,
-                                    Quaternion.identity
-                                    );
-                                lockonbeam.transform.position += new Vector3(0.0f, 0.0f,
-                                    dist / 2);
-                                lockonbeam.transform.localScale +=
-                                    new Vector3(0.0f, 0.0f, 1.0f)
-                                    * (dist * 0.1f);
-                                lockonbeam.transform.SetParent(pivot.transform);
-
-                                pivot.transform.LookAt(ending_location);
-
-                                pivot.transform.SetParent(transform);
-                            }
+                            beam_mode = true;
+                        }
+                        else if (dist > 4.0f
+                            && beam_mode == false)
+                        {
+                            GetComponent<EnemyScript>().phase = EnemyScript.Phases.ATTACK_TYPE_1;
                         }
 
-
-                        if (time_att_2 > 2.3f)
+                        if (beam_mode == true)
                         {
-                            if (hitbeam == null)
+                            time_att_2 += 1 * Time.deltaTime;
+                            chasingspeed = 0.0f;
+                            if (time_att_2 < 1.1f && time_att_2 > 1.0f)
                             {
-                                hitbeam = Instantiate(hit,
-                                    lockonbeam.transform.position,
-                                    lockonbeam.transform.rotation
-                                    );
-                                hitbeam.transform.localScale +=
-                                    new Vector3(0.0f, 0.0f, 1.0f) * dist;
-                                hitbeam.transform.SetParent(transform);
+                                starting_location = transform;
+                                ending_location = playerGO.transform;
+                                if (lockonbeam == null)
+                                {
+                                    pivot = Instantiate(pivotpoint,
+                                       transform.position,
+                                       Quaternion.identity
+                                       );
+
+                                    lockonbeam = Instantiate(lockon,
+                                        transform.position,
+                                        Quaternion.identity
+                                        );
+                                    lockonbeam.transform.position += new Vector3(0.0f, 0.0f,
+                                        4.0f / 2);
+                                    lockonbeam.transform.localScale +=
+                                        new Vector3(0.0f, 0.0f, 1.0f)
+                                        * (4.0f * 0.1f);
+                                    lockonbeam.transform.SetParent(pivot.transform);
+
+                                    pivot.transform.LookAt(ending_location);
+
+                                    pivot.transform.SetParent(transform);
+                                }
+                            }
+                            if (time_att_2 > 2.3f)
+                            {
+                                if (hitbeam == null)
+                                {
+                                    hitbeam = Instantiate(hit,
+                                        lockonbeam.transform.position,
+                                        lockonbeam.transform.rotation
+                                        );
+                                    hitbeam.transform.localScale +=
+                                        new Vector3(0.0f, 0.0f, 1.0f) * 4.0f;
+                                    hitbeam.transform.SetParent(transform);
+                                }
+                            }
+
+                            if (time_att_2 > 3.5f)
+                            {
+                                Destroy(lockonbeam);
+                                Destroy(hitbeam);
+                                Destroy(pivot);
+
+                                GetComponent<EnemyScript>().phase = EnemyScript.Phases.COOLDOWN;
                             }
                         }
+                        break;
+                    }
+                case EnemyScript.Phases.ATTACK_TYPE_1:
+                    {
+                        GetComponentInChildren<Animator>().SetBool("chasingPlayer", true);
 
-                        if (time_att_2 > 3.5f)
+                        beam_mode = false;
+
+                        //GetComponent<SpriteRenderer>().enabled = false;
+
+                        //Debug.Log("CHASING PLAYER");
+                        attackhitbox.GetComponent<BoxCollider>().enabled = true;
+                        chasingspeed = 4.0f;
+                        time_att_2 = 0;
+                        time_att_1 += 1 * Time.deltaTime;
+                        navMeshAgent.SetDestination(playerGO.transform.position);
+
+
+                        if (time_att_1 > 20.0f)
                         {
-                            Destroy(lockonbeam);
-                            Destroy(hitbeam);
-                            Destroy(pivot);
-                            //move this somewhere else
-                            //time_att_2 = 0.0f;
-                            //
                             GetComponent<EnemyScript>().phase = EnemyScript.Phases.COOLDOWN;
                         }
-                    }
-                    else
-                    {
-                        GetComponent<EnemyScript>().phase = EnemyScript.Phases.ATTACK_TYPE_1;
-                    }
-                    break;
-                }*/
-            case EnemyScript.Phases.ATTACK_TYPE_1:
-                {
-                    Debug.Log("CHASING PLAYER");
-                    attackhitbox.GetComponent<BoxCollider>().enabled = true;
-                    chasingspeed = 5.0f;
-                    time_att_2 = 0;
-                    time_att_1 += 1 * Time.deltaTime;
-                    navMeshAgent.SetDestination(playerGO.transform.position);
-
-
-                    if(time_att_1 > 20.0f)
-                    {
-                        GetComponent<EnemyScript>().phase = EnemyScript.Phases.COOLDOWN;
-                    }
-                    break;
-                }
-            case EnemyScript.Phases.COOLDOWN:
-                {
-
-                    time_att_2 = 0.0f;
-                    time_att_1 = 0.0f;
-
-                    GetComponent<EnemyScript>().cooldownUpdate();
-                    break;
-                }
-        }
-    
-
-        steering();
-
-        
-            /*if (time < 5.0f)
-            {
-                switch (enemyPhase)
-                {
-                    case EnemyScript.Phases.PHASE_1:
-                        {
-                            chasingspeed = 8.0f;
-                            break;
-                        }
-                    //let enemy constantly chase the player after jumping
-                    case EnemyScript.Phases.PHASE_2:
-                        {
-                            chasingspeed = 11.0f;
-                            break;
-                        }
-                    case EnemyScript.Phases.PHASE_3:
-                        {
-                            chasingspeed = 14.0f;
-                            break;
-                        }
-                    default:
                         break;
-                }
+                    }
+                case EnemyScript.Phases.COOLDOWN:
+                    {
+                        beam_mode = false;
+                        //GetComponent<SpriteRenderer>().enabled = false;
 
-                steering();
+                        time_att_2 = 0.0f;
+                        time_att_1 = 0.0f;
 
-                //this.transform.position += deltaPosition * Time.deltaTime;
-                navMeshAgent.SetDestination(playerGO.transform.position);
-            }*/
-        
-            
-        
-    }
+                        GetComponent<EnemyScript>().cooldownUpdate();
+                        break;
+                    }
+                case EnemyScript.Phases.ABOUT_TO_ATTACK:
+                    {
+                        beam_mode = false;
 
-    void steering()
-    {
-        var deltaPosition = Vector3.zero;
-        for (int i = 0; i < numberOfRays; i++)
-        {
-            //rotate enemy angle
-            var rotation = transform.rotation;
-            var rotationMod = Quaternion.AngleAxis(
-                 (i / ((float)numberOfRays - 1)) * angle * 2 - angle,
-                 transform.up);
-            var direction = rotation * rotationMod * Vector3.forward;
-            var direction2 = rotation * rotationMod * Vector3.back;
+                        //GetComponent<SpriteRenderer>().enabled = true;
 
-            var ray = new Ray(transform.position, direction);
-            var ray2 = new Ray(transform.position, direction2);
-
-            RaycastHit hitInfo;
-            //if hits something
-            if (Physics.Raycast(ray, out hitInfo, rayRange
-                , ~lm))
-            {
-                //Debug.Log("HIT SOMETHING");
-                deltaPosition -= (1.0f / numberOfRays) * targetVelocity * direction;
-                transform.position += deltaPosition * Time.deltaTime;
-               
+                        GetComponent<EnemyScript>().abouttoattackUpdate();
+                        break;
+                    }
             }
-            else if(Physics.Raycast(ray2, out hitInfo, rayRange
-                , ~lm))
-            {
-                //Debug.Log("HIT SOMETHING");
-
-                deltaPosition -= (1.0f / numberOfRays) * targetVelocity * direction2;
-                transform.position += deltaPosition * Time.deltaTime;
-            }
-        }
-
-
-        /*float distance = Vector3.Distance(playerGO.transform.position, transform.position);
-        if (distance < 5.0f)
-        {
-            navMeshAgent.speed = 0.0f;
-        }
-        if (distance < 5.0f)
-        {
-            box.size = new Vector3(box.size.x, box.size.y, 4.0f);
         }
         else
         {
-            box.size = new Vector3(box.size.x, box.size.y, 1.0f);
-        }*/
+            DestroyBeams();
+        }
+
+    //        steering();
+
+
+    /*if (time < 5.0f)
+    {
+        switch (enemyPhase)
+        {
+            case EnemyScript.Phases.PHASE_1:
+                {
+                    chasingspeed = 8.0f;
+                    break;
+                }
+            //let enemy constantly chase the player after jumping
+            case EnemyScript.Phases.PHASE_2:
+                {
+                    chasingspeed = 11.0f;
+                    break;
+                }
+            case EnemyScript.Phases.PHASE_3:
+                {
+                    chasingspeed = 14.0f;
+                    break;
+                }
+            default:
+                break;
+        }
+
+        steering();
+
+        //this.transform.position += deltaPosition * Time.deltaTime;
+        navMeshAgent.SetDestination(playerGO.transform.position);
+    }*/
+
+
+
+}
+
+
+    public void DestroyBeams()
+    {
+        if (lockonbeam != null)
+        {
+            Destroy(lockonbeam);
+        }
+
+
+        if (hitbeam != null)
+        {
+            Destroy(hitbeam);
+        }
+
+        if (pivot != null)
+        {
+            Destroy(pivot);
+        }
     }
+void steering()
+{
+    var deltaPosition = Vector3.zero;
+    for (int i = 0; i < numberOfRays; i++)
+    {
+        //rotate enemy angle
+        var rotation = transform.rotation;
+        var rotationMod = Quaternion.AngleAxis(
+             (i / ((float)numberOfRays - 1)) * angle * 2 - angle,
+             transform.up);
+        var direction = rotation * rotationMod * Vector3.forward;
+        var direction2 = rotation * rotationMod * Vector3.back;
+
+        var ray = new Ray(transform.position, direction);
+        var ray2 = new Ray(transform.position, direction2);
+
+        RaycastHit hitInfo;
+        //if hits something
+        if (Physics.Raycast(ray, out hitInfo, rayRange
+            , ~lm))
+        {
+            Debug.Log("HIT SOMETHING");
+            deltaPosition -= (1.0f / numberOfRays) * targetVelocity * direction;
+            transform.position += deltaPosition * Time.deltaTime;
+
+        }
+        else if (Physics.Raycast(ray2, out hitInfo, rayRange
+            , ~lm))
+        {
+            Debug.Log("HIT SOMETHING");
+
+            deltaPosition -= (1.0f / numberOfRays) * targetVelocity * direction2;
+            transform.position += deltaPosition * Time.deltaTime;
+        }
+    }
+
+
+    /*float distance = Vector3.Distance(playerGO.transform.position, transform.position);
+    if (distance < 5.0f)
+    {
+        navMeshAgent.speed = 0.0f;
+    }
+    if (distance < 5.0f)
+    {
+        box.size = new Vector3(box.size.x, box.size.y, 4.0f);
+    }
+    else
+    {
+        box.size = new Vector3(box.size.x, box.size.y, 1.0f);
+    }*/
+}
 
     /*void OnDrawGizmos()
     {

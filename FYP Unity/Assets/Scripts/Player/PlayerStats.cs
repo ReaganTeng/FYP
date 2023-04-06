@@ -13,7 +13,7 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] float PlayerHealth;
     //
 
-    [SerializeField] float PlayerAttack;
+    float PlayerAttack;
 
     public int numberConsecutiveHits;
     [SerializeField] int ConsecutiveHit_Stage1;
@@ -38,8 +38,10 @@ public class PlayerStats : MonoBehaviour
 
     public void Awake()
     {
+        PlayerAttack = 10.0f;
         zoneno = 0;
         zone = GameObject.FindGameObjectsWithTag("Zone");
+        BoundaryCheck();
 
         fervorMaxLevel = 100;
         fervor2Add = 0;
@@ -47,24 +49,31 @@ public class PlayerStats : MonoBehaviour
         fervorBar.maxValue = fervorMaxLevel;
         fervorLevel = 0;
         numberConsecutiveHits = 0;
-
-        //Debug.Log("CONSECUTIVE HIT " + numberConsecutiveHits);
     }
 
     public void Start()
     {
+        PlayerAttack = 10.0f;
         zoneno = 0;
         zone = GameObject.FindGameObjectsWithTag("Zone");
+        BoundaryCheck();
 
         PlayerHealth = playerProgress.PlayerMaxHealth;
         fervorMaxLevel = 100;
         fervor2Add = 0;
         buff_active = false;
-        //fervorBar.maxValue = fervorMaxLevel;
         fervorLevel = 0;
         numberConsecutiveHits = 0;
+    }
 
-        //Debug.Log("CONSECUTIVE HIT " + numberConsecutiveHits);
+    public void setAttack(float atk)
+    {
+        PlayerAttack = atk;
+    }
+
+    public float getAttack(float additionalAtk = 0)
+    {
+        return PlayerAttack + additionalAtk;
     }
 
     public void ChangeHealth(float Healthchange)
@@ -102,13 +111,6 @@ public class PlayerStats : MonoBehaviour
         //fervorBar.value = fervorLevel;
         //fervorLevel -= 1.0f * Time.deltaTime;
 
-        //if (combo_timer <= 0
-        //    && !Input.GetMouseButtonDown(0))
-        //{
-        //    ResetConsecutiveHit();
-        //    numberConsecutiveHits = 0;
-            
-        //}
 
         if (combo_timer <= 0
             && !Input.GetMouseButtonDown(0))
@@ -119,18 +121,9 @@ public class PlayerStats : MonoBehaviour
 
 
         zone = GameObject.FindGameObjectsWithTag("Zone");
-        for (int i = 0; i < zone.Length; i++)
-        {
-            if (gameObject.transform.position.x < zone[i].GetComponent<Transform>().position.x + (zone[i].GetComponent<Transform>().localScale.x / 2)
-             && gameObject.transform.position.x > zone[i].GetComponent<Transform>().position.x - (zone[i].GetComponent<Transform>().localScale.x / 2)
-             && gameObject.transform.position.z > zone[i].GetComponent<Transform>().position.z - (zone[i].GetComponent<Transform>().localScale.z / 2)
-            && gameObject.transform.position.z < zone[i].GetComponent<Transform>().position.z + (zone[i].GetComponent<Transform>().localScale.z / 2)
-             )
-            
-            {
-                zoneno = zone[i].GetComponent<WhatZone>().zone_number;
-            }
-        }
+        BoundaryCheck();
+
+        //Debug.Log("CURRENT PLAYER ZONE " + zoneno);
 
 
         if (fervorLevel >= fervorMaxLevel - 30)
@@ -184,6 +177,11 @@ public class PlayerStats : MonoBehaviour
     }
 
 
+    public int getZoneno()
+    {
+        return zoneno;
+    }
+
     public void decidecombotimer(float consecutive_stage_min, float consecutive_stage_max, float comb_timer)
     {
         if (numberConsecutiveHits >= consecutive_stage_min
@@ -191,6 +189,29 @@ public class PlayerStats : MonoBehaviour
         {
 
             combo_timer = comb_timer;
+        }
+    }
+
+
+
+    public void BoundaryCheck()
+    {
+        for (int i = 0; i < zone.Length; i++)
+        {
+            if (transform.position.x < zone[i].GetComponent<Transform>().position.x + (zone[i].GetComponent<Transform>().localScale.x / 2)
+             && transform.position.x > zone[i].GetComponent<Transform>().position.x - (zone[i].GetComponent<Transform>().localScale.x / 2)
+             && transform.position.z > zone[i].GetComponent<Transform>().position.z - (zone[i].GetComponent<Transform>().localScale.z / 2)
+            && transform.position.z < zone[i].GetComponent<Transform>().position.z + (zone[i].GetComponent<Transform>().localScale.z / 2)
+             )
+
+            {
+                zoneno = zone[i].GetComponent<WhatZone>().zone_number;
+                break;
+            }
+            else
+            {
+                zoneno = 0;
+            }
         }
     }
 

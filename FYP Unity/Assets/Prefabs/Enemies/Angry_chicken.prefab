@@ -135,7 +135,7 @@ Transform:
   m_GameObject: {fileID: 822327260789156509}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5188684755951731528}
@@ -228,7 +228,6 @@ MonoBehaviour:
   smashedPrefab: {fileID: 3320338801699120423, guid: 74500f70982b1624f91594f2616f5dd0, type: 3}
   Mush: {fileID: 8494874157540663937, guid: 4255f020537c20a48857eb56b1b0f6d5, type: 3}
   healthbar: {fileID: 4874659243468997273}
-  player: {fileID: 3462924137396006120, guid: d09965bd491c43742a512d3f4207781f, type: 3}
   attackhitbox: {fileID: 3241614416058696728}
   phase: 1
 --- !u!114 &4850110634860229667
@@ -454,7 +453,6 @@ MonoBehaviour:
   es: {fileID: 8548643579922388238}
   AttackCD: 1
   animator: {fileID: 1776297207704733315}
-  player: {fileID: 3324953753049958943, guid: 43919c4ba4b4a1d4dabe56799ab12b80, type: 3}
 --- !u!33 &5741689859051229486
 MeshFilter:
   m_ObjectHideFlags: 0

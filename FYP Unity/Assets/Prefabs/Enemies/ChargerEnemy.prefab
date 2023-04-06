@@ -60,7 +60,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   es: {fileID: 5249369353892626731}
   AttackCD: 1
-  player: {fileID: 3324953753049958943, guid: 43919c4ba4b4a1d4dabe56799ab12b80, type: 3}
+  animator: {fileID: 0}
 --- !u!1 &3824151877362138808
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,7 +92,7 @@ Transform:
   m_GameObject: {fileID: 3824151877362138808}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8537288725776422765}
@@ -164,7 +164,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   navMeshAgent: {fileID: 1888417120424642196}
-  DetectionRange: 10
 --- !u!114 &5249369353892626731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,7 +183,6 @@ MonoBehaviour:
   smashedPrefab: {fileID: 3320338801699120423, guid: 74500f70982b1624f91594f2616f5dd0, type: 3}
   Mush: {fileID: 8494874157540663937, guid: 4255f020537c20a48857eb56b1b0f6d5, type: 3}
   healthbar: {fileID: 0}
-  player: {fileID: 0}
   attackhitbox: {fileID: 1335287278747242557}
   phase: 0
 --- !u!114 &8301357474681861008

@@ -59,7 +59,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_TargetDisplay: 0
 --- !u!114 &5028917901328014273
 MonoBehaviour:
@@ -290,6 +290,8 @@ GameObject:
   - component: {fileID: 6858138082267119150}
   - component: {fileID: 5647560301601598824}
   - component: {fileID: 6494524978179670524}
+  - component: {fileID: 8184284538792154973}
+  - component: {fileID: 960079756805818448}
   m_Layer: 7
   m_Name: Jumpy_Rice
   m_TagString: Enemy
@@ -306,7 +308,7 @@ Transform:
   m_GameObject: {fileID: 3723270102129840891}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8125374902556556078}
@@ -398,6 +400,7 @@ MonoBehaviour:
   choppedPefab: {fileID: 568297875779090178, guid: 9031fceed79e84b4ea688fbd77c831c0, type: 3}
   smashedPrefab: {fileID: 3320338801699120423, guid: 74500f70982b1624f91594f2616f5dd0, type: 3}
   Mush: {fileID: 8494874157540663937, guid: 4255f020537c20a48857eb56b1b0f6d5, type: 3}
+  nva: {fileID: 2057207063808142039}
   healthbar: {fileID: 3973220440702822082}
   attackhitbox: {fileID: 1458690216432499838}
   phase: 0
@@ -417,9 +420,62 @@ MonoBehaviour:
   enemyPhase: 0
   enemySprite: {fileID: 988647974452962158}
   spriteRenderer: {fileID: 3908784438884953137}
+  jumpheight: 3
+  jumpspeed: 1
+  countfactor: 1
   navMeshAgent: {fileID: 2057207063808142039}
   startupdating: 0
   attackhitbox: {fileID: 1458690216432499838}
+--- !u!33 &8184284538792154973
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3723270102129840891}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &960079756805818448
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3723270102129840891}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &3908784438884953137
 GameObject:
   m_ObjectHideFlags: 0
@@ -493,7 +549,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_Sprite: {fileID: 320162239, guid: 6d028c2c1fdc44d4a8be80a4a803d255, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

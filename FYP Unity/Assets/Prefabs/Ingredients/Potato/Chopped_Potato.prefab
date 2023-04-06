@@ -97,8 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d37105ca49bb3249b7a0676f9ef56f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  noglow: {fileID: 2800000, guid: 5e4463f82fd4cee4e9a24c50836326ce, type: 3}
-  glow: {fileID: 2800000, guid: bbf99a02fd9a6d142aed3d679a793ac5, type: 3}
+  noglow: {fileID: 2800000, guid: ee8991acc784cd3459d1c7f737bcc09f, type: 3}
+  glow: {fileID: 2800000, guid: 35723391771749245a8cacab48f3bf6a, type: 3}
 --- !u!65 &6051671019624707250
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemtype: 1
-  image: {fileID: 21300000, guid: 5e4463f82fd4cee4e9a24c50836326ce, type: 3}
+  image: {fileID: 21300000, guid: ee8991acc784cd3459d1c7f737bcc09f, type: 3}
 --- !u!114 &-6617183426967409894
 MonoBehaviour:
   m_ObjectHideFlags: 0

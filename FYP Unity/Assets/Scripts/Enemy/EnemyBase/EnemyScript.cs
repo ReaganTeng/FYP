@@ -11,6 +11,10 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] GameObject choppedPefab;
     [SerializeField] GameObject smashedPrefab;
     [SerializeField] GameObject Mush;
+
+
+    [SerializeField] NavMeshAgent nva;
+
     float Iframemaxtime = 0.1f;
     float Iframetimer = 0.1f;
     bool Iframe = false;
@@ -33,7 +37,7 @@ public class EnemyScript : MonoBehaviour
 
     public GameObject attackhitbox;
 
-
+    bool updating;
     int zoneno;
     GameObject[] zone;
 
@@ -50,9 +54,34 @@ public class EnemyScript : MonoBehaviour
 
     [SerializeField] public Phases phase;
 
+
+
+    void Awake()
+    {
+        updating = false;
+        zoneno = 0;
+        zone = GameObject.FindGameObjectsWithTag("Zone");
+        BoundaryCheck();
+
+
+        transitionFromHurtTimer = 0;
+        //phase = Phases.PHASE_3;
+
+        healthbar.maxValue = EnemyHealth;
+        healthbar.minValue = 0;
+        player = GameObject.FindGameObjectWithTag("Player");
+
+        //phase = Phases.ATTACK_TYPE_1;
+        timer = 0.0f;
+    }
+
     void Start()
     {
+        updating = false;
+
         zoneno = 0;
+        zone = GameObject.FindGameObjectsWithTag("Zone");
+        BoundaryCheck();
 
         transitionFromHurtTimer = 0;
         //phase = Phases.PHASE_3;
@@ -77,14 +106,15 @@ public class EnemyScript : MonoBehaviour
 
         // If its from player attack
         if (other.CompareTag("Attack") && !Iframe
-            && GetComponentInChildren<BoxCollider>().enabled == true)
+            && GetComponent<BoxCollider>().enabled == true)
         {
             EnemyHealth -= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().GetPlayerAttack();
 
-            //for (int i = 0; i < 5; i++)
-            //{
-                player.GetComponent<PlayerStats>().addConsecutiveHit();
-            //}
+            //play attacked animation
+            GetComponentInChildren<Animator>().SetBool("attacked", true);
+            //
+
+            player.GetComponent<PlayerStats>().addConsecutiveHit();
             player.GetComponent<PlayerStats>().resetCombo_timer();
 
             GetComponent<Rigidbody>().AddForce(
@@ -109,7 +139,6 @@ public class EnemyScript : MonoBehaviour
                 }
             }
 
-           
 
             if (phase != Phases.COOLDOWN)
             {
@@ -119,7 +148,7 @@ public class EnemyScript : MonoBehaviour
             Debug.Log("Enemy Health Left: " + EnemyHealth);
 
             // Precise Kill
-            if (EnemyHealth == 0)
+            /*if (EnemyHealth == 0)
             {
                 Debug.Log("Precise Kill!");
                 EnemyDie(true);
@@ -129,7 +158,7 @@ public class EnemyScript : MonoBehaviour
             {
                 Debug.Log("Killed!");
                 EnemyDie(false);
-            }
+            }*/
         }
     }
 
@@ -139,24 +168,7 @@ public class EnemyScript : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
 
         GetComponentInChildren<Animator>().SetFloat("health", EnemyHealth);
-
-
-
-        zone = GameObject.FindGameObjectsWithTag("Zone");
-        for (int i = 0; i < zone.Length; i++)
-        {
-            if (gameObject.transform.position.x < zone[i].GetComponent<Transform>().position.x + (zone[i].GetComponent<Transform>().localScale.x / 2)
-             && gameObject.transform.position.x > zone[i].GetComponent<Transform>().position.x - (zone[i].GetComponent<Transform>().localScale.x / 2)
-             && gameObject.transform.position.z > zone[i].GetComponent<Transform>().position.z - (zone[i].GetComponent<Transform>().localScale.z / 2)
-            && gameObject.transform.position.z < zone[i].GetComponent<Transform>().position.z + (zone[i].GetComponent<Transform>().localScale.z / 2)
-             )
-
-            {
-                zoneno = zone[i].GetComponent<WhatZone>().zone_number;
-            }
-        }
-
-
+       
         if (GetComponentInChildren<Animator>().GetBool("attacked") == true)
         {
             //Debug.Log("OH IM ATTACKED");
@@ -217,48 +229,118 @@ public class EnemyScript : MonoBehaviour
             }
         }
 
-        switch (phase)
+        zone = GameObject.FindGameObjectsWithTag("Zone");
+        BoundaryCheck();
+
+        if (zoneno == player.GetComponent<PlayerStats>().getZoneno())
         {
-            case Phases.ABOUT_TO_ATTACK:
-                {
-                    timer += 1.0f * Time.deltaTime;
-                    GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
-                    GetComponent<NavMeshAgent>().speed = 0.0f;
-
-
-                    attackhitbox.GetComponent<BoxCollider>().enabled = false;
-                    GetComponent<BoxCollider>().enabled = true;
-
-
-                    if (timer >= abouttoattackend)
-                    {
-                        timer = 0.0f;
-                        attack_type = Random.Range(1, 3);
-
-
-                        if (attack_type == 1)
-                        {
-                            phase = Phases.ATTACK_TYPE_1;
-                        }
-                        else
-                        {
-                            phase = Phases.ATTACK_TYPE_2;
-                        }
-                    }
-                    break;
-                }
-            case Phases.COOLDOWN:
-                {
-                    Debug.Log("COOLDOWN");
-                    cooldownUpdate();
-
-                    break;
-                }
+            updating = true;
         }
+        else
+        {
+            updating = false;
+        }
+
+        if(updating == false)
+        {
+            phase = Phases.ABOUT_TO_ATTACK;
+        }
+        
+            switch (phase)
+            {
+                case Phases.ABOUT_TO_ATTACK:
+                    {
+                    if (updating)
+                    {
+                        abouttoattackUpdate();
+                    }
+                    else
+                    {
+                        //if (GetComponent<ChaserScript>() != null)
+                        //{
+                        //    GetComponent<ChaserScript>().DestroyBeams();
+                        //}
+
+                       //GetComponent<NavMeshAgent>().SetDestination(GetComponentInParent<Transform>().position);
+                       // Debug.Log("CURRENT POSITION " + GetComponentInParent<Transform>().name);
+                       
+
+                        GetComponent<NavMeshAgent>().speed = 5.0f;
+                        GetComponentInChildren<Canvas>().transform.localPosition = new Vector3(0, 0, 0);
+                        GetComponentInChildren<SpriteRenderer>().transform.localPosition = new Vector3(0, 0.66f, 0);
+                        GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
+                    }
+                        /*timer += 1.0f * Time.deltaTime;
+                        GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
+                        GetComponent<NavMeshAgent>().speed = 0.0f;
+
+
+                        attackhitbox.GetComponent<BoxCollider>().enabled = false;
+                        GetComponent<BoxCollider>().enabled = true;
+
+
+                        if (timer >= abouttoattackend)
+                        {
+                            timer = 0.0f;
+                            attack_type = Random.Range(1, 3);
+
+
+                            if (attack_type == 1)
+                            {
+                                phase = Phases.ATTACK_TYPE_1;
+                            }
+                            else
+                            {
+                                phase = Phases.ATTACK_TYPE_2;
+                            }
+                        }*/
+                        break;
+                    }
+                case Phases.COOLDOWN:
+                    {
+                    //Debug.Log("COOLDOWN");
+
+                    
+                        cooldownUpdate();
+                    
+
+                        break;
+                    }
+            }
+        
+        
+        
 
     }
 
 
+    public void BoundaryCheck()
+    {
+        for (int i = 0; i < zone.Length; i++)
+        {
+            if (transform.position.x < zone[i].GetComponent<Transform>().position.x + (zone[i].GetComponent<Transform>().localScale.x / 2)
+             && transform.position.x > zone[i].GetComponent<Transform>().position.x - (zone[i].GetComponent<Transform>().localScale.x / 2)
+             && transform.position.z > zone[i].GetComponent<Transform>().position.z - (zone[i].GetComponent<Transform>().localScale.z / 2)
+            && transform.position.z < zone[i].GetComponent<Transform>().position.z + (zone[i].GetComponent<Transform>().localScale.z / 2)
+             )
+
+            {
+                zoneno = zone[i].GetComponent<WhatZone>().zone_number;
+                break;
+            }
+            else
+            {
+                zoneno = 0;
+            }
+        }
+    }
+
+
+
+    public bool getupdating()
+    {
+        return updating;
+    }
     public void abouttoattackUpdate()
     {
         GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
@@ -371,6 +453,33 @@ public class EnemyScript : MonoBehaviour
             }
         }
 
+        /*float myTime = GetComponentInChildren<Animator>().GetCurrentAnimatorClipInfo(0)[0].clip.length
+            * GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime;
+         //if (myTime >= 0.9f * GetComponentInChildren<Animator>().GetCurrentAnimatorClipInfo(0)[0].clip.length)
+         Debug.Log("ANIMATOR REGISTER " + GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime);*/
+
+        //if (GetComponentInChildren<Animator>().GetComponent<DieFinish>().returnDead() == true)
+        //{
+        GetComponentInChildren<SpriteRenderer>().enabled = false;
+        Debug.Log("DESTROYED");
         Destroy(gameObject);
+        //}
+    }
+
+    public void Death()
+    {
+        attackhitbox.SetActive(false);
+        //Destroy(attackhitbox);
+
+        if (EnemyHealth == 0)
+        {
+            Debug.Log("Precise Kill!");
+            EnemyDie(true);
+        }
+        else if (EnemyHealth < 0)
+        {
+            Debug.Log("Killed!");
+            EnemyDie(false);
+        }
     }
 }

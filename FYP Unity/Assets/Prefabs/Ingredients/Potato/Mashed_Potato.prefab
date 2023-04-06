@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemtype: 2
-  image: {fileID: 21300000, guid: 8e32ab42f5135894ea307da7079ea6a9, type: 3}
+  image: {fileID: 21300000, guid: bb9c2b09f45c2834b81574f2675e0a20, type: 3}
 --- !u!114 &-8254315091860391651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,9 +158,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d37105ca49bb3249b7a0676f9ef56f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  theparent: {fileID: 7510281840356330337}
-  noglow: {fileID: 2800000, guid: 8e32ab42f5135894ea307da7079ea6a9, type: 3}
-  glow: {fileID: 2800000, guid: 87031cbe3b32dbc47827548a12e4bbde, type: 3}
+  noglow: {fileID: 2800000, guid: bb9c2b09f45c2834b81574f2675e0a20, type: 3}
+  glow: {fileID: 2800000, guid: a310840630e0b4843a3328f07d22f62d, type: 3}
 --- !u!65 &3251852648539547450
 BoxCollider:
   m_ObjectHideFlags: 0
