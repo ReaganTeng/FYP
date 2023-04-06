@@ -33,6 +33,14 @@ public class InventoryImageControl : MonoBehaviour
             inventorySlots.Add(gm.gameObject);
         }
 
+        //for (int i = 0; i < 4; i++)
+        //{
+        //    GameObject pt = tempfood;
+        //    pt.GetComponent<Food>().SetPerfect(IsPerfect);
+        //    pt.GetComponent<Food>().SetAmountOfStars(amtofStars);
+        //    AddItem(pt);
+        //}
+
         // Set active
         inventorySlots[0].SetActive(true);
 

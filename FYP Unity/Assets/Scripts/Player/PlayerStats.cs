@@ -6,7 +6,6 @@ using TMPro;
 
 public class PlayerStats : MonoBehaviour
 {
-
     public PlayerProgress playerProgress;
 
     //WON'T BE USED FOR NOW
@@ -15,7 +14,8 @@ public class PlayerStats : MonoBehaviour
 
     float PlayerAttack;
 
-    public int numberConsecutiveHits;
+
+    [SerializeField] int numberConsecutiveHits;
     [SerializeField] int ConsecutiveHit_Stage1;
     [SerializeField] int ConsecutiveHit_Stage2;
     [SerializeField] int ConsecutiveHit_Stage3;
@@ -23,10 +23,10 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] int ConsecutiveHit_Stage5;
 
     [SerializeField] Slider fervorBar;
-    float fervorLevel;
+    [SerializeField] float fervorLevel;
     float fervor2Add;
     float fervorMaxLevel;
-    float combo_timer;
+    [SerializeField] float combo_timer;
 
     //If fervorlevel >= 70, this is true, else false
     bool buff_active;
@@ -51,6 +51,9 @@ public class PlayerStats : MonoBehaviour
         numberConsecutiveHits = 0;
     }
 
+   
+    
+
     public void Start()
     {
         PlayerAttack = 10.0f;
@@ -58,7 +61,8 @@ public class PlayerStats : MonoBehaviour
         zone = GameObject.FindGameObjectsWithTag("Zone");
         BoundaryCheck();
 
-        PlayerHealth = playerProgress.PlayerMaxHealth;
+        //PlayerHealth = playerProgress.PlayerMaxHealth;
+
         fervorMaxLevel = 100;
         fervor2Add = 0;
         buff_active = false;
@@ -74,6 +78,7 @@ public class PlayerStats : MonoBehaviour
     public float getAttack(float additionalAtk = 0)
     {
         return PlayerAttack + additionalAtk;
+        PlayerHealth = 100;
     }
 
     public void ChangeHealth(float Healthchange)
@@ -94,7 +99,7 @@ public class PlayerStats : MonoBehaviour
         {
             fervorLevel += Fervorchange;
 
-            if(fervorLevel < 0)
+            if (fervorLevel < 0)
             {
                 fervorLevel = 0;
             }
@@ -135,6 +140,16 @@ public class PlayerStats : MonoBehaviour
             buff_active = false;
         }
 
+        //if (fervorLevel >= fervorMaxLevel - 30)
+        //{
+        //    buff_active = true;
+        //}
+        //else
+        //{
+        //    buff_active = false;
+        //}
+
+        //SCALE EFFECT FOR TEXT
         //GetComponent<Transform>().localScale += new Vector3(1 * Time.deltaTime, 1 * Time.deltaTime, 0);
         /*if (obtainTimer > 0)
         {
@@ -282,7 +297,6 @@ public class PlayerStats : MonoBehaviour
     public void addConsecutiveHit()
     {
         numberConsecutiveHits += 1;
-        Debug.Log("CONSECUTIVE HIT " + numberConsecutiveHits);
     }
     public float GetPlayerAttack()
     {

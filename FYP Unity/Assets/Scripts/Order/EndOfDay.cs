@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class EndOfDay : MonoBehaviour
 {
+    [SerializeField] PlayerProgress ps;
     [SerializeField] OrderSystem os;
     [SerializeField] TextMeshProUGUI text;
     [SerializeField] int score;
@@ -15,8 +16,16 @@ public class EndOfDay : MonoBehaviour
     PlayerMovement playercontrols;
     private char GradeObtained;
     private bool EndOfDayAnimation;
+    private int ScorePenalty;
+    bool GameStop;
 
     [SerializeField] GameObject EndOfDayBackground;
+
+    [SerializeField] List<GameObject> resultDisplay;
+    [SerializeField] GameObject ClearedText;
+    [SerializeField] GameObject FailedText;
+    [SerializeField] GameObject TotalText;
+
 
     [SerializeField] GameObject Textbox;
     [SerializeField] string HappyDialogue;
@@ -28,9 +37,6 @@ public class EndOfDay : MonoBehaviour
     [SerializeField] Sprite NeutralSquid;
     [SerializeField] Sprite AngrySquid;
 
-    [SerializeField] GameObject ClearedText;
-    [SerializeField] GameObject FailedText;
-
     [SerializeField] GameObject Grade;
     [SerializeField] Sprite Srank;
     [SerializeField] Sprite Arank;
@@ -38,62 +44,171 @@ public class EndOfDay : MonoBehaviour
     [SerializeField] Sprite Crank;
     [SerializeField] Sprite Frank;
 
+    [SerializeField] float TextFadeInDuration;
+    bool DisplayDetails = false;
+    float textfadeInTimer = 0;
+    int textFadeInIndex = 0;
+    bool SetCurrentActive = false;
+
+    [SerializeField] float StarDisplayDuration;
+    [SerializeField] GameObject starDisplay;
+    GameObject textobj;
+    bool DisplayStars = false;
+    float displayStarTimer = 0;
+
+    [SerializeField] GameObject GradeSection;
+    [SerializeField] GameObject minValue;
+    [SerializeField] GameObject maxValue;
     [SerializeField] Slider gradeSlider;
     [SerializeField] float SliderDuration;
+    [SerializeField] GameObject creditObtained;
+
     int index;
     bool LoadGrade = false;
     float BarTimer = 0;
+
+    int CreditObtained = 0;
 
     private void Start()
     {
         text.text = "Score: 0";
         playercontrols = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+        Textbox.SetActive(false);
         EndOfDayBackground.SetActive(false);
+        GradeSection.SetActive(false);
         EndOfDayAnimation = false;
         index = 0;
+        GameStop = false;
+
+        // Set star rating to not render first
+        textobj = starDisplay.GetComponentInChildren<TextMeshProUGUI>().gameObject;
+        textobj.SetActive(false);
+        starDisplay.SetActive(false);
+
+        // Do not render the cc yet
+        creditObtained.SetActive(false);
     }
 
     private void Update()
     {
-        if (EndOfDayAnimation)
+        if (DisplayDetails)
+        {
+            if (!SetCurrentActive)
+            {
+                resultDisplay[textFadeInIndex].GetComponent<TextMeshProUGUI>().alpha = 0;
+                resultDisplay[textFadeInIndex].SetActive(true);
+                SetCurrentActive = true;
+            }
+
+            textfadeInTimer += Time.deltaTime;
+            resultDisplay[textFadeInIndex].SetActive(true);
+            float currentalpha = textfadeInTimer / TextFadeInDuration;
+            resultDisplay[textFadeInIndex].GetComponent<TextMeshProUGUI>().alpha = currentalpha;
+
+            if (currentalpha > 1)
+            {
+                SetCurrentActive = false;
+                textfadeInTimer = 0;
+                textFadeInIndex++;
+
+                if (textFadeInIndex == resultDisplay.Count)
+                {
+                    DisplayDetails = false;
+                    starDisplay.SetActive(true);
+                }
+            }
+        }
+
+        else if (DisplayStars)
+        {
+            displayStarTimer += Time.deltaTime;
+            float timevalue = displayStarTimer / StarDisplayDuration;
+            Slider starSlider = starDisplay.GetComponentInChildren<Slider>();
+            starSlider.value = Mathf.SmoothStep(starSlider.minValue, os.GetStarRating() / 5, timevalue);
+
+            if (starSlider.value >= os.GetStarRating() / 5)
+            {
+                DisplayStars = false;
+                textobj.SetActive(true);
+                textobj.GetComponent<TextMeshProUGUI>().text = os.GetStarRating().ToString();
+                GradeSection.SetActive(true);
+            }
+
+        }
+
+        else if (EndOfDayAnimation)
         {
             if (!LoadGrade)
             {
                 gradeSlider.minValue = lm.levelInfo[lm.DaySelected - 1].GetGradeReq(index);
+                minValue.GetComponent<TextMeshProUGUI>().text = gradeSlider.minValue.ToString();
                 index++;
                 gradeSlider.maxValue = lm.levelInfo[lm.DaySelected - 1].GetGradeReq(index);
-                SetResults((int)gradeSlider.minValue);
+                maxValue.GetComponent<TextMeshProUGUI>().text = gradeSlider.maxValue.ToString();
+                UpdateGrade((int)gradeSlider.minValue);
 
                 if (index < 5)
                 {
                     LoadGrade = true;
-                    BarTimer = 0;
                 }
                 else
                 {
                     EndOfDayAnimation = false;
+                    SetSquid();
                     gradeSlider.minValue -= 1;
                     gradeSlider.value = gradeSlider.maxValue;
+                    minValue.SetActive(false);
+                    maxValue.GetComponent<TextMeshProUGUI>().text = "MAXED";
                 }
             }
 
             else if (LoadGrade)
             {
-                if (gradeSlider.value > score)
+                if (gradeSlider.value >= score || gradeSlider.value >= lm.levelInfo[lm.DaySelected - 1].SReq)
                 {
+                    SetSquid();
                     EndOfDayAnimation = false;
                     LoadGrade = false;
+
+                    // Credit Obtained
+                    CreditObtained = lm.levelInfo[lm.DaySelected - 1].GetCredibility(GradeObtained);
+                    ps.AddCredibility(CreditObtained);
+                    lm.levelInfo[lm.DaySelected - 1].RemoveCredibilityFromLevel(CreditObtained);
+                    creditObtained.GetComponent<TextMeshProUGUI>().text = lm.levelInfo[lm.DaySelected - 1].GetCreditText();
+                    creditObtained.SetActive(true);
                 }
 
                 float timevalue = BarTimer / SliderDuration;
-                gradeSlider.value = Mathf.Lerp(gradeSlider.minValue, gradeSlider.maxValue, timevalue);
+
+                float tempscore;
+                if (score > lm.levelInfo[lm.DaySelected - 1].SReq)
+                    tempscore = lm.levelInfo[lm.DaySelected - 1].SReq;
+                else
+                    tempscore = score;
+
+                gradeSlider.value = Mathf.SmoothStep(0, tempscore, timevalue);
                 BarTimer += Time.deltaTime;
 
-                if (BarTimer >= SliderDuration)
+                if (gradeSlider.value >= gradeSlider.maxValue)
                 {
                     LoadGrade = false;
                     Debug.Log("stop");
                 }
+            }
+        }
+
+        // End the day and load to levelScene
+        else if (GameStop)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (score > lm.levelInfo[lm.DaySelected - 1].HighScore)
+                {
+                    lm.levelInfo[lm.DaySelected - 1].HighScore = score;
+                    lm.levelInfo[lm.DaySelected - 1].HighestGrade = GradeObtained;
+                }
+
+                SceneManager.LoadScene("Level Select");
             }
         }
     }
@@ -110,6 +225,10 @@ public class EndOfDay : MonoBehaviour
 
     public void ChangeScore(int changeamt)
     {
+        // if it is negative, record it
+        if (changeamt < 0)
+            ScorePenalty -= changeamt;
+
         score += changeamt;
         UpdateScore();
     }
@@ -132,17 +251,17 @@ public class EndOfDay : MonoBehaviour
     public void EndDay()
     {
         playercontrols.DisablePlayerControls();
+        SetResult();
+        GameStop = true;
+        DisplayDetails = true;
+        DisplayStars = true;
         EndOfDayAnimation = true;
         EndOfDayBackground.SetActive(true);
     }
 
-    void SetResults(int thescore)
+    void SetSquid()
     {
-        //GradeObtained = lm.levelInfo[lm.DaySelected - 1].GetGrade(score);
-        GradeObtained = lm.levelInfo[lm.DaySelected - 1].GetGrade(thescore);
-        ClearedText.GetComponentsInChildren<TextMeshProUGUI>()[1].text = os.GetSuccessfulOrders().ToString();
-        FailedText.GetComponentsInChildren<TextMeshProUGUI>()[1].text = os.GetFailedOrders().ToString();
-
+        Textbox.SetActive(true);
         switch (GradeObtained)
         {
             case 'S':
@@ -161,6 +280,51 @@ public class EndOfDay : MonoBehaviour
                 Textbox.GetComponentInChildren<TextMeshProUGUI>().text = AngryDialogue;
                 Squid.GetComponent<Image>().sprite = AngrySquid;
                 break;
+        }
+    }
+
+    void UpdateGrade(int thescore)
+    {
+        GradeObtained = lm.levelInfo[lm.DaySelected - 1].GetGrade(thescore);
+
+        switch (GradeObtained)
+        {
+            case 'S':
+                Grade.GetComponent<Image>().sprite = Srank;
+                break;
+            case 'A':
+                Grade.GetComponent<Image>().sprite = Arank;
+                break;
+            case 'B':
+                Grade.GetComponent<Image>().sprite = Brank;
+                break;
+            case 'C':
+                Grade.GetComponent<Image>().sprite = Crank;
+                break;
+            default:
+                Grade.GetComponent<Image>().sprite = Frank;
+                break;
+
+        }
+    }
+
+    void SetResult()
+    {
+        // Setting the total completed order for the day
+        ClearedText.GetComponentsInChildren<TextMeshProUGUI>()[0].text = "COMPLETED x " + os.GetSuccessfulOrders();
+        // Setting then total score obtaining from completed orders for the day
+        ClearedText.GetComponentsInChildren<TextMeshProUGUI>()[1].text = (score + ScorePenalty).ToString();
+        // Setting the total not completed order for the day
+        FailedText.GetComponentsInChildren<TextMeshProUGUI>()[0].text = "FAILED x " + os.GetFailedOrders();
+        // Setting the total penalty score obtained from not completed orders for the day
+        FailedText.GetComponentsInChildren<TextMeshProUGUI>()[1].text = ScorePenalty.ToString();
+        // Setting the total score obtained
+        TotalText.GetComponent<TextMeshProUGUI>().text = score.ToString();
+
+        // setting the receipt print to null
+        for (int i = 0; i < resultDisplay.Count; i++)
+        {
+            resultDisplay[i].SetActive(false);
         }
     }
 }

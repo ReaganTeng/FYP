@@ -15,6 +15,17 @@ public class Level : ScriptableObject
     public int CReq;
     public int CredibilityLeftToObtain;
     public bool Locked;
+    public int CCReq;
+    private int MaxCredibility = 4;
+
+    enum Grades
+    {
+        FGRADE,
+        CGRADE,
+        BGRADE,
+        AGRADE,
+        SGRADE,
+    }
 
     // Check to see the score that the player obtain and return the Grade that player obtained
     public char GetGrade(int scoreObtained)
@@ -57,5 +68,91 @@ public class Level : ScriptableObject
             default:
                 return 0;
         }
+    }
+
+    public int GetCredibility(char GradeObtained)
+    {
+        // Temp value of credit
+        int CreditObtained = 0;
+        // Check to see if the grade obtained is better than
+        int HighestGradeValue = GetGradeValue(HighestGrade);
+        int CurrentGradeValue = GetGradeValue(GradeObtained);
+
+        // If player obtained a higher grade than what they have
+        if (CurrentGradeValue > HighestGradeValue)
+        {
+            // Get the cc from the level
+            int creditleftinLevel = CredibilityLeftToObtain - CurrentGradeValue;
+
+            // if the credibility to obtain exceed what it has, return what it has at the moment.
+            if (creditleftinLevel < 0)
+            {
+                CreditObtained = CredibilityLeftToObtain;
+            }
+            // if it does not exceed, return that instead
+            else
+            {
+                CreditObtained = CurrentGradeValue;
+            }
+        }
+
+        // return that amount back to the player
+        return CreditObtained;
+    }
+
+    public void RemoveCredibilityFromLevel(int amt)
+    {
+        CredibilityLeftToObtain -= amt;
+    }
+
+    public int GetMaxCredibility()
+    {
+        return MaxCredibility;
+    }
+
+    int GetGradeValue(char grades)
+    {
+        switch (grades)
+        {
+            case 'F':
+                return (int)Grades.FGRADE;
+            case 'C':
+                return (int)Grades.CGRADE;
+            case 'B':
+                return (int)Grades.BGRADE;
+            case 'A':
+                return (int)Grades.AGRADE;
+            case 'S':
+                return (int)Grades.SGRADE;
+            default:
+                return -1;
+        }
+    }
+
+    public string GetCreditText()
+    {
+        string theText = "";
+
+        if (CredibilityLeftToObtain == 0)
+        {
+            theText += "MAXED";
+        }
+        else
+        {
+            theText += (MaxCredibility - CredibilityLeftToObtain).ToString() + "/" + MaxCredibility.ToString();
+        }
+
+        theText += " CC OBTAINED";
+
+        return theText;
+    }
+
+    public void ResetLevel(bool LockLevel)
+    {
+        HighestGrade = 'N';
+        HighScore = 0;
+        CredibilityLeftToObtain = MaxCredibility;
+        if (LockLevel)
+            Locked = true;
     }
 }

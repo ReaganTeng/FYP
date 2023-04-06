@@ -20,6 +20,7 @@ public class OrderSystem : MonoBehaviour
     bool StopComingOrders;
     private int SuccessfulOrders;
     private int FailedOrders;
+    private int ObtainedStars;
 
     List<GameObject> orderList = new List<GameObject>();
 
@@ -162,6 +163,9 @@ public class OrderSystem : MonoBehaviour
                         break;
                 }
 
+                // Store the stars obtained
+                ObtainedStars += starsobtained;
+
                 // award score to player
                 eod.ChangeScore((int)Score);
                 // remove the order
@@ -231,5 +235,14 @@ public class OrderSystem : MonoBehaviour
     public int GetFailedOrders()
     {
         return FailedOrders;
+    }
+
+    public float GetStarRating()
+    {
+        int TotalOrders = SuccessfulOrders + FailedOrders;
+        if (TotalOrders != 0)
+            return ObtainedStars / TotalOrders;
+        else
+            return 5;
     }
 }
