@@ -426,6 +426,8 @@ MonoBehaviour:
   ConsecutiveHit_Stage4: 20
   ConsecutiveHit_Stage5: 25
   fervorBar: {fileID: 0}
+  fervorLevel: 0
+  combo_timer: 0
   combo_timer_text: {fileID: 0}
 --- !u!114 &8900116384804071886
 MonoBehaviour:
