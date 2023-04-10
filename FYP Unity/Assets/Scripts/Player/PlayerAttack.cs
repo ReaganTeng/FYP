@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -22,82 +23,140 @@ public class PlayerAttack : MonoBehaviour
     bool attacking;
     int direction;
 
-    
+
 
     [SerializeField] GameObject spaculaHitbox;
     [SerializeField] GameObject knifeHitbox;
     [SerializeField] GameObject pinHitbox;
-   
 
 
-    float cooldown;
 
+    float chargeCurrentLvl;
+    float chargeMaxLvl;
+    //[SerializeField] float chargingSpeed;
+    float last_known_notch;
+    float next_known_notch;
+    //[SerializeField] float percentage_reduction;
+
+    //the default charging duration in seconds
+    [SerializeField] float chargingduration;
+    //number of charges the player has
+    [SerializeField] float number_of_charges;
+    //how much % you want to reduce in charging duration
+    public float reduction_in_percentage;
+
+    float min_notch_value;
+    [SerializeField] Slider chargeBar;
+
+    int time;
+    [SerializeField] TextMeshProUGUI txt;
 
     Weapon currentweapon = Weapon.SPATULA;
     // Start is called before the first frame update
 
 
-
-    void Start()
+    void Awake()
     {
-        cooldown = 0.0f;
+        //chargeCurrentLvl= 10.0f;
+        //chargeMaxLvl = 10.0f;
+        chargeCurrentLvl = chargingduration;
+        chargeMaxLvl = chargingduration;
+        if (chargeBar != null)
+        {
+            chargeBar.maxValue = chargeMaxLvl;
+            chargeBar.minValue = 0.0f;
+            chargeBar.value = chargeMaxLvl;
+        }
+        //min_notch_value = chargeMaxLvl * (percentage_reduction/100);
+        min_notch_value = chargeMaxLvl / number_of_charges;
+        next_known_notch = chargingduration;
+        last_known_notch = (int)next_known_notch - (int)min_notch_value;
+
+
+        //First variable: How long it takes to chargeCurrentLvlup a charge(bar)
+
+        //Second Variable: What is the maximum charges the player has
+
+        //Third Variable: A variable that reduces the first variable, 
+        //basically like a reduction, could be percentage or flat value. if flat value, must tell me what is 10 % whats 50 %
+
+        switchWeapon();
+        spaculaHitbox.SetActive(false);
         HitBox.SetActive(false);
+
         attackingtimer = attackingtime;
         attackcdtimer = attackcd;
         attacking = false;
         direction = 1;
+
+        text = GameObject.FindGameObjectWithTag("WeaponText").GetComponent<TextMeshProUGUI>();
+        text.text = "Weapon: Spatula";
+    }
+    void Start()
+    {
+        //chargeCurrentLvl= 10.0f;
+        //chargeMaxLvl = 10.0f;
+        chargeCurrentLvl = chargingduration;
+        chargeMaxLvl = chargingduration;
+        if (chargeBar != null)
+        {
+            chargeBar.maxValue = chargeMaxLvl;
+            chargeBar.minValue = 0.0f;
+            chargeBar.value = chargeMaxLvl;
+        }
+        //min_notch_value = chargeMaxLvl * (percentage_reduction/100);
+        min_notch_value = chargeMaxLvl / number_of_charges;
+        next_known_notch = chargingduration;
+        last_known_notch = (int)next_known_notch - (int)min_notch_value;
+
+        switchWeapon();
+        spaculaHitbox.SetActive(false);
+        HitBox.SetActive(false);
+
+        attackingtimer = attackingtime;
+        attackcdtimer = attackcd;
+        attacking = false;
+        direction = 1;
+
         text = GameObject.FindGameObjectWithTag("WeaponText").GetComponent<TextMeshProUGUI>();
         text.text = "Weapon: Spatula";
     }
 
-   
+
+    
+
     // Update is called once per frame
     void Update()
     {
 
-        cooldown -= Time.deltaTime;
-
-        switch (currentweapon)
-        { 
-            case Weapon.SPATULA:
-                GetComponentInParent<PlayerStats>().setAttack(10.0f);
-                //spaculaHitbox.SetActive(true);
-                HitBox = spaculaHitbox;
-                knifeHitbox.SetActive(false);
-                pinHitbox.SetActive(false);
-                break;
-            case Weapon.KNIFE:
-                GetComponentInParent<PlayerStats>().setAttack(20.0f);
-                //knifeHitbox.SetActive(true);
-                HitBox = knifeHitbox;
-                spaculaHitbox.SetActive(false);
-                pinHitbox.SetActive(false);
-                break;
-            case Weapon.ROLLINGPIN:
-                GetComponentInParent<PlayerStats>().setAttack(10.0f);
-                //pinHitbox.SetActive(true);
-                HitBox = pinHitbox;
-                spaculaHitbox.SetActive(false);
-                knifeHitbox.SetActive(false);
-                break;
-            default:
-                break;
+        if (chargeBar != null)
+        {
+            updatecharge();
         }
+
+        //if (HitBox.activeSelf == true)
+        //{
+        //    Debug.Log("ACTIVE");
+        //}
+        //else
+        //{
+        //    Debug.Log("NOT ACTIVE");
+        //}
 
         // Attacking
         if (attackcdtimer > 0)
+        {
             attackcdtimer -= Time.deltaTime;
-        else if (attackcdtimer <= 0)
+        }
+        else 
         {
             //LIGHT ATTACK
-            if (Input.GetMouseButtonDown(0) && !attacking
-                && cooldown <= 0)
+            if (Input.GetMouseButtonDown(0) && !attacking)
             {
                 //GetComponentInParent<PlayerStats>().setAttack(10.0f);
-                Debug.Log("LIGHT ATTACK " + GetComponentInParent<PlayerStats>().getAttack());
                 AttackWhichDirection(direction);
-                cooldown = 1.0f;
                 HitBox.SetActive(true);
+
                 attacking = true;
                 attackingtimer = attackingtime;
             }
@@ -105,18 +164,19 @@ public class PlayerAttack : MonoBehaviour
 
             //HEAVY ATTACK
             if (Input.GetMouseButtonDown(1) && !attacking
-                && cooldown <= 0)
+                && (int)chargeCurrentLvl>= (int)min_notch_value)
             {
                 GetComponentInParent<PlayerStats>().setAttack(
-                    GetComponentInParent<PlayerStats>().getAttack(5.0f));
-                Debug.Log("HEAVY ATTACK " + GetComponentInParent<PlayerStats>().getAttack());
-                cooldown = 5.0f;
+                GetComponentInParent<PlayerStats>().getAttack(5.0f));
                 AttackWhichDirection(direction);
                 HitBox.SetActive(true);
+
                 attacking = true;
                 attackingtimer = attackingtime;
+                depletecharge();
             }
             //
+
 
             if (attacking)
             {
@@ -126,39 +186,200 @@ public class PlayerAttack : MonoBehaviour
                     HitBox.SetActive(false);
                     attackcdtimer = attackcd;
                     attacking = false;
-                    //HitBox.SetActive(false);
-                    //attackcdtimer = attackcd;
                 }
             }
-            //else
-            //{
-            //    HitBox.SetActive(false);
-            //    attackcdtimer = attackcd;
-            //}
+
         }
+
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
             direction = pm.GetDirection(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            AttackWhichDirection(direction);
         }
 
         // To swap between weapons
         if (Input.GetKey(KeyCode.Z))
         {
             currentweapon = Weapon.SPATULA;
+            //switchWeapon();
             text.text = "Weapon: Spatula";
         }
         else if (Input.GetKey(KeyCode.X))
         {
             currentweapon = Weapon.KNIFE;
+           //switchWeapon();
             text.text = "Weapon: Knife";
         }
         else if (Input.GetKey(KeyCode.C))
         {
             currentweapon = Weapon.ROLLINGPIN;
+            //switchWeapon();
             text.text = "Weapon: RollingPin";
         }
+
+        switchWeapon();
     }
 
+
+    public bool getHitbox()
+    {
+        return HitBox.activeSelf;
+    }
+
+    public void switchWeapon()
+    {
+
+       
+
+        switch (currentweapon)
+        {
+            case Weapon.SPATULA:
+                GetComponentInParent<PlayerStats>().setAttack(10.0f);
+
+                //spaculaHitbox.transform.rotation
+                //   //= new Quaternion(1, 0, 0, (Mathf.PI / 180) * (-90));
+                //   //= Quaternion.Euler(-90, 0, 0);
+                //   = Quaternion.Euler(-90, HitBox.transform.rotation.y, HitBox.transform.rotation.z);
+                //HitBox = spaculaHitbox;
+                spaculaHitbox.SetActive(HitBox.activeSelf);
+                spaculaHitbox.transform.rotation = HitBox.transform.rotation;
+
+                knifeHitbox.SetActive(false);
+                pinHitbox.SetActive(false);
+                //spaculaHitbox.SetActive(false);
+                break;
+            case Weapon.KNIFE:
+                GetComponentInParent<PlayerStats>().setAttack(20.0f);
+
+                //knifeHitbox.transform.rotation
+                //    //= Quaternion.Euler(-90, 0, 0);
+                //    = Quaternion.Euler(-90, HitBox.transform.rotation.y, HitBox.transform.rotation.z);
+                //HitBox = knifeHitbox;
+                knifeHitbox.SetActive(HitBox.activeSelf);
+                knifeHitbox.transform.rotation = HitBox.transform.rotation;
+
+
+                //knifeHitbox.SetActive(false);
+                spaculaHitbox.SetActive(false);
+                pinHitbox.SetActive(false);
+                break;
+            case Weapon.ROLLINGPIN:
+                GetComponentInParent<PlayerStats>().setAttack(10.0f);
+
+                //pinHitbox.transform.rotation
+                //    //= Quaternion.Euler(-90, 0, 0);
+                //    = Quaternion.Euler(-90, HitBox.transform.rotation.y, HitBox.transform.rotation.z);
+                //HitBox = pinHitbox;
+                pinHitbox.SetActive(HitBox.activeSelf);
+                pinHitbox.transform.rotation = HitBox.transform.rotation;
+
+                //pinHitbox.SetActive(false);
+                spaculaHitbox.SetActive(false);
+                knifeHitbox.SetActive(false);
+                break;
+            default:
+                break;
+        }
+    }
+    public void updatecharge()
+    {
+        if (Input.GetKey(KeyCode.G))
+        {
+            reduction_in_percentage = 50;
+        }
+        else
+        {
+            reduction_in_percentage = 0;
+            
+            if(chargeCurrentLvl >= chargeMaxLvl)
+            {
+                chargeCurrentLvl = chargeMaxLvl;
+            }
+        }
+
+
+        if (reduction_in_percentage > 0)
+        {
+            chargeMaxLvl = chargingduration - (chargingduration * reduction_in_percentage / 100);
+        }
+        else
+        {
+            chargeMaxLvl = chargingduration;
+        }
+
+        chargeBar.maxValue = chargeMaxLvl;
+        min_notch_value = chargeMaxLvl / number_of_charges;
+
+        //CONTINUE TO INCREASE chargeCurrentLvlBAR WHEN IT'S BELOW MAXIMUM VALUE
+        if ((int)chargeCurrentLvl< (int)chargeMaxLvl)
+        {
+            //chargeCurrentLvl+= chargingSpeed * Time.deltaTime;
+            chargeCurrentLvl+= Time.deltaTime;
+
+        }
+        else if ((int)chargeCurrentLvl>= (int)chargeMaxLvl)
+        {
+            chargeCurrentLvl= (int)chargeMaxLvl;
+        }
+        //
+
+        chargeBar.value = chargeCurrentLvl;
+
+        if ((int)chargeCurrentLvl>= (int)next_known_notch + (int)min_notch_value
+            && (int)next_known_notch < (int)chargeMaxLvl)
+        {
+            last_known_notch = (int)next_known_notch;
+            next_known_notch = (int)next_known_notch  + (int)min_notch_value;
+        }
+
+
+        if(chargeCurrentLvl <= (int)min_notch_value)
+        {
+            time = ((int)min_notch_value - (int)chargeCurrentLvl);
+        }
+
+        else
+        {
+            time = (((int)next_known_notch + (int)min_notch_value)
+                - (int)chargeCurrentLvl);
+        }
+
+        if (txt != null)
+        {
+            txt.text = time.ToString();
+        }
+        //Debug.Log("LKN: " + last_known_notch);
+        //Debug.Log("NKN: " + next_known_notch);
+        //Debug.Log("CHA: " + charge);
+    }
+    public void depletecharge()
+    {
+        if ((int)last_known_notch <= 0)
+        {
+            int diff = (int)min_notch_value - 
+                (((int)next_known_notch + (int)min_notch_value) - 
+                (int)chargeCurrentLvl);
+            //Debug.Log("INITIAL CHARGES LEFT " + (((int)next_known_notch + (int)min_notch_value) - (int)chargeCurrentLvl));
+
+            chargeCurrentLvl = (int)last_known_notch + diff;
+
+            //Debug.Log("CHARGES LEFT " + 
+            //    ((int)next_known_notch/*(int)min_notch_value*//*)*/ - (int)chargeCurrentLvl));
+
+        }
+        else
+        {
+            int diff = (int)min_notch_value - 
+                (((int)next_known_notch + (int)min_notch_value) - 
+                (int)chargeCurrentLvl);
+            //Debug.Log("INITIAL CHARGES LEFT" + (((int)next_known_notch + (int)min_notch_value) - (int)chargeCurrentLvl));
+
+            chargeCurrentLvl = (int)last_known_notch + diff;
+            last_known_notch = (int)last_known_notch - (int)min_notch_value;
+            next_known_notch = (int)next_known_notch - (int)min_notch_value;
+            //Debug.Log("CHARGES LEFT" + (((int)next_known_notch + (int)min_notch_value) - (int)chargeCurrentLvl));
+        }
+    }
     void AttackWhichDirection(int direction)
     {
         Quaternion newrotation;
@@ -168,20 +389,29 @@ public class PlayerAttack : MonoBehaviour
             case 1:
                 newrotation = Quaternion.Euler(0, -90, 0);
                 HitBox.transform.rotation = newrotation;
+                //rotatehWeapon(newrotation);
+
                 break;
             case 2:
                 newrotation = Quaternion.Euler(0, 0, 0);
                 HitBox.transform.rotation = newrotation;
+                //rotatehWeapon(newrotation);
+
                 break;
             case 3:
                 newrotation = Quaternion.Euler(0, 90, 0);
                 HitBox.transform.rotation = newrotation;
+                //rotatehWeapon(newrotation);
+
                 break;
             case 4:
                 newrotation = Quaternion.Euler(0, 180, 0);
                 HitBox.transform.rotation = newrotation;
+                //rotatehWeapon(newrotation);
+
                 break;
         }
+        //Debug.Log("NEW ROTATION " + HitBox.transform.rotation);
     }
 
     public int GetWeaponType()

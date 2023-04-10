@@ -132,7 +132,7 @@ public class ChargerScript : MonoBehaviour
                         GetComponentInChildren<Animator>().SetBool("charge", true);
 
                         chargingtime += 1.0f * Time.deltaTime;
-
+                        
                         if (chargingtime < 0.1f)
                         {
                             playerPos = playerGO.transform.position;
@@ -198,7 +198,7 @@ public class ChargerScript : MonoBehaviour
 
     public void chargeAtplayer()
     {
-        attackhitbox.GetComponent<BoxCollider>().enabled = true;
+        attackhitbox.SetActive(true);
 
         if (enemyPhase == EnemyScript.Phases.ATTACK_TYPE_2)
         {
@@ -222,7 +222,7 @@ public class ChargerScript : MonoBehaviour
 
     public void recovering()
     {
-        attackhitbox.GetComponent<BoxCollider>().enabled = false;
+        attackhitbox.SetActive(false);
         GetComponent<BoxCollider>().enabled = true;
 
         GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
@@ -292,7 +292,7 @@ public class ChargerScript : MonoBehaviour
             case EnemyScript.Phases.COOLDOWN:
                 {
                     chargecooldown = 0.1f;
-                    attackhitbox.GetComponent<BoxCollider>().enabled = false;
+                    attackhitbox.SetActive(false);
                     GetComponent<BoxCollider>().enabled = true;
                     GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
                     //grab player location
