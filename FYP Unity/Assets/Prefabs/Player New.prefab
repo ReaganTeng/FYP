@@ -199,7 +199,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3462924137396006120}
-  m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -211,7 +211,7 @@ Transform:
   - {fileID: 1331769804428489472}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6301294397451754347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -275,7 +275,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerProgress: {fileID: 11400000, guid: 80203a9d8037ee2449d6c18b30afe1f3, type: 2}
-  PlayerHealth: 0
   PlayerAttack: 10
   numberConsecutiveHits: 0
   ConsecutiveHit_Stage1: 5
@@ -284,6 +283,8 @@ MonoBehaviour:
   ConsecutiveHit_Stage4: 20
   ConsecutiveHit_Stage5: 25
   fervorBar: {fileID: 0}
+  fervorLevel: 0
+  combo_timer: 0
   combo_timer_text: {fileID: 0}
 --- !u!114 &8900116384804071886
 MonoBehaviour:
@@ -455,8 +456,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8221724153166463230}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.66, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3462924137396006135}
