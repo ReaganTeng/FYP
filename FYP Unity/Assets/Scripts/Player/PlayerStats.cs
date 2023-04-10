@@ -7,8 +7,13 @@ using TMPro;
 public class PlayerStats : MonoBehaviour
 {
     public PlayerProgress playerProgress;
-    private float PlayerHealth;
-    [SerializeField] float PlayerAttack;
+
+    //WON'T BE USED FOR NOW
+    [SerializeField] float PlayerHealth;
+    //
+
+    float PlayerAttack;
+
 
     [SerializeField] int numberConsecutiveHits;
     [SerializeField] int ConsecutiveHit_Stage1;
@@ -28,15 +33,51 @@ public class PlayerStats : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI combo_timer_text;
 
+    int zoneno;
+    GameObject[] zone;
+
+    public void Awake()
+    {
+        PlayerAttack = 10.0f;
+        zoneno = 0;
+        zone = GameObject.FindGameObjectsWithTag("Zone");
+        BoundaryCheck();
+
+        fervorMaxLevel = 100;
+        fervor2Add = 0;
+        buff_active = false;
+        fervorBar.maxValue = fervorMaxLevel;
+        fervorLevel = 0;
+        numberConsecutiveHits = 0;
+    }
+
+   
     
 
     public void Start()
     {
+        PlayerAttack = 10.0f;
+        zoneno = 0;
+        zone = GameObject.FindGameObjectsWithTag("Zone");
+        BoundaryCheck();
+
+        //PlayerHealth = playerProgress.PlayerMaxHealth;
+
         fervorMaxLevel = 100;
         fervor2Add = 0;
         buff_active = false;
-        //fervorBar.maxValue = fervorMaxLevel;
         fervorLevel = 0;
+        numberConsecutiveHits = 0;
+    }
+
+    public void setAttack(float atk)
+    {
+        PlayerAttack = atk;
+    }
+
+    public float getAttack(float additionalAtk = 0)
+    {
+        return PlayerAttack + additionalAtk;
         PlayerHealth = 100;
     }
 
@@ -75,13 +116,29 @@ public class PlayerStats : MonoBehaviour
         //fervorBar.value = fervorLevel;
         //fervorLevel -= 1.0f * Time.deltaTime;
 
-        //if (combo_timer <= 0
-        //    && !Input.GetMouseButtonDown(0))
-        //{
-        //    ResetConsecutiveHit();
-        //    numberConsecutiveHits = 0;
-            
-        //}
+
+        if (combo_timer <= 0
+            && !Input.GetMouseButtonDown(0))
+        {
+            ResetConsecutiveHit();
+            numberConsecutiveHits = 0;
+        }
+
+
+        zone = GameObject.FindGameObjectsWithTag("Zone");
+        BoundaryCheck();
+
+        //Debug.Log("CURRENT PLAYER ZONE " + zoneno);
+
+
+        if (fervorLevel >= fervorMaxLevel - 30)
+        {
+            buff_active = true;
+        }
+        else
+        {
+            buff_active = false;
+        }
 
         //if (fervorLevel >= fervorMaxLevel - 30)
         //{
@@ -92,6 +149,7 @@ public class PlayerStats : MonoBehaviour
         //    buff_active = false;
         //}
 
+        //SCALE EFFECT FOR TEXT
         //GetComponent<Transform>().localScale += new Vector3(1 * Time.deltaTime, 1 * Time.deltaTime, 0);
         /*if (obtainTimer > 0)
         {
@@ -134,6 +192,11 @@ public class PlayerStats : MonoBehaviour
     }
 
 
+    public int getZoneno()
+    {
+        return zoneno;
+    }
+
     public void decidecombotimer(float consecutive_stage_min, float consecutive_stage_max, float comb_timer)
     {
         if (numberConsecutiveHits >= consecutive_stage_min
@@ -141,6 +204,29 @@ public class PlayerStats : MonoBehaviour
         {
 
             combo_timer = comb_timer;
+        }
+    }
+
+
+
+    public void BoundaryCheck()
+    {
+        for (int i = 0; i < zone.Length; i++)
+        {
+            if (transform.position.x < zone[i].GetComponent<Transform>().position.x + (zone[i].GetComponent<Transform>().localScale.x / 2)
+             && transform.position.x > zone[i].GetComponent<Transform>().position.x - (zone[i].GetComponent<Transform>().localScale.x / 2)
+             && transform.position.z > zone[i].GetComponent<Transform>().position.z - (zone[i].GetComponent<Transform>().localScale.z / 2)
+            && transform.position.z < zone[i].GetComponent<Transform>().position.z + (zone[i].GetComponent<Transform>().localScale.z / 2)
+             )
+
+            {
+                zoneno = zone[i].GetComponent<WhatZone>().zone_number;
+                break;
+            }
+            else
+            {
+                zoneno = 0;
+            }
         }
     }
 

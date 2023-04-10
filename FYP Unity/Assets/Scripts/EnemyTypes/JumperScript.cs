@@ -11,7 +11,10 @@ public class JumperScript : MonoBehaviour
     [SerializeField] GameObject enemySprite;
     GameObject playerGO;
     [SerializeField] GameObject spriteRenderer;
+    [SerializeField] float jumpheight;
 
+    [SerializeField] float jumpspeed;
+    [SerializeField] float countfactor;
 
     float speedfactor;
     
@@ -66,10 +69,11 @@ public class JumperScript : MonoBehaviour
 
         //if (startupdating == true)
         //{
+
+        if(GetComponent<EnemyScript>().getupdating())
+        { 
         switch (enemyPhase)
             {
-
-
                 case EnemyScript.Phases.ATTACK_TYPE_1:
                 case EnemyScript.Phases.ATTACK_TYPE_2:
                 {
@@ -87,7 +91,7 @@ public class JumperScript : MonoBehaviour
                             startpos = transform.position;
                             navMeshAgent.SetDestination(playerGO.transform.position);
                             endpoint = navMeshAgent.destination;
-                            controlPoint = startpos + (endpoint - transform.position) / 2 + Vector3.up * 15.0f;
+                            controlPoint = startpos + (endpoint - transform.position) / 2 + Vector3.up * jumpheight;
                         }
                         //
 
@@ -117,7 +121,7 @@ public class JumperScript : MonoBehaviour
                             {
                                 navMeshAgent.speed = 10.0f * speedfactor;
                             }
-                            spritejump(0.5f);
+                            spritejump(jumpspeed);
                         }
                         else
                         {
@@ -134,7 +138,7 @@ public class JumperScript : MonoBehaviour
                         startpos = transform.position;
                         navMeshAgent.SetDestination(playerGO.transform.position);
                         endpoint = navMeshAgent.destination;
-                        controlPoint = startpos + (endpoint - transform.position) / 2 + Vector3.up * 15.0f;
+                        controlPoint = startpos + (endpoint - transform.position) / 2 + Vector3.up * jumpheight;
                         timer = 0.0f;
                         //startupdating = false;
                     }
@@ -181,13 +185,13 @@ public class JumperScript : MonoBehaviour
             default:
                     break;
             }
-        //}      
+        }      
     }
 
     //MAKE IT CHASE THE PLAYER UNTIL IT'S NEAR THE RANGE
     public void spritejump(float t)
     {
-         if (count < 1.0f
+         if (count < countfactor
             && timer > t)
         {
             //attackhitbox.GetComponent<BoxCollider>().enabled = false;
@@ -210,6 +214,11 @@ public class JumperScript : MonoBehaviour
         }
     }
     
+
+    public void DestroyBeams()
+    {
+
+    }
 
     public void jumprest()
     {
@@ -272,7 +281,7 @@ public class JumperScript : MonoBehaviour
             navMeshAgent.SetDestination(playerGO.transform.position
                 );
             endpoint = navMeshAgent.destination;
-            controlPoint = startpos + (endpoint - transform.position) / 2 + Vector3.up * 15.0f;
+            controlPoint = startpos + (endpoint - transform.position) / 2 + Vector3.up * jumpheight;
             navMeshAgent.acceleration = 20.0f;
             speedfactor = 20.0f;
             count = 0;

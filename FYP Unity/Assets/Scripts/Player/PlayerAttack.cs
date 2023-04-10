@@ -11,6 +11,7 @@ public class PlayerAttack : MonoBehaviour
         KNIFE,
         ROLLINGPIN,
     }
+
     [SerializeField] GameObject HitBox;
     [SerializeField] float attackcd;
     [SerializeField] float attackingtime;
@@ -20,6 +21,18 @@ public class PlayerAttack : MonoBehaviour
     float attackingtimer;
     bool attacking;
     int direction;
+
+    
+
+    [SerializeField] GameObject spaculaHitbox;
+    [SerializeField] GameObject knifeHitbox;
+    [SerializeField] GameObject pinHitbox;
+   
+
+
+    float cooldown;
+
+
     Weapon currentweapon = Weapon.SPATULA;
     // Start is called before the first frame update
 
@@ -27,6 +40,7 @@ public class PlayerAttack : MonoBehaviour
 
     void Start()
     {
+        cooldown = 0.0f;
         HitBox.SetActive(false);
         attackingtimer = attackingtime;
         attackcdtimer = attackcd;
@@ -36,38 +50,91 @@ public class PlayerAttack : MonoBehaviour
         text.text = "Weapon: Spatula";
     }
 
+   
     // Update is called once per frame
     void Update()
     {
 
+        cooldown -= Time.deltaTime;
+
+        switch (currentweapon)
+        { 
+            case Weapon.SPATULA:
+                GetComponentInParent<PlayerStats>().setAttack(10.0f);
+                //spaculaHitbox.SetActive(true);
+                HitBox = spaculaHitbox;
+                knifeHitbox.SetActive(false);
+                pinHitbox.SetActive(false);
+                break;
+            case Weapon.KNIFE:
+                GetComponentInParent<PlayerStats>().setAttack(20.0f);
+                //knifeHitbox.SetActive(true);
+                HitBox = knifeHitbox;
+                spaculaHitbox.SetActive(false);
+                pinHitbox.SetActive(false);
+                break;
+            case Weapon.ROLLINGPIN:
+                GetComponentInParent<PlayerStats>().setAttack(10.0f);
+                //pinHitbox.SetActive(true);
+                HitBox = pinHitbox;
+                spaculaHitbox.SetActive(false);
+                knifeHitbox.SetActive(false);
+                break;
+            default:
+                break;
+        }
 
         // Attacking
         if (attackcdtimer > 0)
             attackcdtimer -= Time.deltaTime;
         else if (attackcdtimer <= 0)
         {
-            if (
-                (Input.GetMouseButtonDown(0) && !attacking)
-                //||
-                //(Input.GetMouseButtonDown(0) && !attacking)
-                )
+            //LIGHT ATTACK
+            if (Input.GetMouseButtonDown(0) && !attacking
+                && cooldown <= 0)
             {
+                //GetComponentInParent<PlayerStats>().setAttack(10.0f);
+                Debug.Log("LIGHT ATTACK " + GetComponentInParent<PlayerStats>().getAttack());
+                AttackWhichDirection(direction);
+                cooldown = 1.0f;
+                HitBox.SetActive(true);
+                attacking = true;
+                attackingtimer = attackingtime;
+            }
+            //
+
+            //HEAVY ATTACK
+            if (Input.GetMouseButtonDown(1) && !attacking
+                && cooldown <= 0)
+            {
+                GetComponentInParent<PlayerStats>().setAttack(
+                    GetComponentInParent<PlayerStats>().getAttack(5.0f));
+                Debug.Log("HEAVY ATTACK " + GetComponentInParent<PlayerStats>().getAttack());
+                cooldown = 5.0f;
                 AttackWhichDirection(direction);
                 HitBox.SetActive(true);
                 attacking = true;
                 attackingtimer = attackingtime;
             }
+            //
 
             if (attacking)
             {
                 attackingtimer -= Time.deltaTime;
                 if (attackingtimer <= 0)
                 {
-                    attacking = false;
                     HitBox.SetActive(false);
                     attackcdtimer = attackcd;
+                    attacking = false;
+                    //HitBox.SetActive(false);
+                    //attackcdtimer = attackcd;
                 }
             }
+            //else
+            //{
+            //    HitBox.SetActive(false);
+            //    attackcdtimer = attackcd;
+            //}
         }
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {

@@ -5,18 +5,20 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
 
-    public GameObject enemy;
-    private float interval, time;
-    private int x_position, z_position, max_enemies;
+    [SerializeField] GameObject enemy;
+    float  time;
+    private int x_position, z_position;
+    [SerializeField] int max_enemies;
+    [SerializeField] float interval;
     private bool enable;
+    
+
     
 
     // Start is called before the first frame update
     void Start()
     {
-        interval = 0;
-        time = 2.0f;
-        max_enemies = 5;
+        time = 0.0f;
         enable = true;
     }
 
@@ -33,8 +35,8 @@ public class Spawner : MonoBehaviour
             return;
         }
         
-            interval += 1 * Time.deltaTime;
-            if (interval >= time
+            time += 1 * Time.deltaTime;
+            if (time >= interval
                 && transform.childCount < max_enemies)
             {
                 for (int i = 0; i < 2; i++)
@@ -43,17 +45,18 @@ public class Spawner : MonoBehaviour
                     z_position = Random.Range(-5, 5);
 
                     GameObject enemyObject = Instantiate(enemy,
-                               transform.position + new Vector3(x_position, 0, z_position),
+                               transform.position + new Vector3(x_position * enemy.transform.localScale.x, 
+                               0, z_position * enemy.transform.localScale.z),
                                transform.rotation
                                );
                     enemyObject.transform.SetParent(transform);
                 }
 
-                interval = 0;
+               time = 0;
             }
-            else if (transform.childCount >= 5)
+            else if (transform.childCount >= 2)
             {
-                interval = 0;
+                time = 0;
             }
 
             //Debug.Log("AMOUNT OF CHILDREN " + transform.childCount);
@@ -103,14 +106,14 @@ public class Spawner : MonoBehaviour
     }
 
 
-    public void SetTime(float timer)
+    public void SetInterval(float timer)
     {
-        time = timer;
+        interval = timer;
     }
 
-    public float GetTime()
+    public float GetInterval()
     {
-        return time;
+        return interval;
     }
 
 }

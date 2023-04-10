@@ -60,6 +60,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   es: {fileID: 5249369353892626731}
   AttackCD: 1
+  animator: {fileID: 0}
 --- !u!1 &3824151877362138808
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,7 +91,7 @@ Transform:
   m_GameObject: {fileID: 3824151877362138808}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8537288725776422765}
@@ -162,7 +163,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   navMeshAgent: {fileID: 1888417120424642196}
-  DetectionRange: 10
 --- !u!114 &5249369353892626731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,6 +181,8 @@ MonoBehaviour:
   choppedPefab: {fileID: 9042526649571803264, guid: 0111c98b0ea1cf4448d9d9fe19051795, type: 3}
   smashedPrefab: {fileID: 7510281840356330337, guid: e9b208d8ecebe4b498646e3cb6d2c5ed, type: 3}
   Mush: {fileID: 8494874157540663937, guid: 4255f020537c20a48857eb56b1b0f6d5, type: 3}
+  healthbar: {fileID: 0}
+  attackhitbox: {fileID: 0}
   phase: 0
 --- !u!1 &4309510449923280359
 GameObject:
