@@ -39,8 +39,8 @@ public class Spawner : MonoBehaviour
             if (time >= interval
                 && transform.childCount < max_enemies)
             {
-                for (int i = 0; i < 2; i++)
-                {
+                //for (int i = 0; i < 2; i++)
+                //{
                     x_position = Random.Range(-5, 5);
                     z_position = Random.Range(-5, 5);
 
@@ -50,7 +50,7 @@ public class Spawner : MonoBehaviour
                                transform.rotation
                                );
                     enemyObject.transform.SetParent(transform);
-                }
+                //}
 
                time = 0;
             }

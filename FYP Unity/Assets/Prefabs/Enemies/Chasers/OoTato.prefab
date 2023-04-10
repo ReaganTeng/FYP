@@ -280,8 +280,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 334610793983535470}
-  - component: {fileID: 4580484458242105386}
   - component: {fileID: 5154285527511012264}
+  - component: {fileID: 4580484458242105386}
   - component: {fileID: 2689928030107387971}
   - component: {fileID: 5332284890183913897}
   m_Layer: 7
@@ -299,26 +299,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5045888562720546165}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.17, z: 0}
-  m_LocalScale: {x: 2.175961, y: 2.825, z: 1.0409391}
+  m_LocalPosition: {x: 0, y: 0.88, z: 0}
+  m_LocalScale: {x: 2.3119586, y: 2.825, z: 1.9036174}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5082159772648344802}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &4580484458242105386
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5045888562720546165}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5154285527511012264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -334,6 +321,19 @@ MonoBehaviour:
   es: {fileID: 2042661433135484003}
   AttackCD: 1
   animator: {fileID: 8240658424474279918}
+--- !u!65 &4580484458242105386
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5045888562720546165}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &2689928030107387971
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -473,8 +473,8 @@ GameObject:
   - component: {fileID: 6767964955574019102}
   - component: {fileID: 942897001748356901}
   - component: {fileID: 2042661433135484003}
-  - component: {fileID: 5671295273701510108}
   - component: {fileID: 3005328288323005774}
+  - component: {fileID: 5671295273701510108}
   m_Layer: 7
   m_Name: OoTato
   m_TagString: Enemy
@@ -565,28 +565,6 @@ MonoBehaviour:
   healthbar: {fileID: 2980357153712741364}
   attackhitbox: {fileID: 5045888562720546165}
   phase: 0
---- !u!195 &5671295273701510108
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7031070655414662128}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 5
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 3
 --- !u!114 &3005328288323005774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -609,6 +587,28 @@ MonoBehaviour:
   box: {fileID: 4580484458242105386}
   enemyPhase: 0
   attackhitbox: {fileID: 5045888562720546165}
+--- !u!195 &5671295273701510108
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7031070655414662128}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 5
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 3
 --- !u!1 &7310116162819616085
 GameObject:
   m_ObjectHideFlags: 0

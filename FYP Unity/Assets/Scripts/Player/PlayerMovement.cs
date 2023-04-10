@@ -56,6 +56,14 @@ public class PlayerMovement : MonoBehaviour
         GetComponentInChildren<Animator>().SetBool("walking", isWalking);
         GetComponentInChildren<Animator>().SetBool("click", isclicked);
         //
+
+
+
+        if(GetComponentInChildren<Animator>().GetBool("Hurt") == true)
+            {
+                Debug.Log("TRUE");
+            }
+
         if(Input.GetMouseButtonDown(0) == true
             /*Input.GetKeyDown(KeyCode.Q) == true*/)
         {
@@ -125,6 +133,14 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
+    }
+
+
+
+
+    public void setAnimator(bool hurt)
+    {
+       GetComponentInChildren<Animator>().SetBool("Hurt", hurt);
     }
 
     public void DisablePlayerControls()

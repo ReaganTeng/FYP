@@ -35,11 +35,12 @@ public class EnemyScript : MonoBehaviour
 
     int attack_type;
 
-    public GameObject attackhitbox;
+    [SerializeField] GameObject attackhitbox;
 
     bool updating;
     int zoneno;
     GameObject[] zone;
+    GameObject hitbox;
 
     public enum Phases
     {
@@ -62,7 +63,7 @@ public class EnemyScript : MonoBehaviour
         zoneno = 0;
         zone = GameObject.FindGameObjectsWithTag("Zone");
         BoundaryCheck();
-
+        hitbox = GameObject.FindGameObjectWithTag("Attack");
 
         transitionFromHurtTimer = 0;
         //phase = Phases.PHASE_3;
@@ -70,6 +71,10 @@ public class EnemyScript : MonoBehaviour
         healthbar.maxValue = EnemyHealth;
         healthbar.minValue = 0;
         player = GameObject.FindGameObjectWithTag("Player");
+
+
+        GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
+        GetComponentInChildren<Animator>().SetBool("attacked", false);
 
         //phase = Phases.ATTACK_TYPE_1;
         timer = 0.0f;
@@ -82,6 +87,7 @@ public class EnemyScript : MonoBehaviour
         zoneno = 0;
         zone = GameObject.FindGameObjectsWithTag("Zone");
         BoundaryCheck();
+        hitbox = GameObject.FindGameObjectWithTag("Attack");
 
         transitionFromHurtTimer = 0;
         //phase = Phases.PHASE_3;
@@ -89,6 +95,10 @@ public class EnemyScript : MonoBehaviour
         healthbar.maxValue = EnemyHealth;
         healthbar.minValue = 0;
         player = GameObject.FindGameObjectWithTag("Player");
+
+        GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
+        GetComponentInChildren<Animator>().SetBool("attacked", false);
+
 
         //phase = Phases.ATTACK_TYPE_1;
         timer = 0.0f;
@@ -106,7 +116,8 @@ public class EnemyScript : MonoBehaviour
 
         // If its from player attack
         if (other.CompareTag("Attack") && !Iframe
-            && GetComponent<BoxCollider>().enabled == true)
+            && GetComponent<BoxCollider>().enabled == true
+            && player.GetComponentInChildren<PlayerAttack>().getHitbox() == true)
         {
             EnemyHealth -= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().GetPlayerAttack();
 
@@ -164,6 +175,13 @@ public class EnemyScript : MonoBehaviour
 
     private void Update()
     {
+        //hitbox = GameObject.FindGameObjectWithTag("Attack");
+
+
+        //if (player.GetComponentInChildren<PlayerAttack>().getHitbox() == true)
+        //{
+        //    Debug.Log("HITBOX TRUE");
+        //}
 
         player = GameObject.FindGameObjectWithTag("Player");
 
@@ -250,6 +268,8 @@ public class EnemyScript : MonoBehaviour
             {
                 case Phases.ABOUT_TO_ATTACK:
                     {
+                    attackhitbox.SetActive(false);
+
                     if (updating)
                     {
                         abouttoattackUpdate();
@@ -264,7 +284,6 @@ public class EnemyScript : MonoBehaviour
                        //GetComponent<NavMeshAgent>().SetDestination(GetComponentInParent<Transform>().position);
                        // Debug.Log("CURRENT POSITION " + GetComponentInParent<Transform>().name);
                        
-
                         GetComponent<NavMeshAgent>().speed = 5.0f;
                         GetComponentInChildren<Canvas>().transform.localPosition = new Vector3(0, 0, 0);
                         GetComponentInChildren<SpriteRenderer>().transform.localPosition = new Vector3(0, 0.66f, 0);
@@ -299,9 +318,10 @@ public class EnemyScript : MonoBehaviour
                 case Phases.COOLDOWN:
                     {
                     //Debug.Log("COOLDOWN");
+                    attackhitbox.SetActive(false);
 
-                    
-                        cooldownUpdate();
+
+                    cooldownUpdate();
                     
 
                         break;
