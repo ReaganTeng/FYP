@@ -53,8 +53,7 @@ bool beam_mode;
         attackhitbox.SetActive(true);
 
 
-        GetComponent<EnemyScript>().setabouttoattackend(3.0f);
-        GetComponent<EnemyScript>().setCoolDownEnd(3.0f);
+        
     }
 
     void Start()
@@ -71,9 +70,6 @@ bool beam_mode;
     chasingspeed = 4.0f;
         attackhitbox.SetActive(true);
 
-
-        GetComponent<EnemyScript>().setabouttoattackend(3.0f);
-    GetComponent<EnemyScript>().setCoolDownEnd(3.0f);
 }
 
 // Update is called once per frame

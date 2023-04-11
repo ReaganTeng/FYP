@@ -47,10 +47,11 @@ public class PlayerAttack : MonoBehaviour
 
     float min_notch_value;
     [SerializeField] Slider chargeBar;
-
+    [SerializeField] Canvas canvas;
     int time;
     [SerializeField] TextMeshProUGUI txt;
-
+    [SerializeField] GameObject line;
+    [SerializeField] GameObject handle;
     Weapon currentweapon = Weapon.SPATULA;
     // Start is called before the first frame update
 
@@ -65,20 +66,41 @@ public class PlayerAttack : MonoBehaviour
         {
             chargeBar.maxValue = chargeMaxLvl;
             chargeBar.minValue = 0.0f;
-            chargeBar.value = chargeMaxLvl;
+            chargeBar.value = chargeBar.minValue;
         }
         //min_notch_value = chargeMaxLvl * (percentage_reduction/100);
         min_notch_value = chargeMaxLvl / number_of_charges;
         next_known_notch = chargingduration;
         last_known_notch = (int)next_known_notch - (int)min_notch_value;
 
+        //Debug.Log("LOCALSCALE " + chargeBar.fillRect.rect.width);
 
-        //First variable: How long it takes to chargeCurrentLvlup a charge(bar)
+        for (int i = 0; i < number_of_charges; i++)
+        {
 
-        //Second Variable: What is the maximum charges the player has
+            chargeBar.value += min_notch_value;
+            //Debug.Log("LOCALSCALE " + chargeBar.handleRect.position.x);
+            if (i < number_of_charges - 1)
+            {
+                GameObject l = Instantiate(line,
+                    new Vector3(0, 0),
+                    Quaternion.Euler(0, 0, 0)
+                    );
+                l.transform.SetParent(canvas.transform);
+                l.transform.position = new Vector2(chargeBar.handleRect.position.x, chargeBar.transform.position.y);
+                l.transform.localScale = new Vector2(1, chargeBar.transform.localScale.y * 3);
+            }
+            else
+            {
+                handle.SetActive(false);
+            }
+        }
 
-        //Third Variable: A variable that reduces the first variable, 
-        //basically like a reduction, could be percentage or flat value. if flat value, must tell me what is 10 % whats 50 %
+
+        if (chargeBar != null)
+        {
+            chargeBar.value = chargeMaxLvl;
+        }
 
         switchWeapon();
         spaculaHitbox.SetActive(false);

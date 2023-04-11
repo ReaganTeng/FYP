@@ -255,7 +255,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1458690216432499838}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -452,8 +452,9 @@ MonoBehaviour:
   choppedPefab: {fileID: 568297875779090178, guid: 9031fceed79e84b4ea688fbd77c831c0, type: 3}
   smashedPrefab: {fileID: 3320338801699120423, guid: 74500f70982b1624f91594f2616f5dd0, type: 3}
   Mush: {fileID: 8494874157540663937, guid: 4255f020537c20a48857eb56b1b0f6d5, type: 3}
-  nva: {fileID: 2057207063808142039}
   healthbar: {fileID: 3973220440702822082}
+  cooldown_period: 3
+  abouttoattack_period: 5
   attackhitbox: {fileID: 1458690216432499838}
   phase: 0
 --- !u!114 &6494524978179670524

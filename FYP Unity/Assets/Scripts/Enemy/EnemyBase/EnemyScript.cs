@@ -13,8 +13,6 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] GameObject Mush;
 
 
-    [SerializeField] NavMeshAgent nva;
-
     float Iframemaxtime = 0.1f;
     float Iframetimer = 0.1f;
     bool Iframe = false;
@@ -28,8 +26,8 @@ public class EnemyScript : MonoBehaviour
     //public GameObject[] zones;
     //public int zone_no;
     float timer;
-     float cooldownend;
-    float abouttoattackend;
+    [SerializeField] float cooldown_period;
+    [SerializeField] float abouttoattack_period;
 
     float transitionFromHurtTimer;
 
@@ -55,7 +53,16 @@ public class EnemyScript : MonoBehaviour
 
     [SerializeField] public Phases phase;
 
+    Transform spawnerparent;
+    public void setparent(Transform parentSpawner)
+    {
+        spawnerparent = parentSpawner;
+    }
 
+    public Transform getparent()
+    {
+        return spawnerparent;
+    }
 
     void Awake()
     {
@@ -210,26 +217,6 @@ public class EnemyScript : MonoBehaviour
         
 
 
-        //when to stop hurt animation
-        //if (EnemyHealth > 0
-        //    && GetComponentInChildren<Animator>().GetBool("attacked") == true)
-        {
-            /*float myTime = GetComponentInChildren<Animator>().GetCurrentAnimatorClipInfo(0)[0].clip.length
-        * GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime;*/
-
-            //if (GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
-            //if (myTime >= 0.95f)
-            //{
-            //    GetComponentInChildren<Animator>().SetBool("attacked", false);
-            //}
-            /*else
-            {
-                Debug.Log("ANIMATION " + GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime);
-            }*/
-        }
-        //
-
-
         //Debug.Log("ANIMATOR REGISTER " + GetComponentInChildren<Animator>().GetCurrentAnimatorClipInfo(0)[0].clip.name);
 
 
@@ -250,8 +237,9 @@ public class EnemyScript : MonoBehaviour
         zone = GameObject.FindGameObjectsWithTag("Zone");
         BoundaryCheck();
 
-        if (zoneno == player.GetComponent<PlayerStats>().getZoneno())
+        if (zoneno == player.GetComponentInChildren<PlayerZoneCheck>().getZoneno())
         {
+            //Debug.Log("Same zone " + zoneno + " is " + gameObject);
             updating = true;
         }
         else
@@ -259,16 +247,17 @@ public class EnemyScript : MonoBehaviour
             updating = false;
         }
 
-        if(updating == false)
+        if (updating == false)
         {
             phase = Phases.ABOUT_TO_ATTACK;
         }
-        
-            switch (phase)
+
+
+
+        switch (phase)
             {
                 case Phases.ABOUT_TO_ATTACK:
                     {
-                    attackhitbox.SetActive(false);
 
                     if (updating)
                     {
@@ -281,10 +270,17 @@ public class EnemyScript : MonoBehaviour
                         //    GetComponent<ChaserScript>().DestroyBeams();
                         //}
 
-                       //GetComponent<NavMeshAgent>().SetDestination(GetComponentInParent<Transform>().position);
-                       // Debug.Log("CURRENT POSITION " + GetComponentInParent<Transform>().name);
-                       
-                        GetComponent<NavMeshAgent>().speed = 5.0f;
+                        // Debug.Log("CURRENT POSITION " + GetComponentInParent<Transform>().name);
+                        GetComponent<BoxCollider>().enabled = true;
+                        GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+
+
+                        if (GetComponent<NavMeshAgent>().enabled == true)
+                        {
+                            GetComponent<NavMeshAgent>().speed = 5.0f;
+                            GetComponent<NavMeshAgent>().SetDestination(getparent().position);
+                        }
+
                         GetComponentInChildren<Canvas>().transform.localPosition = new Vector3(0, 0, 0);
                         GetComponentInChildren<SpriteRenderer>().transform.localPosition = new Vector3(0, 0.66f, 0);
                         GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
@@ -355,7 +351,10 @@ public class EnemyScript : MonoBehaviour
         }
     }
 
-
+    public int getzoneno()
+    {
+        return zoneno;
+    }
 
     public bool getupdating()
     {
@@ -364,21 +363,18 @@ public class EnemyScript : MonoBehaviour
     public void abouttoattackUpdate()
     {
         GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
-
-        timer += 1.0f * Time.deltaTime;
-        GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
+        timer += Time.deltaTime;
         GetComponent<NavMeshAgent>().speed = 0.0f;
-
-
         attackhitbox.GetComponent<BoxCollider>().enabled = false;
         GetComponent<BoxCollider>().enabled = true;
 
+        Debug.Log("ABOUT TO ATTACK IN " + (int)timer);
 
-        if (timer >= abouttoattackend)
+
+        if (timer >= abouttoattack_period)
         {
             timer = 0.0f;
             attack_type = Random.Range(1, 3);
-
 
             if (attack_type == 1)
             {
@@ -403,7 +399,7 @@ public class EnemyScript : MonoBehaviour
         attackhitbox.GetComponent<BoxCollider>().enabled = false;
         GetComponent<BoxCollider>().enabled = true;
 
-        if (timer >= cooldownend)
+        if (timer >= cooldown_period)
         {
             timer = 0.0f;
             phase = Phases.ABOUT_TO_ATTACK;
@@ -420,15 +416,7 @@ public class EnemyScript : MonoBehaviour
         timer += time;
     }
 
-    public void setCoolDownEnd(float time)
-    {
-        cooldownend = time;
-    }
-
-    public void setabouttoattackend(float time)
-    {
-        abouttoattackend = time;
-    }
+    
 
     public float gettimer()
     {
@@ -437,7 +425,7 @@ public class EnemyScript : MonoBehaviour
 
     public float getcooldownend()
     {
-        return cooldownend;
+        return cooldown_period;
     }
 
     void EnemyDie(bool ExactKill)

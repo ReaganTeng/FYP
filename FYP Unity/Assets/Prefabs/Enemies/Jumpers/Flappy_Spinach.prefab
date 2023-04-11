@@ -216,6 +216,8 @@ MonoBehaviour:
   smashedPrefab: {fileID: 3320338801699120423, guid: 74500f70982b1624f91594f2616f5dd0, type: 3}
   Mush: {fileID: 8494874157540663937, guid: 4255f020537c20a48857eb56b1b0f6d5, type: 3}
   healthbar: {fileID: 1421142012555959298}
+  cooldown_period: 3
+  abouttoattack_period: 5
   attackhitbox: {fileID: 3505226391663298238}
   phase: 0
 --- !u!114 &9131734202091092796
@@ -234,7 +236,9 @@ MonoBehaviour:
   enemyPhase: 0
   enemySprite: {fileID: 2964280913951463854}
   spriteRenderer: {fileID: 1843288542925539217}
-  jumpheight: 0
+  jumpheight: 3
+  jumpspeed: 1
+  countfactor: 1
   navMeshAgent: {fileID: 4041968836622471191}
   startupdating: 0
   attackhitbox: {fileID: 3505226391663298238}

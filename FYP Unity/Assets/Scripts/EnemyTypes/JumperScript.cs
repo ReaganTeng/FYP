@@ -55,8 +55,7 @@ public class JumperScript : MonoBehaviour
         GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
 
 
-        GetComponent<EnemyScript>().setabouttoattackend(3.0f);
-        GetComponent<EnemyScript>().setCoolDownEnd(3.0f);
+       
     }
 
 
@@ -77,8 +76,7 @@ public class JumperScript : MonoBehaviour
         GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
 
 
-        GetComponent<EnemyScript>().setabouttoattackend(3.0f); 
-        GetComponent<EnemyScript>().setCoolDownEnd(3.0f);
+       
     }
 
     // Update is called once per frame
@@ -206,11 +204,8 @@ public class JumperScript : MonoBehaviour
                     //make vibration
                     var speed = 4.0f; //how fast it shakes
                     var amount = 0.5f; //how much it shakes
-                    //spriteRenderer.transform.position.x = (Mathf.Sin(Time.time * speed) * amount);
-                    //spriteRenderer.transform.position = new Vector3((Mathf.Sin(Time.time * speed) * amount),
-                    //spriteRenderer.transform.position.y, spriteRenderer.transform.position.z);
+                   
 
-                    //GetComponent<MeshRenderer>().enabled = true;
 
                     GetComponent<EnemyScript>().abouttoattackUpdate();
                     break;

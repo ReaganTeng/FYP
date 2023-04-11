@@ -571,6 +571,8 @@ MonoBehaviour:
   smashedPrefab: {fileID: 3320338801699120423, guid: 74500f70982b1624f91594f2616f5dd0, type: 3}
   Mush: {fileID: 8494874157540663937, guid: 4255f020537c20a48857eb56b1b0f6d5, type: 3}
   healthbar: {fileID: 1447977899891316562}
+  cooldown_period: 5
+  abouttoattack_period: 5
   attackhitbox: {fileID: 4629510897537521484}
   phase: 0
 --- !u!114 &2417570650033485025
@@ -585,7 +587,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87d1958d059d9c84aa331df7920cee67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chargingtime: 0
   lm:
     serializedVersion: 2
     m_Bits: 0

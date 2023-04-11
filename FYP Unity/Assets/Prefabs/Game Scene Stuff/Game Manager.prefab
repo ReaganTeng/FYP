@@ -164,27 +164,27 @@ MonoBehaviour:
     ingredient2: {fileID: 1561627430489754311, guid: 57abb08eeb115de42936e21dff3348b3, type: 3}
     Result: {fileID: 6563926190247552163, guid: 4bff3a799ae975944b07e11f3e39d64c, type: 3}
   dishrecipeList:
-  - ingredient1: {fileID: 4727850471977572123, guid: 6cc7c7cdcc02699468ef56b6253a04b5, type: 3}
-    ingredient2: {fileID: 4727850471977572123, guid: 6cc7c7cdcc02699468ef56b6253a04b5, type: 3}
-    Result: {fileID: 2130613994254373028, guid: 49c913a35256ded4cb69abd57549e9da, type: 3}
-  - ingredient1: {fileID: 969170845776894310, guid: 09c4115bd02f8a1419349f60dad029f0, type: 3}
-    ingredient2: {fileID: 3727349960685119876, guid: 62c7a6be850960d4093786081f8f9161, type: 3}
-    Result: {fileID: 5187922175722491944, guid: 55e91b86f44f62f438699a992ead3da8, type: 3}
+  - ingredient1: {fileID: 4256567947675973792, guid: 710b9ffdfe2f6e941bfc6ef5b75defdf, type: 3}
+    ingredient2: {fileID: 3727349960685119876, guid: 412eeb9da45cf98408e1a271d2cb71f9, type: 3}
+    Result: {fileID: 2130613994254373028, guid: 1aa4138ff3d4c74489890d40137af51c, type: 3}
+  - ingredient1: {fileID: 969170845776894310, guid: 56dccc9ea087141459a04efb96ac648d, type: 3}
+    ingredient2: {fileID: 3727349960685119876, guid: 412eeb9da45cf98408e1a271d2cb71f9, type: 3}
+    Result: {fileID: 5187922175722491944, guid: ca05a7f3b3bc0cc4399b0d07f145fcc1, type: 3}
   - ingredient1: {fileID: 182605561234774530, guid: cb1736df13ccbf143aff6ecfc7892346, type: 3}
     ingredient2: {fileID: 6563926190247552163, guid: 4bff3a799ae975944b07e11f3e39d64c, type: 3}
     Result: {fileID: 2760707334722670586, guid: 1d8fa19d0f1dc644d8ee1244a28cca56, type: 3}
   - ingredient1: {fileID: 7247084980041192393, guid: 6f0f0e8a5185c8847b5ee318bb25abcc, type: 3}
     ingredient2: {fileID: 6130156292481864137, guid: 189e71819897e1241bf8047ce4f41705, type: 3}
-    Result: {fileID: 5806665495654497397, guid: 30e04f1085099b444ac7478eeff4dc9a, type: 3}
+    Result: {fileID: 5806665495654497397, guid: 0f3c31993db88dd438d0b5983637b2f0, type: 3}
   - ingredient1: {fileID: 8909789117250201433, guid: ed6a5afdf38bce944b9bae790ad1d529, type: 3}
     ingredient2: {fileID: 5383101231491425392, guid: 42a847b99512fee4193417b5a98bbd36, type: 3}
-    Result: {fileID: 1433756952925074294, guid: 7fdad013f60e793469c6b3eada7457a1, type: 3}
+    Result: {fileID: 1433756952925074294, guid: b1b650b2d11c75c45886bde0d2cb4275, type: 3}
   - ingredient1: {fileID: 1328260759072056660, guid: df830b3529f53904a89dfe46171d32cf, type: 3}
     ingredient2: {fileID: 8909789117250201433, guid: ed6a5afdf38bce944b9bae790ad1d529, type: 3}
-    Result: {fileID: 6416164822208955772, guid: d9e20522188d8934689551216cf8d770, type: 3}
+    Result: {fileID: 6416164822208955772, guid: cfd7c904be649af4f9a4c54d280c9d0c, type: 3}
   - ingredient1: {fileID: 7513010084235710504, guid: 027afea2a4f3bcc4d90f5c0168f14941, type: 3}
     ingredient2: {fileID: 182605561234774530, guid: cb1736df13ccbf143aff6ecfc7892346, type: 3}
-    Result: {fileID: 84663689907119024, guid: 7db0c791b3870684cae431b5105a165e, type: 3}
+    Result: {fileID: 84663689907119024, guid: d25fd9a618a17314386a90489b8482f5, type: 3}
   emptyPrefab: {fileID: 4294762023767553058, guid: e037f3a58e94ec04db61ee69131dd3f9, type: 3}
 --- !u!114 &1793855428296037516
 MonoBehaviour:
@@ -238,11 +238,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d7f2ce9e2a652b4bb29575e0734efb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ps: {fileID: 0}
   os: {fileID: 1793855428296037515}
   text: {fileID: 0}
   score: 0
   lm: {fileID: 11400000, guid: b1ab7845fb897f94da5f204cb406165d, type: 2}
   EndOfDayBackground: {fileID: 0}
+  resultDisplay: []
+  ClearedText: {fileID: 0}
+  FailedText: {fileID: 0}
+  TotalText: {fileID: 0}
   Textbox: {fileID: 0}
   HappyDialogue: Excellent Work! I mean, ehem, good work, chef. Keep it up!
   NeutralDialogue: Not bad? You could do better
@@ -251,16 +256,21 @@ MonoBehaviour:
   HappySquid: {fileID: 21300000, guid: c1f6034806dc0314a8794013532bdd05, type: 3}
   NeutralSquid: {fileID: 21300000, guid: 94ec22a6618d7c944a196417aba79164, type: 3}
   AngrySquid: {fileID: 21300000, guid: b461ccd2060ce7046b8196e56391827a, type: 3}
-  ClearedText: {fileID: 0}
-  FailedText: {fileID: 0}
   Grade: {fileID: 0}
   Srank: {fileID: 21300000, guid: 4a6ca92b421ab5f48a8530602ee062ba, type: 3}
   Arank: {fileID: 21300000, guid: ab485750a91f49248ac6dae7ccfd121d, type: 3}
   Brank: {fileID: 21300000, guid: 883df4b9c652a354ea88b3898472dbd1, type: 3}
   Crank: {fileID: 21300000, guid: b8a3964cd24c1b5469ba2bd15fc79245, type: 3}
   Frank: {fileID: 21300000, guid: f7bc6d841c1500144b94e26dc7525783, type: 3}
+  TextFadeInDuration: 0
+  StarDisplayDuration: 0
+  starDisplay: {fileID: 0}
+  GradeSection: {fileID: 0}
+  minValue: {fileID: 0}
+  maxValue: {fileID: 0}
   gradeSlider: {fileID: 0}
   SliderDuration: 1.5
+  creditObtained: {fileID: 0}
 --- !u!114 &1793855428296037510
 MonoBehaviour:
   m_ObjectHideFlags: 0

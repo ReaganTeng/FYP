@@ -17,13 +17,13 @@ public class EnemyAttack : MonoBehaviour
     {
         Attackcdtimer = 0;
         player = GameObject.FindGameObjectWithTag("Player");
-        playerBoxCollider = GameObject.FindGameObjectWithTag("PlayerBoxCollider");
+        playerBoxCollider = GameObject.FindGameObjectWithTag("playerboxcollider");
     }
 
     private void Update()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        playerBoxCollider = GameObject.FindGameObjectWithTag("PlayerBoxCollider");
+        playerBoxCollider = GameObject.FindGameObjectWithTag("playerboxcollider");
 
         if (Attackcdtimer > 0)
         {
