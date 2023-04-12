@@ -73,7 +73,6 @@ public class PlayerStats : MonoBehaviour
     public float getAttack(float additionalAtk = 0)
     {
         return PlayerAttack + additionalAtk;
-        PlayerHealth = 100;
     }
 
     public void ChangeHealth(float Healthchange)
@@ -106,6 +105,12 @@ public class PlayerStats : MonoBehaviour
 
     public void Update()
     {
+
+        if(GetComponentInChildren<Animator>().GetBool("Hurt") == true)
+        {
+            Debug.Log("PLAYER HURT");
+        }
+
         combo_timer_text.SetText(((int)combo_timer).ToString());
         fervorBar.value = fervorLevel;
         if (fervorLevel > 0)

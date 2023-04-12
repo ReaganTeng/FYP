@@ -28,6 +28,7 @@ public class EnemyAttack : MonoBehaviour
         if (Attackcdtimer > 0)
         {
             Attackcdtimer -= Time.deltaTime;
+            player.GetComponent<PlayerMovement>().setAnimator(true);
 
             if (Attackcdtimer < AttackCD / 2)
             {
@@ -39,17 +40,11 @@ public class EnemyAttack : MonoBehaviour
         {
             player.GetComponent<PlayerMovement>().setAnimator(false);
             //playerBoxCollider.SetActive(true);
-
             playerBoxCollider.GetComponent<BoxCollider>().enabled = true;
         }
 
         
-
-
-
         //player.GetComponent<PlayerMovement>().setAnimator(true);
-
-
 
         //if (Attackcdtimer > AttackCD/2)
         //{
@@ -79,8 +74,9 @@ public class EnemyAttack : MonoBehaviour
             other.GetComponent<PlayerStats>().ResetConsecutiveHit();
             other.GetComponent<PlayerStats>().ChangeFervor(-10.0f);*/
 
-
+            //PLAY HURT ANIMATION
             player.GetComponent<PlayerMovement>().setAnimator(true);
+            //
             player.GetComponent<PlayerStats>().ResetConsecutiveHit();
             player.GetComponent<PlayerStats>().ChangeFervor(-10.0f);
 

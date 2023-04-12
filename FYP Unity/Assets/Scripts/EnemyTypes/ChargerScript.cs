@@ -72,7 +72,6 @@ public class ChargerScript : MonoBehaviour
             {
                 case EnemyScript.Phases.ATTACK_TYPE_1:
                 //case EnemyScript.Phases.ATTACK_TYPE_2:
-
                     {
                         //attackhitbox.SetActive(true);
 
@@ -89,19 +88,10 @@ public class ChargerScript : MonoBehaviour
 
                         if (chargingtime >= 1.0f)
                         {
-                            //if (chargingtime < 1.1f)
-                            //{
-                            //    resultingVector = playerPos - transform.position;
-                            //    resultingVector.y = 0;
-                            //    resultingVector.Normalize();
-                            //}
-
-                            //if (chargingtime > 1.1f
-                            //    && chargingtime < 1.2f)
-                            //{
+                        
                             chargingtime = 0;
                             collided = true;
-                            //}
+                     
                         }
                         //KEEP GOING FORWARD UNTIL HITS WALL
                         if (collided)
@@ -117,12 +107,7 @@ public class ChargerScript : MonoBehaviour
                     }
                 case EnemyScript.Phases.ATTACK_TYPE_2:
                     {
-
-                        //attackhitbox.SetActive(true);
-
-                        //GetComponent<MeshRenderer>().enabled = false;
                         GetComponentInChildren<Animator>().SetBool("about2charge", true);
-
                         GetComponentInChildren<Animator>().SetBool("charge", true);
 
                         chargingtime += 1.0f * Time.deltaTime;
@@ -143,8 +128,6 @@ public class ChargerScript : MonoBehaviour
                             else
                             {
                                 number_of_bounces += 1;
-                                //playerPos = playerGO.transform.position;
-                                //resultingVector = playerPos - transform.position;
                                 chargeAtplayer();
                             }
                             chargingtime = 0.0f;
@@ -187,7 +170,8 @@ public class ChargerScript : MonoBehaviour
 
     public void chargeAtplayer()
     {
-        attackhitbox.SetActive(true);
+        //attackhitbox.SetActive(true);
+        attackhitbox.GetComponent<BoxCollider>().enabled = true;
 
         if (enemyPhase == EnemyScript.Phases.ATTACK_TYPE_2)
         {
@@ -196,7 +180,6 @@ public class ChargerScript : MonoBehaviour
         else if (enemyPhase == EnemyScript.Phases.ATTACK_TYPE_1)
         {
             GameObject bc = GameObject.FindGameObjectWithTag("playerboxcollider");
-            //float distance = Vector3.Distance(transform.position, playerPos);
             float distance = Vector3.Distance(transform.position, bc.transform.position);
             //Debug.Log("DISTANCE " + (int)distance);
             if ((int)distance <= 1)
@@ -222,7 +205,10 @@ public class ChargerScript : MonoBehaviour
 
     public void recovering()
     {
-        attackhitbox.SetActive(false);
+        //attackhitbox.SetActive(false);
+        attackhitbox.GetComponent<BoxCollider>().enabled = false;
+
+
         GetComponent<BoxCollider>().enabled = true;
         //Debug.Log("Recovering");
 
@@ -259,17 +245,6 @@ public class ChargerScript : MonoBehaviour
                        )
                     {
                         collided = true;
-
-                        //if (collision.gameObject.tag == "Player"
-                        //    || collision.gameObject.tag == "playerboxcollider")
-                        //{
-                        //    //GetComponent<BoxCollider>().enabled = false;
-                        //}
-                        //else
-                        //{
-                        //    //GetComponent<BoxCollider>().enabled = true;
-                        //    collided = true;
-                        //}
                     }
                     break;
                 }
@@ -306,7 +281,9 @@ public class ChargerScript : MonoBehaviour
                 }
             case EnemyScript.Phases.COOLDOWN:
                 {
-                    attackhitbox.SetActive(false);
+                    //attackhitbox.SetActive(false);
+                    attackhitbox.GetComponent<BoxCollider>().enabled = false;
+
                     GetComponent<BoxCollider>().enabled = true;
                     GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
                     //grab player location
@@ -320,21 +297,6 @@ public class ChargerScript : MonoBehaviour
 
                     break;
                 }
-            /*case EnemyScript.Phases.PHASE_3:
-                {
-                    //unless object collided is player, don't stop
-                    if (collision.gameObject.tag == "Player")
-                    {
-                        collided = true;
-                    }
-                    else
-                    {
-                        playerPos = playerGO.transform.position;
-                        resultingVector = playerPos - transform.position;
-                        chargeAtplayer();
-                    }
-                    break;
-                }*/
             default:
                 break;
 

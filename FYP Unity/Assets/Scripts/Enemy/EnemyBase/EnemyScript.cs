@@ -313,7 +313,7 @@ public class EnemyScript : MonoBehaviour
                 case Phases.COOLDOWN:
                     {
                     //Debug.Log("COOLDOWN");
-                    attackhitbox.SetActive(false);
+                    attackhitbox.GetComponent<BoxCollider>().enabled = false;
 
 
                     cooldownUpdate();
@@ -475,7 +475,9 @@ public class EnemyScript : MonoBehaviour
 
     public void Death()
     {
-        attackhitbox.SetActive(false);
+        //attackhitbox.SetActive(false);
+        attackhitbox.GetComponent<BoxCollider>().enabled = false;
+
         //Destroy(attackhitbox);
 
         if (EnemyHealth == 0)

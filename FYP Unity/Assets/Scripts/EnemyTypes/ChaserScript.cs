@@ -9,7 +9,7 @@ public class ChaserScript : MonoBehaviour
  float targetVelocity = 10.0f;
     int numberOfRays = 30;
     float angle = 90.0f;
-    float rayRange = .8f;
+    float rayRange = .3f;
     [SerializeField] LayerMask lm;
 
 
@@ -50,10 +50,11 @@ bool beam_mode;
         playerGO = GameObject.FindGameObjectWithTag("Player");
 
         chasingspeed = 4.0f;
-        attackhitbox.SetActive(true);
+        //attackhitbox.SetActive(true);
+        attackhitbox.GetComponent<BoxCollider>().enabled = true;
 
 
-        
+
     }
 
     void Start()
@@ -68,12 +69,13 @@ bool beam_mode;
     playerGO = GameObject.FindGameObjectWithTag("Player");
 
     chasingspeed = 4.0f;
-        attackhitbox.SetActive(true);
+        //attackhitbox.SetActive(true);
+        attackhitbox.GetComponent<BoxCollider>().enabled = true;
 
-}
+    }
 
-// Update is called once per frame
-void Update()
+    // Update is called once per frame
+    void Update()
 {
 
 
@@ -92,11 +94,10 @@ void Update()
             {
                 case EnemyScript.Phases.ATTACK_TYPE_2:
                     {
-                        attackhitbox.SetActive(true);
-
-                        //GetComponent<SpriteRenderer>().enabled = false;
-
+                        //attackhitbox.SetActive(true);
                         attackhitbox.GetComponent<BoxCollider>().enabled = true;
+
+
                         time_att_1 = 0;
                         if (dist <= 4.0f)
                         {
@@ -166,7 +167,8 @@ void Update()
                     }
                 case EnemyScript.Phases.ATTACK_TYPE_1:
                     {
-                        attackhitbox.SetActive(true);
+                        //attackhitbox.SetActive(true);
+                        attackhitbox.GetComponent<BoxCollider>().enabled = true;
 
                         GetComponentInChildren<Animator>().SetBool("chasingPlayer", true);
 
@@ -175,7 +177,6 @@ void Update()
                         //GetComponent<SpriteRenderer>().enabled = false;
 
                         //Debug.Log("CHASING PLAYER");
-                        attackhitbox.GetComponent<BoxCollider>().enabled = true;
 
                         chasingspeed = 4.0f;
                         time_att_2 = 0;
@@ -213,6 +214,7 @@ void Update()
         }
         else
         {
+            steering();
             DestroyBeams();
         }
 
@@ -298,7 +300,7 @@ void steering()
         if (Physics.Raycast(ray, out hitInfo, rayRange
             , ~lm))
         {
-            Debug.Log("HIT SOMETHING");
+            //Debug.Log("HIT SOMETHING");
             deltaPosition -= (1.0f / numberOfRays) * targetVelocity * direction;
             transform.position += deltaPosition * Time.deltaTime;
 
@@ -306,7 +308,7 @@ void steering()
         else if (Physics.Raycast(ray2, out hitInfo, rayRange
             , ~lm))
         {
-            Debug.Log("HIT SOMETHING");
+            //Debug.Log("HIT SOMETHING");
 
             deltaPosition -= (1.0f / numberOfRays) * targetVelocity * direction2;
             transform.position += deltaPosition * Time.deltaTime;
