@@ -17,6 +17,7 @@ public class DisplayShopItem : MonoBehaviour
     List<Image> UpgradeIcon = new List<Image>();
     ShopItem shopItem;
     bool IsActive;
+    Transform[] Array;
 
     private void Awake()
     {
@@ -27,12 +28,21 @@ public class DisplayShopItem : MonoBehaviour
             UpgradeIcon.Add(temparray[i]);
         }
         IsActive = true;
+        Array = gameObject.GetComponentsInChildren<Transform>();
     }
 
-    public void UpdateShopItemDisplay(ShopItem item)
+    public void UpdateShopItemDisplay(ShopItem item, bool IgnoreGlow)
     {
         IsActive = true;
-        gameObject.GetComponent<Image>().sprite = UpgradeBackground;
+
+        if (gameObject.GetComponent<Image>().sprite != UpgradeBackground_Glow || IgnoreGlow)
+            gameObject.GetComponent<Image>().sprite = UpgradeBackground;
+
+        for (int i = 1; i < Array.Length; i++)
+        {
+            Array[i].gameObject.SetActive(true);
+        }
+
         shopItem = item;
         ItemName.text = shopItem.Name;
         image.sprite = shopItem.image;
@@ -52,8 +62,6 @@ public class DisplayShopItem : MonoBehaviour
     public void DisableSlot()
     {
         gameObject.GetComponent<Image>().sprite = UpgradeBackground_Gray;
-        Transform[] Array = gameObject.GetComponentsInChildren<Transform>();
-
         for (int i = 1; i < Array.Length; i++)
         {
             Array[i].gameObject.SetActive(false);

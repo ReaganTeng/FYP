@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ShopItem", menuName = "ShopItem")]
 public class ShopItem : ScriptableObject
 {
+    [SerializeField] UpgradeSystem.ShopItemType Itemtype; // what item is it
     public string Name; // Name of the item
     public string Description; // Description of the item
     public int BaseCost; // The base cost of the item
@@ -27,5 +28,10 @@ public class ShopItem : ScriptableObject
     public void ResetLevel()
     {
         currentLevel = 0;
+    }
+    
+    public UpgradeSystem.ShopItemType GetShopItemType()
+    {
+        return Itemtype;
     }
 }

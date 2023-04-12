@@ -16,6 +16,7 @@ public class ShopSystem : MonoBehaviour
     [SerializeField] TextMeshProUGUI CurrencyAmt;
     [SerializeField] Sprite EnabledButton;
     [SerializeField] Sprite DisabledButton;
+    [SerializeField] Sprite MaxedButton;
     int CurrentPanel;
     ShopItem panelItem;
 
@@ -61,14 +62,14 @@ public class ShopSystem : MonoBehaviour
         panelItem = null;
     }
 
-    void UpdateShopUI()
+    void UpdateShopUI(bool DisableGlow = true)
     {
         for (int i = 0; i < ItemPerPanel; i++)
         {
             DisplayShopItem dsi = shopItemSlots[i].GetComponent<DisplayShopItem>();
-            if (i < shopItem.Count)
+            if (i + (CurrentPanel * ItemPerPanel) < shopItem.Count)
             {
-                dsi.UpdateShopItemDisplay(shopItem[CurrentPanel * ItemPerPanel + i]);
+                dsi.UpdateShopItemDisplay(shopItem[CurrentPanel * ItemPerPanel + i], DisableGlow);
             }
             else
             {
@@ -78,9 +79,10 @@ public class ShopSystem : MonoBehaviour
         CurrencyAmt.text = pp.GetCurrentCC().ToString();
     }
 
-    public void NextPanel()
+    public void SwitchPanel(int panelNo)
     {
-
+        CurrentPanel = panelNo;
+        UpdateShopUI();
     }
 
     int CalculateCost(ShopItem item)
@@ -107,9 +109,9 @@ public class ShopSystem : MonoBehaviour
         // If player has max lvl on that item, lock it and display maxed
         if (item.GetCurrentLevel() >= item.UpgradeLevels)
         {
-            itemPanel.GetComponentsInChildren<Image>()[1].sprite = EnabledButton;
+            itemPanel.GetComponentsInChildren<Image>()[1].sprite = MaxedButton;
             itemPanel.GetComponentInChildren<Button>().interactable = false;
-            temp[2].text = "MAXED";
+            temp[2].text = "-";
         }
         // Enable if player has enough cc and it is not maxed level
         else if (pp.GetCurrentCC() >= CalculateCost(item))
@@ -135,7 +137,8 @@ public class ShopSystem : MonoBehaviour
             {
                 pp.DecreaseCredibility(CalculateCost(shopItem[i]));
                 shopItem[i].SetLevel(1);
-                UpdateShopUI();
+                UpgradeSystem.instance.Upgrade(shopItem[i]);
+                UpdateShopUI(false);
                 DisplayOnPanel(shopItem[i]);
                 // break the loop
                 i = shopItem.Count;
@@ -149,5 +152,6 @@ public class ShopSystem : MonoBehaviour
         {
             shopItem[i].ResetLevel();
         }
+        UpdateShopUI();
     }
 }

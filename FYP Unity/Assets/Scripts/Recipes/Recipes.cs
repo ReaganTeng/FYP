@@ -61,7 +61,7 @@ public class Recipes : MonoBehaviour
         for (int i = 0; i < rp.Count; i++)
         {
             // find the first ingredient that matches any 2 ingredient requires for the dish
-            if (ingredient1id == FoodManager.instance.GetItemID(rp[i].ingredient1) || ingredient2id == FoodManager.instance.GetItemID(rp[i].ingredient2))
+            if (ingredient1id == FoodManager.instance.GetItemID(rp[i].ingredient1) || ingredient1id == FoodManager.instance.GetItemID(rp[i].ingredient2))
             {
                 // if it is one of the ingredient, sum the id tgt and see if the sum number match, if it match, its that recipe
                 if (ingredient1id + ingredient2id == FoodManager.instance.GetItemID(rp[i].ingredient1) + FoodManager.instance.GetItemID(rp[i].ingredient2))
