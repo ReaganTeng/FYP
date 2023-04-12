@@ -7,12 +7,12 @@ public class LevelSelectManager : MonoBehaviour
 {
     [SerializeField] PlayerProgress pp;
     [SerializeField] LevelManager lm;
-    [SerializeField] TextMeshProUGUI text;
+    [SerializeField] TextMeshProUGUI Currency;
+    [SerializeField] TextMeshProUGUI Reputation;
     // Start is called before the first frame update
     void Start()
     {
-        CheckIfCanUnlock();
-        text.text = "Cosmic Credibility: " + pp.GetCurrentCC().ToString();
+        UpdateUI();
     }
 
 
@@ -29,5 +29,12 @@ public class LevelSelectManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void UpdateUI()
+    {
+        CheckIfCanUnlock();
+        Currency.text = pp.GetCurrentCC().ToString();
+        Reputation.text = pp.GetMaxCC().ToString();
     }
 }

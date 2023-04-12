@@ -522,7 +522,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 300395897605230481, guid: 6e885474360640d4a91ee6c3d039fc96, type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 300395897605230482, guid: 6e885474360640d4a91ee6c3d039fc96, type: 3}
       propertyPath: m_Name
@@ -721,7 +721,7 @@ PrefabInstance:
       objectReference: {fileID: 340388862}
     - target: {fileID: 1793855428296037509, guid: 3469af5157eaf574ba40b0341056896a, type: 3}
       propertyPath: TimeFortheDayInSeconds
-      value: 1000
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1793855428296037510, guid: 3469af5157eaf574ba40b0341056896a, type: 3}
       propertyPath: GreatBG
@@ -756,6 +756,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1031948284}
     - target: {fileID: 1793855428296037514, guid: 3469af5157eaf574ba40b0341056896a, type: 3}
+      propertyPath: score
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1793855428296037514, guid: 3469af5157eaf574ba40b0341056896a, type: 3}
       propertyPath: Textbox
       value: 
       objectReference: {fileID: 1031948283}
@@ -770,7 +774,7 @@ PrefabInstance:
     - target: {fileID: 1793855428296037514, guid: 3469af5157eaf574ba40b0341056896a, type: 3}
       propertyPath: TotalText
       value: 
-      objectReference: {fileID: 1031948286}
+      objectReference: {fileID: 1001000280}
     - target: {fileID: 1793855428296037514, guid: 3469af5157eaf574ba40b0341056896a, type: 3}
       propertyPath: FailedText
       value: 
