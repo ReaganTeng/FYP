@@ -17,9 +17,6 @@ public class PlayerZoneCheck : MonoBehaviour
         
     }
 
-
-
-
     public void Start()
     {
         

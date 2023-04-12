@@ -106,11 +106,12 @@ public class PlayerStats : MonoBehaviour
 
     public void Update()
     {
-        //combo_timer_text.SetText(((int)combo_timer).ToString());
-        //combo_timer -= 1 * Time.deltaTime;
-        //fervorBar.value = fervorLevel;
-        //fervorLevel -= 1.0f * Time.deltaTime;
-
+        combo_timer_text.SetText(((int)combo_timer).ToString());
+        fervorBar.value = fervorLevel;
+        if (fervorLevel > 0)
+        {
+            fervorLevel -= 1.0f * Time.deltaTime;
+        }
 
         if (combo_timer <= 0
             && !Input.GetMouseButtonDown(0))
@@ -118,28 +119,26 @@ public class PlayerStats : MonoBehaviour
             ResetConsecutiveHit();
             numberConsecutiveHits = 0;
         }
+        else
+        {
+            combo_timer -= 1 * Time.deltaTime;
+        }
 
 
-       
+
 
 
         if (fervorLevel >= fervorMaxLevel - 30)
         {
             buff_active = true;
+            //Debug.Log("BUFF IS ACTIVE");
         }
         else
         {
             buff_active = false;
         }
 
-        //if (fervorLevel >= fervorMaxLevel - 30)
-        //{
-        //    buff_active = true;
-        //}
-        //else
-        //{
-        //    buff_active = false;
-        //}
+
 
         //SCALE EFFECT FOR TEXT
         //GetComponent<Transform>().localScale += new Vector3(1 * Time.deltaTime, 1 * Time.deltaTime, 0);
@@ -172,6 +171,7 @@ public class PlayerStats : MonoBehaviour
         //    }
         //}
         //
+
     }
 
     public void decidefervor2add(float consecutive_stage_min, float consecutive_stage_max, float fervor_2add)
@@ -198,7 +198,10 @@ public class PlayerStats : MonoBehaviour
 
 
 
-    
+    public bool buffactive()
+    {
+        return buff_active;
+    }
 
     public void resetCombo_timer()
     {

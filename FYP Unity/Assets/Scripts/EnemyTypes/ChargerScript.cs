@@ -74,6 +74,7 @@ public class ChargerScript : MonoBehaviour
                 //case EnemyScript.Phases.ATTACK_TYPE_2:
 
                     {
+                        //attackhitbox.SetActive(true);
 
                         GetComponentInChildren<Animator>().SetBool("about2charge", true);
                         GetComponentInChildren<Animator>().SetBool("charge", true);
@@ -117,6 +118,7 @@ public class ChargerScript : MonoBehaviour
                 case EnemyScript.Phases.ATTACK_TYPE_2:
                     {
 
+                        //attackhitbox.SetActive(true);
 
                         //GetComponent<MeshRenderer>().enabled = false;
                         GetComponentInChildren<Animator>().SetBool("about2charge", true);
