@@ -33,15 +33,12 @@ public class PlayerStats : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI combo_timer_text;
 
-    int zoneno;
-    GameObject[] zone;
+   
 
     public void Awake()
     {
         PlayerAttack = 10.0f;
-        zoneno = 0;
-        zone = GameObject.FindGameObjectsWithTag("Zone");
-        BoundaryCheck();
+        
 
         fervorMaxLevel = 100;
         fervor2Add = 0;
@@ -57,9 +54,7 @@ public class PlayerStats : MonoBehaviour
     public void Start()
     {
         PlayerAttack = 10.0f;
-        zoneno = 0;
-        zone = GameObject.FindGameObjectsWithTag("Zone");
-        BoundaryCheck();
+        
 
         //PlayerHealth = playerProgress.PlayerMaxHealth;
 
@@ -125,10 +120,7 @@ public class PlayerStats : MonoBehaviour
         }
 
 
-        zone = GameObject.FindGameObjectsWithTag("Zone");
-        BoundaryCheck();
-
-        //Debug.Log("CURRENT PLAYER ZONE " + zoneno);
+       
 
 
         if (fervorLevel >= fervorMaxLevel - 30)
@@ -192,10 +184,7 @@ public class PlayerStats : MonoBehaviour
     }
 
 
-    public int getZoneno()
-    {
-        return zoneno;
-    }
+    
 
     public void decidecombotimer(float consecutive_stage_min, float consecutive_stage_max, float comb_timer)
     {
@@ -209,26 +198,7 @@ public class PlayerStats : MonoBehaviour
 
 
 
-    public void BoundaryCheck()
-    {
-        for (int i = 0; i < zone.Length; i++)
-        {
-            if (transform.position.x < zone[i].GetComponent<Transform>().position.x + (zone[i].GetComponent<Transform>().localScale.x / 2)
-             && transform.position.x > zone[i].GetComponent<Transform>().position.x - (zone[i].GetComponent<Transform>().localScale.x / 2)
-             && transform.position.z > zone[i].GetComponent<Transform>().position.z - (zone[i].GetComponent<Transform>().localScale.z / 2)
-            && transform.position.z < zone[i].GetComponent<Transform>().position.z + (zone[i].GetComponent<Transform>().localScale.z / 2)
-             )
-
-            {
-                zoneno = zone[i].GetComponent<WhatZone>().zone_number;
-                break;
-            }
-            else
-            {
-                zoneno = 0;
-            }
-        }
-    }
+    
 
     public void resetCombo_timer()
     {

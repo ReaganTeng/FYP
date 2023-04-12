@@ -339,7 +339,7 @@ Transform:
   m_GameObject: {fileID: 5934549991798046295}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.66, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1239429724407764866}
@@ -431,8 +431,9 @@ MonoBehaviour:
   choppedPefab: {fileID: 568297875779090178, guid: 9031fceed79e84b4ea688fbd77c831c0, type: 3}
   smashedPrefab: {fileID: 3320338801699120423, guid: 74500f70982b1624f91594f2616f5dd0, type: 3}
   Mush: {fileID: 8494874157540663937, guid: 4255f020537c20a48857eb56b1b0f6d5, type: 3}
-  nva: {fileID: 9042345439354291835}
   healthbar: {fileID: 1915432055283717715}
+  cooldown_period: 3
+  abouttoattack_period: 3
   attackhitbox: {fileID: 8488784667504840914}
   phase: 1
 --- !u!114 &1908877959216652521

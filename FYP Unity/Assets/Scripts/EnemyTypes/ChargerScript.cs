@@ -9,14 +9,15 @@ public class ChargerScript : MonoBehaviour
     private int number_of_bounces;
     
 
-    private float chargecooldown;
     private bool collided;
 
     private GameObject playerGO;
     Vector3 playerPos;
     Vector3 resultingVector;
 
-    public float chargingtime;
+    float chargingtime;
+
+
 
     public LayerMask lm;
 
@@ -28,74 +29,55 @@ public class ChargerScript : MonoBehaviour
 
     public GameObject attackhitbox;
 
+    void Awake()
+    {
+        velocityspeed = 10.0f;
+        number_of_bounces = 0;
+        collided = false;
+        navMeshAgent.enabled = false;
+        playerGO = GameObject.FindGameObjectWithTag("Player");
+        playerPos = playerGO.transform.position;
+        resultingVector = playerPos - transform.position;
+        resultingVector.y = 0;
+        resultingVector.Normalize();
+        chargingtime = 0.0f;
+       
+    }
     // Start is called before the first frame update
     void Start()
     {
         velocityspeed = 10.0f;
-
         number_of_bounces = 0;
-
         collided = false;
-        chargecooldown = 0.1f;
         navMeshAgent.enabled = false;
-
         playerGO = GameObject.FindGameObjectWithTag("Player");
         playerPos = playerGO.transform.position;
-        
         resultingVector = playerPos - transform.position;
         resultingVector.y = 0;
         resultingVector.Normalize();
-
         chargingtime = 0.0f;
-
-        GetComponent<EnemyScript>().setabouttoattackend(3.0f);
-        GetComponent<EnemyScript>().setCoolDownEnd(3.0f);
 
     }
 
     // Update is called once per frame
     void Update()
     {
+        playerGO = GameObject.FindGameObjectWithTag("Player");
+
         enemyPhase = GetComponent<EnemyScript>().phase;
 
-        {
-            //switch (enemyPhase)
-            //{
-            //    case EnemyScript.Phases.PHASE_1:
-            //        {
-            //            Debug.Log("CHARGER PHASE 1");
-            //            break;
-            //        }
-            //    case EnemyScript.Phases.PHASE_2:
-            //        {
-            //            Debug.Log("CHARGER PHASE 2");
-            //            break;
-            //        }
-
-            //    case EnemyScript.Phases.PHASE_3:
-            //        {
-            //            Debug.Log("CHARGER PHASE 3");
-            //            break;
-            //        }
-            //    default:
-            //        break;
-
-            //}
-        }
         if (GetComponent<EnemyScript>().getupdating())
         {
             switch (enemyPhase)
             {
                 case EnemyScript.Phases.ATTACK_TYPE_1:
-                    //case EnemyScript.Phases.ATTACK_TYPE_2:
+                //case EnemyScript.Phases.ATTACK_TYPE_2:
 
                     {
 
                         GetComponentInChildren<Animator>().SetBool("about2charge", true);
-
                         GetComponentInChildren<Animator>().SetBool("charge", true);
 
-                        //GetComponent<MeshRenderer>().enabled = false;
                         chargingtime += 1.0f * Time.deltaTime;
 
                         if (chargingtime < 0.1f)
@@ -120,6 +102,16 @@ public class ChargerScript : MonoBehaviour
                             collided = true;
                             //}
                         }
+                        //KEEP GOING FORWARD UNTIL HITS WALL
+                        if (collided)
+                        {
+                            recovering();
+                        }
+                        else
+                        {
+                            chargeAtplayer();
+                        }
+
                         break;
                     }
                 case EnemyScript.Phases.ATTACK_TYPE_2:
@@ -153,61 +145,68 @@ public class ChargerScript : MonoBehaviour
                                 //resultingVector = playerPos - transform.position;
                                 chargeAtplayer();
                             }
-
                             chargingtime = 0.0f;
                         }
+
+                        //KEEP GOING FORWARD UNTIL HITS WALL
+                        if (collided)
+                        {
+                            recovering();
+                        }
+                        else
+                        {
+                            chargeAtplayer();
+                        }
+
                         break;
                     }
-
                 case EnemyScript.Phases.ABOUT_TO_ATTACK:
                     {
-
-                        //GetComponent<MeshRenderer>().enabled = true;
+                        GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
                         GetComponentInChildren<Animator>().SetBool("about2charge", true);
                         GetComponent<EnemyScript>().abouttoattackUpdate();
                         break;
                     }
-                /*case EnemyScript.Phases.PHASE_3:
-                    {
-                        if(chargingtime >= 1.0f)
-                        {
-                            playerPos = playerGO.transform.position;
-                            resultingVector = playerPos - transform.position;
-                            chargeAtplayer();
-                            chargingtime = 0.0f;
-                        }
-                        break;
-                    }*/
                 default:
                     break;
             }
         }
 
-            //KEEP GOING FORWARD UNTIL HITS WALL
-            if (collided)
-            {
-                recovering();
-            }
-            else
-            {
-                chargeAtplayer();
-            }
-        
+
+        if (GetComponent<EnemyScript>().getzoneno() == 0)
+        {
+            resultingVector = GetComponent<EnemyScript>().getparent().position - transform.position;
+            resultingVector.y = 0;
+            resultingVector.Normalize();
+            GetComponent<Rigidbody>().velocity = resultingVector * velocityspeed;
+        }
     }
 
 
     public void chargeAtplayer()
     {
-        attackhitbox.GetComponent<BoxCollider>().enabled = true;
+        attackhitbox.SetActive(true);
 
         if (enemyPhase == EnemyScript.Phases.ATTACK_TYPE_2)
         {
             GetComponent<BoxCollider>().enabled = true;
         }
-        else
+        else if (enemyPhase == EnemyScript.Phases.ATTACK_TYPE_1)
         {
-            GetComponent<BoxCollider>().enabled = false;
+            GameObject bc = GameObject.FindGameObjectWithTag("playerboxcollider");
+            //float distance = Vector3.Distance(transform.position, playerPos);
+            float distance = Vector3.Distance(transform.position, bc.transform.position);
+            //Debug.Log("DISTANCE " + (int)distance);
+            if ((int)distance <= 1)
+            {
+                GetComponent<BoxCollider>().enabled = false;
+            }
+            else if ((int)distance > 1)
+            {
+                GetComponent<BoxCollider>().enabled = true;
+            }
         }
+
 
         //resulting vector.y = 0
         resultingVector.y = 0;
@@ -216,20 +215,19 @@ public class ChargerScript : MonoBehaviour
 
         //CHARGE TOWARDS THE PLAYER'S OVERALL DIRECTION, velocity = resulting vector
         GetComponent<Rigidbody>().velocity = resultingVector  * velocityspeed; 
-        chargecooldown = 0.1f;
     }
 
 
     public void recovering()
     {
-        attackhitbox.GetComponent<BoxCollider>().enabled = false;
+        attackhitbox.SetActive(false);
         GetComponent<BoxCollider>().enabled = true;
+        //Debug.Log("Recovering");
 
         GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
-        chargecooldown -= 1.0f * Time.deltaTime;
+        //chargecooldown -= 1.0f * Time.deltaTime;
 
-        if (chargecooldown <= 0.0f)
-        {
+       
             //grab player location
             playerPos = playerGO.transform.position;
             //subtract between player.transform.psoition and enemy.transform.position
@@ -243,29 +241,43 @@ public class ChargerScript : MonoBehaviour
 
             //enemy.gameObject.transform.LookAt(enemy.playerGO.transform);
             GetComponent<EnemyScript>().phase = EnemyScript.Phases.COOLDOWN;
-        }
     }
+
 
     public void OnCollisionEnter(Collision collision)
     {
         switch (enemyPhase)
         {
             case EnemyScript.Phases.ATTACK_TYPE_1:
+            //case EnemyScript.Phases.ATTACK_TYPE_2:
                 {
                     if (collision.gameObject.tag == "wall"
+                        || collision.gameObject.tag == "playerboxcollider"
                         || collision.gameObject.tag == "Player"
                        )
-                    {   
+                    {
                         collided = true;
+
+                        //if (collision.gameObject.tag == "Player"
+                        //    || collision.gameObject.tag == "playerboxcollider")
+                        //{
+                        //    //GetComponent<BoxCollider>().enabled = false;
+                        //}
+                        //else
+                        //{
+                        //    //GetComponent<BoxCollider>().enabled = true;
+                        //    collided = true;
+                        //}
                     }
                     break;
                 }
             case EnemyScript.Phases.ATTACK_TYPE_2:
                 {
                     if (collision.gameObject.tag == "wall"
+                        || collision.gameObject.tag == "playerboxcollider"
                         || collision.gameObject.tag == "Player"
                        )
-                    {     
+                    {
                         if (number_of_bounces >= 3)
                         {
                             collided = true;
@@ -275,9 +287,10 @@ public class ChargerScript : MonoBehaviour
                         {
                             number_of_bounces += 1;
                             playerPos = playerGO.transform.position;
-                            if (collision.gameObject.tag == "Player")
+                            if (collision.gameObject.tag == "Player"
+                                    || collision.gameObject.tag == "playerboxcollider")
                             {
-                                resultingVector = - playerPos + transform.position;
+                                resultingVector = -playerPos + transform.position;
                             }
                             else
                             {
@@ -291,8 +304,7 @@ public class ChargerScript : MonoBehaviour
                 }
             case EnemyScript.Phases.COOLDOWN:
                 {
-                    chargecooldown = 0.1f;
-                    attackhitbox.GetComponent<BoxCollider>().enabled = false;
+                    attackhitbox.SetActive(false);
                     GetComponent<BoxCollider>().enabled = true;
                     GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
                     //grab player location

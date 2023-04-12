@@ -35,10 +35,28 @@ private Transform ending_location;
 private float dist;
 bool beam_mode;
 
-public GameObject attackhitbox;
+[SerializeField] GameObject attackhitbox;
 
-// Start is called before the first frame update
-void Start()
+    // Start is called before the first frame update
+    void Awake()
+    {
+        lockonbeam = null;
+        hitbeam = null;
+        pivot = null;
+
+        beam_mode = false;
+        time_att_1 = 0;
+        time_att_2 = 0;
+        playerGO = GameObject.FindGameObjectWithTag("Player");
+
+        chasingspeed = 4.0f;
+        attackhitbox.SetActive(true);
+
+
+        
+    }
+
+    void Start()
 {
     lockonbeam = null;
     hitbeam = null;
@@ -50,16 +68,16 @@ void Start()
     playerGO = GameObject.FindGameObjectWithTag("Player");
 
     chasingspeed = 4.0f;
+        attackhitbox.SetActive(true);
 
-
-    GetComponent<EnemyScript>().setabouttoattackend(3.0f);
-    GetComponent<EnemyScript>().setCoolDownEnd(3.0f);
 }
 
 // Update is called once per frame
 void Update()
 {
-    enemyPhase = GetComponent<EnemyScript>().phase;
+
+
+        enemyPhase = GetComponent<EnemyScript>().phase;
     playerGO = GameObject.FindGameObjectWithTag("Player");
     navMeshAgent.speed = chasingspeed;
     navMeshAgent.acceleration = chasingspeed;
@@ -74,6 +92,8 @@ void Update()
             {
                 case EnemyScript.Phases.ATTACK_TYPE_2:
                     {
+                        attackhitbox.SetActive(true);
+
                         //GetComponent<SpriteRenderer>().enabled = false;
 
                         attackhitbox.GetComponent<BoxCollider>().enabled = true;
@@ -146,6 +166,8 @@ void Update()
                     }
                 case EnemyScript.Phases.ATTACK_TYPE_1:
                     {
+                        attackhitbox.SetActive(true);
+
                         GetComponentInChildren<Animator>().SetBool("chasingPlayer", true);
 
                         beam_mode = false;
@@ -154,6 +176,7 @@ void Update()
 
                         //Debug.Log("CHASING PLAYER");
                         attackhitbox.GetComponent<BoxCollider>().enabled = true;
+
                         chasingspeed = 4.0f;
                         time_att_2 = 0;
                         time_att_1 += 1 * Time.deltaTime;
@@ -195,6 +218,11 @@ void Update()
 
     //        steering();
 
+
+        //if (attackhitbox.activeSelf == true)
+        //{
+        //    Debug.Log("Hitbox ACTIVE");
+        //}
 
     /*if (time < 5.0f)
     {
