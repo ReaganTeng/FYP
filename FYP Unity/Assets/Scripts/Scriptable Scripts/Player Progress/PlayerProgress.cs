@@ -20,6 +20,11 @@ public class PlayerProgress : ScriptableObject
         TotalObtainedCredibility += amt;
     }
 
+    public void DecreaseCredibility(int amt)
+    {
+        CosmicCredibility -= amt;
+    }    
+
     public void ResetCredibility()
     {
         CosmicCredibility = 0;

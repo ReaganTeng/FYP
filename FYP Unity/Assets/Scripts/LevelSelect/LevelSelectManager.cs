@@ -11,8 +11,7 @@ public class LevelSelectManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        CheckIfCanUnlock();
-        text.text = "Cosmic Credibility: " + pp.GetCurrentCC().ToString();
+        UpdateUI();
     }
 
 
@@ -29,5 +28,11 @@ public class LevelSelectManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void UpdateUI()
+    {
+        CheckIfCanUnlock();
+        text.text = "Cosmic Credibility: " + pp.GetCurrentCC().ToString();
     }
 }
