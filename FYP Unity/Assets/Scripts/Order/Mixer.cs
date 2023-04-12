@@ -97,6 +97,12 @@ public class Mixer : MonoBehaviour
             Destroy(mixercontent[1]);
 
         RecipeResultObject = CheckWhatIsOutput();
+        // if player has a buff on itself, increase star value of dish by 1
+        if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().buffactive())
+        {
+            RecipeResultObject.GetComponent<Food>().SetAmountOfStars(RecipeResultObject.GetComponent<Food>().GetAmtOfStars() + 1);
+        }
+
         //InventoryImageControl inventory = GameObject.FindGameObjectWithTag("GameManager").GetComponent<InventoryImageControl>();
         //GameObject temp = inventory.GetSelectedGameObject();
         Debug.Log("Dish result: " + RecipeResultObject);
