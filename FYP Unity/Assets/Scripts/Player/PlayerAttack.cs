@@ -58,8 +58,6 @@ public class PlayerAttack : MonoBehaviour
 
     void Awake()
     {
-        //chargeCurrentLvl= 10.0f;
-        //chargeMaxLvl = 10.0f;
         chargeCurrentLvl = chargingduration;
         chargeMaxLvl = chargingduration;
         if (chargeBar != null)
@@ -74,31 +72,27 @@ public class PlayerAttack : MonoBehaviour
         last_known_notch = (int)next_known_notch - (int)min_notch_value;
 
         //Debug.Log("LOCALSCALE " + chargeBar.fillRect.rect.width);
-
-        for (int i = 0; i < number_of_charges; i++)
-        {
-
-            chargeBar.value += min_notch_value;
-            //Debug.Log("LOCALSCALE " + chargeBar.handleRect.position.x);
-            if (i < number_of_charges - 1)
-            {
-                GameObject l = Instantiate(line,
-                    new Vector3(0, 0),
-                    Quaternion.Euler(0, 0, 0)
-                    );
-                l.transform.SetParent(canvas.transform);
-                l.transform.position = new Vector2(chargeBar.handleRect.position.x, chargeBar.transform.position.y);
-                l.transform.localScale = new Vector2(1, chargeBar.transform.localScale.y * 3);
-            }
-            else
-            {
-                handle.SetActive(false);
-            }
-        }
-
-
         if (chargeBar != null)
         {
+            for (int i = 1; i < number_of_charges; i++)
+            {
+                chargeBar.value += min_notch_value;
+                if (i < number_of_charges - 1)
+                {
+                    GameObject l = Instantiate(line,
+                        new Vector3(0, 0),
+                        Quaternion.Euler(0, 0, 0)
+                        );
+                    l.transform.SetParent(canvas.transform);
+                    l.transform.position = new Vector2(chargeBar.handleRect.position.x, chargeBar.transform.position.y);
+                    l.transform.localScale = new Vector2(1, chargeBar.transform.localScale.y * 3);
+                }
+                else
+                {
+                    handle.SetActive(false);
+                }
+            }
+
             chargeBar.value = chargeMaxLvl;
         }
 
@@ -116,20 +110,41 @@ public class PlayerAttack : MonoBehaviour
     }
     void Start()
     {
-        //chargeCurrentLvl= 10.0f;
-        //chargeMaxLvl = 10.0f;
         chargeCurrentLvl = chargingduration;
         chargeMaxLvl = chargingduration;
         if (chargeBar != null)
         {
             chargeBar.maxValue = chargeMaxLvl;
             chargeBar.minValue = 0.0f;
-            chargeBar.value = chargeMaxLvl;
+            chargeBar.value = chargeBar.minValue;
         }
-        //min_notch_value = chargeMaxLvl * (percentage_reduction/100);
         min_notch_value = chargeMaxLvl / number_of_charges;
         next_known_notch = chargingduration;
         last_known_notch = (int)next_known_notch - (int)min_notch_value;
+
+        if (chargeBar != null)
+        {
+            for (int i = 1; i < number_of_charges; i++)
+            {
+                chargeBar.value += min_notch_value;
+                if (i < number_of_charges - 1)
+                {
+                    GameObject l = Instantiate(line,
+                        new Vector3(0, 0),
+                        Quaternion.Euler(0, 0, 0)
+                        );
+                    l.transform.SetParent(canvas.transform);
+                    l.transform.position = new Vector2(chargeBar.handleRect.position.x, chargeBar.transform.position.y);
+                    l.transform.localScale = new Vector2(1, chargeBar.transform.localScale.y * 3);
+                }
+                else
+                {
+                    handle.SetActive(false);
+                }
+            }
+        
+            chargeBar.value = chargeMaxLvl;
+        }
 
         switchWeapon();
         spaculaHitbox.SetActive(false);

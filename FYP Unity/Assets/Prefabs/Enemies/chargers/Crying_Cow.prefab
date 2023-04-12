@@ -478,7 +478,7 @@ Transform:
   m_GameObject: {fileID: 7469970714494630345}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2648747475443912732}
@@ -566,9 +566,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyHealth: 100
   AttackDamage: 5
-  prepPrefab: {fileID: 5640140278021557923, guid: 877aad5ebbb5f7b4ea17dd738c22f5fa, type: 3}
-  choppedPefab: {fileID: 568297875779090178, guid: 9031fceed79e84b4ea688fbd77c831c0, type: 3}
-  smashedPrefab: {fileID: 3320338801699120423, guid: 74500f70982b1624f91594f2616f5dd0, type: 3}
+  prepPrefab: {fileID: 7247084980041192393, guid: 6f0f0e8a5185c8847b5ee318bb25abcc, type: 3}
+  choppedPefab: {fileID: 1205639301771836825, guid: a74c58894c04c2f43b0e9ef4ae8a22d7, type: 3}
+  smashedPrefab: {fileID: 6150854108405868152, guid: ad47b59626ba8b740bd53b76b8b1c96e, type: 3}
   Mush: {fileID: 8494874157540663937, guid: 4255f020537c20a48857eb56b1b0f6d5, type: 3}
   healthbar: {fileID: 1447977899891316562}
   cooldown_period: 5

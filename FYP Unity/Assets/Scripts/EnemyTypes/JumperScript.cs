@@ -104,7 +104,6 @@ public class JumperScript : MonoBehaviour
                 case EnemyScript.Phases.ATTACK_TYPE_1:
                 case EnemyScript.Phases.ATTACK_TYPE_2:
                 {
-
                     if (currentdistance < 7.0f)
                     {
                         timer += 1 * Time.deltaTime;
