@@ -129,12 +129,14 @@ public class JumperScript : MonoBehaviour
                             //while it's jumping, disable collider;
                             if (currentdistance < 1.0f)
                             {
-                                attackhitbox.SetActive(true);
+                                //attackhitbox.SetActive(true);
+                                attackhitbox.GetComponent<BoxCollider>().enabled = true;
                                 GetComponent<BoxCollider>().enabled = true;
                             }
                             else
                             {
-                                attackhitbox.SetActive(false);
+                                //attackhitbox.SetActive(false);
+                                attackhitbox.GetComponent<BoxCollider>().enabled = false;
                                 GetComponent<BoxCollider>().enabled = false;
                             }
                             //
@@ -162,7 +164,8 @@ public class JumperScript : MonoBehaviour
                         GetComponentInChildren<Animator>().SetBool("jump", false);
 
 
-                        attackhitbox.SetActive(true);
+                        //attackhitbox.SetActive(true);
+                         attackhitbox.GetComponent<BoxCollider>().enabled = true;
 
                         navMeshAgent.speed = 5.0f;
                         startpos = transform.position;

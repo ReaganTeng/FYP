@@ -38,12 +38,18 @@ public class EnemyAttack : MonoBehaviour
         else
         {
             player.GetComponent<PlayerMovement>().setAnimator(false);
-            playerBoxCollider.SetActive(true);
+            //playerBoxCollider.SetActive(true);
+
+            playerBoxCollider.GetComponent<BoxCollider>().enabled = true;
         }
 
-       //player.GetComponent<PlayerMovement>().setAnimator(true);
+        
 
-       
+
+
+        //player.GetComponent<PlayerMovement>().setAnimator(true);
+
+
 
         //if (Attackcdtimer > AttackCD/2)
         //{
@@ -60,7 +66,8 @@ public class EnemyAttack : MonoBehaviour
 
 
         // if it is the player
-        if (other.CompareTag("Player") /*&& Attackcdtimer <= 0*/
+        if ((other.CompareTag("Player") /*&& Attackcdtimer <= 0*/
+            || other.CompareTag("playerboxcollider"))
             && GetComponent<BoxCollider>().enabled == true)
         {
             animator.SetBool("attack", true);
@@ -68,15 +75,24 @@ public class EnemyAttack : MonoBehaviour
 
             Debug.Log("HIT");
 
-            other.GetComponent<PlayerMovement>().setAnimator(true);
+            /*other.GetComponent<PlayerMovement>().setAnimator(true);
             other.GetComponent<PlayerStats>().ResetConsecutiveHit();
-            other.GetComponent<PlayerStats>().ChangeFervor(-10.0f);
+            other.GetComponent<PlayerStats>().ChangeFervor(-10.0f);*/
+
+
+            player.GetComponent<PlayerMovement>().setAnimator(true);
+            player.GetComponent<PlayerStats>().ResetConsecutiveHit();
+            player.GetComponent<PlayerStats>().ChangeFervor(-10.0f);
 
             /*other.GetComponent<Rigidbody>().AddForce(
                  (other.GetComponent<Transform>().position - GetComponentInParent<Transform>().position).normalized * 50.0f,
                  ForceMode.Impulse
                  );*/
-            playerBoxCollider.SetActive(false);
+            //playerBoxCollider.SetActive(false);
+
+            //playerBoxCollider.SetActive(false);
+            playerBoxCollider.GetComponent<BoxCollider>().enabled = false;
+
             Attackcdtimer = AttackCD;
         }
         //if attack hitbox did not collide with player

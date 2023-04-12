@@ -237,9 +237,8 @@ public class EnemyScript : MonoBehaviour
         zone = GameObject.FindGameObjectsWithTag("Zone");
         BoundaryCheck();
 
-        if (zoneno == player.GetComponentInChildren<PlayerZoneCheck>().getZoneno())
+        if (zoneno == player.GetComponent<PlayerZoneCheck>().getZoneno())
         {
-            //Debug.Log("Same zone " + zoneno + " is " + gameObject);
             updating = true;
         }
         else
@@ -368,7 +367,7 @@ public class EnemyScript : MonoBehaviour
         attackhitbox.GetComponent<BoxCollider>().enabled = false;
         GetComponent<BoxCollider>().enabled = true;
 
-        Debug.Log("ABOUT TO ATTACK IN " + (int)timer);
+        //Debug.Log("ABOUT TO ATTACK IN " + (int)timer);
 
 
         if (timer >= abouttoattack_period)
