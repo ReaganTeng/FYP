@@ -103,9 +103,11 @@ public class EnemyScript : MonoBehaviour
         // If its from player attack
         if (other.CompareTag("Attack") && !Iframe
             && GetComponent<BoxCollider>().enabled == true
-            && player.GetComponentInChildren<PlayerAttack>().getHitbox() == true)
+            && player.GetComponentInChildren<PlayerAttack>().getHitbox())
         {
             EnemyHealth -= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().GetPlayerAttack();
+
+            Debug.Log("OUCH");
 
             //play attacked animation
             GetComponentInChildren<Animator>().SetBool("attacked", true);

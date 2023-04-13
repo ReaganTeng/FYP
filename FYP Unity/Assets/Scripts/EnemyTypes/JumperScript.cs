@@ -174,9 +174,9 @@ public class JumperScript : MonoBehaviour
                 {
                     //jumpcooldown = 4.1f;
                     jumpcooldown = 0.3f;
-                        GetComponent<BoxCollider>().enabled = false;
+                    GetComponent<BoxCollider>().enabled = false;
 
-                        GetComponent<EnemyScript>().addtimer(1.0f * Time.deltaTime);
+                    GetComponent<EnemyScript>().addtimer(1.0f * Time.deltaTime);
                     //GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
                     GetComponent<NavMeshAgent>().speed = 0.0f;
 
@@ -205,7 +205,7 @@ public class JumperScript : MonoBehaviour
                     var speed = 4.0f; //how fast it shakes
                     var amount = 0.5f; //how much it shakes
 
-                    GetComponent<BoxCollider>().enabled = false;
+                    //GetComponent<BoxCollider>().enabled = false;
 
                     GetComponent<EnemyScript>().abouttoattackUpdate();
                     break;
@@ -307,49 +307,7 @@ public class JumperScript : MonoBehaviour
 
     public void jumprest()
     {
-        /*switch (enemyPhase)
-        {
-            case EnemyScript.Phases.PHASE_1:
-                {
-                    jumpcooldown -= 1.0f * Time.deltaTime;
-
-                    //navMeshAgent.speed = 0.0f;
-                    break;
-                }
-            //let enemy constantly chase the player after jumping
-            case EnemyScript.Phases.PHASE_2:
-                {
-                    jumpcooldown -= 1.0f * Time.deltaTime;
-
-                    if (jumpcooldown > 0.0f)
-                    {
-                        Debug.Log("JUMPER CHASING PLAYER");
-                        navMeshAgent.SetDestination(playerGO.transform.position);
-                        navMeshAgent.acceleration = 5.0f;
-                        navMeshAgent.speed = 10 * speedfactor;
-                    }
-
-                    break;
-                }
-            case EnemyScript.Phases.PHASE_3:
-                {
-                    navMeshAgent.SetDestination(playerGO.transform.position);
-
-                    if (distance < 3.0f)
-                    {
-                        Debug.Log("JUMPING IN " + (int)jumpcooldown);
-                        jumpcooldown -= 1.0f * Time.deltaTime;
-                    }
-                    else
-                    {
-                        jumpcooldown = 4.1f;
-                    }
-
-                    break;
-                }
-            default:
-                break;
-        }*/
+      
         jumpcooldown -= 1.0f * Time.deltaTime;
 
         /*attackhitbox.GetComponent<BoxCollider>().enabled = true;

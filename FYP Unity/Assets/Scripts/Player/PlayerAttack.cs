@@ -17,7 +17,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] float attackcd;
     [SerializeField] float attackingtime;
     [SerializeField] PlayerMovement pm;
-    private TextMeshProUGUI text;
+    [SerializeField] TextMeshProUGUI text;
     float attackcdtimer;
     float attackingtimer;
     bool attacking;
@@ -86,7 +86,7 @@ public class PlayerAttack : MonoBehaviour
         attacking = false;
         direction = 1;
 
-        text = GameObject.FindGameObjectWithTag("WeaponText").GetComponent<TextMeshProUGUI>();
+        //text = GameObject.FindGameObjectWithTag("WeaponText").GetComponent<TextMeshProUGUI>();
         text.text = "Weapon: Spatula";
     }
   
@@ -147,6 +147,7 @@ public class PlayerAttack : MonoBehaviour
             {
                 isclicked = true;
                 click_timer = 1.0f;
+                Debug.Log("LIGHT ATTACK");
                 //GetComponentInParent<PlayerStats>().setAttack(10.0f);
                 AttackWhichDirection(direction);
                 HitBox.SetActive(true);
@@ -162,6 +163,8 @@ public class PlayerAttack : MonoBehaviour
             {
                 isclicked = true;
                 click_timer = 1.0f;
+                Debug.Log("HEAVY ATTACK");
+
                 GetComponentInParent<PlayerStats>().setAttack(
                 GetComponentInParent<PlayerStats>().getAttack(5.0f));
                 AttackWhichDirection(direction);
@@ -232,9 +235,6 @@ public class PlayerAttack : MonoBehaviour
 
     public void switchWeapon()
     {
-
-       
-
         switch (currentweapon)
         {
             case Weapon.SPATULA:

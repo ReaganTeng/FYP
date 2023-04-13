@@ -40,7 +40,9 @@ public class EnemyAttack : MonoBehaviour
             //player.GetComponent<PlayerMovement>().setAnimator(false);
             //playerBoxCollider.SetActive(true);
             //playerBoxCollider.GetComponent<BoxCollider>().enabled = true;
-            //GetComponentInParent<BoxCollider>().enabled = true;
+            GetComponentInParent<BoxCollider>().enabled = true;
+           
+
 
         }
     }
@@ -69,9 +71,9 @@ public class EnemyAttack : MonoBehaviour
                  (other.GetComponent<Transform>().position - GetComponentInParent<Transform>().position).normalized * 50.0f,
                  ForceMode.Impulse
                  );*/
-          
+           
             //playerBoxCollider.GetComponent<BoxCollider>().enabled = false;
-            //GetComponentInParent<BoxCollider>().enabled = false;
+            GetComponentInParent<BoxCollider>().enabled = false;
 
             Attackcdtimer = AttackCD;
         }
