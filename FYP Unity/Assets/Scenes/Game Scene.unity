@@ -366,12 +366,16 @@ PrefabInstance:
       value: 2.117004
       objectReference: {fileID: 0}
     - target: {fileID: 2743428974163298847, guid: d09965bd491c43742a512d3f4207781f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2743428974163298847, guid: d09965bd491c43742a512d3f4207781f, type: 3}
       propertyPath: m_LocalScale.z
       value: 2.5091333
       objectReference: {fileID: 0}
     - target: {fileID: 2743428974163298847, guid: d09965bd491c43742a512d3f4207781f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.048237
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2743428974163298847, guid: d09965bd491c43742a512d3f4207781f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -444,6 +448,10 @@ PrefabInstance:
     - target: {fileID: 3462924137396006135, guid: d09965bd491c43742a512d3f4207781f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4797835024359656998, guid: d09965bd491c43742a512d3f4207781f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4940691009673553818, guid: d09965bd491c43742a512d3f4207781f, type: 3}
       propertyPath: txt
@@ -580,6 +588,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 300395896927019751, guid: 6e885474360640d4a91ee6c3d039fc96, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 300395896927019751, guid: 6e885474360640d4a91ee6c3d039fc96, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 300395896956034945, guid: 6e885474360640d4a91ee6c3d039fc96, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 300395897605230481, guid: 6e885474360640d4a91ee6c3d039fc96, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -696,6 +716,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3918731169293530413, guid: 6e885474360640d4a91ee6c3d039fc96, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4945336697121532278, guid: 6e885474360640d4a91ee6c3d039fc96, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -800,7 +824,7 @@ PrefabInstance:
       objectReference: {fileID: 340388862}
     - target: {fileID: 1793855428296037509, guid: 3469af5157eaf574ba40b0341056896a, type: 3}
       propertyPath: TimeFortheDayInSeconds
-      value: 100
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 1793855428296037510, guid: 3469af5157eaf574ba40b0341056896a, type: 3}
       propertyPath: GreatBG
@@ -940,20 +964,52 @@ PrefabInstance:
       objectReference: {fileID: 444560181}
     - target: {fileID: 1793855428296037515, guid: 3469af5157eaf574ba40b0341056896a, type: 3}
       propertyPath: OrderIntervalTiming
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1793855428296037515, guid: 3469af5157eaf574ba40b0341056896a, type: 3}
       propertyPath: TimeBeforeFirstOrder
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1793855428296037516, guid: 3469af5157eaf574ba40b0341056896a, type: 3}
       propertyPath: presetdaylist.Array.data[0].dishName.Array.data[0]
       value: apple_dessert
       objectReference: {fileID: 0}
     - target: {fileID: 1793855428296037517, guid: 3469af5157eaf574ba40b0341056896a, type: 3}
+      propertyPath: dishrecipeList.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1793855428296037517, guid: 3469af5157eaf574ba40b0341056896a, type: 3}
+      propertyPath: dishrecipeList.Array.data[7].Result
+      value: 
+      objectReference: {fileID: 2130613994254373028, guid: 1aa4138ff3d4c74489890d40137af51c, type: 3}
+    - target: {fileID: 1793855428296037517, guid: 3469af5157eaf574ba40b0341056896a, type: 3}
+      propertyPath: RefinedIngredientrecipeList.Array.size
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1793855428296037517, guid: 3469af5157eaf574ba40b0341056896a, type: 3}
+      propertyPath: dishrecipeList.Array.data[7].ingredient1
+      value: 
+      objectReference: {fileID: 4727850471977572123, guid: d68bd3fa27cf44d4287bca58a3871fce, type: 3}
+    - target: {fileID: 1793855428296037517, guid: 3469af5157eaf574ba40b0341056896a, type: 3}
+      propertyPath: dishrecipeList.Array.data[7].ingredient2
+      value: 
+      objectReference: {fileID: 4727850471977572123, guid: d68bd3fa27cf44d4287bca58a3871fce, type: 3}
+    - target: {fileID: 1793855428296037517, guid: 3469af5157eaf574ba40b0341056896a, type: 3}
       propertyPath: RefinedIngredientrecipeList.Array.data[0].Result
       value: 
       objectReference: {fileID: 4727850471977572123, guid: d68bd3fa27cf44d4287bca58a3871fce, type: 3}
+    - target: {fileID: 1793855428296037517, guid: 3469af5157eaf574ba40b0341056896a, type: 3}
+      propertyPath: RefinedIngredientrecipeList.Array.data[12].Result
+      value: 
+      objectReference: {fileID: 4727850471977572123, guid: d68bd3fa27cf44d4287bca58a3871fce, type: 3}
+    - target: {fileID: 1793855428296037517, guid: 3469af5157eaf574ba40b0341056896a, type: 3}
+      propertyPath: RefinedIngredientrecipeList.Array.data[12].ingredient1
+      value: 
+      objectReference: {fileID: 7510281840356330337, guid: e9b208d8ecebe4b498646e3cb6d2c5ed, type: 3}
+    - target: {fileID: 1793855428296037517, guid: 3469af5157eaf574ba40b0341056896a, type: 3}
+      propertyPath: RefinedIngredientrecipeList.Array.data[12].ingredient2
+      value: 
+      objectReference: {fileID: 7510281840356330337, guid: e9b208d8ecebe4b498646e3cb6d2c5ed, type: 3}
     - target: {fileID: 1793855428296037518, guid: 3469af5157eaf574ba40b0341056896a, type: 3}
       propertyPath: tempfood
       value: 
@@ -1378,7 +1434,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2904588845122173641, guid: ce2782873a0f8d24baa9eff239fed078, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -13
+      value: 562
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce2782873a0f8d24baa9eff239fed078, type: 3}

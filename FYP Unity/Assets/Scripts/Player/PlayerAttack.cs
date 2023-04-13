@@ -17,7 +17,6 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] float attackcd;
     [SerializeField] float attackingtime;
     [SerializeField] PlayerMovement pm;
-    [SerializeField] TextMeshProUGUI text;
     float attackcdtimer;
     float attackingtimer;
     bool attacking;
@@ -85,9 +84,6 @@ public class PlayerAttack : MonoBehaviour
         attackcdtimer = attackcd;
         attacking = false;
         direction = 1;
-
-        //text = GameObject.FindGameObjectWithTag("WeaponText").GetComponent<TextMeshProUGUI>();
-        text.text = "Weapon: Spatula";
     }
   
     void drawdivider()
@@ -212,19 +208,16 @@ public class PlayerAttack : MonoBehaviour
         {
             currentweapon = Weapon.SPATULA;
             //switchWeapon();
-            text.text = "Weapon: Spatula";
         }
         else if (Input.GetKey(KeyCode.X))
         {
             currentweapon = Weapon.KNIFE;
            //switchWeapon();
-            text.text = "Weapon: Knife";
         }
         else if (Input.GetKey(KeyCode.C))
         {
             currentweapon = Weapon.ROLLINGPIN;
             //switchWeapon();
-            text.text = "Weapon: RollingPin";
         }
 
         switchWeapon();
