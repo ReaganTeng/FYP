@@ -12,6 +12,8 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] GameObject smashedPrefab;
     [SerializeField] GameObject Mush;
 
+    [SerializeField] GameObject attackhitbox;
+
 
     float Iframemaxtime = 0.1f;
     float Iframetimer = 0.1f;
@@ -33,7 +35,6 @@ public class EnemyScript : MonoBehaviour
 
     int attack_type;
 
-    [SerializeField] GameObject attackhitbox;
 
     bool updating;
     int zoneno;
@@ -64,7 +65,7 @@ public class EnemyScript : MonoBehaviour
         return spawnerparent;
     }
 
-    void Start()
+    void Awake()
     {
         EnemyHealth = 100.0f;
         updating = false;
@@ -80,6 +81,8 @@ public class EnemyScript : MonoBehaviour
         healthbar.minValue = 0;
         player = GameObject.FindGameObjectWithTag("Player");
 
+
+        attackhitbox.GetComponent<BoxCollider>().enabled = false ;
 
         GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
         GetComponentInChildren<Animator>().SetBool("attacked", false);
@@ -103,7 +106,8 @@ public class EnemyScript : MonoBehaviour
         // If its from player attack
         if (other.CompareTag("Attack") && !Iframe
             && GetComponent<BoxCollider>().enabled == true
-            && player.GetComponentInChildren<PlayerAttack>().getHitbox())
+            //&& player.GetComponentInChildren<PlayerAttack>().getHitbox()
+            && other.GetComponent<BoxCollider>().enabled == true)
         {
             EnemyHealth -= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().GetPlayerAttack();
 
@@ -113,9 +117,11 @@ public class EnemyScript : MonoBehaviour
             GetComponentInChildren<Animator>().SetBool("attacked", true);
             //
 
-            player.GetComponent<PlayerStats>().addConsecutiveHit();
-            player.GetComponent<PlayerStats>().resetCombo_timer();
-
+            for (int i = 0; i < 5; i++)
+            {
+                player.GetComponent<PlayerStats>().addConsecutiveHit();
+                player.GetComponent<PlayerStats>().resetCombo_timer();
+            }
             GetComponent<Rigidbody>().AddForce(
                (GetComponent<Transform>().position - other.GetComponentInParent<Transform>().position).normalized * 100.0f,
                ForceMode.Impulse
@@ -163,7 +169,7 @@ public class EnemyScript : MonoBehaviour
 
     private void Update()
     {
-        //hitbox = GameObject.FindGameObjectWithTag("Attack");
+        hitbox = GameObject.FindGameObjectWithTag("Attack");
 
 
         //if (player.GetComponentInChildren<PlayerAttack>().getHitbox() == true)
@@ -174,9 +180,9 @@ public class EnemyScript : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
 
         GetComponentInChildren<Animator>().SetFloat("health", EnemyHealth);
-       
 
-        //if(GetComponent<BoxCollider>().enabled == false)
+
+        //if (attackhitbox.GetComponent<BoxCollider>().enabled == false)
         //{
         //    Debug.Log("BOXCOLLIDER FALSE");
         //}
@@ -200,13 +206,6 @@ public class EnemyScript : MonoBehaviour
             GetComponentInChildren<Animator>().speed = 1.5f;
             transitionFromHurtTimer = 0.0f;
         }
-
-        
-
-
-        //Debug.Log("ANIMATOR REGISTER " + GetComponentInChildren<Animator>().GetCurrentAnimatorClipInfo(0)[0].clip.name);
-
-
 
         healthbar.value = EnemyHealth;
 
@@ -259,7 +258,7 @@ public class EnemyScript : MonoBehaviour
                         // Debug.Log("CURRENT POSITION " + GetComponentInParent<Transform>().name);
                         GetComponent<BoxCollider>().enabled = true;
                         GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
-
+                        attackhitbox.GetComponent<BoxCollider>().enabled = false;
 
                         if (GetComponent<NavMeshAgent>().enabled == true)
                         {
@@ -337,6 +336,12 @@ public class EnemyScript : MonoBehaviour
         }
     }
 
+
+    public GameObject gethitbox()
+    {
+        return attackhitbox;
+    }
+
     public int getzoneno()
     {
         return zoneno;
@@ -352,6 +357,7 @@ public class EnemyScript : MonoBehaviour
         timer += Time.deltaTime;
         GetComponent<NavMeshAgent>().speed = 0.0f;
         attackhitbox.GetComponent<BoxCollider>().enabled = false;
+        GetComponent<BoxCollider>().enabled = true;
 
         if (timer >= abouttoattack_period)
         {
@@ -373,7 +379,6 @@ public class EnemyScript : MonoBehaviour
     public void cooldownUpdate()
     {
         GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
-        GetComponent<BoxCollider>().enabled = false;
 
         timer += 1.0f * Time.deltaTime;
         GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);

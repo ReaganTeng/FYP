@@ -474,6 +474,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 340388863}
     - target: {fileID: 5545318540187160410, guid: d09965bd491c43742a512d3f4207781f, type: 3}
+      propertyPath: combo_text
+      value: 
+      objectReference: {fileID: 340388865}
+    - target: {fileID: 5545318540187160410, guid: d09965bd491c43742a512d3f4207781f, type: 3}
       propertyPath: combo_timer_text
       value: 
       objectReference: {fileID: 340388864}
@@ -582,7 +586,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 300395897605230481, guid: 6e885474360640d4a91ee6c3d039fc96, type: 3}
       propertyPath: m_SortingOrder
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 300395897605230482, guid: 6e885474360640d4a91ee6c3d039fc96, type: 3}
       propertyPath: m_Name
@@ -760,6 +764,17 @@ MonoBehaviour:
 --- !u!114 &340388864 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5968784677715030170, guid: 6e885474360640d4a91ee6c3d039fc96, type: 3}
+  m_PrefabInstance: {fileID: 340388860}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &340388865 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9123176217892900796, guid: 6e885474360640d4a91ee6c3d039fc96, type: 3}
   m_PrefabInstance: {fileID: 340388860}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -3674,7 +3689,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2994583381017202772, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: max_enemies
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2994583381017202772, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: enemies_per_spawn

@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
     private float iframetimer;
     private bool IFrameStart;
 
-
+    float delaytime;
 
     //
     bool isWalking;
@@ -34,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        delaytime = 0.0f;
         isWalking = false;
         dashcdtimer = 0;
         DisableControls = false;
@@ -41,14 +42,21 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(GetComponentInChildren<Animator>().GetBool("Hurt"))
+        //if hurt animation is playing 
+        /*if(GetComponentInChildren<Animator>().GetBool("Hurt"))
         {
-            DisableControls = true;
+            delaytime += Time.deltaTime;
+
+            if (delaytime >= 0.9f)
+            {
+                DisableControls = true;
+            }
         }
+        //
         else
         {
-            DisableControls = false;
-        }
+            DisableControls = false;   
+        }*/
 
         if (!DisableControls)
         {
@@ -62,6 +70,7 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
             {
                 isWalking = true;
+                //Debug.Log("MOVING");
                 CheckDirection(ref Forwardrun, ref Rightrun, horizontalInput, verticalInput);
             }
             else

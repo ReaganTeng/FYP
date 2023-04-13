@@ -44,7 +44,7 @@ public class JumperScript : MonoBehaviour
     public bool startupdating;
 
 
-    public GameObject attackhitbox;
+    /*[SerializeField] */GameObject attackhitbox;
 
 
    
@@ -59,13 +59,11 @@ public class JumperScript : MonoBehaviour
         navMeshAgent.acceleration = 20.0f;
         speedfactor = 20.0f;
 
+                attackhitbox = GetComponent<EnemyScript>().gethitbox();
 
         GetComponentInChildren<Animator>().SetBool("about2jump", false);
         GetComponentInChildren<Animator>().SetBool("jump", false);
         GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
-
-
-       
     }
 
     // Update is called once per frame
@@ -83,10 +81,12 @@ public class JumperScript : MonoBehaviour
         //    startupdating = true;
         //}
 
+        attackhitbox = GetComponent<EnemyScript>().gethitbox();
+
         //if (startupdating == true)
         //{
 
-        if(GetComponent<EnemyScript>().getupdating())
+        if (GetComponent<EnemyScript>().getupdating())
         { 
         switch (enemyPhase)
             {
@@ -103,8 +103,9 @@ public class JumperScript : MonoBehaviour
                         if (timer < 1.0f)
                         {
                             GetComponentInChildren<Animator>().SetBool("about2jump", true);
+                                GetComponent<BoxCollider>().enabled = true;
 
-                            navMeshAgent.speed = 0.0f;
+                                navMeshAgent.speed = 0.0f;
                             startpos = transform.position;
                             navMeshAgent.SetDestination(playerGO.transform.position);
                             endpoint = navMeshAgent.destination;
@@ -116,20 +117,17 @@ public class JumperScript : MonoBehaviour
                         if (timer > 1.5f)
                         {
                             GetComponentInChildren<Animator>().SetBool("jump", true);
-
-
+                                GetComponent<BoxCollider>().enabled = false;
 
                                 //while it's jumping, disable collider;
                                 if (currentdistance < 1.0f)
                                 {
                                     attackhitbox.GetComponent<BoxCollider>().enabled = true;
-                                    GetComponent<BoxCollider>().enabled = false;
 
                                 }
                                 else
                                 {
                                     attackhitbox.GetComponent<BoxCollider>().enabled = false;
-                                    GetComponent<BoxCollider>().enabled = false;
                                 }
                                 //
 
@@ -154,10 +152,9 @@ public class JumperScript : MonoBehaviour
                         GetComponentInChildren<Animator>().SetBool("chasingPlayer", true);
                         GetComponentInChildren<Animator>().SetBool("about2jump", false);
                         GetComponentInChildren<Animator>().SetBool("jump", false);
+                            GetComponent<BoxCollider>().enabled = true;
 
-
-                        //attackhitbox.SetActive(true);
-                         attackhitbox.GetComponent<BoxCollider>().enabled = true;
+                            attackhitbox.GetComponent<BoxCollider>().enabled = true;
 
                         navMeshAgent.speed = 5.0f;
                         startpos = transform.position;
@@ -175,25 +172,13 @@ public class JumperScript : MonoBehaviour
                     //jumpcooldown = 4.1f;
                     jumpcooldown = 0.3f;
                     GetComponent<BoxCollider>().enabled = false;
-
-                    GetComponent<EnemyScript>().addtimer(1.0f * Time.deltaTime);
-                    //GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
-                    GetComponent<NavMeshAgent>().speed = 0.0f;
-
-                    attackhitbox.GetComponent<BoxCollider>().enabled = false;
+                    GetComponent<EnemyScript>().cooldownUpdate();
 
 
-                    if (GetComponent<EnemyScript>().gettimer() >=
-                    GetComponent<EnemyScript>().getcooldownend())
-                    {
-                        GetComponent<EnemyScript>().settimer(0.0f);   
-                        GetComponent<EnemyScript>().phase = EnemyScript.Phases.ABOUT_TO_ATTACK;
-                    }
-
-                        GetComponent<EnemyScript>().abouttoattackUpdate();
-
-
-                       
+                        //if (attackhitbox.GetComponent<BoxCollider>().enabled == false)
+                        //{
+                        //    Debug.Log("COOLDOWN HITBOX OFF");
+                        //}
 
                         break;
                 }
@@ -201,14 +186,16 @@ public class JumperScript : MonoBehaviour
             case EnemyScript.Phases.ABOUT_TO_ATTACK:
                 {
 
-                    //make vibration
-                    var speed = 4.0f; //how fast it shakes
-                    var amount = 0.5f; //how much it shakes
-
                     //GetComponent<BoxCollider>().enabled = false;
 
                     GetComponent<EnemyScript>().abouttoattackUpdate();
-                    break;
+
+
+                        //if (attackhitbox.GetComponent<BoxCollider>().enabled == false)
+                        //{
+                        //    Debug.Log("ATA HITBOX OFF");
+                        //}
+                        break;
                 }
             default:
                     break;
@@ -310,12 +297,12 @@ public class JumperScript : MonoBehaviour
       
         jumpcooldown -= 1.0f * Time.deltaTime;
 
-        /*attackhitbox.GetComponent<BoxCollider>().enabled = true;
-        GetComponent<BoxCollider>().enabled = true;*/
+        
 
         spriteRenderer.transform.position = transform.position + new Vector3(0.0f, 0.6f, 0.0f);
         enemySprite.transform.position = transform.position + new Vector3(0.0f, 0.6f, 0.0f);
 
+        attackhitbox.GetComponent<BoxCollider>().enabled = false;
 
         if (jumpcooldown <= 0.0f)
         {

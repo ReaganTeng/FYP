@@ -165,6 +165,9 @@ public class PlayerAttack : MonoBehaviour
                 click_timer = 1.0f;
                 Debug.Log("HEAVY ATTACK");
 
+                //transform.parent.GetComponent<PlayerStats>().setAttack(
+                //GetComponentInParent<PlayerStats>().getAttack(5.0f));
+
                 GetComponentInParent<PlayerStats>().setAttack(
                 GetComponentInParent<PlayerStats>().getAttack(5.0f));
                 AttackWhichDirection(direction);
