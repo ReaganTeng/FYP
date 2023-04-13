@@ -7,14 +7,17 @@ public class HitbeamAttack : MonoBehaviour
     [SerializeField] float AttackCD;
     float Attackcdtimer;
 
-    // Start is called before the first frame update
+    GameObject player;
+
     void Start()
     {
         Attackcdtimer = 0;
+        player = GameObject.FindGameObjectWithTag("Player");
     }
-
+   
     private void Update()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         if (Attackcdtimer > 0)
             Attackcdtimer -= Time.deltaTime;
     }
@@ -23,10 +26,18 @@ public class HitbeamAttack : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         // if it is the player
-        if (other.CompareTag("Player") && Attackcdtimer <= 0)
+        if ((other.CompareTag("Player") /*|| other.CompareTag("playerboxcollider")*/)
+            && Attackcdtimer <= 0)
         {
             //Debug.Log("PLAYER ATTACKED");
-            other.GetComponent<PlayerStats>().ChangeHealth(-5);
+            player.GetComponent<PlayerStats>().ChangeHealth(-5);
+
+            //PLAY HURT ANIMATION
+            player.GetComponent<PlayerMovement>().setAnimator(true);
+            //
+            player.GetComponent<PlayerStats>().ResetConsecutiveHit();
+            player.GetComponent<PlayerStats>().ChangeFervor(-10.0f);
+
             Attackcdtimer = AttackCD;
         }
     }

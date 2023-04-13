@@ -54,58 +54,14 @@ public class PlayerAttack : MonoBehaviour
     Weapon currentweapon = Weapon.SPATULA;
     // Start is called before the first frame update
 
+    bool isclicked;
+    float click_timer;
 
-    void Awake()
-    {
-        chargeCurrentLvl = chargingduration;
-        chargeMaxLvl = chargingduration;
-        if (chargeBar != null)
-        {
-            chargeBar.maxValue = chargeMaxLvl;
-            chargeBar.minValue = 0.0f;
-            chargeBar.value = chargeBar.minValue;
-        }
-        //min_notch_value = chargeMaxLvl * (percentage_reduction/100);
-        min_notch_value = chargeMaxLvl / number_of_charges;
-        next_known_notch = chargingduration;
-        last_known_notch = (int)next_known_notch - (int)min_notch_value;
-
-        //Debug.Log("LOCALSCALE " + chargeBar.fillRect.rect.width);
-        if (chargeBar != null)
-        {
-            for (int i = 1; i < number_of_charges; i++)
-            {
-                chargeBar.value += min_notch_value;
-                if (i < number_of_charges - 1)
-                {
-                    GameObject l = Instantiate(line,
-                        new Vector3(0, 0),
-                        Quaternion.Euler(0, 0, 0)
-                        );
-                    l.transform.SetParent(canvas.transform);
-                    l.transform.position = new Vector2(chargeBar.handleRect.position.x, chargeBar.transform.position.y);
-                    l.transform.localScale = new Vector2(1, chargeBar.transform.localScale.y * 3);
-                }
-                else
-                {
-                    handle.SetActive(false);
-                }
-            }
-
-            chargeBar.value = chargeMaxLvl;
-        }
-
-        switchWeapon();
-        spaculaHitbox.SetActive(false);
-        HitBox.SetActive(false);
-
-        attackingtimer = attackingtime;
-        attackcdtimer = attackcd;
-        attacking = false;
-        direction = 1;
-    }
     void Start()
     {
+        click_timer = 0.0f;
+        isclicked = false;
+
         chargeCurrentLvl = chargingduration;
         chargeMaxLvl = chargingduration;
         if (chargeBar != null)
@@ -118,29 +74,7 @@ public class PlayerAttack : MonoBehaviour
         next_known_notch = chargingduration;
         last_known_notch = (int)next_known_notch - (int)min_notch_value;
 
-        if (chargeBar != null)
-        {
-            for (int i = 1; i < number_of_charges; i++)
-            {
-                chargeBar.value += min_notch_value;
-                if (i < number_of_charges - 1)
-                {
-                    GameObject l = Instantiate(line,
-                        new Vector3(0, 0),
-                        Quaternion.Euler(0, 0, 0)
-                        );
-                    l.transform.SetParent(canvas.transform);
-                    l.transform.position = new Vector2(chargeBar.handleRect.position.x, chargeBar.transform.position.y);
-                    l.transform.localScale = new Vector2(1, chargeBar.transform.localScale.y * 3);
-                }
-                else
-                {
-                    handle.SetActive(false);
-                }
-            }
-        
-            chargeBar.value = chargeMaxLvl;
-        }
+        drawdivider();
 
         switchWeapon();
         spaculaHitbox.SetActive(false);
@@ -151,9 +85,37 @@ public class PlayerAttack : MonoBehaviour
         attacking = false;
         direction = 1;
     }
+  
+    void drawdivider()
+    {
+        if (chargeBar != null)
+        {
+            for (int i = 0; i < number_of_charges;)
+            {
+                if (i < number_of_charges - 1)
+                {
+                    chargeBar.value += min_notch_value;
 
+                    GameObject l = Instantiate(line,
+                            new Vector3(0, 0),
+                            Quaternion.Euler(0, 0, 0)
+                            );
+                    l.transform.SetParent(canvas.transform);
+                    l.transform.position = new Vector2(chargeBar.handleRect.position.x, chargeBar.transform.position.y);
+                    l.transform.localScale = new Vector2(1, chargeBar.transform.lossyScale.y);
+                    i++;
 
-    
+                }
+                else
+                {
+                    handle.SetActive(false);
+                    break;
+                }
+            }
+
+            chargeBar.value = chargeMaxLvl;
+        }
+    }
 
     // Update is called once per frame
     void Update()
@@ -164,15 +126,6 @@ public class PlayerAttack : MonoBehaviour
             updatecharge();
         }
 
-        //if (HitBox.activeSelf == true)
-        //{
-        //    Debug.Log("ACTIVE");
-        //}
-        //else
-        //{
-        //    Debug.Log("NOT ACTIVE");
-        //}
-
         // Attacking
         if (attackcdtimer > 0)
         {
@@ -180,9 +133,17 @@ public class PlayerAttack : MonoBehaviour
         }
         else 
         {
+            //animate player walking
+            GameObject.FindGameObjectWithTag("playerspriterenderer").GetComponent<Animator>().SetBool("click", isclicked);
+            //
+
+            
             //LIGHT ATTACK
             if (Input.GetMouseButtonDown(0) && !attacking)
             {
+                isclicked = true;
+                click_timer = 1.0f;
+                Debug.Log("LIGHT ATTACK");
                 //GetComponentInParent<PlayerStats>().setAttack(10.0f);
                 AttackWhichDirection(direction);
                 HitBox.SetActive(true);
@@ -196,6 +157,10 @@ public class PlayerAttack : MonoBehaviour
             if (Input.GetMouseButtonDown(1) && !attacking
                 && (int)chargeCurrentLvl>= (int)min_notch_value)
             {
+                isclicked = true;
+                click_timer = 1.0f;
+                Debug.Log("HEAVY ATTACK");
+
                 GetComponentInParent<PlayerStats>().setAttack(
                 GetComponentInParent<PlayerStats>().getAttack(5.0f));
                 AttackWhichDirection(direction);
@@ -207,6 +172,14 @@ public class PlayerAttack : MonoBehaviour
             }
             //
 
+            if (isclicked)
+            {
+                click_timer -= Time.deltaTime;
+                if (click_timer < 0)
+                {
+                    isclicked = false;
+                }
+            }
 
             if (attacking)
             {
@@ -255,9 +228,6 @@ public class PlayerAttack : MonoBehaviour
 
     public void switchWeapon()
     {
-
-       
-
         switch (currentweapon)
         {
             case Weapon.SPATULA:

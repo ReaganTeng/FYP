@@ -5,7 +5,7 @@ using UnityEngine.AI;
 using UnityEngine.UI;
 public class EnemyScript : MonoBehaviour
 {
-    [SerializeField] public float EnemyHealth;
+    float EnemyHealth;
     public float AttackDamage;
     [SerializeField] GameObject prepPrefab;
     [SerializeField] GameObject choppedPefab;
@@ -64,33 +64,10 @@ public class EnemyScript : MonoBehaviour
         return spawnerparent;
     }
 
-    void Awake()
-    {
-        updating = false;
-        zoneno = 0;
-        zone = GameObject.FindGameObjectsWithTag("Zone");
-        BoundaryCheck();
-        hitbox = GameObject.FindGameObjectWithTag("Attack");
-
-        transitionFromHurtTimer = 0;
-        //phase = Phases.PHASE_3;
-
-        healthbar.maxValue = EnemyHealth;
-        healthbar.minValue = 0;
-        player = GameObject.FindGameObjectWithTag("Player");
-
-
-        GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
-        GetComponentInChildren<Animator>().SetBool("attacked", false);
-
-        //phase = Phases.ATTACK_TYPE_1;
-        timer = 0.0f;
-    }
-
     void Start()
     {
+        EnemyHealth = 100.0f;
         updating = false;
-
         zoneno = 0;
         zone = GameObject.FindGameObjectsWithTag("Zone");
         BoundaryCheck();
@@ -103,13 +80,15 @@ public class EnemyScript : MonoBehaviour
         healthbar.minValue = 0;
         player = GameObject.FindGameObjectWithTag("Player");
 
+
         GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
         GetComponentInChildren<Animator>().SetBool("attacked", false);
-
 
         //phase = Phases.ATTACK_TYPE_1;
         timer = 0.0f;
     }
+
+    
 
 
     private void OnTriggerEnter(Collider other)
@@ -124,9 +103,11 @@ public class EnemyScript : MonoBehaviour
         // If its from player attack
         if (other.CompareTag("Attack") && !Iframe
             && GetComponent<BoxCollider>().enabled == true
-            && player.GetComponentInChildren<PlayerAttack>().getHitbox() == true)
+            && player.GetComponentInChildren<PlayerAttack>().getHitbox())
         {
             EnemyHealth -= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().GetPlayerAttack();
+
+            Debug.Log("OUCH");
 
             //play attacked animation
             GetComponentInChildren<Animator>().SetBool("attacked", true);
@@ -194,6 +175,12 @@ public class EnemyScript : MonoBehaviour
 
         GetComponentInChildren<Animator>().SetFloat("health", EnemyHealth);
        
+
+        //if(GetComponent<BoxCollider>().enabled == false)
+        //{
+        //    Debug.Log("BOXCOLLIDER FALSE");
+        //}
+
         if (GetComponentInChildren<Animator>().GetBool("attacked") == true)
         {
             //Debug.Log("OH IM ATTACKED");
@@ -313,7 +300,7 @@ public class EnemyScript : MonoBehaviour
                 case Phases.COOLDOWN:
                     {
                     //Debug.Log("COOLDOWN");
-                    attackhitbox.SetActive(false);
+                   
 
 
                     cooldownUpdate();
@@ -365,10 +352,6 @@ public class EnemyScript : MonoBehaviour
         timer += Time.deltaTime;
         GetComponent<NavMeshAgent>().speed = 0.0f;
         attackhitbox.GetComponent<BoxCollider>().enabled = false;
-        GetComponent<BoxCollider>().enabled = true;
-
-        //Debug.Log("ABOUT TO ATTACK IN " + (int)timer);
-
 
         if (timer >= abouttoattack_period)
         {
@@ -390,13 +373,13 @@ public class EnemyScript : MonoBehaviour
     public void cooldownUpdate()
     {
         GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
+        GetComponent<BoxCollider>().enabled = false;
 
         timer += 1.0f * Time.deltaTime;
         GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
         GetComponent<NavMeshAgent>().speed = 0.0f;
 
         attackhitbox.GetComponent<BoxCollider>().enabled = false;
-        GetComponent<BoxCollider>().enabled = true;
 
         if (timer >= cooldown_period)
         {
@@ -468,14 +451,16 @@ public class EnemyScript : MonoBehaviour
         //if (GetComponentInChildren<Animator>().GetComponent<DieFinish>().returnDead() == true)
         //{
         GetComponentInChildren<SpriteRenderer>().enabled = false;
-        Debug.Log("DESTROYED");
+        //Debug.Log("DESTROYED");
         Destroy(gameObject);
         //}
     }
 
     public void Death()
     {
-        attackhitbox.SetActive(false);
+        //attackhitbox.SetActive(false);
+        attackhitbox.GetComponent<BoxCollider>().enabled = false;
+
         //Destroy(attackhitbox);
 
         if (EnemyHealth == 0)

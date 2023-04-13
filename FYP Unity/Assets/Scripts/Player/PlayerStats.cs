@@ -33,37 +33,26 @@ public class PlayerStats : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI combo_timer_text;
 
-   
-
-    public void Awake()
-    {
-        PlayerAttack = 10.0f;
-        
-
-        fervorMaxLevel = 100;
-        fervor2Add = 0;
-        buff_active = false;
-        fervorBar.maxValue = fervorMaxLevel;
-        fervorLevel = 0;
-        numberConsecutiveHits = 0;
-    }
-
-   
-    
+    float hurt_period;
 
     public void Start()
     {
         PlayerAttack = 10.0f;
-        
-
-        //PlayerHealth = playerProgress.PlayerMaxHealth;
-
         fervorMaxLevel = 100;
         fervor2Add = 0;
         buff_active = false;
+
+        if (fervorBar != null)
+        {
+            fervorBar.maxValue = fervorMaxLevel;
+        }
+
         fervorLevel = 0;
         numberConsecutiveHits = 0;
+        hurt_period = 0;
     }
+
+
 
     public void setAttack(float atk)
     {
@@ -73,7 +62,6 @@ public class PlayerStats : MonoBehaviour
     public float getAttack(float additionalAtk = 0)
     {
         return PlayerAttack + additionalAtk;
-        PlayerHealth = 100;
     }
 
     public void ChangeHealth(float Healthchange)
@@ -100,14 +88,37 @@ public class PlayerStats : MonoBehaviour
             }
         }
 
-        Debug.Log("Fervor: " + fervorLevel);
+        //Debug.Log("Fervor: " + fervorLevel);
     }
 
 
     public void Update()
     {
-        combo_timer_text.SetText(((int)combo_timer).ToString());
-        fervorBar.value = fervorLevel;
+        if(GetComponentInChildren<Animator>().GetBool("Hurt") == true)
+        {
+            //Debug.Log("Animation name "
+            //    + GetComponentInChildren<Animator>().GetCurrentAnimatorClipInfo(0)[0].clip.name);
+            hurt_period += Time.deltaTime;
+
+            if(hurt_period >= 1.0f)
+            {
+                GetComponentInChildren<Animator>().SetBool("Hurt", false);
+            }
+        }
+        else
+        {
+            hurt_period = 0.0f;
+        }
+        if (combo_timer_text != null)
+        {
+            combo_timer_text.SetText(((int)combo_timer).ToString());
+        }
+
+
+        if (fervorBar != null)
+        {
+            fervorBar.value = fervorLevel;
+        }
         if (fervorLevel > 0)
         {
             fervorLevel -= 1.0f * Time.deltaTime;
@@ -123,9 +134,6 @@ public class PlayerStats : MonoBehaviour
         {
             combo_timer -= 1 * Time.deltaTime;
         }
-
-
-
 
 
         if (fervorLevel >= fervorMaxLevel - 30)

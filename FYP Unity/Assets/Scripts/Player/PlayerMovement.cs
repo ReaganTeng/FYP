@@ -30,12 +30,10 @@ public class PlayerMovement : MonoBehaviour
 
     //
     bool isWalking;
-    bool isclicked;
-    float click_timer;
+   
 
     private void Start()
     {
-        click_timer = 0.0f;
         isWalking = false;
         dashcdtimer = 0;
         DisableControls = false;
@@ -43,82 +41,50 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if(GetComponentInChildren<Animator>().GetBool("Hurt"))
+        {
+            DisableControls = true;
+        }
+        else
+        {
+            DisableControls = false;
+        }
+
         if (!DisableControls)
         {
             float horizontalInput = Input.GetAxis("Horizontal");
             float verticalInput = Input.GetAxis("Vertical");
             playerRB.AddForce((orientation.forward * verticalInput + orientation.right * horizontalInput) * PlayerSpeed);
 
-       
+            GetComponentInChildren<Animator>().SetBool("walking", isWalking);
 
-
-        //animate player walking
-        GetComponentInChildren<Animator>().SetBool("walking", isWalking);
-        GetComponentInChildren<Animator>().SetBool("click", isclicked);
-        //
-
-
-
-        if(GetComponentInChildren<Animator>().GetBool("Hurt") == true)
+            // If user is pressing any movement keys
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
             {
-                Debug.Log("TRUE");
-            }
-
-        if(Input.GetMouseButtonDown(0) == true
-            /*Input.GetKeyDown(KeyCode.Q) == true*/)
-        {
-            isclicked = true;
-            click_timer = 1.0f;
-        }
-        if(isclicked)
-        {
-            click_timer -= Time.deltaTime;
-
-            if(click_timer < 0)
-            {
-                isclicked = false;
+                isWalking = true;
+                CheckDirection(ref Forwardrun, ref Rightrun, horizontalInput, verticalInput);
             }
             else
             {
-               // Debug.Log("CANNOT CLICK NOW");
-
-            }
-        }
-        if (isclicked == false)
-        {
-            //Debug.Log("CAN CLICK NOW");
-        }
-
-            // If user is pressing any movement keys
-            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
-        {
-            isWalking = true;
-            CheckDirection(ref Forwardrun, ref Rightrun, horizontalInput, verticalInput);
-        }
-        else
-        {
-            isWalking = false;
-        }
-
-            // If user is pressing any movement keys
-            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
-            {
-                CheckDirection(ref Forwardrun, ref Rightrun, horizontalInput, verticalInput);
+                isWalking = false;
             }
 
             if (Input.GetKey(KeyCode.A))
-            {
+            { 
+                isWalking = true;
                 spriteRenderer.flipX = false;
             }
 
             if (Input.GetKey(KeyCode.D))
             {
+                isWalking = true;
                 spriteRenderer.flipX = true;
             }
 
             if (dashcdtimer > 0)
+            {
                 dashcdtimer -= Time.deltaTime;
-
+            }
             else
             {
                 // if shift is detected, sprint towards that direction
