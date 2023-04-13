@@ -72,7 +72,7 @@ public class OrderSystem : MonoBehaviour
                 // Create an order list
                 GameObject temp = Instantiate(OrderPrefab);
                 AssignRecipe(temp);
-                temp.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
+                temp.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
                 temp.transform.SetParent(OrderZone);
                 orderList.Add(temp);
                 orderintervaltimer = OrderIntervalTiming;

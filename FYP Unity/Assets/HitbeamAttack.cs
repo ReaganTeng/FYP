@@ -9,17 +9,12 @@ public class HitbeamAttack : MonoBehaviour
 
     GameObject player;
 
-    void Awake()
-    {
-        Attackcdtimer = 0;
-        player = GameObject.FindGameObjectWithTag("Player");
-    }
     void Start()
     {
         Attackcdtimer = 0;
         player = GameObject.FindGameObjectWithTag("Player");
     }
-
+   
     private void Update()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -31,7 +26,7 @@ public class HitbeamAttack : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         // if it is the player
-        if ((other.CompareTag("Player") || other.CompareTag("playerboxcollider"))
+        if ((other.CompareTag("Player") /*|| other.CompareTag("playerboxcollider")*/)
             && Attackcdtimer <= 0)
         {
             //Debug.Log("PLAYER ATTACKED");

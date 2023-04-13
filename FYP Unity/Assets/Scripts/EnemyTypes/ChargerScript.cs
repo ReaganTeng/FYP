@@ -29,20 +29,7 @@ public class ChargerScript : MonoBehaviour
 
     public GameObject attackhitbox;
 
-    void Awake()
-    {
-        velocityspeed = 10.0f;
-        number_of_bounces = 0;
-        collided = false;
-        navMeshAgent.enabled = false;
-        playerGO = GameObject.FindGameObjectWithTag("Player");
-        playerPos = playerGO.transform.position;
-        resultingVector = playerPos - transform.position;
-        resultingVector.y = 0;
-        resultingVector.Normalize();
-        chargingtime = 0.0f;
-       
-    }
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -179,7 +166,7 @@ public class ChargerScript : MonoBehaviour
         }
         else if (enemyPhase == EnemyScript.Phases.ATTACK_TYPE_1)
         {
-            GameObject bc = GameObject.FindGameObjectWithTag("playerboxcollider");
+            GameObject bc = GameObject.FindGameObjectWithTag("Player");
             float distance = Vector3.Distance(transform.position, bc.transform.position);
             //Debug.Log("DISTANCE " + (int)distance);
             if ((int)distance <= 1)
@@ -240,7 +227,7 @@ public class ChargerScript : MonoBehaviour
             //case EnemyScript.Phases.ATTACK_TYPE_2:
                 {
                     if (collision.gameObject.tag == "wall"
-                        || collision.gameObject.tag == "playerboxcollider"
+                        //|| collision.gameObject.tag == "playerboxcollider"
                         || collision.gameObject.tag == "Player"
                        )
                     {
@@ -251,7 +238,7 @@ public class ChargerScript : MonoBehaviour
             case EnemyScript.Phases.ATTACK_TYPE_2:
                 {
                     if (collision.gameObject.tag == "wall"
-                        || collision.gameObject.tag == "playerboxcollider"
+                        //|| collision.gameObject.tag == "playerboxcollider"
                         || collision.gameObject.tag == "Player"
                        )
                     {
@@ -265,7 +252,7 @@ public class ChargerScript : MonoBehaviour
                             number_of_bounces += 1;
                             playerPos = playerGO.transform.position;
                             if (collision.gameObject.tag == "Player"
-                                    || collision.gameObject.tag == "playerboxcollider")
+                                    /*|| collision.gameObject.tag == "playerboxcollider"*/)
                             {
                                 resultingVector = -playerPos + transform.position;
                             }
