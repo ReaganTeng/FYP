@@ -47,26 +47,7 @@ public class JumperScript : MonoBehaviour
     public GameObject attackhitbox;
 
 
-    void Awake()
-    {
-        startupdating = false;
-        count = 0;
-        playerGO = GameObject.FindGameObjectWithTag("Player");
-        startpos = transform.position;
-        timer = 0.0f;
-        navMeshAgent.acceleration = 20.0f;
-        speedfactor = 20.0f;
-
-
-        GetComponentInChildren<Animator>().SetBool("about2jump", false);
-        GetComponentInChildren<Animator>().SetBool("jump", false);
-        GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
-
-
-       
-    }
-
-
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -136,17 +117,17 @@ public class JumperScript : MonoBehaviour
                         {
                             GetComponentInChildren<Animator>().SetBool("jump", true);
 
+
+
                                 //while it's jumping, disable collider;
                                 if (currentdistance < 1.0f)
                                 {
-                                    //attackhitbox.SetActive(true);
                                     attackhitbox.GetComponent<BoxCollider>().enabled = true;
-                                    //Debug.Log("NEAR");
-                                    GetComponent<BoxCollider>().enabled = true;
+                                    GetComponent<BoxCollider>().enabled = false;
+
                                 }
                                 else
                                 {
-                                    //attackhitbox.SetActive(false);
                                     attackhitbox.GetComponent<BoxCollider>().enabled = false;
                                     GetComponent<BoxCollider>().enabled = false;
                                 }
@@ -191,25 +172,30 @@ public class JumperScript : MonoBehaviour
                 }
             case EnemyScript.Phases.COOLDOWN:
                 {
-
                     //jumpcooldown = 4.1f;
                     jumpcooldown = 0.3f;
+                        GetComponent<BoxCollider>().enabled = false;
 
-                    GetComponent<EnemyScript>().addtimer(1.0f * Time.deltaTime);
+                        GetComponent<EnemyScript>().addtimer(1.0f * Time.deltaTime);
                     //GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
                     GetComponent<NavMeshAgent>().speed = 0.0f;
 
-                        //attackhitbox.SetActive(false);
-                        attackhitbox.GetComponent<BoxCollider>().enabled = false;
+                    attackhitbox.GetComponent<BoxCollider>().enabled = false;
 
 
-                        if (GetComponent<EnemyScript>().gettimer() >=
-                        GetComponent<EnemyScript>().getcooldownend())
+                    if (GetComponent<EnemyScript>().gettimer() >=
+                    GetComponent<EnemyScript>().getcooldownend())
                     {
                         GetComponent<EnemyScript>().settimer(0.0f);   
                         GetComponent<EnemyScript>().phase = EnemyScript.Phases.ABOUT_TO_ATTACK;
                     }
-                    break;
+
+                        GetComponent<EnemyScript>().abouttoattackUpdate();
+
+
+                       
+
+                        break;
                 }
 
             case EnemyScript.Phases.ABOUT_TO_ATTACK:
@@ -218,8 +204,8 @@ public class JumperScript : MonoBehaviour
                     //make vibration
                     var speed = 4.0f; //how fast it shakes
                     var amount = 0.5f; //how much it shakes
-                   
 
+                    GetComponent<BoxCollider>().enabled = false;
 
                     GetComponent<EnemyScript>().abouttoattackUpdate();
                     break;

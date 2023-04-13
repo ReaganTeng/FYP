@@ -95,7 +95,7 @@ Animator:
   m_GameObject: {fileID: 243017567625475005}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d878ceb1afd15bd4d98fa4aa10b93110, type: 2}
+  m_Controller: {fileID: 9100000, guid: 9787852b7ed2ea4419414c8f7a00df96, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -564,7 +564,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddbf992b6a200604983e66a200d7330d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyHealth: 100
   AttackDamage: 5
   prepPrefab: {fileID: 7247084980041192393, guid: 6f0f0e8a5185c8847b5ee318bb25abcc, type: 3}
   choppedPefab: {fileID: 1205639301771836825, guid: a74c58894c04c2f43b0e9ef4ae8a22d7, type: 3}

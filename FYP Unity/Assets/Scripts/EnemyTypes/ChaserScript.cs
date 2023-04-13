@@ -38,24 +38,7 @@ bool beam_mode;
 [SerializeField] GameObject attackhitbox;
 
     // Start is called before the first frame update
-    void Awake()
-    {
-        lockonbeam = null;
-        hitbeam = null;
-        pivot = null;
-
-        beam_mode = false;
-        time_att_1 = 0;
-        time_att_2 = 0;
-        playerGO = GameObject.FindGameObjectWithTag("Player");
-
-        chasingspeed = 4.0f;
-        //attackhitbox.SetActive(true);
-        attackhitbox.GetComponent<BoxCollider>().enabled = true;
-
-
-
-    }
+    
 
     void Start()
 {
