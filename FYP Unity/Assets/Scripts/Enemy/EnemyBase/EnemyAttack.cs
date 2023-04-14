@@ -32,19 +32,18 @@ public class EnemyAttack : MonoBehaviour
             if (Attackcdtimer < AttackCD / 2)
             {
                 animator.SetBool("attack", false);
+                transform.parent.GetComponent<BoxCollider>().enabled = true;
 
             }
         }
-        else
-        {
-            //player.GetComponent<PlayerMovement>().setAnimator(false);
-            //playerBoxCollider.SetActive(true);
-            //playerBoxCollider.GetComponent<BoxCollider>().enabled = true;
-            GetComponentInParent<BoxCollider>().enabled = true;
-           
-
-
-        }
+        //else
+        //{
+        //    //player.GetComponent<PlayerMovement>().setAnimator(false);
+        //    //playerBoxCollider.SetActive(true);
+        //    //playerBoxCollider.GetComponent<BoxCollider>().enabled = true;
+        //    transform.parent.GetComponent<BoxCollider>().enabled = true;
+        //    //Debug.Log("Parent name " + GetComponentInParent<Transform>());
+        //}
     }
 
     //change collider size if want to increase attack range
@@ -56,24 +55,27 @@ public class EnemyAttack : MonoBehaviour
 
 
         // if it is the player
-        if ((other.CompareTag("Player") /*&& Attackcdtimer <= 0*/
+        if ((other.CompareTag("Player") && Attackcdtimer <= 0
             /*|| other.CompareTag("playerboxcollider")*/)
             && GetComponent<BoxCollider>().enabled == true)
         {
             animator.SetBool("attack", true);
             //other.GetComponent<PlayerStats>().ChangeHealth(-es.AttackDamage);
 
+
             other.GetComponent<PlayerMovement>().setAnimator(true);
             other.GetComponent<PlayerStats>().ResetConsecutiveHit();
             other.GetComponent<PlayerStats>().ChangeFervor(-10.0f);
+
+            //Debug.Log("HIT");
 
             /*other.GetComponent<Rigidbody>().AddForce(
                  (other.GetComponent<Transform>().position - GetComponentInParent<Transform>().position).normalized * 50.0f,
                  ForceMode.Impulse
                  );*/
-           
+
             //playerBoxCollider.GetComponent<BoxCollider>().enabled = false;
-            GetComponentInParent<BoxCollider>().enabled = false;
+            transform.parent.GetComponent<BoxCollider>().enabled = false;
 
             Attackcdtimer = AttackCD;
         }

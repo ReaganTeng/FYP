@@ -1,0 +1,707 @@
+fileFormatVersion: 2
+guid: 65fc90f08bfc18b4e961a1d23dc2ea56
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: SAAMONO_Walk_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1605
+        width: 376
+        height: 321
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff260d948ca1a82448d96ec3415b56a5
+      internalID: -438442325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Walk_1
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 1605
+        width: 376
+        height: 321
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdb902353ba1a3d45b493f9f37a60cc1
+      internalID: 641652893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Walk_2
+      rect:
+        serializedVersion: 2
+        x: 752
+        y: 1605
+        width: 376
+        height: 321
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec678705912685e408abb05c99f204d6
+      internalID: 1700516446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Walk_3
+      rect:
+        serializedVersion: 2
+        x: 1128
+        y: 1605
+        width: 376
+        height: 321
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eab7eb58093b8644c99a53116e567316
+      internalID: 1126956044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Walk_4
+      rect:
+        serializedVersion: 2
+        x: 1504
+        y: 1605
+        width: 376
+        height: 321
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 774c9fda9996b814cb83a5e6ce2267b7
+      internalID: -1179518030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Walk_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1284
+        width: 376
+        height: 321
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8ff65011b36bf64ca7bf967644a223f
+      internalID: -1211334809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Walk_6
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 1284
+        width: 376
+        height: 321
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09bcb304d6545a0448b84e12269be422
+      internalID: 512033691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Walk_7
+      rect:
+        serializedVersion: 2
+        x: 752
+        y: 1284
+        width: 376
+        height: 321
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 732777e4a0595784296ed566b26c866f
+      internalID: -1555180168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Walk_8
+      rect:
+        serializedVersion: 2
+        x: 1128
+        y: 1284
+        width: 376
+        height: 321
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d69dd5cf4fe9e449a1e65764d947394
+      internalID: -1454732787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Walk_9
+      rect:
+        serializedVersion: 2
+        x: 1504
+        y: 1284
+        width: 376
+        height: 321
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5150d3be8f57acb4682780e948349f0e
+      internalID: 205227827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Walk_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 963
+        width: 376
+        height: 321
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b07850fb4c70536459a50cad5a143bd7
+      internalID: -1692425417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Walk_11
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 963
+        width: 376
+        height: 321
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0b3a8f0a56622a4bb114797ea36dd02
+      internalID: 1899544008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Walk_12
+      rect:
+        serializedVersion: 2
+        x: 752
+        y: 963
+        width: 376
+        height: 321
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c36f8e7e16c51c49b073c0ed34748e3
+      internalID: -231181484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Walk_13
+      rect:
+        serializedVersion: 2
+        x: 1128
+        y: 963
+        width: 376
+        height: 321
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8207185fc27b3ec4983d5fbd236010f9
+      internalID: 1101280523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Walk_14
+      rect:
+        serializedVersion: 2
+        x: 1504
+        y: 963
+        width: 376
+        height: 321
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3de98474a560a544841c644b96d3c9f
+      internalID: -741129096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Walk_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 642
+        width: 376
+        height: 321
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 435fe152615d84c4abc68f6f45f23e62
+      internalID: -1452778588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Walk_16
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 642
+        width: 376
+        height: 321
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0efe180c2b659c74c9d88f5415f08653
+      internalID: 1129684207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Walk_17
+      rect:
+        serializedVersion: 2
+        x: 752
+        y: 642
+        width: 376
+        height: 321
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c72f4a34092eed8478ba2e1d29b36f42
+      internalID: -378635075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Walk_18
+      rect:
+        serializedVersion: 2
+        x: 1128
+        y: 642
+        width: 376
+        height: 321
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65d5694acee6bbd43a3f20d6333d4444
+      internalID: 849420838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Walk_19
+      rect:
+        serializedVersion: 2
+        x: 1504
+        y: 642
+        width: 376
+        height: 321
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4515700061e70f4f97b48ac4510dfe8
+      internalID: 492625388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Walk_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 321
+        width: 376
+        height: 321
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09c6613c895edf242984e6dce000f5b6
+      internalID: -1907252100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Walk_21
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 321
+        width: 376
+        height: 321
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c00a61226b9d90346942f825e8ad5fb3
+      internalID: 769868202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Walk_22
+      rect:
+        serializedVersion: 2
+        x: 752
+        y: 321
+        width: 376
+        height: 321
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc386f29bc567d94f92eccda4d80b836
+      internalID: 1550584315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Walk_23
+      rect:
+        serializedVersion: 2
+        x: 1128
+        y: 321
+        width: 376
+        height: 321
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 270a47895fffd164b834c820122e3d76
+      internalID: -863054855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Walk_24
+      rect:
+        serializedVersion: 2
+        x: 1504
+        y: 321
+        width: 376
+        height: 321
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f77f82ed83ba28b4b89b2659fb4bb098
+      internalID: 1530511563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Walk_25
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 376
+        height: 321
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c450c95d1d253a4cadb816358872740
+      internalID: 1384213001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 32377efe7863fe541a67952fef6e91f3
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      SAAMONO_Walk_0: -438442325
+      SAAMONO_Walk_3: 1126956044
+      SAAMONO_Walk_22: 1550584315
+      SAAMONO_Walk_8: -1454732787
+      SAAMONO_Walk_14: -741129096
+      SAAMONO_Walk_18: 849420838
+      SAAMONO_Walk_10: -1692425417
+      SAAMONO_Walk_1: 641652893
+      SAAMONO_Walk_6: 512033691
+      SAAMONO_Walk_11: 1899544008
+      SAAMONO_Walk_13: 1101280523
+      SAAMONO_Walk_16: 1129684207
+      SAAMONO_Walk_20: -1907252100
+      SAAMONO_Walk_4: -1179518030
+      SAAMONO_Walk_23: -863054855
+      SAAMONO_Walk_15: -1452778588
+      SAAMONO_Walk_17: -378635075
+      SAAMONO_Walk_24: 1530511563
+      SAAMONO_Walk_25: 1384213001
+      SAAMONO_Walk_9: 205227827
+      SAAMONO_Walk_7: -1555180168
+      SAAMONO_Walk_12: -231181484
+      SAAMONO_Walk_2: 1700516446
+      SAAMONO_Walk_19: 492625388
+      SAAMONO_Walk_5: -1211334809
+      SAAMONO_Walk_21: 769868202
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

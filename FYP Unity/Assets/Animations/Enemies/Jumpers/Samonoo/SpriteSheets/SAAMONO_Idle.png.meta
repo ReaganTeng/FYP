@@ -1,0 +1,817 @@
+fileFormatVersion: 2
+guid: 17082a9ae1ea083408fc391aeedb6500
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: SAAMONO_Idle_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1362
+        width: 372
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5534f970a4589a488a0ce0ff5d1f31e
+      internalID: 2081600347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Idle_1
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 1362
+        width: 372
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64db6d0d2b44a1742bdaca6937bd3ea0
+      internalID: -1151608107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Idle_2
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 1362
+        width: 372
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae0eb5d95ca68de43a8b62ea80479d95
+      internalID: -2088855824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Idle_3
+      rect:
+        serializedVersion: 2
+        x: 1116
+        y: 1362
+        width: 372
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4617bd24215376949968a94e77451d9f
+      internalID: 1425474844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Idle_4
+      rect:
+        serializedVersion: 2
+        x: 1488
+        y: 1362
+        width: 372
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35ce3e77ed6fdc044a79e074e07f9016
+      internalID: -874106573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Idle_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1135
+        width: 372
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4305f16b200b2546a72641c5c96bda4
+      internalID: -2083453934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Idle_6
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 1135
+        width: 372
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e4b024337d442a4db1154c1c831509e
+      internalID: -318464042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Idle_7
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 1135
+        width: 372
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6131bdecb166f8e4987c05a4316c30ca
+      internalID: -915648837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Idle_8
+      rect:
+        serializedVersion: 2
+        x: 1116
+        y: 1135
+        width: 372
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79323eb2de383b54cb259f7be0143666
+      internalID: -156535292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Idle_9
+      rect:
+        serializedVersion: 2
+        x: 1488
+        y: 1135
+        width: 372
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90264ba2ae4589f4993a35a23e25e3a7
+      internalID: 226171105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Idle_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 908
+        width: 372
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c4189a630268d7499ab21f81a1c7c72
+      internalID: 806720031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Idle_11
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 908
+        width: 372
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2394f742019df84d98e4824d9c7276c
+      internalID: -1890105340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Idle_12
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 908
+        width: 372
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba58629d10d32964384f065fc455e86c
+      internalID: 972385565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Idle_13
+      rect:
+        serializedVersion: 2
+        x: 1116
+        y: 908
+        width: 372
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 547cbb99d915f1a4ba9fbdf74491f666
+      internalID: 1873663583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Idle_14
+      rect:
+        serializedVersion: 2
+        x: 1488
+        y: 908
+        width: 372
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e34fb0bc2f7e0ef47a45c22a5893a862
+      internalID: -142737150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Idle_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 681
+        width: 372
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b6832d5961cbe44ca10afdef1a5e03d
+      internalID: 1559983536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Idle_16
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 681
+        width: 372
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41828cf2cca90d643be692b1c60a5647
+      internalID: -1661420237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Idle_17
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 681
+        width: 372
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b80be340ce95a9e4a8fdb64b80e332e7
+      internalID: -1038652895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Idle_18
+      rect:
+        serializedVersion: 2
+        x: 1116
+        y: 681
+        width: 372
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bb97615400622243955a3b5121f3604
+      internalID: 2033104426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Idle_19
+      rect:
+        serializedVersion: 2
+        x: 1488
+        y: 681
+        width: 372
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0d7171dfeaf9d34c9037b4893ce9582
+      internalID: -641449432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Idle_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 454
+        width: 372
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f544f0e079932c48a389a53362bd97e
+      internalID: 729394118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Idle_21
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 454
+        width: 372
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 075c182cc00dfba4cbc89d651387b733
+      internalID: -1509690559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Idle_22
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 454
+        width: 372
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 981e5a8566dd2f54fb46e479a285976d
+      internalID: -631445758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Idle_23
+      rect:
+        serializedVersion: 2
+        x: 1116
+        y: 454
+        width: 372
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14b25d275dbd962448c473b2832ff285
+      internalID: 561332916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Idle_24
+      rect:
+        serializedVersion: 2
+        x: 1488
+        y: 454
+        width: 372
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ffcbe933d025b74a8091927aaf5289d
+      internalID: -93654054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Idle_25
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 227
+        width: 372
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 747c4429bd900fb42b65859455384a82
+      internalID: -30465889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Idle_26
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 227
+        width: 372
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89eb792bf6d4c6140a626fdff6f8822f
+      internalID: 482214560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Idle_27
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 227
+        width: 372
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90d8fa985fc7456419ae9e158ec35bc8
+      internalID: 1979012149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Idle_28
+      rect:
+        serializedVersion: 2
+        x: 1116
+        y: 227
+        width: 372
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7eccf0c73722e1c4898f4897840fbb94
+      internalID: -137534152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Idle_29
+      rect:
+        serializedVersion: 2
+        x: 1488
+        y: 227
+        width: 372
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3ec6407c397d1d49a9ce821ceb1e968
+      internalID: 1611910542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SAAMONO_Idle_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 372
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70c08d2639781294cb93aa1cff9055de
+      internalID: 2063403515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: f9b473d00e3f2244c9057eed7bb33b8e
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      SAAMONO_Idle_29: 1611910542
+      SAAMONO_Idle_13: 1873663583
+      SAAMONO_Idle_12: 972385565
+      SAAMONO_Idle_20: 729394118
+      SAAMONO_Idle_16: -1661420237
+      SAAMONO_Idle_3: 1425474844
+      SAAMONO_Idle_21: -1509690559
+      SAAMONO_Idle_0: 2081600347
+      SAAMONO_Idle_22: -631445758
+      SAAMONO_Idle_18: 2033104426
+      SAAMONO_Idle_28: -137534152
+      SAAMONO_Idle_10: 806720031
+      SAAMONO_Idle_7: -915648837
+      SAAMONO_Idle_27: 1979012149
+      SAAMONO_Idle_30: 2063403515
+      SAAMONO_Idle_26: 482214560
+      SAAMONO_Idle_2: -2088855824
+      SAAMONO_Idle_24: -93654054
+      SAAMONO_Idle_23: 561332916
+      SAAMONO_Idle_9: 226171105
+      SAAMONO_Idle_11: -1890105340
+      SAAMONO_Idle_14: -142737150
+      SAAMONO_Idle_17: -1038652895
+      SAAMONO_Idle_1: -1151608107
+      SAAMONO_Idle_25: -30465889
+      SAAMONO_Idle_4: -874106573
+      SAAMONO_Idle_15: 1559983536
+      SAAMONO_Idle_8: -156535292
+      SAAMONO_Idle_5: -2083453934
+      SAAMONO_Idle_6: -318464042
+      SAAMONO_Idle_19: -641449432
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

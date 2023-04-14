@@ -32,6 +32,7 @@ public class PlayerStats : MonoBehaviour
     bool buff_active;
 
     [SerializeField] TextMeshProUGUI combo_timer_text;
+    [SerializeField] TextMeshProUGUI combo_text;
 
     float hurt_period;
 
@@ -46,6 +47,8 @@ public class PlayerStats : MonoBehaviour
         {
             fervorBar.maxValue = fervorMaxLevel;
         }
+
+        
 
         fervorLevel = 0;
         numberConsecutiveHits = 0;
@@ -88,7 +91,7 @@ public class PlayerStats : MonoBehaviour
             }
         }
 
-        //Debug.Log("Fervor: " + fervorLevel);
+        Debug.Log("Fervor: " + fervorLevel);
     }
 
 
@@ -136,7 +139,13 @@ public class PlayerStats : MonoBehaviour
         }
 
 
-        if (fervorLevel >= fervorMaxLevel - 30)
+        if (combo_text != null)
+        {
+            combo_text.text = numberConsecutiveHits.ToString();
+        }
+
+
+         if (fervorLevel >= fervorMaxLevel - 30)
         {
             buff_active = true;
             //Debug.Log("BUFF IS ACTIVE");
