@@ -46,7 +46,6 @@ public class PlayerMovement : MonoBehaviour
         /*if(GetComponentInChildren<Animator>().GetBool("Hurt"))
         {
             delaytime += Time.deltaTime;
-
             if (delaytime >= 0.9f)
             {
                 DisableControls = true;

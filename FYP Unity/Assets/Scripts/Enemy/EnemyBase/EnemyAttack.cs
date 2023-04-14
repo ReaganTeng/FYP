@@ -32,17 +32,18 @@ public class EnemyAttack : MonoBehaviour
             if (Attackcdtimer < AttackCD / 2)
             {
                 animator.SetBool("attack", false);
+                transform.parent.GetComponent<BoxCollider>().enabled = true;
 
             }
         }
-        else
-        {
-            //player.GetComponent<PlayerMovement>().setAnimator(false);
-            //playerBoxCollider.SetActive(true);
-            //playerBoxCollider.GetComponent<BoxCollider>().enabled = true;
-            transform.parent.GetComponent<BoxCollider>().enabled = true;
-            //Debug.Log("Parent name " + GetComponentInParent<Transform>());
-        }
+        //else
+        //{
+        //    //player.GetComponent<PlayerMovement>().setAnimator(false);
+        //    //playerBoxCollider.SetActive(true);
+        //    //playerBoxCollider.GetComponent<BoxCollider>().enabled = true;
+        //    transform.parent.GetComponent<BoxCollider>().enabled = true;
+        //    //Debug.Log("Parent name " + GetComponentInParent<Transform>());
+        //}
     }
 
     //change collider size if want to increase attack range

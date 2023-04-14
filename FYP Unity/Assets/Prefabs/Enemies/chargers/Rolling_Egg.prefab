@@ -458,16 +458,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddbf992b6a200604983e66a200d7330d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyHealth: 100
   AttackDamage: 5
   prepPrefab: {fileID: 5590854796111769192, guid: c4be653073486204a85e92303fbd91e8, type: 3}
   choppedPefab: {fileID: 2775609900728012048, guid: 48546ae0d158dfd48a4fafc2a1de6108, type: 3}
   smashedPrefab: {fileID: 1651023163865744873, guid: 5ac66fde1172d884eab49dc8f4f08419, type: 3}
   Mush: {fileID: 8494874157540663937, guid: 4255f020537c20a48857eb56b1b0f6d5, type: 3}
+  attackhitbox: {fileID: 5005441027822844523}
   healthbar: {fileID: 1248048502830709365}
   cooldown_period: 5
   abouttoattack_period: 5
-  attackhitbox: {fileID: 5005441027822844523}
   phase: 0
 --- !u!114 &2649622949718006214
 MonoBehaviour:
@@ -565,7 +564,7 @@ RectTransform:
   m_GameObject: {fileID: 7679324367629315994}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.028989999, y: 0.24229999, z: 1}
+  m_LocalScale: {x: 0.020467808, y: 0.19307916, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3601467719728770582}
@@ -574,7 +573,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.44}
   m_SizeDelta: {x: 159.6079, y: 87.2544}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &5091479503056724761

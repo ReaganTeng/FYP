@@ -117,11 +117,12 @@ public class EnemyScript : MonoBehaviour
             GetComponentInChildren<Animator>().SetBool("attacked", true);
             //
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 10; i++)
             {
                 player.GetComponent<PlayerStats>().addConsecutiveHit();
                 player.GetComponent<PlayerStats>().resetCombo_timer();
             }
+
             GetComponent<Rigidbody>().AddForce(
                (GetComponent<Transform>().position - other.GetComponentInParent<Transform>().position).normalized * 100.0f,
                ForceMode.Impulse

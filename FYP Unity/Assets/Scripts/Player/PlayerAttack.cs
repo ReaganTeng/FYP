@@ -143,7 +143,7 @@ public class PlayerAttack : MonoBehaviour
             {
                 isclicked = true;
                 click_timer = 1.0f;
-                Debug.Log("LIGHT ATTACK");
+                //Debug.Log("LIGHT ATTACK");
                 //GetComponentInParent<PlayerStats>().setAttack(10.0f);
                 AttackWhichDirection(direction);
                 HitBox.SetActive(true);
@@ -159,7 +159,7 @@ public class PlayerAttack : MonoBehaviour
             {
                 isclicked = true;
                 click_timer = 1.0f;
-                Debug.Log("HEAVY ATTACK");
+                //Debug.Log("HEAVY ATTACK");
 
                 //transform.parent.GetComponent<PlayerStats>().setAttack(
                 //GetComponentInParent<PlayerStats>().getAttack(5.0f));

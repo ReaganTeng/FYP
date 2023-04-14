@@ -161,7 +161,7 @@ bool beam_mode;
 
                         //Debug.Log("CHASING PLAYER");
 
-                        chasingspeed = 4.0f;
+                        chasingspeed = 2.0f;
                         time_att_2 = 0;
                         time_att_1 += 1 * Time.deltaTime;
                         navMeshAgent.SetDestination(playerGO.transform.position);

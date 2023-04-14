@@ -8,30 +8,30 @@ public class WallDeactivator : MonoBehaviour
     public Camera cam;
     public LayerMask wallsLayer;
 
-    private List<GameObject> disabledWalls = new List<GameObject>();
+    private List<Renderer> disabledRenderers = new List<Renderer>();
 
     void Update()
     {
-        // Re-enable any previously disabled walls that are now visible
-        for (int i = disabledWalls.Count - 1; i >= 0; i--)
+        // Re-enable any previously disabled wall renderers that are now visible
+        for (int i = disabledRenderers.Count - 1; i >= 0; i--)
         {
-            GameObject wall = disabledWalls[i];
-            if (!IsWallBlockingView(wall))
+            Renderer renderer = disabledRenderers[i];
+            if (!IsWallBlockingView(renderer.gameObject))
             {
-                wall.SetActive(true);
-                disabledWalls.RemoveAt(i);
+                renderer.enabled = true;
+                disabledRenderers.RemoveAt(i);
             }
         }
 
-        // Disable any walls that are blocking the view
+        // Disable any wall renderers that are blocking the view
         RaycastHit[] hits = Physics.RaycastAll(cam.transform.position, player.position - cam.transform.position, Mathf.Infinity, wallsLayer);
         foreach (RaycastHit hit in hits)
         {
-            GameObject wall = hit.collider.gameObject;
-            if (!disabledWalls.Contains(wall))
+            Renderer renderer = hit.collider.GetComponent<Renderer>();
+            if (renderer != null && !disabledRenderers.Contains(renderer))
             {
-                wall.SetActive(false);
-                disabledWalls.Add(wall);
+                renderer.enabled = false;
+                disabledRenderers.Add(renderer);
             }
         }
     }
