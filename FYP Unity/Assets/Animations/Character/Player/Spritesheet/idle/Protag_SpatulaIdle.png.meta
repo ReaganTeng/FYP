@@ -1,0 +1,1125 @@
+fileFormatVersion: 2
+guid: 2c1ff7002dc31264fa51ef22bf878104
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Protag_SpatulaIdle_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 7824
+        width: 682
+        height: 978
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bef48ae15793fc6418fceac90ea6d32d
+      internalID: -1363437865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protag_SpatulaIdle_1
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 7824
+        width: 682
+        height: 978
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a8ba3426d1ac374d9cffe8824bfb354
+      internalID: 195567151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protag_SpatulaIdle_2
+      rect:
+        serializedVersion: 2
+        x: 1364
+        y: 7824
+        width: 682
+        height: 978
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3da3db693fb52c148a2e11a9e2c82234
+      internalID: -915680894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protag_SpatulaIdle_3
+      rect:
+        serializedVersion: 2
+        x: 2046
+        y: 7824
+        width: 682
+        height: 978
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad6b9f67452006340b50776fe551a2b3
+      internalID: 336757368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protag_SpatulaIdle_4
+      rect:
+        serializedVersion: 2
+        x: 2728
+        y: 7824
+        width: 682
+        height: 978
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 816c71cc4905aff469113303c4f40ca7
+      internalID: -448819602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protag_SpatulaIdle_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6846
+        width: 682
+        height: 978
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d71a32f1cfebaa5439b30f9b18c569cb
+      internalID: -405561909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protag_SpatulaIdle_6
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 6846
+        width: 682
+        height: 978
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a400c03e79ea444482f53a640b9b474
+      internalID: 523918686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protag_SpatulaIdle_7
+      rect:
+        serializedVersion: 2
+        x: 1364
+        y: 6846
+        width: 682
+        height: 978
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c66179601668374c99993c80623a563
+      internalID: 1179038999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protag_SpatulaIdle_8
+      rect:
+        serializedVersion: 2
+        x: 2046
+        y: 6846
+        width: 682
+        height: 978
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a229f035fd93bdd4283463c47d6be228
+      internalID: 1453876808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protag_SpatulaIdle_9
+      rect:
+        serializedVersion: 2
+        x: 2728
+        y: 6846
+        width: 682
+        height: 978
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2076c4ff1dbaf2b40bceb8b9529aafe5
+      internalID: -1297508650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protag_SpatulaIdle_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 5868
+        width: 682
+        height: 978
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e5e47f0d946a9d4e87fbcc330179e4f
+      internalID: -1614163931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protag_SpatulaIdle_11
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 5868
+        width: 682
+        height: 978
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e462ff6ded1c05148b4cf683223bf998
+      internalID: -87500078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protag_SpatulaIdle_12
+      rect:
+        serializedVersion: 2
+        x: 1364
+        y: 5868
+        width: 682
+        height: 978
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6ee794d5d570bf40a71768a5d95a3ba
+      internalID: -25088257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protag_SpatulaIdle_13
+      rect:
+        serializedVersion: 2
+        x: 2046
+        y: 5868
+        width: 682
+        height: 978
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b74b228bcfef51478dc3fa422932772
+      internalID: -1573856010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protag_SpatulaIdle_14
+      rect:
+        serializedVersion: 2
+        x: 2728
+        y: 5868
+        width: 682
+        height: 978
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 820ea1af1bb9348448c2ced74eaf38b1
+      internalID: 306222985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protag_SpatulaIdle_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4890
+        width: 682
+        height: 978
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b9d2d428123637438882482b8ab845e
+      internalID: -1827377387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protag_SpatulaIdle_16
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 4890
+        width: 682
+        height: 978
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb2985ed7a1d50d49bca063d186d78d3
+      internalID: -606233563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protag_SpatulaIdle_17
+      rect:
+        serializedVersion: 2
+        x: 1364
+        y: 4890
+        width: 682
+        height: 978
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57980e9f233588e4d867c05fe21bc27b
+      internalID: -1116838068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protag_SpatulaIdle_18
+      rect:
+        serializedVersion: 2
+        x: 2046
+        y: 4890
+        width: 682
+        height: 978
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9fbaf503f3847d4299039379253d625
+      internalID: -879864402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protag_SpatulaIdle_19
+      rect:
+        serializedVersion: 2
+        x: 2728
+        y: 4890
+        width: 682
+        height: 978
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d58c3a0426fab1848ad72c7bbfb3c3de
+      internalID: -33544400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protag_SpatulaIdle_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3912
+        width: 682
+        height: 978
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b187ea9f795a46e46a6e7c1e6e78e4a9
+      internalID: 700363088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protag_SpatulaIdle_21
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 3912
+        width: 682
+        height: 978
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bff4f505e9a21c40b95c207d24a9f62
+      internalID: 136566047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protag_SpatulaIdle_22
+      rect:
+        serializedVersion: 2
+        x: 1364
+        y: 3912
+        width: 682
+        height: 978
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff0cf666b10df0c45ae94cd30db0be2c
+      internalID: -977043879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protag_SpatulaIdle_23
+      rect:
+        serializedVersion: 2
+        x: 2046
+        y: 3912
+        width: 682
+        height: 978
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: feacebcfbd7d9184cada2861c52ce0c8
+      internalID: 117887352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protag_SpatulaIdle_24
+      rect:
+        serializedVersion: 2
+        x: 2728
+        y: 3912
+        width: 682
+        height: 978
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3696c5143d0d8f4db8b1ccb9450878d
+      internalID: 2035502046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protag_SpatulaIdle_25
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2934
+        width: 682
+        height: 978
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 666eb5f6d4b75dc488031ed234484ec8
+      internalID: -782541056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protag_SpatulaIdle_26
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 2934
+        width: 682
+        height: 978
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 768ea605da3b5c1468e577f3bb41ec73
+      internalID: 1495553795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protag_SpatulaIdle_27
+      rect:
+        serializedVersion: 2
+        x: 1364
+        y: 2934
+        width: 682
+        height: 978
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a10bc73ef60d3f4fa5a9d4ceada9df9
+      internalID: -641377229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protag_SpatulaIdle_28
+      rect:
+        serializedVersion: 2
+        x: 2046
+        y: 2934
+        width: 682
+        height: 978
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a1235fbbd7be2a4793c65421eac53cd
+      internalID: 1819249167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protag_SpatulaIdle_29
+      rect:
+        serializedVersion: 2
+        x: 2728
+        y: 2934
+        width: 682
+        height: 978
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc3aa2291a97d7e438e7d1ffc06cadc2
+      internalID: 2061026979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protag_SpatulaIdle_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1956
+        width: 682
+        height: 978
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59f7fb4728b85564ab33e69ed8b64599
+      internalID: 461333988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protag_SpatulaIdle_31
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 1956
+        width: 682
+        height: 978
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: befa016ec38897c41b398b7f684e97d4
+      internalID: -312306232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protag_SpatulaIdle_32
+      rect:
+        serializedVersion: 2
+        x: 1364
+        y: 1956
+        width: 682
+        height: 978
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05a3fc29e9a95da44a6815e8d7b6c861
+      internalID: -953050345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protag_SpatulaIdle_33
+      rect:
+        serializedVersion: 2
+        x: 2046
+        y: 1956
+        width: 682
+        height: 978
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84815b5c613c6504caa6e98f1d7e7393
+      internalID: -685639597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protag_SpatulaIdle_34
+      rect:
+        serializedVersion: 2
+        x: 2728
+        y: 1956
+        width: 682
+        height: 978
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26404c351e73edd48aef1afdc8f71dbd
+      internalID: -1954433017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protag_SpatulaIdle_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 978
+        width: 682
+        height: 978
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed6cd3dc8c017ad4683f14f96d14afcc
+      internalID: 1631773734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protag_SpatulaIdle_36
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 978
+        width: 682
+        height: 978
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b9b55e6dc4d487498231510295c825e
+      internalID: 1824318111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protag_SpatulaIdle_37
+      rect:
+        serializedVersion: 2
+        x: 1364
+        y: 978
+        width: 682
+        height: 978
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f1f1a7b60816d84690dc8b5e5f6a1ea
+      internalID: 1016819565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protag_SpatulaIdle_38
+      rect:
+        serializedVersion: 2
+        x: 2046
+        y: 978
+        width: 682
+        height: 978
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d1bd4414763dbd428f648969c648724
+      internalID: -1975040390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protag_SpatulaIdle_39
+      rect:
+        serializedVersion: 2
+        x: 2728
+        y: 978
+        width: 682
+        height: 978
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aebc21651bc6b564499ffcbab3b94506
+      internalID: 1933190524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protag_SpatulaIdle_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 682
+        height: 978
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38005a794557542428b71fdb9290739f
+      internalID: 1896781944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protag_SpatulaIdle_41
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 0
+        width: 682
+        height: 978
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f63d5c4b7c25664a80d2a40caafe609
+      internalID: -1771204584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protag_SpatulaIdle_42
+      rect:
+        serializedVersion: 2
+        x: 1364
+        y: 0
+        width: 682
+        height: 978
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 106823051d2c63c40adeb13848f72668
+      internalID: 1403378456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protag_SpatulaIdle_43
+      rect:
+        serializedVersion: 2
+        x: 2046
+        y: 0
+        width: 682
+        height: 978
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 754ba071dbfd56542b426e6058606d98
+      internalID: 433328505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protag_SpatulaIdle_44
+      rect:
+        serializedVersion: 2
+        x: 2728
+        y: 0
+        width: 682
+        height: 978
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9d3a6980715ff844b3a7ae62d943c9a
+      internalID: 1053410361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 756582e4006097a428306f1874a95d13
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Protag_SpatulaIdle_7: 1179038999
+      Protag_SpatulaIdle_2: -915680894
+      Protag_SpatulaIdle_19: -33544400
+      Protag_SpatulaIdle_21: 136566047
+      Protag_SpatulaIdle_11: -87500078
+      Protag_SpatulaIdle_8: 1453876808
+      Protag_SpatulaIdle_10: -1614163931
+      Protag_SpatulaIdle_42: 1403378456
+      Protag_SpatulaIdle_26: 1495553795
+      Protag_SpatulaIdle_29: 2061026979
+      Protag_SpatulaIdle_40: 1896781944
+      Protag_SpatulaIdle_38: -1975040390
+      Protag_SpatulaIdle_30: 461333988
+      Protag_SpatulaIdle_31: -312306232
+      Protag_SpatulaIdle_43: 433328505
+      Protag_SpatulaIdle_27: -641377229
+      Protag_SpatulaIdle_6: 523918686
+      Protag_SpatulaIdle_34: -1954433017
+      Protag_SpatulaIdle_35: 1631773734
+      Protag_SpatulaIdle_18: -879864402
+      Protag_SpatulaIdle_41: -1771204584
+      Protag_SpatulaIdle_23: 117887352
+      Protag_SpatulaIdle_39: 1933190524
+      Protag_SpatulaIdle_3: 336757368
+      Protag_SpatulaIdle_20: 700363088
+      Protag_SpatulaIdle_1: 195567151
+      Protag_SpatulaIdle_22: -977043879
+      Protag_SpatulaIdle_4: -448819602
+      Protag_SpatulaIdle_17: -1116838068
+      Protag_SpatulaIdle_28: 1819249167
+      Protag_SpatulaIdle_25: -782541056
+      Protag_SpatulaIdle_5: -405561909
+      Protag_SpatulaIdle_44: 1053410361
+      Protag_SpatulaIdle_13: -1573856010
+      Protag_SpatulaIdle_16: -606233563
+      Protag_SpatulaIdle_33: -685639597
+      Protag_SpatulaIdle_12: -25088257
+      Protag_SpatulaIdle_36: 1824318111
+      Protag_SpatulaIdle_14: 306222985
+      Protag_SpatulaIdle_37: 1016819565
+      Protag_SpatulaIdle_24: 2035502046
+      Protag_SpatulaIdle_9: -1297508650
+      Protag_SpatulaIdle_15: -1827377387
+      Protag_SpatulaIdle_32: -953050345
+      Protag_SpatulaIdle_0: -1363437865
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
