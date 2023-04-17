@@ -17,22 +17,23 @@ public class ChargerScript : MonoBehaviour
 
     float chargingtime;
 
-
-
-    public LayerMask lm;
+    [SerializeField] LayerMask lm;
 
     private float velocityspeed;
 
-    public EnemyScript.Phases enemyPhase;
+    EnemyScript.Phases enemyPhase;
 
     [SerializeField] NavMeshAgent navMeshAgent;
 
     public GameObject attackhitbox;
 
+    EnemyScript enemyScript;
    
     // Start is called before the first frame update
     void Start()
     {
+        GetComponent<EnemyScript>().set_enemyType(EnemyScript.EnemyType.CHARGER);
+
         velocityspeed = 10.0f;
         number_of_bounces = 0;
         collided = false;
@@ -50,8 +51,8 @@ public class ChargerScript : MonoBehaviour
     void Update()
     {
         playerGO = GameObject.FindGameObjectWithTag("Player");
-
-        enemyPhase = GetComponent<EnemyScript>().phase;
+        enemyScript = GetComponent<EnemyScript>();
+        enemyPhase = GetComponent<EnemyScript>().return_current_phase();
 
         if (GetComponent<EnemyScript>().getupdating())
         {
@@ -213,9 +214,7 @@ public class ChargerScript : MonoBehaviour
             GetComponentInChildren<Animator>().SetBool("charge", false);
             GetComponentInChildren<Animator>().SetBool("about2charge", false);
 
-
-            //enemy.gameObject.transform.LookAt(enemy.playerGO.transform);
-            GetComponent<EnemyScript>().phase = EnemyScript.Phases.COOLDOWN;
+        enemyScript.set_current_phase(EnemyScript.Phases.COOLDOWN);
     }
 
 

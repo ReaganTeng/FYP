@@ -57,6 +57,8 @@ public class PlayerAttack : MonoBehaviour
     bool isclicked;
     float click_timer;
 
+
+    [SerializeField] LayerMask enemyLM;
     void Start()
     {
         click_timer = 0.0f;
@@ -220,9 +222,23 @@ public class PlayerAttack : MonoBehaviour
             //switchWeapon();
         }
 
+        //Collider[] hitEnemy = Physics.OverlapBox(HitBox.transform.position, HitBox.transform.lossyScale,
+        //    HitBox.transform.rotation, enemyLM);
+
+        //foreach(Collider enemies in hitEnemy)
+        //{
+        //    Debug.Log("Enemy hit");
+        //}
+
         switchWeapon();
     }
 
+    public void OnDrawGizmos/*Selected*/()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireCube
+            (HitBox.transform.position, HitBox.transform.lossyScale);
+    }
 
     public bool getHitbox()
     {

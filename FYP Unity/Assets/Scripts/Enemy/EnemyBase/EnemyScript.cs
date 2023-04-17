@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class EnemyScript : MonoBehaviour
 {
     float EnemyHealth;
-    public float AttackDamage;
+    [SerializeField] float AttackDamage;
     [SerializeField] GameObject prepPrefab;
     [SerializeField] GameObject choppedPefab;
     [SerializeField] GameObject smashedPrefab;
@@ -36,11 +36,13 @@ public class EnemyScript : MonoBehaviour
     int attack_type;
 
 
+
     bool updating;
     int zoneno;
     GameObject[] zone;
     GameObject hitbox;
 
+    float currentAnimationLength;
     public enum Phases
     {
         ABOUT_TO_ATTACK,
@@ -52,7 +54,18 @@ public class EnemyScript : MonoBehaviour
     }
 
 
-    [SerializeField] public Phases phase;
+    public enum EnemyType
+    {
+        JUMPER,
+        CHARGER,
+        CHASER,
+
+        TOTAL
+    }
+
+
+    [SerializeField] Phases phase;
+    EnemyType enemy_type;
 
     Transform spawnerparent;
     public void setparent(Transform parentSpawner)
@@ -65,29 +78,43 @@ public class EnemyScript : MonoBehaviour
         return spawnerparent;
     }
 
-    void Awake()
+    public Phases return_current_phase()
+    {
+        return phase;
+    }
+
+
+    public void set_current_phase(Phases current_phase)
+    {
+        phase = current_phase;
+    }
+
+    public EnemyType return_enemyType()
+    {
+        return enemy_type;
+    }
+
+    public void set_enemyType(EnemyType type)
+    {
+        enemy_type = type;
+    }
+
+    void Start()
     {
         EnemyHealth = 100.0f;
         updating = false;
         zoneno = 0;
         zone = GameObject.FindGameObjectsWithTag("Zone");
-        BoundaryCheck();
         hitbox = GameObject.FindGameObjectWithTag("Attack");
-
-        transitionFromHurtTimer = 0;
-        //phase = Phases.PHASE_3;
-
+        player = GameObject.FindGameObjectWithTag("Player");
+        transitionFromHurtTimer = 0.0f;
         healthbar.maxValue = EnemyHealth;
         healthbar.minValue = 0;
-        player = GameObject.FindGameObjectWithTag("Player");
-
-
         attackhitbox.GetComponent<BoxCollider>().enabled = false ;
-
         GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
         GetComponentInChildren<Animator>().SetBool("attacked", false);
 
-        //phase = Phases.ATTACK_TYPE_1;
+        BoundaryCheck();
         timer = 0.0f;
     }
 
@@ -95,6 +122,7 @@ public class EnemyScript : MonoBehaviour
 
 
     private void OnTriggerEnter(Collider other)
+    //private void OnCollisionEnter(Collision other)
     {
         if (other.CompareTag("Enemy") || other.CompareTag("Floor"))
             return;
@@ -104,38 +132,31 @@ public class EnemyScript : MonoBehaviour
             return;
 
         // If its from player attack
-        if (other.CompareTag("Attack") && !Iframe
-            && GetComponent<BoxCollider>().enabled == true
-            //&& player.GetComponentInChildren<PlayerAttack>().getHitbox()
+        if (other.CompareTag("Attack") && Iframe == false
+            //&& GetComponent<BoxCollider>().enabled == true
             && other.GetComponent<BoxCollider>().enabled == true)
         {
             EnemyHealth -= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().GetPlayerAttack();
 
-            Debug.Log("OUCH");
+            //Debug.Log("OUCH");
 
-            //play attacked animation
-            GetComponentInChildren<Animator>().SetBool("attacked", true);
-            //
-
+     
             for (int i = 0; i < 10; i++)
             {
                 player.GetComponent<PlayerStats>().addConsecutiveHit();
                 player.GetComponent<PlayerStats>().resetCombo_timer();
             }
 
-            GetComponent<Rigidbody>().AddForce(
-               (GetComponent<Transform>().position - other.GetComponentInParent<Transform>().position).normalized * 100.0f,
-               ForceMode.Impulse
-               );
-
-            Iframe = true;
+            //GetComponent<Rigidbody>().AddForce(
+            //   (GetComponent<Transform>().position - other.GetComponentInParent<Transform>().position).normalized * 100.0f,
+            //   ForceMode.Impulse
+            //   );
 
             if (!FirstAttack)
             {
                 FirstAttack = true;
                 AttackByWhatWeapon = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerAttack>().GetWeaponType();
             }
-
             else if (FirstAttack)
             {
                 // if the weapon the enemy was attack by is not the same
@@ -145,7 +166,6 @@ public class EnemyScript : MonoBehaviour
                 }
             }
 
-
             if (phase != Phases.COOLDOWN)
             {
                 phase = Phases.COOLDOWN;
@@ -153,63 +173,28 @@ public class EnemyScript : MonoBehaviour
 
             Debug.Log("Enemy Health Left: " + EnemyHealth);
 
-            // Precise Kill
-            /*if (EnemyHealth == 0)
+            if(enemy_type == EnemyType.JUMPER)
             {
-                Debug.Log("Precise Kill!");
-                EnemyDie(true);
+                //GetComponentInChildren<Animator>().SetBool("about2jump", false);
+                GetComponentInChildren<Animator>().SetBool("jump", false);
+                //GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
             }
 
-            else if (EnemyHealth < 0)
-            {
-                Debug.Log("Killed!");
-                EnemyDie(false);
-            }*/
+            //play attacked animation
+            GetComponentInChildren<Animator>().SetBool("attacked", true);
+            //
+
+            Iframe = true;
         }
     }
 
     private void Update()
     {
         hitbox = GameObject.FindGameObjectWithTag("Attack");
-
-
-        //if (player.GetComponentInChildren<PlayerAttack>().getHitbox() == true)
-        //{
-        //    Debug.Log("HITBOX TRUE");
-        //}
-
         player = GameObject.FindGameObjectWithTag("Player");
 
         GetComponentInChildren<Animator>().SetFloat("health", EnemyHealth);
-
-
-        //if (attackhitbox.GetComponent<BoxCollider>().enabled == false)
-        //{
-        //    Debug.Log("BOXCOLLIDER FALSE");
-        //}
-
-        if (GetComponentInChildren<Animator>().GetBool("attacked") == true)
-        {
-            //Debug.Log("OH IM ATTACKED");
-            if (EnemyHealth > 0)
-            {
-                GetComponentInChildren<Animator>().speed = 3;
-                transitionFromHurtTimer += 1.0f * Time.deltaTime;
-
-                if(transitionFromHurtTimer >= 1.0f)
-                {
-                    GetComponentInChildren<Animator>().SetBool("attacked", false);
-                }
-            }
-        }
-        else
-        {
-            GetComponentInChildren<Animator>().speed = 1.5f;
-            transitionFromHurtTimer = 0.0f;
-        }
-
         healthbar.value = EnemyHealth;
-
         if (Iframe)
         {
             if (Iframetimer > 0)
@@ -224,6 +209,10 @@ public class EnemyScript : MonoBehaviour
         zone = GameObject.FindGameObjectsWithTag("Zone");
         BoundaryCheck();
 
+
+        currentAnimationLength = GetComponentInChildren<Animator>().GetCurrentAnimatorClipInfo(0)[0].clip.length
+                    / GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).speed;
+
         if (zoneno == player.GetComponent<PlayerZoneCheck>().getZoneno())
         {
             updating = true;
@@ -233,86 +222,37 @@ public class EnemyScript : MonoBehaviour
             updating = false;
         }
 
-        if (updating == false)
+        if (updating == true)
+        {
+            if (GetComponentInChildren<Animator>().GetBool("attacked"))
+            {
+                transitionFromHurtTimer += 1.0f * Time.deltaTime;
+                if (transitionFromHurtTimer >=
+                    currentAnimationLength)
+                {
+                    if(enemy_type == EnemyType.JUMPER)
+                    {
+                        GetComponentInChildren<Animator>().SetBool("jump", false);
+                        GetComponentInChildren<Animator>().SetBool("about2jump", false);
+                        GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
+                    }
+
+                    GetComponentInChildren<Animator>().SetBool("attacked", false);
+                }
+            }
+            else
+            {
+                transitionFromHurtTimer = 0.0f;
+            }
+        }
+        else
         {
             phase = Phases.ABOUT_TO_ATTACK;
         }
 
-
-
-        switch (phase)
-            {
-                case Phases.ABOUT_TO_ATTACK:
-                    {
-
-                    if (updating)
-                    {
-                        abouttoattackUpdate();
-                    }
-                    else
-                    {
-                        //if (GetComponent<ChaserScript>() != null)
-                        //{
-                        //    GetComponent<ChaserScript>().DestroyBeams();
-                        //}
-
-                        // Debug.Log("CURRENT POSITION " + GetComponentInParent<Transform>().name);
-                        GetComponent<BoxCollider>().enabled = true;
-                        GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
-                        attackhitbox.GetComponent<BoxCollider>().enabled = false;
-
-                        if (GetComponent<NavMeshAgent>().enabled == true)
-                        {
-                            GetComponent<NavMeshAgent>().speed = 5.0f;
-                            GetComponent<NavMeshAgent>().SetDestination(getparent().position);
-                        }
-
-                        GetComponentInChildren<Canvas>().transform.localPosition = new Vector3(0, 0, 0);
-                        GetComponentInChildren<SpriteRenderer>().transform.localPosition = new Vector3(0, 0.66f, 0);
-                        GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
-                    }
-                        /*timer += 1.0f * Time.deltaTime;
-                        GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
-                        GetComponent<NavMeshAgent>().speed = 0.0f;
-
-
-                        attackhitbox.GetComponent<BoxCollider>().enabled = false;
-                        GetComponent<BoxCollider>().enabled = true;
-
-
-                        if (timer >= abouttoattackend)
-                        {
-                            timer = 0.0f;
-                            attack_type = Random.Range(1, 3);
-
-
-                            if (attack_type == 1)
-                            {
-                                phase = Phases.ATTACK_TYPE_1;
-                            }
-                            else
-                            {
-                                phase = Phases.ATTACK_TYPE_2;
-                            }
-                        }*/
-                        break;
-                    }
-                case Phases.COOLDOWN:
-                    {
-                    //Debug.Log("COOLDOWN");
-                   
-
-
-                    cooldownUpdate();
-                    
-
-                        break;
-                    }
-            }
-        
-        
-        
-
+        //Debug.Log("Timer " + (int)transitionFromHurtTimer);
+        Debug.Log("ATTACK BOOL " + GetComponentInChildren<Animator>().GetBool("attacked"));
+        //Debug.Log("ATTACK SPEED " + (GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).speed));
     }
 
 
@@ -354,38 +294,55 @@ public class EnemyScript : MonoBehaviour
     }
     public void abouttoattackUpdate()
     {
-        GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
-        timer += Time.deltaTime;
-        GetComponent<NavMeshAgent>().speed = 0.0f;
-        attackhitbox.GetComponent<BoxCollider>().enabled = false;
-        GetComponent<BoxCollider>().enabled = true;
 
-        if (timer >= abouttoattack_period)
+        if (updating)
         {
-            timer = 0.0f;
-            attack_type = Random.Range(1, 3);
+            GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
+            timer += Time.deltaTime;
+            GetComponent<NavMeshAgent>().speed = 0.0f;
+            attackhitbox.GetComponent<BoxCollider>().enabled = false;
+            GetComponent<BoxCollider>().enabled = true;
 
-            if (attack_type == 1)
+            if (timer >= abouttoattack_period)
             {
-                phase = Phases.ATTACK_TYPE_1;
-            }
-            else
-            {
-                phase = Phases.ATTACK_TYPE_2;
+                timer = 0.0f;
+                attack_type = Random.Range(1, 3);
+
+                if (attack_type == 1)
+                {
+                    phase = Phases.ATTACK_TYPE_1;
+                }
+                else
+                {
+                    phase = Phases.ATTACK_TYPE_2;
+                }
             }
         }
+        else
+        {
+            
+                GetComponent<BoxCollider>().enabled = true;
+                GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+                attackhitbox.GetComponent<BoxCollider>().enabled = false;
 
+                if (GetComponent<NavMeshAgent>().enabled == true)
+                {
+                    GetComponent<NavMeshAgent>().speed = 5.0f;
+                    GetComponent<NavMeshAgent>().SetDestination(getparent().position);
+                }
+
+                GetComponentInChildren<Canvas>().transform.localPosition = new Vector3(0, 0, 0);
+                GetComponentInChildren<SpriteRenderer>().transform.localPosition = new Vector3(0, 0.66f, 0);
+                GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
+            
+        }
     }
 
     public void cooldownUpdate()
     {
-        GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
-
-        timer += 1.0f * Time.deltaTime;
-        GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
-        GetComponent<NavMeshAgent>().speed = 0.0f;
-
+        //turn off attack hitbox
         attackhitbox.GetComponent<BoxCollider>().enabled = false;
+        timer += 1.0f * Time.deltaTime;
 
         if (timer >= cooldown_period)
         {

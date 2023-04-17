@@ -189,7 +189,6 @@ MonoBehaviour:
   attackcd: 0.2
   attackingtime: 0.2
   pm: {fileID: 6301294397451754347}
-  text: {fileID: 0}
   spaculaHitbox: {fileID: 6670536203559410289}
   knifeHitbox: {fileID: 2429570959170697404}
   pinHitbox: {fileID: 3136350151301332611}
@@ -201,6 +200,9 @@ MonoBehaviour:
   txt: {fileID: 0}
   line: {fileID: 6922493218510129667, guid: 3f6a26fc70e9cfb42aed81987544b6ba, type: 3}
   handle: {fileID: 0}
+  enemyLM:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &3136350151301332611
 GameObject:
   m_ObjectHideFlags: 0
@@ -351,6 +353,7 @@ MonoBehaviour:
   fervorLevel: 0
   combo_timer: 0
   combo_timer_text: {fileID: 0}
+  combo_text: {fileID: 0}
 --- !u!114 &8900116384804071886
 MonoBehaviour:
   m_ObjectHideFlags: 0

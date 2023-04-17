@@ -6,80 +6,75 @@ using UnityEngine.AI;
 
 public class ChaserScript : MonoBehaviour
 { 
- float targetVelocity = 10.0f;
+    float targetVelocity = 10.0f;
     int numberOfRays = 30;
     float angle = 90.0f;
     float rayRange = .3f;
     [SerializeField] LayerMask lm;
 
+    [SerializeField] GameObject lockon;
+    public GameObject lockonbeam;
+    [SerializeField] GameObject hit;
+    public GameObject hitbeam;
+    [SerializeField] GameObject pivotpoint;
+    public GameObject pivot;
 
-public GameObject lockon;
-private GameObject lockonbeam;
-public GameObject hit;
-private GameObject hitbeam;
-public GameObject pivotpoint;
-private GameObject pivot;
+    [SerializeField] NavMeshAgent navMeshAgent;
 
-[SerializeField] NavMeshAgent navMeshAgent;
+    GameObject playerGO;
+    float chasingspeed;
+    EnemyScript.Phases enemyPhase;
 
-private GameObject playerGO;
-public BoxCollider box;
-float chasingspeed;
-public EnemyScript.Phases enemyPhase;
+    float time_att_1;
+    float time_att_2;
 
-private float time_att_1;
-private float time_att_2;
+    Transform starting_location;
+    Transform ending_location;
+    float dist;
+    bool beam_mode;
 
-private Transform starting_location;
-private Transform ending_location;
-private float dist;
-bool beam_mode;
+    EnemyScript enemyScript;
 
-[SerializeField] GameObject attackhitbox;
+    [SerializeField] GameObject attackhitbox;
 
     // Start is called before the first frame update
-    
-
     void Start()
 {
-    lockonbeam = null;
-    hitbeam = null;
-    pivot = null;
 
-    beam_mode = false;
-    time_att_1 = 0;
-    time_att_2 = 0;
-    playerGO = GameObject.FindGameObjectWithTag("Player");
+        GetComponent<EnemyScript>().set_enemyType(EnemyScript.EnemyType.CHASER);
 
-    chasingspeed = 4.0f;
-        //attackhitbox.SetActive(true);
+        lockonbeam = null;
+        hitbeam = null;
+        pivot = null;
+
+        beam_mode = false;
+        time_att_1 = 0;
+        time_att_2 = 0;
+        playerGO = GameObject.FindGameObjectWithTag("Player");
+
+        chasingspeed = 4.0f;
         attackhitbox.GetComponent<BoxCollider>().enabled = true;
-
     }
 
     // Update is called once per frame
     void Update()
-{
+    {
+        enemyPhase = GetComponent<EnemyScript>().return_current_phase();
+        enemyScript = GetComponent<EnemyScript>();
 
+        playerGO = GameObject.FindGameObjectWithTag("Player");
+        navMeshAgent.speed = chasingspeed;
+        navMeshAgent.acceleration = chasingspeed;
 
-        enemyPhase = GetComponent<EnemyScript>().phase;
-    playerGO = GameObject.FindGameObjectWithTag("Player");
-    navMeshAgent.speed = chasingspeed;
-    navMeshAgent.acceleration = chasingspeed;
+        dist = Vector3.Distance(transform.position, playerGO.transform.position);
 
-    dist = Vector3.Distance(transform.position, playerGO.transform.position);
-
-
-        //CHASER SHOULD BE SLOWER THAN CHARGER
         if (GetComponent<EnemyScript>().getupdating())
         {
             switch (enemyPhase)
             {
                 case EnemyScript.Phases.ATTACK_TYPE_2:
                     {
-                        //attackhitbox.SetActive(true);
                         attackhitbox.GetComponent<BoxCollider>().enabled = true;
-
 
                         time_att_1 = 0;
                         if (dist <= 4.0f)
@@ -89,7 +84,7 @@ bool beam_mode;
                         else if (dist > 4.0f
                             && beam_mode == false)
                         {
-                            GetComponent<EnemyScript>().phase = EnemyScript.Phases.ATTACK_TYPE_1;
+                            enemyPhase = EnemyScript.Phases.ATTACK_TYPE_1;
                         }
 
                         if (beam_mode == true)
@@ -98,86 +93,73 @@ bool beam_mode;
                             chasingspeed = 0.0f;
                             if (time_att_2 < 1.1f && time_att_2 > 1.0f)
                             {
+                                //PLACE LOCK ON BEAM
                                 starting_location = transform;
                                 ending_location = playerGO.transform;
                                 if (lockonbeam == null)
                                 {
                                     pivot = Instantiate(pivotpoint,
                                        transform.position,
-                                       Quaternion.identity
-                                       );
+                                       Quaternion.identity);
 
                                     lockonbeam = Instantiate(lockon,
                                         transform.position,
-                                        Quaternion.identity
-                                        );
+                                        Quaternion.identity);
                                     lockonbeam.transform.position += new Vector3(0.0f, 0.0f,
                                         4.0f / 2);
                                     lockonbeam.transform.localScale +=
                                         new Vector3(0.0f, 0.0f, 1.0f)
                                         * (4.0f * 0.1f);
                                     lockonbeam.transform.SetParent(pivot.transform);
-
                                     pivot.transform.LookAt(ending_location);
-
                                     pivot.transform.SetParent(transform);
                                 }
+                                //
                             }
-                            if (time_att_2 > 2.3f)
+                            if (time_att_2 > 2.3f && time_att_2 < 2.7f)
                             {
-                                if (hitbeam == null)
-                                {
+                                if(hitbeam == null)
+                                { 
                                     hitbeam = Instantiate(hit,
                                         lockonbeam.transform.position,
-                                        lockonbeam.transform.rotation
-                                        );
+                                        Quaternion.identity);
                                     hitbeam.transform.localScale +=
                                         new Vector3(0.0f, 0.0f, 1.0f) * 4.0f;
                                     hitbeam.transform.SetParent(transform);
                                 }
+                                
                             }
 
-                            if (time_att_2 > 3.5f)
+                            if (time_att_2 > 2.8f)
                             {
-                                Destroy(lockonbeam);
-                                Destroy(hitbeam);
-                                Destroy(pivot);
-
-                                GetComponent<EnemyScript>().phase = EnemyScript.Phases.COOLDOWN;
+                                DestroyBeams();
+                                enemyScript.set_current_phase(EnemyScript.Phases.COOLDOWN);
                             }
                         }
                         break;
                     }
                 case EnemyScript.Phases.ATTACK_TYPE_1:
                     {
-                        //attackhitbox.SetActive(true);
                         attackhitbox.GetComponent<BoxCollider>().enabled = true;
-
                         GetComponentInChildren<Animator>().SetBool("chasingPlayer", true);
-
                         beam_mode = false;
-
-                        //GetComponent<SpriteRenderer>().enabled = false;
-
-                        //Debug.Log("CHASING PLAYER");
 
                         chasingspeed = 2.0f;
                         time_att_2 = 0;
                         time_att_1 += 1 * Time.deltaTime;
                         navMeshAgent.SetDestination(playerGO.transform.position);
 
-
                         if (time_att_1 > 20.0f)
                         {
-                            GetComponent<EnemyScript>().phase = EnemyScript.Phases.COOLDOWN;
+                            enemyScript.set_current_phase(EnemyScript.Phases.COOLDOWN);
                         }
                         break;
                     }
                 case EnemyScript.Phases.COOLDOWN:
                     {
                         beam_mode = false;
-                        //GetComponent<SpriteRenderer>().enabled = false;
-
+                        GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
+                        chasingspeed = 0.0f;
                         time_att_2 = 0.0f;
                         time_att_1 = 0.0f;
 
@@ -187,8 +169,10 @@ bool beam_mode;
                 case EnemyScript.Phases.ABOUT_TO_ATTACK:
                     {
                         beam_mode = false;
-
-                        //GetComponent<SpriteRenderer>().enabled = true;
+                        GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
+                        chasingspeed = 0.0f;
+                        time_att_2 = 0.0f;
+                        time_att_1 = 0.0f;
 
                         GetComponent<EnemyScript>().abouttoattackUpdate();
                         break;
@@ -204,59 +188,20 @@ bool beam_mode;
     //        steering();
 
 
-        //if (attackhitbox.activeSelf == true)
-        //{
-        //    Debug.Log("Hitbox ACTIVE");
-        //}
-
-    /*if (time < 5.0f)
-    {
-        switch (enemyPhase)
-        {
-            case EnemyScript.Phases.PHASE_1:
-                {
-                    chasingspeed = 8.0f;
-                    break;
-                }
-            //let enemy constantly chase the player after jumping
-            case EnemyScript.Phases.PHASE_2:
-                {
-                    chasingspeed = 11.0f;
-                    break;
-                }
-            case EnemyScript.Phases.PHASE_3:
-                {
-                    chasingspeed = 14.0f;
-                    break;
-                }
-            default:
-                break;
-        }
-
-        steering();
-
-        //this.transform.position += deltaPosition * Time.deltaTime;
-        navMeshAgent.SetDestination(playerGO.transform.position);
-    }*/
-
-
 
 }
 
 
     public void DestroyBeams()
     {
-        if (lockonbeam != null)
-        {
-            Destroy(lockonbeam);
-        }
-
-
         if (hitbeam != null)
         {
             Destroy(hitbeam);
         }
-
+        if (lockonbeam != null)
+        {
+            Destroy(lockonbeam);
+        }
         if (pivot != null)
         {
             Destroy(pivot);
