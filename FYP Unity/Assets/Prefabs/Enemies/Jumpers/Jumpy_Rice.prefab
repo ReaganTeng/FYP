@@ -411,9 +411,10 @@ MonoBehaviour:
   Mush: {fileID: 8494874157540663937, guid: 4255f020537c20a48857eb56b1b0f6d5, type: 3}
   attackhitbox: {fileID: 1458690216432499838}
   healthbar: {fileID: 3973220440702822082}
-  cooldown_period: 0.5
-  abouttoattack_period: 5
+  cooldown_period: 1
+  abouttoattack_period: 1
   phase: 0
+  projectileGO: {fileID: 0}
 --- !u!65 &4309780673406036170
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -555,7 +556,7 @@ Transform:
   m_GameObject: {fileID: 3908784438884953137}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.66, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.9999999, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1495092336955092457}

@@ -465,9 +465,10 @@ MonoBehaviour:
   Mush: {fileID: 8494874157540663937, guid: 4255f020537c20a48857eb56b1b0f6d5, type: 3}
   attackhitbox: {fileID: 5005441027822844523}
   healthbar: {fileID: 1248048502830709365}
-  cooldown_period: 5
-  abouttoattack_period: 5
+  cooldown_period: 1
+  abouttoattack_period: 1
   phase: 0
+  projectileGO: {fileID: 7347223109495145681, guid: 938809779cd6685419a064f5040f83af, type: 3}
 --- !u!114 &2649622949718006214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -483,7 +484,6 @@ MonoBehaviour:
   lm:
     serializedVersion: 2
     m_Bits: 0
-  enemyPhase: 0
   navMeshAgent: {fileID: 5603608171990314178}
   attackhitbox: {fileID: 5005441027822844523}
 --- !u!23 &8680767243971010525

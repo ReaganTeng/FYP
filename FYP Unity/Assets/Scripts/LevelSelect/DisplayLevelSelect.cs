@@ -35,7 +35,7 @@ public class DisplayLevelSelect : MonoBehaviour
         else
         {
             levelSelect.SetActive(true);
-            levelLocked.SetActive(false);
+            levelLocked.SetActive(false);   
             PlayButton.SetActive(true);
         }
 

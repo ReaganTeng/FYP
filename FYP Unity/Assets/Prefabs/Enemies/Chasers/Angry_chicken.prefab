@@ -123,9 +123,10 @@ MonoBehaviour:
   Mush: {fileID: 8494874157540663937, guid: 4255f020537c20a48857eb56b1b0f6d5, type: 3}
   attackhitbox: {fileID: 3241614416058696728}
   healthbar: {fileID: 4874659243468997273}
-  cooldown_period: 3
-  abouttoattack_period: 3
+  cooldown_period: 1
+  abouttoattack_period: 1
   phase: 1
+  projectileGO: {fileID: 0}
 --- !u!114 &4850110634860229667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,11 +143,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   lockon: {fileID: 3468584897928907086, guid: 9888e04e85b6dc542b4ae39daf5cf595, type: 3}
+  lockonbeam: {fileID: 0}
   hit: {fileID: 3468584897928907086, guid: 4470e1b54d7769145b12b5c74b4d7837, type: 3}
+  hitbeam: {fileID: 0}
   pivotpoint: {fileID: 129147275652241997, guid: 79e72203afd5b9b41aab14adeb466e06, type: 3}
+  pivot: {fileID: 0}
   navMeshAgent: {fileID: 2616137060914320049}
-  box: {fileID: 6155076621442955591}
-  enemyPhase: 0
   attackhitbox: {fileID: 3241614416058696728}
 --- !u!1 &1119320568670762040
 GameObject:
@@ -736,7 +738,7 @@ Animator:
   m_GameObject: {fileID: 8514662865089278314}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 55e5a60c5bb706e47afcc6a3d8a953e6, type: 2}
+  m_Controller: {fileID: 9100000, guid: b84b40e579dbac249add537dd59e8156, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

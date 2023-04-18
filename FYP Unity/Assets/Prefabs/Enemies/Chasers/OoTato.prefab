@@ -511,7 +511,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.2, y: 1.2, z: 0.3}
+  m_Size: {x: 1, y: 1.2, z: 1}
   m_Center: {x: 0, y: 0.6, z: 0}
 --- !u!54 &6767964955574019102
 Rigidbody:
@@ -561,9 +561,10 @@ MonoBehaviour:
   Mush: {fileID: 8494874157540663937, guid: 4255f020537c20a48857eb56b1b0f6d5, type: 3}
   attackhitbox: {fileID: 5045888562720546165}
   healthbar: {fileID: 2980357153712741364}
-  cooldown_period: 3
-  abouttoattack_period: 3
+  cooldown_period: 1
+  abouttoattack_period: 1
   phase: 0
+  projectileGO: {fileID: 0}
 --- !u!114 &3005328288323005774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -580,11 +581,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   lockon: {fileID: 3468584897928907086, guid: 9888e04e85b6dc542b4ae39daf5cf595, type: 3}
+  lockonbeam: {fileID: 0}
   hit: {fileID: 3468584897928907086, guid: 4470e1b54d7769145b12b5c74b4d7837, type: 3}
+  hitbeam: {fileID: 0}
   pivotpoint: {fileID: 129147275652241997, guid: 79e72203afd5b9b41aab14adeb466e06, type: 3}
+  pivot: {fileID: 0}
   navMeshAgent: {fileID: 5671295273701510108}
-  box: {fileID: 4580484458242105386}
-  enemyPhase: 0
   attackhitbox: {fileID: 5045888562720546165}
 --- !u!195 &5671295273701510108
 NavMeshAgent:

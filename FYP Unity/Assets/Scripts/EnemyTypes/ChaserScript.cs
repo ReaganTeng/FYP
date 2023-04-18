@@ -75,6 +75,7 @@ public class ChaserScript : MonoBehaviour
                 case EnemyScript.Phases.ATTACK_TYPE_2:
                     {
                         attackhitbox.GetComponent<BoxCollider>().enabled = true;
+                        GetComponent<BoxCollider>().enabled = true;
 
                         time_att_1 = 0;
                         if (dist <= 4.0f)
@@ -84,7 +85,7 @@ public class ChaserScript : MonoBehaviour
                         else if (dist > 4.0f
                             && beam_mode == false)
                         {
-                            enemyPhase = EnemyScript.Phases.ATTACK_TYPE_1;
+                            enemyScript.set_current_phase(EnemyScript.Phases.ATTACK_TYPE_1);
                         }
 
                         if (beam_mode == true)
@@ -122,7 +123,7 @@ public class ChaserScript : MonoBehaviour
                                 { 
                                     hitbeam = Instantiate(hit,
                                         lockonbeam.transform.position,
-                                        Quaternion.identity);
+                                        lockonbeam.transform.rotation);
                                     hitbeam.transform.localScale +=
                                         new Vector3(0.0f, 0.0f, 1.0f) * 4.0f;
                                     hitbeam.transform.SetParent(transform);
@@ -141,7 +142,9 @@ public class ChaserScript : MonoBehaviour
                 case EnemyScript.Phases.ATTACK_TYPE_1:
                     {
                         attackhitbox.GetComponent<BoxCollider>().enabled = true;
+                        GetComponent<BoxCollider>().enabled = true;
                         GetComponentInChildren<Animator>().SetBool("chasingPlayer", true);
+
                         beam_mode = false;
 
                         chasingspeed = 2.0f;
@@ -158,7 +161,6 @@ public class ChaserScript : MonoBehaviour
                 case EnemyScript.Phases.COOLDOWN:
                     {
                         beam_mode = false;
-                        GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
                         chasingspeed = 0.0f;
                         time_att_2 = 0.0f;
                         time_att_1 = 0.0f;
@@ -169,7 +171,6 @@ public class ChaserScript : MonoBehaviour
                 case EnemyScript.Phases.ABOUT_TO_ATTACK:
                     {
                         beam_mode = false;
-                        GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
                         chasingspeed = 0.0f;
                         time_att_2 = 0.0f;
                         time_att_1 = 0.0f;
@@ -228,7 +229,6 @@ void steering()
         if (Physics.Raycast(ray, out hitInfo, rayRange
             , ~lm))
         {
-            //Debug.Log("HIT SOMETHING");
             deltaPosition -= (1.0f / numberOfRays) * targetVelocity * direction;
             transform.position += deltaPosition * Time.deltaTime;
 
@@ -236,8 +236,6 @@ void steering()
         else if (Physics.Raycast(ray2, out hitInfo, rayRange
             , ~lm))
         {
-            //Debug.Log("HIT SOMETHING");
-
             deltaPosition -= (1.0f / numberOfRays) * targetVelocity * direction2;
             transform.position += deltaPosition * Time.deltaTime;
         }
