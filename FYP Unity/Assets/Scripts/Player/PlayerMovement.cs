@@ -14,9 +14,6 @@ public class PlayerMovement : MonoBehaviour
     bool DisableControls;
 
     [SerializeField]
-    private Animator animator = null;
-
-    [SerializeField]
     private SpriteRenderer spriteRenderer = null;
 
 

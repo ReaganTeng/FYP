@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class PlayerAttack : MonoBehaviour
 {
-    enum Weapon
+    public enum Weapon
     {
         SPATULA,
         KNIFE,
@@ -177,6 +177,7 @@ public class PlayerAttack : MonoBehaviour
             }
             //
 
+
             if (isclicked)
             {
                 click_timer -= Time.deltaTime;
@@ -233,7 +234,7 @@ public class PlayerAttack : MonoBehaviour
         switchWeapon();
     }
 
-    public void OnDrawGizmos/*Selected*/()
+    public void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawWireCube
@@ -251,45 +252,22 @@ public class PlayerAttack : MonoBehaviour
         {
             case Weapon.SPATULA:
                 GetComponentInParent<PlayerStats>().setAttack(10.0f);
-
-                //spaculaHitbox.transform.rotation
-                //   //= new Quaternion(1, 0, 0, (Mathf.PI / 180) * (-90));
-                //   //= Quaternion.Euler(-90, 0, 0);
-                //   = Quaternion.Euler(-90, HitBox.transform.rotation.y, HitBox.transform.rotation.z);
-                //HitBox = spaculaHitbox;
                 spaculaHitbox.SetActive(HitBox.activeSelf);
                 spaculaHitbox.transform.rotation = HitBox.transform.rotation;
-
                 knifeHitbox.SetActive(false);
                 pinHitbox.SetActive(false);
-                //spaculaHitbox.SetActive(false);
                 break;
             case Weapon.KNIFE:
                 GetComponentInParent<PlayerStats>().setAttack(20.0f);
-
-                //knifeHitbox.transform.rotation
-                //    //= Quaternion.Euler(-90, 0, 0);
-                //    = Quaternion.Euler(-90, HitBox.transform.rotation.y, HitBox.transform.rotation.z);
-                //HitBox = knifeHitbox;
                 knifeHitbox.SetActive(HitBox.activeSelf);
                 knifeHitbox.transform.rotation = HitBox.transform.rotation;
-
-
-                //knifeHitbox.SetActive(false);
                 spaculaHitbox.SetActive(false);
                 pinHitbox.SetActive(false);
                 break;
             case Weapon.ROLLINGPIN:
                 GetComponentInParent<PlayerStats>().setAttack(10.0f);
-
-                //pinHitbox.transform.rotation
-                //    //= Quaternion.Euler(-90, 0, 0);
-                //    = Quaternion.Euler(-90, HitBox.transform.rotation.y, HitBox.transform.rotation.z);
-                //HitBox = pinHitbox;
                 pinHitbox.SetActive(HitBox.activeSelf);
                 pinHitbox.transform.rotation = HitBox.transform.rotation;
-
-                //pinHitbox.SetActive(false);
                 spaculaHitbox.SetActive(false);
                 knifeHitbox.SetActive(false);
                 break;

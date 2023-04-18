@@ -68,6 +68,10 @@ public class EnemyScript : MonoBehaviour
     EnemyType enemy_type;
 
     Transform spawnerparent;
+
+    //float shootTimer;
+    [SerializeField] GameObject projectileGO;
+    GameObject projectile;
     public void setparent(Transform parentSpawner)
     {
         spawnerparent = parentSpawner;
@@ -111,11 +115,12 @@ public class EnemyScript : MonoBehaviour
         healthbar.maxValue = EnemyHealth;
         healthbar.minValue = 0;
         attackhitbox.GetComponent<BoxCollider>().enabled = false ;
-        GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
-        GetComponentInChildren<Animator>().SetBool("attacked", false);
-
+       
         BoundaryCheck();
         timer = 0.0f;
+
+
+        //shootTimer = 0.0f;
     }
 
     
@@ -132,9 +137,12 @@ public class EnemyScript : MonoBehaviour
             return;
 
         // If its from player attack
-        if (other.CompareTag("Attack") && Iframe == false
-            //&& GetComponent<BoxCollider>().enabled == true
-            && other.GetComponent<BoxCollider>().enabled == true)
+        if (
+            other.CompareTag("Attack") && Iframe == false
+            && GetComponent<BoxCollider>().enabled == true
+            //&& other.GetComponent<BoxCollider>().enabled == true
+            //&& (!GetComponentInChildren<Animator>().GetBool("jump") && enemy_type == EnemyType.JUMPER)
+            )
         {
             EnemyHealth -= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().GetPlayerAttack();
 
@@ -173,12 +181,32 @@ public class EnemyScript : MonoBehaviour
 
             Debug.Log("Enemy Health Left: " + EnemyHealth);
 
-            if(enemy_type == EnemyType.JUMPER)
+
+            //SET THE ENEMY BACK TO IDLE MODE
+            switch (enemy_type)
             {
-                //GetComponentInChildren<Animator>().SetBool("about2jump", false);
-                GetComponentInChildren<Animator>().SetBool("jump", false);
-                //GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
+                case EnemyType.JUMPER:
+                    {
+                        GetComponentInChildren<Animator>().SetBool("jump", false);
+                        break;
+                    }
+                case EnemyType.CHASER:
+                    {
+                        GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
+                        GetComponentInChildren<Animator>().SetBool("attack", false);
+                        break;
+                    }
+                case EnemyType.CHARGER:
+                    {
+                        GetComponentInChildren<Animator>().SetBool("charge", false);
+                        GetComponentInChildren<Animator>().SetBool("about2charge", false);
+                        break;
+                    }
             }
+            //
+            
+
+            transitionFromHurtTimer = 0.0f;
 
             //play attacked animation
             GetComponentInChildren<Animator>().SetBool("attacked", true);
@@ -210,8 +238,7 @@ public class EnemyScript : MonoBehaviour
         BoundaryCheck();
 
 
-        currentAnimationLength = GetComponentInChildren<Animator>().GetCurrentAnimatorClipInfo(0)[0].clip.length
-                    / GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).speed;
+       
 
         if (zoneno == player.GetComponent<PlayerZoneCheck>().getZoneno())
         {
@@ -222,39 +249,58 @@ public class EnemyScript : MonoBehaviour
             updating = false;
         }
 
-        if (updating == true)
-        {
-            if (GetComponentInChildren<Animator>().GetBool("attacked"))
-            {
-                transitionFromHurtTimer += 1.0f * Time.deltaTime;
-                if (transitionFromHurtTimer >=
-                    currentAnimationLength)
-                {
-                    if(enemy_type == EnemyType.JUMPER)
-                    {
-                        GetComponentInChildren<Animator>().SetBool("jump", false);
-                        GetComponentInChildren<Animator>().SetBool("about2jump", false);
-                        GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
-                    }
-
-                    GetComponentInChildren<Animator>().SetBool("attacked", false);
-                }
-            }
-            else
-            {
-                transitionFromHurtTimer = 0.0f;
-            }
-        }
-        else
+        //if (updating == true)
+        //{
+            
+        //}
+        if (updating == false)
+        //else
         {
             phase = Phases.ABOUT_TO_ATTACK;
         }
 
+
+        currentAnimationLength = GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).length;
+
+        //Debug.Log("ANIMATION LENGTH " + currentAnimationLength);
+        //GetComponentInChildren<Animator>().GetCurrentAnimatorClipInfo(0)[0].clip.frameRate;
+
+        if (GetComponentInChildren<Animator>().GetBool("attacked"))
+        {
+            transitionFromHurtTimer += Time.deltaTime;
+            if (transitionFromHurtTimer >=
+                currentAnimationLength)
+            {
+                GetComponentInChildren<Animator>().SetBool("attacked", false);
+
+                if (enemy_type == EnemyType.JUMPER)
+                {
+                    GetComponentInChildren<Animator>().SetBool("about2jump", false);
+                    GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
+                }
+            }
+        }
+
+        //shootTimer += Time.deltaTime;
+        //if(shootTimer >= 3.0f)
+        //{
+        //    shoot();
+        //    shootTimer = 0.0f;
+        //}
+
         //Debug.Log("Timer " + (int)transitionFromHurtTimer);
-        Debug.Log("ATTACK BOOL " + GetComponentInChildren<Animator>().GetBool("attacked"));
+        //Debug.Log("ATTACK BOOL " + GetComponentInChildren<Animator>().GetBool("attacked"));
         //Debug.Log("ATTACK SPEED " + (GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).speed));
     }
 
+
+    public void shoot()
+    {
+        Vector3 resultingVector = player.transform.position - transform.position;
+        resultingVector.y = 0;
+        projectile = Instantiate(projectileGO, transform.position, Quaternion.Euler(0, 0, 0));
+        projectile.GetComponent<Rigidbody>().velocity = resultingVector * 5;
+    }
 
     public void BoundaryCheck()
     {
@@ -278,6 +324,8 @@ public class EnemyScript : MonoBehaviour
     }
 
 
+    
+
     public GameObject gethitbox()
     {
         return attackhitbox;
@@ -294,6 +342,7 @@ public class EnemyScript : MonoBehaviour
     }
     public void abouttoattackUpdate()
     {
+        GetComponent<BoxCollider>().enabled = true;
 
         if (updating)
         {
@@ -301,7 +350,6 @@ public class EnemyScript : MonoBehaviour
             timer += Time.deltaTime;
             GetComponent<NavMeshAgent>().speed = 0.0f;
             attackhitbox.GetComponent<BoxCollider>().enabled = false;
-            GetComponent<BoxCollider>().enabled = true;
 
             if (timer >= abouttoattack_period)
             {
@@ -320,8 +368,6 @@ public class EnemyScript : MonoBehaviour
         }
         else
         {
-            
-                GetComponent<BoxCollider>().enabled = true;
                 GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
                 attackhitbox.GetComponent<BoxCollider>().enabled = false;
 
@@ -343,6 +389,7 @@ public class EnemyScript : MonoBehaviour
         //turn off attack hitbox
         attackhitbox.GetComponent<BoxCollider>().enabled = false;
         timer += 1.0f * Time.deltaTime;
+        GetComponent<BoxCollider>().enabled = true;
 
         if (timer >= cooldown_period)
         {
@@ -360,9 +407,6 @@ public class EnemyScript : MonoBehaviour
     {
         timer += time;
     }
-
-    
-
     public float gettimer()
     {
         return timer;

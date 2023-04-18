@@ -35,18 +35,27 @@ public class Spawner : MonoBehaviour
                     transform.rotation
                     );*/
 
+        Debug.Log("MAX ENEMIES " + max_enemies);
+
         if (enable == false)
         {
             return;
         }
-        
+
+        if (transform.childCount < max_enemies)
+        {
             time += 1 * Time.deltaTime;
+        }
+        else
+        {
+            time = 0.0f;
+        }
             if (time >= interval
                 && transform.childCount < max_enemies)
             {
-            for (int i = 0; i < enemies_per_spawn; i++)
-            {
-                x_position = Random.Range(-5, 5);
+                for (int i = 0; i < enemies_per_spawn; i++)
+                {
+                    x_position = Random.Range(-5, 5);
                     z_position = Random.Range(-5, 5);
 
                     GameObject enemyObject = Instantiate(enemy,
@@ -60,10 +69,7 @@ public class Spawner : MonoBehaviour
 
                time = 0;
             }
-            else if (transform.childCount >= 2)
-            {
-                time = 0;
-            }
+            
 
             //Debug.Log("AMOUNT OF CHILDREN " + transform.childCount);
 

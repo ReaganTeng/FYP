@@ -97,7 +97,9 @@ public class PlayerStats : MonoBehaviour
 
     public void Update()
     {
-        if(GetComponentInChildren<Animator>().GetBool("Hurt") == true)
+
+      
+        if (GetComponentInChildren<Animator>().GetBool("Hurt") == true)
         {
             //Debug.Log("Animation name "
             //    + GetComponentInChildren<Animator>().GetCurrentAnimatorClipInfo(0)[0].clip.name);

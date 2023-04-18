@@ -31,9 +31,13 @@ public class EnemyAttack : MonoBehaviour
                 transform.parent.GetComponent<BoxCollider>().enabled = true;
             }
 
-            if (Attackcdtimer < AttackCD / 2)
+            if (transform.parent.GetComponent<EnemyScript>().return_enemyType() 
+                == EnemyScript.EnemyType.CHASER)
             {
-                animator.SetBool("attack", false);
+                if (Attackcdtimer < AttackCD / 2)
+                {
+                    animator.SetBool("attack", false);
+                }
             }
         }
     }
@@ -56,7 +60,7 @@ public class EnemyAttack : MonoBehaviour
                 (other.GetComponent<Transform>().position - GetComponentInParent<Transform>().position).normalized * 10.0f,
                 ForceMode.Impulse
                 );
-                transform.parent.GetComponent<EnemyScript>().enabled = false;
+                transform.parent.GetComponent<BoxCollider>().enabled = false;
 
 
             }

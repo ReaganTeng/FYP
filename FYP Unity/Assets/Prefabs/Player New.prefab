@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 3389401663294354207}
   m_Layer: 6
   m_Name: KnifeHitbox
-  m_TagString: Untagged
+  m_TagString: Attack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -215,7 +215,7 @@ GameObject:
   - component: {fileID: 5818845080139474616}
   m_Layer: 6
   m_Name: PinHitbox
-  m_TagString: Untagged
+  m_TagString: Attack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -311,7 +311,6 @@ MonoBehaviour:
   DashBy: 30
   IFrame: 0.3
   playerPickUp: {fileID: 3801972613150636765}
-  animator: {fileID: 0}
   spriteRenderer: {fileID: 8852204268514479156}
 --- !u!54 &5218877466719756691
 Rigidbody:
@@ -752,7 +751,7 @@ GameObject:
   - component: {fileID: 9050787068542183132}
   m_Layer: 6
   m_Name: SpatulaHitbox
-  m_TagString: Untagged
+  m_TagString: Attack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
