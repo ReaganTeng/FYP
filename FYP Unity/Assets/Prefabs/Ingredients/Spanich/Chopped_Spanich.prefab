@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemtype: 25
-  image: {fileID: 21300000, guid: 0ff9afc50984f13468dd4583b1da2c8e, type: 3}
+  image: {fileID: 21300000, guid: e32497994b52601469d9763cbd3d2988, type: 3}
 --- !u!114 &2117459291758001790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,7 +124,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a3e3af30ce01761419ddc23fee54f0b4, type: 2}
+  - {fileID: 2100000, guid: b5a77d25a43595045ae2c7a7b3b641aa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -158,8 +158,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d37105ca49bb3249b7a0676f9ef56f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  noglow: {fileID: 2800000, guid: 0ff9afc50984f13468dd4583b1da2c8e, type: 3}
-  glow: {fileID: 2800000, guid: 774a10b1ded2d944d9131e93250514a8, type: 3}
+  noglow: {fileID: 2800000, guid: e32497994b52601469d9763cbd3d2988, type: 3}
+  glow: {fileID: 2800000, guid: 3041499c95f98e145a0af10a18e893ec, type: 3}
 --- !u!65 &5122606865128817087
 BoxCollider:
   m_ObjectHideFlags: 0

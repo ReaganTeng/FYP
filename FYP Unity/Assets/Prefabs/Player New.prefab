@@ -193,7 +193,7 @@ MonoBehaviour:
   knifeHitbox: {fileID: 2429570959170697404}
   pinHitbox: {fileID: 3136350151301332611}
   chargingduration: 30
-  number_of_charges: 3
+  number_of_charges: 2
   reduction_in_percentage: 0
   chargeBar: {fileID: 0}
   canvas: {fileID: 0}
@@ -203,6 +203,7 @@ MonoBehaviour:
   enemyLM:
     serializedVersion: 2
     m_Bits: 128
+  animator: {fileID: 5881152895048556901}
 --- !u!1 &3136350151301332611
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,6 +349,12 @@ MonoBehaviour:
   ConsecutiveHit_Stage3: 15
   ConsecutiveHit_Stage4: 20
   ConsecutiveHit_Stage5: 25
+  RankSprite: {fileID: 0}
+  S_Rank: {fileID: 0}
+  A_Rank: {fileID: 0}
+  B_Rank: {fileID: 0}
+  C_Rank: {fileID: 0}
+  F_Rank: {fileID: 0}
   fervorBar: {fileID: 0}
   fervorLevel: 0
   combo_timer: 0
@@ -860,7 +867,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 100
-  m_Sprite: {fileID: -1080631697, guid: 5ee4d20104ccc99428d93e015d830168, type: 3}
+  m_Sprite: {fileID: 549063024, guid: d0a91d3451bad25469dc1d7315f7dcd2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

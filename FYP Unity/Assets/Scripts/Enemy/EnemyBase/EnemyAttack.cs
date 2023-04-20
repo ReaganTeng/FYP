@@ -11,11 +11,14 @@ public class EnemyAttack : MonoBehaviour
     [SerializeField] Animator animator;
     GameObject player;
 
+    bool post_attack;
+
     // Start is called before the first frame update
     void Start()
     {
         Attackcdtimer = 0;
         player = GameObject.FindGameObjectWithTag("Player");
+        post_attack = false;
     }
 
     private void Update()
@@ -42,6 +45,16 @@ public class EnemyAttack : MonoBehaviour
         }
     }
 
+
+    public void setpostattack(bool pa)
+    {
+        post_attack = pa;
+    }
+    public bool getpostattack()
+    {
+        return post_attack;
+    }
+
     //change collider size if want to increase attack range
     private void OnTriggerStay(Collider other)
     {
@@ -62,8 +75,9 @@ public class EnemyAttack : MonoBehaviour
                 );
                 transform.parent.GetComponent<BoxCollider>().enabled = false;
 
-
             }
+
+            post_attack = true;
 
             Attackcdtimer = AttackCD;
         }

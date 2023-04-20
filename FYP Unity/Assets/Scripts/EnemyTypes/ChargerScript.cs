@@ -14,6 +14,7 @@ public class ChargerScript : MonoBehaviour
     private GameObject playerGO;
     Vector3 playerPos;
     Vector3 resultingVector;
+    float currentdistance;
 
     float chargingtime;
 
@@ -48,6 +49,7 @@ public class ChargerScript : MonoBehaviour
         resultingVector.y = 0;
         resultingVector.Normalize();
         chargingtime = 0.0f;
+        currentdistance = Vector3.Distance(playerGO.transform.position, transform.position);
 
         //weaponobject.SetActive(true);
         //weaponobjec2.SetActive(false);
@@ -77,9 +79,9 @@ public class ChargerScript : MonoBehaviour
         //{
         //    weaponobject.SetActive(true);
         //    weaponobjec2.SetActive(false);
-        
+
         //}
-        
+
 
 
 
@@ -88,7 +90,7 @@ public class ChargerScript : MonoBehaviour
             switch (enemyPhase)
             {
                 case EnemyScript.Phases.ATTACK_TYPE_1:
-                //case EnemyScript.Phases.ATTACK_TYPE_2:
+                    //case EnemyScript.Phases.ATTACK_TYPE_2:
                     {
                         GetComponentInChildren<Animator>().SetBool("charge", true);
                         chargingtime += 1.0f * Time.deltaTime;
@@ -101,10 +103,10 @@ public class ChargerScript : MonoBehaviour
 
                         if (chargingtime >= 1.0f)
                         {
-                        
+
                             chargingtime = 0;
                             collided = true;
-                     
+
                         }
                         //KEEP GOING FORWARD UNTIL HITS WALL
                         if (collided)
@@ -161,11 +163,10 @@ public class ChargerScript : MonoBehaviour
                     {
                         attackhitbox.GetComponent<BoxCollider>().enabled = false;
                         GetComponent<BoxCollider>().enabled = true;
-                        GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
                         //grab player location
                         playerPos = playerGO.transform.position;
                         //subtract between player.transform.psoition and enemy.transform.position
-                        resultingVector = playerPos - transform.position;
+
                         chargingtime = 0.0f;
                         collided = false;
 
@@ -177,7 +178,17 @@ public class ChargerScript : MonoBehaviour
                     }
                 case EnemyScript.Phases.ABOUT_TO_ATTACK:
                     {
-                        GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
+                        //GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
+
+                        //if (currentdistance <= 5.0f)
+                        //{
+                            //BACK AWAY
+                            resultingVector = -playerPos + transform.position;
+                            GetComponent<Rigidbody>().velocity = resultingVector;
+                            //
+                        //}
+                        //Debug.Log("CHARGER VELOCITY " + GetComponent<Rigidbody>().velocity);
+
                         GetComponentInChildren<Animator>().SetBool("about2charge", true);
                         GetComponent<EnemyScript>().abouttoattackUpdate();
                         break;
@@ -186,7 +197,14 @@ public class ChargerScript : MonoBehaviour
                     break;
             }
         }
+        else
+        {
+            enemyScript.ifUpdatingfalse();
+        }
 
+        
+
+        enemyScript.steering();
 
         if (GetComponent<EnemyScript>().getzoneno() == 0)
         {

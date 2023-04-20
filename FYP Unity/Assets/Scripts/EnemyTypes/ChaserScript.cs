@@ -6,11 +6,7 @@ using UnityEngine.AI;
 
 public class ChaserScript : MonoBehaviour
 { 
-    float targetVelocity = 10.0f;
-    int numberOfRays = 30;
-    float angle = 90.0f;
-    float rayRange = .3f;
-    [SerializeField] LayerMask lm;
+   
 
     [SerializeField] GameObject lockon;
     public GameObject lockonbeam;
@@ -27,6 +23,7 @@ public class ChaserScript : MonoBehaviour
 
     float time_att_1;
     float time_att_2;
+    float change_of_attk_type_1;
 
     Transform starting_location;
     Transform ending_location;
@@ -40,7 +37,6 @@ public class ChaserScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
 {
-
         GetComponent<EnemyScript>().set_enemyType(EnemyScript.EnemyType.CHASER);
 
         lockonbeam = null;
@@ -50,6 +46,8 @@ public class ChaserScript : MonoBehaviour
         beam_mode = false;
         time_att_1 = 0;
         time_att_2 = 0;
+        change_of_attk_type_1 = 0;
+
         playerGO = GameObject.FindGameObjectWithTag("Player");
 
         chasingspeed = 4.0f;
@@ -73,72 +71,73 @@ public class ChaserScript : MonoBehaviour
             switch (enemyPhase)
             {
                 case EnemyScript.Phases.ATTACK_TYPE_2:
-                    {
-                        attackhitbox.GetComponent<BoxCollider>().enabled = true;
-                        GetComponent<BoxCollider>().enabled = true;
+                //case EnemyScript.Phases.ATTACK_TYPE_1:
+                //{
+                //    attackhitbox.GetComponent<BoxCollider>().enabled = true;
+                //    GetComponent<BoxCollider>().enabled = true;
 
-                        time_att_1 = 0;
-                        if (dist <= 4.0f)
-                        {
-                            beam_mode = true;
-                        }
-                        else if (dist > 4.0f
-                            && beam_mode == false)
-                        {
-                            enemyScript.set_current_phase(EnemyScript.Phases.ATTACK_TYPE_1);
-                        }
+                //    time_att_1 = 0;
+                //    //if (dist <= 4.0f)
+                //    //{
+                //        beam_mode = true;
+                //    //}
+                //    //else if (dist > 4.0f
+                //    //    && beam_mode == false)
+                //    //{
+                //    //    enemyScript.set_current_phase(EnemyScript.Phases.ATTACK_TYPE_1);
+                //    //}
 
-                        if (beam_mode == true)
-                        {
-                            time_att_2 += 1 * Time.deltaTime;
-                            chasingspeed = 0.0f;
-                            if (time_att_2 < 1.1f && time_att_2 > 1.0f)
-                            {
-                                //PLACE LOCK ON BEAM
-                                starting_location = transform;
-                                ending_location = playerGO.transform;
-                                if (lockonbeam == null)
-                                {
-                                    pivot = Instantiate(pivotpoint,
-                                       transform.position,
-                                       Quaternion.identity);
+                //    if (beam_mode == true)
+                //    {
+                //        time_att_2 += 1 * Time.deltaTime;
+                //        chasingspeed = 0.0f;
+                //        if (time_att_2 < 1.1f && time_att_2 > 1.0f)
+                //        {
+                //            //PLACE LOCK ON BEAM
+                //            starting_location = transform;
+                //            ending_location = playerGO.transform;
+                //            if (lockonbeam == null)
+                //            {
+                //                pivot = Instantiate(pivotpoint,
+                //                   transform.position,
+                //                   Quaternion.identity);
+                //                lockonbeam = Instantiate(lockon,
+                //                    transform.position + 
+                //                    new Vector3(0.0f, 0.0f, /*4.0f / 2*/10.0f),
+                //                    Quaternion.identity);
+                //                //lockonbeam.transform.Translate(0.0f, 0.0f,
+                //                //    4.0f / 2);
+                //                lockonbeam.transform.localScale +=
+                //                    new Vector3(0.0f, 0.0f, 1.0f)
+                //                    * 2.0f/*(4.0f * 0.1f)*/;
+                //                //lockonbeam.transform.SetParent(pivot.transform);
+                //                pivot.transform.LookAt(ending_location);
+                //                pivot.transform.SetParent(transform);
+                //            }
+                //            //
+                //        }
+                //        if (time_att_2 > 2.3f && time_att_2 < 2.7f)
+                //        {
+                //            if (hitbeam == null)
+                //            {
+                //                hitbeam = Instantiate(hit,
+                //                    lockonbeam.transform.position,
+                //                    lockonbeam.transform.rotation);
+                //                hitbeam.transform.localScale +=
+                //                    new Vector3(0.0f, 0.0f, 1.0f) * 2.0f /*(4.0f * 0.1f)*/;
+                //                hitbeam.transform.SetParent(transform);
+                //            }
 
-                                    lockonbeam = Instantiate(lockon,
-                                        transform.position,
-                                        Quaternion.identity);
-                                    lockonbeam.transform.position += new Vector3(0.0f, 0.0f,
-                                        4.0f / 2);
-                                    lockonbeam.transform.localScale +=
-                                        new Vector3(0.0f, 0.0f, 1.0f)
-                                        * (4.0f * 0.1f);
-                                    lockonbeam.transform.SetParent(pivot.transform);
-                                    pivot.transform.LookAt(ending_location);
-                                    pivot.transform.SetParent(transform);
-                                }
-                                //
-                            }
-                            if (time_att_2 > 2.3f && time_att_2 < 2.7f)
-                            {
-                                if(hitbeam == null)
-                                { 
-                                    hitbeam = Instantiate(hit,
-                                        lockonbeam.transform.position,
-                                        lockonbeam.transform.rotation);
-                                    hitbeam.transform.localScale +=
-                                        new Vector3(0.0f, 0.0f, 1.0f) * 4.0f;
-                                    hitbeam.transform.SetParent(transform);
-                                }
-                                
-                            }
+                //        }
 
-                            if (time_att_2 > 2.8f)
-                            {
-                                DestroyBeams();
-                                enemyScript.set_current_phase(EnemyScript.Phases.COOLDOWN);
-                            }
-                        }
-                        break;
-                    }
+                //        if (time_att_2 > 2.8f)
+                //        {
+                //            DestroyBeams();
+                //            enemyScript.set_current_phase(EnemyScript.Phases.COOLDOWN);
+                //        }
+                //    }
+                //    break;
+                //}
                 case EnemyScript.Phases.ATTACK_TYPE_1:
                     {
                         attackhitbox.GetComponent<BoxCollider>().enabled = true;
@@ -147,10 +146,45 @@ public class ChaserScript : MonoBehaviour
 
                         beam_mode = false;
 
-                        chasingspeed = 2.0f;
+                        //chasingspeed = 2.0f;
                         time_att_2 = 0;
-                        time_att_1 += 1 * Time.deltaTime;
-                        navMeshAgent.SetDestination(playerGO.transform.position);
+                        time_att_1 += Time.deltaTime;
+                        change_of_attk_type_1 += Time.deltaTime;
+
+                        if (change_of_attk_type_1 >= 4.0f)
+                        {
+                            change_of_attk_type_1 = 0.0f;
+                        }
+
+                        //back away during post attack
+                        if (GetComponentInChildren<EnemyAttack>().getpostattack()
+                            || change_of_attk_type_1 >= 3.0f)
+                        {
+                            chasingspeed = 2.0f;
+                            if (dist <= 5.0f)
+                            {
+                                navMeshAgent.enabled = false;
+                                Vector3 resultingVector = -playerGO.transform.position + transform.position;
+                                resultingVector.y = 0;
+                                GetComponent<Rigidbody>().velocity = resultingVector;
+                            }
+                            else
+                            {
+                                navMeshAgent.enabled = true;
+                                GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
+                                navMeshAgent.SetDestination(playerGO.transform.position);
+                            }
+                        }
+                        //
+                        //continue to chase the player
+                        else
+                        {
+                            chasingspeed = dist /** 0.2f*/;
+                            navMeshAgent.enabled = true;
+                            GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
+                            navMeshAgent.SetDestination(playerGO.transform.position);
+                        }
+                        //
 
                         if (time_att_1 > 20.0f)
                         {
@@ -164,6 +198,7 @@ public class ChaserScript : MonoBehaviour
                         chasingspeed = 0.0f;
                         time_att_2 = 0.0f;
                         time_att_1 = 0.0f;
+                        change_of_attk_type_1 = 0.0f;
 
                         GetComponent<EnemyScript>().cooldownUpdate();
                         break;
@@ -175,6 +210,13 @@ public class ChaserScript : MonoBehaviour
                         time_att_2 = 0.0f;
                         time_att_1 = 0.0f;
 
+                        if (dist <= 5.0f)
+                        {
+                            Vector3 resultingVector = -playerGO.transform.position + transform.position;
+                            resultingVector.y = 0;
+                            GetComponent<Rigidbody>().velocity = resultingVector;
+                        }
+
                         GetComponent<EnemyScript>().abouttoattackUpdate();
                         break;
                     }
@@ -182,15 +224,14 @@ public class ChaserScript : MonoBehaviour
         }
         else
         {
-            steering();
+            enemyScript.ifUpdatingfalse();
             DestroyBeams();
         }
 
-    //        steering();
+       
 
-
-
-}
+        enemyScript.steering();
+    }
 
 
     public void DestroyBeams()
@@ -208,54 +249,7 @@ public class ChaserScript : MonoBehaviour
             Destroy(pivot);
         }
     }
-void steering()
-{
-    var deltaPosition = Vector3.zero;
-    for (int i = 0; i < numberOfRays; i++)
-    {
-        //rotate enemy angle
-        var rotation = transform.rotation;
-        var rotationMod = Quaternion.AngleAxis(
-             (i / ((float)numberOfRays - 1)) * angle * 2 - angle,
-             transform.up);
-        var direction = rotation * rotationMod * Vector3.forward;
-        var direction2 = rotation * rotationMod * Vector3.back;
 
-        var ray = new Ray(transform.position, direction);
-        var ray2 = new Ray(transform.position, direction2);
-
-        RaycastHit hitInfo;
-        //if hits something
-        if (Physics.Raycast(ray, out hitInfo, rayRange
-            , ~lm))
-        {
-            deltaPosition -= (1.0f / numberOfRays) * targetVelocity * direction;
-            transform.position += deltaPosition * Time.deltaTime;
-
-        }
-        else if (Physics.Raycast(ray2, out hitInfo, rayRange
-            , ~lm))
-        {
-            deltaPosition -= (1.0f / numberOfRays) * targetVelocity * direction2;
-            transform.position += deltaPosition * Time.deltaTime;
-        }
-    }
-
-
-    /*float distance = Vector3.Distance(playerGO.transform.position, transform.position);
-    if (distance < 5.0f)
-    {
-        navMeshAgent.speed = 0.0f;
-    }
-    if (distance < 5.0f)
-    {
-        box.size = new Vector3(box.size.x, box.size.y, 4.0f);
-    }
-    else
-    {
-        box.size = new Vector3(box.size.x, box.size.y, 1.0f);
-    }*/
-}
 
     /*void OnDrawGizmos()
     {

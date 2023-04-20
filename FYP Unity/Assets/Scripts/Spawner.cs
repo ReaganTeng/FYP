@@ -35,7 +35,7 @@ public class Spawner : MonoBehaviour
                     transform.rotation
                     );*/
 
-        Debug.Log("MAX ENEMIES " + max_enemies);
+        //Debug.Log("MAX ENEMIES " + max_enemies);
 
         if (enable == false)
         {

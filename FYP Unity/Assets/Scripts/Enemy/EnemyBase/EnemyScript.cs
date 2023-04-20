@@ -3,9 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using TMPro;
 public class EnemyScript : MonoBehaviour
 {
-    float EnemyHealth;
+    float targetVelocity;
+    int numberOfRays;
+    float angle;
+    float rayRange;
+    [SerializeField] LayerMask lm;
+
+    [SerializeField] LayerMask lm_2;
+
+
+    int EnemyHealth;
     [SerializeField] float AttackDamage;
     [SerializeField] GameObject prepPrefab;
     [SerializeField] GameObject choppedPefab;
@@ -36,11 +46,15 @@ public class EnemyScript : MonoBehaviour
     int attack_type;
 
 
-
+    float post_attack_duration;
     bool updating;
     int zoneno;
     GameObject[] zone;
     GameObject hitbox;
+
+
+    List<float> ray_distances;
+    float furthestdistance;
 
     float currentAnimationLength;
     public enum Phases
@@ -69,9 +83,11 @@ public class EnemyScript : MonoBehaviour
 
     Transform spawnerparent;
 
-    //float shootTimer;
+    float shootTimer;
     [SerializeField] GameObject projectileGO;
     GameObject projectile;
+
+    [SerializeField] TextMeshProUGUI healthtext;
     public void setparent(Transform parentSpawner)
     {
         spawnerparent = parentSpawner;
@@ -105,7 +121,13 @@ public class EnemyScript : MonoBehaviour
 
     void Start()
     {
-        EnemyHealth = 100.0f;
+        post_attack_duration = 0.0f;
+        targetVelocity = 3.0f;
+        numberOfRays = 30;
+        angle = 90.0f;
+        rayRange = 1.0f;
+
+        EnemyHealth = 10;
         updating = false;
         zoneno = 0;
         zone = GameObject.FindGameObjectsWithTag("Zone");
@@ -119,8 +141,8 @@ public class EnemyScript : MonoBehaviour
         BoundaryCheck();
         timer = 0.0f;
 
-
-        //shootTimer = 0.0f;
+        ray_distances = new List<float>();
+        shootTimer = 0.0f;
     }
 
     
@@ -221,6 +243,8 @@ public class EnemyScript : MonoBehaviour
         hitbox = GameObject.FindGameObjectWithTag("Attack");
         player = GameObject.FindGameObjectWithTag("Player");
 
+        healthtext.text = EnemyHealth.ToString();
+
         GetComponentInChildren<Animator>().SetFloat("health", EnemyHealth);
         healthbar.value = EnemyHealth;
         if (Iframe)
@@ -237,8 +261,18 @@ public class EnemyScript : MonoBehaviour
         zone = GameObject.FindGameObjectsWithTag("Zone");
         BoundaryCheck();
 
+        //POST ATTACK
+        if (GetComponentInChildren<EnemyAttack>().getpostattack())
+        {
+            post_attack_duration += Time.deltaTime;
 
-       
+            if(post_attack_duration > 2.0f)
+            {
+                post_attack_duration = 0.0f;
+                GetComponentInChildren<EnemyAttack>().setpostattack(false);
+            }
+        }
+        //
 
         if (zoneno == player.GetComponent<PlayerZoneCheck>().getZoneno())
         {
@@ -282,7 +316,7 @@ public class EnemyScript : MonoBehaviour
         }
 
         //shootTimer += Time.deltaTime;
-        //if(shootTimer >= 3.0f)
+        //if (shootTimer >= 3.0f)
         //{
         //    shoot();
         //    shootTimer = 0.0f;
@@ -323,8 +357,84 @@ public class EnemyScript : MonoBehaviour
         }
     }
 
+    public void ifUpdatingfalse()
+    {
+        GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+        attackhitbox.GetComponent<BoxCollider>().enabled = false;
 
-    
+        if (GetComponent<NavMeshAgent>().enabled == true)
+        {
+            GetComponent<NavMeshAgent>().speed = 5.0f;
+            GetComponent<NavMeshAgent>().SetDestination(getparent().position);
+        }
+
+        GetComponentInChildren<Canvas>().transform.localPosition = new Vector3(0, 0, 0);
+        GetComponentInChildren<SpriteRenderer>().transform.localPosition = new Vector3(0, 0.66f, 0);
+        GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
+    }
+    public void steering()
+    {
+        var deltaPosition = Vector3.zero;
+        for (int i = 0; i < numberOfRays; i++)
+        {
+            //rotate enemy angle
+            var rotation = transform.rotation;
+            var rotationMod = Quaternion.AngleAxis(
+                 (i / ((float)numberOfRays - 1)) * angle * 2 - angle,
+                 transform.up);
+            var direction = rotation * rotationMod * Vector3.forward;
+            var direction2 = rotation * rotationMod * Vector3.back;
+
+            var ray = new Ray(transform.position, direction);
+            var ray2 = new Ray(transform.position, direction2);
+
+            //if hits enemy
+            if (Physics.Raycast(ray, rayRange
+                , lm))
+            {
+                deltaPosition -= (1.0f / numberOfRays) * targetVelocity * direction;
+                transform.position += deltaPosition * Time.deltaTime;
+            }
+            else if (Physics.Raycast(ray2, rayRange
+                , lm))
+            {
+                deltaPosition -= (1.0f / numberOfRays) * targetVelocity * direction2;
+                transform.position += deltaPosition * Time.deltaTime;
+            }
+
+            
+            //RaycastHit hitInfo;
+            //if (Physics.Raycast(ray, out hitInfo, 100.0f/*, lm_2*/))
+            //{
+            //    ray_distances.Add(hitInfo.distance);
+            //}
+            
+        }
+
+        //ray_distances.Sort();
+        //furthestdistance = ray_distances[ray_distances.Count - 1];
+        //Debug.Log("Largest Distance " + furthestdistance);
+
+        //Vector3 resultingVector = furthestdistance - transform.position;
+
+
+        /*float hoverHeight = 4.0f;
+        RaycastHit hit;
+        Ray downRay = new Ray(transform.position, -Vector3.right);
+        // Cast a ray straight downwards.
+        if (Physics.Raycast(downRay, out hit))
+        {
+            // The "error" in height is the difference between the desired height
+            // and the height measured by the raycast distance.
+            float hoverError = hoverHeight - hit.distance;
+
+            Debug.Log("HIT DISTANCE " + hit.distance);
+        }*/
+
+
+    }
+
+
 
     public GameObject gethitbox()
     {
@@ -344,8 +454,8 @@ public class EnemyScript : MonoBehaviour
     {
         GetComponent<BoxCollider>().enabled = true;
 
-        if (updating)
-        {
+        //if (updating)
+        //{
             GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
             timer += Time.deltaTime;
             GetComponent<NavMeshAgent>().speed = 0.0f;
@@ -365,23 +475,7 @@ public class EnemyScript : MonoBehaviour
                     phase = Phases.ATTACK_TYPE_2;
                 }
             }
-        }
-        else
-        {
-                GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
-                attackhitbox.GetComponent<BoxCollider>().enabled = false;
-
-                if (GetComponent<NavMeshAgent>().enabled == true)
-                {
-                    GetComponent<NavMeshAgent>().speed = 5.0f;
-                    GetComponent<NavMeshAgent>().SetDestination(getparent().position);
-                }
-
-                GetComponentInChildren<Canvas>().transform.localPosition = new Vector3(0, 0, 0);
-                GetComponentInChildren<SpriteRenderer>().transform.localPosition = new Vector3(0, 0.66f, 0);
-                GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
-            
-        }
+        
     }
 
     public void cooldownUpdate()
