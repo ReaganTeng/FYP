@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Com.LuisPedroFonseca.ProCamera2D;
 
 public class DayTimer : MonoBehaviour
 {
@@ -20,10 +21,15 @@ public class DayTimer : MonoBehaviour
         RotateHourBy = 360 / thedaytimer;
         RotateMinuteBy = 360 * 12 / thedaytimer;
         TimeStop = false;
+        ProCamera2DTransitionsFX.Instance.TransitionEnter();
     }
 
     private void Update()
     {
+        // during game startup, do not run the update
+        if (FreezeGame.instance.startUpfreeze)
+            return;
+
         if (!TimeStop)
         {
             thedaytimer -= Time.deltaTime;

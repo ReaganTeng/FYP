@@ -187,12 +187,12 @@ public class InventoryImageControl : MonoBehaviour
         }
     }
 
-    public void RemoveSelected()
+    public void RemoveSelected(bool DeleteReference = false)
     {
         // check to see if the remove is valid
         if (SelectedSlot <= Inventory.instance.GetList().Count && SelectedSlot != -1)
         {
-            Inventory.instance.RemoveFromInventory(SelectedSlot);
+            Inventory.instance.RemoveFromInventory(SelectedSlot, DeleteReference);
             UpdateImage();
             // if the item is deleted as its last slot, move it, if cannot move, none are selected
             if (SelectedSlot >= Inventory.instance.GetList().Count)

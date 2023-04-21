@@ -17,6 +17,8 @@ public class Level : ScriptableObject
     public bool Locked;
     public int CCReq;
     private int MaxCredibility = 4;
+    public List<LevelHallway.Hallway> HallwaysUnlock;
+    public OrderManager.DayOrder CustomizeOrderForThisDay;
 
     enum Grades
     {

@@ -27,6 +27,9 @@ public class PlayerMovement : MonoBehaviour
 
     //
     bool isWalking;
+
+    // Minimap
+    GameObject minimapCanvas;
    
 
     private void Start()
@@ -35,6 +38,8 @@ public class PlayerMovement : MonoBehaviour
         isWalking = false;
         dashcdtimer = 0;
         DisableControls = false;
+        minimapCanvas = GameObject.FindGameObjectWithTag("MinimapCanvas");
+        minimapCanvas.SetActive(false);
     }
     // Update is called once per frame
     void FixedUpdate()
@@ -201,6 +206,18 @@ public class PlayerMovement : MonoBehaviour
             {
                 Physics.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer("Enemy"), false);
                 IFrameStart = false;
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.M) && !DisableControls)
+        {
+            if (minimapCanvas.activeSelf)
+            {
+                minimapCanvas.SetActive(false);
+            }
+            else
+            {
+                minimapCanvas.SetActive(true);
             }
         }
     }
