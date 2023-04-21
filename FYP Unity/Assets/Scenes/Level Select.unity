@@ -2392,6 +2392,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 379891419}
   m_CullTransparentMesh: 1
+--- !u!1 &393101587 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7339584773263363443, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
+  m_PrefabInstance: {fileID: 1328461651}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &393531885
 GameObject:
   m_ObjectHideFlags: 0
@@ -3214,6 +3219,16 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &643642428 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7339584773263363443, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
+  m_PrefabInstance: {fileID: 1079042917}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &668023847 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7339584773263363443, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
+  m_PrefabInstance: {fileID: 1415920947}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &668250989
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3293,6 +3308,10 @@ PrefabInstance:
       propertyPath: level
       value: 
       objectReference: {fileID: 11400000, guid: 8b72ac5f104568b49a171af55c8d4a09, type: 2}
+    - target: {fileID: 8356807268346928452, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
+      propertyPath: objectToToggle
+      value: 
+      objectReference: {fileID: 1026824628}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
 --- !u!1 &716709233
@@ -5045,6 +5064,16 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1017308538}
   m_CullTransparentMesh: 1
+--- !u!1 &1026824628 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7339584773263363443, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
+  m_PrefabInstance: {fileID: 668250989}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1028102465 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7339584773263363443, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
+  m_PrefabInstance: {fileID: 1901899691}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1028440216
 GameObject:
   m_ObjectHideFlags: 0
@@ -5793,6 +5822,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 8356807268346928452, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
+      propertyPath: objectToToggle
+      value: 
+      objectReference: {fileID: 643642428}
     - target: {fileID: 9149778818108973722, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
       propertyPath: m_Layer
       value: 5
@@ -6622,6 +6655,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelPoint3
       objectReference: {fileID: 0}
+    - target: {fileID: 5261494923545461256, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
+      propertyPath: objectToToggle
+      value: 
+      objectReference: {fileID: 1028102465}
     - target: {fileID: 5411068006854274570, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.5
@@ -6630,6 +6667,10 @@ PrefabInstance:
       propertyPath: level
       value: 
       objectReference: {fileID: 11400000, guid: 8b72ac5f104568b49a171af55c8d4a09, type: 2}
+    - target: {fileID: 8356807268346928452, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
+      propertyPath: objectToToggle
+      value: 
+      objectReference: {fileID: 393101587}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
 --- !u!1 &1341921912
@@ -6839,6 +6880,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelPoint1
       objectReference: {fileID: 0}
+    - target: {fileID: 8356807268346928452, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
+      propertyPath: objectToToggle
+      value: 
+      objectReference: {fileID: 668023847}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
 --- !u!1 &1434342389
@@ -8499,6 +8544,10 @@ PrefabInstance:
       propertyPath: level
       value: 
       objectReference: {fileID: 11400000, guid: 8b72ac5f104568b49a171af55c8d4a09, type: 2}
+    - target: {fileID: 8356807268346928452, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
+      propertyPath: objectToToggle
+      value: 
+      objectReference: {fileID: 1028102465}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
 --- !u!1 &1905715947
