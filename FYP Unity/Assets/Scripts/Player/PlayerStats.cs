@@ -12,7 +12,7 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] float PlayerHealth;
     //
 
-    float PlayerAttack;
+    int PlayerAttack;
 
 
     [SerializeField] int numberConsecutiveHits;
@@ -21,6 +21,13 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] int ConsecutiveHit_Stage3;
     [SerializeField] int ConsecutiveHit_Stage4;
     [SerializeField] int ConsecutiveHit_Stage5;
+
+    [SerializeField] GameObject RankSprite;
+    [SerializeField] Sprite S_Rank;
+    [SerializeField] Sprite A_Rank;
+    [SerializeField] Sprite B_Rank;
+    [SerializeField] Sprite C_Rank;
+    [SerializeField] Sprite F_Rank;
 
     [SerializeField] Slider fervorBar;
     [SerializeField] float fervorLevel;
@@ -38,7 +45,7 @@ public class PlayerStats : MonoBehaviour
 
     public void Start()
     {
-        PlayerAttack = 10.0f;
+        PlayerAttack = 2;
         fervorMaxLevel = 100;
         fervor2Add = 0;
         buff_active = false;
@@ -57,12 +64,12 @@ public class PlayerStats : MonoBehaviour
 
 
 
-    public void setAttack(float atk)
+    public void setAttack(int atk)
     {
         PlayerAttack = atk;
     }
 
-    public float getAttack(float additionalAtk = 0)
+    public int getAttack(int additionalAtk = 0)
     {
         return PlayerAttack + additionalAtk;
     }
@@ -91,19 +98,21 @@ public class PlayerStats : MonoBehaviour
             }
         }
 
-        Debug.Log("Fervor: " + fervorLevel);
+        //Debug.Log("Fervor: " + fervorLevel);
     }
 
 
     public void Update()
     {
-        if(GetComponentInChildren<Animator>().GetBool("Hurt") == true)
+
+      
+        if (GetComponentInChildren<Animator>().GetBool("Hurt") == true)
         {
             //Debug.Log("Animation name "
             //    + GetComponentInChildren<Animator>().GetCurrentAnimatorClipInfo(0)[0].clip.name);
             hurt_period += Time.deltaTime;
 
-            if(hurt_period >= 1.0f)
+            if(hurt_period >= GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).length)
             {
                 GetComponentInChildren<Animator>().SetBool("Hurt", false);
             }
@@ -156,6 +165,14 @@ public class PlayerStats : MonoBehaviour
         }
 
 
+        if (numberConsecutiveHits <= 0)
+        {
+            RankSprite.GetComponent<Image>().enabled = false;
+        }
+        else
+        {
+            RankSprite.GetComponent<Image>().enabled = true;
+        }
 
         //SCALE EFFECT FOR TEXT
         //GetComponent<Transform>().localScale += new Vector3(1 * Time.deltaTime, 1 * Time.deltaTime, 0);
@@ -193,6 +210,12 @@ public class PlayerStats : MonoBehaviour
 
     public void decidefervor2add(float consecutive_stage_min, float consecutive_stage_max, float fervor_2add)
     {
+        //[SerializeField] Image S_Rank;
+        //[SerializeField] Image A_Rank;
+        //[SerializeField] Image B_Rank;
+        //[SerializeField] Image C_Rank;
+        //[SerializeField] Image F_Rank;
+
         if (numberConsecutiveHits >= consecutive_stage_min
             && numberConsecutiveHits < consecutive_stage_max)
         {
@@ -203,13 +226,20 @@ public class PlayerStats : MonoBehaviour
 
     
 
-    public void decidecombotimer(float consecutive_stage_min, float consecutive_stage_max, float comb_timer)
+    public void decidecombotimer(float consecutive_stage_min, float consecutive_stage_max, float comb_timer, Sprite rank_sprite)
     {
+        //[SerializeField] Image S_Rank;
+        //[SerializeField] Image A_Rank;
+        //[SerializeField] Image B_Rank;
+        //[SerializeField] Image C_Rank;
+        //[SerializeField] Image F_Rank;
+
         if (numberConsecutiveHits >= consecutive_stage_min
             && numberConsecutiveHits < consecutive_stage_max)
         {
 
             combo_timer = comb_timer;
+            RankSprite.GetComponent<Image>().sprite = rank_sprite;
         }
     }
 
@@ -222,26 +252,30 @@ public class PlayerStats : MonoBehaviour
 
     public void resetCombo_timer()
     {
+
+
+        
+
         //between 5 and 10
         decidecombotimer(ConsecutiveHit_Stage1,
             ConsecutiveHit_Stage2,
-            15.9f);
+            15.9f, F_Rank);
         //between 10 and 15
         decidecombotimer(ConsecutiveHit_Stage2,
             ConsecutiveHit_Stage3,
-            12.9f);
+            12.9f, C_Rank);
         //between 15 and 20
         decidecombotimer(ConsecutiveHit_Stage3,
             ConsecutiveHit_Stage4,
-            10.9f);
+            10.9f, B_Rank);
         //between 20 and 25
         decidecombotimer(ConsecutiveHit_Stage4,
             ConsecutiveHit_Stage5,
-            7.9f);
+            7.9f, A_Rank);
         //more than 25
         decidecombotimer(ConsecutiveHit_Stage5,
             ConsecutiveHit_Stage5 + 999,
-            3.9f);
+            3.9f, S_Rank);
     }
 
     public void ResetConsecutiveHit()
@@ -288,7 +322,7 @@ public class PlayerStats : MonoBehaviour
     {
         numberConsecutiveHits += 1;
     }
-    public float GetPlayerAttack()
+    public int GetPlayerAttack()
     {
         return PlayerAttack;
     }

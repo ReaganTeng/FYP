@@ -14,9 +14,6 @@ public class PlayerMovement : MonoBehaviour
     bool DisableControls;
 
     [SerializeField]
-    private Animator animator = null;
-
-    [SerializeField]
     private SpriteRenderer spriteRenderer = null;
 
 
@@ -62,36 +59,46 @@ public class PlayerMovement : MonoBehaviour
             DisableControls = false;   
         }*/
 
-        if (!DisableControls)
+        if (!DisableControls
+            && GetComponentInChildren<Animator>().GetBool("click") == false
+            )
         {
             float horizontalInput = Input.GetAxis("Horizontal");
             float verticalInput = Input.GetAxis("Vertical");
             playerRB.AddForce((orientation.forward * verticalInput + orientation.right * horizontalInput) * PlayerSpeed);
 
             GetComponentInChildren<Animator>().SetBool("walking", isWalking);
+            GetComponentInChildren<Animator>().SetBool("WalkFront", Input.GetKey(KeyCode.S));
+            GetComponentInChildren<Animator>().SetBool("WalkBack", Input.GetKey(KeyCode.W));
+            //GetComponentInChildren<Animator>().SetBool("WalkSide", Input.GetKey(KeyCode.A));
+
 
             // If user is pressing any movement keys
             if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
             {
-                isWalking = true;
+                //isWalking = true;
                 //Debug.Log("MOVING");
                 CheckDirection(ref Forwardrun, ref Rightrun, horizontalInput, verticalInput);
             }
-            else
-            {
-                isWalking = false;
-            }
+            
 
             if (Input.GetKey(KeyCode.A))
             { 
-                isWalking = true;
                 spriteRenderer.flipX = false;
             }
 
             if (Input.GetKey(KeyCode.D))
             {
-                isWalking = true;
                 spriteRenderer.flipX = true;
+            }
+
+            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+            {
+                isWalking = true;
+            }
+            else
+            {
+                isWalking = false; 
             }
 
             if (dashcdtimer > 0)

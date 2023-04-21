@@ -11,80 +11,75 @@ public class EnemyAttack : MonoBehaviour
     [SerializeField] Animator animator;
     GameObject player;
 
+    bool post_attack;
+
     // Start is called before the first frame update
     void Start()
     {
         Attackcdtimer = 0;
         player = GameObject.FindGameObjectWithTag("Player");
-        //playerBoxCollider = GameObject.FindGameObjectWithTag("playerboxcollider");
+        post_attack = false;
     }
 
     private void Update()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        //playerBoxCollider = GameObject.FindGameObjectWithTag("playerboxcollider");
 
         if (Attackcdtimer > 0)
         {
             Attackcdtimer -= Time.deltaTime;
-            //player.GetComponent<PlayerMovement>().setAnimator(true);
 
-            if (Attackcdtimer < AttackCD / 2)
+            if (Attackcdtimer < AttackCD / 5)
             {
-                animator.SetBool("attack", false);
                 transform.parent.GetComponent<BoxCollider>().enabled = true;
+            }
 
+            if (transform.parent.GetComponent<EnemyScript>().return_enemyType() 
+                == EnemyScript.EnemyType.CHASER)
+            {
+                if (Attackcdtimer < AttackCD / 2)
+                {
+                    animator.SetBool("attack", false);
+                }
             }
         }
-        //else
-        //{
-        //    //player.GetComponent<PlayerMovement>().setAnimator(false);
-        //    //playerBoxCollider.SetActive(true);
-        //    //playerBoxCollider.GetComponent<BoxCollider>().enabled = true;
-        //    transform.parent.GetComponent<BoxCollider>().enabled = true;
-        //    //Debug.Log("Parent name " + GetComponentInParent<Transform>());
-        //}
+    }
+
+
+    public void setpostattack(bool pa)
+    {
+        post_attack = pa;
+    }
+    public bool getpostattack()
+    {
+        return post_attack;
     }
 
     //change collider size if want to increase attack range
     private void OnTriggerStay(Collider other)
     {
-
-        //player = GameObject.FindGameObjectWithTag("Player");
-        //player.GetComponent<PlayerMovement>().setAnimator(true);
-
-
         // if it is the player
-        if ((other.CompareTag("Player") && Attackcdtimer <= 0
-            /*|| other.CompareTag("playerboxcollider")*/)
+        if (other.CompareTag("Player") && Attackcdtimer <= 0
             && GetComponent<BoxCollider>().enabled == true)
         {
             animator.SetBool("attack", true);
-            //other.GetComponent<PlayerStats>().ChangeHealth(-es.AttackDamage);
-
-
             other.GetComponent<PlayerMovement>().setAnimator(true);
             other.GetComponent<PlayerStats>().ResetConsecutiveHit();
             other.GetComponent<PlayerStats>().ChangeFervor(-10.0f);
 
-            //Debug.Log("HIT");
+            if (transform.parent.GetComponent<EnemyScript>().return_enemyType() == EnemyScript.EnemyType.JUMPER)
+            {
+                other.GetComponent<Rigidbody>().AddForce(
+                (other.GetComponent<Transform>().position - GetComponentInParent<Transform>().position).normalized * 10.0f,
+                ForceMode.Impulse
+                );
+                transform.parent.GetComponent<BoxCollider>().enabled = false;
 
-            /*other.GetComponent<Rigidbody>().AddForce(
-                 (other.GetComponent<Transform>().position - GetComponentInParent<Transform>().position).normalized * 50.0f,
-                 ForceMode.Impulse
-                 );*/
+            }
 
-            //playerBoxCollider.GetComponent<BoxCollider>().enabled = false;
-            transform.parent.GetComponent<BoxCollider>().enabled = false;
+            post_attack = true;
 
             Attackcdtimer = AttackCD;
         }
-        //if attack hitbox did not collide with player
-        //else if (other.tag != "Player"
-        //    && Attackcdtimer > 0 && Attackcdtimer <= AttackCD)
-        //{
-        //    Debug.Log("COLLIDER TRUE");
-        //    player.GetComponent<BoxCollider>().enabled = true;
-        //}
     }
 }

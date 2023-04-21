@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemtype: 16
-  image: {fileID: 21300000, guid: 5635c7fb1ca7ddc4a919e9ef15662329, type: 3}
+  image: {fileID: 21300000, guid: 3d485539fc5d7a041a6aba9bc30b319d, type: 3}
 --- !u!114 &-8433261233744053751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d5d1825d182a194897640c1a97ff6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foodtypeid: 0
+  foodtype: 0
 --- !u!1 &4128800852901703162
 GameObject:
   m_ObjectHideFlags: 0
@@ -124,7 +124,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 14f4685fd55245549b7f8927d5cf0ed8, type: 2}
+  - {fileID: 2100000, guid: aff78ae041a559146b2b4ca647ea86e8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -158,8 +158,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d37105ca49bb3249b7a0676f9ef56f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  noglow: {fileID: 2800000, guid: 5635c7fb1ca7ddc4a919e9ef15662329, type: 3}
-  glow: {fileID: 2800000, guid: b3306d4a74dcbef4a8e098b0fab40360, type: 3}
+  noglow: {fileID: 2800000, guid: 3d485539fc5d7a041a6aba9bc30b319d, type: 3}
+  glow: {fileID: 2800000, guid: d8a9b1f33b174a04c8085c4d662189bf, type: 3}
 --- !u!65 &4243063584267739159
 BoxCollider:
   m_ObjectHideFlags: 0

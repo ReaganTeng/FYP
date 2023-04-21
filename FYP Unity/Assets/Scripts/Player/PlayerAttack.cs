@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class PlayerAttack : MonoBehaviour
 {
-    enum Weapon
+    public enum Weapon
     {
         SPATULA,
         KNIFE,
@@ -56,6 +56,12 @@ public class PlayerAttack : MonoBehaviour
 
     bool isclicked;
     float click_timer;
+
+    float currentAnimationLength;
+
+
+    [SerializeField] LayerMask enemyLM;
+    [SerializeField] Animator animator;
 
     void Start()
     {
@@ -126,6 +132,19 @@ public class PlayerAttack : MonoBehaviour
             updatecharge();
         }
 
+        if(chargeBar.value >= chargeBar.maxValue)
+        {
+            txt.enabled = false;
+        }
+        else
+        {
+            txt.enabled = true;
+        }
+
+        currentAnimationLength = animator.GetCurrentAnimatorStateInfo(0).length;
+
+       
+
         // Attacking
         if (attackcdtimer > 0)
         {
@@ -137,19 +156,18 @@ public class PlayerAttack : MonoBehaviour
             GameObject.FindGameObjectWithTag("playerspriterenderer").GetComponent<Animator>().SetBool("click", isclicked);
             //
 
-            
+
+
             //LIGHT ATTACK
             if (Input.GetMouseButtonDown(0) && !attacking)
             {
                 isclicked = true;
-                click_timer = 1.0f;
                 //Debug.Log("LIGHT ATTACK");
-                //GetComponentInParent<PlayerStats>().setAttack(10.0f);
                 AttackWhichDirection(direction);
-                HitBox.SetActive(true);
-
-                attacking = true;
+                //HitBox.SetActive(true);
+                //attacking = true;
                 attackingtimer = attackingtime;
+                click_timer = currentAnimationLength;
             }
             //
 
@@ -158,71 +176,99 @@ public class PlayerAttack : MonoBehaviour
                 && (int)chargeCurrentLvl>= (int)min_notch_value)
             {
                 isclicked = true;
-                click_timer = 1.0f;
                 //Debug.Log("HEAVY ATTACK");
-
-                //transform.parent.GetComponent<PlayerStats>().setAttack(
-                //GetComponentInParent<PlayerStats>().getAttack(5.0f));
-
-                GetComponentInParent<PlayerStats>().setAttack(
-                GetComponentInParent<PlayerStats>().getAttack(5.0f));
+                transform.parent.GetComponent<PlayerStats>().setAttack(
+                GetComponentInParent<PlayerStats>().getAttack(1));
                 AttackWhichDirection(direction);
-                HitBox.SetActive(true);
-
-                attacking = true;
+                //HitBox.SetActive(true);
+                //attacking = true;
                 attackingtimer = attackingtime;
                 depletecharge();
+                click_timer = currentAnimationLength;
             }
             //
 
             if (isclicked)
             {
                 click_timer -= Time.deltaTime;
-                if (click_timer < 0)
+                if (click_timer <= currentAnimationLength * 0.5f)
                 {
-                    isclicked = false;
+                    attacking = true;
                 }
+                //if (click_timer < 0)
+                //{
+                //    isclicked = false;
+                //}
             }
 
+            
+            //Debug.Log("DAMAGE DONE " + GetComponentInParent<PlayerStats>().getAttack(0));
+
+            //activate hitbox
             if (attacking)
             {
                 attackingtimer -= Time.deltaTime;
                 if (attackingtimer <= 0)
                 {
                     HitBox.SetActive(false);
+                    isclicked = false;
+                    click_timer = 0.0f;
                     attackcdtimer = attackcd;
                     attacking = false;
                 }
+                else
+                {
+                    isclicked = true;
+                    HitBox.SetActive(true);
+                }
             }
-
+            //
         }
 
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
-            direction = pm.GetDirection(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-            AttackWhichDirection(direction);
+            if (animator.GetBool("click") == false)
+            {
+                direction = pm.GetDirection(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+                AttackWhichDirection(direction);
+            }
         }
 
-        // To swap between weapons
-        if (Input.GetKey(KeyCode.Z))
+
+        if (animator.GetBool("click") == false)
         {
-            currentweapon = Weapon.SPATULA;
-            //switchWeapon();
+            // To swap between weapons
+            if (Input.GetKey(KeyCode.Z))
+            {
+                currentweapon = Weapon.SPATULA;
+            }
+            else if (Input.GetKey(KeyCode.X))
+            {
+                currentweapon = Weapon.KNIFE;
+            }
+            else if (Input.GetKey(KeyCode.C))
+            {
+                currentweapon = Weapon.ROLLINGPIN;
+            }
         }
-        else if (Input.GetKey(KeyCode.X))
-        {
-            currentweapon = Weapon.KNIFE;
-           //switchWeapon();
-        }
-        else if (Input.GetKey(KeyCode.C))
-        {
-            currentweapon = Weapon.ROLLINGPIN;
-            //switchWeapon();
-        }
+
+        //Collider[] hitEnemy = Physics.OverlapBox(HitBox.transform.position, HitBox.transform.lossyScale,
+        //    HitBox.transform.rotation, enemyLM);
+
+        //foreach(Collider enemies in hitEnemy)
+        //{
+        //    Debug.Log("Enemy hit");
+        //}
 
         switchWeapon();
     }
 
+    public void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireCube
+            (HitBox.transform.position, HitBox.transform.lossyScale);
+    }
 
     public bool getHitbox()
     {
@@ -234,46 +280,32 @@ public class PlayerAttack : MonoBehaviour
         switch (currentweapon)
         {
             case Weapon.SPATULA:
-                GetComponentInParent<PlayerStats>().setAttack(10.0f);
-
-                //spaculaHitbox.transform.rotation
-                //   //= new Quaternion(1, 0, 0, (Mathf.PI / 180) * (-90));
-                //   //= Quaternion.Euler(-90, 0, 0);
-                //   = Quaternion.Euler(-90, HitBox.transform.rotation.y, HitBox.transform.rotation.z);
-                //HitBox = spaculaHitbox;
+                if (!isclicked)
+                {
+                    GetComponentInParent<PlayerStats>().setAttack(2);
+                }
                 spaculaHitbox.SetActive(HitBox.activeSelf);
                 spaculaHitbox.transform.rotation = HitBox.transform.rotation;
-
                 knifeHitbox.SetActive(false);
                 pinHitbox.SetActive(false);
-                //spaculaHitbox.SetActive(false);
                 break;
             case Weapon.KNIFE:
-                GetComponentInParent<PlayerStats>().setAttack(20.0f);
-
-                //knifeHitbox.transform.rotation
-                //    //= Quaternion.Euler(-90, 0, 0);
-                //    = Quaternion.Euler(-90, HitBox.transform.rotation.y, HitBox.transform.rotation.z);
-                //HitBox = knifeHitbox;
+                if (!isclicked)
+                {
+                    GetComponentInParent<PlayerStats>().setAttack(2);
+                }
                 knifeHitbox.SetActive(HitBox.activeSelf);
                 knifeHitbox.transform.rotation = HitBox.transform.rotation;
-
-
-                //knifeHitbox.SetActive(false);
                 spaculaHitbox.SetActive(false);
                 pinHitbox.SetActive(false);
                 break;
             case Weapon.ROLLINGPIN:
-                GetComponentInParent<PlayerStats>().setAttack(10.0f);
-
-                //pinHitbox.transform.rotation
-                //    //= Quaternion.Euler(-90, 0, 0);
-                //    = Quaternion.Euler(-90, HitBox.transform.rotation.y, HitBox.transform.rotation.z);
-                //HitBox = pinHitbox;
+                if (!isclicked)
+                {
+                    GetComponentInParent<PlayerStats>().setAttack(2);
+                }
                 pinHitbox.SetActive(HitBox.activeSelf);
                 pinHitbox.transform.rotation = HitBox.transform.rotation;
-
-                //pinHitbox.SetActive(false);
                 spaculaHitbox.SetActive(false);
                 knifeHitbox.SetActive(false);
                 break;

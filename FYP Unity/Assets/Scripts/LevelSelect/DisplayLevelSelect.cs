@@ -30,12 +30,12 @@ public class DisplayLevelSelect : MonoBehaviour
             levelSelect.SetActive(false);
             levelLocked.SetActive(true);
             PlayButton.SetActive(false);
-            DisplayReq.GetComponent<TextMeshPro>().text = "LOCKED \n" + pp.GetMaxCC() + "/" + level.CCReq + " Reputation Required";
+            DisplayReq.GetComponent<TextMeshPro>().text = "LOCKED \n \n" + pp.GetMaxCC() + "/" + level.CCReq + " Reputation Required";
         }
         else
         {
             levelSelect.SetActive(true);
-            levelLocked.SetActive(false);
+            levelLocked.SetActive(false);   
             PlayButton.SetActive(true);
         }
 
