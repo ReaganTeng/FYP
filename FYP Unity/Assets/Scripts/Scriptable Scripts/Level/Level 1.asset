@@ -19,6 +19,15 @@ MonoBehaviour:
   SReq: 600
   AReq: 300
   BReq: 100
-  CReq: 30
+  CReq: 2
   CredibilityLeftToObtain: 4
   Locked: 0
+  CCReq: 0
+  HallwaysUnlock: 00000000
+  CustomizeOrderForThisDay:
+    theDish:
+    - {fileID: 396589628195105180, guid: 1aa4138ff3d4c74489890d40137af51c, type: 3}
+    WaitingTime: 0
+    penalty: 10
+    Fixed: 1
+    AmtOfDishes: 0

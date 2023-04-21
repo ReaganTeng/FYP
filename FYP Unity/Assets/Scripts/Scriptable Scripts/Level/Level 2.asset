@@ -21,5 +21,12 @@ MonoBehaviour:
   BReq: 300
   CReq: 150
   CredibilityLeftToObtain: 4
-  Locked: 0
+  Locked: 1
   CCReq: 2
+  HallwaysUnlock: 
+  CustomizeOrderForThisDay:
+    theDish: []
+    WaitingTime: 0
+    penalty: 10
+    Fixed: 1
+    AmtOfDishes: 0

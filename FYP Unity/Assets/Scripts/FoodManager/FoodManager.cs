@@ -77,4 +77,18 @@ public class FoodManager : MonoBehaviour
 
         return foodimage;
     }
+
+    public string GetDishName(GameObject food)
+    {
+        FoodType ftype = food.GetComponent<Food>().GetFoodType();
+        string DishName = "";
+
+        // if the foodtype is a dish, get the dish name
+        if (ftype == FoodType.DISH)
+        {
+            DishName = food.GetComponent<Dish>().GetDishName();
+        }
+
+        return DishName;
+    }
 }

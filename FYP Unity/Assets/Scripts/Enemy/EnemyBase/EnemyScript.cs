@@ -421,7 +421,8 @@ public class EnemyScript : MonoBehaviour
         // if the enemy was attack by another weapon before drop mush
         if (AttackByOtherWeapon)
         {
-            Instantiate(Mush, gameObject.transform.position, Quaternion.identity);
+            GameObject temp = Instantiate(Mush, gameObject.transform.position, Quaternion.identity);
+            temp.transform.SetParent(GameObject.FindGameObjectWithTag("Drops").transform);
         }
         else
         {
@@ -441,6 +442,7 @@ public class EnemyScript : MonoBehaviour
                     break;
             }
             GameObject tempobj = Instantiate(whichobject, gameObject.transform.position, Quaternion.identity);
+            tempobj.transform.SetParent(GameObject.FindGameObjectWithTag("Drops").transform);
 
             // if it is exact kill
             if (ExactKill)

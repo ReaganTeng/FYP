@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
+
 namespace Com.LuisPedroFonseca.ProCamera2D
 {
     public enum TransitionsFXShaders

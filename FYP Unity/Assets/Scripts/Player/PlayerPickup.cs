@@ -18,7 +18,7 @@ public class PlayerPickup : MonoBehaviour
     // add the interactable objects into the list
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Ingredient") || other.CompareTag("Mixer") || other.CompareTag("Serve"))
+        if (other.CompareTag("Ingredient") || other.CompareTag("Mixer") || other.CompareTag("Serve") || other.CompareTag("Barrel") || other.CompareTag("DustBin"))
         {
             if (!InteractableInRangeList.Contains(other.gameObject))
             {
@@ -30,7 +30,7 @@ public class PlayerPickup : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Ingredient") || other.CompareTag("Mixer") || other.CompareTag("Serve"))
+        if (other.CompareTag("Ingredient") || other.CompareTag("Mixer") || other.CompareTag("Serve") || other.CompareTag("Barrel") || other.CompareTag("DustBin"))
         {
             if (InteractableInRangeList.Contains(other.gameObject))
             {
@@ -106,6 +106,16 @@ public class PlayerPickup : MonoBehaviour
                     {
                         pickupobject.GetComponent<Serving>().Serve();
                     }
+
+                    else if (pickupobject.CompareTag("Barrel"))
+                    {
+                        pickupobject.GetComponent<IngredientBarrel>().GetIngredientFromBarrel();
+                    }
+
+                    else if (pickupobject.CompareTag("DustBin"))
+                    {
+                        pickupobject.GetComponent<DustBin>().RemoveItem();
+                    }
                 }
             }
 
@@ -149,11 +159,6 @@ public class PlayerPickup : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Alpha0))
             {
                 ic.ChangeSelectedHotBar(9);
-            }
-            // Remove selected
-            if (Input.GetKeyDown(KeyCode.L))
-            {
-                ic.RemoveSelected();
             }
         }
     }
