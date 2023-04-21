@@ -263,12 +263,12 @@ public class PlayerAttack : MonoBehaviour
         switchWeapon();
     }
 
-    public void OnDrawGizmos()
-    {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireCube
-            (HitBox.transform.position, HitBox.transform.lossyScale);
-    }
+    //public void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.blue;
+    //    Gizmos.DrawWireCube
+    //        (HitBox.transform.position, HitBox.transform.lossyScale);
+    //}
 
     public bool getHitbox()
     {

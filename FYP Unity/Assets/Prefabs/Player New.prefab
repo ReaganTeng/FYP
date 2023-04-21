@@ -336,7 +336,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3462924137396006120}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ce78690cc40ff984f8d3d5436d68a23d, type: 3}
   m_Name: 
@@ -447,8 +447,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.7636243, z: 0.69843334}
-  m_Center: {x: 0, y: 0.95671004, z: 0.0030587614}
+  m_Size: {x: 0.5975774, y: 1.2271737, z: 0.29710442}
+  m_Center: {x: 0.009147614, y: 0.6884847, z: -0.010871135}
 --- !u!1 &3805363940313670151
 GameObject:
   m_ObjectHideFlags: 0
@@ -867,12 +867,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 100
-  m_Sprite: {fileID: 549063024, guid: d0a91d3451bad25469dc1d7315f7dcd2, type: 3}
+  m_Sprite: {fileID: 911685971, guid: 0fa8bd259f86f734d9b8ac8e70ba172f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 20, y: 20}
+  m_Size: {x: 4, y: 5.001221}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
