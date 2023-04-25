@@ -65,7 +65,20 @@ public class EnemyAttack : MonoBehaviour
             animator.SetBool("attack", true);
             other.GetComponent<PlayerMovement>().setAnimator(true);
             other.GetComponent<PlayerStats>().ResetConsecutiveHit();
-            other.GetComponent<PlayerStats>().ChangeFervor(-10.0f);
+
+            if (transform.parent.GetComponent<EnemyScript>().return_enemyType() == EnemyScript.EnemyType.JUMPER)
+            {
+                other.GetComponent<PlayerStats>().ChangeFervor(-10.0f);
+            }
+            else if (transform.parent.GetComponent<EnemyScript>().return_enemyType() == EnemyScript.EnemyType.CHASER)
+            {
+                other.GetComponent<PlayerStats>().ChangeFervor(-5.0f);
+
+            }
+            else if (transform.parent.GetComponent<EnemyScript>().return_enemyType() == EnemyScript.EnemyType.CHARGER)
+            {
+                other.GetComponent<PlayerStats>().ChangeFervor(-15.0f);
+            }
 
             if (transform.parent.GetComponent<EnemyScript>().return_enemyType() == EnemyScript.EnemyType.JUMPER)
             {
@@ -74,7 +87,6 @@ public class EnemyAttack : MonoBehaviour
                 ForceMode.Impulse
                 );
                 transform.parent.GetComponent<BoxCollider>().enabled = false;
-
             }
 
             post_attack = true;

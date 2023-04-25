@@ -117,547 +117,547 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SAAMONO_Walk_0
+      name: saamono_walk_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 1605
-        width: 376
-        height: 321
+        y: 2578
+        width: 400
+        height: 250
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ff260d948ca1a82448d96ec3415b56a5
-      internalID: -438442325
+      spriteID: 1d1b44774c376b14fb6f9ad928981d52
+      internalID: 987470960
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SAAMONO_Walk_1
+      name: saamono_walk_1
       rect:
         serializedVersion: 2
-        x: 376
-        y: 1605
-        width: 376
-        height: 321
+        x: 400
+        y: 2573
+        width: 400
+        height: 250
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cdb902353ba1a3d45b493f9f37a60cc1
-      internalID: 641652893
+      spriteID: cdfb3064005f41a47aa4e96eb150d22b
+      internalID: 1201856068
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SAAMONO_Walk_2
+      name: saamono_walk_2
       rect:
         serializedVersion: 2
-        x: 752
-        y: 1605
-        width: 376
-        height: 321
+        x: 800
+        y: 2573
+        width: 400
+        height: 250
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ec678705912685e408abb05c99f204d6
-      internalID: 1700516446
+      spriteID: beb1dac75632a5a4f90a93cd40933ccb
+      internalID: 1966477053
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SAAMONO_Walk_3
+      name: saamono_walk_3
       rect:
         serializedVersion: 2
-        x: 1128
-        y: 1605
-        width: 376
-        height: 321
+        x: 1200
+        y: 2590
+        width: 400
+        height: 250
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eab7eb58093b8644c99a53116e567316
-      internalID: 1126956044
+      spriteID: fab5bf5407cb83640b391723a92d4627
+      internalID: -1019287039
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SAAMONO_Walk_4
+      name: saamono_walk_4
       rect:
         serializedVersion: 2
-        x: 1504
-        y: 1605
-        width: 376
-        height: 321
+        x: 1600
+        y: 2595
+        width: 400
+        height: 250
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 774c9fda9996b814cb83a5e6ce2267b7
-      internalID: -1179518030
+      spriteID: f3722b551c77812468e142fd688ba1d0
+      internalID: -1702856102
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SAAMONO_Walk_5
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1284
-        width: 376
-        height: 321
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c8ff65011b36bf64ca7bf967644a223f
-      internalID: -1211334809
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SAAMONO_Walk_6
-      rect:
-        serializedVersion: 2
-        x: 376
-        y: 1284
-        width: 376
-        height: 321
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 09bcb304d6545a0448b84e12269be422
-      internalID: 512033691
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SAAMONO_Walk_7
-      rect:
-        serializedVersion: 2
-        x: 752
-        y: 1284
-        width: 376
-        height: 321
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 732777e4a0595784296ed566b26c866f
-      internalID: -1555180168
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SAAMONO_Walk_8
-      rect:
-        serializedVersion: 2
-        x: 1128
-        y: 1284
-        width: 376
-        height: 321
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7d69dd5cf4fe9e449a1e65764d947394
-      internalID: -1454732787
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SAAMONO_Walk_9
-      rect:
-        serializedVersion: 2
-        x: 1504
-        y: 1284
-        width: 376
-        height: 321
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5150d3be8f57acb4682780e948349f0e
-      internalID: 205227827
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SAAMONO_Walk_10
+      name: saamono_walk_10
       rect:
         serializedVersion: 2
         x: 0
-        y: 963
-        width: 376
-        height: 321
+        y: 2100
+        width: 400
+        height: 250
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b07850fb4c70536459a50cad5a143bd7
-      internalID: -1692425417
+      spriteID: 569823c05847b6c44b991c7ee6193a58
+      internalID: -976097138
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SAAMONO_Walk_11
+      name: saamono_walk_11
       rect:
         serializedVersion: 2
-        x: 376
-        y: 963
-        width: 376
-        height: 321
+        x: 400
+        y: 2099
+        width: 400
+        height: 250
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f0b3a8f0a56622a4bb114797ea36dd02
-      internalID: 1899544008
+      spriteID: c0e4531daa394c047ab7590f9058f403
+      internalID: -1260298548
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SAAMONO_Walk_12
+      name: saamono_walk_12
       rect:
         serializedVersion: 2
-        x: 752
-        y: 963
-        width: 376
-        height: 321
+        x: 800
+        y: 2121
+        width: 400
+        height: 250
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2c36f8e7e16c51c49b073c0ed34748e3
-      internalID: -231181484
+      spriteID: 1d1760ffbcbd8204f8f056cd976fc92a
+      internalID: 1846923748
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SAAMONO_Walk_13
+      name: saamono_walk_13
       rect:
         serializedVersion: 2
-        x: 1128
-        y: 963
-        width: 376
-        height: 321
+        x: 1200
+        y: 2144
+        width: 400
+        height: 250
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8207185fc27b3ec4983d5fbd236010f9
-      internalID: 1101280523
+      spriteID: f7c98b5231cb54f4d9642bf92465301a
+      internalID: 1001083675
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SAAMONO_Walk_14
+      name: saamono_walk_14
       rect:
         serializedVersion: 2
-        x: 1504
-        y: 963
-        width: 376
-        height: 321
+        x: 1600
+        y: 2144
+        width: 400
+        height: 250
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f3de98474a560a544841c644b96d3c9f
-      internalID: -741129096
+      spriteID: 1f2a9af5ce7b9034da500aa9e93cd4b6
+      internalID: 1378351598
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SAAMONO_Walk_15
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 642
-        width: 376
-        height: 321
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 435fe152615d84c4abc68f6f45f23e62
-      internalID: -1452778588
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SAAMONO_Walk_16
-      rect:
-        serializedVersion: 2
-        x: 376
-        y: 642
-        width: 376
-        height: 321
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0efe180c2b659c74c9d88f5415f08653
-      internalID: 1129684207
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SAAMONO_Walk_17
-      rect:
-        serializedVersion: 2
-        x: 752
-        y: 642
-        width: 376
-        height: 321
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c72f4a34092eed8478ba2e1d29b36f42
-      internalID: -378635075
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SAAMONO_Walk_18
-      rect:
-        serializedVersion: 2
-        x: 1128
-        y: 642
-        width: 376
-        height: 321
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 65d5694acee6bbd43a3f20d6333d4444
-      internalID: 849420838
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SAAMONO_Walk_19
-      rect:
-        serializedVersion: 2
-        x: 1504
-        y: 642
-        width: 376
-        height: 321
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f4515700061e70f4f97b48ac4510dfe8
-      internalID: 492625388
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SAAMONO_Walk_20
+      name: saamono_walk_25
       rect:
         serializedVersion: 2
         x: 0
-        y: 321
-        width: 376
-        height: 321
+        y: 1659
+        width: 400
+        height: 250
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 09c6613c895edf242984e6dce000f5b6
-      internalID: -1907252100
+      spriteID: b895af8ff9d7eb341b43983278a022d2
+      internalID: 1659525610
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SAAMONO_Walk_21
+      name: saamono_walk_26
       rect:
         serializedVersion: 2
-        x: 376
-        y: 321
-        width: 376
-        height: 321
+        x: 400
+        y: 1664
+        width: 400
+        height: 250
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c00a61226b9d90346942f825e8ad5fb3
-      internalID: 769868202
+      spriteID: e1cdd60d07895394f91d98e400bf5db2
+      internalID: -41889299
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SAAMONO_Walk_22
+      name: saamono_walk_27
       rect:
         serializedVersion: 2
-        x: 752
-        y: 321
-        width: 376
-        height: 321
+        x: 800
+        y: 1677
+        width: 400
+        height: 250
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bc386f29bc567d94f92eccda4d80b836
-      internalID: 1550584315
+      spriteID: 882edb41d44ab34488824b0e079c59cb
+      internalID: 623348901
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SAAMONO_Walk_23
+      name: saamono_walk_28
       rect:
         serializedVersion: 2
-        x: 1128
-        y: 321
-        width: 376
-        height: 321
+        x: 1200
+        y: 1681
+        width: 400
+        height: 250
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 270a47895fffd164b834c820122e3d76
-      internalID: -863054855
+      spriteID: 6d6b1ea2e53c6fe4487d5181ecc97433
+      internalID: -1658272262
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SAAMONO_Walk_24
+      name: saamono_walk_29
       rect:
         serializedVersion: 2
-        x: 1504
-        y: 321
-        width: 376
-        height: 321
+        x: 1600
+        y: 1686
+        width: 400
+        height: 250
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f77f82ed83ba28b4b89b2659fb4bb098
-      internalID: 1530511563
+      spriteID: 818d3d7f8dc0cea4ba7107ffef378d2c
+      internalID: 1910631985
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SAAMONO_Walk_25
+      name: saamono_walk_30
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 376
-        height: 321
+        y: 1183
+        width: 400
+        height: 250
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1c450c95d1d253a4cadb816358872740
-      internalID: 1384213001
+      spriteID: 1f8abd08314bd104390880e675c397aa
+      internalID: -671516330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: saamono_walk_31
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 1170
+        width: 400
+        height: 250
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac118619794734b46bf00f1018b281c8
+      internalID: -1637409094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: saamono_walk_32
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 1166
+        width: 400
+        height: 250
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab658b644160f4b4ca8f87cc415bcc5e
+      internalID: -103806322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: saamono_walk_33
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 1148
+        width: 400
+        height: 250
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2ca4d8dde5b801418b0d011727a352b
+      internalID: 1154588737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: saamono_walk_34
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 1139
+        width: 400
+        height: 250
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e62b541b73910a1428bdb9ec2f9bf96b
+      internalID: -338611183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: saamono_walk_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 626
+        width: 400
+        height: 250
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0ca7e6990bde804a90f4df5302db717
+      internalID: 1423985174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: saamono_walk_46
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 608
+        width: 400
+        height: 250
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5be8d7bdd7d6533449f18b474e2471a7
+      internalID: 1488347340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: saamono_walk_47
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 586
+        width: 400
+        height: 250
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aab950515901eb14d965a6a28ecbcdce
+      internalID: 1773318198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: saamono_walk_48
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 577
+        width: 400
+        height: 250
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d0d5fcaf081b9149a6f664d0d2fc63f
+      internalID: -1248222476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: saamono_walk_49
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 573
+        width: 400
+        height: 250
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1752619c37d64045b82a65e2988aa28
+      internalID: -1573306472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: saamono_walk_51
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 66
+        width: 400
+        height: 250
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42139c3accd4dbe4b96d0f4efb3a5ceb
+      internalID: -1573729416
       vertices: []
       indices: 
       edges: []
@@ -665,7 +665,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 32377efe7863fe541a67952fef6e91f3
+    spriteID: 28acae00c8189914288d7b0d5d7cc9b3
     internalID: 0
     vertices: []
     indices: 
@@ -673,32 +673,59 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SAAMONO_Walk_0: -438442325
-      SAAMONO_Walk_3: 1126956044
-      SAAMONO_Walk_22: 1550584315
-      SAAMONO_Walk_8: -1454732787
-      SAAMONO_Walk_14: -741129096
-      SAAMONO_Walk_18: 849420838
-      SAAMONO_Walk_10: -1692425417
-      SAAMONO_Walk_1: 641652893
-      SAAMONO_Walk_6: 512033691
-      SAAMONO_Walk_11: 1899544008
-      SAAMONO_Walk_13: 1101280523
-      SAAMONO_Walk_16: 1129684207
-      SAAMONO_Walk_20: -1907252100
-      SAAMONO_Walk_4: -1179518030
-      SAAMONO_Walk_23: -863054855
-      SAAMONO_Walk_15: -1452778588
-      SAAMONO_Walk_17: -378635075
-      SAAMONO_Walk_24: 1530511563
-      SAAMONO_Walk_25: 1384213001
-      SAAMONO_Walk_9: 205227827
-      SAAMONO_Walk_7: -1555180168
-      SAAMONO_Walk_12: -231181484
-      SAAMONO_Walk_2: 1700516446
-      SAAMONO_Walk_19: 492625388
-      SAAMONO_Walk_5: -1211334809
-      SAAMONO_Walk_21: 769868202
+      saamono_walk_50: -320973068
+      saamono_walk_38: 2049683275
+      saamono_walk_18: -1913310061
+      saamono_walk_21: -1439695779
+      saamono_walk_30: -671516330
+      saamono_walk_35: -1366921964
+      saamono_walk_36: -1829221035
+      saamono_walk_2: 1966477053
+      saamono_walk_15: -1831515874
+      saamono_walk_48: -1248222476
+      saamono_walk_41: -871812328
+      saamono_walk_28: -1658272262
+      saamono_walk_39: 188033962
+      saamono_walk_3: -1019287039
+      saamono_walk_43: 1385144900
+      saamono_walk_17: 1505385251
+      saamono_walk_19: -1560851428
+      saamono_walk_26: -41889299
+      saamono_walk_33: 1154588737
+      saamono_walk_46: 1488347340
+      saamono_walk_11: -1260298548
+      saamono_walk_20: 1271021211
+      saamono_walk_29: 1910631985
+      saamono_walk_23: 1090499702
+      saamono_walk_1: 1201856068
+      saamono_walk_13: 1001083675
+      saamono_walk_34: -338611183
+      saamono_walk_52: 1826541365
+      saamono_walk_40: 1423985174
+      saamono_walk_32: -103806322
+      saamono_walk_0: 987470960
+      saamono_walk_51: -1573729416
+      saamono_walk_24: -645889495
+      saamono_walk_4: -1702856102
+      saamono_walk_16: 1794616408
+      saamono_walk_14: 1378351598
+      saamono_walk_27: 623348901
+      saamono_walk_47: 1773318198
+      saamono_walk_8: 1675079523
+      saamono_walk_37: -1806809296
+      saamono_walk_42: -1997204687
+      saamono_walk_31: -1637409094
+      saamono_walk_9: 266878054
+      saamono_walk_25: 1659525610
+      saamono_walk_45: 124302921
+      saamono_walk_44: -723719045
+      saamono_walk_10: -976097138
+      saamono_walk_5: -1238139153
+      saamono_walk_7: -1058225694
+      saamono_walk_22: -1192597957
+      saamono_walk_6: -1230754872
+      saamono_walk_49: -1573306472
+      saamono_walk_12: 1846923748
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

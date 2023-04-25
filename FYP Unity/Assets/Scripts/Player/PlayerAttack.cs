@@ -22,13 +22,9 @@ public class PlayerAttack : MonoBehaviour
     bool attacking;
     int direction;
 
-
-
     [SerializeField] GameObject spaculaHitbox;
     [SerializeField] GameObject knifeHitbox;
     [SerializeField] GameObject pinHitbox;
-
-
 
     float chargeCurrentLvl;
     float chargeMaxLvl;
@@ -62,6 +58,8 @@ public class PlayerAttack : MonoBehaviour
 
     [SerializeField] LayerMask enemyLM;
     [SerializeField] Animator animator;
+
+    [SerializeField] PlayerProgress pp;
 
     void Start()
     {
@@ -107,10 +105,14 @@ public class PlayerAttack : MonoBehaviour
                             Quaternion.Euler(0, 0, 0)
                             );
                     l.transform.SetParent(canvas.transform);
-                    l.transform.position = new Vector2(chargeBar.handleRect.position.x, chargeBar.transform.position.y);
-                    l.transform.localScale = new Vector2(1, chargeBar.transform.lossyScale.y);
+                    l.transform.position = new Vector2(chargeBar.handleRect.position.x, 
+                        chargeBar.transform.position.y);
+                    //l.transform.localScale = new Vector2(1, chargeBar.transform.lossyScale.y);
+                    //yourUIElement.GetComponent(RectTransform).sizeDelta = new Vector2(width, height);
+                    l.GetComponentInChildren<RectTransform>().sizeDelta = 
+                        new Vector2(5,
+                            chargeBar.GetComponent<RectTransform>().rect.height);
                     i++;
-
                 }
                 else
                 {
@@ -126,12 +128,12 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (chargeBar != null)
         {
             updatecharge();
         }
 
+        //TIMER FOR CHARGEBAR
         if(chargeBar.value >= chargeBar.maxValue)
         {
             txt.enabled = false;
@@ -140,10 +142,9 @@ public class PlayerAttack : MonoBehaviour
         {
             txt.enabled = true;
         }
+        //
 
         currentAnimationLength = animator.GetCurrentAnimatorStateInfo(0).length;
-
-       
 
         // Attacking
         if (attackcdtimer > 0)
@@ -156,13 +157,10 @@ public class PlayerAttack : MonoBehaviour
             GameObject.FindGameObjectWithTag("playerspriterenderer").GetComponent<Animator>().SetBool("click", isclicked);
             //
 
-
-
             //LIGHT ATTACK
             if (Input.GetMouseButtonDown(0) && !attacking)
             {
                 isclicked = true;
-                //Debug.Log("LIGHT ATTACK");
                 AttackWhichDirection(direction);
                 //HitBox.SetActive(true);
                 //attacking = true;
@@ -176,7 +174,6 @@ public class PlayerAttack : MonoBehaviour
                 && (int)chargeCurrentLvl>= (int)min_notch_value)
             {
                 isclicked = true;
-                //Debug.Log("HEAVY ATTACK");
                 transform.parent.GetComponent<PlayerStats>().setAttack(
                 GetComponentInParent<PlayerStats>().getAttack(1));
                 AttackWhichDirection(direction);
@@ -234,7 +231,6 @@ public class PlayerAttack : MonoBehaviour
             }
         }
 
-
         if (animator.GetBool("click") == false)
         {
             // To swap between weapons
@@ -285,6 +281,7 @@ public class PlayerAttack : MonoBehaviour
                     GetComponentInParent<PlayerStats>().setAttack(2);
                 }
                 spaculaHitbox.SetActive(HitBox.activeSelf);
+
                 spaculaHitbox.transform.rotation = HitBox.transform.rotation;
                 knifeHitbox.SetActive(false);
                 pinHitbox.SetActive(false);

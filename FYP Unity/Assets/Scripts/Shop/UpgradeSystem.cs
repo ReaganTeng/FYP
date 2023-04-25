@@ -9,6 +9,11 @@ public class UpgradeSystem : MonoBehaviour
     {
         NONE,
         INVENTORY_UPGRADE,
+
+
+        LIGHT_ATTACK_SPEED_BUFF,
+        HEAVY_ATTACK_SPEED_BUFF
+
     }
 
     public static UpgradeSystem instance;
@@ -25,6 +30,7 @@ public class UpgradeSystem : MonoBehaviour
             case ShopItemType.INVENTORY_UPGRADE:
                 pp.MaxInventorySlots += 1;
                 break;
+            
         }
     }
 }

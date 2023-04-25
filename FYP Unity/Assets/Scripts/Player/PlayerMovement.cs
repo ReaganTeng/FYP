@@ -27,7 +27,8 @@ public class PlayerMovement : MonoBehaviour
 
     //
     bool isWalking;
-   
+    bool walkFront; 
+    bool walkBack;
 
     private void Start()
     {
@@ -60,22 +61,43 @@ public class PlayerMovement : MonoBehaviour
         {
             float horizontalInput = Input.GetAxis("Horizontal");
             float verticalInput = Input.GetAxis("Vertical");
-            playerRB.AddForce((orientation.forward * verticalInput + orientation.right * horizontalInput) * PlayerSpeed);
 
             GetComponentInChildren<Animator>().SetBool("walking", isWalking);
-            GetComponentInChildren<Animator>().SetBool("WalkFront", Input.GetKey(KeyCode.S));
-            GetComponentInChildren<Animator>().SetBool("WalkBack", Input.GetKey(KeyCode.W));
-            //GetComponentInChildren<Animator>().SetBool("WalkSide", Input.GetKey(KeyCode.A));
+            GetComponentInChildren<Animator>().SetBool("WalkFront", walkFront);
+            GetComponentInChildren<Animator>().SetBool("WalkBack", walkBack);
 
 
             // If user is pressing any movement keys
             if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
             {
-                //isWalking = true;
-                //Debug.Log("MOVING");
+                playerRB.AddForce((orientation.forward * verticalInput + orientation.right * horizontalInput) * PlayerSpeed);
                 CheckDirection(ref Forwardrun, ref Rightrun, horizontalInput, verticalInput);
             }
-            
+
+            if (Input.GetKey(KeyCode.W)
+                && !Input.GetKey(KeyCode.S)
+                && !Input.GetKey(KeyCode.A)
+                && !Input.GetKey(KeyCode.D))
+            {
+                walkBack = true;
+            }
+            else
+            {
+                walkBack = false;
+            }
+
+
+            if (!Input.GetKey(KeyCode.W)
+                && Input.GetKey(KeyCode.S)
+                && !Input.GetKey(KeyCode.A)
+                && !Input.GetKey(KeyCode.D))
+            {
+                walkFront = true;
+            }
+            else
+            {
+                walkFront = false;
+            }
 
             if (Input.GetKey(KeyCode.A))
             { 

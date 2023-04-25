@@ -265,7 +265,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2994583381017202772, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: max_enemies
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2994583381017202772, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: enemies_per_spawn
@@ -277,7 +277,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2994583381017202792, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2994583381017202793, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: m_RootOrder
@@ -344,30 +344,6 @@ PrefabInstance:
     - target: {fileID: 984530195349165111, guid: d09965bd491c43742a512d3f4207781f, type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1331769804428489472, guid: d09965bd491c43742a512d3f4207781f, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1331769804428489472, guid: d09965bd491c43742a512d3f4207781f, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1331769804428489472, guid: d09965bd491c43742a512d3f4207781f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.85
-      objectReference: {fileID: 0}
-    - target: {fileID: 1640764224975875881, guid: d09965bd491c43742a512d3f4207781f, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1640764224975875881, guid: d09965bd491c43742a512d3f4207781f, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1640764224975875881, guid: d09965bd491c43742a512d3f4207781f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2113574715766450480, guid: d09965bd491c43742a512d3f4207781f, type: 3}
       propertyPath: m_Enabled
@@ -443,7 +419,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3462924137396006135, guid: d09965bd491c43742a512d3f4207781f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.9
+      value: 9.77
       objectReference: {fileID: 0}
     - target: {fileID: 3462924137396006135, guid: d09965bd491c43742a512d3f4207781f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -451,7 +427,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3462924137396006135, guid: d09965bd491c43742a512d3f4207781f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.3
+      value: 2.7
       objectReference: {fileID: 0}
     - target: {fileID: 3462924137396006135, guid: d09965bd491c43742a512d3f4207781f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1244,7 +1220,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2994583381017202772, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: max_enemies
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2994583381017202772, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: enemies_per_spawn
@@ -1256,7 +1232,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2994583381017202792, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2994583381017202793, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: m_RootOrder
@@ -1970,7 +1946,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2994583381017202772, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: max_enemies
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2994583381017202772, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: enemies_per_spawn
@@ -1982,7 +1958,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2994583381017202792, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2994583381017202793, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: m_RootOrder
@@ -3884,11 +3860,11 @@ PrefabInstance:
       objectReference: {fileID: 7031070655414662128, guid: e6043d80fa0fdb648b90463fecfdc618, type: 3}
     - target: {fileID: 2994583381017202772, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: interval
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2994583381017202772, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: max_enemies
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2994583381017202772, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: enemies_per_spawn
@@ -3900,7 +3876,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2994583381017202792, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2994583381017202793, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: m_RootOrder
@@ -3970,7 +3946,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2994583381017202772, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: max_enemies
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2994583381017202772, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: enemies_per_spawn
@@ -4097,7 +4073,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2994583381017202772, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: max_enemies
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2994583381017202772, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: enemies_per_spawn
@@ -4109,7 +4085,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2994583381017202792, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2994583381017202793, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: m_RootOrder
@@ -4236,7 +4212,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2994583381017202772, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: max_enemies
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2994583381017202772, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: enemies_per_spawn
@@ -4248,7 +4224,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2994583381017202792, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2994583381017202793, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: m_RootOrder
@@ -4333,7 +4309,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2994583381017202772, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: max_enemies
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2994583381017202772, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: enemies_per_spawn
@@ -4345,7 +4321,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2994583381017202792, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2994583381017202793, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: m_RootOrder
@@ -4425,7 +4401,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2994583381017202772, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: max_enemies
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2994583381017202772, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: enemies_per_spawn
@@ -4437,7 +4413,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2994583381017202792, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2994583381017202793, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: m_RootOrder

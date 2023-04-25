@@ -117,13 +117,286 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SAAMONO_Attack_0
+      name: saamono_attack_0
+      rect:
+        serializedVersion: 2
+        x: 2036
+        y: 3234
+        width: 420
+        height: 400
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51b3da58b77f42e4d9cdba7adac4502c
+      internalID: 1210390110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: saamono_attack_1
+      rect:
+        serializedVersion: 2
+        x: 2580
+        y: 3201
+        width: 420
+        height: 400
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 082f6136edc6b53479079c2b0c943672
+      internalID: -443576483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: saamono_attack_2
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 3212
+        width: 420
+        height: 400
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e387c13de2344749a87ce28156dc666
+      internalID: -1990511155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: saamono_attack_3
+      rect:
+        serializedVersion: 2
+        x: 742
+        y: 3237
+        width: 420
+        height: 400
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4754fec3a1dc36c48ab08648dfdb1c7d
+      internalID: 1439589387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: saamono_attack_4
+      rect:
+        serializedVersion: 2
+        x: 1365
+        y: 2527
+        width: 420
+        height: 400
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afe7587a3bca7384f878f4f021280b60
+      internalID: -269433336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: saamono_attack_5
+      rect:
+        serializedVersion: 2
+        x: 731
+        y: 2466
+        width: 420
+        height: 400
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b2594ad84fcc9743ae1530f465ca638
+      internalID: 117636403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: saamono_attack_6
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 2412
+        width: 420
+        height: 400
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e6e6a7bed301654f8efe086ebe2f262
+      internalID: -2041557058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: saamono_attack_7
+      rect:
+        serializedVersion: 2
+        x: 2569
+        y: 2581
+        width: 420
+        height: 400
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c0dd5525aca85647a9c6fb3ec7f5e7e
+      internalID: 1633403587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: saamono_attack_8
+      rect:
+        serializedVersion: 2
+        x: 1982
+        y: 2581
+        width: 420
+        height: 400
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c458623395ee89498471e0bcc21f6f8
+      internalID: 650282447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: saamono_attack_9
+      rect:
+        serializedVersion: 2
+        x: 1423
+        y: 3252
+        width: 420
+        height: 400
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57f1778ee8eab3541819200fb98ffbc4
+      internalID: -913864751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: saamono_attack_10
+      rect:
+        serializedVersion: 2
+        x: 1192
+        y: 1732
+        width: 420
+        height: 400
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ad3ab8b7c901a04d925621146db35b1
+      internalID: 1326870319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: saamono_attack_11
+      rect:
+        serializedVersion: 2
+        x: 1862
+        y: 1739
+        width: 420
+        height: 400
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fef3b0462a0b5004b981b2f7aeefccef
+      internalID: 366500596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: saamono_attack_12
+      rect:
+        serializedVersion: 2
+        x: 2494
+        y: 1722
+        width: 420
+        height: 400
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e372280aeb00fe048976485d8a178883
+      internalID: 1736493832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: saamono_attack_13
       rect:
         serializedVersion: 2
         x: 0
-        y: 1816
-        width: 556
-        height: 454
+        y: 1766
+        width: 420
+        height: 400
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,20 +404,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 31a3b04d9e7a0644c93d3e54f3b25b27
-      internalID: -1889079315
+      spriteID: 6bfadc987891fd248b53bfb47d994e0c
+      internalID: -2035485970
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SAAMONO_Attack_1
+      name: saamono_attack_14
       rect:
         serializedVersion: 2
-        x: 556
-        y: 1816
-        width: 556
-        height: 454
+        x: 506
+        y: 1728
+        width: 420
+        height: 400
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,20 +425,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dc2295c6451e6ce4cb02f500f939c07c
-      internalID: -1601825410
+      spriteID: 5ae4bb5ff5c4b3446a953e6c6c90d149
+      internalID: 1477321670
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SAAMONO_Attack_2
+      name: saamono_attack_15
       rect:
         serializedVersion: 2
-        x: 1112
-        y: 1816
-        width: 556
-        height: 454
+        x: 1288
+        y: 916
+        width: 420
+        height: 400
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,20 +446,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fe9c66b30a57ccc44aecaffdf427712b
-      internalID: -846719256
+      spriteID: 32c08bbb4c494fa4ea687cf588b83f45
+      internalID: -527618819
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SAAMONO_Attack_3
+      name: saamono_attack_16
       rect:
         serializedVersion: 2
-        x: 1668
-        y: 1816
-        width: 556
-        height: 454
+        x: 1920
+        y: 902
+        width: 420
+        height: 400
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -194,20 +467,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5f5d5c2101d254942a16c45e15c727f4
-      internalID: -1834746158
+      spriteID: 6e89e394ec7ce8d4aa30ae96dd04b56a
+      internalID: 1218355743
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SAAMONO_Attack_4
+      name: saamono_attack_17
       rect:
         serializedVersion: 2
-        x: 2224
-        y: 1816
-        width: 556
-        height: 454
+        x: 2552
+        y: 882
+        width: 420
+        height: 400
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -215,20 +488,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 39a1feb58448180419072e2d1557c785
-      internalID: 1227700587
+      spriteID: c1cdb84b8586a9842b9dba3e61b24937
+      internalID: -1119019256
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SAAMONO_Attack_5
+      name: saamono_attack_18
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1362
-        width: 556
-        height: 454
+        x: 14
+        y: 909
+        width: 420
+        height: 400
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -236,20 +509,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e50b2286b0218ac43b172c3fd9ba24ba
-      internalID: -1996282097
+      spriteID: 62c7592be9bca554f817eabc86f1e8e3
+      internalID: 1866138587
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SAAMONO_Attack_6
+      name: saamono_attack_19
       rect:
         serializedVersion: 2
-        x: 556
-        y: 1362
-        width: 556
-        height: 454
+        x: 660
+        y: 909
+        width: 420
+        height: 400
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -257,20 +530,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b99b6f25dd5e1684fad94507d115df9e
-      internalID: 2048456492
+      spriteID: d821ead196314624d9654b3d42a3901e
+      internalID: 1588351005
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SAAMONO_Attack_7
+      name: saamono_attack_20
       rect:
         serializedVersion: 2
-        x: 1112
-        y: 1362
-        width: 556
-        height: 454
+        x: 62
+        y: 97
+        width: 420
+        height: 400
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -278,20 +551,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c3c578ad038ecca4fbbc89321bd75bc4
-      internalID: 1588944678
+      spriteID: 840d7d214c3056d4b8ba4ea3a92d8bc0
+      internalID: -752376431
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SAAMONO_Attack_8
+      name: saamono_attack_21
       rect:
         serializedVersion: 2
-        x: 1668
-        y: 1362
-        width: 556
-        height: 454
+        x: 1312
+        y: 107
+        width: 420
+        height: 400
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -299,20 +572,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6322627f9f4916f43954eaced1f9d9e0
-      internalID: 1414451189
+      spriteID: 3ec40a1753c1254469abea11a5a29696
+      internalID: 2006596662
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SAAMONO_Attack_9
+      name: saamono_attack_22
       rect:
         serializedVersion: 2
-        x: 2224
-        y: 1362
-        width: 556
-        height: 454
+        x: 690
+        y: 104
+        width: 420
+        height: 400
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -320,281 +593,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b3b8f28c597d3f24085cff8ab9dd72c5
-      internalID: 431126625
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SAAMONO_Attack_10
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 908
-        width: 556
-        height: 454
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cfeebe44b4d487e469de2a74c9c1b2fb
-      internalID: -543164299
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SAAMONO_Attack_11
-      rect:
-        serializedVersion: 2
-        x: 556
-        y: 908
-        width: 556
-        height: 454
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5b78216ffd82c0546adaddacbfc79584
-      internalID: 115483275
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SAAMONO_Attack_12
-      rect:
-        serializedVersion: 2
-        x: 1112
-        y: 908
-        width: 556
-        height: 454
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 24ac3d39949229849b4680f93ccee3c7
-      internalID: -1744643659
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SAAMONO_Attack_13
-      rect:
-        serializedVersion: 2
-        x: 1668
-        y: 908
-        width: 556
-        height: 454
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c624b7dee408cb04b9170e376fa40544
-      internalID: -719027285
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SAAMONO_Attack_14
-      rect:
-        serializedVersion: 2
-        x: 2224
-        y: 908
-        width: 556
-        height: 454
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f3fee8f41c95e2d4b9ff07bbfb1093f5
-      internalID: 1119394338
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SAAMONO_Attack_15
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 454
-        width: 556
-        height: 454
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: aaaacfda37a1a704b966bfc63258048a
-      internalID: 110128621
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SAAMONO_Attack_16
-      rect:
-        serializedVersion: 2
-        x: 556
-        y: 454
-        width: 556
-        height: 454
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 63268c16baa105b40aacd6230e74da9f
-      internalID: -885989603
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SAAMONO_Attack_17
-      rect:
-        serializedVersion: 2
-        x: 1112
-        y: 454
-        width: 556
-        height: 454
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5bc5ff02ba0735f43ba9848098f563c2
-      internalID: -1657838236
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SAAMONO_Attack_18
-      rect:
-        serializedVersion: 2
-        x: 1668
-        y: 454
-        width: 556
-        height: 454
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 174a8fdbd99e770429e3c7cc4d2a1369
-      internalID: -1055126818
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SAAMONO_Attack_19
-      rect:
-        serializedVersion: 2
-        x: 2224
-        y: 454
-        width: 556
-        height: 454
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 30837bfc59cba2a448fe6695654b7c05
-      internalID: 2109823968
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SAAMONO_Attack_20
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 556
-        height: 454
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 274f8424f4d8505459161a069d70c35b
-      internalID: -1430842083
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SAAMONO_Attack_21
-      rect:
-        serializedVersion: 2
-        x: 556
-        y: 0
-        width: 556
-        height: 454
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6068c4759a8bb9749abe81529a375ad0
-      internalID: 2046603203
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SAAMONO_Attack_22
-      rect:
-        serializedVersion: 2
-        x: 1112
-        y: 3
-        width: 556
-        height: 454
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ee47f37588a607b428428d03047fc4d6
-      internalID: 595533812
+      spriteID: 084ab1212a6a83a4aafe1e3ae160df72
+      internalID: -859399040
       vertices: []
       indices: 
       edges: []
@@ -602,7 +602,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 4b0b4ea904bbe2942840540840291652
+    spriteID: 508951420fd14b44e969ac830b81f2a8
     internalID: 0
     vertices: []
     indices: 
@@ -610,29 +610,30 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SAAMONO_Attack_5: -1996282097
-      SAAMONO_Attack_0: -1889079315
-      SAAMONO_Attack_9: 431126625
-      SAAMONO_Attack_10: -543164299
-      SAAMONO_Attack_16: -885989603
-      SAAMONO_Attack_21: 2046603203
-      SAAMONO_Attack_1: -1601825410
-      SAAMONO_Attack_13: -719027285
-      SAAMONO_Attack_3: -1834746158
-      SAAMONO_Attack_20: -1430842083
-      SAAMONO_Attack_11: 115483275
-      SAAMONO_Attack_12: -1744643659
-      SAAMONO_Attack_17: -1657838236
-      SAAMONO_Attack_22: 595533812
-      SAAMONO_Attack_15: 110128621
-      SAAMONO_Attack_7: 1588944678
-      SAAMONO_Attack_18: -1055126818
-      SAAMONO_Attack_2: -846719256
-      SAAMONO_Attack_8: 1414451189
-      SAAMONO_Attack_19: 2109823968
-      SAAMONO_Attack_14: 1119394338
-      SAAMONO_Attack_6: 2048456492
-      SAAMONO_Attack_4: 1227700587
+      saamono_attack_17: -1119019256
+      saamono_attack_2: -1990511155
+      saamono_attack_20: -752376431
+      saamono_attack_11: 366500596
+      saamono_attack_7: 1633403587
+      saamono_attack_12: 1736493832
+      saamono_attack_10: 1326870319
+      saamono_attack_21: 2006596662
+      saamono_attack_14: 1477321670
+      saamono_attack_15: -527618819
+      saamono_attack_5: 117636403
+      saamono_attack_16: 1218355743
+      saamono_attack_18: 1866138587
+      saamono_attack_9: -913864751
+      saamono_attack_13: -2035485970
+      saamono_attack_22: -859399040
+      saamono_attack_23: 464906719
+      saamono_attack_0: 1210390110
+      saamono_attack_6: -2041557058
+      saamono_attack_3: 1439589387
+      saamono_attack_4: -269433336
+      saamono_attack_19: 1588351005
+      saamono_attack_1: -443576483
+      saamono_attack_8: 650282447
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

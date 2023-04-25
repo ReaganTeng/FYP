@@ -9,10 +9,14 @@ public class PlayerProgress : ScriptableObject
     [SerializeField] int CosmicCredibility;
     [SerializeField] int TotalObtainedCredibility;
 
+
     public void ResetInventory()
     {
         MaxInventorySlots = 5;
     }
+
+    
+
 
     public void AddCredibility(int amt)
     {
@@ -40,4 +44,7 @@ public class PlayerProgress : ScriptableObject
     {
         return TotalObtainedCredibility;
     }
+
+
+
 }

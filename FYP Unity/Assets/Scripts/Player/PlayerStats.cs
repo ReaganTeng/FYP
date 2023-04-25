@@ -43,6 +43,9 @@ public class PlayerStats : MonoBehaviour
 
     float hurt_period;
 
+
+
+
     public void Start()
     {
         PlayerAttack = 2;
@@ -54,8 +57,6 @@ public class PlayerStats : MonoBehaviour
         {
             fervorBar.maxValue = fervorMaxLevel;
         }
-
-        
 
         fervorLevel = 0;
         numberConsecutiveHits = 0;

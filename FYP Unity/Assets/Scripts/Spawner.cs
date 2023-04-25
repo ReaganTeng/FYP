@@ -36,7 +36,6 @@ public class Spawner : MonoBehaviour
                     );*/
 
         //Debug.Log("MAX ENEMIES " + max_enemies);
-
         if (enable == false)
         {
             return;
@@ -59,8 +58,8 @@ public class Spawner : MonoBehaviour
                     z_position = Random.Range(-5, 5);
 
                     GameObject enemyObject = Instantiate(enemy,
-                               transform.position + new Vector3(x_position * enemy.transform.localScale.x, 
-                               0, z_position * enemy.transform.localScale.z),
+                               transform.position /*+ new Vector3(x_position * enemy.transform.localScale.x, 
+                               0, z_position * enemy.transform.localScale.z)*/,
                                transform.rotation
                                );
                     enemyObject.transform.SetParent(transform);
