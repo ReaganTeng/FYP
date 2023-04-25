@@ -8,21 +8,23 @@ public class OrderManager : MonoBehaviour
     [System.Serializable]
     public class DayOrder
     {
-        public List<string> dishName = new List<string>();
-        public int whatday;
-        // Waiting time
-        public float WaitingTime;
+        // contains the list of dishes that will appear that day
+        public List<Dish> theDish = new List<Dish>();
+        // Time till order expire, default is 100 if set to 0
+        public float WaitingTime = 0;
         // Penalty for not serving a dish
-        public int penalty;
+        public int penalty = 10;
         // if this is check, the dish set will only appear on that day, if this is uncheck, u can set how many random orders to set
-        public bool Fixed;
+        public bool Fixed = true;
         //Set the amt of dishes for the day, will be ignore if Fixed is true
         public int AmtOfDishes;
     }
 
-    // A list that store any pre-determined orders that has to come out for the day;
-    [SerializeField]
-    List<DayOrder> presetdaylist;
+    // Get the reference to the level manager which stores the list of levels.
+    [SerializeField] LevelManager lm;
+
+    // The preset day list from the level itself
+    DayOrder presetday;
 
     List<Recipes.recipes> currentdayrecipesList = new List<Recipes.recipes>();
 
@@ -39,6 +41,12 @@ public class OrderManager : MonoBehaviour
     private void Start()
     {
         currentday = eod.GetCurrentDay();
+
+        // set the presetday to what the level customization is, if the level itself exist
+        if (currentday > 0 && currentday < lm.levelInfo.Count)
+            presetday = lm.levelInfo[currentday - 1].CustomizeOrderForThisDay;
+
+        // set the orders that can come out
         SetOrdersForTheDay();
     }
 
@@ -58,35 +66,32 @@ public class OrderManager : MonoBehaviour
     public void SetOrdersForTheDay()
     {
         bool PresetDay = false;
-        int index = 0;
-        // Check to see if there is any preset values for that day
-        for (int i = 0; i < presetdaylist.Count; i++)
+        // Check to see if there is a level customization set for this day
+        if (presetday != null)
         {
-            if (currentday == presetdaylist[i].whatday)
+            // Check to see if there are dishes that appear in that level
+            if (presetday.theDish.Count > 0)
             {
-                // set the index to that pos in the list
-                index = i;
                 PresetDay = true;
-                break;
             }
         }
 
         // if there is a presetday, use it
         if (PresetDay)
         {
-            for (int i = 0; i < presetdaylist[index].dishName.Count; i++)
+            // Use whatever that is supplied into the parameter
+            for (int i = 0; i < presetday.theDish.Count; i++)
             {
-                Recipes.recipes temprecipe = Recipes.instance.GetDishRecipe(presetdaylist[index].dishName[i]);
-                currentdayrecipesList.Add(temprecipe);
+                currentdayrecipesList.Add(Recipes.instance.GetDishRecipe(presetday.theDish[i].GetDishName()));
             }
 
             // If the day is fixed, do not need to care about the rest, if it is not fixed, fill in random recipes if needed
-            if (!presetdaylist[index].Fixed)
+            if (!presetday.Fixed)
             {
                 // check to see what extra dishes needs to be fulfill if any
-                if (presetdaylist[index].AmtOfDishes > currentdayrecipesList.Count)
+                if (presetday.AmtOfDishes > currentdayrecipesList.Count)
                 {
-                    int AmtOfRecipesToAdd = presetdaylist[index].AmtOfDishes - currentdayrecipesList.Count;
+                    int AmtOfRecipesToAdd = presetday.AmtOfDishes - currentdayrecipesList.Count;
                     GenerateRandomRecipe(AmtOfRecipesToAdd);
                 }
             }
@@ -136,26 +141,11 @@ public class OrderManager : MonoBehaviour
 
     public float GetCurrentDayWaitingTime()
     {
-        for (int i = 0; i < presetdaylist.Count; i++)
-        {
-            if (currentday == presetdaylist[i].whatday)
-            {
-                return presetdaylist[i].WaitingTime;
-            }
-        }
-        return 0;
+        return presetday.WaitingTime;
     }
 
     public int GetPenalty()
     {
-        for (int i = 0; i < presetdaylist.Count; i++)
-        {
-            if (currentday == presetdaylist[i].whatday)
-            {
-                return presetdaylist[i].penalty;
-            }
-        }
-        // by default -10 for penalty
-        return 10;
+        return presetday.penalty;
     }
 }

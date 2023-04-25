@@ -21,6 +21,11 @@ public class PlayerAttack : MonoBehaviour
     float attackingtimer;
     bool attacking;
     int direction;
+    GameObject currentWeaponDisplay;
+
+    [SerializeField] GameObject KnifeWeaponDisplay;
+    [SerializeField] GameObject RollerWeaponDisplay;
+    [SerializeField] GameObject SpatulaWeaponDisplay;
 
     [SerializeField] GameObject spaculaHitbox;
     [SerializeField] GameObject knifeHitbox;
@@ -133,14 +138,16 @@ public class PlayerAttack : MonoBehaviour
             updatecharge();
         }
 
-        //TIMER FOR CHARGEBAR
-        if(chargeBar.value >= chargeBar.maxValue)
+        if (txt != null)
         {
-            txt.enabled = false;
-        }
-        else
-        {
-            txt.enabled = true;
+            if (chargeBar.value >= chargeBar.maxValue)
+            {
+                txt.enabled = false;
+            }
+            else
+            {
+                txt.enabled = true;
+            }
         }
         //
 
@@ -237,14 +244,17 @@ public class PlayerAttack : MonoBehaviour
             if (Input.GetKey(KeyCode.Z))
             {
                 currentweapon = Weapon.SPATULA;
+                UpdateWeaponDisplay();
             }
             else if (Input.GetKey(KeyCode.X))
             {
                 currentweapon = Weapon.KNIFE;
+                UpdateWeaponDisplay();
             }
             else if (Input.GetKey(KeyCode.C))
             {
                 currentweapon = Weapon.ROLLINGPIN;
+                UpdateWeaponDisplay();
             }
         }
 
@@ -259,12 +269,12 @@ public class PlayerAttack : MonoBehaviour
         switchWeapon();
     }
 
-    public void OnDrawGizmos()
-    {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireCube
-            (HitBox.transform.position, HitBox.transform.lossyScale);
-    }
+    //public void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.blue;
+    //    Gizmos.DrawWireCube
+    //        (HitBox.transform.position, HitBox.transform.lossyScale);
+    //}
 
     public bool getHitbox()
     {
@@ -448,4 +458,29 @@ public class PlayerAttack : MonoBehaviour
         // 0 is spatula, 1 is knife, 2 is rolling pin
         return (int)currentweapon;
     }
+
+    void UpdateWeaponDisplay()
+    {
+        switch((Weapon)GetWeaponType())
+        {
+            case Weapon.KNIFE:
+                 KnifeWeaponDisplay.SetActive(true);
+                SpatulaWeaponDisplay.SetActive(false);
+                RollerWeaponDisplay.SetActive(false);
+
+                break;
+
+            case Weapon.ROLLINGPIN:
+                RollerWeaponDisplay.SetActive(true);
+                KnifeWeaponDisplay.SetActive(false);
+                SpatulaWeaponDisplay.SetActive(false);
+                break;
+
+            case Weapon.SPATULA:
+                SpatulaWeaponDisplay.SetActive(true);
+                KnifeWeaponDisplay.SetActive(false);
+                RollerWeaponDisplay.SetActive(false);
+                break;
+        }
+    }    
 }

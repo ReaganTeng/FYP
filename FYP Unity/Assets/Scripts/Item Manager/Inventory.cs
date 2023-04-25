@@ -54,9 +54,20 @@ public class Inventory : MonoBehaviour
         return false;
     }
 
-    public void RemoveFromInventory(int Itempos)
+    public void RemoveFromInventory(int Itempos, bool DeleteReference)
     {
+        GameObject tempobj = InventoryList[Itempos].food;
+
         InventoryList.RemoveAt(Itempos);
+
+        if (DeleteReference)
+        {
+            if (tempobj != null)
+            {
+                Destroy(tempobj);
+            }
+        }
+
         IsInventoryFull();
     }
 

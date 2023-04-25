@@ -41,6 +41,20 @@ public class Recipes : MonoBehaviour
         return null;
     }
 
+    public recipes GetRefinedRecipe(GameObject refinedInput)
+    {
+        for (int i = 0; i < RefinedIngredientrecipeList.Count; i++)
+        {
+            if (refinedInput == RefinedIngredientrecipeList[i].Result)
+            {
+                return RefinedIngredientrecipeList[i];
+            }
+        }
+
+        // return null if it finds nothing
+        return null;
+    }
+
     public int GetDishRecipeListCount()
     {
         return dishrecipeList.Count;

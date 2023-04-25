@@ -18,6 +18,11 @@ TagManager:
   - Zone
   - playerboxcollider
   - playerspriterenderer
+  - MinimapCanvas
+  - PauseMenu
+  - Barrel
+  - DustBin
+  - Drops
   layers:
   - Default
   - TransparentFX
@@ -27,7 +32,7 @@ TagManager:
   - UI
   - Player
   - Enemy
-  - 
+  - Minimap
   - 
   - 
   - 
@@ -41,8 +46,8 @@ TagManager:
   - 
   - Level
   - WallthatBlocks
-  - 
-  - 
+  - RockBG
+  - SkyBG
   - 
   - 
   - 

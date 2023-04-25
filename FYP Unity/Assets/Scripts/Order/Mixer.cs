@@ -68,8 +68,9 @@ public class Mixer : MonoBehaviour
             switch (mixerType)
             {
                 case MixerType.REFINER:
-                    // make sure that the player is holding an ingredient
-                    if (inventory.GetSelectedFoodID(FoodManager.FoodType.INGREDIENT) != -1)
+                    // make sure that the player is holding an ingredient and it isnt a mush
+                    if (inventory.GetSelectedFoodID(FoodManager.FoodType.INGREDIENT) != -1
+                        && FoodManager.instance.GetItemID(inventory.GetSelectedGameObject()) != (int)ItemManager.Items.MUSH)
                     {
                         mixercontent.Add(inventory.GetSelectedGameObject());
                         inventory.RemoveSelected();
@@ -78,7 +79,8 @@ public class Mixer : MonoBehaviour
                     break;
                 case MixerType.COOKER:
                     // make sure that the player is holding an ingredient
-                    if (inventory.GetSelectedFoodID(FoodManager.FoodType.REFINED_INGREDIENT) != -1)
+                    if (inventory.GetSelectedFoodID(FoodManager.FoodType.REFINED_INGREDIENT) != -1
+                        && FoodManager.instance.GetItemID(inventory.GetSelectedGameObject()) != (int)RefinedItemManager.RItems.MUSHY)
                     {
                         mixercontent.Add(inventory.GetSelectedGameObject());
                         inventory.RemoveSelected();

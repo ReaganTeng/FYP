@@ -6,12 +6,12 @@ using TMPro;
 public class OrderSystem : MonoBehaviour
 {
     [SerializeField] InventoryImageControl inventory;
-    [SerializeField] Transform OrderZone;
     [SerializeField] GameObject OrderPrefab;
     [SerializeField] float TimeBeforeFirstOrder;
     [SerializeField] float OrderIntervalTiming;
     [SerializeField] int MaxOrderAtOnce;
     [SerializeField] EndOfDay eod;
+    [SerializeField] OrderRecipeDisplay ord;
     float beforefirstordertimer;
     float orderintervaltimer;
     bool StartOrdering;
@@ -53,6 +53,10 @@ public class OrderSystem : MonoBehaviour
 
     private void Update()
     {
+        // during game startup, do not run the update
+        if (FreezeGame.instance.startUpfreeze)
+            return;
+
         if (!StartOrdering)
         {
             beforefirstordertimer -= Time.deltaTime;
@@ -73,8 +77,9 @@ public class OrderSystem : MonoBehaviour
                 GameObject temp = Instantiate(OrderPrefab);
                 AssignRecipe(temp);
                 temp.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
-                temp.transform.SetParent(OrderZone);
                 orderList.Add(temp);
+                CheckOrderList();
+                ord.SetToDisplay(orderList);
                 orderintervaltimer = OrderIntervalTiming;
             }
         }
@@ -195,7 +200,6 @@ public class OrderSystem : MonoBehaviour
         eod.ChangeScore(-penaltyby);
         // Count towards a failed order
         FailedOrders++;
-        CheckOrderList();
     }
 
     // clear out any deleted order panel from the list
@@ -211,6 +215,7 @@ public class OrderSystem : MonoBehaviour
                 break;
             }
         }
+        ord.SetToDisplay(orderList);
     }
 
     public void StopOrders()
