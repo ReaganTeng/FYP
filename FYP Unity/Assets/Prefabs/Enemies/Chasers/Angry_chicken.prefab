@@ -130,6 +130,7 @@ MonoBehaviour:
   healthbar: {fileID: 8970289839755826402}
   cooldown_period: 1
   abouttoattack_period: 1
+  atkPattern: 0
   phase: 1
   projectileGO: {fileID: 7347223109495145681, guid: 938809779cd6685419a064f5040f83af, type: 3}
   line: {fileID: 6922493218510129667, guid: 3f6a26fc70e9cfb42aed81987544b6ba, type: 3}
@@ -148,6 +149,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24c3145410f4e6d45bb6c84cffe8aa2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockon: {fileID: 0}
+  hit: {fileID: 0}
+  pivotpoint: {fileID: 0}
   navMeshAgent: {fileID: 2616137060914320049}
   attackhitbox: {fileID: 3241614416058696728}
 --- !u!1 &1265133513541601714
@@ -465,8 +469,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   es: {fileID: 8548643579922388238}
-  AttackCD: 1
   animator: {fileID: 1776297207704733315}
+  attacks_per_session: 3
 --- !u!33 &5741689859051229486
 MeshFilter:
   m_ObjectHideFlags: 0

@@ -27,6 +27,8 @@ public class PlayerMovement : MonoBehaviour
 
     //
     bool isWalking;
+    bool walkFront;
+    bool walkBack;
 
     // Minimap
     GameObject minimapCanvas;
