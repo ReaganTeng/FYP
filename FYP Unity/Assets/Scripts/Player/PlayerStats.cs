@@ -99,7 +99,7 @@ public class PlayerStats : MonoBehaviour
             }
         }
 
-        //Debug.Log("Fervor: " + fervorLevel);
+        Debug.Log("Fervor: " + fervorLevel);
     }
 
 
@@ -109,6 +109,7 @@ public class PlayerStats : MonoBehaviour
       
         if (GetComponentInChildren<Animator>().GetBool("Hurt") == true)
         {
+            Debug.Log("OUCH");
             //Debug.Log("Animation name "
             //    + GetComponentInChildren<Animator>().GetCurrentAnimatorClipInfo(0)[0].clip.name);
             hurt_period += Time.deltaTime;

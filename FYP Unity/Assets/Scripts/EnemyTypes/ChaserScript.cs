@@ -32,10 +32,13 @@ public class ChaserScript : MonoBehaviour
 
     [SerializeField] GameObject attackhitbox;
 
+   
+
     // Start is called before the first frame update
     void Start()
 {
         GetComponent<EnemyScript>().set_enemyType(EnemyScript.EnemyType.CHASER);
+
 
         lockonbeam = null;
         hitbeam = null;
@@ -64,6 +67,7 @@ public class ChaserScript : MonoBehaviour
 
         dist = Vector3.Distance(transform.position, playerGO.transform.position);
 
+        float hitbeamsize = 3;
         if (GetComponent<EnemyScript>().getupdating())
         {
             switch (enemyPhase)
@@ -107,10 +111,10 @@ public class ChaserScript : MonoBehaviour
                                     lockonbeam.transform.localScale =
                                         new Vector3(.1f, 
                                         lockon.transform.localScale.y,
-                                        lockon.transform.localScale.z);
+                                        hitbeamsize/10);
                                    
                                     lockonbeam.transform.SetParent(pivot.transform);
-
+                                    
                                     pivot.transform.LookAt(
                                         new Vector3(ending_location.position.x, transform.position.y, ending_location.position.z)
                                         );                                   
@@ -128,7 +132,7 @@ public class ChaserScript : MonoBehaviour
                                     hitbeam.transform.localScale =
                                         new Vector3(hit.transform.localScale.x, 
                                         hit.transform.localScale.y,
-                                        5);
+                                        hitbeamsize);
 
                                     hitbeam.transform.SetParent(pivot.transform);
                                     hitbeam.transform.rotation = pivot.transform.rotation;
@@ -154,7 +158,15 @@ public class ChaserScript : MonoBehaviour
                         //chasingspeed = 2.0f;
                         time_att_2 = 0;
                         time_att_1 += Time.deltaTime;
-                        change_of_attk_type_1 += Time.deltaTime;
+
+                        if (GetComponentInChildren<EnemyAttack>().return_whether_back_away())
+                        { 
+                            change_of_attk_type_1 += Time.deltaTime;
+                        }
+                        else
+                        {
+                            change_of_attk_type_1 = 0;
+                        }
 
                         if (change_of_attk_type_1 >= 4.0f)
                         {

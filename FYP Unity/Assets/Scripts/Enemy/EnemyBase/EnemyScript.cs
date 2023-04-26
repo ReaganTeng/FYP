@@ -320,6 +320,7 @@ public class EnemyScript : MonoBehaviour
 
         GetComponentInChildren<Animator>().SetFloat("health", EnemyHealth);
         healthbar.value = EnemyHealth;
+
         if (Iframe)
         {
             if (Iframetimer > 0)
@@ -353,13 +354,14 @@ public class EnemyScript : MonoBehaviour
 
             if (GetComponentInChildren<Animator>().GetBool("attacked") == false)
             {
+                //shoot every 3 seconds
                 shootTimer += Time.deltaTime;
                 if (shootTimer >= 2)
                 {
                     int rand = Random.Range(1, 6);
                     if (rand % 2 == 0)
                     {
-                        shoot();
+                        //shoot();
                     }
                     shootTimer = 0.0f;
                 }
