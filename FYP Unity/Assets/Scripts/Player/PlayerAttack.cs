@@ -21,8 +21,11 @@ public class PlayerAttack : MonoBehaviour
     float attackingtimer;
     bool attacking;
     int direction;
+    GameObject currentWeaponDisplay;
 
-
+    [SerializeField] GameObject KnifeWeaponDisplay;
+    [SerializeField] GameObject RollerWeaponDisplay;
+    [SerializeField] GameObject SpatulaWeaponDisplay;
 
     [SerializeField] GameObject spaculaHitbox;
     [SerializeField] GameObject knifeHitbox;
@@ -65,6 +68,8 @@ public class PlayerAttack : MonoBehaviour
 
     [SerializeField] LayerMask enemyLM;
     [SerializeField] Animator animator;
+
+    [SerializeField] PlayerProgress pp;
 
     void Start()
     {
@@ -110,10 +115,14 @@ public class PlayerAttack : MonoBehaviour
                             Quaternion.Euler(0, 0, 0)
                             );
                     l.transform.SetParent(canvas.transform);
-                    l.transform.position = new Vector2(chargeBar.handleRect.position.x, chargeBar.transform.position.y);
-                    l.transform.localScale = new Vector2(1, chargeBar.transform.lossyScale.y);
+                    l.transform.position = new Vector2(chargeBar.handleRect.position.x, 
+                        chargeBar.transform.position.y);
+                    //l.transform.localScale = new Vector2(1, chargeBar.transform.lossyScale.y);
+                    //yourUIElement.GetComponent(RectTransform).sizeDelta = new Vector2(width, height);
+                    l.GetComponentInChildren<RectTransform>().sizeDelta = 
+                        new Vector2(5,
+                            chargeBar.GetComponent<RectTransform>().rect.height);
                     i++;
-
                 }
                 else
                 {
@@ -137,18 +146,20 @@ public class PlayerAttack : MonoBehaviour
             updatecharge();
         }
 
-        if(chargeBar.value >= chargeBar.maxValue)
+        if (txt != null)
         {
-            txt.enabled = false;
+            if (chargeBar.value >= chargeBar.maxValue)
+            {
+                txt.enabled = false;
+            }
+            else
+            {
+                txt.enabled = true;
+            }
         }
-        else
-        {
-            txt.enabled = true;
-        }
+        //
 
         currentAnimationLength = animator.GetCurrentAnimatorStateInfo(0).length;
-
-       
 
         // Attacking
         if (attackcdtimer > 0)
@@ -161,13 +172,10 @@ public class PlayerAttack : MonoBehaviour
             GameObject.FindGameObjectWithTag("playerspriterenderer").GetComponent<Animator>().SetBool("click", isclicked);
             //
 
-
-
             //LIGHT ATTACK
             if (Input.GetMouseButtonDown(0) && !attacking)
             {
                 isclicked = true;
-                //Debug.Log("LIGHT ATTACK");
                 AttackWhichDirection(direction);
                 //HitBox.SetActive(true);
                 //attacking = true;
@@ -181,7 +189,6 @@ public class PlayerAttack : MonoBehaviour
                 && (int)chargeCurrentLvl>= (int)min_notch_value)
             {
                 isclicked = true;
-                //Debug.Log("HEAVY ATTACK");
                 transform.parent.GetComponent<PlayerStats>().setAttack(
                 GetComponentInParent<PlayerStats>().getAttack(1));
                 AttackWhichDirection(direction);
@@ -246,14 +253,17 @@ public class PlayerAttack : MonoBehaviour
             if (Input.GetKey(KeyCode.Z))
             {
                 currentweapon = Weapon.SPATULA;
+                UpdateWeaponDisplay();
             }
             else if (Input.GetKey(KeyCode.X))
             {
                 currentweapon = Weapon.KNIFE;
+                UpdateWeaponDisplay();
             }
             else if (Input.GetKey(KeyCode.C))
             {
                 currentweapon = Weapon.ROLLINGPIN;
+                UpdateWeaponDisplay();
             }
         }
 
@@ -268,12 +278,12 @@ public class PlayerAttack : MonoBehaviour
         switchWeapon();
     }
 
-    public void OnDrawGizmos()
-    {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireCube
-            (HitBox.transform.position, HitBox.transform.lossyScale);
-    }
+    //public void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.blue;
+    //    Gizmos.DrawWireCube
+    //        (HitBox.transform.position, HitBox.transform.lossyScale);
+    //}
 
     public bool getHitbox()
     {
@@ -290,6 +300,7 @@ public class PlayerAttack : MonoBehaviour
                     GetComponentInParent<PlayerStats>().setAttack(2);
                 }
                 spaculaHitbox.SetActive(HitBox.activeSelf);
+
                 spaculaHitbox.transform.rotation = HitBox.transform.rotation;
                 knifeHitbox.SetActive(false);
                 pinHitbox.SetActive(false);
@@ -476,4 +487,28 @@ public class PlayerAttack : MonoBehaviour
     {
         CanHeavyAttack = heavyAttackAllowed;
     }
+    void UpdateWeaponDisplay()
+    {
+        switch((Weapon)GetWeaponType())
+        {
+            case Weapon.KNIFE:
+                 KnifeWeaponDisplay.SetActive(true);
+                SpatulaWeaponDisplay.SetActive(false);
+                RollerWeaponDisplay.SetActive(false);
+
+                break;
+
+            case Weapon.ROLLINGPIN:
+                RollerWeaponDisplay.SetActive(true);
+                KnifeWeaponDisplay.SetActive(false);
+                SpatulaWeaponDisplay.SetActive(false);
+                break;
+
+            case Weapon.SPATULA:
+                SpatulaWeaponDisplay.SetActive(true);
+                KnifeWeaponDisplay.SetActive(false);
+                RollerWeaponDisplay.SetActive(false);
+                break;
+        }
+    }    
 }

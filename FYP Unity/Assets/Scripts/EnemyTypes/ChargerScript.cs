@@ -6,40 +6,26 @@ using UnityEngine.AI;
 
 public class ChargerScript : MonoBehaviour
 {
-    private int number_of_bounces;
-    
-
-    private bool collided;
-
-    private GameObject playerGO;
+    int number_of_bounces;
+    bool collided;
+    GameObject playerGO;
     Vector3 playerPos;
     Vector3 resultingVector;
     float currentdistance;
-
     float chargingtime;
-
     [SerializeField] LayerMask lm;
-
-    private float velocityspeed;
-
+    float velocityspeed;
     EnemyScript.Phases enemyPhase;
-
     [SerializeField] NavMeshAgent navMeshAgent;
-
     public GameObject attackhitbox;
-
     EnemyScript enemyScript;
 
-
-    //[SerializeField] GameObject weaponobject;
-    //[SerializeField] GameObject weaponobjec2;
 
     // Start is called before the first frame update
     void Start()
     {
         GetComponent<EnemyScript>().set_enemyType(EnemyScript.EnemyType.CHARGER);
-
-        velocityspeed = 10.0f;
+        velocityspeed = 8.0f;
         number_of_bounces = 0;
         collided = false;
         navMeshAgent.enabled = false;
@@ -50,15 +36,6 @@ public class ChargerScript : MonoBehaviour
         resultingVector.Normalize();
         chargingtime = 0.0f;
         currentdistance = Vector3.Distance(playerGO.transform.position, transform.position);
-
-        //weaponobject.SetActive(true);
-        //weaponobjec2.SetActive(false);
-
-        //if (weaponobject == null)
-        //{
-        //    weaponobject = Instantiate(gameObject,
-        //            weaponobject.transform.position, weaponobject.transform.rotation);
-        //}
     }
 
     // Update is called once per frame
@@ -67,21 +44,6 @@ public class ChargerScript : MonoBehaviour
         playerGO = GameObject.FindGameObjectWithTag("Player");
         enemyScript = GetComponent<EnemyScript>();
         enemyPhase = GetComponent<EnemyScript>().return_current_phase();
-
-
-        //if(Input.GetKey(KeyCode.T) )
-        //{
-
-        //    weaponobject.SetActive(false);
-        //    weaponobjec2.SetActive(true);
-        //}
-        //else
-        //{
-        //    weaponobject.SetActive(true);
-        //    weaponobjec2.SetActive(false);
-
-        //}
-
 
 
 
@@ -279,10 +241,11 @@ public class ChargerScript : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
+
         switch (enemyPhase)
         {
             case EnemyScript.Phases.ATTACK_TYPE_1:
-            //case EnemyScript.Phases.ATTACK_TYPE_2:
+                //case EnemyScript.Phases.ATTACK_TYPE_2:
                 {
                     if (collision.gameObject.tag == "wall"
                         || collision.gameObject.tag == "Player"
@@ -321,15 +284,37 @@ public class ChargerScript : MonoBehaviour
                     }
                     break;
                 }
-            
-           
+
+
             default:
                 break;
 
         }
 
 
-        
+
+
+        /*if (collision.gameObject.tag == "wall")
+        {
+            if (number_of_bounces >= 3)
+            {
+                collided = true;
+                number_of_bounces = 0;
+            }
+            else
+            {
+                number_of_bounces += 1;
+                playerPos = playerGO.transform.position;
+                
+                resultingVector = playerPos - transform.position;
+                
+                chargeAtplayer();
+            }
+        }
+         else if(collision.gameObject.tag == "Player")
+        {
+            collided = true;
+        }*/
     }
 
 

@@ -8,16 +8,15 @@ public class JumperScript : MonoBehaviour
 {
 
    
-
+    
     [SerializeField] float jumpcooldown;
     EnemyScript.Phases enemyPhase;
-    [SerializeField] GameObject enemySprite;
+    [SerializeField] GameObject jumperCanvas;
     GameObject playerGO;
     [SerializeField] GameObject spriteRenderer;
     [SerializeField] float jumpheight;
 
     [SerializeField] float jumpspeed;
-    [SerializeField] float countfactor;
 
     float speedfactor;
     
@@ -48,6 +47,7 @@ public class JumperScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         GetComponent<EnemyScript>().set_enemyType(EnemyScript.EnemyType.JUMPER);
         startupdating = false;
         count = 0;
@@ -68,13 +68,6 @@ public class JumperScript : MonoBehaviour
 
         enemyPhase = GetComponent<EnemyScript>().return_current_phase();
         currentdistance = Vector3.Distance(playerGO.transform.position, transform.position);
-
-        //Debug.Log("DISTANCE " + (int)currentdistance);
-
-        //if (distance < GetComponent<EnemyMovement>().DetectionRange)
-        //{
-        //    startupdating = true;
-        //}
 
         attackhitbox = GetComponent<EnemyScript>().gethitbox();
 
@@ -112,65 +105,65 @@ public class JumperScript : MonoBehaviour
                     //
 
                         
-                        if (jumpmode)
+                    if (jumpmode)
+                    {
+                        timer += Time.deltaTime;
+
+                        //prepare to jump
+                        if (timer < enemyScript.getCurrentAnimationLength())
                         {
-                            timer += Time.deltaTime;
+                            GetComponentInChildren<Animator>().SetBool("about2jump", true);
+                            GetComponent<BoxCollider>().enabled = true;
 
-                            //prepare to jump
-                            if (timer < 1.0f)
-                            {
-                                GetComponentInChildren<Animator>().SetBool("about2jump", true);
-                                GetComponent<BoxCollider>().enabled = true;
-
-                                //BACK AWAY
-                                Vector3 resultingVector = -playerGO.transform.position + transform.position;
-                                GetComponent<Rigidbody>().velocity = resultingVector * 0.2f;
-                                //
-
-                                navMeshAgent.speed = 0.0f;
-                                startpos = transform.position;
-                                navMeshAgent.SetDestination(playerGO.transform.position);
-                                endpoint = navMeshAgent.destination;
-                                controlPoint = startpos + (endpoint - transform.position) / 2 + Vector3.up * jumpheight;
-                            }
+                            //BACK AWAY
+                            Vector3 resultingVector = -playerGO.transform.position + transform.position;
+                            GetComponent<Rigidbody>().velocity = resultingVector * 0.2f;
                             //
 
-                            //JUMP
-                            if (timer > 1.5f)
+                            navMeshAgent.speed = 0.0f;
+                            startpos = transform.position;
+                            navMeshAgent.SetDestination(playerGO.transform.position);
+                            endpoint = navMeshAgent.destination;
+                            controlPoint = startpos + (endpoint - transform.position) / 2 + Vector3.up * jumpheight;
+                        }
+                        //
+
+                        //JUMP
+                        if (timer > enemyScript.getCurrentAnimationLength() + 0.1f)
+                        {
+                            GetComponentInChildren<Animator>().SetBool("jump", true);
+
+                            GetComponent<BoxCollider>().enabled = false;
+
+                            //while it's jumping, disable attackhitbox;
+                            if (currentdistance < 1.0f)
                             {
-                                GetComponentInChildren<Animator>().SetBool("jump", true);
-
-                                GetComponent<BoxCollider>().enabled = false;
-
-                                //while it's jumping, disable attackhitbox;
-                                if (currentdistance < 1.0f)
-                                {
-                                    attackhitbox.GetComponent<BoxCollider>().enabled = true;
-                                }
-                                else
-                                {
-                                    attackhitbox.GetComponent<BoxCollider>().enabled = false;
-                                }
-                                //
-
-                                if (currentdistance < 0.5f)
-                                {
-                                    navMeshAgent.speed = 0;
-                                }
-                                else
-                                {
-                                    navMeshAgent.speed = 10.0f * speedfactor;
-                                }
-
-                                spritejump(jumpspeed);
+                                attackhitbox.GetComponent<BoxCollider>().enabled = true;
                             }
                             else
                             {
-                                navMeshAgent.speed = 0.0f;
+                                attackhitbox.GetComponent<BoxCollider>().enabled = false;
+                            }
+                            //
+
+                            if (currentdistance < 0.5f)
+                            {
+                                navMeshAgent.speed = 0;
+                            }
+                            else
+                            {
+                                navMeshAgent.speed = 10.0f * speedfactor * jumpspeed;
                             }
 
+                            spritejump();
                         }
-                        break;
+                        else
+                        {
+                            navMeshAgent.speed = 0.0f;
+                        }
+
+                    }
+                    break;
                 }
             case EnemyScript.Phases.COOLDOWN:
                 {
@@ -216,19 +209,17 @@ public class JumperScript : MonoBehaviour
 
 
     //MAKE IT CHASE THE PLAYER UNTIL IT'S NEAR THE RANGE
-    public void spritejump(float t)
+    public void spritejump()
     {
-         if (count < countfactor
-            && timer > t)
+        if (count < 1.0f
+           && timer > enemyScript.getCurrentAnimationLength())
         {
-            
-
-            count += 1.0f * Time.deltaTime;
+            count += jumpspeed * Time.deltaTime;
             Vector3 m1 = Vector3.Lerp(startpos, controlPoint, count);
             Vector3 m2 = Vector3.Lerp(controlPoint, endpoint, count);
 
             spriteRenderer.transform.position = Vector3.Lerp(m1, m2, count);
-            enemySprite.transform.position = Vector3.Lerp(m1, m2, count);
+            jumperCanvas.transform.position = Vector3.Lerp(m1, m2, count);
         }
          //if player landed on ground
         else /*if(count > 1.0f)*/
@@ -248,8 +239,8 @@ public class JumperScript : MonoBehaviour
     {
         jumpcooldown -= 1.0f * Time.deltaTime;
 
-        spriteRenderer.transform.position = transform.position + new Vector3(0.0f, 0.6f, 0.0f);
-        enemySprite.transform.position = transform.position + new Vector3(0.0f, 0.6f, 0.0f);
+        spriteRenderer.transform.position = transform.position + new Vector3(0.0f, 0.66f, 0.0f);
+        jumperCanvas.transform.position = transform.position + new Vector3(0.0f, 0.66f, 0.0f);
         attackhitbox.GetComponent<BoxCollider>().enabled = false;
 
         if (jumpcooldown <= 0.0f)

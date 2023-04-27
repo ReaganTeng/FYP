@@ -5,15 +5,13 @@ using UnityEngine.AI;
 
 
 public class ChaserScript : MonoBehaviour
-{ 
-   
-
+{
     [SerializeField] GameObject lockon;
-    public GameObject lockonbeam;
+    GameObject lockonbeam;
     [SerializeField] GameObject hit;
-    public GameObject hitbeam;
+    GameObject hitbeam;
     [SerializeField] GameObject pivotpoint;
-    public GameObject pivot;
+    GameObject pivot;
 
     [SerializeField] NavMeshAgent navMeshAgent;
 
@@ -34,10 +32,13 @@ public class ChaserScript : MonoBehaviour
 
     [SerializeField] GameObject attackhitbox;
 
+   
+
     // Start is called before the first frame update
     void Start()
 {
         GetComponent<EnemyScript>().set_enemyType(EnemyScript.EnemyType.CHASER);
+
 
         lockonbeam = null;
         hitbeam = null;
@@ -66,78 +67,86 @@ public class ChaserScript : MonoBehaviour
 
         dist = Vector3.Distance(transform.position, playerGO.transform.position);
 
+        float hitbeamsize = 3;
         if (GetComponent<EnemyScript>().getupdating())
         {
             switch (enemyPhase)
             {
                 case EnemyScript.Phases.ATTACK_TYPE_2:
-                //case EnemyScript.Phases.ATTACK_TYPE_1:
-                //{
-                //    attackhitbox.GetComponent<BoxCollider>().enabled = true;
-                //    GetComponent<BoxCollider>().enabled = true;
+                    //case EnemyScript.Phases.ATTACK_TYPE_1:
+                    {
+                        attackhitbox.GetComponent<BoxCollider>().enabled = true;
+                        GetComponent<BoxCollider>().enabled = true;
 
-                //    time_att_1 = 0;
-                //    //if (dist <= 4.0f)
-                //    //{
-                //        beam_mode = true;
-                //    //}
-                //    //else if (dist > 4.0f
-                //    //    && beam_mode == false)
-                //    //{
-                //    //    enemyScript.set_current_phase(EnemyScript.Phases.ATTACK_TYPE_1);
-                //    //}
+                        time_att_1 = 0;
+                        //if (dist <= 4.0f)
+                        //{
+                        beam_mode = true;
+                        //}
+                        //else if (dist > 4.0f
+                        //    && beam_mode == false)
+                        //{
+                        //    enemyScript.set_current_phase(EnemyScript.Phases.ATTACK_TYPE_1);
+                        //}
 
-                //    if (beam_mode == true)
-                //    {
-                //        time_att_2 += 1 * Time.deltaTime;
-                //        chasingspeed = 0.0f;
-                //        if (time_att_2 < 1.1f && time_att_2 > 1.0f)
-                //        {
-                //            //PLACE LOCK ON BEAM
-                //            starting_location = transform;
-                //            ending_location = playerGO.transform;
-                //            if (lockonbeam == null)
-                //            {
-                //                pivot = Instantiate(pivotpoint,
-                //                   transform.position,
-                //                   Quaternion.identity);
-                //                lockonbeam = Instantiate(lockon,
-                //                    transform.position + 
-                //                    new Vector3(0.0f, 0.0f, /*4.0f / 2*/10.0f),
-                //                    Quaternion.identity);
-                //                //lockonbeam.transform.Translate(0.0f, 0.0f,
-                //                //    4.0f / 2);
-                //                lockonbeam.transform.localScale +=
-                //                    new Vector3(0.0f, 0.0f, 1.0f)
-                //                    * 2.0f/*(4.0f * 0.1f)*/;
-                //                //lockonbeam.transform.SetParent(pivot.transform);
-                //                pivot.transform.LookAt(ending_location);
-                //                pivot.transform.SetParent(transform);
-                //            }
-                //            //
-                //        }
-                //        if (time_att_2 > 2.3f && time_att_2 < 2.7f)
-                //        {
-                //            if (hitbeam == null)
-                //            {
-                //                hitbeam = Instantiate(hit,
-                //                    lockonbeam.transform.position,
-                //                    lockonbeam.transform.rotation);
-                //                hitbeam.transform.localScale +=
-                //                    new Vector3(0.0f, 0.0f, 1.0f) * 2.0f /*(4.0f * 0.1f)*/;
-                //                hitbeam.transform.SetParent(transform);
-                //            }
+                        if (beam_mode == true)
+                        {
+                            time_att_2 += 1 * Time.deltaTime;
+                            chasingspeed = 0.0f;
+                            if (time_att_2 < 1.1f && time_att_2 > 1.0f)
+                            {
+                                //PLACE LOCK ON BEAM
+                                starting_location = transform;
+                                ending_location = playerGO.transform;
+                                if (lockonbeam == null)
+                                {
+                                    pivot = Instantiate(pivotpoint,
+                                       transform.position,
+                                       Quaternion.Euler(0, 0, 0));
+                                    pivot.transform.SetParent(transform);
 
-                //        }
+                                    lockonbeam = Instantiate(lockon,
+                                        transform.position,
+                                        Quaternion.Euler(0, 0, 0));
+                                    lockonbeam.transform.localScale =
+                                        new Vector3(.1f, 
+                                        lockon.transform.localScale.y,
+                                        hitbeamsize/10);
+                                   
+                                    lockonbeam.transform.SetParent(pivot.transform);
+                                    
+                                    pivot.transform.LookAt(
+                                        new Vector3(ending_location.position.x, transform.position.y, ending_location.position.z)
+                                        );                                   
+                                }
+                                //
+                            }
+                            if (time_att_2 > 2.3f && time_att_2 < 2.7f)
+                            {
+                                if (hitbeam == null)
+                                {
+                                    hitbeam = Instantiate(hit,
+                                       transform.position,
+                                       Quaternion.Euler(0, 0, 0));
 
-                //        if (time_att_2 > 2.8f)
-                //        {
-                //            DestroyBeams();
-                //            enemyScript.set_current_phase(EnemyScript.Phases.COOLDOWN);
-                //        }
-                //    }
-                //    break;
-                //}
+                                    hitbeam.transform.localScale =
+                                        new Vector3(hit.transform.localScale.x, 
+                                        hit.transform.localScale.y,
+                                        hitbeamsize);
+
+                                    hitbeam.transform.SetParent(pivot.transform);
+                                    hitbeam.transform.rotation = pivot.transform.rotation;
+                                }
+                            }
+
+                            if (time_att_2 > 2.8f)
+                            {
+                                DestroyBeams();
+                                enemyScript.set_current_phase(EnemyScript.Phases.COOLDOWN);
+                            }
+                        }
+                        break;
+                    }
                 case EnemyScript.Phases.ATTACK_TYPE_1:
                     {
                         attackhitbox.GetComponent<BoxCollider>().enabled = true;
@@ -149,7 +158,15 @@ public class ChaserScript : MonoBehaviour
                         //chasingspeed = 2.0f;
                         time_att_2 = 0;
                         time_att_1 += Time.deltaTime;
-                        change_of_attk_type_1 += Time.deltaTime;
+
+                        if (GetComponentInChildren<EnemyAttack>().return_whether_back_away())
+                        { 
+                            change_of_attk_type_1 += Time.deltaTime;
+                        }
+                        else
+                        {
+                            change_of_attk_type_1 = 0;
+                        }
 
                         if (change_of_attk_type_1 >= 4.0f)
                         {
@@ -210,12 +227,12 @@ public class ChaserScript : MonoBehaviour
                         time_att_2 = 0.0f;
                         time_att_1 = 0.0f;
 
-                        if (dist <= 5.0f)
-                        {
-                            Vector3 resultingVector = -playerGO.transform.position + transform.position;
-                            resultingVector.y = 0;
-                            GetComponent<Rigidbody>().velocity = resultingVector;
-                        }
+                        //if (dist <= 5.0f)
+                        //{
+                        //    Vector3 resultingVector = -playerGO.transform.position + transform.position;
+                        //    resultingVector.y = 0;
+                        //    GetComponent<Rigidbody>().velocity = resultingVector;
+                        //}
 
                         GetComponent<EnemyScript>().abouttoattackUpdate();
                         break;
@@ -226,9 +243,8 @@ public class ChaserScript : MonoBehaviour
         {
             enemyScript.ifUpdatingfalse();
             DestroyBeams();
-        }
 
-       
+        }
 
         enemyScript.steering();
     }
@@ -250,38 +266,4 @@ public class ChaserScript : MonoBehaviour
         }
     }
 
-
-    /*void OnDrawGizmos()
-    {
-        var boxcollider = box;
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireCube(boxcollider.center, boxcollider.size);
-
-        playerGO = GameObject.FindGameObjectWithTag("Player");
-
-        Gizmos.color = Color.red;
-        Gizmos.DrawRay(this.transform.position, (playerGO.transform.position - this.transform.position).normalized *
-            Vector3.Distance(playerGO.transform.position, this.transform.position));
-
-        for (int i = 0; i < numberOfRays; i++)
-        {
-            //rotate enemy angle
-            var rotation = this.transform.rotation;
-            var rotationMod = Quaternion.AngleAxis(
-                 (i / ((float)numberOfRays - 1)) * angle * 2 - angle,
-                 this.transform.up);
-            var direction = rotation * rotationMod * Vector3.forward;
-            var direction2 = rotation * rotationMod * Vector3.back;
-
-           
-            Gizmos.color = Color.red;
-            Gizmos.DrawRay(this.transform.position, direction);
-
-            Gizmos.color = Color.green;
-            Gizmos.DrawRay(this.transform.position, direction2);
-        }
-
-
-
-    }*/
 }

@@ -58,8 +58,6 @@ public class PlayerStats : MonoBehaviour
             fervorBar.maxValue = fervorMaxLevel;
         }
 
-        PlayerHealth = playerProgress.PlayermaxHealth;
-
         fervorLevel = 0;
         numberConsecutiveHits = 0;
         hurt_period = 0;
@@ -103,6 +101,8 @@ public class PlayerStats : MonoBehaviour
                 }
             }
         }
+
+        Debug.Log("Fervor: " + fervorLevel);
     }
 
 
@@ -112,6 +112,7 @@ public class PlayerStats : MonoBehaviour
       
         if (GetComponentInChildren<Animator>().GetBool("Hurt") == true)
         {
+            Debug.Log("OUCH");
             //Debug.Log("Animation name "
             //    + GetComponentInChildren<Animator>().GetCurrentAnimatorClipInfo(0)[0].clip.name);
             hurt_period += Time.deltaTime;

@@ -117,421 +117,421 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SAAMONO_Hurt_0
+      name: saamono_hurt_0
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 87
+        width: 400
+        height: 260
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 400356eb7b047de42bb59994312f5795
+      internalID: 706634498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: saamono_hurt_1
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 87
+        width: 400
+        height: 260
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 589ff88ccd40edf4199518681824c441
+      internalID: -1290067895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: saamono_hurt_2
       rect:
         serializedVersion: 2
         x: 0
-        y: 1071
-        width: 420
-        height: 357
+        y: 87
+        width: 400
+        height: 260
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dafe78edf18030c49831ab25726f196c
-      internalID: -791498164
+      spriteID: b55c5cddcf06cae4dae1d256c26f5c71
+      internalID: -560318066
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SAAMONO_Hurt_1
+      name: saamono_hurt_3
       rect:
         serializedVersion: 2
-        x: 420
-        y: 1071
-        width: 420
-        height: 357
+        x: 400
+        y: 87
+        width: 400
+        height: 260
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7d954a6fa888feb4bbdc408281c8d736
-      internalID: -1192902586
+      spriteID: 56e6a2cc2a6c4234792d6a3a39e753eb
+      internalID: -1530871069
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SAAMONO_Hurt_2
+      name: saamono_hurt_4
       rect:
         serializedVersion: 2
-        x: 840
-        y: 1071
-        width: 420
-        height: 357
+        x: 800
+        y: 618
+        width: 400
+        height: 260
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 42ad7c88cd729ac49ab900d5a5ba9549
-      internalID: 1418083095
+      spriteID: 7ade8fe2a2ddd744ca5d3ae83a8820b4
+      internalID: 788469214
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SAAMONO_Hurt_3
+      name: saamono_hurt_5
       rect:
         serializedVersion: 2
-        x: 1260
-        y: 1071
-        width: 420
-        height: 357
+        x: 1200
+        y: 618
+        width: 400
+        height: 260
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 03f1e56ae99074b4dbc98c07a2ef0b58
-      internalID: -724017147
+      spriteID: d387cc006d87ed048b789bc9e953146e
+      internalID: 792073185
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SAAMONO_Hurt_4
+      name: saamono_hurt_6
       rect:
         serializedVersion: 2
-        x: 1680
-        y: 1071
-        width: 420
-        height: 357
+        x: 1600
+        y: 618
+        width: 400
+        height: 260
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1a85ca082a644344f8b6b491ffd40d33
-      internalID: 1279556771
+      spriteID: f1c525f5cb347fd40baadc337af74f91
+      internalID: -1389571952
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SAAMONO_Hurt_5
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 714
-        width: 420
-        height: 357
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a1da8559a31624645abf3d82df11bda2
-      internalID: 752902260
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SAAMONO_Hurt_6
-      rect:
-        serializedVersion: 2
-        x: 420
-        y: 714
-        width: 420
-        height: 357
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 540ca7bdcdd3d2a48b58b56ed078ba03
-      internalID: -664848000
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SAAMONO_Hurt_7
-      rect:
-        serializedVersion: 2
-        x: 840
-        y: 714
-        width: 420
-        height: 357
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4d52ad6b925a385438ba703785c4f6bc
-      internalID: -844667942
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SAAMONO_Hurt_8
-      rect:
-        serializedVersion: 2
-        x: 1260
-        y: 714
-        width: 420
-        height: 357
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 190a4c7d79ff34b4c94d8f42f818f3ed
-      internalID: 850267977
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SAAMONO_Hurt_9
-      rect:
-        serializedVersion: 2
-        x: 1680
-        y: 714
-        width: 420
-        height: 357
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4205a72881b47554fafd0457e5f93e8f
-      internalID: -2016949111
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SAAMONO_Hurt_10
+      name: saamono_hurt_7
       rect:
         serializedVersion: 2
         x: 0
-        y: 357
-        width: 420
-        height: 357
+        y: 618
+        width: 400
+        height: 260
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a5b3189b5fa219147aa7df22317025ad
-      internalID: -1042011265
+      spriteID: 84a8ffda6d2a1e342bcb9c0c5f750326
+      internalID: -225738447
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SAAMONO_Hurt_11
+      name: saamono_hurt_8
       rect:
         serializedVersion: 2
-        x: 420
-        y: 357
-        width: 420
-        height: 357
+        x: 400
+        y: 618
+        width: 400
+        height: 260
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1b40e6db833b63f42bd3bcf2e5905d22
-      internalID: -1465742391
+      spriteID: de5fb4267cdbf2647a5a0b0081ff82b9
+      internalID: 1960115845
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SAAMONO_Hurt_12
+      name: saamono_hurt_9
       rect:
         serializedVersion: 2
-        x: 840
-        y: 357
-        width: 420
-        height: 357
+        x: 800
+        y: 1119
+        width: 400
+        height: 260
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f477d178b326ceb4a8ee0145b8f8447b
-      internalID: -1223193567
+      spriteID: abce44236e71f5441a60c08b5cd0a061
+      internalID: 123637412
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SAAMONO_Hurt_13
+      name: saamono_hurt_10
       rect:
         serializedVersion: 2
-        x: 1260
-        y: 357
-        width: 420
-        height: 357
+        x: 1200
+        y: 1116
+        width: 400
+        height: 260
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c31698cbe6e963c4bbf85d86da88287d
-      internalID: -1468391328
+      spriteID: b421c62708a3d424984c68d34d50f2dd
+      internalID: -1879066922
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SAAMONO_Hurt_14
+      name: saamono_hurt_11
       rect:
         serializedVersion: 2
-        x: 1680
-        y: 357
-        width: 420
-        height: 357
+        x: 1600
+        y: 1113
+        width: 400
+        height: 260
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 893b6b094eeaed542939bbb73cdc7fe5
-      internalID: 756328677
+      spriteID: f2b233d27031f4549b6dadcef80c529e
+      internalID: -1829942202
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SAAMONO_Hurt_15
+      name: saamono_hurt_12
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 420
-        height: 357
+        y: 1134
+        width: 400
+        height: 260
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cbe6dc015bcc94844ad1e843eab801e1
-      internalID: 1740203235
+      spriteID: 44397022679b2d04497b5dc1e2c473e1
+      internalID: -95829224
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SAAMONO_Hurt_16
+      name: saamono_hurt_13
       rect:
         serializedVersion: 2
-        x: 420
-        y: 0
-        width: 420
-        height: 357
+        x: 400
+        y: 1122
+        width: 400
+        height: 260
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 93d6161e814818d4584408bb001eaea2
-      internalID: -547545684
+      spriteID: e9d18c9f318269a468e6de2575223690
+      internalID: -141737476
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SAAMONO_Hurt_17
+      name: saamono_hurt_14
       rect:
         serializedVersion: 2
-        x: 840
-        y: 0
-        width: 420
-        height: 357
+        x: 800
+        y: 1688
+        width: 400
+        height: 260
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4049ccfab10a41f47a8c06a2168b83bd
-      internalID: 33364757
+      spriteID: e786d66f9b158c848b6e65d48e52cb93
+      internalID: -1565922553
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SAAMONO_Hurt_18
+      name: saamono_hurt_15
       rect:
         serializedVersion: 2
-        x: 1260
-        y: 0
-        width: 420
-        height: 357
+        x: 800
+        y: 87
+        width: 400
+        height: 260
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 342b0be5807f25d4e84ad98b57695027
-      internalID: -1972482116
+      spriteID: 95ed3e22e18997c43be2f27885b948c0
+      internalID: 1406304548
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SAAMONO_Hurt_19
+      name: saamono_hurt_16
       rect:
         serializedVersion: 2
-        x: 1680
-        y: 0
-        width: 420
-        height: 357
+        x: 1200
+        y: 1653
+        width: 400
+        height: 260
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e61c636b2b8fb1e4e96994d02986874e
-      internalID: -250739120
+      spriteID: cd7ac36b1abe33a4896248bca2a1ed4c
+      internalID: 1942660311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: saamono_hurt_17
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 1644
+        width: 400
+        height: 260
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f720179a4d95fd143878c84c0e754b0f
+      internalID: -1017772168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: saamono_hurt_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1600
+        width: 400
+        height: 260
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a2412adc32470e41a3e6e69dee40a5f
+      internalID: -571206834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: saamono_hurt_19
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 1635
+        width: 400
+        height: 260
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0947535d11fd2a44093fce4fa482792e
+      internalID: -1571815565
       vertices: []
       indices: 
       edges: []
@@ -539,7 +539,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: ac4248dfdad5b1744b389285a77260b0
+    spriteID: f0444318b8126de4a86fd23c350429af
     internalID: 0
     vertices: []
     indices: 
@@ -547,26 +547,26 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SAAMONO_Hurt_9: -2016949111
-      SAAMONO_Hurt_15: 1740203235
-      SAAMONO_Hurt_0: -791498164
-      SAAMONO_Hurt_3: -724017147
-      SAAMONO_Hurt_2: 1418083095
-      SAAMONO_Hurt_10: -1042011265
-      SAAMONO_Hurt_18: -1972482116
-      SAAMONO_Hurt_17: 33364757
-      SAAMONO_Hurt_12: -1223193567
-      SAAMONO_Hurt_11: -1465742391
-      SAAMONO_Hurt_13: -1468391328
-      SAAMONO_Hurt_7: -844667942
-      SAAMONO_Hurt_16: -547545684
-      SAAMONO_Hurt_19: -250739120
-      SAAMONO_Hurt_4: 1279556771
-      SAAMONO_Hurt_14: 756328677
-      SAAMONO_Hurt_5: 752902260
-      SAAMONO_Hurt_1: -1192902586
-      SAAMONO_Hurt_6: -664848000
-      SAAMONO_Hurt_8: 850267977
+      saamono_hurt_15: 1406304548
+      saamono_hurt_19: -1571815565
+      saamono_hurt_12: -95829224
+      saamono_hurt_14: -1565922553
+      saamono_hurt_13: -141737476
+      saamono_hurt_4: 788469214
+      saamono_hurt_6: -1389571952
+      saamono_hurt_18: -571206834
+      saamono_hurt_5: 792073185
+      saamono_hurt_2: -560318066
+      saamono_hurt_10: -1879066922
+      saamono_hurt_16: 1942660311
+      saamono_hurt_7: -225738447
+      saamono_hurt_11: -1829942202
+      saamono_hurt_17: -1017772168
+      saamono_hurt_0: 706634498
+      saamono_hurt_3: -1530871069
+      saamono_hurt_1: -1290067895
+      saamono_hurt_9: 123637412
+      saamono_hurt_8: 1960115845
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
