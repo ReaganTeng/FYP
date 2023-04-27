@@ -6,6 +6,7 @@ public class ItemGlow : MonoBehaviour
 {
     [SerializeField] Texture noglow;
     [SerializeField] Texture glow;
+    [SerializeField] GameObject ParentReference;
 
     public void TurnOnHighlight()
     {
@@ -15,5 +16,10 @@ public class ItemGlow : MonoBehaviour
     public void TurnOffHighlight()
     {
         gameObject.GetComponent<Renderer>().material.mainTexture = noglow;
+    }
+
+    public GameObject GetParent()
+    {
+        return ParentReference;
     }
 }

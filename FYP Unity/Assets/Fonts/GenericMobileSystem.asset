@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: GenericMobileSystem SDF
+  m_Name: GenericMobileSystem
   m_EditorClassIdentifier: 
-  hashCode: 747623173
+  hashCode: 1726301364
   material: {fileID: 8817321601248433814}
-  materialHashCode: -679546491
+  materialHashCode: -2012025580
   m_Version: 1.1.0
   m_SourceFontFileGUID: 4903e631b5d17ea43950a3bde08442ee
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 4903e631b5d17ea43950a3bde08442ee, type: 3}
@@ -2664,7 +2664,7 @@ Material:
     m_Colors:
     - _ClipRect: {r: -32767, g: -32767, b: 32767, a: 32767}
     - _EnvMatrixRotation: {r: 0, g: 0, b: 0, a: 0}
-    - _FaceColor: {r: 0.11320752, g: 0.11320752, b: 0.11320752, a: 1}
+    - _FaceColor: {r: 1, g: 1, b: 1, a: 1}
     - _GlowColor: {r: 0, g: 1, b: 0, a: 0.5}
     - _MaskCoord: {r: 0, g: 0, b: 32767, a: 32767}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}

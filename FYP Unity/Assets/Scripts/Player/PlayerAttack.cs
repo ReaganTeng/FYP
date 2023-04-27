@@ -30,6 +30,8 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] GameObject spaculaHitbox;
     [SerializeField] GameObject knifeHitbox;
     [SerializeField] GameObject pinHitbox;
+    bool disableControls;
+    bool CanSwapWeapon = true;
 
     float chargeCurrentLvl;
     float chargeMaxLvl;
@@ -52,13 +54,16 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] TextMeshProUGUI txt;
     [SerializeField] GameObject line;
     [SerializeField] GameObject handle;
-    Weapon currentweapon = Weapon.SPATULA;
+    Weapon currentweapon = Weapon.ROLLINGPIN;
     // Start is called before the first frame update
 
     bool isclicked;
     float click_timer;
 
     float currentAnimationLength;
+
+    // Enabling/Disabling Heavy attack (for tutorial purposes. DO NOT REMOVE)
+    bool CanHeavyAttack = true;
 
 
     [SerializeField] LayerMask enemyLM;
@@ -133,6 +138,9 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (disableControls)
+            return;
+
         if (chargeBar != null)
         {
             updatecharge();
@@ -177,7 +185,7 @@ public class PlayerAttack : MonoBehaviour
             //
 
             //HEAVY ATTACK
-            if (Input.GetMouseButtonDown(1) && !attacking
+            if (Input.GetMouseButtonDown(1) && !attacking && CanHeavyAttack
                 && (int)chargeCurrentLvl>= (int)min_notch_value)
             {
                 isclicked = true;
@@ -238,7 +246,8 @@ public class PlayerAttack : MonoBehaviour
             }
         }
 
-        if (animator.GetBool("click") == false)
+
+        if (animator.GetBool("click") == false && CanSwapWeapon)
         {
             // To swap between weapons
             if (Input.GetKey(KeyCode.Z))
@@ -459,6 +468,25 @@ public class PlayerAttack : MonoBehaviour
         return (int)currentweapon;
     }
 
+    public bool GetDisableControls()
+    {
+        return disableControls;
+    }
+
+    public void SetDisableControls(bool set)
+    {
+        disableControls = set;
+    }
+
+    public void SetCanSwapWeapon(bool canswapweapon)
+    {
+        CanSwapWeapon = canswapweapon;
+    }
+
+    public void SetCanDoHeavyAttack(bool heavyAttackAllowed)
+    {
+        CanHeavyAttack = heavyAttackAllowed;
+    }
     void UpdateWeaponDisplay()
     {
         switch((Weapon)GetWeaponType())

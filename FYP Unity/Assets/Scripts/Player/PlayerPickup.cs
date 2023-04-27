@@ -8,11 +8,13 @@ public class PlayerPickup : MonoBehaviour
     List<GameObject> InteractableInRangeList = new List<GameObject>();
     InventoryImageControl ic;
     public bool DisableControls;
+    public bool CannotInteractWithMixer;
 
     private void Start()
     {
         ic = GameObject.FindGameObjectWithTag("GameManager").GetComponent<InventoryImageControl>();
         DisableControls = false;
+        CannotInteractWithMixer = false;
     }
 
     // add the interactable objects into the list
@@ -94,10 +96,11 @@ public class PlayerPickup : MonoBehaviour
                         InteractableInRangeList.Remove(pickupobject);
                         // Add the item into ur inventory
                         ic.AddItem(pickupobject.GetComponentInParent<Food>().gameObject);
+                        pickupobject.GetComponent<ItemGlow>().GetParent().transform.SetParent(GameObject.FindGameObjectWithTag("Inventory").transform);
                         pickupobject.SetActive(false);
                     }
 
-                    else if (pickupobject.CompareTag("Mixer"))
+                    else if (pickupobject.CompareTag("Mixer") && !CannotInteractWithMixer)
                     {
                         pickupobject.GetComponent<Mixer>().InteractWithMixer();
                     }

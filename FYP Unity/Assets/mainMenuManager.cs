@@ -30,8 +30,15 @@ public class mainMenuManager : MonoBehaviour
 
     public void LoadGame()
     {
-        SceneManager.LoadScene("Level Select");
+        if (PlayerPrefs.GetInt("TutorialComplete") == 0)
+        {
+            SceneManager.LoadScene("Game Scene");
+        }
 
+        else
+        {
+            SceneManager.LoadScene("Level Select");
+        }
     }
 
     public void ExitGame()

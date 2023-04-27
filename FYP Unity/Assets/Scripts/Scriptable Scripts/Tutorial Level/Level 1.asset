@@ -1,0 +1,190 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 701a20e401001cb4da8667f74ba6ff37, type: 3}
+  m_Name: Level 1
+  m_EditorClassIdentifier: 
+  StarRatingActive: 0
+  DialogueAndInstructions:
+  - TextDisplay: Oi! Wake up!
+    conditions: 0
+    TimeTillPromptSkip: 1
+  - TextDisplay: What do you think you are doing? Slacking your first day in.
+    conditions: 0
+    TimeTillPromptSkip: 2
+  - TextDisplay: ~Have you been abdu.. play this game before?           (Y)Yes (N)No~
+    conditions: 18
+    TimeTillPromptSkip: 2
+  - TextDisplay: Ok so its your first day here. So get ur butt up and move!
+    conditions: 0
+    TimeTillPromptSkip: 2
+  - TextDisplay: ~Press WASD to move around the map~
+    conditions: 1
+    TimeTillPromptSkip: 2
+  - TextDisplay: Ok you can move, your legs are working.
+    conditions: 0
+    TimeTillPromptSkip: 2
+  - TextDisplay: Anyways, here is a tip for you.
+    conditions: 0
+    TimeTillPromptSkip: 2
+  - TextDisplay: ~You can press SHIFT to dash towards a location~
+    conditions: 2
+    TimeTillPromptSkip: 2
+  - TextDisplay: Dashing makes you temporary invincibe to enemies.
+    conditions: 0
+    TimeTillPromptSkip: 2
+  - TextDisplay: ...
+    conditions: 3
+    TimeTillPromptSkip: 2
+  - TextDisplay: Oh an order came in! Let's see what dish do we need to prepare.
+    conditions: 0
+    TimeTillPromptSkip: 3
+  - TextDisplay: Ah yes Potato Salad. The classic
+    conditions: 0
+    TimeTillPromptSkip: 2
+  - TextDisplay: Oh wait.. I forget you were abduc... forced to work here.
+    conditions: 0
+    TimeTillPromptSkip: 3
+  - TextDisplay: So you are not famaliar on our cuisine.
+    conditions: 0
+    TimeTillPromptSkip: 2
+  - TextDisplay: Not to worry, I attached the recipe needed to make the dish to every
+      order.
+    conditions: 0
+    TimeTillPromptSkip: 5
+  - TextDisplay: ~Press TAB to go through the panels and view the recipes for that
+      order~
+    conditions: 4
+    TimeTillPromptSkip: 2
+  - TextDisplay: Not used to seeing a recipe like this? Not to worry, I will explain
+      it to you later
+    conditions: 0
+    TimeTillPromptSkip: 2
+  - TextDisplay: For now, just know that we need 4 mashed potato.
+    conditions: 0
+    TimeTillPromptSkip: 2
+  - TextDisplay: Let's head towards the ootatoo room and get some mashed potato
+    conditions: 0
+    TimeTillPromptSkip: 2
+  - TextDisplay: ...
+    conditions: 0
+    TimeTillPromptSkip: 1
+  - TextDisplay: Don't tell me you...
+    conditions: 0
+    TimeTillPromptSkip: 2
+  - TextDisplay: ~Press M to toggle between opening and closing the minimap to see
+      where we need to head to~
+    conditions: 5
+    TimeTillPromptSkip: 2
+  - TextDisplay: ~In case you forget, press M again to close the minimap~
+    conditions: 6
+    TimeTillPromptSkip: 2
+  - TextDisplay: Ok so ootatoo room is north of the kitchen.
+    conditions: 0
+    TimeTillPromptSkip: 2
+  - TextDisplay: ~Head towards to the ootatoo Room~
+    conditions: 7
+    TimeTillPromptSkip: 2
+  - TextDisplay: Ok so basically for now, just know that left click attacks
+    conditions: 0
+    TimeTillPromptSkip: 3
+  - TextDisplay: ~Kill an ootatoo by left clicking to attack~
+    conditions: 8
+    TimeTillPromptSkip: 2
+  - TextDisplay: Oh. You manage to kill your first ootatoo. Ok now kill one morr
+    conditions: 0
+    TimeTillPromptSkip: 2
+  - TextDisplay: ~Kill another ootatoo cos we need morr~
+    conditions: 8
+    TimeTillPromptSkip: 2
+  - TextDisplay: Oh? You feel bad for killing them? that's too bad. Get used to it.
+    conditions: 0
+    TimeTillPromptSkip: 3
+  - TextDisplay: You might have to kill a more adorable ones soon.
+    conditions: 0
+    TimeTillPromptSkip: 3
+  - TextDisplay: ~Pick up those mashed potatoes, you don't want their death to be
+      wasted don't you?~
+    conditions: 9
+    TimeTillPromptSkip: 3
+  - TextDisplay: ~Let's head back to the kitchen~
+    conditions: 10
+    TimeTillPromptSkip: 3
+  - TextDisplay: Oh wait... we need 4 mashed potato, and you only have 2...
+    conditions: 0
+    TimeTillPromptSkip: 3
+  - TextDisplay: Why did you not tell me you do not have enough :/
+    conditions: 0
+    TimeTillPromptSkip: 3
+  - TextDisplay: Luckily, I have 2 mashed potato somehow.
+    conditions: 0
+    TimeTillPromptSkip: 2
+  - TextDisplay: ~Grab those mashed potato I left in the kitchen~
+    conditions: 11
+    TimeTillPromptSkip: 2
+  - TextDisplay: Anyways, lets start making the dish.
+    conditions: 0
+    TimeTillPromptSkip: 2
+  - TextDisplay: Anyways, lets start making the dish. I shall teach you the basic
+      of cooking.
+    conditions: 0
+    TimeTillPromptSkip: 3
+  - TextDisplay: There are 2 stages of cooking, first making the refined ingredients
+    conditions: 0
+    TimeTillPromptSkip: 3
+  - TextDisplay: ~Toss 2 mashed potato into a mixer by pressing E near it~
+    conditions: 12
+    TimeTillPromptSkip: 3
+  - TextDisplay: 2 mashed potato mixed together to form a mashed potato cup
+    conditions: 0
+    TimeTillPromptSkip: 3
+  - TextDisplay: ~Make a mashed potato cup by pressing E to start mixing the ingredients,
+      and grab it after done~
+    conditions: 13
+    TimeTillPromptSkip: 3
+  - TextDisplay: Ok there you go, the second stage is to make the dish.
+    conditions: 0
+    TimeTillPromptSkip: 3
+  - TextDisplay: 2 mashed potato cup when cooked together forms potato salad.
+    conditions: 0
+    TimeTillPromptSkip: 3
+  - TextDisplay: ~Make another mashed potato cup~
+    conditions: 14
+    TimeTillPromptSkip: 3
+  - TextDisplay: Anyways lets make the dish now.
+    conditions: 0
+    TimeTillPromptSkip: 3
+  - TextDisplay: Anyways lets make the dish now.
+    conditions: 0
+    TimeTillPromptSkip: 2
+  - TextDisplay: ~Make a potato salad by putting 2 mashed potato cup into a cooker
+      and grabbing it after done cooking~
+    conditions: 15
+    TimeTillPromptSkip: 3
+  - TextDisplay: Congrats on making your first dish in this place.
+    conditions: 0
+    TimeTillPromptSkip: 3
+  - TextDisplay: I think thats how hooman use congrats..
+    conditions: 0
+    TimeTillPromptSkip: 3
+  - TextDisplay: ~Anyways, serve the dish at the serving counter.
+    conditions: 16
+    TimeTillPromptSkip: 3
+  - TextDisplay: That is all I will teach you for the day, I will leave the rest
+      to you
+    conditions: 0
+    TimeTillPromptSkip: 3
+  - TextDisplay: Enjoy your first day at work.
+    conditions: 0
+    TimeTillPromptSkip: 3
+  - TextDisplay: owo
+    conditions: 17
+    TimeTillPromptSkip: 3

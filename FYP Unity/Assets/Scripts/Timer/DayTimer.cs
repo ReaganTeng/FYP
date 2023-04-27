@@ -27,7 +27,7 @@ public class DayTimer : MonoBehaviour
     private void Update()
     {
         // during game startup, do not run the update
-        if (FreezeGame.instance.startUpfreeze)
+        if (FreezeGame.instance.startUpfreeze || Tutorial.instance.InTutorial)
             return;
 
         if (!TimeStop)
