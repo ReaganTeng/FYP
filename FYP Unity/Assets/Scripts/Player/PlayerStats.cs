@@ -105,24 +105,24 @@ public class PlayerStats : MonoBehaviour
 
     public void Update()
     {
-
-      
-        if (GetComponentInChildren<Animator>().GetBool("Hurt") == true)
+        //when player is playing hurt animation
+        if (GetComponentInChildren<Animator>().GetBool("Hurt"))
         {
             Debug.Log("OUCH");
-            //Debug.Log("Animation name "
-            //    + GetComponentInChildren<Animator>().GetCurrentAnimatorClipInfo(0)[0].clip.name);
             hurt_period += Time.deltaTime;
-
             if(hurt_period >= GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).length)
+
             {
                 GetComponentInChildren<Animator>().SetBool("Hurt", false);
             }
         }
         else
         {
+
             hurt_period = 0.0f;
         }
+        //
+
         if (combo_timer_text != null)
         {
             combo_timer_text.SetText(((int)combo_timer).ToString());
@@ -230,11 +230,7 @@ public class PlayerStats : MonoBehaviour
 
     public void decidecombotimer(float consecutive_stage_min, float consecutive_stage_max, float comb_timer, Sprite rank_sprite)
     {
-        //[SerializeField] Image S_Rank;
-        //[SerializeField] Image A_Rank;
-        //[SerializeField] Image B_Rank;
-        //[SerializeField] Image C_Rank;
-        //[SerializeField] Image F_Rank;
+        
 
         if (numberConsecutiveHits >= consecutive_stage_min
             && numberConsecutiveHits < consecutive_stage_max)

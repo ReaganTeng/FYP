@@ -377,9 +377,10 @@ MonoBehaviour:
   smashedPrefab: {fileID: 7613510949900882453, guid: 13aa379673890a54b8a25672ba12f05c, type: 3}
   Mush: {fileID: 8494874157540663937, guid: 4255f020537c20a48857eb56b1b0f6d5, type: 3}
   attackhitbox: {fileID: 3505226391663298238}
-  healthbar: {fileID: 0}
+  healthbar: {fileID: 292787630800855043}
   cooldown_period: 1
   abouttoattack_period: 1
+  atkPattern: 2
   phase: 0
   projectileGO: {fileID: 7347223109495145681, guid: 938809779cd6685419a064f5040f83af, type: 3}
   line: {fileID: 6922493218510129667, guid: 3f6a26fc70e9cfb42aed81987544b6ba, type: 3}
@@ -551,7 +552,7 @@ Animator:
   m_GameObject: {fileID: 1843288542925539217}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 34a3ea7e989121a4daf71aeb31a7c56a, type: 2}
+  m_Controller: {fileID: 9100000, guid: 1e0469ff5f9955641a691d240cbe6e24, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -620,8 +621,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   es: {fileID: 7708884916916590504}
-  AttackCD: 1
   animator: {fileID: 8976023237232812530}
+  attackclip: {fileID: 7400000, guid: a508a342683e83c468fd99e5e0cbde9f, type: 2}
+  attacks_per_session: 1
 --- !u!1 &7138949861436031300
 GameObject:
   m_ObjectHideFlags: 0

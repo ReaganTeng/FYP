@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 234313706, guid: d9be3ef8b22a11c4382fa422a5b1b794, type: 3}
+  m_Sprite: {fileID: 1238964336, guid: cb4afbedd12215e4b8b72c0507425cfa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -96,7 +96,7 @@ Animator:
   m_GameObject: {fileID: 243017567625475005}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a44cc41e4aafd1645b6365ca9d1b4b15, type: 2}
+  m_Controller: {fileID: 9100000, guid: e04785312a9ef69449184b87c7b16a10, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -526,8 +526,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   es: {fileID: 1900860492394677850}
-  AttackCD: 1
   animator: {fileID: 6373890355506718698}
+  attackclip: {fileID: 0}
+  attacks_per_session: 0
 --- !u!1 &7274720804167861960
 GameObject:
   m_ObjectHideFlags: 0
@@ -736,6 +737,7 @@ MonoBehaviour:
   healthbar: {fileID: 5188395192991439513}
   cooldown_period: 1
   abouttoattack_period: 1
+  atkPattern: 2
   phase: 0
   projectileGO: {fileID: 7347223109495145681, guid: 938809779cd6685419a064f5040f83af, type: 3}
   line: {fileID: 6922493218510129667, guid: 3f6a26fc70e9cfb42aed81987544b6ba, type: 3}

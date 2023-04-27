@@ -124,8 +124,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   es: {fileID: 5647560301601598824}
-  AttackCD: 1
   animator: {fileID: 9019761974447148078}
+  attackclip: {fileID: 0}
+  attacks_per_session: 1
 --- !u!33 &3304654078046663064
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -352,6 +353,7 @@ MonoBehaviour:
   healthbar: {fileID: 1991363047688129694}
   cooldown_period: 1
   abouttoattack_period: 1
+  atkPattern: 0
   phase: 0
   projectileGO: {fileID: 7347223109495145681, guid: 938809779cd6685419a064f5040f83af, type: 3}
   line: {fileID: 6922493218510129667, guid: 3f6a26fc70e9cfb42aed81987544b6ba, type: 3}

@@ -19,11 +19,16 @@ public class projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        if(other.tag == "Player"
+            || other.tag == "wall")
         {
-            other.GetComponent<PlayerMovement>().setAnimator(true);
-            other.GetComponent<PlayerStats>().ResetConsecutiveHit();
-            other.GetComponent<PlayerStats>().ChangeFervor(-10.0f);
+            if (other.tag == "Player")
+            {
+                other.GetComponent<PlayerMovement>().setAnimator(true);
+                other.GetComponent<PlayerStats>().ResetConsecutiveHit();
+                other.GetComponent<PlayerStats>().ChangeFervor(-10.0f);
+            }
+
             Destroy(gameObject);
         }
     }

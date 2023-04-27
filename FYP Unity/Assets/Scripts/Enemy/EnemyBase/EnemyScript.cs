@@ -36,12 +36,13 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] Slider healthbar;
      GameObject player;
 
-    
+    float phase3timer;
     float timer;
     [SerializeField] float cooldown_period;
     [SerializeField] float abouttoattack_period;
 
     float transitionFromHurtTimer;
+    float transitionFromAttackTimer;
 
     int attack_type;
 
@@ -67,7 +68,8 @@ public class EnemyScript : MonoBehaviour
         COOLDOWN,
         ATTACK_TYPE_1,
         ATTACK_TYPE_2,
-        
+        ATTACK_TYPE_3,
+
         TOTAL
     }
 
@@ -86,6 +88,8 @@ public class EnemyScript : MonoBehaviour
     {
         PATTERN_1,
         PATTERN_2,
+        PATTERN_3,
+
         TOTAL
     }
     [SerializeField] AttackPattern atkPattern;
@@ -107,6 +111,10 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] GameObject handle;
 
     [SerializeField] TextMeshProUGUI healthtext;
+
+    float chasingspeed;
+
+    float backawayTimer;
     public void setparent(Transform parentSpawner)
     {
         spawnerparent = parentSpawner;
@@ -140,8 +148,12 @@ public class EnemyScript : MonoBehaviour
 
     void Start()
     {
+        transitionFromAttackTimer = 0.0f;
 
-        proejctilespeed = 1.5f;
+        phase3timer = 0.0f;
+        chasingspeed = 0.0f;
+        backawayTimer = 0.0f;
+        proejctilespeed = 2.0f;
         post_attack_duration = 0.0f;
         targetVelocity = 3.0f;
         numberOfRays = 30;
@@ -182,6 +194,8 @@ public class EnemyScript : MonoBehaviour
         //}
 
 
+        
+
         shootTimer = 0.0f;
         drawdivider();
     }
@@ -214,6 +228,10 @@ public class EnemyScript : MonoBehaviour
                 player.GetComponent<PlayerStats>().resetCombo_timer();
             }
 
+
+
+
+
             //GetComponent<Rigidbody>().AddForce(
             //   (GetComponent<Transform>().position - other.GetComponentInParent<Transform>().position).normalized * 100.0f,
             //   ForceMode.Impulse
@@ -240,7 +258,6 @@ public class EnemyScript : MonoBehaviour
 
             Debug.Log("Enemy Health Left: " + EnemyHealth);
 
-            GetComponentInChildren<SpriteRenderer>().color = Color.green;
 
             //SET THE ENEMY BACK TO IDLE MODE
             switch (enemy_type)
@@ -354,16 +371,78 @@ public class EnemyScript : MonoBehaviour
 
             if (GetComponentInChildren<Animator>().GetBool("attacked") == false)
             {
-                //shoot every 3 seconds
-                shootTimer += Time.deltaTime;
-                if (shootTimer >= 2)
+                if (phase == Phases.ATTACK_TYPE_3)
                 {
-                    int rand = Random.Range(1, 6);
-                    if (rand % 2 == 0)
+                    phase3timer += Time.deltaTime;
+
+                    attackhitbox.GetComponent<BoxCollider>().enabled = false;
+                    float dist = Vector3.Distance(transform.position, player.transform.position);
+                    GetComponentInChildren<NavMeshAgent>().speed = chasingspeed;
+                    GetComponentInChildren<NavMeshAgent>().acceleration = chasingspeed;
+
+                    if (GetComponentInChildren<EnemyAttack>().return_whether_back_away())
                     {
-                        //shoot();
+                        backawayTimer += Time.deltaTime;
                     }
-                    shootTimer = 0.0f;
+                    else
+                    {
+                        backawayTimer = 0;
+                    }
+
+                    if (backawayTimer >= 4.0f)
+                    {
+                        backawayTimer = 0.0f;
+                    }
+
+                    //back away during post attack
+                    if (backawayTimer >= 3.0f)
+                    {
+                        chasingspeed = 2.0f;
+                        if (dist <= 5.0f)
+                        {
+                            GetComponentInChildren<NavMeshAgent>().enabled = false;
+                            Vector3 resultingVector = -player.transform.position + transform.position;
+                            resultingVector.y = 0;
+                            GetComponent<Rigidbody>().velocity = resultingVector;
+                        }
+                        else
+                        {
+                            GetComponentInChildren<NavMeshAgent>().enabled = true;
+                            GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
+                            GetComponentInChildren<NavMeshAgent>().SetDestination(player.transform.position);
+                        }
+                    }
+                    //
+                    //continue to chase the player
+                    else
+                    {
+                        chasingspeed = dist;
+                        GetComponentInChildren<NavMeshAgent>().enabled = true;
+                        GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
+                        GetComponentInChildren<NavMeshAgent>().SetDestination(player.transform.position);
+                        GetComponentInChildren<Animator>().SetBool("chasingPlayer", true);
+
+                        //shoot every interval
+                        shootTimer += Time.deltaTime;
+                        if (shootTimer >= 2)
+                        {
+                            //play attack animation
+                            GetComponentInChildren<Animator>().SetBool("attack", true);
+                            //
+                            //GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
+
+                            shoot();
+                            shootTimer = 0.0f;
+                        }
+                       
+                    }
+                    //
+
+                    if (phase3timer >= 20.0f)
+                    {
+                        phase = 
+                        Phases.COOLDOWN;
+                    }
                 }
             }
             else
@@ -378,6 +457,20 @@ public class EnemyScript : MonoBehaviour
                 resultingVector.Normalize();
                 GetComponent<Rigidbody>().velocity = resultingVector ;
             }
+
+
+            if (GetComponentInChildren<Animator>().GetBool("attack"))
+            {
+                transitionFromAttackTimer += Time.deltaTime;
+                if (transitionFromAttackTimer >=
+                    currentAnimationLength)
+                {
+                    GetComponentInChildren<Animator>().SetBool("attack", false);
+                    GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
+
+                }
+            }
+
         }
         else
         {
@@ -589,22 +682,30 @@ public class EnemyScript : MonoBehaviour
             if (timer >= abouttoattack_period)
             {
                 timer = 0.0f;
-                //attack_type = Random.Range(1, 3);
+            //attack_type = Random.Range(1, 3);
 
-                if (atkPattern == AttackPattern.PATTERN_1)
-                {
-                    phase = Phases.ATTACK_TYPE_1;
-                }
-                else
-                {
-                    phase = Phases.ATTACK_TYPE_2;
-                }
+            if (atkPattern == AttackPattern.PATTERN_1)
+            {
+                phase = Phases.ATTACK_TYPE_1;
             }
+            else if (atkPattern == AttackPattern.PATTERN_2)
+            {
+                phase = Phases.ATTACK_TYPE_2;
+            }
+            else if (atkPattern == AttackPattern.PATTERN_3)
+            {
+                phase = Phases.ATTACK_TYPE_3;
+            }
+
+        }
         
     }
 
     public void cooldownUpdate()
     {
+        shootTimer = 0.0f;
+        phase3timer = 0.0f;
+
         //turn off attack hitbox
         attackhitbox.GetComponent<BoxCollider>().enabled = false;
         timer += 1.0f * Time.deltaTime;
@@ -617,15 +718,7 @@ public class EnemyScript : MonoBehaviour
         }
     }
 
-    public void settimer(float time)
-    {
-        timer = time;
-    }
-
-    public void addtimer(float time)
-    {
-        timer += time;
-    }
+    
     public float gettimer()
     {
         return timer;

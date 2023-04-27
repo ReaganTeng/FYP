@@ -951,8 +951,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   es: {fileID: 3427342138385154500}
-  AttackCD: 1
   animator: {fileID: 4725423251757208137}
+  attackclip: {fileID: 7400000, guid: de08b9774f0d75b43ac89b6140d92f1f, type: 2}
+  attacks_per_session: 0
 --- !u!33 &1629224506573211108
 MeshFilter:
   m_ObjectHideFlags: 0

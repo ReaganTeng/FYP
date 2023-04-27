@@ -441,8 +441,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   es: {fileID: 2245188663485901693}
-  AttackCD: 1
   animator: {fileID: 430289996106953469}
+  attackclip: {fileID: 0}
+  attacks_per_session: 0
 --- !u!1 &5112742717931306737
 GameObject:
   m_ObjectHideFlags: 0
@@ -783,10 +784,10 @@ MonoBehaviour:
   smashedPrefab: {fileID: 1651023163865744873, guid: 5ac66fde1172d884eab49dc8f4f08419, type: 3}
   Mush: {fileID: 8494874157540663937, guid: 4255f020537c20a48857eb56b1b0f6d5, type: 3}
   attackhitbox: {fileID: 5005441027822844523}
-  healthbar: {fileID: 0}
+  healthbar: {fileID: 1672078988693673390}
   cooldown_period: 1
   abouttoattack_period: 1
-  atkPattern: 1
+  atkPattern: 0
   phase: 0
   projectileGO: {fileID: 7347223109495145681, guid: 938809779cd6685419a064f5040f83af, type: 3}
   line: {fileID: 6922493218510129667, guid: 3f6a26fc70e9cfb42aed81987544b6ba, type: 3}

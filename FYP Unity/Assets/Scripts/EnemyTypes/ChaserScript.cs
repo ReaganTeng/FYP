@@ -123,8 +123,12 @@ public class ChaserScript : MonoBehaviour
                             }
                             if (time_att_2 > 2.3f && time_att_2 < 2.7f)
                             {
+                                GetComponentInChildren<Animator>().SetBool("attack", true);
+
                                 if (hitbeam == null)
                                 {
+
+
                                     hitbeam = Instantiate(hit,
                                        transform.position,
                                        Quaternion.Euler(0, 0, 0));
