@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Tutorial : MonoBehaviour
 {
     public static Tutorial instance;
 
-    public bool InTutorial;
+    public bool InTutorial = false;
 
     private float TimeTillNextText;
 
+    [SerializeField] LevelManager lm;
     [SerializeField] GameObject SquidChatBox;
     private TextMeshProUGUI SquidText;
     [SerializeField] GameObject SkipPrompt;
@@ -68,36 +70,41 @@ public class Tutorial : MonoBehaviour
         MAKE_A_DISH,
         SERVE_THE_DISH,
         OPEN_HALLWAY,
+        SKIP_TUTORIAL,
     }
 
-    [SerializeField] List<TutorialPopUp> tut;
+    List<TutorialPopUp> tut = new List<TutorialPopUp>();
 
     private void Start()
     {
         instance = this;
-        InTutorial = true;
-        SquidText = SquidChatBox.GetComponentInChildren<TextMeshProUGUI>();
-        skipPromptText = SkipPrompt.GetComponent<TextMeshProUGUI>();
-        SkipPrompt.SetActive(false);
-        GameObject.FindGameObjectWithTag("GameManager").GetComponent<FreezeGame>().IgnoreStartUp();
-        TimeTillNextText = 0;
-        ConditionTriggered = true;
-        IsInstruction = true;
-        SkipPromptActive = false;
-        blinktimer = BlinkDuration;
-        gm.GetComponent<UnlockHallway>().LockHallway(LevelHallway.Hallway.KITCHEN_TO_OOTATOO);
-        SpawnerManager.instance.SetSpawner(SpawnerManager.SPAWNERTYPE.ALL, false);
 
-        GameObject tempPlayer = GameObject.FindGameObjectWithTag("Player");
-        tempPlayer.GetComponentInChildren<PlayerAttack>().SetCanSwapWeapon(false);
-        tempPlayer.GetComponentInChildren<PlayerAttack>().SetCanDoHeavyAttack(false);
-        tempPlayer.GetComponentInChildren<PlayerPickup>().CannotInteractWithMixer = true;
-        tempPlayer.GetComponentInChildren<PlayerStats>().SetIfFervorActive(false);
-        MixerManager.instance.SetAllQTEActive(false);
-        //for (int i = 0; i < tut.Count; i++)
-        //{
-        //    Debug.Log("Dialogue: " + tut[i].TextDisplay + "\nTimeTillNextDialogue: " + tut[i].TimeTillNextDialogue + "\n Delay: " + tut[i].DelayBeforeClicked);
-        //}
+        if (lm.levelInfo[lm.DaySelected - 1].isThereTutorial != null)
+        {
+            InTutorial = true;
+            tut = lm.levelInfo[lm.DaySelected - 1].isThereTutorial.DialogueAndInstructions;
+            SquidText = SquidChatBox.GetComponentInChildren<TextMeshProUGUI>();
+            skipPromptText = SkipPrompt.GetComponent<TextMeshProUGUI>();
+            SkipPrompt.SetActive(false);
+            GameObject.FindGameObjectWithTag("GameManager").GetComponent<FreezeGame>().IgnoreStartUp();
+            TimeTillNextText = 0;
+            ConditionTriggered = true;
+            IsInstruction = true;
+            SkipPromptActive = false;
+            blinktimer = BlinkDuration;
+            gm.GetComponent<UnlockHallway>().LockHallway(LevelHallway.Hallway.KITCHEN_TO_OOTATOO);
+            SpawnerManager.instance.SetSpawner(SpawnerManager.SPAWNERTYPE.ALL, false);
+            GameObject tempPlayer = GameObject.FindGameObjectWithTag("Player");
+            tempPlayer.GetComponentInChildren<PlayerAttack>().SetCanSwapWeapon(false);
+            tempPlayer.GetComponentInChildren<PlayerAttack>().SetCanDoHeavyAttack(false);
+            tempPlayer.GetComponentInChildren<PlayerPickup>().CannotInteractWithMixer = true;
+            tempPlayer.GetComponentInChildren<PlayerStats>().SetIfFervorActive(false);
+            MixerManager.instance.SetAllQTEActive(false);
+        }
+        else
+        {
+            SquidChatBox.SetActive(false);
+        }
     }
 
     private void Update()
@@ -201,6 +208,8 @@ public class Tutorial : MonoBehaviour
     {
         switch(currentInstruction)
         {
+            // For first Tutorial Level
+
             // If player has a wasd input for at least 1 second.
             case Instructions.WASD_MOVEMENT:
                 {
@@ -442,6 +451,7 @@ public class Tutorial : MonoBehaviour
                     }
                     break;
                 }
+
             case Instructions.OPEN_HALLWAY:
                 {
                     gm.GetComponent<UnlockHallway>().OpenHallway(LevelHallway.Hallway.KITCHEN_TO_OOTATOO);
@@ -449,6 +459,26 @@ public class Tutorial : MonoBehaviour
                     ConditionTriggered = true;
                     break;
                 }
+
+            case Instructions.SKIP_TUTORIAL:
+                {
+                    if (Input.GetKeyDown(KeyCode.Y))
+                    {
+                        // skip tutorial next time player comes back
+                        ConditionTriggered = true;
+                        PlayerPrefs.SetInt("TutorialComplete", 1);
+                        SceneManager.LoadScene("Level Select");
+                    }
+
+                    else if (Input.GetKeyDown(KeyCode.N))
+                    {
+                        ConditionTriggered = true;
+                    }
+                    break;
+                }
+
+
+            // For Second Tutorial level
         }
 
         // If the instructions has been done. Skip to the next dialogue/Instructions.

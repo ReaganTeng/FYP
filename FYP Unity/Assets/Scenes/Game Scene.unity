@@ -424,7 +424,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3462924137396006135, guid: d09965bd491c43742a512d3f4207781f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 30.16
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3462924137396006135, guid: d09965bd491c43742a512d3f4207781f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -432,7 +432,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3462924137396006135, guid: d09965bd491c43742a512d3f4207781f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3462924137396006135, guid: d09965bd491c43742a512d3f4207781f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -485,7 +485,7 @@ PrefabInstance:
     - target: {fileID: 4940691009673553818, guid: d09965bd491c43742a512d3f4207781f, type: 3}
       propertyPath: SpatulaWeaponDisplay
       value: 
-      objectReference: {fileID: 720623532}
+      objectReference: {fileID: 0}
     - target: {fileID: 5545318540187160410, guid: d09965bd491c43742a512d3f4207781f, type: 3}
       propertyPath: fervorBar
       value: 
@@ -1030,6 +1030,11 @@ GameObject:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4310913062349378758, guid: 0d81f757dbf9ecc42b4e945194a01914, type: 3}
   m_PrefabInstance: {fileID: 1031948281}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &482752174 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2994583381017202792, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
+  m_PrefabInstance: {fileID: 1592779411}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &504982803 stripped
 GameObject:
@@ -1643,11 +1648,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &720623532 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4981952381006882220, guid: 6e885474360640d4a91ee6c3d039fc96, type: 3}
-  m_PrefabInstance: {fileID: 589631744}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &743621509
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2337,6 +2337,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InTutorial: 0
+  lm: {fileID: 11400000, guid: b1ab7845fb897f94da5f204cb406165d, type: 2}
   SquidChatBox: {fileID: 117608393}
   SkipPrompt: {fileID: 50421043}
   BlinkDuration: 2
@@ -2350,171 +2351,6 @@ MonoBehaviour:
   - {fileID: 912467058}
   - {fileID: 1477136611}
   MixerList: {fileID: 861213946}
-  tut:
-  - TextDisplay: Oi! Wake up!
-    conditions: 0
-    TimeTillPromptSkip: 2
-  - TextDisplay: What do think you are doing? Slacking your first day in.
-    conditions: 0
-    TimeTillPromptSkip: 4
-  - TextDisplay: Get ur butt up and move!
-    conditions: 0
-    TimeTillPromptSkip: 2
-  - TextDisplay: ~Press WASD to move around the map~
-    conditions: 1
-    TimeTillPromptSkip: 2
-  - TextDisplay: Ok you can move
-    conditions: 0
-    TimeTillPromptSkip: 2
-  - TextDisplay: Heres is a tip for you.
-    conditions: 0
-    TimeTillPromptSkip: 2
-  - TextDisplay: ~You can press SHIFT to dash towards a location~
-    conditions: 2
-    TimeTillPromptSkip: 2
-  - TextDisplay: Dashing makes u temporary invicible to enemies.
-    conditions: 0
-    TimeTillPromptSkip: 3
-  - TextDisplay: ...
-    conditions: 3
-    TimeTillPromptSkip: 2
-  - TextDisplay: Oh an order came in! Let's see what we have to prepare.
-    conditions: 0
-    TimeTillPromptSkip: 3
-  - TextDisplay: 'A Potato Salad. The Classic. '
-    conditions: 0
-    TimeTillPromptSkip: 2
-  - TextDisplay: Oh wait, I forget you were abduc... forced to work here.
-    conditions: 0
-    TimeTillPromptSkip: 3
-  - TextDisplay: So you may not be familar with our cuisine.
-    conditions: 0
-    TimeTillPromptSkip: 2
-  - TextDisplay: Not to worry, I have written the recipe that you have to follow.
-    conditions: 0
-    TimeTillPromptSkip: 3
-  - TextDisplay: ~Press tab to view the recipe for that order~
-    conditions: 4
-    TimeTillPromptSkip: 2
-  - TextDisplay: Not used to seeing such a recipe? I will explain about it later.
-    conditions: 0
-    TimeTillPromptSkip: 5
-  - TextDisplay: For now, just know that we need 4 mashed potato
-    conditions: 0
-    TimeTillPromptSkip: 5
-  - TextDisplay: Let's head to the ootatoo room to get some mashed potato.
-    conditions: 0
-    TimeTillPromptSkip: 5
-  - TextDisplay: ...
-    conditions: 0
-    TimeTillPromptSkip: 1
-  - TextDisplay: Don't tell me you do not know how to....
-    conditions: 0
-    TimeTillPromptSkip: 1
-  - TextDisplay: ~Open the minimap by pressing M, press M to close it again~
-    conditions: 5
-    TimeTillPromptSkip: 1
-  - TextDisplay: '*Cleaning Tentacles*'
-    conditions: 6
-    TimeTillPromptSkip: 2
-  - TextDisplay: Ootatoo Room is North from the Kitchen.
-    conditions: 0
-    TimeTillPromptSkip: 5
-  - TextDisplay: ~Head towards the ootatoo Room~
-    conditions: 7
-    TimeTillPromptSkip: 2
-  - TextDisplay: Alright. Lets teach you the basic of combat
-    conditions: 0
-    TimeTillPromptSkip: 3
-  - TextDisplay: Left click to do a normal attack
-    conditions: 0
-    TimeTillPromptSkip: 3
-  - TextDisplay: ~Kill an ootatoo by left clicking to attack~
-    conditions: 8
-    TimeTillPromptSkip: 2
-  - TextDisplay: Oh you manage to kill it. Congratulations? I think that is how you
-      hooman use it.
-    conditions: 0
-    TimeTillPromptSkip: 5
-  - TextDisplay: ~Try Killing Another one then~
-    conditions: 8
-    TimeTillPromptSkip: 2
-  - TextDisplay: Oh? Not used to killing live creatures? Too bad, get used to it.
-    conditions: 0
-    TimeTillPromptSkip: 5
-  - TextDisplay: You might have to kill an adorable one soon
-    conditions: 0
-    TimeTillPromptSkip: 4
-  - TextDisplay: ~Pick up the loot drop from the ootatoos by Pressing E near it~
-    conditions: 9
-    TimeTillPromptSkip: 2
-  - TextDisplay: Alright, lets head back to the kitchen.
-    conditions: 0
-    TimeTillPromptSkip: 4
-  - TextDisplay: ~Proceed back to the kitchen~
-    conditions: 10
-    TimeTillPromptSkip: 4
-  - TextDisplay: Wait uhhh.... you only have 2 mashed potato, and we need 4....
-    conditions: 0
-    TimeTillPromptSkip: 4
-  - TextDisplay: Lucky you, I somehow have 2 mashed potato. I shall drop them in
-      the kitchen
-    conditions: 0
-    TimeTillPromptSkip: 4
-  - TextDisplay: ~Pick Up the mashed potato in the kitchen~
-    conditions: 11
-    TimeTillPromptSkip: 2
-  - TextDisplay: Alright! Let's get cooking. I will explain the basic of cooking.
-    conditions: 0
-    TimeTillPromptSkip: 5
-  - TextDisplay: There are 2 stages of cooking required to make a dish.
-    conditions: 0
-    TimeTillPromptSkip: 5
-  - TextDisplay: First, mixing raw ingredients together to make a refined ingredient.
-    conditions: 0
-    TimeTillPromptSkip: 5
-  - TextDisplay: ~Try putting 2 mashed potato into the mixer by pressing E near it~
-    conditions: 12
-    TimeTillPromptSkip: 5
-  - TextDisplay: 2 Mashed potato can be combined into 1 mashed potato cup.
-    conditions: 0
-    TimeTillPromptSkip: 5
-  - TextDisplay: ~Press E again to start Mixing. When done, take the mashed potato
-      cup out~
-    conditions: 13
-    TimeTillPromptSkip: 5
-  - TextDisplay: Ok good, you made a mashed potato cup.
-    conditions: 0
-    TimeTillPromptSkip: 5
-  - TextDisplay: ~Create another mashed potato cup~
-    conditions: 14
-    TimeTillPromptSkip: 5
-  - TextDisplay: Ok now that we have 2 mashed potato cup, let's make the potato salad.
-    conditions: 0
-    TimeTillPromptSkip: 5
-  - TextDisplay: ~Put the 2 mashed potato cup into the cooker and get the dish~
-    conditions: 15
-    TimeTillPromptSkip: 5
-  - TextDisplay: Ahh... that stingy smell, just the way I like it.
-    conditions: 0
-    TimeTillPromptSkip: 5
-  - TextDisplay: Congrats on making your first ever dish Hooman, now you have to
-      serve it.
-    conditions: 0
-    TimeTillPromptSkip: 5
-  - TextDisplay: ~Serve the dish on a serving counter~
-    conditions: 16
-    TimeTillPromptSkip: 2
-  - TextDisplay: That is all I have to teach you for today. I will leave the rest
-      to you.
-    conditions: 0
-    TimeTillPromptSkip: 6
-  - TextDisplay: Have fun for your first day of work :D
-    conditions: 0
-    TimeTillPromptSkip: 6
-  - TextDisplay: 
-    conditions: 17
-    TimeTillPromptSkip: 2
 --- !u!1 &1001000280 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6305277981522707376, guid: 0d81f757dbf9ecc42b4e945194a01914, type: 3}
@@ -4577,6 +4413,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0ae5bfed65514a4a9ef9e25048de7c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lm: {fileID: 11400000, guid: b1ab7845fb897f94da5f204cb406165d, type: 2}
   spawnerList:
   - whatSpawner: {fileID: 1402649291}
     spawnerType: 0
@@ -4588,11 +4425,11 @@ MonoBehaviour:
     spawnerType: 3
   - whatSpawner: {fileID: 1988334867}
     spawnerType: 4
-  - whatSpawner: {fileID: 724449593}
+  - whatSpawner: {fileID: 482752174}
     spawnerType: 5
   - whatSpawner: {fileID: 161987895}
     spawnerType: 6
-  - whatSpawner: {fileID: 1588954781}
+  - whatSpawner: {fileID: 1434758220}
     spawnerType: 7
   - whatSpawner: {fileID: 438943113}
     spawnerType: 8
@@ -4801,6 +4638,11 @@ PrefabInstance:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2994583381017202792, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
   m_PrefabInstance: {fileID: 1192683886}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1434758220 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2994583381017202792, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
+  m_PrefabInstance: {fileID: 213691654}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1475502156
 PrefabInstance:
@@ -5419,7 +5261,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2054634966}
-  - component: {fileID: 969853332}
   m_Layer: 0
   m_Name: 'Recovery GameObject for Canvas (ID in file: 969853332)'
   m_TagString: Untagged
@@ -5440,7 +5281,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

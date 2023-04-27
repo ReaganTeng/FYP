@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpawnerManager : MonoBehaviour
 {
     public static SpawnerManager instance;
+    [SerializeField] LevelManager lm;
 
     private void Awake()
     {
@@ -59,5 +60,16 @@ public class SpawnerManager : MonoBehaviour
             }
         }
         return null;
+    }
+
+    private void Start()
+    {
+        if (!Tutorial.instance.InTutorial)
+        {
+            for (int i = 0; i < lm.levelInfo[lm.DaySelected - 1].WhatSpawnerActive.Count; i++)
+            {
+                SetSpawner(lm.levelInfo[lm.DaySelected - 1].WhatSpawnerActive[i], true);
+            }
+        }
     }
 }
