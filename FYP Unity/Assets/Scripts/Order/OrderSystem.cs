@@ -21,6 +21,7 @@ public class OrderSystem : MonoBehaviour
     private int SuccessfulOrders;
     private int FailedOrders;
     private int ObtainedStars;
+    private float WaitingTime;
 
     List<GameObject> orderList = new List<GameObject>();
 
@@ -49,12 +50,13 @@ public class OrderSystem : MonoBehaviour
         StopComingOrders = false;
         SuccessfulOrders = 0;
         FailedOrders = 0;
+        SetWaitingTime();
     }
 
     private void Update()
     {
         // during game startup, do not run the update
-        if (FreezeGame.instance.startUpfreeze)
+        if (FreezeGame.instance.startUpfreeze || Tutorial.instance.InTutorial)
             return;
 
         if (!StartOrdering)
@@ -74,13 +76,7 @@ public class OrderSystem : MonoBehaviour
             if (orderintervaltimer <= 0)
             {
                 // Create an order list
-                GameObject temp = Instantiate(OrderPrefab);
-                AssignRecipe(temp);
-                temp.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
-                orderList.Add(temp);
-                CheckOrderList();
-                ord.SetToDisplay(orderList);
-                orderintervaltimer = OrderIntervalTiming;
+                CreateAnOrder();
             }
         }
 
@@ -99,7 +95,6 @@ public class OrderSystem : MonoBehaviour
     void AssignRecipe(GameObject order)
     {
         OrderPanel orderPanel = order.GetComponent<OrderPanel>();
-        float WaitingTime = OrderManager.instance.GetCurrentDayWaitingTime();
         Recipes.recipes theorder = OrderManager.instance.GetRandomOrderFromCurrentDay();
         if (WaitingTime == 0)
             orderPanel.SetOrder(FoodManager.instance.GetImage(theorder.ingredient1), FoodManager.instance.GetImage(theorder.ingredient2), FoodManager.instance.GetImage(theorder.Result), theorder);
@@ -124,7 +119,7 @@ public class OrderSystem : MonoBehaviour
 
         if (CanBeServed)
         {
-            int TimeToExpire = 999;
+            int TimeToExpire = 999999999;
             int index = -1;
             // Check to see which items is gonna expire, remove that one first
             for (int i = 0; i < orderList.Count; i++)
@@ -183,6 +178,8 @@ public class OrderSystem : MonoBehaviour
                 inventory.RemoveSelected();
                 // Count towards a successful serve
                 SuccessfulOrders++;
+                // Sort the list and update the order UI accordingly
+                CheckOrderList();
                 // Check to see if can end day
                 CheckIfCanEndDay();
             }
@@ -249,5 +246,29 @@ public class OrderSystem : MonoBehaviour
             return ObtainedStars / TotalOrders;
         else
             return 5;
+    }
+
+    public void CreateAnOrder()
+    {
+        // Create an order list
+        GameObject temp = Instantiate(OrderPrefab);
+        AssignRecipe(temp);
+        temp.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
+        orderList.Add(temp);
+        CheckOrderList();
+        ord.SetToDisplay(orderList);
+        orderintervaltimer = OrderIntervalTiming;
+    }
+
+    public void SetWaitingTime(int i = 0)
+    {
+        if (i == 0)
+        {
+            WaitingTime = OrderManager.instance.GetCurrentDayWaitingTime();
+        }
+        else
+        {
+            WaitingTime = i;
+        }
     }
 }

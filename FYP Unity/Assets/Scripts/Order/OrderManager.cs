@@ -36,16 +36,15 @@ public class OrderManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-    }
-
-    private void Start()
-    {
         currentday = eod.GetCurrentDay();
-
         // set the presetday to what the level customization is, if the level itself exist
         if (currentday > 0 && currentday < lm.levelInfo.Count)
             presetday = lm.levelInfo[currentday - 1].CustomizeOrderForThisDay;
 
+    }
+
+    private void Start()
+    {
         // set the orders that can come out
         SetOrdersForTheDay();
     }

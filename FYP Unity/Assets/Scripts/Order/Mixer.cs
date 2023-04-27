@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Mixer : MonoBehaviour
 {
-    enum MixerType
+    public enum MixerType
     {
         REFINER,
         COOKER,
@@ -25,6 +25,7 @@ public class Mixer : MonoBehaviour
     bool CanPutIntoMixer;
     bool MixerDone;
     bool QTEDone;
+    bool QTEActive;
 
     // List that contains the ingredients inputted into the mixer
     List<GameObject> mixercontent = new List<GameObject>();
@@ -35,6 +36,7 @@ public class Mixer : MonoBehaviour
         CanPutIntoMixer = true;
         MixerDone = false;
         QTEDone = false;
+        QTEActive = true;
     }
 
     public void InteractWithMixer()
@@ -199,7 +201,7 @@ public class Mixer : MonoBehaviour
                 // Check to see player inventory is not full
                 if (!Inventory.instance.InventoryFull)
                 {
-                    if (!QTEDone)
+                    if (!QTEDone && QTEActive)
                     {
                         QTE.instance.StartQTE(gameObject, RecipeResultObject);
                         QTEDone = true;
@@ -246,5 +248,35 @@ public class Mixer : MonoBehaviour
                 MixerDone = true;
             }
         }
+    }
+
+    // a function to check if the mixer has 2 ingredients inside
+    public bool CheckIfFilled()
+    {
+        if (mixercontent.Count >= 2)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    // a function to check if the result has been taken yet
+    public bool CheckIfEmptied()
+    {
+        if (CanPutIntoMixer && mixercontent.Count == 0)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public MixerType GetMixerType()
+    {
+        return mixerType;
+    }
+
+    public void SetQTEActive(bool QTEtoBeActiveOrNot)
+    {
+        QTEActive = QTEtoBeActiveOrNot;
     }
 }

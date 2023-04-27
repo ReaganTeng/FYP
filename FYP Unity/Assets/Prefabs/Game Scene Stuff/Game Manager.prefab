@@ -20,6 +20,8 @@ GameObject:
   - component: {fileID: 1793855428296037514}
   - component: {fileID: 1793855428296037510}
   - component: {fileID: 1793855428296037509}
+  - component: {fileID: 374321691}
+  - component: {fileID: 374321704}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: GameManager
@@ -109,7 +111,7 @@ MonoBehaviour:
   SliverStar: {fileID: 21300000, guid: c2b8e31f1e9632a43baa35c7cfbad395, type: 3}
   GoldStar: {fileID: 21300000, guid: 864954da7b4cfd94da2ed2d1807969ff, type: 3}
   IridiumStar: {fileID: 21300000, guid: 3a9d068596cb6f141be1e5e21c56f653, type: 3}
-  tempfood: {fileID: 7510281840356330337, guid: e9b208d8ecebe4b498646e3cb6d2c5ed, type: 3}
+  tempfood: {fileID: 182605561234774530, guid: cb1736df13ccbf143aff6ecfc7892346, type: 3}
   IsPerfect: 1
   amtofStars: 3
 --- !u!114 &1793855428296037517
@@ -164,8 +166,8 @@ MonoBehaviour:
     ingredient2: {fileID: 1561627430489754311, guid: 57abb08eeb115de42936e21dff3348b3, type: 3}
     Result: {fileID: 6563926190247552163, guid: 4bff3a799ae975944b07e11f3e39d64c, type: 3}
   dishrecipeList:
-  - ingredient1: {fileID: 4256567947675973792, guid: 710b9ffdfe2f6e941bfc6ef5b75defdf, type: 3}
-    ingredient2: {fileID: 3727349960685119876, guid: 412eeb9da45cf98408e1a271d2cb71f9, type: 3}
+  - ingredient1: {fileID: 4727850471977572123, guid: d68bd3fa27cf44d4287bca58a3871fce, type: 3}
+    ingredient2: {fileID: 4727850471977572123, guid: d68bd3fa27cf44d4287bca58a3871fce, type: 3}
     Result: {fileID: 2130613994254373028, guid: 1aa4138ff3d4c74489890d40137af51c, type: 3}
   - ingredient1: {fileID: 969170845776894310, guid: 56dccc9ea087141459a04efb96ac648d, type: 3}
     ingredient2: {fileID: 3727349960685119876, guid: 412eeb9da45cf98408e1a271d2cb71f9, type: 3}
@@ -198,14 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 724e594bdd5c71b4a850711501da8fed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  presetdaylist:
-  - dishName:
-    - Mash Potato
-    whatday: 1
-    WaitingTime: 0
-    penalty: 10
-    Fixed: 1
-    AmtOfDishes: 0
+  lm: {fileID: 11400000, guid: b1ab7845fb897f94da5f204cb406165d, type: 2}
   eod: {fileID: 1793855428296037514}
 --- !u!114 &1793855428296037515
 MonoBehaviour:
@@ -220,12 +215,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 1793855428296037518}
-  OrderZone: {fileID: 0}
   OrderPrefab: {fileID: 1816805389690346665, guid: 8b07011991067364aa0fa3d63c9a1cd6, type: 3}
   TimeBeforeFirstOrder: 2
-  OrderIntervalTiming: 5
-  MaxOrderAtOnce: 3
+  OrderIntervalTiming: 2
+  MaxOrderAtOnce: 4
   eod: {fileID: 1793855428296037514}
+  ord: {fileID: 0}
 --- !u!114 &1793855428296037514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,13 +233,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d7f2ce9e2a652b4bb29575e0734efb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ps: {fileID: 0}
+  ps: {fileID: 11400000, guid: 80203a9d8037ee2449d6c18b30afe1f3, type: 2}
   os: {fileID: 1793855428296037515}
   text: {fileID: 0}
   score: 0
   lm: {fileID: 11400000, guid: b1ab7845fb897f94da5f204cb406165d, type: 2}
   EndOfDayBackground: {fileID: 0}
-  resultDisplay: []
+  resultDisplay:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   ClearedText: {fileID: 0}
   FailedText: {fileID: 0}
   TotalText: {fileID: 0}
@@ -262,14 +266,14 @@ MonoBehaviour:
   Brank: {fileID: 21300000, guid: 883df4b9c652a354ea88b3898472dbd1, type: 3}
   Crank: {fileID: 21300000, guid: b8a3964cd24c1b5469ba2bd15fc79245, type: 3}
   Frank: {fileID: 21300000, guid: f7bc6d841c1500144b94e26dc7525783, type: 3}
-  TextFadeInDuration: 0
-  StarDisplayDuration: 0
+  TextFadeInDuration: 0.3
+  StarDisplayDuration: 0.5
   starDisplay: {fileID: 0}
   GradeSection: {fileID: 0}
   minValue: {fileID: 0}
   maxValue: {fileID: 0}
   gradeSlider: {fileID: 0}
-  SliderDuration: 1.5
+  SliderDuration: 2.5
   creditObtained: {fileID: 0}
 --- !u!114 &1793855428296037510
 MonoBehaviour:
@@ -310,4 +314,34 @@ MonoBehaviour:
   HourHand: {fileID: 0}
   MinuteHand: {fileID: 0}
   eod: {fileID: 1793855428296037514}
-  TimeFortheDayInSeconds: 1
+  TimeFortheDayInSeconds: 100
+--- !u!114 &374321691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1793855428296037521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daec1d928f9441940aec92ced7150135, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startUpfreeze: 1
+  timeTillGameStart: 3
+  timeTillGameResume: 3
+  pauseButton: {fileID: 0}
+  ActionText: {fileID: 0}
+--- !u!114 &374321704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1793855428296037521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b3cae2910a57cb4abf8a1750a0f2e01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lm: {fileID: 11400000, guid: b1ab7845fb897f94da5f204cb406165d, type: 2}

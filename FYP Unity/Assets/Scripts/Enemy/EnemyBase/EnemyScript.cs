@@ -15,7 +15,7 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] LayerMask lm_2;
 
 
-    int EnemyHealth;
+    [SerializeField] int EnemyHealth = 10;
     [SerializeField] float AttackDamage;
     [SerializeField] GameObject prepPrefab;
     [SerializeField] GameObject choppedPefab;
@@ -127,7 +127,6 @@ public class EnemyScript : MonoBehaviour
         angle = 90.0f;
         rayRange = 1.0f;
 
-        EnemyHealth = 10;
         updating = false;
         zoneno = 0;
         zone = GameObject.FindGameObjectsWithTag("Zone");

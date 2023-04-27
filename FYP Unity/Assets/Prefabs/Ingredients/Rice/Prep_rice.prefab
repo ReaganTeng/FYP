@@ -99,6 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   noglow: {fileID: 2800000, guid: 7f2f18c84e15cdd47a97360b548c5296, type: 3}
   glow: {fileID: 2800000, guid: 667914e8e7e63c040ab22b86d6b9f3fe, type: 3}
+  ParentReference: {fileID: 8909789117250201433}
 --- !u!65 &5690591501746307049
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -124,7 +125,7 @@ GameObject:
   - component: {fileID: 4759096217542487199}
   - component: {fileID: -5997114855173512330}
   m_Layer: 0
-  m_Name: prep_rice
+  m_Name: Prep_rice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

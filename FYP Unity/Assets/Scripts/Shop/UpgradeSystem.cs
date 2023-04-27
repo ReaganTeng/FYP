@@ -9,6 +9,7 @@ public class UpgradeSystem : MonoBehaviour
     {
         NONE,
         INVENTORY_UPGRADE,
+        HEALTH_UP,
     }
 
     public static UpgradeSystem instance;
@@ -24,6 +25,10 @@ public class UpgradeSystem : MonoBehaviour
         {
             case ShopItemType.INVENTORY_UPGRADE:
                 pp.MaxInventorySlots += 1;
+                break;
+
+            case ShopItemType.HEALTH_UP:
+                pp.PlayermaxHealth += 10;
                 break;
         }
     }

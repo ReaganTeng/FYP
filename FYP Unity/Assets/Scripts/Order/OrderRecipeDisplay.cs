@@ -17,6 +17,7 @@ public class OrderRecipeDisplay : MonoBehaviour
     [SerializeField] Image Ingredient3;
     [SerializeField] Image Ingredient4;
     private int TotalOrder;
+    int CurrentlySelectedIndex = -1;
 
     public void SetToDisplay(List<GameObject> gameObjectList)
     {
@@ -30,94 +31,104 @@ public class OrderRecipeDisplay : MonoBehaviour
             gameObjectList[i].transform.localPosition = Vector3.zero;
         }
         // Check to see if any are selected, if yes, do the checking
+        TotalOrder = gameObjectList.Count;
+        bool NoOrders = false;
+
         if (CheckIfAnySelected())
         {
-            ChangeSelectedAfterOrder();
+            NoOrders = ChangeSelected(true);
         }
-        TotalOrder = gameObjectList.Count;
-        SetDisplayInteractable();
+        if (!NoOrders)
+        {
+            SetDisplayInteractable();
+        }
     }
 
-    void SetDisplayInteractable()
+    void SetDisplayInteractable(bool voided = false)
     {
         for (int i = 0; i < orderBGDisplay.Count; i++)
         {
-            if (orderBGDisplay[i].GetComponentInChildren<OrderPanel>() != null)
+            Color color = orderBGDisplay[i].GetComponent<Image>().color;
+
+            // if there is an order there, set alpha to 1, if no order, set alpha to half
+            if (orderBGDisplay[i].GetComponentInChildren<OrderPanel>() != null && !voided)
             {
-                orderBGDisplay[i].GetComponent<Button>().interactable = true;
+                color.a = 1;
             }
             else
             {
-                orderBGDisplay[i].GetComponent<Button>().interactable = false;
+                color.a = 0.5f;
             }
+
+            orderBGDisplay[i].GetComponent<Image>().color = color;
         }
     }
 
-    public void ChangeSelected(GameObject panelSelected)
+    public bool ChangeSelected(bool ChangeFromOrderFulfill = false)
     {
-        // if it is null, all are not selected
-        if (panelSelected == null)
+        // if there is no panel to select, make it not selected
+        if (TotalOrder == 0)
         {
             for (int i = 0; i < orderBGDisplay.Count; i++)
             {
                 orderBGDisplay[i].GetComponent<Image>().sprite = NotSelectedPanel;
             }
+            SetDisplayInteractable(true);
             RecipeDisplay.SetActive(false);
+            return true;
         }
-
-        // if it is not null, find what call it and make it selected
         else
         {
+            if (!ChangeFromOrderFulfill)
+                CurrentlySelectedIndex++;
+
+            // if it went out of bound, set it back to 0
+            if (CurrentlySelectedIndex > orderBGDisplay.Count)
+            {
+                CurrentlySelectedIndex = 0;
+            }
+
+            // if it is at the rightmost order, and that order no longer exist, push it back
+            if (CurrentlySelectedIndex >= TotalOrder)
+            {
+                // if it is not a switch panel input, reset it to 0 instead
+                if (!ChangeFromOrderFulfill)
+                    CurrentlySelectedIndex = 0;
+
+                else
+                    CurrentlySelectedIndex--;
+            }
+
             for (int i = 0; i < orderBGDisplay.Count; i++)
             {
-                // if the gameobject is the one being clicked on, change it to selected
-                if (orderBGDisplay[i] == panelSelected)
+                if (i == CurrentlySelectedIndex)
                 {
                     orderBGDisplay[i].GetComponent<Image>().sprite = SelectedPanel;
                     AssignImage(orderBGDisplay[i].GetComponentInChildren<OrderPanel>());
+                    RecipeDisplay.SetActive(true);
                 }
                 else
+                {
                     orderBGDisplay[i].GetComponent<Image>().sprite = NotSelectedPanel;
+                }
             }
-            RecipeDisplay.SetActive(true);
         }
-    }
 
-    void ChangeSelectedAfterOrder()
-    {
-        for (int i = 0; i < orderBGDisplay.Count; i++)
-        {
-            // Find the selected order panel
-            if (orderBGDisplay[i].GetComponent<Image>().sprite == SelectedPanel)
-            {
-                // Check to see if it contains an order, if it does, reallocate the selected
-                if (orderBGDisplay[i].GetComponentInChildren<OrderPanel>() != null)
-                {
-                    ChangeSelected(orderBGDisplay[i]);
-                }
-                // if it does not contain an order, push the selected to the previous order panel
-                else
-                {
-                    // if the index is not a, not the first panel, change to the previous panel
-                    if (i != 0)
-                    {
-                        ChangeSelected(orderBGDisplay[i - 1]);
-                    }
-                    // if the index is at 0, the first panel, disable the display
-                    else
-                    {
-                        ChangeSelected(null);
-                    }
-                }
-                break;
-            }
-        }
+        return false;
     }
 
     private void Start()
     {
         SetDisplayInteractable();
         RecipeDisplay.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            ChangeSelected();
+        }
     }
 
     void AssignImage(OrderPanel dishInput)
@@ -153,7 +164,7 @@ public class OrderRecipeDisplay : MonoBehaviour
         }
     }
 
-    bool CheckIfAnySelected()
+    public bool CheckIfAnySelected()
     {
         for (int i = 0; i < orderBGDisplay.Count; i++)
         {

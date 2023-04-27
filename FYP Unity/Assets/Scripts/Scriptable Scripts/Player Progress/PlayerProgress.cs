@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerProgress : ScriptableObject
 {
     public int MaxInventorySlots;
+    public int PlayermaxHealth;
     [SerializeField] int CosmicCredibility;
     [SerializeField] int TotalObtainedCredibility;
 
