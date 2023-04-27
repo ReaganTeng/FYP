@@ -99,6 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   noglow: {fileID: 2800000, guid: 7fde444bcb6262e40b815febe1f24874, type: 3}
   glow: {fileID: 2800000, guid: 6ace1024cf7e58047991ef5a2621a2f5, type: 3}
+  ParentReference: {fileID: 8494874157540663937}
 --- !u!65 &5054975591647116496
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -158,7 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43a657e03a773364391ebd1ebdb6a1e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemID: 0
+  itemtype: 0
   image: {fileID: 21300000, guid: 7fde444bcb6262e40b815febe1f24874, type: 3}
 --- !u!114 &6601963018735651944
 MonoBehaviour:
@@ -172,4 +173,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d5d1825d182a194897640c1a97ff6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foodtypeid: 0
+  foodtype: 0

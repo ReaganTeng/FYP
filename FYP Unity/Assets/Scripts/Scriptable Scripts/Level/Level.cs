@@ -19,6 +19,8 @@ public class Level : ScriptableObject
     private int MaxCredibility = 4;
     public List<LevelHallway.Hallway> HallwaysUnlock;
     public OrderManager.DayOrder CustomizeOrderForThisDay;
+    public List<SpawnerManager.SPAWNERTYPE> WhatSpawnerActive;
+    public TutorialLevel isThereTutorial;
 
     enum Grades
     {

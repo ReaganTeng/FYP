@@ -160,6 +160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   noglow: {fileID: 2800000, guid: 4d0540429606bc94a96e94a96c981861, type: 3}
   glow: {fileID: 2800000, guid: 4bb0355890969e84fb9512b76a6402bd, type: 3}
+  ParentReference: {fileID: 1651023163865744873}
 --- !u!65 &5406239318386907797
 BoxCollider:
   m_ObjectHideFlags: 0

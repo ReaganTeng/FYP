@@ -55,8 +55,6 @@ public class SettingsManager : MonoBehaviour
     public void changeMusicVolume()
     {
         PlayerPrefs.SetFloat("MusicLVL", MusicSlider.value);
-
-
     }
 
 
@@ -79,6 +77,12 @@ public class SettingsManager : MonoBehaviour
     public void HardReset()
     {
 
+    }
+
+    public void ResetTutorial()
+    {
+        Debug.Log("Tutorial Reset");
+        PlayerPrefs.SetInt("TutorialComplete", 0);
     }
 
     //true = Full, false = windowed

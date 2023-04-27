@@ -279,6 +279,7 @@ MonoBehaviour:
   spaculaHitbox: {fileID: 6670536203559410289}
   knifeHitbox: {fileID: 2429570959170697404}
   pinHitbox: {fileID: 3136350151301332611}
+  disableControls: 0
   chargingduration: 30
   number_of_charges: 2
   reduction_in_percentage: 0
@@ -401,6 +402,7 @@ MonoBehaviour:
   DashBy: 30
   IFrame: 0.3
   playerPickUp: {fileID: 3801972613150636765}
+  playerAttack: {fileID: 4940691009673553818}
   spriteRenderer: {fileID: 8852204268514479156}
 --- !u!54 &5218877466719756691
 Rigidbody:

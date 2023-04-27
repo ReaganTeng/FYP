@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float DashBy;
     [SerializeField] float IFrame;
     [SerializeField] PlayerPickup playerPickUp;
+    [SerializeField] PlayerAttack playerAttack;
     bool DisableControls;
 
     [SerializeField]
@@ -156,12 +157,14 @@ public class PlayerMovement : MonoBehaviour
     {
         DisableControls = true;
         playerPickUp.DisableControls = true;
+        playerAttack.SetDisableControls(true);
     }
 
     public void EnablePlayerControls()
     {
         DisableControls = false;
         playerPickUp.DisableControls = false;
+        playerAttack.SetDisableControls(false);
     }
 
     public void SetSRColor(Color c)

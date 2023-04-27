@@ -24,4 +24,14 @@ public class UnlockHallway : MonoBehaviour
             }
         }
     }
+
+    public void LockHallway(LevelHallway.Hallway whichHallway)
+    {
+        LevelHallway.instance.CloseHallway(whichHallway);
+    }
+
+    public void OpenHallway(LevelHallway.Hallway whichHallway)
+    {
+        LevelHallway.instance.OpenHallway(whichHallway);
+    }
 }

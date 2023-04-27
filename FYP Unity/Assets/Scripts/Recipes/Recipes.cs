@@ -89,9 +89,11 @@ public class Recipes : MonoBehaviour
                     {
                         case FoodManager.FoodType.REFINED_INGREDIENT:
                             resultFood.GetComponent<RefinedItem>().SetValues(rp[i].Result.GetComponent<RefinedItem>());
+                            Destroy(resultFood.GetComponent<Dish>());
                             break;
                         case FoodManager.FoodType.DISH:
                             resultFood.GetComponent<Dish>().SetValues(rp[i].Result.GetComponent<Dish>());
+                            Destroy(resultFood.GetComponent<RefinedItem>());
                             break;
                     }
 

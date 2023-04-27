@@ -41,6 +41,12 @@ public class FreezeGame : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape) && !startGameResumeTimer)
+        {
+            PauseGame();
+        }
+
+
         if (startUpfreeze)
         {
             freezeGameTimer -= Time.deltaTime;
@@ -124,5 +130,11 @@ public class FreezeGame : MonoBehaviour
         startGameResumeTimer = true;
         PauseMenu.SetActive(false);
         pauseButton.interactable = true;
+    }
+
+    public void IgnoreStartUp()
+    {
+        startUpfreeze = false;
+        ActionText.SetActive(false);
     }
 }
