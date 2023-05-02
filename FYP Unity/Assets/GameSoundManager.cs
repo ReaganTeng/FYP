@@ -40,10 +40,7 @@ namespace DigitalRuby.SoundManagerNamespace
             SoundManager.MusicVolume = MusicSlider.value;
         }
 
-        public void PersistToggleChanged(bool isOn)
-        {
-            SoundManager.StopSoundsOnLevelLoad = !isOn;
-        }
+
 
 
     }
