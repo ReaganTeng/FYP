@@ -6,9 +6,6 @@ using UnityEngine.AI;
 
 public class JumperScript : MonoBehaviour
 {
-
-   
-    
     [SerializeField] float jumpcooldown;
     EnemyScript.Phases enemyPhase;
     [SerializeField] GameObject jumperCanvas;
@@ -43,11 +40,12 @@ public class JumperScript : MonoBehaviour
     GameObject attackhitbox;
     bool jumpmode;
 
+    int rand_z;
    
     // Start is called before the first frame update
     void Start()
     {
-        
+        rand_z = 0;
         GetComponent<EnemyScript>().set_enemyType(EnemyScript.EnemyType.JUMPER);
         startupdating = false;
         count = 0;
@@ -81,11 +79,10 @@ public class JumperScript : MonoBehaviour
                 case EnemyScript.Phases.ATTACK_TYPE_1:
                 case EnemyScript.Phases.ATTACK_TYPE_2:
                 {
-                        //attackhitbox.GetComponent<BoxCollider>().enabled = true;
-
+                    //attackhitbox.GetComponent<BoxCollider>().enabled = true;
                     if (currentdistance < 4.5f)
                     {
-                            jumpmode = true;
+                        jumpmode = true;
                     }
                     //continue to chase the player
                     if(jumpmode == false /*&&
@@ -136,7 +133,7 @@ public class JumperScript : MonoBehaviour
                             GetComponent<BoxCollider>().enabled = false;
 
                             //while it's jumping, disable attackhitbox;
-                            if (currentdistance < 1.0f)
+                            if (currentdistance < 1.5f)
                             {
                                 attackhitbox.GetComponent<BoxCollider>().enabled = true;
                             }
@@ -152,7 +149,16 @@ public class JumperScript : MonoBehaviour
                             }
                             else
                             {
-                                navMeshAgent.speed = 10.0f * speedfactor * jumpspeed;
+                                float jumpdistance
+                                            = Vector3.Distance(startpos, endpoint);
+                                if (currentdistance >= jumpdistance/2)
+                                {
+                                    navMeshAgent.speed = 10.0f * speedfactor * jumpspeed;
+                                }
+                                else
+                                {
+                                    navMeshAgent.speed = 10.0f * speedfactor * jumpspeed * 5;
+                                }
                             }
 
                             spritejump();
@@ -163,12 +169,21 @@ public class JumperScript : MonoBehaviour
                         }
 
                     }
-                    break;
+
+                        //enemyScript.steering();
+
+
+                        break;
                 }
             case EnemyScript.Phases.COOLDOWN:
                 {
                     jumpmode = false;
                     jumpcooldown = 0.3f;
+
+                    //enemyScript.steering();
+                    //enemyScript.steering_3();
+                    enemyScript.avoidanceCode(rand_z);
+
                     GetComponent<NavMeshAgent>().speed = 0.0f;
                     GetComponent<EnemyScript>().cooldownUpdate();
 
@@ -177,16 +192,20 @@ public class JumperScript : MonoBehaviour
 
             case EnemyScript.Phases.ABOUT_TO_ATTACK:
                 {
-                        if (currentdistance <= 5.0f)
-                        {
-                            //BACK AWAY
-                            Vector3 resultingVector = -playerGO.transform.position + transform.position;
-                            GetComponent<Rigidbody>().velocity = resultingVector;
-                            //
-                        }
+                        //if (currentdistance <= 5.0f)
+                        //{
+                        //    //BACK AWAY
+                        //    Vector3 resultingVector = -playerGO.transform.position + transform.position;
+                        //    GetComponent<Rigidbody>().velocity = resultingVector;
+                        //    //
+                        //}
 
-                    //GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
-                    GetComponent<NavMeshAgent>().speed = 0.0f;
+                        //enemyScript.steering();
+                        //enemyScript.steering_3();
+                        enemyScript.avoidanceCode(rand_z);
+
+                        //GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
+                        GetComponent<NavMeshAgent>().speed = 0.0f;
                     GetComponent<EnemyScript>().abouttoattackUpdate();
 
                     break;
@@ -201,14 +220,14 @@ public class JumperScript : MonoBehaviour
 
         }
 
-        enemyScript.steering();
+        //enemyScript.steering();
 
     }
 
 
 
 
-    //MAKE IT CHASE THE PLAYER UNTIL IT'S NEAR THE RANGE
+    //TRANSLATE THE SPRITE IN AN ARC
     public void spritejump()
     {
         if (count < 1.0f
@@ -228,7 +247,7 @@ public class JumperScript : MonoBehaviour
             jumprest();
         }
     }
-    
+    //
 
     public void DestroyBeams()
     {

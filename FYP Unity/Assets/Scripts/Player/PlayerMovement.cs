@@ -81,10 +81,12 @@ public class PlayerMovement : MonoBehaviour
                 CheckDirection(ref Forwardrun, ref Rightrun, horizontalInput, verticalInput);
             }
 
+            
             if (Input.GetKey(KeyCode.W)
                 && !Input.GetKey(KeyCode.S)
                 && !Input.GetKey(KeyCode.A)
-                && !Input.GetKey(KeyCode.D))
+                && !Input.GetKey(KeyCode.D)
+                && !Input.GetKey(KeyCode.LeftShift))
             {
                 walkBack = true;
             }
@@ -97,7 +99,8 @@ public class PlayerMovement : MonoBehaviour
             if (!Input.GetKey(KeyCode.W)
                 && Input.GetKey(KeyCode.S)
                 && !Input.GetKey(KeyCode.A)
-                && !Input.GetKey(KeyCode.D))
+                && !Input.GetKey(KeyCode.D)
+                && !Input.GetKey(KeyCode.LeftShift))
             {
                 walkFront = true;
             }
@@ -105,6 +108,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 walkFront = false;
             }
+
+            
 
             if (Input.GetKey(KeyCode.A))
             { 
@@ -116,7 +121,8 @@ public class PlayerMovement : MonoBehaviour
                 spriteRenderer.flipX = true;
             }
 
-            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+            if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+                && !Input.GetKey(KeyCode.LeftShift))
             {
                 isWalking = true;
             }
@@ -138,9 +144,19 @@ public class PlayerMovement : MonoBehaviour
                     dashcdtimer = DashCD;
                     iframetimer = IFrame;
                     IFrameStart = true;
+                    if (GetComponentInChildren<Animator>().GetBool("Dash") == false)
+                    {
+                        GetComponentInChildren<Animator>().SetBool("Dash", true);
+                    }
                     Physics.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer("Enemy"), true);
 
                 }
+            }
+
+
+            if (dashcdtimer <= 0.5f)
+            {
+                GetComponentInChildren<Animator>().SetBool("Dash", false);
             }
         }
     }
