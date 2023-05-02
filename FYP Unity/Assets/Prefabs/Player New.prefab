@@ -91,6 +91,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerInventory: {fileID: 8900116384804071886}
   DisableControls: 0
+  CannotInteractWithMixer: 0
 --- !u!1 &2429570959170697404
 GameObject:
   m_ObjectHideFlags: 0
@@ -279,7 +280,6 @@ MonoBehaviour:
   spaculaHitbox: {fileID: 6670536203559410289}
   knifeHitbox: {fileID: 2429570959170697404}
   pinHitbox: {fileID: 3136350151301332611}
-  disableControls: 0
   chargingduration: 30
   number_of_charges: 2
   reduction_in_percentage: 0

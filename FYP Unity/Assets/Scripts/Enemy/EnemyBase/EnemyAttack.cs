@@ -13,7 +13,9 @@ public class EnemyAttack : MonoBehaviour
 
     bool post_attack;
 
+
     [SerializeField] AnimationClip attackclip;
+    [SerializeField] AnimationClip about2atkclip;
 
     //determine how many times the player can attack at once
     [SerializeField] int attacks_per_session;
@@ -21,16 +23,19 @@ public class EnemyAttack : MonoBehaviour
     int attacks_performed;
     bool attacking_present;
 
+    float delayTime;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
+        attacking_present = false;
+        delayTime = 0.0f;
         AttackCD = 0;
         attacks_performed = 0;
         Attackcdtimer = 0;
-        player = GameObject.FindGameObjectWithTag("Player");
         post_attack = false;
-        attacking_present = false;
     }
 
     private void Update()
@@ -41,22 +46,18 @@ public class EnemyAttack : MonoBehaviour
             Attackcdtimer -= Time.deltaTime;
         }
 
+
         if (Attackcdtimer < AttackCD / 5)
         {
-            
-            transform.parent.GetComponent<BoxCollider>().enabled = true;
+            transform.parent.transform.parent.GetComponent<BoxCollider>().enabled = true;
         }
 
-
-        if (transform.parent.GetComponent<EnemyScript>().return_enemyType()
+        if (transform.parent.transform.parent.GetComponent<EnemyScript>().return_enemyType()
             == EnemyScript.EnemyType.CHASER)
         {
-            if (attacking_present)
-            {
-                attacks_performed += 1;
-                //Debug.Log("ATTACKS PERFORMED " + attacks_performed);
-                attacking_present = false;
-            }
+            /*&& delayTime
+            >= transform.parent.transform.parent.GetComponent<EnemyScript>().getCurrentAnimationLength() *
+            attacks_performed*/
 
             if (Attackcdtimer < AttackCD / 5)
             {
@@ -66,20 +67,51 @@ public class EnemyAttack : MonoBehaviour
                 }
             }
 
-            //if (Attackcdtimer <= 0)
+            //if (Attackcdtimer <= 0
+            //    && attacks_performed < attacks_per_session)
             //{
-            //    //stop enemy attack animation
-            //    animator.SetBool("attack", false);
+            //    Attackcdtimer = AttackCD;
             //}
 
+            //DELAY FOR CHASER
+            if (animator.GetBool("about2attack")
+                && animator.GetCurrentAnimatorStateInfo(0).IsName("aboutattack"))
+            {
+                //Debug.Log("ABOUT 2 ATTACK");
+                delayTime += Time.deltaTime;
+                if (delayTime
+                    >= /*transform.parent.transform.parent.GetComponent<EnemyScript>().getCurrentAnimationLength()*/
+                    animator.GetCurrentAnimatorStateInfo(0).length)
+                {
+                    animator.SetBool("attack", true);
+                }
+            }
+            //
+
+            //ADD 1 ATTACK TO EACH LOOP
+            if (attacking_present)
+            {
+                attacks_performed += 1;
+                attacking_present = false;
+            }
+            //
+
+            //END THE LOOP WHEN ATTACKS PERFORM EXCEEDED
             if (attacks_performed >= attacks_per_session)
             {
+                animator.SetBool("attack", false);
+                animator.SetBool("about2attack", false);
+                //animator.SetBool("chasingPlayer", false);
                 post_attack = true;
                 attacks_performed = 0;
+                delayTime = 0.0f;
             }
+            //
+
+            
 
         }
-        
+
     }
 
 
@@ -112,46 +144,71 @@ public class EnemyAttack : MonoBehaviour
             && GetComponent<BoxCollider>().enabled == true
             && attacks_performed < attacks_per_session)
         {
-
-            other.GetComponent<PlayerMovement>().setAnimator(true);
-            other.GetComponent<PlayerStats>().ResetConsecutiveHit();
-
-            if (transform.parent.GetComponent<EnemyScript>().return_enemyType() == EnemyScript.EnemyType.JUMPER)
+            
+            //IF ENEMY IS A JUMPER
+            if (transform.parent.transform.parent.GetComponent<EnemyScript>().return_enemyType()
+                == EnemyScript.EnemyType.JUMPER)
             {
+                other.GetComponent<PlayerMovement>().setAnimator(true);
+                other.GetComponent<PlayerStats>().ResetConsecutiveHit();
                 other.GetComponent<PlayerStats>().ChangeFervor(-10.0f);
             }
-            else if (transform.parent.GetComponent<EnemyScript>().return_enemyType() == EnemyScript.EnemyType.CHASER)
-            {
-                other.GetComponent<PlayerStats>().ChangeFervor(-5.0f);
+            //
 
-            }
-            else if (transform.parent.GetComponent<EnemyScript>().return_enemyType() == EnemyScript.EnemyType.CHARGER)
+            //IF ENEMY IS A CHASER
+            if (transform.parent.transform.parent.GetComponent<EnemyScript>().return_enemyType()
+                == EnemyScript.EnemyType.CHASER)
             {
+                if (animator.GetBool("attack"))
+                {
+                    //Debug.Log("ATTACK TRUE");
+                    if (animator.GetCurrentAnimatorStateInfo(0).IsName("attack"))
+                    {
+                        //HIT PLAYER EVERY TIME EACH LOOP ENDS
+                        other.GetComponent<PlayerMovement>().setAnimator(true);
+                        other.GetComponent<PlayerStats>().ResetConsecutiveHit();
+                        other.GetComponent<PlayerStats>().ChangeFervor(-5.0f);
+                        attacking_present = true;
+                        Attackcdtimer = AttackCD;
+                        Debug.Log("HIT");
+                        //
+                    }
+                }
+                else
+                {
+                    animator.SetBool("about2attack", true);
+                }
+            }
+            //
+
+            //IF ENEMY IS A CHARGER
+            if (transform.parent.transform.parent.GetComponent<EnemyScript>().return_enemyType()
+                == EnemyScript.EnemyType.CHARGER
+                )
+            {
+                other.GetComponent<PlayerMovement>().setAnimator(true);
+                other.GetComponent<PlayerStats>().ResetConsecutiveHit();
                 other.GetComponent<PlayerStats>().ChangeFervor(-15.0f);
-            }
+                Attackcdtimer = AttackCD;
 
-            if (transform.parent.GetComponent<EnemyScript>().return_enemyType() == EnemyScript.EnemyType.JUMPER)
+            }
+            //
+
+            if (transform.parent.transform.parent.GetComponent<EnemyScript>().return_enemyType()
+                == EnemyScript.EnemyType.JUMPER)
             {
                 other.GetComponent<Rigidbody>().AddForce(
                 (other.GetComponent<Transform>().position - GetComponentInParent<Transform>().position).normalized * 10.0f,
                 ForceMode.Impulse
                 );
 
-                transform.parent.GetComponent<BoxCollider>().enabled = false;
+                transform.parent.transform.parent.GetComponent<BoxCollider>().enabled = false;
+
+                Attackcdtimer = AttackCD;
+
             }
 
-            /*if (attacks_performed < attacks_per_session)
-            {
-                attacks_performed += 1
-            }
-            else*/
-            //if (attacks_performed >= attacks_per_session)
-            //{
-            //    post_attack = true;
-            //attacks_performed = 0;
-            //}
-
-            if (transform.parent.GetComponent<EnemyScript>().return_enemyType() == EnemyScript.EnemyType.CHARGER)
+            if (transform.parent.transform.parent.GetComponent<EnemyScript>().return_enemyType() == EnemyScript.EnemyType.CHARGER)
             {
                 AttackCD = attackclip.length;
             }
@@ -159,16 +216,34 @@ public class EnemyAttack : MonoBehaviour
             {
                 AttackCD = 1.0f;
             }
-            Attackcdtimer = AttackCD;
+        }
 
-            if (transform.parent.GetComponent<EnemyScript>().return_enemyType()
-              == EnemyScript.EnemyType.CHASER)
+           
+
+        
+    }
+
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            attacking_present = false;
+            delayTime = 0.0f;
+            AttackCD = 0;
+            attacks_performed = 0;
+            Attackcdtimer = 0;
+
+
+           
+
+            if (transform.parent.transform.parent.GetComponent<EnemyScript>().return_enemyType()
+                           == EnemyScript.EnemyType.CHASER)
             {
-                animator.SetBool("attack", true);
-                attacking_present = true;
+                animator.SetBool("about2attack", false);
+                animator.SetBool("attack", false);
             }
-
-            Debug.Log("HIT");
         }
     }
+
 }

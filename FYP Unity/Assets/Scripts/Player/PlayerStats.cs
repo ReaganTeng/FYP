@@ -111,7 +111,7 @@ public class PlayerStats : MonoBehaviour
         //when player is playing hurt animation
         if (GetComponentInChildren<Animator>().GetBool("Hurt"))
         {
-            Debug.Log("OUCH");
+            //Debug.Log("OUCH");
             hurt_period += Time.deltaTime;
             if(hurt_period >= GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).length)
 

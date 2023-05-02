@@ -28,6 +28,8 @@ public class ChaserScript : MonoBehaviour
     float dist;
     bool beam_mode;
 
+    float rand_z;
+
     EnemyScript enemyScript;
 
     [SerializeField] GameObject attackhitbox;
@@ -40,6 +42,7 @@ public class ChaserScript : MonoBehaviour
         GetComponent<EnemyScript>().set_enemyType(EnemyScript.EnemyType.CHASER);
 
 
+        rand_z = 0;
         lockonbeam = null;
         hitbeam = null;
         pivot = null;
@@ -67,7 +70,7 @@ public class ChaserScript : MonoBehaviour
 
         dist = Vector3.Distance(transform.position, playerGO.transform.position);
 
-        float hitbeamsize = 3;
+        float hitbeamsize = 7;
         if (GetComponent<EnemyScript>().getupdating())
         {
             switch (enemyPhase)
@@ -75,24 +78,33 @@ public class ChaserScript : MonoBehaviour
                 case EnemyScript.Phases.ATTACK_TYPE_2:
                     //case EnemyScript.Phases.ATTACK_TYPE_1:
                     {
-                        attackhitbox.GetComponent<BoxCollider>().enabled = true;
+                        attackhitbox.GetComponent<BoxCollider>().enabled = false;
                         GetComponent<BoxCollider>().enabled = true;
 
                         time_att_1 = 0;
-                        //if (dist <= 4.0f)
-                        //{
-                        beam_mode = true;
-                        //}
-                        //else if (dist > 4.0f
-                        //    && beam_mode == false)
-                        //{
-                        //    enemyScript.set_current_phase(EnemyScript.Phases.ATTACK_TYPE_1);
-                        //}
+                        if (dist <= 4.0f)
+                        {
+                            beam_mode = true;
+                        }
+                        else if (dist > 4.0f
+                            && beam_mode == false)
+                        {
+                            //enemyScript.set_current_phase(EnemyScript.Phases.ATTACK_TYPE_1);
+                            //chase the player
+                            rand_z = Random.Range(-4, 4);
+                            navMeshAgent.enabled = true;
+                            GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
+                            navMeshAgent.SetDestination(playerGO.transform.position);
+                            GetComponentInChildren<Animator>().SetBool("chasingPlayer", true);
+
+                            chasingspeed = 2.0f;
+                        }
 
                         if (beam_mode == true)
                         {
                             time_att_2 += 1 * Time.deltaTime;
                             chasingspeed = 0.0f;
+
                             if (time_att_2 < 1.1f && time_att_2 > 1.0f)
                             {
                                 //PLACE LOCK ON BEAM
@@ -123,12 +135,11 @@ public class ChaserScript : MonoBehaviour
                             }
                             if (time_att_2 > 2.3f && time_att_2 < 2.7f)
                             {
+                                GetComponentInChildren<Animator>().SetBool("chasingPlayer", true);
                                 GetComponentInChildren<Animator>().SetBool("attack", true);
 
                                 if (hitbeam == null)
                                 {
-
-
                                     hitbeam = Instantiate(hit,
                                        transform.position,
                                        Quaternion.Euler(0, 0, 0));
@@ -145,10 +156,15 @@ public class ChaserScript : MonoBehaviour
 
                             if (time_att_2 > 2.8f)
                             {
+                                GetComponentInChildren<Animator>().SetBool("attack", false);
+
+                                //GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
                                 DestroyBeams();
                                 enemyScript.set_current_phase(EnemyScript.Phases.COOLDOWN);
                             }
                         }
+                        enemyScript.steering();
+
                         break;
                     }
                 case EnemyScript.Phases.ATTACK_TYPE_1:
@@ -156,13 +172,10 @@ public class ChaserScript : MonoBehaviour
                         attackhitbox.GetComponent<BoxCollider>().enabled = true;
                         GetComponent<BoxCollider>().enabled = true;
                         GetComponentInChildren<Animator>().SetBool("chasingPlayer", true);
-
                         beam_mode = false;
-
                         //chasingspeed = 2.0f;
                         time_att_2 = 0;
                         time_att_1 += Time.deltaTime;
-
                         if (GetComponentInChildren<EnemyAttack>().return_whether_back_away())
                         { 
                             change_of_attk_type_1 += Time.deltaTime;
@@ -172,7 +185,7 @@ public class ChaserScript : MonoBehaviour
                             change_of_attk_type_1 = 0;
                         }
 
-                        if (change_of_attk_type_1 >= 4.0f)
+                        if (change_of_attk_type_1 >= 7.0f)
                         {
                             change_of_attk_type_1 = 0.0f;
                         }
@@ -181,29 +194,40 @@ public class ChaserScript : MonoBehaviour
                         if (GetComponentInChildren<EnemyAttack>().getpostattack()
                             || change_of_attk_type_1 >= 3.0f)
                         {
+                            if(GetComponentInChildren<EnemyAttack>().getpostattack())
+                            {
+                                change_of_attk_type_1 = 0.0f;
+                            }
+
                             chasingspeed = 2.0f;
+                            //avoid player
                             if (dist <= 5.0f)
                             {
                                 navMeshAgent.enabled = false;
-                                Vector3 resultingVector = -playerGO.transform.position + transform.position;
-                                resultingVector.y = 0;
-                                GetComponent<Rigidbody>().velocity = resultingVector;
+                                //enemyScript.steering();
+                                enemyScript.avoidanceCode(rand_z);
                             }
+                            //continue chasing player
                             else
                             {
+                                //Debug.Log("Moving sideways");
+                                //rand_z = Random.Range(-4, 4);
                                 navMeshAgent.enabled = true;
-                                GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
+                                GetComponent<Rigidbody>().velocity = new Vector3(rand_z, 0.0f, 0.0f);
                                 navMeshAgent.SetDestination(playerGO.transform.position);
+                                //enemyScript.steering();
                             }
                         }
                         //
                         //continue to chase the player
                         else
                         {
-                            chasingspeed = dist /** 0.2f*/;
+                            rand_z = Random.Range(-4, 4);
+                            chasingspeed = 2.0f /*dist * 0.2f*/;
                             navMeshAgent.enabled = true;
                             GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
                             navMeshAgent.SetDestination(playerGO.transform.position);
+                            //enemyScript.steering();
                         }
                         //
 
@@ -211,6 +235,7 @@ public class ChaserScript : MonoBehaviour
                         {
                             enemyScript.set_current_phase(EnemyScript.Phases.COOLDOWN);
                         }
+
                         break;
                     }
                 case EnemyScript.Phases.COOLDOWN:
@@ -221,6 +246,9 @@ public class ChaserScript : MonoBehaviour
                         time_att_1 = 0.0f;
                         change_of_attk_type_1 = 0.0f;
 
+                        //enemyScript.steering();
+                        enemyScript.avoidanceCode(rand_z);
+
                         GetComponent<EnemyScript>().cooldownUpdate();
                         break;
                     }
@@ -230,6 +258,9 @@ public class ChaserScript : MonoBehaviour
                         chasingspeed = 0.0f;
                         time_att_2 = 0.0f;
                         time_att_1 = 0.0f;
+
+                        //enemyScript.steering();
+                        enemyScript.avoidanceCode(rand_z);
 
                         //if (dist <= 5.0f)
                         //{
@@ -247,10 +278,8 @@ public class ChaserScript : MonoBehaviour
         {
             enemyScript.ifUpdatingfalse();
             DestroyBeams();
-
         }
 
-        enemyScript.steering();
     }
 
 

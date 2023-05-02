@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 using TMPro;
+
 public class EnemyScript : MonoBehaviour
 {
     float targetVelocity;
@@ -13,6 +14,8 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] LayerMask lm;
 
     [SerializeField] LayerMask lm_2;
+
+    [SerializeField] LayerMask player_lm;
 
 
     [SerializeField] int EnemyHealth = 10;
@@ -57,7 +60,9 @@ public class EnemyScript : MonoBehaviour
 
     Dictionary<float, Vector3> ray_distance_n_direction;
 
-
+    [SerializeField] int projectile_numbers;
+    int projectile_shots;
+    float interval_between_shots;
 
     float furthestdistance;
 
@@ -148,14 +153,16 @@ public class EnemyScript : MonoBehaviour
 
     void Start()
     {
-        transitionFromAttackTimer = 0.0f;
+        projectile_shots = 0;
+        interval_between_shots = 0.0f;
 
+        transitionFromAttackTimer = 0.0f;
         phase3timer = 0.0f;
         chasingspeed = 0.0f;
         backawayTimer = 0.0f;
         proejctilespeed = 2.0f;
         post_attack_duration = 0.0f;
-        targetVelocity = 3.0f;
+        targetVelocity = 1.5f;
         numberOfRays = 30;
         angle = 90.0f;
         rayRange = 1.0f;
@@ -191,9 +198,6 @@ public class EnemyScript : MonoBehaviour
         //    GetComponent<ChaserScript>().enabled = false;
         //}
 
-
-        
-
         shootTimer = 0.0f;
         drawdivider();
     }
@@ -226,15 +230,6 @@ public class EnemyScript : MonoBehaviour
                 player.GetComponent<PlayerStats>().resetCombo_timer();
             }
 
-
-
-
-
-            //GetComponent<Rigidbody>().AddForce(
-            //   (GetComponent<Transform>().position - other.GetComponentInParent<Transform>().position).normalized * 100.0f,
-            //   ForceMode.Impulse
-            //   );
-
             if (!FirstAttack)
             {
                 FirstAttack = true;
@@ -254,8 +249,7 @@ public class EnemyScript : MonoBehaviour
                 phase = Phases.COOLDOWN;
             }
 
-            Debug.Log("Enemy Health Left: " + EnemyHealth);
-
+            //Debug.Log("Enemy Health Left: " + EnemyHealth);
 
             //SET THE ENEMY BACK TO IDLE MODE
             switch (enemy_type)
@@ -267,6 +261,7 @@ public class EnemyScript : MonoBehaviour
                     }
                 case EnemyType.CHASER:
                     {
+                        GetComponentInChildren<Animator>().SetBool("about2attack", false);
                         GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
                         GetComponentInChildren<Animator>().SetBool("attack", false);
                         break;
@@ -275,6 +270,9 @@ public class EnemyScript : MonoBehaviour
                     {
                         GetComponentInChildren<Animator>().SetBool("charge", false);
                         GetComponentInChildren<Animator>().SetBool("about2charge", false);
+
+                        GetComponent<Rigidbody>().velocity = -GetComponent<Rigidbody>().velocity * 3.0f;
+                       
                         break;
                     }
             }
@@ -331,6 +329,7 @@ public class EnemyScript : MonoBehaviour
         hitbox = GameObject.FindGameObjectWithTag("Attack");
         player = GameObject.FindGameObjectWithTag("Player");
 
+        currentAnimationLength = GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).length;
         //healthtext.text = EnemyHealth.ToString();
 
         GetComponentInChildren<Animator>().SetFloat("health", EnemyHealth);
@@ -354,8 +353,7 @@ public class EnemyScript : MonoBehaviour
         if (GetComponentInChildren<EnemyAttack>().getpostattack())
         {
             post_attack_duration += Time.deltaTime;
-
-            if(post_attack_duration > 2.0f)
+            if (post_attack_duration >= 4.0f)
             {
                 post_attack_duration = 0.0f;
                 GetComponentInChildren<EnemyAttack>().setpostattack(false);
@@ -366,7 +364,6 @@ public class EnemyScript : MonoBehaviour
         if (zoneno == player.GetComponent<PlayerZoneCheck>().getZoneno())
         {
             updating = true;
-
             if (GetComponentInChildren<Animator>().GetBool("attacked") == false)
             {
                 if (phase == Phases.ATTACK_TYPE_3)
@@ -378,68 +375,81 @@ public class EnemyScript : MonoBehaviour
                     GetComponentInChildren<NavMeshAgent>().speed = chasingspeed;
                     GetComponentInChildren<NavMeshAgent>().acceleration = chasingspeed;
 
-                    if (GetComponentInChildren<EnemyAttack>().return_whether_back_away())
-                    {
-                        backawayTimer += Time.deltaTime;
-                    }
-                    else
-                    {
-                        backawayTimer = 0;
-                    }
-
-                    if (backawayTimer >= 4.0f)
-                    {
-                        backawayTimer = 0.0f;
-                    }
-
-                    //back away during post attack
-                    if (backawayTimer >= 3.0f)
-                    {
-                        chasingspeed = 2.0f;
-                        if (dist <= 5.0f)
-                        {
-                            GetComponentInChildren<NavMeshAgent>().enabled = false;
-                            Vector3 resultingVector = -player.transform.position + transform.position;
-                            resultingVector.y = 0;
-                            GetComponent<Rigidbody>().velocity = resultingVector;
-                        }
-                        else
-                        {
-                            GetComponentInChildren<NavMeshAgent>().enabled = true;
-                            GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
-                            GetComponentInChildren<NavMeshAgent>().SetDestination(player.transform.position);
-                        }
-                    }
-                    //
                     //continue to chase the player
+                    //else
+                    //{
+                    if (dist <= 5.0f
+                        && shootTimer >= 2)
+                    {
+                        chasingspeed = 0;
+                        GetComponentInChildren<NavMeshAgent>().enabled = false;
+                        Vector3 resultingVector = -player.transform.position + transform.position;
+                        resultingVector.y = 0;
+                        GetComponent<Rigidbody>().velocity = resultingVector * .5f;
+                    }
                     else
                     {
-                        chasingspeed = dist;
                         GetComponentInChildren<NavMeshAgent>().enabled = true;
                         GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
                         GetComponentInChildren<NavMeshAgent>().SetDestination(player.transform.position);
-                        GetComponentInChildren<Animator>().SetBool("chasingPlayer", true);
+                        chasingspeed = dist;
+                    }
 
-                        //shoot every interval
-                        shootTimer += Time.deltaTime;
-                        if (shootTimer >= 2)
+                    //GetComponentInChildren<NavMeshAgent>().enabled = true;
+                    //GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
+                    //GetComponentInChildren<NavMeshAgent>().SetDestination(player.transform.position);
+                    GetComponentInChildren<Animator>().SetBool("chasingPlayer", true);
+
+                    //shoot every interval
+                    shootTimer += Time.deltaTime;
+                    if (shootTimer >= 2)
+                    {
+                        //GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
+                        GetComponentInChildren<SpriteRenderer>().color = Color.red;
+
+                        if (shootTimer >= 3.0f)
                         {
                             //play attack animation
                             GetComponentInChildren<Animator>().SetBool("attack", true);
                             //
-                            //GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
-
-                            shoot();
-                            shootTimer = 0.0f;
+                            GetComponentInChildren<SpriteRenderer>().color = Color.white;
+                            //shoot();
                         }
-                       
                     }
+                    //}
                     //
 
                     if (phase3timer >= 20.0f)
                     {
-                        phase = 
-                        Phases.COOLDOWN;
+                        phase = Phases.COOLDOWN;
+                    }
+
+                    if (GetComponentInChildren<Animator>().GetBool("attack"))
+                    {  
+                        transitionFromAttackTimer += Time.deltaTime;
+
+                        if (projectile_shots == 0)
+                        {
+                            shoot();
+                        }
+
+                        if (transitionFromAttackTimer >=
+                        currentAnimationLength)
+                        {
+                            if (projectile_shots >= projectile_numbers)
+                            {
+                                shootTimer = 0.0f;
+                                projectile_shots = 0;
+                                GetComponentInChildren<Animator>().SetBool("attack", false);
+                                GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
+                            }
+                            else
+                            {
+                                shoot();
+                            }
+
+                            transitionFromAttackTimer = 0.0f;
+                        }
                     }
                 }
             }
@@ -448,26 +458,13 @@ public class EnemyScript : MonoBehaviour
                 shootTimer = 0.0f;
             }
 
-            if (GetComponent<EnemyScript>().getzoneno() == 0)
-            {
-                Vector3 resultingVector = GetComponent<EnemyScript>().getparent().position - transform.position;
-                resultingVector.y = 0;
-                resultingVector.Normalize();
-                GetComponent<Rigidbody>().velocity = resultingVector ;
-            }
-
-
-            if (GetComponentInChildren<Animator>().GetBool("attack"))
-            {
-                transitionFromAttackTimer += Time.deltaTime;
-                if (transitionFromAttackTimer >=
-                    currentAnimationLength)
-                {
-                    GetComponentInChildren<Animator>().SetBool("attack", false);
-                    GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
-
-                }
-            }
+            //if (GetComponent<EnemyScript>().getzoneno() == 0)
+            //{
+            //    Vector3 resultingVector = GetComponent<EnemyScript>().getparent().position - transform.position;
+            //    resultingVector.y = 0;
+            //    resultingVector.Normalize();
+            //    GetComponent<Rigidbody>().velocity = resultingVector;
+            //}
 
         }
         else
@@ -477,10 +474,13 @@ public class EnemyScript : MonoBehaviour
 
         if (updating == false)
         {
+            Vector3 resultingVector = GetComponent<EnemyScript>().getparent().position - transform.position;
+            resultingVector.y = 0;
+            resultingVector.Normalize();
+            GetComponent<Rigidbody>().velocity = resultingVector;
+
             phase = Phases.ABOUT_TO_ATTACK;
         }
-
-        currentAnimationLength = GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).length;
 
         if (GetComponentInChildren<Animator>().GetBool("attacked"))
         {
@@ -495,13 +495,14 @@ public class EnemyScript : MonoBehaviour
                     GetComponentInChildren<Animator>().SetBool("about2jump", false);
                     GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
                 }
+                
             }
         }
 
-        //steering_2();
-        //Debug.Log("VELOCITY " + GetComponent<Rigidbody>().velocity);
-        //GetComponent<Rigidbody>().velocity = new Vector3(10.0f, 0, 0);
+        transform.LookAt(player.transform.position);
+        GetComponentInChildren<SpriteRenderer>().transform.rotation = Quaternion.Euler(0, 0, 0);
 
+        
     }
 
 
@@ -514,8 +515,31 @@ public class EnemyScript : MonoBehaviour
     {
         Vector3 resultingVector = player.transform.position - transform.position;
         resultingVector.y = 0;
-        projectile = Instantiate(projectileGO, transform.position, Quaternion.Euler(0, 0, 0));
-        projectile.GetComponent<Rigidbody>().velocity = resultingVector * proejctilespeed;
+
+        //if (projectile_shots == 0)
+        //{
+            GetComponentInChildren<Animator>().SetBool("attack", true);
+            projectile = Instantiate(projectileGO,
+            new Vector3(transform.position.x, transform.position.y + 1.0f, transform.position.z),
+            Quaternion.Euler(0, 0, 0));
+            projectile.GetComponent<Rigidbody>().velocity = resultingVector * proejctilespeed;
+            projectile_shots += 1;
+            Debug.Log("SHOOT");
+        //}
+
+        /*if (interval_between_shots > 1.0f
+            && transitionFromAttackTimer >= currentAnimationLength)
+        {
+            GetComponentInChildren<Animator>().SetBool("attack", true);
+            projectile = Instantiate(projectileGO,
+            new Vector3(transform.position.x, transform.position.y + 1.0f, transform.position.z),
+            Quaternion.Euler(0, 0, 0));
+            projectile.GetComponent<Rigidbody>().velocity = resultingVector * proejctilespeed;
+            projectile_shots += 1;
+            Debug.Log("SHOOT2");
+        }*/
+
+        
     }
 
     public void BoundaryCheck()
@@ -571,39 +595,55 @@ public class EnemyScript : MonoBehaviour
             var ray2 = new Ray(transform.position, direction2);
 
             //if hits enemy
-            if (Physics.Raycast(ray, rayRange
-                , lm))
+            if (Physics.Raycast(ray, rayRange, lm))
+            {
+                deltaPosition -= (1.0f / numberOfRays) * targetVelocity * direction;
+                transform.position += deltaPosition * Time.deltaTime;
+                Debug.Log("HIT ENEMY");
+            }
+            else if (Physics.Raycast(ray2, rayRange, lm))
+            {
+                deltaPosition -= (1.0f / numberOfRays) * targetVelocity * direction2;
+                transform.position += deltaPosition * Time.deltaTime;
+                Debug.Log("HIT ENEMY");
+            }
+        }
+    }
+
+
+    public void steering_3()
+    {
+        float dist = Vector3.Distance(transform.position, player.transform.position);
+
+
+        var deltaPosition = Vector3.zero;
+        for (int i = 0; i < numberOfRays; i++)
+        {
+            //rotate enemy angle
+            var rotation = transform.rotation;
+            var rotationMod = Quaternion.AngleAxis(
+                 (i / ((float)numberOfRays - 1)) * angle * 2 - angle,
+                 transform.up);
+            var direction = rotation * rotationMod * Vector3.forward;
+            var direction2 = rotation * rotationMod * Vector3.back;
+
+            var ray = new Ray(transform.position, direction);
+            var ray2 = new Ray(transform.position, direction2);
+
+            //if hits enemy
+            if (Physics.Raycast(ray, dist
+                , player_lm))
             {
                 deltaPosition -= (1.0f / numberOfRays) * targetVelocity * direction;
                 transform.position += deltaPosition * Time.deltaTime;
             }
-            else if (Physics.Raycast(ray2, rayRange
-                , lm))
+            else if (Physics.Raycast(ray2, dist
+                , player_lm))
             {
                 deltaPosition -= (1.0f / numberOfRays) * targetVelocity * direction2;
                 transform.position += deltaPosition * Time.deltaTime;
             }
-
-
-            //RaycastHit hitInfo;
-            //if (Physics.Raycast(ray, out hitInfo, 100.0f/*, lm_2*/))
-            //{
-            //    //first array = magnitude, second array = direction
-            //    ray_distance_n_direction.Add(hitInfo.distance, ray.direction);
-            //    ray_distances.Add(hitInfo.distance);
-            //}
-
         }
-
-        //ray_distances.Sort();
-
-        //furthestdistance = ray_distances[ray_distances.Count - 1];
-        ////get the direction using the key, which is the furthestdistance
-        ////ray_distance_n_direction[furthestdistance];
-        //Debug.Log("Largest Distance " + furthestdistance);
-        //Vector3 resultingVector = transform.position + (furthestdistance * 
-        //    ray_distance_n_direction[furthestdistance]);
-        
     }
 
     public void steering_2()
@@ -625,31 +665,74 @@ public class EnemyScript : MonoBehaviour
             var ray2 = new Ray(transform.position, direction2);
 
             RaycastHit hitInfo;
-            if (Physics.Raycast(ray, out hitInfo, 100.0f, lm_2))
+            if (Physics.Raycast(ray, out hitInfo, 50.0f, lm_2))
             {
                 //first array = magnitude, second array = direction
-                if (!ray_distance_n_direction.ContainsKey(hitInfo.distance))
+                //find the most open area without the player/enemy blocking
+
+                if (hitInfo.transform.gameObject.layer
+                    != LayerMask.NameToLayer("Player")
+                    && hitInfo.transform.gameObject.layer
+                    != LayerMask.NameToLayer("Enemy"))
                 {
-                    ray_distance_n_direction.Add(hitInfo.distance, ray.direction);
+                    if (!ray_distance_n_direction.ContainsKey(hitInfo.distance))
+                    {
+                        ray_distance_n_direction.Add(hitInfo.distance, ray.direction);
+                    }
+                    else
+                    {
+                        ray_distance_n_direction[hitInfo.distance] = ray.direction;
+                    }
+                    //Debug.Log("I HIT SOMETHING");
+                    ray_distances.Add(hitInfo.distance);
                 }
-                else
+
+                if (hitInfo.transform.gameObject.layer
+                   == LayerMask.NameToLayer("Player"))
                 {
-                    ray_distance_n_direction[hitInfo.distance] = ray.direction;
+                    Debug.Log("HIT PLAYER");
                 }
-                ray_distances.Add(hitInfo.distance);
+            }
+
+            if (Physics.Raycast(ray2, out hitInfo, 50.0f, lm_2))
+            {
+                //first array = magnitude, second array = direction
+                //find the most open area without the player/enemy blocking
+                if (hitInfo.transform.gameObject.layer
+                    != LayerMask.NameToLayer("Player")
+                    && hitInfo.transform.gameObject.layer
+                    != LayerMask.NameToLayer("Enemy"))
+                {
+                    if (!ray_distance_n_direction.ContainsKey(hitInfo.distance))
+                    {
+                        ray_distance_n_direction.Add(hitInfo.distance, ray2.direction);
+                    }
+                    else
+                    {
+                        ray_distance_n_direction[hitInfo.distance] = ray2.direction;
+                    }
+                    //Debug.Log("I HIT SOMETHING");
+                    ray_distances.Add(hitInfo.distance);
+                }
+
+                if (hitInfo.transform.gameObject.layer
+                   == LayerMask.NameToLayer("Player"))
+                {
+                    Debug.Log("HIT PLAYER");
+                }
             }
         }
+
 
         ray_distances.Sort();
         furthestdistance = ray_distances[ray_distances.Count - 1];
         //get the direction using the key, which is the furthestdistance
-        Vector3 resultingVector = /*(furthestdistance *
-            ray_distance_n_direction[furthestdistance])*/ player.transform.position- transform.position;
+        Vector3 resultingVector =  transform.position - (furthestdistance *
+            ray_distance_n_direction[furthestdistance]);
         resultingVector.y = 0;
         //normalise resulting vector
         resultingVector.Normalize();
-
-        GetComponent<Rigidbody>().velocity = resultingVector * 100;
+        GetComponent<Rigidbody>().velocity = resultingVector * 5.0f;
     }
 
     public GameObject gethitbox()
@@ -679,24 +762,23 @@ public class EnemyScript : MonoBehaviour
 
             if (timer >= abouttoattack_period)
             {
+                //attack_type = Random.Range(1, 3);
+
+                if (atkPattern == AttackPattern.PATTERN_1)
+                {
+                    phase = Phases.ATTACK_TYPE_1;
+                }
+                else if (atkPattern == AttackPattern.PATTERN_2)
+                {
+                    phase = Phases.ATTACK_TYPE_2;
+                }
+                else if (atkPattern == AttackPattern.PATTERN_3)
+                {
+                    phase = Phases.ATTACK_TYPE_3;
+                }
                 timer = 0.0f;
-            //attack_type = Random.Range(1, 3);
-
-            if (atkPattern == AttackPattern.PATTERN_1)
-            {
-                phase = Phases.ATTACK_TYPE_1;
-            }
-            else if (atkPattern == AttackPattern.PATTERN_2)
-            {
-                phase = Phases.ATTACK_TYPE_2;
-            }
-            else if (atkPattern == AttackPattern.PATTERN_3)
-            {
-                phase = Phases.ATTACK_TYPE_3;
             }
 
-        }
-        
     }
 
     public void cooldownUpdate()
@@ -716,7 +798,13 @@ public class EnemyScript : MonoBehaviour
         }
     }
 
-    
+    public void avoidanceCode(float random_number_z)
+    {
+        Vector3 resultingVector = -player.transform.position + transform.position;
+        resultingVector.y = 0;
+        GetComponent<Rigidbody>().velocity = resultingVector + new Vector3(random_number_z, 0, 0);
+    }
+
     public float gettimer()
     {
         return timer;
@@ -761,7 +849,6 @@ public class EnemyScript : MonoBehaviour
                 tempobj.GetComponent<Food>().SetPerfect(true);
             }
         }
-
       
         GetComponentInChildren<SpriteRenderer>().enabled = false;
         Destroy(gameObject);

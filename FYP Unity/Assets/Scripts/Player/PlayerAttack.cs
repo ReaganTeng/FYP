@@ -8,9 +8,9 @@ public class PlayerAttack : MonoBehaviour
 {
     public enum Weapon
     {
-        SPATULA,
-        KNIFE,
-        ROLLINGPIN,
+        SPATULA, //0
+        KNIFE, //1
+        ROLLINGPIN, //2
     }
 
     [SerializeField] GameObject HitBox;
@@ -73,6 +73,7 @@ public class PlayerAttack : MonoBehaviour
 
     void Start()
     {
+
         click_timer = 0.0f;
         isclicked = false;
 
@@ -141,6 +142,9 @@ public class PlayerAttack : MonoBehaviour
         if (disableControls)
             return;
 
+
+
+
         if (chargeBar != null)
         {
             updatecharge();
@@ -158,6 +162,8 @@ public class PlayerAttack : MonoBehaviour
             }
         }
         //
+
+        GameObject.FindGameObjectWithTag("playerspriterenderer").GetComponent<Animator>().SetInteger("WeaponEquipped", (int)currentweapon);
 
         currentAnimationLength = animator.GetCurrentAnimatorStateInfo(0).length;
 
@@ -202,11 +208,15 @@ public class PlayerAttack : MonoBehaviour
 
             if (isclicked)
             {
-                click_timer -= Time.deltaTime;
-                if (click_timer <= currentAnimationLength * 0.5f)
-                {
+
+                //if is reaches 50% of the attack animation
+                //click_timer -= Time.deltaTime;
+                //if (click_timer <= currentAnimationLength * 0.5f)
+                //{
                     attacking = true;
-                }
+                //}
+                //
+
                 //if (click_timer < 0)
                 //{
                 //    isclicked = false;
@@ -247,23 +257,24 @@ public class PlayerAttack : MonoBehaviour
         }
 
 
-        if (animator.GetBool("click") == false && CanSwapWeapon)
+        //if (animator.GetBool("click") == false 
+            //&& CanSwapWeapon)
         {
             // To swap between weapons
             if (Input.GetKey(KeyCode.Z))
             {
                 currentweapon = Weapon.SPATULA;
-                UpdateWeaponDisplay();
+                //UpdateWeaponDisplay();
             }
             else if (Input.GetKey(KeyCode.X))
             {
                 currentweapon = Weapon.KNIFE;
-                UpdateWeaponDisplay();
+                //UpdateWeaponDisplay();
             }
             else if (Input.GetKey(KeyCode.C))
             {
                 currentweapon = Weapon.ROLLINGPIN;
-                UpdateWeaponDisplay();
+                //UpdateWeaponDisplay();
             }
         }
 
@@ -292,6 +303,9 @@ public class PlayerAttack : MonoBehaviour
 
     public void switchWeapon()
     {
+       // Debug.Log("WEAPON_EQUIPPED " + (int)currentweapon);
+
+
         switch (currentweapon)
         {
             case Weapon.SPATULA:
@@ -396,9 +410,9 @@ public class PlayerAttack : MonoBehaviour
         {
             txt.text = time.ToString();
         }
-        //Debug.Log("LKN: " + last_known_notch);
-        //Debug.Log("NKN: " + next_known_notch);
-        //Debug.Log("CHA: " + charge);
+
+
+       
     }
     public void depletecharge()
     {
