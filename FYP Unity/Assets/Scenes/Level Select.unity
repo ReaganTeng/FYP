@@ -2767,7 +2767,7 @@ Camera:
   m_Depth: -3
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 8388608
+    m_Bits: 0
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -8322,7 +8322,7 @@ Camera:
   m_Depth: 2
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 16777216
+    m_Bits: 0
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -9051,7 +9051,7 @@ Camera:
   m_Depth: -4
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4194304
+    m_Bits: 0
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -10677,17 +10677,17 @@ MonoBehaviour:
     Speed: 0
     LayerMask:
       serializedVersion: 2
-      m_Bits: 4194304
+      m_Bits: 0
   - ParallaxCamera: {fileID: 403967898}
     Speed: 0.93
     LayerMask:
       serializedVersion: 2
-      m_Bits: 8388608
+      m_Bits: 0
   - ParallaxCamera: {fileID: 1583146432}
     Speed: 2.18
     LayerMask:
       serializedVersion: 2
-      m_Bits: 16777216
+      m_Bits: 0
   ParallaxHorizontal: 1
   ParallaxVertical: 0
   RootPosition: {x: 0.76, y: 92.6, z: 0}

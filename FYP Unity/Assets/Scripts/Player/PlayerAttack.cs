@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using DigitalRuby.SoundManagerNamespace;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -181,6 +182,10 @@ public class PlayerAttack : MonoBehaviour
                 //attacking = true;
                 attackingtimer = attackingtime;
                 click_timer = currentAnimationLength;
+                if(currentweapon == Weapon.ROLLINGPIN)
+                {
+                    //PlayRollerHitFx();
+                }   
             }
             //
 
