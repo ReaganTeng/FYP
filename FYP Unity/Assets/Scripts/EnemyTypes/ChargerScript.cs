@@ -20,12 +20,15 @@ public class ChargerScript : MonoBehaviour
     public GameObject attackhitbox;
     EnemyScript enemyScript;
 
+    int rand_z;
 
     // Start is called before the first frame update
     void Start()
     {
+        rand_z = 0;
+
         GetComponent<EnemyScript>().set_enemyType(EnemyScript.EnemyType.CHARGER);
-        velocityspeed = 8.0f;
+        velocityspeed =10.0f;
         number_of_bounces = 0;
         collided = false;
         navMeshAgent.enabled = false;
@@ -45,8 +48,6 @@ public class ChargerScript : MonoBehaviour
         enemyScript = GetComponent<EnemyScript>();
         enemyPhase = GetComponent<EnemyScript>().return_current_phase();
 
-
-
         if (GetComponent<EnemyScript>().getupdating())
         {
             switch (enemyPhase)
@@ -54,8 +55,12 @@ public class ChargerScript : MonoBehaviour
                 case EnemyScript.Phases.ATTACK_TYPE_1:
                     //case EnemyScript.Phases.ATTACK_TYPE_2:
                     {
+                        navMeshAgent.enabled = false;
+
                         GetComponentInChildren<Animator>().SetBool("charge", true);
                         chargingtime += 1.0f * Time.deltaTime;
+
+                        rand_z = Random.Range(-4, 4);
 
                         if (chargingtime < 0.1f)
                         {
@@ -79,6 +84,7 @@ public class ChargerScript : MonoBehaviour
                         {
                             chargeAtplayer();
                         }
+                        //enemyScript.steering();
 
                         break;
                     }
@@ -87,6 +93,10 @@ public class ChargerScript : MonoBehaviour
                         GetComponentInChildren<Animator>().SetBool("charge", true);
 
                         chargingtime += 1.0f * Time.deltaTime;
+
+                        navMeshAgent.enabled = false;
+
+                        rand_z = Random.Range(-4, 4);
 
                         if (chargingtime < 0.1f)
                         {
@@ -118,11 +128,14 @@ public class ChargerScript : MonoBehaviour
                         {
                             chargeAtplayer();
                         }
+                        //enemyScript.steering();
 
                         break;
                     }
                 case EnemyScript.Phases.COOLDOWN:
                     {
+                        navMeshAgent.enabled = true;
+
                         attackhitbox.GetComponent<BoxCollider>().enabled = false;
                         GetComponent<BoxCollider>().enabled = true;
                         //grab player location
@@ -135,21 +148,33 @@ public class ChargerScript : MonoBehaviour
                         GetComponentInChildren<Animator>().SetBool("charge", false);
                         GetComponentInChildren<Animator>().SetBool("about2charge", false);
 
+
+
+                        //enemyScript.steering();
+                        //enemyScript.steering_3();
+                        enemyScript.avoidanceCode(rand_z);
+
+
                         GetComponent<EnemyScript>().cooldownUpdate();
                         break;
                     }
                 case EnemyScript.Phases.ABOUT_TO_ATTACK:
                     {
+                        navMeshAgent.enabled = true;
                         //GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
 
-                        //if (currentdistance <= 5.0f)
-                        //{
+                        if (currentdistance <= 5.0f)
+                        {
                             //BACK AWAY
                             resultingVector = -playerPos + transform.position;
                             GetComponent<Rigidbody>().velocity = resultingVector;
                             //
-                        //}
+                        }
                         //Debug.Log("CHARGER VELOCITY " + GetComponent<Rigidbody>().velocity);
+
+                        //enemyScript.steering();
+                        //enemyScript.steering_3();
+                        //enemyScript.avoidanceCode(rand_z);
 
                         GetComponentInChildren<Animator>().SetBool("about2charge", true);
                         GetComponent<EnemyScript>().abouttoattackUpdate();
@@ -166,7 +191,7 @@ public class ChargerScript : MonoBehaviour
 
         
 
-        enemyScript.steering();
+        //enemyScript.steering();
 
         if (GetComponent<EnemyScript>().getzoneno() == 0)
         {

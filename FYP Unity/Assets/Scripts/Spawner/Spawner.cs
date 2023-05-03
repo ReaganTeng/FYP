@@ -88,7 +88,8 @@ public class Spawner : MonoBehaviour
         x_position = Random.Range(-5, 5);
         z_position = Random.Range(-5, 5);
 
-        GameObject enemyObject = Instantiate(enemy, transform.position /*+ new Vector3(x_position * enemy.transform.localScale.x, 0, z_position * enemy.transform.localScale.z)*/
+        GameObject enemyObject = Instantiate(enemy
+            , transform.position /*+ new Vector3(x_position * enemy.transform.localScale.x, 0, z_position * enemy.transform.localScale.z)*/
             , transform.rotation);
         enemyObject.transform.SetParent(transform);
         enemyObject.GetComponent<EnemyScript>().setparent(transform);
