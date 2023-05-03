@@ -5,11 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class PlayLevel : MonoBehaviour
 {
+    
     public Level level;
     public LevelManager levelManager;
 
     public void PlayTheLevel()
     {
+        GameSoundManager.PlayMusic("MainMenu");
+        
         for (int i = 0; i < levelManager.levelInfo.Count; i++)
         {
             if (level == levelManager.levelInfo[i])

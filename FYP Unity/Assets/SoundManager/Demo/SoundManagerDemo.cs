@@ -38,7 +38,7 @@ namespace DigitalRuby.SoundManagerNamespace
             }
         }
 
-        private void PlayMusic(int index)
+        public void PlayMusic(int index)
         {
             MusicAudioSources[index].PlayLoopingMusicManaged(1.0f, 1.0f, PersistToggle.isOn);
         }

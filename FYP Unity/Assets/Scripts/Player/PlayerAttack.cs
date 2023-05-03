@@ -7,13 +7,14 @@ using DigitalRuby.SoundManagerNamespace;
 
 public class PlayerAttack : MonoBehaviour
 {
+    
     public enum Weapon
     {
         SPATULA, //0
         KNIFE, //1
         ROLLINGPIN, //2
     }
-
+    SoundManagerDemo SoundManager;
     [SerializeField] GameObject HitBox;
     [SerializeField] float attackcd;
     [SerializeField] float attackingtime;
