@@ -364,7 +364,7 @@ GameObject:
   - component: {fileID: 300395896956034956}
   - component: {fileID: 2031381111}
   m_Layer: 5
-  m_Name: Weapon
+  m_Name: KnifeWeapon
   m_TagString: WeaponText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1665,7 +1665,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 300, y: 0}
-  m_SizeDelta: {x: 750, y: 300}
+  m_SizeDelta: {x: 636, y: 232}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &4390986508899356495
 CanvasRenderer:
@@ -2122,7 +2122,7 @@ GameObject:
   - component: {fileID: 5391800169518171821}
   - component: {fileID: 7486942381028893304}
   m_Layer: 5
-  m_Name: Weapon (1)
+  m_Name: RollerWeapon
   m_TagString: WeaponText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2881,7 +2881,7 @@ GameObject:
   - component: {fileID: 4891277829599624272}
   - component: {fileID: 4413528197842928472}
   m_Layer: 5
-  m_Name: Weapon (2)
+  m_Name: SpatulaWeapon
   m_TagString: WeaponText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3184,7 +3184,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.4, y: 2.1751, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4490955664798397801}
   - {fileID: 7809729686328864474}

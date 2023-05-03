@@ -123,7 +123,7 @@ public class Tutorial : MonoBehaviour
             // Disable all spawners
             SpawnerManager.instance.SetSpawner(SpawnerManager.SPAWNERTYPE.ALL, false);
             GameObject tempPlayer = GameObject.FindGameObjectWithTag("Player");
-            tempPlayer.GetComponentInChildren<PlayerAttack>().SetCanSwapWeapon(false); // Disable swapping weapon
+            //tempPlayer.GetComponentInChildren<PlayerAttack>().SetCanSwapWeapon(false); // Disable swapping weapon
             tempPlayer.GetComponentInChildren<PlayerAttack>().SetCanDoHeavyAttack(false); // disable doing heavy attack
             tempPlayer.GetComponentInChildren<PlayerPickup>().CannotInteractWithMixer = true; // disable interacting with mixer
             tempPlayer.GetComponentInChildren<PlayerPickup>().CannotInteractWithDrawer = true; // disable interacting with drawer

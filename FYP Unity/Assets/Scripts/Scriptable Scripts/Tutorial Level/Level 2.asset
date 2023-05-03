@@ -119,10 +119,10 @@ MonoBehaviour:
   - TextDisplay: ~ Grab the dish from the cooker~
     conditions: 26
     TimeTillPromptSkip: 4
-  - TextDisplay: As you can see, your dish has 2 star quality.
+  - TextDisplay: As you can see, your dish has 4 star quality.
     conditions: 0
     TimeTillPromptSkip: 4
-  - TextDisplay: 2 from perfect mashed potato cup and 0from QTE.
+  - TextDisplay: 2 from perfect mashed potato cup and 2from QTE.
     conditions: 0
     TimeTillPromptSkip: 4
   - TextDisplay: ~Serve the Dish~
@@ -215,5 +215,5 @@ MonoBehaviour:
     TimeTillPromptSkip: 3
   - TextDisplay: "That\u2019s a lot to process right? Too bad. Get used to it, good
       luck for day 2."
-    conditions: 0
+    conditions: 32
     TimeTillPromptSkip: 3
