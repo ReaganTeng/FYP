@@ -1,0 +1,219 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 701a20e401001cb4da8667f74ba6ff37, type: 3}
+  m_Name: Level 2
+  m_EditorClassIdentifier: 
+  StarRatingActive: 1
+  DialogueAndInstructions:
+  - TextDisplay: Welcome back to the kitchen, I hope you have a good rest.
+    conditions: 0
+    TimeTillPromptSkip: 3
+  - TextDisplay: ...
+    conditions: 19
+    TimeTillPromptSkip: 3
+  - TextDisplay: "Oh an order just came, let\u2019s make some potato salad."
+    conditions: 0
+    TimeTillPromptSkip: 3
+  - TextDisplay: ~Head Towards the Potato Room~
+    conditions: 7
+    TimeTillPromptSkip: 3
+  - TextDisplay: "Oh ye uh, I \u201Cprobe\u201D your memory, so you are now able
+      to do a heavier attack."
+    conditions: 0
+    TimeTillPromptSkip: 3
+  - TextDisplay: ~Do a heavy attack to the ootatoo by pressing right click~
+    conditions: 20
+    TimeTillPromptSkip: 3
+  - TextDisplay: As you can see, you do way more damage than what your normal attack
+      do.
+    conditions: 0
+    TimeTillPromptSkip: 4
+  - TextDisplay: But of course, you need time to recover enough energy to do another
+      heavy attack.
+    conditions: 0
+    TimeTillPromptSkip: 4
+  - TextDisplay: ~Kill an ootatoo~
+    conditions: 8
+    TimeTillPromptSkip: 2
+  - TextDisplay: ~Pick up the drop~
+    conditions: 21
+    TimeTillPromptSkip: 2
+  - TextDisplay: Oh ye uh no offense, but the dish you made yesterday suck.
+    conditions: 0
+    TimeTillPromptSkip: 3
+  - TextDisplay: "It\u2019s edible, but our kind prefer a more \u201Cprestigious\u201D
+      dish."
+    conditions: 0
+    TimeTillPromptSkip: 3
+  - TextDisplay: "You need to be more \u201Cgentle\u201D when handling with the ingredients."
+    conditions: 0
+    TimeTillPromptSkip: 3
+  - TextDisplay: Kill them precisely and avoid overkilling to get a better quality.
+    conditions: 0
+    TimeTillPromptSkip: 4
+  - TextDisplay: "I shall be taking that \u201Cdisgusting\u201D quality away from
+      you for now."
+    conditions: 0
+    TimeTillPromptSkip: 4
+  - TextDisplay: '~Try perfect killing the ootatoo (Hint: Drop its hp to exactly
+      0)~'
+    conditions: 22
+    TimeTillPromptSkip: 2
+  - TextDisplay: Ok, u manage to perfect kill it. ~Pick up the drop~
+    conditions: 23
+    TimeTillPromptSkip: 4
+  - TextDisplay: I impressed you know about perfect killing them for better quality.
+    conditions: 0
+    TimeTillPromptSkip: 4
+  - TextDisplay: To save you some time, I will give you all the ingredients you need
+      to make.
+    conditions: 0
+    TimeTillPromptSkip: 4
+  - TextDisplay: ~Head back to the kitchen~
+    conditions: 10
+    TimeTillPromptSkip: 2
+  - TextDisplay: ~Grab all the perfect mashed potato in the kitchen~
+    conditions: 24
+    TimeTillPromptSkip: 2
+  - TextDisplay: ~Ok so try getting a mashed potato cup by mixing 2 mashed potato
+      in the mixer~
+    conditions: 14
+    TimeTillPromptSkip: 2
+  - TextDisplay: ' As you can see, it is a perfect quality. This increase the overally
+      quality of dish.'
+    conditions: 0
+    TimeTillPromptSkip: 4
+  - TextDisplay: ~Make another mashed potato cup~
+    conditions: 14
+    TimeTillPromptSkip: 2
+  - TextDisplay: "Ok so let\u2019s see what happen when we make a dish using 2 perfect
+      mashed potato cup."
+    conditions: 0
+    TimeTillPromptSkip: 4
+  - TextDisplay: ~Throw 2 mashed potato cup into the cooker and start cooking it~
+    conditions: 25
+    TimeTillPromptSkip: 4
+  - TextDisplay: Before we proceed further, we have another chance at increasing
+      our dish quality.
+    conditions: 0
+    TimeTillPromptSkip: 4
+  - TextDisplay: There will be a Quick-Time event that happen when grabbing a dish
+      out.
+    conditions: 0
+    TimeTillPromptSkip: 4
+  - TextDisplay: There will be a needle in a bar that moves left and right.
+    conditions: 0
+    TimeTillPromptSkip: 4
+  - TextDisplay: Try you best to hit in a perfect zone, by pressing SPACE to stop.
+    conditions: 0
+    TimeTillPromptSkip: 4
+  - TextDisplay: ~ Grab the dish from the cooker~
+    conditions: 26
+    TimeTillPromptSkip: 4
+  - TextDisplay: As you can see, your dish has 2 star quality.
+    conditions: 0
+    TimeTillPromptSkip: 4
+  - TextDisplay: 2 from perfect mashed potato cup and 0from QTE.
+    conditions: 0
+    TimeTillPromptSkip: 4
+  - TextDisplay: ~Serve the Dish~
+    conditions: 16
+    TimeTillPromptSkip: 4
+  - TextDisplay: Wow, the alien quite like it, you get a lot more score compared
+      to serving that dish yesterday.
+    conditions: 0
+    TimeTillPromptSkip: 2
+  - TextDisplay: ...
+    conditions: 27
+    TimeTillPromptSkip: 2
+  - TextDisplay: "Oh uh that\u2019s new."
+    conditions: 0
+    TimeTillPromptSkip: 1
+  - TextDisplay: ~Press TAB to see the order~
+    conditions: 4
+    TimeTillPromptSkip: 2
+  - TextDisplay: "Woah, that\u2019s way different from what we made just now."
+    conditions: 0
+    TimeTillPromptSkip: 3
+  - TextDisplay: "~Let\u2019s get the first ingredient apple. Head to apoolo room~"
+    conditions: 28
+    TimeTillPromptSkip: 3
+  - TextDisplay: Oh ye uh, I found 2 extra weapons u can use in the attic.
+    conditions: 0
+    TimeTillPromptSkip: 3
+  - TextDisplay: Depending on the type of weapon you kill the enemy.
+    conditions: 0
+    TimeTillPromptSkip: 3
+  - TextDisplay: You get different drops.
+    conditions: 0
+    TimeTillPromptSkip: 3
+  - TextDisplay: Be sure to not use 2 different weapon on the same enemy.
+    conditions: 0
+    TimeTillPromptSkip: 3
+  - TextDisplay: You will mix the ingredients.
+    conditions: 0
+    TimeTillPromptSkip: 3
+  - TextDisplay: Press Z for Spatula, X for knife and C for Rolling pin.
+    conditions: 0
+    TimeTillPromptSkip: 3
+  - TextDisplay: ~Get the correct apple ingredient using the correct weapon to kill~
+    conditions: 29
+    TimeTillPromptSkip: 3
+  - TextDisplay: ~Pick up that ingredient~
+    conditions: 9
+    TimeTillPromptSkip: 3
+  - TextDisplay: ~Head back to the kitchen~
+    conditions: 10
+    TimeTillPromptSkip: 3
+  - TextDisplay: Second ingredient is flour huh?
+    conditions: 0
+    TimeTillPromptSkip: 3
+  - TextDisplay: ~Grab a flour from the flour crate ~
+    conditions: 30
+    TimeTillPromptSkip: 3
+  - TextDisplay: You have unlimited supply of them, feel free to use them.
+    conditions: 0
+    TimeTillPromptSkip: 3
+  - TextDisplay: '~Get apple mix (Tip: mix them together)~'
+    conditions: 14
+    TimeTillPromptSkip: 3
+  - TextDisplay: ~Ok now for the 2nd refined ingredient. Head to rice room~
+    conditions: 31
+    TimeTillPromptSkip: 3
+  - TextDisplay: "Oh ye, there\u2019s another way to raise your dish rating by 1."
+    conditions: 0
+    TimeTillPromptSkip: 3
+  - TextDisplay: If your fervor bar reach over 70%, you can get another star by cooking
+      dish.
+    conditions: 0
+    TimeTillPromptSkip: 3
+  - TextDisplay: You get a combo for hitting enemies consecutively within a certain
+      time period.
+    conditions: 0
+    TimeTillPromptSkip: 3
+  - TextDisplay: Getting hit will reset the combo and your fervor bar will drop.
+    conditions: 0
+    TimeTillPromptSkip: 3
+  - TextDisplay: ~Create a starchy rice by getting the correct rice drop and mixing
+      it with flour~
+    conditions: 14
+    TimeTillPromptSkip: 3
+  - TextDisplay: ~Ok now make the dish~
+    conditions: 15
+    TimeTillPromptSkip: 3
+  - TextDisplay: ~Serve the Apollo sticky rice~
+    conditions: 16
+    TimeTillPromptSkip: 3
+  - TextDisplay: "That\u2019s a lot to process right? Too bad. Get used to it, good
+      luck for day 2."
+    conditions: 0
+    TimeTillPromptSkip: 3

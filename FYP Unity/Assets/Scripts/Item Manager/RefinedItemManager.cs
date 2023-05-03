@@ -10,17 +10,8 @@ public class RefinedItemManager : MonoBehaviour
     {
         MUSHY, //0
         MASHED_POTATO_CUP, //1
-        MAYONNAISE, //2
-        SALAD_BOWL, //3
-        BOILED_POTATO, //4
-        APPLE_MUSH,
-        SAHSIMI,
-        RICE_BLOCK,
-        MIX_BEEF,
-        MIX_CHICKEN,
-        CHEESE,
-        COOKED_CARROTS,
-        COOKED_RICE,
+        APPLE_MIX, //2
+        STARCHY_RICE, //3
     }
 
     public RItems GetItemType(int itemID)

@@ -9,12 +9,16 @@ public class PlayerPickup : MonoBehaviour
     InventoryImageControl ic;
     public bool DisableControls;
     public bool CannotInteractWithMixer;
+    public bool CannotInteractWithDrawer;
+    public bool CannotInteractWithDustbin;
 
     private void Start()
     {
         ic = GameObject.FindGameObjectWithTag("GameManager").GetComponent<InventoryImageControl>();
         DisableControls = false;
         CannotInteractWithMixer = false;
+        CannotInteractWithDrawer = false;
+        CannotInteractWithDustbin = false;
     }
 
     // add the interactable objects into the list
@@ -45,6 +49,7 @@ public class PlayerPickup : MonoBehaviour
 
     private void Update()
     {
+        ClearList();
         if (!DisableControls)
         {
             // If Inventory is not full, then do item highlight to indicate that items can be picked
@@ -110,12 +115,12 @@ public class PlayerPickup : MonoBehaviour
                         pickupobject.GetComponent<Serving>().Serve();
                     }
 
-                    else if (pickupobject.CompareTag("Barrel"))
+                    else if (pickupobject.CompareTag("Barrel") && !CannotInteractWithDrawer)
                     {
                         pickupobject.GetComponent<IngredientBarrel>().GetIngredientFromBarrel();
                     }
 
-                    else if (pickupobject.CompareTag("DustBin"))
+                    else if (pickupobject.CompareTag("DustBin") && !CannotInteractWithDustbin)
                     {
                         pickupobject.GetComponent<DustBin>().RemoveItem();
                     }
@@ -190,5 +195,17 @@ public class PlayerPickup : MonoBehaviour
         // if there isnt a gameobject, simply return null
         else
             return null;
+    }
+
+    void ClearList()
+    {
+        for (int i = 0; i < InteractableInRangeList.Count; i++)
+        {
+            if (InteractableInRangeList[i] == null)
+            {
+                InteractableInRangeList.RemoveAt(i);
+                break;
+            }
+        }
     }
 }

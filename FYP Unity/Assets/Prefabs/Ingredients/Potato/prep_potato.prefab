@@ -124,6 +124,8 @@ GameObject:
   - component: {fileID: 4575915585617722716}
   - component: {fileID: 5261345172073189808}
   - component: {fileID: -3439902632046633264}
+  - component: {fileID: 4483875714051668364}
+  - component: {fileID: 4791246330432549677}
   m_Layer: 0
   m_Name: prep_potato
   m_TagString: Untagged
@@ -138,15 +140,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1383321896429455901}
-  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8420735401978093238}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5261345172073189808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,3 +176,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foodtype: 0
+--- !u!114 &4483875714051668364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1383321896429455901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e1608a903999641b3cc6f2da0c035a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4791246330432549677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1383321896429455901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e1608a903999641b3cc6f2da0c035a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

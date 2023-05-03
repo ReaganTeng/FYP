@@ -705,6 +705,7 @@ MonoBehaviour:
   lm_2:
     serializedVersion: 2
     m_Bits: 0
+  EnemyHealth: 11
   AttackDamage: 5
   prepPrefab: {fileID: 5640140278021557923, guid: 877aad5ebbb5f7b4ea17dd738c22f5fa, type: 3}
   choppedPefab: {fileID: 568297875779090178, guid: 9031fceed79e84b4ea688fbd77c831c0, type: 3}
@@ -951,8 +952,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   es: {fileID: 3427342138385154500}
-  AttackCD: 1
   animator: {fileID: 4725423251757208137}
+  attacks_per_session: 0
 --- !u!33 &1629224506573211108
 MeshFilter:
   m_ObjectHideFlags: 0
