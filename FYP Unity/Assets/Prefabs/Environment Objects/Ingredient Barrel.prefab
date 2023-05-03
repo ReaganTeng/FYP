@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ingredient: {fileID: 2287081657991149753, guid: 0e1517b6ea992e34fb4fc41b8580cfc5, type: 3}
   ingredientDisplay: {fileID: 2983256875973396688}
+  emptyPrefab: {fileID: 4294762023767553058, guid: e037f3a58e94ec04db61ee69131dd3f9, type: 3}
 --- !u!65 &5116129411065442595
 BoxCollider:
   m_ObjectHideFlags: 0

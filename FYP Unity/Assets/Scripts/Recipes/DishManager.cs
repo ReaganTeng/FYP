@@ -10,13 +10,7 @@ public class DishManager : MonoBehaviour
     {
         SUS_DISH, //0
         MASH_POTATO, //1
-        SUSHI, //2
-        STEAK, //3
-        CRUNCHY_SALAD,
-        FRANTIC_CHICKEN_RICE,
-        TAINTED_FRIED_RICE,
-        BURNING_BEEF_STEAK,
-        APPLE_DESSERT,
+        APOLO_CAKE,
     }
 
     public dishes GetItemType(int itemID)

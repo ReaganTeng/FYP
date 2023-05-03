@@ -869,4 +869,14 @@ public class EnemyScript : MonoBehaviour
             EnemyDie(false);
         }
     }
+
+    public int GetEnemyHealth()
+    {
+        return EnemyHealth;
+    }
+
+    public void SetEnemyHealth(int enemyHealth)
+    {
+        EnemyHealth = enemyHealth;
+    }
 }

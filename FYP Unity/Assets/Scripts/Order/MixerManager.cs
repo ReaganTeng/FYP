@@ -46,4 +46,15 @@ public class MixerManager : MonoBehaviour
             }    
         }
     }
+
+    public void HighlightMixer(Mixer.MixerType whatType, bool active)
+    {
+        for (int i = 0; i < mixers.Count; i++)
+        {
+            if (mixers[i].GetMixerType() == whatType)
+            {
+                mixers[i].gameObject.GetComponent<ObjectHighlighted>().ToggleHighlight(active);
+            }
+        }
+    }
 }

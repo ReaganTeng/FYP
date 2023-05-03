@@ -138,6 +138,16 @@ public class OrderManager : MonoBehaviour
         return currentdayrecipesList[index];
     }
 
+    public Recipes.recipes GetSelectedOrderFromCurrentDay(int index)
+    {
+        if (index < currentdayrecipesList.Count && index >= 0)
+        {
+            return currentdayrecipesList[index];
+        }
+
+        return GetRandomOrderFromCurrentDay();
+    }
+
     public float GetCurrentDayWaitingTime()
     {
         return presetday.WaitingTime;

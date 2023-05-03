@@ -21,6 +21,11 @@ public class Level : ScriptableObject
     public OrderManager.DayOrder CustomizeOrderForThisDay;
     public List<SpawnerManager.SPAWNERTYPE> WhatSpawnerActive;
     public TutorialLevel isThereTutorial;
+    // For the orders
+    public int MaxOrders = 4;
+    public float TimeBeforeFirstOrder = 10;
+    public float IntervalBetweenOrders = 30;
+    public float DayDuration = 300;
 
     enum Grades
     {

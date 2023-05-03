@@ -235,4 +235,13 @@ public class InventoryImageControl : MonoBehaviour
 
         return 0;
     }
+
+    public void ClearAll()
+    {
+        for (int i = 0; i < Inventory.instance.GetList().Count; i++)
+        {
+            Inventory.instance.RemoveFromInventory(SelectedSlot, true);
+        }
+        UpdateImage();
+    }
 }

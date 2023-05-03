@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
-using DigitalRuby.SoundManagerNamespace;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -33,6 +30,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] GameObject knifeHitbox;
     [SerializeField] GameObject pinHitbox;
     bool disableControls;
+    bool CanAttack = true;
     bool CanSwapWeapon = true;
 
     float chargeCurrentLvl;
@@ -75,7 +73,7 @@ public class PlayerAttack : MonoBehaviour
 
     void Start()
     {
-
+        UpdateWeaponDisplay();
         click_timer = 0.0f;
         isclicked = false;
 
@@ -263,24 +261,24 @@ public class PlayerAttack : MonoBehaviour
         }
 
 
-        //if (animator.GetBool("click") == false 
-            //&& CanSwapWeapon)
+        if (animator.GetBool("click") == false
+            && CanSwapWeapon)
         {
             // To swap between weapons
             if (Input.GetKey(KeyCode.Z))
             {
                 currentweapon = Weapon.SPATULA;
-                //UpdateWeaponDisplay();
+                UpdateWeaponDisplay();
             }
             else if (Input.GetKey(KeyCode.X))
             {
                 currentweapon = Weapon.KNIFE;
-                //UpdateWeaponDisplay();
+                UpdateWeaponDisplay();
             }
             else if (Input.GetKey(KeyCode.C))
             {
                 currentweapon = Weapon.ROLLINGPIN;
-                //UpdateWeaponDisplay();
+                UpdateWeaponDisplay();
             }
         }
 
@@ -530,5 +528,15 @@ public class PlayerAttack : MonoBehaviour
                 RollerWeaponDisplay.SetActive(false);
                 break;
         }
-    }    
+    }
+    
+    public bool GetCanAttack()
+    {
+        return CanAttack;
+    }
+
+    public void SetCanAttack(bool canAttack)
+    {
+        CanAttack = canAttack;
+    }
 }

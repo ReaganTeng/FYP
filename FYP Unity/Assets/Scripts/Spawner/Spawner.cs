@@ -83,7 +83,7 @@ public class Spawner : MonoBehaviour
         return interval;
     }
 
-    public GameObject SpawnEnemy()
+    public GameObject SpawnEnemy(int presetHealth = -1)
     {
         x_position = Random.Range(-5, 5);
         z_position = Random.Range(-5, 5);
@@ -93,6 +93,8 @@ public class Spawner : MonoBehaviour
             , transform.rotation);
         enemyObject.transform.SetParent(transform);
         enemyObject.GetComponent<EnemyScript>().setparent(transform);
+        if (presetHealth != -1)
+            enemyObject.GetComponent<EnemyScript>().SetEnemyHealth(presetHealth);
 
         return enemyObject;
     }

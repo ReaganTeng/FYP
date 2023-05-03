@@ -5,11 +5,12 @@ using TMPro;
 
 public class OrderSystem : MonoBehaviour
 {
+    [SerializeField] LevelManager lm;
     [SerializeField] InventoryImageControl inventory;
     [SerializeField] GameObject OrderPrefab;
-    [SerializeField] float TimeBeforeFirstOrder;
-    [SerializeField] float OrderIntervalTiming;
-    [SerializeField] int MaxOrderAtOnce;
+    float TimeBeforeFirstOrder;
+    float OrderIntervalTiming;
+    int MaxOrderAtOnce;
     [SerializeField] EndOfDay eod;
     [SerializeField] OrderRecipeDisplay ord;
     float beforefirstordertimer;
@@ -42,6 +43,18 @@ public class OrderSystem : MonoBehaviour
 
     private void Start()
     {
+        // put lm in here
+        for (int i = 0; i < lm.levelInfo.Count; i++)
+        {
+            if (i == lm.DaySelected - 1)
+            {
+                TimeBeforeFirstOrder = lm.levelInfo[i].TimeBeforeFirstOrder;
+                OrderIntervalTiming = lm.levelInfo[i].IntervalBetweenOrders;
+                MaxOrderAtOnce = lm.levelInfo[i].MaxOrders;
+                break;
+            }
+        }
+
         beforefirstordertimer = TimeBeforeFirstOrder;
         orderintervaltimer = 0;
         StartOrdering = false;
@@ -92,10 +105,10 @@ public class OrderSystem : MonoBehaviour
         }
     }
 
-    void AssignRecipe(GameObject order)
+    void AssignRecipe(GameObject order, int index = -1)
     {
         OrderPanel orderPanel = order.GetComponent<OrderPanel>();
-        Recipes.recipes theorder = OrderManager.instance.GetRandomOrderFromCurrentDay();
+        Recipes.recipes theorder = OrderManager.instance.GetSelectedOrderFromCurrentDay(index);
         if (WaitingTime == 0)
             orderPanel.SetOrder(FoodManager.instance.GetImage(theorder.ingredient1), FoodManager.instance.GetImage(theorder.ingredient2), FoodManager.instance.GetImage(theorder.Result), theorder);
         else
@@ -248,11 +261,11 @@ public class OrderSystem : MonoBehaviour
             return 5;
     }
 
-    public void CreateAnOrder()
+    public void CreateAnOrder(int indexIfAny = -1)
     {
         // Create an order list
         GameObject temp = Instantiate(OrderPrefab);
-        AssignRecipe(temp);
+        AssignRecipe(temp, indexIfAny);
         temp.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
         orderList.Add(temp);
         CheckOrderList();
