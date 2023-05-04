@@ -1717,6 +1717,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1250601984047821350, guid: 6e885474360640d4a91ee6c3d039fc96, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -809
+      objectReference: {fileID: 0}
     - target: {fileID: 4945336697121532278, guid: 6e885474360640d4a91ee6c3d039fc96, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2123,7 +2127,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &743621509
 PrefabInstance:
