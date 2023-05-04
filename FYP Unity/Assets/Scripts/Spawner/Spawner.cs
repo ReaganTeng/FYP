@@ -52,6 +52,19 @@ public class Spawner : MonoBehaviour
         }
     }
 
+    public void resetSpawnerTimer(float negativenum, bool set20)
+    {
+        if (set20)
+        {
+            time = 0.0f;
+        }
+        else
+        {
+            time = 0.0f;
+            time -= negativenum;
+        }
+    }
+
     public void SetEnable(bool set)
     {
         enabled = set;

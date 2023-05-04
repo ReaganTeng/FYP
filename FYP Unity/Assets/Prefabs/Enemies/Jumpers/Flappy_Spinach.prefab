@@ -375,7 +375,7 @@ MonoBehaviour:
   player_lm:
     serializedVersion: 2
     m_Bits: 64
-  EnemyHealth: 10
+  EnemyHealth: 15
   AttackDamage: 5
   prepPrefab: {fileID: 7688679561701460148, guid: 46de12c3c2f52dc4ba479fc94d61d518, type: 3}
   choppedPefab: {fileID: 1397868911600884096, guid: 1effcb93254e3f9419671fad0104c41b, type: 3}
@@ -410,6 +410,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 1843288542925539217}
   jumpheight: 5
   jumpspeed: 1.5
+  jumpClip: {fileID: 0}
   navMeshAgent: {fileID: 4041968836622471191}
   startupdating: 0
 --- !u!33 &9220949763194872015

@@ -16,6 +16,8 @@ public class projectile : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
+
+        GetComponentInChildren<SpriteRenderer>().transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
 
@@ -24,16 +26,25 @@ public class projectile : MonoBehaviour
         if(other.tag == "Player"
             || other.tag == "wall")
         {
-            if (other.tag == "Player")
+            if (other.tag == "Player"
+                && other.GetComponent<BoxCollider>().enabled == true)
             {
                 other.GetComponent<PlayerMovement>().setAnimator(true);
                 other.GetComponent<PlayerStats>().ResetConsecutiveHit();
                 other.GetComponent<PlayerStats>().ChangeFervor(-10.0f);
             }
 
-            if (timer >= .7f)
+            if (other.tag == "wall")
+            {
+                if (timer >= .7f)
+                {
+                    Destroy(gameObject);
+                }
+            }
+            else
             {
                 Destroy(gameObject);
+
             }
         }
     }

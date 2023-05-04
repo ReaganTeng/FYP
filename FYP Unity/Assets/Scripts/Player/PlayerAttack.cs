@@ -51,7 +51,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] Slider chargeBar;
     [SerializeField] Canvas canvas;
     int time;
-    [SerializeField] TextMeshProUGUI txt;
+    [SerializeField] TextMeshProUGUI chargertimertext;
     [SerializeField] GameObject line;
     [SerializeField] GameObject handle;
     Weapon currentweapon = Weapon.ROLLINGPIN;
@@ -68,7 +68,7 @@ public class PlayerAttack : MonoBehaviour
 
     [SerializeField] LayerMask enemyLM;
     [SerializeField] Animator animator;
-
+    [SerializeField] AnimationClip attackanimation;
     [SerializeField] PlayerProgress pp;
 
     void Start()
@@ -150,15 +150,15 @@ public class PlayerAttack : MonoBehaviour
             updatecharge();
         }
 
-        if (txt != null)
+        if (chargertimertext != null)
         {
             if (chargeBar.value >= chargeBar.maxValue)
             {
-                txt.enabled = false;
+                chargertimertext.enabled = false;
             }
             else
             {
-                txt.enabled = true;
+                chargertimertext.enabled = true;
             }
         }
         //
@@ -179,22 +179,25 @@ public class PlayerAttack : MonoBehaviour
             //
 
             //LIGHT ATTACK
-            if (Input.GetMouseButtonDown(0) && !attacking)
+            if (Input.GetMouseButtonDown(0) && !attacking
+                && isclicked == false)
             {
                 isclicked = true;
                 AttackWhichDirection(direction);
                 //HitBox.SetActive(true);
                 //attacking = true;
                 attackingtimer = attackingtime;
-                click_timer = currentAnimationLength;
+                click_timer = 0;
             }
             //
 
             //HEAVY ATTACK
             if (Input.GetMouseButtonDown(1) && !attacking && CanHeavyAttack
-                && (int)chargeCurrentLvl>= (int)min_notch_value)
+                && (int)chargeCurrentLvl>= (int)min_notch_value
+                && isclicked == false)
             {
                 isclicked = true;
+               //Debug.Log("HEAVY ATTACk");
                 transform.parent.GetComponent<PlayerStats>().setAttack(
                 GetComponentInParent<PlayerStats>().getAttack(1));
                 AttackWhichDirection(direction);
@@ -202,25 +205,33 @@ public class PlayerAttack : MonoBehaviour
                 //attacking = true;
                 attackingtimer = attackingtime;
                 depletecharge();
-                click_timer = currentAnimationLength;
+                click_timer = attackanimation.length;
             }
             //
 
+
+
+            //Debug.Log("DELAY " + pp.return_reductionamount());
             if (isclicked)
             {
-
                 //if is reaches 50% of the attack animation
-                //click_timer -= Time.deltaTime;
-                //if (click_timer <= currentAnimationLength * 0.5f)
-                //{
+                click_timer -= Time.deltaTime;
+                if (click_timer <= (attackanimation.length  *.5f)
+                    / pp.return_heavyattackspeed())
+                {
+
+                    animator.speed = pp.return_heavyattackspeed();
+
                     attacking = true;
-                //}
+                }
                 //
 
-                //if (click_timer < 0)
-                //{
-                //    isclicked = false;
-                //}
+                if (click_timer < 0)
+                {
+                    animator.speed = 1;
+
+                    isclicked = false;
+                }
             }
 
             
@@ -257,8 +268,8 @@ public class PlayerAttack : MonoBehaviour
         }
 
 
-        //if (animator.GetBool("click") == false 
-            //&& CanSwapWeapon)
+        if (animator.GetBool("click") == false
+            && CanSwapWeapon)
         {
             // To swap between weapons
             if (Input.GetKey(KeyCode.Z))
@@ -406,9 +417,9 @@ public class PlayerAttack : MonoBehaviour
                 - (int)chargeCurrentLvl);
         }
 
-        if (txt != null)
+        if (chargertimertext != null)
         {
-            txt.text = time.ToString();
+            chargertimertext.text = time.ToString();
         }
 
 

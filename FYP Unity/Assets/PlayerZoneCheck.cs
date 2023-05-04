@@ -7,26 +7,16 @@ public class PlayerZoneCheck : MonoBehaviour
     int zoneno;
     GameObject[] zone;
 
-    public void Awake()
-    {
-        
-        zoneno = 0;
-        zone = GameObject.FindGameObjectsWithTag("Zone");
-        BoundaryCheck();
-
-        
-    }
+   
 
     public void Start()
     {
         
-        zoneno = 0;
+        //zoneno = 0;
         zone = GameObject.FindGameObjectsWithTag("Zone");
         BoundaryCheck();
 
         //PlayerHealth = playerProgress.PlayerMaxHealth;
-
-        
     }
 
     // Update is called once per frame
@@ -48,10 +38,10 @@ public class PlayerZoneCheck : MonoBehaviour
     {
         for (int i = 0; i < zone.Length; i++)
         {
-            if (transform.position.x < zone[i].GetComponent<Transform>().position.x + (zone[i].GetComponent<Transform>().localScale.x / 2)
-             && transform.position.x > zone[i].GetComponent<Transform>().position.x - (zone[i].GetComponent<Transform>().localScale.x / 2)
-             && transform.position.z > zone[i].GetComponent<Transform>().position.z - (zone[i].GetComponent<Transform>().localScale.z / 2)
-            && transform.position.z < zone[i].GetComponent<Transform>().position.z + (zone[i].GetComponent<Transform>().localScale.z / 2)
+            if (transform.position.x < zone[i].GetComponent<Transform>().position.x + (zone[i].GetComponent<Transform>().lossyScale.x / 2)
+             && transform.position.x > zone[i].GetComponent<Transform>().position.x - (zone[i].GetComponent<Transform>().lossyScale.x / 2)
+             && transform.position.z > zone[i].GetComponent<Transform>().position.z - (zone[i].GetComponent<Transform>().lossyScale.z / 2)
+            && transform.position.z < zone[i].GetComponent<Transform>().position.z + (zone[i].GetComponent<Transform>().lossyScale.z / 2)
              )
 
             {

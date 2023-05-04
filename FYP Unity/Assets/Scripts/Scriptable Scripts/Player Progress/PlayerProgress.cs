@@ -10,6 +10,41 @@ public class PlayerProgress : ScriptableObject
     [SerializeField] int CosmicCredibility;
     [SerializeField] int TotalObtainedCredibility;
 
+    [SerializeField] float buffactive_reduction;
+
+
+    [SerializeField] float fervorspeedreduction;
+
+    [SerializeField] float heavyattackspeed;
+
+
+    public void increase_heavyattackspeed()
+    {
+        heavyattackspeed += 1;
+    }
+    public float return_heavyattackspeed()
+    {
+        return heavyattackspeed;
+    }
+
+    public void reduce_fervorspeed()
+    {
+        fervorspeedreduction -= .25f;
+    }
+    public float return_fervorspeed()
+    {
+        return fervorspeedreduction;
+    }
+
+
+    public void reduce_buffactive_requirement()
+    {
+        buffactive_reduction += 20;
+    }
+    public float return_buffactive_requirement()
+    {
+        return buffactive_reduction;
+    }
 
     public void ResetInventory()
     {
@@ -17,7 +52,7 @@ public class PlayerProgress : ScriptableObject
     }
 
     
-
+    
 
     public void AddCredibility(int amt)
     {

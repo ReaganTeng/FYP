@@ -81,7 +81,7 @@ public class Tutorial : MonoBehaviour
 
         if (lm.levelInfo[lm.DaySelected - 1].isThereTutorial != null)
         {
-            InTutorial = true;
+            //InTutorial = true;
             tut = lm.levelInfo[lm.DaySelected - 1].isThereTutorial.DialogueAndInstructions;
             SquidText = SquidChatBox.GetComponentInChildren<TextMeshProUGUI>();
             skipPromptText = SkipPrompt.GetComponent<TextMeshProUGUI>();
