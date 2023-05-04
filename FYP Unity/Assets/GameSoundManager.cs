@@ -3,46 +3,52 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DigitalRuby.SoundManagerNamespace
+using DigitalRuby.SoundManagerNamespace;
+
+public class GameSoundManager : MonoBehaviour
 {
+    public Slider soundSlider;
+    public Slider musicSlider;
 
-    public class GameSoundManager : MonoBehaviour
+    [SerializeField] string[] soundName;
+    [SerializeField] AudioSource[] sound;
+    private static IDictionary<string, AudioSource> soundDict = new Dictionary<string, AudioSource>();
+
+    [SerializeField] string[] musicName;
+    [SerializeField] AudioSource[] music;
+    private static IDictionary<string, AudioSource> musicDict = new Dictionary<string, AudioSource>();
+
+    private void Start()
     {
-        public Slider SoundSlider;
-        public Slider MusicSlider;
-        public InputField SoundCountTextBox;
-        public Toggle PersistToggle;
-
-        [SerializeField] int numberofsounds;
-        [SerializeField] List<string> SoundName = new List<string>();
-        [SerializeField] List<GameObject> Sound = new List<GameObject>();
-
-        IDictionary<string, GameObject> SoundNames = new Dictionary<string, GameObject>();
-
-
-
-
-        private void Start()
+        for (int i = 0; i < soundName.Length; i++)
         {
-            for (int i = 0; i < SoundNames.Count; i++)
-            {
-                SoundNames.Add(SoundName[i], Sound[i]);
-            }
+            soundDict.Add(soundName[i], sound[i]);
+        }
+        for (int i = 0; i < musicName.Length; i++)
+        {
+            musicDict.Add(musicName[i], music[i]);
         }
 
-        public void SoundVolumeChanged()
-        {
-            SoundManager.SoundVolume = SoundSlider.value;
-        }
-
-        public void MusicVolumeChanged()
-        {
-            SoundManager.MusicVolume = MusicSlider.value;
-        }
-
-
-
-
+        DontDestroyOnLoad(gameObject);
     }
 
+    public static void PlaySound(string name)
+    {
+        soundDict[name].PlayOneShotSoundManaged(soundDict[name].clip);
+    }
+
+    public static void PlayMusic(string name)
+    {
+        musicDict[name].PlayLoopingMusicManaged(1.0f, 1.0f, false);
+    }
+
+    public void SoundVolumeChanged()
+    {
+        SoundManager.SoundVolume = soundSlider.value;
+    }
+
+    public void MusicVolumeChanged()
+    {
+        SoundManager.MusicVolume = musicSlider.value;
+    }
 }

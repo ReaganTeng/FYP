@@ -554,6 +554,7 @@ public class Tutorial : MonoBehaviour
                     {
                         Destroy(GameObject.FindGameObjectWithTag("Drops").GetComponentInChildren<Food>().gameObject);
                         ConditionTriggered = true;
+                        //GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerAttack>().SetCanAttack(false);
                         ResetRun();
                     }
                     break;

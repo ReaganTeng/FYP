@@ -1,16 +1,20 @@
-using TMPro;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
+using DigitalRuby.SoundManagerNamespace;
 
 public class PlayerAttack : MonoBehaviour
 {
+    
     public enum Weapon
     {
         SPATULA, //0
         KNIFE, //1
         ROLLINGPIN, //2
     }
-
+    SoundManagerDemo SoundManager;
     [SerializeField] GameObject HitBox;
     [SerializeField] float attackcd;
     [SerializeField] float attackingtime;
@@ -71,7 +75,7 @@ public class PlayerAttack : MonoBehaviour
 
     void Start()
     {
-        UpdateWeaponDisplay();
+
         click_timer = 0.0f;
         isclicked = false;
 
@@ -259,8 +263,8 @@ public class PlayerAttack : MonoBehaviour
         }
 
 
-        if (animator.GetBool("click") == false
-            && CanSwapWeapon)
+        //if (animator.GetBool("click") == false 
+            //&& CanSwapWeapon)
         {
             // To swap between weapons
             if (Input.GetKey(KeyCode.Z))
@@ -526,5 +530,5 @@ public class PlayerAttack : MonoBehaviour
                 RollerWeaponDisplay.SetActive(false);
                 break;
         }
-    }
+    }    
 }
