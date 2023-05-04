@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using DigitalRuby.SoundManagerNamespace;
 
 public class PlayerAttack : MonoBehaviour
 {
+    
     public enum Weapon
     {
         SPATULA, //0
         KNIFE, //1
         ROLLINGPIN, //2
     }
-
+    SoundManagerDemo SoundManager;
     [SerializeField] GameObject HitBox;
     [SerializeField] float attackcd;
     [SerializeField] float attackingtime;
@@ -187,7 +189,11 @@ public class PlayerAttack : MonoBehaviour
                 //HitBox.SetActive(true);
                 //attacking = true;
                 attackingtimer = attackingtime;
-                click_timer = 0;
+                click_timer = currentAnimationLength;
+                if(currentweapon == Weapon.ROLLINGPIN)
+                {
+                    //PlayRollerHitFx();
+                }   
             }
             //
 
@@ -275,17 +281,17 @@ public class PlayerAttack : MonoBehaviour
             if (Input.GetKey(KeyCode.Z))
             {
                 currentweapon = Weapon.SPATULA;
-                //UpdateWeaponDisplay();
+                UpdateWeaponDisplay();
             }
             else if (Input.GetKey(KeyCode.X))
             {
                 currentweapon = Weapon.KNIFE;
-                //UpdateWeaponDisplay();
+                UpdateWeaponDisplay();
             }
             else if (Input.GetKey(KeyCode.C))
             {
                 currentweapon = Weapon.ROLLINGPIN;
-                //UpdateWeaponDisplay();
+                UpdateWeaponDisplay();
             }
         }
 
@@ -536,4 +542,5 @@ public class PlayerAttack : MonoBehaviour
                 break;
         }
     }    
+
 }

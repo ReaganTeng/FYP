@@ -38,9 +38,24 @@ namespace DigitalRuby.SoundManagerNamespace
             }
         }
 
-        private void PlayMusic(int index)
+        public void PlayMusic(int index)
         {
             MusicAudioSources[index].PlayLoopingMusicManaged(1.0f, 1.0f, PersistToggle.isOn);
+        }
+
+        public void PlaySpatulaHitFx()
+        {
+            
+        }
+
+        public void PlayRollerHitFx()
+        {
+            PlaySound(1);
+        }
+
+        public void PlayKnifeHitFx()
+        {
+            PlaySound(2);
         }
 
         private void CheckPlayKey()
@@ -52,14 +67,17 @@ namespace DigitalRuby.SoundManagerNamespace
 
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
+                //knife slash
                 PlaySound(0);
             }
             if (Input.GetKeyDown(KeyCode.Alpha2))
             {
+                //roller smash
                 PlaySound(1);
             }
             if (Input.GetKeyDown(KeyCode.Alpha3))
             {
+                //Spatula Slap
                 PlaySound(2);
             }
             if (Input.GetKeyDown(KeyCode.Alpha4))

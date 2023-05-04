@@ -7,6 +7,7 @@ public class IngredientBarrel : MonoBehaviour
 {
     [SerializeField] GameObject ingredient;
     [SerializeField] Image ingredientDisplay;
+    [SerializeField] GameObject emptyPrefab;
 
     private void Start()
     {
@@ -20,7 +21,16 @@ public class IngredientBarrel : MonoBehaviour
         // if inventory is not full, add the ingredient to the inventory
         if (!Inventory.instance.InventoryFull)
         {
-            inv.AddItem(ingredient);
+            GameObject PlayerInv = GameObject.FindGameObjectWithTag("Inventory");
+            GameObject resultFood = Instantiate(emptyPrefab, PlayerInv.transform);
+
+            resultFood.GetComponent<Food>().SetValues(ingredient.GetComponent<Food>());
+            resultFood.GetComponent<Food>().SetPerfect(true);
+            Destroy(resultFood.GetComponent<Dish>());
+            Destroy(resultFood.GetComponent<RefinedItem>());
+            resultFood.AddComponent<Item>();
+            resultFood.GetComponent<Item>().SetValueManually(ItemManager.Items.FLOUR, ingredientDisplay.sprite);
+            inv.AddItem(resultFood);
         }
     }
 }

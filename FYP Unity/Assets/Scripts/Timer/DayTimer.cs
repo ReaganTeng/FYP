@@ -5,10 +5,11 @@ using Com.LuisPedroFonseca.ProCamera2D;
 
 public class DayTimer : MonoBehaviour
 {
+    [SerializeField] LevelManager lm;
     [SerializeField] GameObject HourHand;
     [SerializeField] GameObject MinuteHand;
     [SerializeField] EndOfDay eod;
-    [SerializeField] float TimeFortheDayInSeconds;
+    float TimeFortheDayInSeconds;
     private float thedaytimer;
     private float RotateHourBy;
     private float RotateMinuteBy;
@@ -17,6 +18,15 @@ public class DayTimer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Set the time for the day according to what user put for that level
+        for (int i = 0; i < lm.levelInfo.Count; i++)
+        {
+            if (i == lm.DaySelected - 1)
+            {
+                TimeFortheDayInSeconds = lm.levelInfo[i].DayDuration;
+            }
+        }
+
         thedaytimer = TimeFortheDayInSeconds;
         RotateHourBy = 360 / thedaytimer;
         RotateMinuteBy = 360 * 12 / thedaytimer;

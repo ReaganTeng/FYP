@@ -80,8 +80,7 @@ MonoBehaviour:
   - TextDisplay: Don't tell me you...
     conditions: 0
     TimeTillPromptSkip: 2
-  - TextDisplay: ~Press M to toggle between opening and closing the minimap to see
-      where we need to head to~
+  - TextDisplay: ~Press M to open the map. press M again to close map~
     conditions: 5
     TimeTillPromptSkip: 2
   - TextDisplay: ~In case you forget, press M again to close the minimap~
@@ -93,7 +92,13 @@ MonoBehaviour:
   - TextDisplay: ~Head towards to the ootatoo Room~
     conditions: 7
     TimeTillPromptSkip: 2
-  - TextDisplay: Ok so basically for now, just know that left click attacks
+  - TextDisplay: Ok I will teach you the very basic of combat.
+    conditions: 0
+    TimeTillPromptSkip: 3
+  - TextDisplay: Left click to attack the direction that you are facing.
+    conditions: 0
+    TimeTillPromptSkip: 3
+  - TextDisplay: Let's apply this knowledge by giving u a hands-on experience~
     conditions: 0
     TimeTillPromptSkip: 3
   - TextDisplay: ~Kill an ootatoo by left clicking to attack~
@@ -111,8 +116,7 @@ MonoBehaviour:
   - TextDisplay: You might have to kill a more adorable ones soon.
     conditions: 0
     TimeTillPromptSkip: 3
-  - TextDisplay: ~Pick up those mashed potatoes, you don't want their death to be
-      wasted don't you?~
+  - TextDisplay: ~Pick up their drops by pressing E near them~
     conditions: 9
     TimeTillPromptSkip: 3
   - TextDisplay: ~Let's head back to the kitchen~
@@ -130,9 +134,6 @@ MonoBehaviour:
   - TextDisplay: ~Grab those mashed potato I left in the kitchen~
     conditions: 11
     TimeTillPromptSkip: 2
-  - TextDisplay: Anyways, lets start making the dish.
-    conditions: 0
-    TimeTillPromptSkip: 2
   - TextDisplay: Anyways, lets start making the dish. I shall teach you the basic
       of cooking.
     conditions: 0
@@ -140,14 +141,15 @@ MonoBehaviour:
   - TextDisplay: There are 2 stages of cooking, first making the refined ingredients
     conditions: 0
     TimeTillPromptSkip: 3
-  - TextDisplay: ~Toss 2 mashed potato into a mixer by pressing E near it~
+  - TextDisplay: ~Toss 2 mashed potato into any mixer by pressing E near it~
     conditions: 12
     TimeTillPromptSkip: 3
-  - TextDisplay: 2 mashed potato mixed together to form a mashed potato cup
+  - TextDisplay: You get a mashed potato cup by mixing 2 mashed potato inside the
+      mixer.
     conditions: 0
     TimeTillPromptSkip: 3
-  - TextDisplay: ~Make a mashed potato cup by pressing E to start mixing the ingredients,
-      and grab it after done~
+  - TextDisplay: ~Make a mashed potato cup by pressing E near the mixer to start
+      mixing and grab it~
     conditions: 13
     TimeTillPromptSkip: 3
   - TextDisplay: Ok there you go, the second stage is to make the dish.
@@ -156,17 +158,14 @@ MonoBehaviour:
   - TextDisplay: 2 mashed potato cup when cooked together forms potato salad.
     conditions: 0
     TimeTillPromptSkip: 3
-  - TextDisplay: ~Make another mashed potato cup~
-    conditions: 14
-    TimeTillPromptSkip: 3
   - TextDisplay: Anyways lets make the dish now.
     conditions: 0
     TimeTillPromptSkip: 3
   - TextDisplay: Anyways lets make the dish now.
     conditions: 0
     TimeTillPromptSkip: 2
-  - TextDisplay: ~Make a potato salad by putting 2 mashed potato cup into a cooker
-      and grabbing it after done cooking~
+  - TextDisplay: ~Make a potato salad by putting 2 mashed potato cup into cooker
+      using E~
     conditions: 15
     TimeTillPromptSkip: 3
   - TextDisplay: Congrats on making your first dish in this place.

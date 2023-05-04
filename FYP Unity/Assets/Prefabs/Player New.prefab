@@ -92,6 +92,8 @@ MonoBehaviour:
   PlayerInventory: {fileID: 8900116384804071886}
   DisableControls: 0
   CannotInteractWithMixer: 0
+  CannotInteractWithDrawer: 0
+  CannotInteractWithDustbin: 0
 --- !u!1 &2429570959170697404
 GameObject:
   m_ObjectHideFlags: 0
@@ -428,7 +430,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3462924137396006120}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ce78690cc40ff984f8d3d5436d68a23d, type: 3}
   m_Name: 
@@ -611,14 +613,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4576155599550398274}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.33, y: 0.5463998, z: -0.37}
-  m_LocalScale: {x: 1.0094534, y: 0.7875839, z: 2.5}
-  m_ConstrainProportionsScale: 0
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0.93, y: 0.85, z: -0.37}
+  m_LocalScale: {x: 0.38, y: 0.29647914, z: 0.94110334}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2710275217042273377}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!212 &4532947797767752497
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -883,8 +885,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5, y: 3, z: 3.1390772}
-  m_Center: {x: 2.5, y: 1.5, z: -0.7081251}
+  m_Size: {x: 0.45137522, y: 0.4618963, z: 3.1390772}
+  m_Center: {x: 0.22568761, y: 1.0528613, z: -0.7081251}
 --- !u!1 &8221724153166463230
 GameObject:
   m_ObjectHideFlags: 0

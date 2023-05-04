@@ -54,7 +54,7 @@ public class QTE : MonoBehaviour
     {
         if (TheSlider.activeSelf)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 DisplayResult = true;
                 StopNeedle = true;
