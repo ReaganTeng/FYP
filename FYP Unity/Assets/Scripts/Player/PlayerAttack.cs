@@ -29,7 +29,6 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] GameObject knifeHitbox;
     [SerializeField] GameObject pinHitbox;
     bool disableControls;
-    bool CanAttack = true;
     bool CanSwapWeapon = true;
 
     float chargeCurrentLvl;
@@ -527,15 +526,5 @@ public class PlayerAttack : MonoBehaviour
                 RollerWeaponDisplay.SetActive(false);
                 break;
         }
-    }
-    
-    public bool GetCanAttack()
-    {
-        return CanAttack;
-    }
-
-    public void SetCanAttack(bool canAttack)
-    {
-        CanAttack = canAttack;
     }
 }

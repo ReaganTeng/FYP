@@ -243,6 +243,12 @@ public class EndOfDay : MonoBehaviour
         return currentday;
     }
 
+    public void ResetScore()
+    {
+        score = 0;
+        UpdateScore();
+    }
+
     public void StopOrders()
     {
         os.StopOrders();

@@ -123,7 +123,7 @@ public class Tutorial : MonoBehaviour
             // Disable all spawners
             SpawnerManager.instance.SetSpawner(SpawnerManager.SPAWNERTYPE.ALL, false);
             GameObject tempPlayer = GameObject.FindGameObjectWithTag("Player");
-            //tempPlayer.GetComponentInChildren<PlayerAttack>().SetCanSwapWeapon(false); // Disable swapping weapon
+            tempPlayer.GetComponentInChildren<PlayerAttack>().SetCanSwapWeapon(false); // Disable swapping weapon
             tempPlayer.GetComponentInChildren<PlayerAttack>().SetCanDoHeavyAttack(false); // disable doing heavy attack
             tempPlayer.GetComponentInChildren<PlayerPickup>().CannotInteractWithMixer = true; // disable interacting with mixer
             tempPlayer.GetComponentInChildren<PlayerPickup>().CannotInteractWithDrawer = true; // disable interacting with drawer
@@ -493,6 +493,7 @@ public class Tutorial : MonoBehaviour
                     gm.GetComponent<UnlockHallway>().OpenHallway(LevelHallway.Hallway.KITCHEN_TO_OOTATOO);
                     SpawnerManager.instance.SetSpawner(SpawnerManager.SPAWNERTYPE.OOTATOO, true);
                     ConditionTriggered = true;
+                    ResetScore();
                     break;
                 }
 
@@ -503,9 +504,8 @@ public class Tutorial : MonoBehaviour
                         // skip tutorial next time player comes back
                         ConditionTriggered = true;
                         InTutorial = false;
-                        //PlayerPrefs.SetInt("TutorialComplete", 1);
-                        gm.GetComponent<UnlockHallway>().OpenHallway(LevelHallway.Hallway.KITCHEN_TO_OOTATOO);
-                        SpawnerManager.instance.SetSpawner(SpawnerManager.SPAWNERTYPE.OOTATOO, true);
+                        PlayerPrefs.SetInt("TutorialComplete", 1);
+                        SceneManager.LoadScene("Level Select");
                     }
 
                     else if (Input.GetKeyDown(KeyCode.N))
@@ -554,7 +554,6 @@ public class Tutorial : MonoBehaviour
                     {
                         Destroy(GameObject.FindGameObjectWithTag("Drops").GetComponentInChildren<Food>().gameObject);
                         ConditionTriggered = true;
-                        GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerAttack>().SetCanAttack(false);
                         ResetRun();
                     }
                     break;
@@ -792,7 +791,10 @@ public class Tutorial : MonoBehaviour
                     gm.GetComponent<UnlockHallway>().OpenHallway(LevelHallway.Hallway.KITCHEN_TO_AAPOLO);
                     SpawnerManager.instance.SetSpawner(SpawnerManager.SPAWNERTYPE.OOTATOO, true);
                     SpawnerManager.instance.SetSpawner(SpawnerManager.SPAWNERTYPE.AAPOLO, true);
+                    ResetScore();
                     ConditionTriggered = true;
+                    // NOTE: REMOVE THIS COMMAND AND THE LINE AFTER THIS WHEN DOING VISUAL NOVEL
+                    PlayerPrefs.SetInt("TutorialComplete", 1);
                     break;
                 }
         }
@@ -847,5 +849,10 @@ public class Tutorial : MonoBehaviour
         }
 
         return false;
+    }
+
+    void ResetScore()
+    {
+        gm.GetComponent<EndOfDay>().ResetScore();
     }
 }
