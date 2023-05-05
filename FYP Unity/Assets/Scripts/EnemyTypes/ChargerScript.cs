@@ -189,10 +189,7 @@ public class ChargerScript : MonoBehaviour
             enemyScript.ifUpdatingfalse();
         }
 
-        
-
         //enemyScript.steering();
-
         if (GetComponent<EnemyScript>().getzoneno() == 0)
         {
             resultingVector = GetComponent<EnemyScript>().getparent().position - transform.position;

@@ -9,11 +9,9 @@ public class UpgradeSystem : MonoBehaviour
     {
         NONE,
         INVENTORY_UPGRADE,
-
-
-        LIGHT_ATTACK_SPEED_BUFF,
-        HEAVY_ATTACK_SPEED_BUFF
-
+        HEAVY_ATTACK_BUFF,
+        BUFF_MODE_AMOUNT_REQUIREMENT,
+        FERVOR_REDUCTION
     }
 
     public static UpgradeSystem instance;
@@ -30,6 +28,16 @@ public class UpgradeSystem : MonoBehaviour
             case ShopItemType.INVENTORY_UPGRADE:
                 pp.IncreaseInventorySize();
                 break;            
+            
+            case ShopItemType.BUFF_MODE_AMOUNT_REQUIREMENT:
+                pp.reduce_buffactive_requirement();
+                break;
+            case ShopItemType.FERVOR_REDUCTION:
+                pp.reduce_fervorspeed();
+                break;
+            case ShopItemType.HEAVY_ATTACK_BUFF:
+                pp.increase_heavyattackspeed();
+                break;
         }
     }
 }

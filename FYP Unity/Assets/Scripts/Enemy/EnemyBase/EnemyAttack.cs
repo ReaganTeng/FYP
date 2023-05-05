@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+
 
 public class EnemyAttack : MonoBehaviour
 {
@@ -74,16 +76,21 @@ public class EnemyAttack : MonoBehaviour
             //}
 
             //DELAY FOR CHASER
-            if (animator.GetBool("about2attack")
-                && animator.GetCurrentAnimatorStateInfo(0).IsName("aboutattack"))
+            if (transform.parent.transform.parent.GetComponent<EnemyScript>().return_attackptn() != EnemyScript.AttackPattern.PATTERN_3
+               && transform.parent.transform.parent.GetComponent<EnemyScript>().return_attackptn() != EnemyScript.AttackPattern.PATTERN_2)
             {
-                //Debug.Log("ABOUT 2 ATTACK");
-                delayTime += Time.deltaTime;
-                if (delayTime
-                    >= /*transform.parent.transform.parent.GetComponent<EnemyScript>().getCurrentAnimationLength()*/
-                    animator.GetCurrentAnimatorStateInfo(0).length)
+                if (animator.GetBool("about2attack")
+                    && animator.GetCurrentAnimatorStateInfo(0).IsName("aboutattack"))
                 {
-                    animator.SetBool("attack", true);
+
+                    //Debug.Log("ABOUT 2 ATTACK");
+                    delayTime += Time.deltaTime;
+                    if (delayTime
+                        >= /*transform.parent.transform.parent.GetComponent<EnemyScript>().getCurrentAnimationLength()*/
+                        animator.GetCurrentAnimatorStateInfo(0).length)
+                    {
+                        animator.SetBool("attack", true);
+                    }
                 }
             }
             //
@@ -91,6 +98,8 @@ public class EnemyAttack : MonoBehaviour
             //ADD 1 ATTACK TO EACH LOOP
             if (attacking_present)
             {
+                
+
                 attacks_performed += 1;
                 attacking_present = false;
             }
@@ -104,6 +113,8 @@ public class EnemyAttack : MonoBehaviour
                 //animator.SetBool("chasingPlayer", false);
                 post_attack = true;
                 attacks_performed = 0;
+                transform.parent.transform.parent.GetComponent<NavMeshAgent>().enabled = true;
+
                 delayTime = 0.0f;
             }
             //
@@ -142,6 +153,7 @@ public class EnemyAttack : MonoBehaviour
         if (other.CompareTag("Player")
             && Attackcdtimer <= 0
             && GetComponent<BoxCollider>().enabled == true
+            && other.GetComponentInChildren<Animator>().GetNextAnimatorStateInfo(0).IsName("Dash") == false
             && attacks_performed < attacks_per_session)
         {
             
@@ -162,15 +174,17 @@ public class EnemyAttack : MonoBehaviour
                 if (animator.GetBool("attack"))
                 {
                     //Debug.Log("ATTACK TRUE");
-                    if (animator.GetCurrentAnimatorStateInfo(0).IsName("attack"))
+                    if (animator.GetCurrentAnimatorStateInfo(0).IsName("attack")
+                        && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
                     {
                         //HIT PLAYER EVERY TIME EACH LOOP ENDS
                         other.GetComponent<PlayerMovement>().setAnimator(true);
                         other.GetComponent<PlayerStats>().ResetConsecutiveHit();
                         other.GetComponent<PlayerStats>().ChangeFervor(-5.0f);
+
                         attacking_present = true;
                         Attackcdtimer = AttackCD;
-                        Debug.Log("HIT");
+                        //Debug.Log("HIT");
                         //
                     }
                 }

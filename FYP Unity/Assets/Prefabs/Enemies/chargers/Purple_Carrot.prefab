@@ -350,7 +350,7 @@ MonoBehaviour:
   Mush: {fileID: 8494874157540663937, guid: 4255f020537c20a48857eb56b1b0f6d5, type: 3}
   attackhitbox: {fileID: 3808063470164777748}
   healthbar: {fileID: 5033738875903249284}
-  cooldown_period: 1
+  cooldown_period: 3
   abouttoattack_period: 1
   projectile_numbers: 0
   atkPattern: 1
@@ -1054,7 +1054,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7531454202681380552}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.66, z: 0}
+  m_LocalPosition: {x: 0, y: 0.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

@@ -366,11 +366,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f86fb22894d70e41999fb8adccaf93a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpcooldown: 0.3
+  jumpcooldown: 1
   jumperCanvas: {fileID: 4884206472135273430}
   spriteRenderer: {fileID: 3908784438884953137}
   jumpheight: 5
   jumpspeed: 1.5
+  jumpClip: {fileID: 7400000, guid: acf8fe81a1dc55649930df1a64a678d0, type: 2}
   navMeshAgent: {fileID: 2057207063808142039}
   startupdating: 0
 --- !u!114 &5647560301601598824
