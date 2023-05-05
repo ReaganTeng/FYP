@@ -40,11 +40,7 @@ public class Chatbox : MonoBehaviour
 
             for (int i = 0; i < lm.levelInfo.Count; i++)
             {
-                // if first lvl, dont lock
-                if (i == 0)
-                    lm.levelInfo[i].ResetLevel(false);
-                else
-                    lm.levelInfo[i].ResetLevel(true);
+                lm.levelInfo[i].ResetLevel();
             }
             OutputMessage = "Nuked Successful! \n";
         }

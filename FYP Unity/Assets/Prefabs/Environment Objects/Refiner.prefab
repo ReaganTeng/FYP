@@ -619,7 +619,7 @@ MonoBehaviour:
   cookingBG: {fileID: 2032070816898734192}
   text: {fileID: 8731577181928981717}
   doneBG: {fileID: 1524267747295367385}
-  MixingTime: 3
+  MixingTime: 10
 --- !u!65 &2163786351461982183
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -628,7 +628,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6678474076043856645}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 0.1}

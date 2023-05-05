@@ -275,10 +275,11 @@ public class ChaserScript : MonoBehaviour
                             else
                             {
                                 navMeshAgent.enabled = true;
+                                //GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
+                                navMeshAgent.SetDestination(playerGO.transform.position);
                             }
 
-                            //GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
-                            navMeshAgent.SetDestination(playerGO.transform.position);
+                           
 
                             rand_z = Random.Range(-4, 4);
                             float rand = Random.Range(2, 8);

@@ -25,7 +25,7 @@ public class DisplayLevelSelect : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (level.Locked)
+        if (level.GetIsLocked())
         {
             levelSelect.SetActive(false);
             levelLocked.SetActive(true);
@@ -43,9 +43,9 @@ public class DisplayLevelSelect : MonoBehaviour
         leveldescription.text = level.LevelDescription;
         DisplayGradeOnUI();
 
-        if (level.HighScore != 0)
+        if (level.GetHighScore() != 0)
         {
-            HighestScore.GetComponent<TextMeshPro>().text = "HighScore: " + level.HighScore;
+            HighestScore.GetComponent<TextMeshPro>().text = "HighScore: " + level.GetHighScore();
         }
         else
             HighestScore.SetActive(false);
@@ -53,7 +53,7 @@ public class DisplayLevelSelect : MonoBehaviour
 
     void DisplayGradeOnUI()
     {
-        switch (level.HighestGrade)
+        switch (level.GetHighestGrade())
         {
             case 'S':
                 DisplayGrade.GetComponent<SpriteRenderer>().sprite = Srank;

@@ -13,28 +13,25 @@ MonoBehaviour:
   m_Name: Level 2
   m_EditorClassIdentifier: 
   LevelName: Day 2
-  LevelDescription: Harder
-  HighScore: 0
-  HighestGrade: 78
-  SReq: 800
-  AReq: 500
-  BReq: 300
-  CReq: 150
-  CredibilityLeftToObtain: 4
-  Locked: 1
-  CCReq: 2
+  LevelDescription: Dangoooo
+  SReq: 300
+  AReq: 150
+  BReq: 70
+  CReq: 30
+  MaxCredibility: 4
+  CCReq: 0
   HallwaysUnlock: 000000000600000001000000
   CustomizeOrderForThisDay:
     theDish:
     - {fileID: 396589628195105180, guid: 1aa4138ff3d4c74489890d40137af51c, type: 3}
     - {fileID: 371815206722413681, guid: 8679ed47fc6fa454db4d8b6f99b5d19b, type: 3}
     WaitingTime: 0
-    penalty: 10
+    penalty: 2
     Fixed: 1
     AmtOfDishes: 0
-  WhatSpawnerActive: 
+  WhatSpawnerActive: 000000000700000001000000
   isThereTutorial: {fileID: 11400000, guid: 4c051d61c6c27fa4b9fe5e52636784dc, type: 2}
   MaxOrders: 4
-  TimeBeforeFirstOrder: 10
-  IntervalBetweenOrders: 30
+  TimeBeforeFirstOrder: 0
+  IntervalBetweenOrders: 20
   DayDuration: 300

@@ -15,13 +15,12 @@ public class Spawner : MonoBehaviour
     [SerializeField] int enemies_per_spawn;
     //spawn enemies once every how many seconds
     [SerializeField] float interval;
-    private bool enable;
+    private bool enable = true;
 
     // Start is called before the first frame update
     void Start()
     {
         time = 0.0f;
-        enable = true;
     }
 
     // Update is called once per frame

@@ -13,13 +13,26 @@ MonoBehaviour:
   m_Name: Level 4
   m_EditorClassIdentifier: 
   LevelName: Day 4
-  LevelDescription: 
-  HighScore: 0
-  HighestGrade: 0
-  SReq: 0
-  AReq: 0
-  BReq: 0
-  CReq: 0
-  CredibilityLeftToObtain: 0
-  Locked: 0
-  CCReq: 0
+  LevelDescription: Getting the hang of it
+  SReq: 800
+  AReq: 500
+  BReq: 200
+  CReq: 80
+  MaxCredibility: 4
+  CCReq: 3
+  HallwaysUnlock: 000000000100000002000000040000000500000006000000070000000a0000000c0000000c000000
+  CustomizeOrderForThisDay:
+    theDish:
+    - {fileID: 3441819759951336346, guid: aca9a167578818f46a8d36be143ee99c, type: 3}
+    - {fileID: 6203881991820088434, guid: 7680b061897d9414980341ab7538bd8a, type: 3}
+    - {fileID: 2570593248413926386, guid: 2cd76e66e57826d4db6c8ec56be4b390, type: 3}
+    WaitingTime: 0
+    penalty: 5
+    Fixed: 1
+    AmtOfDishes: 0
+  WhatSpawnerActive: 00000000010000000200000003000000060000000700000008000000
+  isThereTutorial: {fileID: 0}
+  MaxOrders: 4
+  TimeBeforeFirstOrder: 0
+  IntervalBetweenOrders: 15
+  DayDuration: 300
