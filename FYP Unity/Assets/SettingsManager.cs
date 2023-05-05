@@ -10,6 +10,7 @@ public class SettingsManager : MonoBehaviour
     [SerializeField] Slider MusicSlider;
     [SerializeField] Toggle screenSizeToggle;
     [SerializeField] TextMeshProUGUI screenSizeText;
+    [SerializeField] LevelManager lm;
 
     // Start is called before the first frame update
     void Start()
@@ -76,7 +77,7 @@ public class SettingsManager : MonoBehaviour
 
     public void HardReset()
     {
-
+  
     }
 
     public void ResetTutorial()

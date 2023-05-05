@@ -106,12 +106,23 @@ namespace Doublsb.Dialog
                     StartCoroutine(_skip()); break;
 
                 case State.Wait:
-                    if (currLine != totalLines && _current_Data.SelectList.Count <= 0) Hide(); break;
+                    if (_current_Data.SelectList.Count <= 0) Hide(); break;
             }
         }
 
         public void Hide()
         {
+            if (_current_Data.Callback != null)
+            {
+                _current_Data.Callback.Invoke();
+                _current_Data.Callback = null;
+            }
+
+            if (currLine == totalLines)
+            {
+                return;
+            }
+
             if (_textingRoutine != null)
                 StopCoroutine(_textingRoutine);
 
@@ -123,12 +134,6 @@ namespace Doublsb.Dialog
             Selector.SetActive(false);
 
             state = State.Deactivate;
-
-            if (_current_Data.Callback != null)
-            {
-                _current_Data.Callback.Invoke();
-                _current_Data.Callback = null;
-            }
         }
         #endregion
 

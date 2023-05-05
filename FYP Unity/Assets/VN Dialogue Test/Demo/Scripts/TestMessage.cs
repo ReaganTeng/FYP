@@ -8,6 +8,7 @@ public class TestMessage : MonoBehaviour
 {
     public DialogManager DialogManager;
     [SerializeField] SceneName SceneNo;
+    [SerializeField] LevelManager LM;
 
     enum SceneName { INTRO,DAY1TO2,DAY2TOGAME }
 
@@ -104,7 +105,9 @@ public class TestMessage : MonoBehaviour
 
         dialogTexts.Add(new DialogData("You will ensure that our restaurant too is revered by the masses. ", "Renge"));
 
-        dialogTexts.Add(new DialogData("Im leaving, bye." , "Ramsay", () => SceneManager.LoadScene("3")));
+        LM.DaySelected = 1;
+
+        dialogTexts.Add(new DialogData("Sigh, where do I start.." , "Ramsay", () => SceneManager.LoadScene("Game Scene")));
 
         DialogManager.Show(dialogTexts);
 
@@ -113,7 +116,44 @@ public class TestMessage : MonoBehaviour
 
     private void day1to2()
     {
+        var dialogTexts = new List<DialogData>();
 
+        dialogTexts.Add(new DialogData("Ughhh, my body is sore everywhere...", "Ramsay"));
+
+        dialogTexts.Add(new DialogData("Oh, the human is back!", "Knip"));
+
+        dialogTexts.Add(new DialogData("Welcome back, seeing as you are still in one piece I assume you've passed your first day", "Renge"));
+
+        dialogTexts.Add(new DialogData("Wait a minute, what do you mean by in one piece", "Ramsay"));
+
+        dialogTexts.Add(new DialogData("Oh, the head chef is well known for permanently disabling his employess that cause trouble in his kitchen", "Knip"));
+
+        dialogTexts.Add(new DialogData("The last chef before you is no where to be found after they failed too many orders", "Knip"));
+
+        dialogTexts.Add(new DialogData("/size:up/ *gulp*", "Ramsay"));
+
+        dialogTexts.Add(new DialogData("Don't worry, he won't lay a tentacle on you if you keep up your work performance", "Renge"));
+
+        dialogTexts.Add(new DialogData("Every passing day his expectations from you will get higher and higher", "Renge"));
+
+        dialogTexts.Add(new DialogData("Try your best to keep up so we don't have to go hunting for another replacement chef again", "Renge"));
+
+        dialogTexts.Add(new DialogData("Ill try my best...", "Ramsay"));
+
+        dialogTexts.Add(new DialogData("Anyways, get some sleep for now. Tomorrow is a new day!", "Knip"));
+
+        dialogTexts.Add(new DialogData("Oh, and one advice, try to aim for a high performance score", "Knip"));
+
+        dialogTexts.Add(new DialogData("It will help improve your Reputation and allow you to progress to the next day", "Knip"));
+
+        dialogTexts.Add(new DialogData("Will improving my reputaion prevent me from getting murdured by the head chef?", "Ramsay"));
+
+
+        LM.DaySelected = 2;
+
+        dialogTexts.Add(new DialogData("Im leaving, bye.", "Ramsay", () => SceneManager.LoadScene("Game Scene")));
+
+        DialogManager.Show(dialogTexts);
     }
 
     private void day2togame()
