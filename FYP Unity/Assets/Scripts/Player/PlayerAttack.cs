@@ -25,6 +25,8 @@ public class PlayerAttack : MonoBehaviour
     int direction;
     GameObject currentWeaponDisplay;
 
+    // Set the attack for the player
+
     [SerializeField] GameObject KnifeWeaponDisplay;
     [SerializeField] GameObject RollerWeaponDisplay;
     [SerializeField] GameObject SpatulaWeaponDisplay;
@@ -75,7 +77,7 @@ public class PlayerAttack : MonoBehaviour
 
     void Start()
     {
-
+        UpdateWeaponDisplay();
         click_timer = 0.0f;
         isclicked = false;
 
@@ -211,9 +213,7 @@ public class PlayerAttack : MonoBehaviour
                 && isclicked == false)
             {
                 isclicked = true;
-               //Debug.Log("HEAVY ATTACk");
-                transform.parent.GetComponent<PlayerStats>().setAttack(
-                GetComponentInParent<PlayerStats>().getAttack(1));
+                transform.parent.GetComponent<PlayerStats>().setAttack(true);
                 AttackWhichDirection(direction);
                 //HitBox.SetActive(true);
                 //attacking = true;
@@ -336,7 +336,7 @@ public class PlayerAttack : MonoBehaviour
             case Weapon.SPATULA:
                 if (!isclicked)
                 {
-                    GetComponentInParent<PlayerStats>().setAttack(2);
+                    GetComponentInParent<PlayerStats>().setAttack(false);
                 }
                 spaculaHitbox.SetActive(HitBox.activeSelf);
 
@@ -347,7 +347,7 @@ public class PlayerAttack : MonoBehaviour
             case Weapon.KNIFE:
                 if (!isclicked)
                 {
-                    GetComponentInParent<PlayerStats>().setAttack(2);
+                    GetComponentInParent<PlayerStats>().setAttack(false);
                 }
                 knifeHitbox.SetActive(HitBox.activeSelf);
                 knifeHitbox.transform.rotation = HitBox.transform.rotation;
@@ -357,7 +357,7 @@ public class PlayerAttack : MonoBehaviour
             case Weapon.ROLLINGPIN:
                 if (!isclicked)
                 {
-                    GetComponentInParent<PlayerStats>().setAttack(2);
+                    GetComponentInParent<PlayerStats>().setAttack(false);
                 }
                 pinHitbox.SetActive(HitBox.activeSelf);
                 pinHitbox.transform.rotation = HitBox.transform.rotation;
@@ -550,5 +550,4 @@ public class PlayerAttack : MonoBehaviour
                 break;
         }
     }    
-
 }

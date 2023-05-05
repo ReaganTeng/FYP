@@ -97,6 +97,6 @@ public class Inventory : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        MaxInventorySize = playerProgress.MaxInventorySlots;
+        MaxInventorySize = playerProgress.GetInventorySize();
     }
 }

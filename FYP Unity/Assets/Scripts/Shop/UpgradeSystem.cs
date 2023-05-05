@@ -26,8 +26,8 @@ public class UpgradeSystem : MonoBehaviour
         switch (item.GetShopItemType())
         {
             case ShopItemType.INVENTORY_UPGRADE:
-                pp.MaxInventorySlots += 1;
-                break;
+                pp.IncreaseInventorySize();
+                break;            
             
             case ShopItemType.BUFF_MODE_AMOUNT_REQUIREMENT:
                 pp.reduce_buffactive_requirement();

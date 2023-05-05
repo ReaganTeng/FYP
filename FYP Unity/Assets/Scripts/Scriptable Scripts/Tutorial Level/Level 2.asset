@@ -183,7 +183,7 @@ MonoBehaviour:
   - TextDisplay: You have unlimited supply of them, feel free to use them.
     conditions: 0
     TimeTillPromptSkip: 3
-  - TextDisplay: '~Get apple mix (Tip: mix them together)~'
+  - TextDisplay: '~Get Apolo mix (Tip: mix them together)~'
     conditions: 14
     TimeTillPromptSkip: 3
   - TextDisplay: ~Ok now for the 2nd refined ingredient. Head to rice room~
@@ -203,14 +203,14 @@ MonoBehaviour:
   - TextDisplay: Getting hit will reset the combo and your fervor bar will drop.
     conditions: 0
     TimeTillPromptSkip: 3
-  - TextDisplay: ~Create a starchy rice by getting the correct rice drop and mixing
-      it with flour~
+  - TextDisplay: ~Create a dango by getting the correct rice drop and mixing it with
+      flour~
     conditions: 14
     TimeTillPromptSkip: 3
   - TextDisplay: ~Ok now make the dish~
     conditions: 15
     TimeTillPromptSkip: 3
-  - TextDisplay: ~Serve the Apollo sticky rice~
+  - TextDisplay: ~Serve the Apolo dango~
     conditions: 16
     TimeTillPromptSkip: 3
   - TextDisplay: "That\u2019s a lot to process right? Too bad. Get used to it, good

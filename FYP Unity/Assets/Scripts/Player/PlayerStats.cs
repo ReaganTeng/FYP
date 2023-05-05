@@ -11,9 +11,11 @@ public class PlayerStats : MonoBehaviour
     //WON'T BE USED FOR NOW
     [SerializeField] float PlayerHealth;
     //
-
+    
+    // Set the attack for the player
+    [SerializeField] int NormalAttackDamage;
+    [SerializeField] int HeavyAttackDamage;
     int PlayerAttack;
-
 
     [SerializeField] int numberConsecutiveHits;
     [SerializeField] int ConsecutiveHit_Stage1;
@@ -51,7 +53,7 @@ public class PlayerStats : MonoBehaviour
 
     public void Start()
     {
-        PlayerAttack = 2;
+        setAttack(false);
         fervorMaxLevel = 100;
         fervor2Add = 0;
         buff_active = false;
@@ -69,14 +71,14 @@ public class PlayerStats : MonoBehaviour
 
 
 
-    public void setAttack(int atk)
+    public void setAttack(bool Isheavy)
     {
-        PlayerAttack = atk;
-    }
-
-    public int getAttack(int additionalAtk = 0)
-    {
-        return PlayerAttack + additionalAtk;
+        // if it is heavy, set it to heavy attack dmg
+        if (Isheavy)
+            PlayerAttack = HeavyAttackDamage;
+        // if it is not heavy, set it to normal attack dmg
+        else
+            PlayerAttack = NormalAttackDamage;
     }
 
     public void ChangeHealth(float Healthchange)

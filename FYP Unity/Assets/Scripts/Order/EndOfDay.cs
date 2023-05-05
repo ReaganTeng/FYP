@@ -71,7 +71,7 @@ public class EndOfDay : MonoBehaviour
 
     private void Start()
     {
-        text.text = "Score: 0";
+        text.text = "0";
         playercontrols = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         Textbox.SetActive(false);
         EndOfDayBackground.SetActive(false);
@@ -202,10 +202,10 @@ public class EndOfDay : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                if (score > lm.levelInfo[lm.DaySelected - 1].HighScore)
+                if (score > lm.levelInfo[lm.DaySelected - 1].GetHighScore())
                 {
-                    lm.levelInfo[lm.DaySelected - 1].HighScore = score;
-                    lm.levelInfo[lm.DaySelected - 1].HighestGrade = GradeObtained;
+                    lm.levelInfo[lm.DaySelected - 1].SetHighScore(score);
+                    lm.levelInfo[lm.DaySelected - 1].SetHighestGrade(GradeObtained);
                 }
 
                 SceneManager.LoadScene("Level Select");
@@ -235,12 +235,18 @@ public class EndOfDay : MonoBehaviour
 
     void UpdateScore()
     {
-        text.text = "Score: " + score.ToString();
+        text.text = score.ToString();
     }
 
     public int GetCurrentDay()
     {
         return currentday;
+    }
+
+    public void ResetScore()
+    {
+        score = 0;
+        UpdateScore();
     }
 
     public void StopOrders()

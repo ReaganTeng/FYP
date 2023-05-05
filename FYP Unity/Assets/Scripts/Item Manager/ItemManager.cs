@@ -38,7 +38,9 @@ public class ItemManager : MonoBehaviour
         SPANICH_PREP, //27
         FLOUR, //28
         SEAWEED, //29
-        TOTAL, //30
+        SALT, //30
+        SUGAR, //31
+        TOTAL, //32
     }
 
     public Items GetItemType(int itemID)

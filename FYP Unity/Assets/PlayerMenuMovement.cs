@@ -9,7 +9,7 @@ public class PlayerMenuMovement : MonoBehaviour
     [SerializeField] float PlayerSpeed;
     [SerializeField] float DashCD;
     [SerializeField] float DashBy;
-    bool DisableControls;
+    bool DisableControls = false;
 
     [SerializeField]
     private SpriteRenderer spriteRenderer = null;
@@ -31,7 +31,6 @@ public class PlayerMenuMovement : MonoBehaviour
         delaytime = 0.0f;
         isWalking = false;
         dashcdtimer = 0;
-        DisableControls = false;
     }
     // Update is called once per frame
     void FixedUpdate()

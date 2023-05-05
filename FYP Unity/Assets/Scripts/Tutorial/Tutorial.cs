@@ -99,8 +99,8 @@ public class Tutorial : MonoBehaviour
     {
         instance = this;
 
-        // If a tutorial exist, sest it as a tutorial
-        if (lm.levelInfo[lm.DaySelected - 1].isThereTutorial != null)
+        // If a tutorial exist and player has not gone thru a tutorial yet, set it as a tutorial
+        if (lm.levelInfo[lm.DaySelected - 1].isThereTutorial != null && PlayerPrefs.GetInt("TutorialComplete") == 0)
         {
             InTutorial = true; // Set to be a tutorial
             tut = lm.levelInfo[lm.DaySelected - 1].isThereTutorial.DialogueAndInstructions; // Load in all the dialogues
@@ -123,7 +123,7 @@ public class Tutorial : MonoBehaviour
             // Disable all spawners
             SpawnerManager.instance.SetSpawner(SpawnerManager.SPAWNERTYPE.ALL, false);
             GameObject tempPlayer = GameObject.FindGameObjectWithTag("Player");
-            //tempPlayer.GetComponentInChildren<PlayerAttack>().SetCanSwapWeapon(false); // Disable swapping weapon
+            tempPlayer.GetComponentInChildren<PlayerAttack>().SetCanSwapWeapon(false); // Disable swapping weapon
             tempPlayer.GetComponentInChildren<PlayerAttack>().SetCanDoHeavyAttack(false); // disable doing heavy attack
             tempPlayer.GetComponentInChildren<PlayerPickup>().CannotInteractWithMixer = true; // disable interacting with mixer
             tempPlayer.GetComponentInChildren<PlayerPickup>().CannotInteractWithDrawer = true; // disable interacting with drawer
@@ -493,6 +493,7 @@ public class Tutorial : MonoBehaviour
                     gm.GetComponent<UnlockHallway>().OpenHallway(LevelHallway.Hallway.KITCHEN_TO_OOTATOO);
                     SpawnerManager.instance.SetSpawner(SpawnerManager.SPAWNERTYPE.OOTATOO, true);
                     ConditionTriggered = true;
+                    ResetScore();
                     break;
                 }
 
@@ -503,9 +504,8 @@ public class Tutorial : MonoBehaviour
                         // skip tutorial next time player comes back
                         ConditionTriggered = true;
                         InTutorial = false;
-                        //PlayerPrefs.SetInt("TutorialComplete", 1);
-                        gm.GetComponent<UnlockHallway>().OpenHallway(LevelHallway.Hallway.KITCHEN_TO_OOTATOO);
-                        SpawnerManager.instance.SetSpawner(SpawnerManager.SPAWNERTYPE.OOTATOO, true);
+                        PlayerPrefs.SetInt("TutorialComplete", 1);
+                        SceneManager.LoadScene("Level Select");
                     }
 
                     else if (Input.GetKeyDown(KeyCode.N))
@@ -782,6 +782,7 @@ public class Tutorial : MonoBehaviour
                         SpawnerManager.instance.SetSpawner(SpawnerManager.SPAWNERTYPE.RAISUU, true);
                         GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerPickup>().CannotInteractWithDrawer = false;
                         GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerPickup>().CannotInteractWithDustbin = false;
+                        GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerStats>().SetIfFervorActive(true);
                         ResetRun();
                     }
                     break;
@@ -792,7 +793,10 @@ public class Tutorial : MonoBehaviour
                     gm.GetComponent<UnlockHallway>().OpenHallway(LevelHallway.Hallway.KITCHEN_TO_AAPOLO);
                     SpawnerManager.instance.SetSpawner(SpawnerManager.SPAWNERTYPE.OOTATOO, true);
                     SpawnerManager.instance.SetSpawner(SpawnerManager.SPAWNERTYPE.AAPOLO, true);
+                    ResetScore();
                     ConditionTriggered = true;
+                    // NOTE: REMOVE THIS COMMAND AND THE LINE AFTER THIS WHEN DOING VISUAL NOVEL
+                    PlayerPrefs.SetInt("TutorialComplete", 1);
                     break;
                 }
         }
@@ -847,5 +851,10 @@ public class Tutorial : MonoBehaviour
         }
 
         return false;
+    }
+
+    void ResetScore()
+    {
+        gm.GetComponent<EndOfDay>().ResetScore();
     }
 }

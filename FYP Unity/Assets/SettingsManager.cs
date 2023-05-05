@@ -10,6 +10,9 @@ public class SettingsManager : MonoBehaviour
     [SerializeField] Slider MusicSlider;
     [SerializeField] Toggle screenSizeToggle;
     [SerializeField] TextMeshProUGUI screenSizeText;
+    [SerializeField] LevelManager lm;
+    [SerializeField] PlayerProgress pp;
+    [SerializeField] ShopManager shop;
 
     // Start is called before the first frame update
     void Start()
@@ -73,16 +76,13 @@ public class SettingsManager : MonoBehaviour
         }
     }
 
-
-    public void HardReset()
+    public void ResetGame()
     {
-
-    }
-
-    public void ResetTutorial()
-    {
-        Debug.Log("Tutorial Reset");
+        Debug.Log("Game Reset");
         PlayerPrefs.SetInt("TutorialComplete", 0);
+        lm.ResetGameLevel();
+        pp.ResetPlayer();
+        shop.ResetShopLevel();
     }
 
     //true = Full, false = windowed

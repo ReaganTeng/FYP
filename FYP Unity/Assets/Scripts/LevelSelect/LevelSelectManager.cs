@@ -21,11 +21,11 @@ public class LevelSelectManager : MonoBehaviour
         for (int i = 0; i < lm.levelInfo.Count; i++)
         {
             // check to see if any lvl are locked, if they are locked check to see if it can be unlocked
-            if (lm.levelInfo[i].Locked)
+            if (lm.levelInfo[i].GetIsLocked())
             {
                 if (pp.GetMaxCC() >= lm.levelInfo[i].CCReq)
                 {
-                    lm.levelInfo[i].Locked = false;
+                    lm.levelInfo[i].SetLocked(false);
                 }
             }
         }
