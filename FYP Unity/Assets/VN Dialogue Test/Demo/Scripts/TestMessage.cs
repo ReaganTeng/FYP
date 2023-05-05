@@ -7,13 +7,16 @@ using Doublsb.Dialog;
 public class TestMessage : MonoBehaviour
 {
     public DialogManager DialogManager;
-    [SerializeField] SceneName SceneNo;
+    public SceneName SceneNo;
     [SerializeField] LevelManager LM;
 
-    enum SceneName { INTRO,DAY1TO2,DAY2TOGAME }
+    public enum SceneName { INTRO, DAY1TO2, DAY2TOGAME, TOTAL }
 
     private void Awake()
     {
+        if ((int)SceneNo <= LM.DaySelected)
+            SceneNo = (SceneName)(LM.DaySelected - 1);
+
         switch(SceneNo)
         {
             case SceneName.INTRO:

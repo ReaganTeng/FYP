@@ -3849,7 +3849,9 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 8817321601248433814, guid: c5ecd888923aa894eb9255a2debc6e35, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3040240934280055333, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
+    - {fileID: 5261494923545461256, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
 --- !u!65 &668250990 stripped
 BoxCollider:
@@ -6395,7 +6397,9 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3040240934280055333, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
+    - {fileID: 5261494923545461256, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
 --- !u!1 &1087237436
 GameObject:
@@ -7589,7 +7593,9 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 8817321601248433814, guid: c5ecd888923aa894eb9255a2debc6e35, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3040240934280055333, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
+    - {fileID: 5261494923545461256, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
 --- !u!65 &1328461652 stripped
 BoxCollider:
@@ -7819,6 +7825,10 @@ PrefabInstance:
       propertyPath: m_fontColor32.rgba
       value: 4278190080
       objectReference: {fileID: 0}
+    - target: {fileID: 3631724962470966449, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4531886623356938162, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -7875,7 +7885,9 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 8817321601248433814, guid: c5ecd888923aa894eb9255a2debc6e35, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3040240934280055333, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
+    - {fileID: 5261494923545461256, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
 --- !u!65 &1415920948 stripped
 BoxCollider:
@@ -10219,7 +10231,9 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 8817321601248433814, guid: c5ecd888923aa894eb9255a2debc6e35, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3040240934280055333, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
+    - {fileID: 5261494923545461256, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
 --- !u!65 &1901899692 stripped
 BoxCollider:

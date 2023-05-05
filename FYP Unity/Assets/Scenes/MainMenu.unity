@@ -399,7 +399,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 523120110}
         m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
-        m_MethodName: ResetTutorial
+        m_MethodName: ResetGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1265,6 +1265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cf4c3e23e1f4224e9e85b7820f3b9e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LM: {fileID: 11400000, guid: b1ab7845fb897f94da5f204cb406165d, type: 2}
 --- !u!1 &559383454
 GameObject:
   m_ObjectHideFlags: 0

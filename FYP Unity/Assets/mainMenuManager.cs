@@ -5,10 +5,15 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 
+
 public class mainMenuManager : MonoBehaviour
 {
+
+    [SerializeField] LevelManager LM;
+
     public void NewGame()
     {
+        LM.DaySelected = 1;
         SceneManager.LoadScene("VNScene");
     }
     public void LoadGame()
