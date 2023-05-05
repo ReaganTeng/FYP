@@ -13,27 +13,24 @@ MonoBehaviour:
   m_Name: Level 1
   m_EditorClassIdentifier: 
   LevelName: Day 1
-  LevelDescription: owo?
-  HighScore: 0
-  HighestGrade: 78
-  SReq: 600
-  AReq: 300
-  BReq: 100
-  CReq: 2
-  CredibilityLeftToObtain: 4
-  Locked: 0
+  LevelDescription: Potato Madness
+  SReq: 100
+  AReq: 50
+  BReq: 30
+  CReq: 10
+  MaxCredibility: 4
   CCReq: 0
   HallwaysUnlock: 00000000
   CustomizeOrderForThisDay:
     theDish:
     - {fileID: 396589628195105180, guid: 1aa4138ff3d4c74489890d40137af51c, type: 3}
-    WaitingTime: 120
+    WaitingTime: 0
     penalty: 5
     Fixed: 1
     AmtOfDishes: 0
   WhatSpawnerActive: 00000000
   isThereTutorial: {fileID: 11400000, guid: 84a06d9ee83697e47af32d190f97e879, type: 2}
-  MaxOrders: 2
-  TimeBeforeFirstOrder: 10
-  IntervalBetweenOrders: 45
+  MaxOrders: 4
+  TimeBeforeFirstOrder: 0
+  IntervalBetweenOrders: 20
   DayDuration: 300

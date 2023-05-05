@@ -18,7 +18,6 @@ public class FreezeGame : MonoBehaviour
     bool MenuPause = false;
     float gameResumeTimer;
     bool startGameResumeTimer;
-    [SerializeField] Button pauseButton;
     [SerializeField] GameObject ActionText;
 
 
@@ -121,7 +120,6 @@ public class FreezeGame : MonoBehaviour
         PauseMenu.SetActive(true);
         gameResumeTimer = timeTillGameResume;
         Debug.Log("Pause");
-        pauseButton.interactable = false;
     }
 
     public void UnpauseGame()
@@ -129,7 +127,6 @@ public class FreezeGame : MonoBehaviour
         ActionText.SetActive(true);
         startGameResumeTimer = true;
         PauseMenu.SetActive(false);
-        pauseButton.interactable = true;
     }
 
     public void IgnoreStartUp()

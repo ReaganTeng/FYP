@@ -7,16 +7,18 @@ public class Level : ScriptableObject
 {
     public string LevelName;
     public string LevelDescription;
-    public int HighScore;
-    public char HighestGrade;
     public int SReq;
     public int AReq;
     public int BReq;
     public int CReq;
-    public int CredibilityLeftToObtain;
-    public bool Locked;
+    public int MaxCredibility = 4;
     public int CCReq;
-    private int MaxCredibility = 4;
+    private int CredibilityLeftToObtain;
+    private int HighScore;
+    private char HighestGrade;
+    private bool Locked;
+
+    // Set level details
     public List<LevelHallway.Hallway> HallwaysUnlock;
     public OrderManager.DayOrder CustomizeOrderForThisDay;
     public List<SpawnerManager.SPAWNERTYPE> WhatSpawnerActive;
@@ -156,12 +158,42 @@ public class Level : ScriptableObject
         return theText;
     }
 
-    public void ResetLevel(bool LockLevel)
+    public void ResetLevel()
     {
         HighestGrade = 'N';
         HighScore = 0;
         CredibilityLeftToObtain = MaxCredibility;
-        if (LockLevel)
+        if (CCReq > 0)
             Locked = true;
+    }
+
+    public int GetHighScore()
+    {
+        return HighScore;
+    }
+
+    public void SetHighScore(int highScore)
+    {
+        HighScore = highScore;
+    }
+
+    public int GetHighestGrade()
+    {
+        return HighestGrade;
+    }
+
+    public void SetHighestGrade(char highestGrade)
+    {
+        HighestGrade = highestGrade;
+    }
+
+    public bool GetIsLocked()
+    {
+        return Locked;
+    }
+
+    public void SetLocked(bool IsLock)
+    {
+        Locked = IsLock;
     }
 }

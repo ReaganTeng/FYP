@@ -5,18 +5,28 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "playerProgress", menuName = "PlayerProgress")]
 public class PlayerProgress : ScriptableObject
 {
-    public int MaxInventorySlots;
-    public int PlayermaxHealth;
+    [SerializeField] int MaxInventorySlots = 5;
     [SerializeField] int CosmicCredibility;
     [SerializeField] int TotalObtainedCredibility;
-
+    private int CurrentInventorySlots;
 
     public void ResetInventory()
     {
-        MaxInventorySlots = 5;
+        CurrentInventorySlots = MaxInventorySlots;
     }
 
-    
+    // Increase inventory slot by one
+    public void IncreaseInventorySize()
+    {
+        if (CurrentInventorySlots < 10)
+            CurrentInventorySlots += 1;
+    }
+
+    public int GetInventorySize()
+    {
+        CurrentInventorySlots = MaxInventorySlots;
+        return CurrentInventorySlots;
+    }
 
 
     public void AddCredibility(int amt)
@@ -46,6 +56,9 @@ public class PlayerProgress : ScriptableObject
         return TotalObtainedCredibility;
     }
 
-
-
+    public void ResetPlayer()
+    {
+        ResetCredibility();
+        ResetInventory();
+    }
 }

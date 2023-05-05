@@ -7,6 +7,7 @@ using DigitalRuby.SoundManagerNamespace;
 
 public class GameSoundManager : MonoBehaviour
 {
+    private static GameSoundManager instance;
     public Slider soundSlider;
     public Slider musicSlider;
 
@@ -20,6 +21,12 @@ public class GameSoundManager : MonoBehaviour
 
     private void Start()
     {
+        if (instance)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         for (int i = 0; i < soundName.Length; i++)
         {
             soundDict.Add(soundName[i], sound[i]);
@@ -28,7 +35,7 @@ public class GameSoundManager : MonoBehaviour
         {
             musicDict.Add(musicName[i], music[i]);
         }
-
+        instance = this;
         DontDestroyOnLoad(gameObject);
     }
 

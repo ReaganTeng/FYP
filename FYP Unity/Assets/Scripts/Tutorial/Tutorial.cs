@@ -99,8 +99,8 @@ public class Tutorial : MonoBehaviour
     {
         instance = this;
 
-        // If a tutorial exist, sest it as a tutorial
-        if (lm.levelInfo[lm.DaySelected - 1].isThereTutorial != null)
+        // If a tutorial exist and player has not gone thru a tutorial yet, set it as a tutorial
+        if (lm.levelInfo[lm.DaySelected - 1].isThereTutorial != null && PlayerPrefs.GetInt("TutorialComplete") == 0)
         {
             InTutorial = true; // Set to be a tutorial
             tut = lm.levelInfo[lm.DaySelected - 1].isThereTutorial.DialogueAndInstructions; // Load in all the dialogues
@@ -782,6 +782,7 @@ public class Tutorial : MonoBehaviour
                         SpawnerManager.instance.SetSpawner(SpawnerManager.SPAWNERTYPE.RAISUU, true);
                         GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerPickup>().CannotInteractWithDrawer = false;
                         GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerPickup>().CannotInteractWithDustbin = false;
+                        GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerStats>().SetIfFervorActive(true);
                         ResetRun();
                     }
                     break;
