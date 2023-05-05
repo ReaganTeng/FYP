@@ -67,6 +67,9 @@ namespace Doublsb.Dialog
         private Character _current_Character;
         private DialogData _current_Data;
 
+        private int currLine;
+        private int totalLines;
+
         private float _currentDelay;
         private float _lastDelay;
         private Coroutine _textingRoutine;
@@ -76,12 +79,12 @@ namespace Doublsb.Dialog
         //Public Method
         //================================================
         #region Show & Hide
-        public void Show(DialogData Data)
+        private void Show(DialogData Data)
         {
             _current_Data = Data;
             _find_character(Data.Character);
 
-            if(_current_Character != null)
+            if (_current_Character != null)
                 _emote("Normal");
 
             _textingRoutine = StartCoroutine(Activate());
@@ -89,6 +92,9 @@ namespace Doublsb.Dialog
 
         public void Show(List<DialogData> Data)
         {
+            currLine = 0;
+            totalLines = Data.Count;
+
             StartCoroutine(Activate_List(Data));
         }
 
@@ -100,16 +106,16 @@ namespace Doublsb.Dialog
                     StartCoroutine(_skip()); break;
 
                 case State.Wait:
-                    if(_current_Data.SelectList.Count <= 0) Hide(); break;
+                    if (currLine != totalLines && _current_Data.SelectList.Count <= 0) Hide(); break;
             }
         }
 
         public void Hide()
         {
-            if(_textingRoutine != null)
+            if (_textingRoutine != null)
                 StopCoroutine(_textingRoutine);
 
-            if(_printingRoutine != null)
+            if (_printingRoutine != null)
                 StopCoroutine(_printingRoutine);
 
             Printer.SetActive(false);
@@ -213,7 +219,7 @@ namespace Doublsb.Dialog
 
             Characters.SetActive(_current_Character != null);
             foreach (Transform item in Characters.transform) item.gameObject.SetActive(false);
-            if(_current_Character != null) _current_Character.gameObject.SetActive(true);
+            if (_current_Character != null) _current_Character.gameObject.SetActive(true);
         }
 
         private void _init_selector()
@@ -229,7 +235,7 @@ namespace Doublsb.Dialog
                     _add_selectorItem(i);
                 }
             }
-                
+
             else Selector.SetActive(false);
         }
 
@@ -270,6 +276,7 @@ namespace Doublsb.Dialog
             _initialize();
 
             state = State.Active;
+            ++currLine;
 
             foreach (var item in _current_Data.Commands)
             {

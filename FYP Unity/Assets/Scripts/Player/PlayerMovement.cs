@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] PlayerAttack playerAttack;
     bool DisableControls;
 
+
     [SerializeField]
     private SpriteRenderer spriteRenderer = null;
 
@@ -162,6 +163,7 @@ public class PlayerMovement : MonoBehaviour
                     //GetComponent<BoxCollider>().enabled = false;
                     Physics.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer("Enemy"), true);
                     dashcdtimer = DashCD;
+                    GameSoundManager.PlaySound("Dash");
                 }
             }
             else

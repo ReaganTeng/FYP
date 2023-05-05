@@ -104,9 +104,11 @@ public class TestMessage : MonoBehaviour
 
         dialogTexts.Add(new DialogData("You will ensure that our restaurant too is revered by the masses. ", "Renge"));
 
-        dialogTexts.Add(new DialogData("I'm leaving. Where is the exit?", "Ramsay"));
+        dialogTexts.Add(new DialogData("Im leaving, bye." , "Ramsay", () => SceneManager.LoadScene("3")));
 
         DialogManager.Show(dialogTexts);
+
+        
     }
 
     private void day1to2()
@@ -119,8 +121,5 @@ public class TestMessage : MonoBehaviour
 
     }
 
-    private void Update()
-    {
-        
-    }
+
 }
