@@ -49,7 +49,7 @@ public class TutorialLevelSelect : MonoBehaviour
         if (PlayerPrefs.GetInt("TutorialComplete") == 0)
         {
             pmm.DisablePlayerControls();
-
+            InTutorial = true;
             SquidText = SquidChatBox.GetComponentInChildren<TextMeshProUGUI>();
             skipPromptText = SkipPrompt.GetComponent<TextMeshProUGUI>();
             SkipPrompt.SetActive(false); // A variable that set the "Press Space to continue" to false first
@@ -59,80 +59,84 @@ public class TutorialLevelSelect : MonoBehaviour
                 currentIndex = 9;
             }
         }
-
+        else
+            SquidChatBox.SetActive(false);
     }
 
 
     private void Update()
     {
-        // If it is a dialogue, reduce the timer till skipprompt appear
-        if (!SkipPromptActive && tut[currentIndex].Skippable)
+        if (InTutorial)
         {
-            TimeTillNextText -= Time.deltaTime;
-            // set the prompt to appear
-            if (TimeTillNextText <= 0)
+            // If it is a dialogue, reduce the timer till skipprompt appear
+            if (!SkipPromptActive && tut[currentIndex].Skippable)
             {
-                blinktimer = 0;
-                SetTransparency();
-                SkipPromptActive = true;
-                SkipPrompt.SetActive(true);
-            }
-        }
-
-        else
-        {
-            // make it blink by setting alpha from 0 to 1 in timegiven/2 and vise verca.
-            if (blinktimer <= 0)
-            {
-                skipprompttimechange = 1;
-            }
-
-            if (blinktimer >= BlinkDuration * 0.5f)
-            {
-                skipprompttimechange = -1;
-            }
-
-            blinktimer += skipprompttimechange * Time.deltaTime;
-            SetTransparency();
-        }
-
-        // if it is an instruction that has been completed, or a dialogue and user press SPACE, skip to next dialogue
-        // Note: The first run automatically trigger this function
-        if ((Input.GetKeyDown(KeyCode.Space) && tut[currentIndex].Skippable) || StartFirst)
-        {
-            StartFirst = false;
-            // Set Skipprompt to not active
-            SkipPrompt.SetActive(false);
-            SkipPromptActive = false;
-
-            // Set what is next in the List to the textbox and values required.
-            if (currentIndex < tut.Count)
-            {
-                SquidText.text = tut[currentIndex].TextDisplay;
-                TimeTillNextText = tut[currentIndex].TimeTillPromptSkip;
-
-                currentIndex++;
-
-                if (currentIndex >= tut.Count)
-                    return;
-
-                if (!tut[currentIndex].Skippable)
+                TimeTillNextText -= Time.deltaTime;
+                // set the prompt to appear
+                if (TimeTillNextText <= 0)
                 {
-                    pmm.EnablePlayerControls();
-
-                    for (int i = 0; i < DisableLevel.Count; i++)
-                    {
-                        DisableLevel[i].enabled = false;
-                    }
+                    blinktimer = 0;
+                    SetTransparency();
+                    SkipPromptActive = true;
+                    SkipPrompt.SetActive(true);
                 }
             }
-            // if it finish running the list, stop the tutorial, and let the game run normally.
+
             else
             {
-                InTutorial = false;
-                SquidChatBox.SetActive(false);
-                pmm.EnablePlayerControls();
-                PlayerPrefs.SetFloat("TutorialComplete", 1);
+                // make it blink by setting alpha from 0 to 1 in timegiven/2 and vise verca.
+                if (blinktimer <= 0)
+                {
+                    skipprompttimechange = 1;
+                }
+
+                if (blinktimer >= BlinkDuration * 0.5f)
+                {
+                    skipprompttimechange = -1;
+                }
+
+                blinktimer += skipprompttimechange * Time.deltaTime;
+                SetTransparency();
+            }
+
+            // if it is an instruction that has been completed, or a dialogue and user press SPACE, skip to next dialogue
+            // Note: The first run automatically trigger this function
+            if ((Input.GetKeyDown(KeyCode.Space) && tut[currentIndex].Skippable) || StartFirst)
+            {
+                StartFirst = false;
+                // Set Skipprompt to not active
+                SkipPrompt.SetActive(false);
+                SkipPromptActive = false;
+
+                // Set what is next in the List to the textbox and values required.
+                if (currentIndex < tut.Count)
+                {
+                    SquidText.text = tut[currentIndex].TextDisplay;
+                    TimeTillNextText = tut[currentIndex].TimeTillPromptSkip;
+
+                    currentIndex++;
+
+                    if (currentIndex >= tut.Count)
+                        return;
+
+                    if (!tut[currentIndex].Skippable)
+                    {
+                        pmm.EnablePlayerControls();
+
+                        for (int i = 0; i < DisableLevel.Count; i++)
+                        {
+                            DisableLevel[i].enabled = false;
+                        }
+                    }
+                }
+                // if it finish running the list, stop the tutorial, and let the game run normally.
+                else
+                {
+                    InTutorial = false;
+                    SquidChatBox.SetActive(false);
+                    pmm.EnablePlayerControls();
+                    PlayerPrefs.SetFloat("TutorialComplete", 1);
+                }
             }
         }
     }
