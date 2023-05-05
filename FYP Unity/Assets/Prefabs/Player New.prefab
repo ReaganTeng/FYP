@@ -287,13 +287,14 @@ MonoBehaviour:
   reduction_in_percentage: 0
   chargeBar: {fileID: 0}
   canvas: {fileID: 0}
-  txt: {fileID: 0}
+  chargertimertext: {fileID: 0}
   line: {fileID: 6922493218510129667, guid: 3f6a26fc70e9cfb42aed81987544b6ba, type: 3}
   handle: {fileID: 0}
   enemyLM:
     serializedVersion: 2
     m_Bits: 128
   animator: {fileID: 5881152895048556901}
+  attackanimation: {fileID: 7400000, guid: 39c238a2366b7fc438abd2f347992e48, type: 2}
   pp: {fileID: 11400000, guid: 80203a9d8037ee2449d6c18b30afe1f3, type: 2}
 --- !u!1 &3136350151301332611
 GameObject:
@@ -401,7 +402,7 @@ MonoBehaviour:
   orientation: {fileID: 3462924137396006135}
   PlayerSpeed: 50
   DashCD: 2
-  DashBy: 30
+  DashBy: 40
   IFrame: 0.3
   playerPickUp: {fileID: 3801972613150636765}
   playerAttack: {fileID: 4940691009673553818}
@@ -453,6 +454,7 @@ MonoBehaviour:
   combo_timer: 0
   combo_timer_text: {fileID: 0}
   combo_text: {fileID: 0}
+  pp: {fileID: 11400000, guid: 80203a9d8037ee2449d6c18b30afe1f3, type: 2}
 --- !u!114 &8900116384804071886
 MonoBehaviour:
   m_ObjectHideFlags: 0

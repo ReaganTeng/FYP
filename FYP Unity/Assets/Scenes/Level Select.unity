@@ -3649,6 +3649,10 @@ PrefabInstance:
       propertyPath: objectToToggle
       value: 
       objectReference: {fileID: 1026824628}
+    - target: {fileID: 8976031859762999456, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
 --- !u!1 &716709233
@@ -5177,15 +5181,8 @@ MonoBehaviour:
   - {fileID: 56400002}
   shopItem:
   - {fileID: 11400000, guid: 5ccc0a3c3e8628442a145dfe5e5ba01c, type: 2}
-  - {fileID: 11400000, guid: a99af1de14eeedf4799fd0d9dd02b2ac, type: 2}
-  - {fileID: 11400000, guid: b1b0b035633c6fe44bbc9329a51d0650, type: 2}
-  - {fileID: 11400000, guid: 46e39992e82e7e546975cbe415e52d15, type: 2}
-  - {fileID: 11400000, guid: 4caa1f5377e8dfa498c061e04ce0b68c, type: 2}
-  - {fileID: 11400000, guid: 7ad94b338b4a9924db4ef3bf9f2e235b, type: 2}
-  - {fileID: 11400000, guid: 38632fd33180e404992d0fe2ccc38aa7, type: 2}
-  - {fileID: 11400000, guid: 38632fd33180e404992d0fe2ccc38aa7, type: 2}
-  - {fileID: 11400000, guid: e7d5ce9475cdea94099f97b4489c6011, type: 2}
-  - {fileID: 11400000, guid: 929491d3fedddbc48918be1016eb83bd, type: 2}
+  - {fileID: 11400000, guid: 0dcef02725d4d574cace1d729220342b, type: 2}
+  - {fileID: 11400000, guid: 9dfd9ff8bb7309d4f81c9688c7a30c54, type: 2}
   itemPanel: {fileID: 1968365978}
   CurrencyAmt: {fileID: 373480708}
   EnabledButton: {fileID: 21300000, guid: a0dc03dcf8ca8c0449030047eab9eb04, type: 3}
@@ -6189,6 +6186,10 @@ PrefabInstance:
       propertyPath: objectToToggle
       value: 
       objectReference: {fileID: 643642428}
+    - target: {fileID: 8976031859762999456, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 9149778818108973722, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
       propertyPath: m_Layer
       value: 5
@@ -7248,6 +7249,10 @@ PrefabInstance:
       propertyPath: objectToToggle
       value: 
       objectReference: {fileID: 393101587}
+    - target: {fileID: 8976031859762999456, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
 --- !u!1 &1341921912
@@ -7525,6 +7530,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelPoint1
       objectReference: {fileID: 0}
+    - target: {fileID: 8976031859762999456, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
 --- !u!1 &1422105713
@@ -8192,7 +8201,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1582512047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9859,6 +9868,10 @@ PrefabInstance:
       propertyPath: objectToToggle
       value: 
       objectReference: {fileID: 1028102465}
+    - target: {fileID: 8976031859762999456, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2dbde0b774ba26f4ca0e07cd51f90015, type: 3}
 --- !u!1 &1905715947

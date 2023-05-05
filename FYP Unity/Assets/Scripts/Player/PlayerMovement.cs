@@ -7,7 +7,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Rigidbody playerRB;
     [SerializeField] Transform orientation;
     [SerializeField] float PlayerSpeed;
-    [SerializeField] float DashCD;
     [SerializeField] float DashBy;
     [SerializeField] float IFrame;
     [SerializeField] PlayerPickup playerPickUp;
@@ -17,8 +16,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private SpriteRenderer spriteRenderer = null;
 
+    [SerializeField] float DashCD;
+    float dashcdtimer;
 
-    private float dashcdtimer;
     private float Forwardrun;
     private float Rightrun;
     private float iframetimer;
@@ -37,9 +37,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        dashcdtimer = 0.0f;
         delaytime = 0.0f;
         isWalking = false;
-        dashcdtimer = 0;
         DisableControls = false;
         minimapCanvas = GameObject.FindGameObjectWithTag("MinimapCanvas");
         minimapCanvas.SetActive(false);
@@ -75,7 +75,11 @@ public class PlayerMovement : MonoBehaviour
 
 
             // If user is pressing any movement keys
-            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+            if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+                 //&& !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Dash")
+                                 && GetComponentInChildren<Animator>().GetBool("Dash") == false
+
+                )
             {
                 playerRB.AddForce((orientation.forward * verticalInput + orientation.right * horizontalInput) * PlayerSpeed);
                 CheckDirection(ref Forwardrun, ref Rightrun, horizontalInput, verticalInput);
@@ -86,7 +90,11 @@ public class PlayerMovement : MonoBehaviour
                 && !Input.GetKey(KeyCode.S)
                 && !Input.GetKey(KeyCode.A)
                 && !Input.GetKey(KeyCode.D)
-                && !Input.GetKey(KeyCode.LeftShift))
+                && !Input.GetKey(KeyCode.LeftShift)
+                 //&& !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Dash")
+                                 && GetComponentInChildren<Animator>().GetBool("Dash") == false
+
+               )
             {
                 walkBack = true;
             }
@@ -100,7 +108,10 @@ public class PlayerMovement : MonoBehaviour
                 && Input.GetKey(KeyCode.S)
                 && !Input.GetKey(KeyCode.A)
                 && !Input.GetKey(KeyCode.D)
-                && !Input.GetKey(KeyCode.LeftShift))
+                && !Input.GetKey(KeyCode.LeftShift)
+                //&& !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Dash")
+                && GetComponentInChildren<Animator>().GetBool("Dash") == false
+                )
             {
                 walkFront = true;
             }
@@ -122,7 +133,11 @@ public class PlayerMovement : MonoBehaviour
             }
 
             if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
-                && !Input.GetKey(KeyCode.LeftShift))
+                && !Input.GetKey(KeyCode.LeftShift)
+                //&& !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Dash")
+                                && GetComponentInChildren<Animator>().GetBool("Dash") == false
+
+                )
             {
                 isWalking = true;
             }
@@ -131,30 +146,32 @@ public class PlayerMovement : MonoBehaviour
                 isWalking = false; 
             }
 
-            if (dashcdtimer > 0)
+
+            // if shift is detected, sprint towards that direction
+            if (dashcdtimer <= 0)
             {
-                dashcdtimer -= Time.deltaTime;
-            }
-            else
-            {
-                // if shift is detected, sprint towards that direction
                 if (Input.GetKey(KeyCode.LeftShift))
                 {
                     playerRB.AddForce((orientation.forward * Forwardrun + orientation.right * Rightrun) * PlayerSpeed * DashBy);
-                    dashcdtimer = DashCD;
                     iframetimer = IFrame;
                     IFrameStart = true;
                     if (GetComponentInChildren<Animator>().GetBool("Dash") == false)
                     {
                         GetComponentInChildren<Animator>().SetBool("Dash", true);
                     }
+                    //GetComponent<BoxCollider>().enabled = false;
                     Physics.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer("Enemy"), true);
-
+                    dashcdtimer = DashCD;
                 }
+            }
+            else
+            {
+                dashcdtimer -= Time.deltaTime;
             }
 
 
-            if (dashcdtimer <= 0.5f)
+            if (GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Dash")
+                && GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
             {
                 GetComponentInChildren<Animator>().SetBool("Dash", false);
             }

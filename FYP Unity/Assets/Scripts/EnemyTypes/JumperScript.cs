@@ -16,7 +16,8 @@ public class JumperScript : MonoBehaviour
     [SerializeField] float jumpspeed;
 
     float speedfactor;
-    
+
+    [SerializeField] AnimationClip jumpClip;
 
     //FOR SPRITE JUMPING
     float count;
@@ -80,7 +81,7 @@ public class JumperScript : MonoBehaviour
                 case EnemyScript.Phases.ATTACK_TYPE_2:
                 {
                     //attackhitbox.GetComponent<BoxCollider>().enabled = true;
-                    if (currentdistance < 4.5f)
+                    if (currentdistance < 6.5f)
                     {
                         jumpmode = true;
                     }
@@ -129,7 +130,6 @@ public class JumperScript : MonoBehaviour
                         if (timer > enemyScript.getCurrentAnimationLength() + 0.1f)
                         {
                             GetComponentInChildren<Animator>().SetBool("jump", true);
-
                             GetComponent<BoxCollider>().enabled = false;
 
                             //while it's jumping, disable attackhitbox;
@@ -202,7 +202,7 @@ public class JumperScript : MonoBehaviour
 
                         //enemyScript.steering();
                         //enemyScript.steering_3();
-                        enemyScript.avoidanceCode(rand_z);
+                        //enemyScript.avoidanceCode(rand_z);
 
                         //GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
                         GetComponent<NavMeshAgent>().speed = 0.0f;
@@ -230,29 +230,33 @@ public class JumperScript : MonoBehaviour
     //TRANSLATE THE SPRITE IN AN ARC
     public void spritejump()
     {
+        GetComponent<BoxCollider>().enabled = false;
+
         if (count < 1.0f
-           && timer > enemyScript.getCurrentAnimationLength())
+           && timer > jumpClip.length)
         {
             count += jumpspeed * Time.deltaTime;
             Vector3 m1 = Vector3.Lerp(startpos, controlPoint, count);
             Vector3 m2 = Vector3.Lerp(controlPoint, endpoint, count);
 
-            spriteRenderer.transform.position = Vector3.Lerp(m1, m2, count);
-            jumperCanvas.transform.position = Vector3.Lerp(m1, m2, count);
+            spriteRenderer.transform.position = Vector3.Lerp(
+                new Vector3(transform.position.x, m1.y, transform.position.z),
+                new Vector3(transform.position.x, m2.y, transform.position.z), 
+                count);
+            jumperCanvas.transform.position = Vector3.Lerp(
+                new Vector3(transform.position.x, m1.y, transform.position.z),
+                new Vector3(transform.position.x, m2.y, transform.position.z),
+                count);
         }
          //if player landed on ground
         else /*if(count > 1.0f)*/
         {
-
             jumprest();
         }
     }
     //
 
-    public void DestroyBeams()
-    {
-
-    }
+    
 
     public void jumprest()
     {
