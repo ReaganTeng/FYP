@@ -192,8 +192,16 @@ public class PlayerAttack : MonoBehaviour
                 click_timer = currentAnimationLength;
                 if(currentweapon == Weapon.ROLLINGPIN)
                 {
-                    //PlayRollerHitFx();
-                }   
+                    GameSoundManager.PlaySound("RollerAttack");
+                }
+                if (currentweapon == Weapon.SPATULA)
+                {
+                    GameSoundManager.PlaySound("SpatAttack");
+                }
+                if (currentweapon == Weapon.KNIFE)
+                {
+                    GameSoundManager.PlaySound("KnifeAttack");
+                }
             }
             //
 

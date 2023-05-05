@@ -7,6 +7,7 @@ using DigitalRuby.SoundManagerNamespace;
 
 public class GameSoundManager : MonoBehaviour
 {
+
     private static GameSoundManager instance;
 
     public Slider soundSlider;
@@ -50,6 +51,10 @@ public class GameSoundManager : MonoBehaviour
     {
         musicDict[name].PlayLoopingMusicManaged(1.0f, 1.0f, false);
     }
+
+ 
+
+
 
     public void SoundVolumeChanged()
     {
