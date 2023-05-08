@@ -785,7 +785,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4094011683009168358, guid: d536fa71dd00cf349a228e41212ace48, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -19.651672
+      value: -19.651611
       objectReference: {fileID: 0}
     - target: {fileID: 4094011683184476936, guid: d536fa71dd00cf349a228e41212ace48, type: 3}
       propertyPath: m_Name
@@ -5023,7 +5023,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: bdd8ae6c66ffc9e47ac15a694f8bd157, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.226
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
