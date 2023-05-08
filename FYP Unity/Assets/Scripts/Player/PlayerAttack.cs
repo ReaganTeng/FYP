@@ -146,9 +146,6 @@ public class PlayerAttack : MonoBehaviour
         if (disableControls)
             return;
 
-
-
-
         if (chargeBar != null)
         {
             updatecharge();
@@ -178,54 +175,60 @@ public class PlayerAttack : MonoBehaviour
         }
         else 
         {
-            //animate player walking
             GameObject.FindGameObjectWithTag("playerspriterenderer").GetComponent<Animator>().SetBool("click", isclicked);
-            //
 
-            //LIGHT ATTACK
-            if (Input.GetMouseButtonDown(0) && !attacking
-                && isclicked == false)
+            if (!GameObject.FindGameObjectWithTag("playerspriterenderer").GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("hurt_knife")
+                && !GameObject.FindGameObjectWithTag("playerspriterenderer").GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("hurt_pin")
+                && !GameObject.FindGameObjectWithTag("playerspriterenderer").GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("hurt_spatula"))
             {
-                isclicked = true;
-                AttackWhichDirection(direction);
-                //HitBox.SetActive(true);
-                //attacking = true;
-                attackingtimer = attackingtime;
-                click_timer = currentAnimationLength;
-                if(currentweapon == Weapon.ROLLINGPIN)
+                //LIGHT ATTACK
+                if (Input.GetMouseButtonDown(0) && !attacking
+                    && isclicked == false
+                    && click_timer <= 0)
                 {
-                    GameSoundManager.PlaySound("RollerAttack");
+                    //Debug.Log("LIGHT ATTACK");
+                    isclicked = true;
+                    AttackWhichDirection(direction);
+                    //HitBox.SetActive(true);
+                    //attacking = true;
+                    attackingtimer = attackingtime;
+
+                    if (currentweapon == Weapon.ROLLINGPIN)
+                    {
+                        GameSoundManager.PlaySound("RollerAttack");
+                    }
+                    if (currentweapon == Weapon.SPATULA)
+                    {
+                        GameSoundManager.PlaySound("SpatAttack");
+                    }
+                    if (currentweapon == Weapon.KNIFE)
+                    {
+                        GameSoundManager.PlaySound("KnifeAttack");
+                    }
                 }
-                if (currentweapon == Weapon.SPATULA)
+                //
+
+                //HEAVY ATTACK
+                if (Input.GetMouseButtonDown(1) && !attacking
+                    && isclicked == false
+                     && click_timer <= 0
+                    && CanHeavyAttack
+                    && (int)chargeCurrentLvl >= (int)min_notch_value)
                 {
-                    GameSoundManager.PlaySound("SpatAttack");
+                   // Debug.Log("HEAVY ATTACK");
+                    isclicked = true;
+                    transform.parent.GetComponent<PlayerStats>().setAttack(true);
+                    AttackWhichDirection(direction);
+                    //HitBox.SetActive(true);
+                    //attacking = true;
+                    attackingtimer = attackingtime;
+
+                    depletecharge();
+                    click_timer = attackanimation.length;
                 }
-                if (currentweapon == Weapon.KNIFE)
-                {
-                    GameSoundManager.PlaySound("KnifeAttack");
-                }
+                //
             }
-            //
 
-            //HEAVY ATTACK
-            if (Input.GetMouseButtonDown(1) && !attacking && CanHeavyAttack
-                && (int)chargeCurrentLvl>= (int)min_notch_value
-                && isclicked == false)
-            {
-                isclicked = true;
-                transform.parent.GetComponent<PlayerStats>().setAttack(true);
-                AttackWhichDirection(direction);
-                //HitBox.SetActive(true);
-                //attacking = true;
-                attackingtimer = attackingtime;
-                depletecharge();
-                click_timer = attackanimation.length;
-            }
-            //
-
-
-
-            //Debug.Log("DELAY " + pp.return_reductionamount());
             if (isclicked)
             {
                 //if is reaches 50% of the attack animation
@@ -233,9 +236,7 @@ public class PlayerAttack : MonoBehaviour
                 if (click_timer <= (attackanimation.length  *.5f)
                     / pp.return_heavyattackspeed())
                 {
-
                     animator.speed = pp.return_heavyattackspeed();
-
                     attacking = true;
                 }
                 //
@@ -243,14 +244,9 @@ public class PlayerAttack : MonoBehaviour
                 if (click_timer < 0)
                 {
                     animator.speed = 1;
-
                     isclicked = false;
                 }
             }
-
-            
-            //Debug.Log("DAMAGE DONE " + GetComponentInParent<PlayerStats>().getAttack(0));
-
             //activate hitbox
             if (attacking)
             {
@@ -473,24 +469,24 @@ public class PlayerAttack : MonoBehaviour
 
         switch (direction)
         {
-            case 1:
-                newrotation = Quaternion.Euler(0, -90, 0);
-                HitBox.transform.rotation = newrotation;
-                //rotatehWeapon(newrotation);
+            //case 1:
+            //    newrotation = Quaternion.Euler(0, -90, 0);
+            //    HitBox.transform.rotation = newrotation;
+            //    //rotatehWeapon(newrotation);
 
-                break;
+            //    break;
             case 2:
                 newrotation = Quaternion.Euler(0, 0, 0);
                 HitBox.transform.rotation = newrotation;
                 //rotatehWeapon(newrotation);
 
                 break;
-            case 3:
-                newrotation = Quaternion.Euler(0, 90, 0);
-                HitBox.transform.rotation = newrotation;
-                //rotatehWeapon(newrotation);
+            //case 3:
+            //    newrotation = Quaternion.Euler(0, 90, 0);
+            //    HitBox.transform.rotation = newrotation;
+            //    //rotatehWeapon(newrotation);
 
-                break;
+            //    break;
             case 4:
                 newrotation = Quaternion.Euler(0, 180, 0);
                 HitBox.transform.rotation = newrotation;

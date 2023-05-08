@@ -11,6 +11,11 @@ public class mainMenuManager : MonoBehaviour
 
     [SerializeField] LevelManager LM;
 
+    private void Awake()
+    {
+        GameSoundManager.PlayMusic("MainMenu");
+    }
+
     public void NewGame()
     {
         LM.DaySelected = 1;

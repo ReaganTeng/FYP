@@ -11,7 +11,7 @@ public class PlayLevel : MonoBehaviour
 
     public void PlayTheLevel()
     {
-        GameSoundManager.PlayMusic("MainMenu");
+        
         
         for (int i = 0; i < levelManager.levelInfo.Count; i++)
         {
