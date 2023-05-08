@@ -10,7 +10,12 @@ public class TestMessage : MonoBehaviour
     public SceneName SceneNo;
     [SerializeField] LevelManager LM;
 
-    public enum SceneName { INTRO, DAY1TO2, DAY2TOGAME, TOTAL }
+    public enum SceneName {
+        INTRO,
+        DAY1TO2,
+        DAY2TOGAME,
+        TOTAL
+    }
 
     private void Awake()
     {
