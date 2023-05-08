@@ -978,6 +978,8 @@ MonoBehaviour:
     m_Bits: 0
   navMeshAgent: {fileID: 5603608171990314178}
   attackhitbox: {fileID: 5769825582561750762}
+  pivotpoint: {fileID: 129147275652241997, guid: 79e72203afd5b9b41aab14adeb466e06, type: 3}
+  lockon: {fileID: 5040757818031207537, guid: 9888e04e85b6dc542b4ae39daf5cf595, type: 3}
 --- !u!23 &8680767243971010525
 MeshRenderer:
   m_ObjectHideFlags: 0

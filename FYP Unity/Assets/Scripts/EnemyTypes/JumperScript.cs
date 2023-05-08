@@ -42,10 +42,14 @@ public class JumperScript : MonoBehaviour
     bool jumpmode;
 
     int rand_z;
-   
+
+    GameObject gamemanager;
+
     // Start is called before the first frame update
     void Start()
     {
+        gamemanager = GameObject.FindGameObjectWithTag("GameManager");
+
         rand_z = 0;
         GetComponent<EnemyScript>().set_enemyType(EnemyScript.EnemyType.JUMPER);
         startupdating = false;
@@ -62,6 +66,8 @@ public class JumperScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        gamemanager = GameObject.FindGameObjectWithTag("GameManager");
+
         playerGO = GameObject.FindGameObjectWithTag("Player");
         enemyScript = GetComponent<EnemyScript>();
 
@@ -282,6 +288,8 @@ public class JumperScript : MonoBehaviour
             navMeshAgent.acceleration = 20.0f;
             speedfactor = 20.0f;
             count = 0;
+            gamemanager.GetComponent<EnemyManager>().setupdating(false);
+
             enemyScript.set_current_phase(EnemyScript.Phases.COOLDOWN);
         }
        

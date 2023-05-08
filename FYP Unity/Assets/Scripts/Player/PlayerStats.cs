@@ -126,7 +126,6 @@ public class PlayerStats : MonoBehaviour
         }
         else
         {
-
             hurt_period = 0.0f;
         }
 

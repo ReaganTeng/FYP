@@ -27,10 +27,13 @@ public class EnemyAttack : MonoBehaviour
 
     float delayTime;
 
-
+    GameObject gamemanager;
     // Start is called before the first frame update
     void Start()
     {
+        gamemanager = GameObject.FindGameObjectWithTag("GameManager");
+
+
         player = GameObject.FindGameObjectWithTag("Player");
         attacking_present = false;
         delayTime = 0.0f;
@@ -42,6 +45,9 @@ public class EnemyAttack : MonoBehaviour
 
     private void Update()
     {
+
+        gamemanager = GameObject.FindGameObjectWithTag("GameManager");
+
         player = GameObject.FindGameObjectWithTag("Player");
         if (Attackcdtimer > 0)
         {
@@ -108,6 +114,8 @@ public class EnemyAttack : MonoBehaviour
             //END THE LOOP WHEN ATTACKS PERFORM EXCEEDED
             if (attacks_performed >= attacks_per_session)
             {
+                gamemanager.GetComponent<EnemyManager>().setupdating(false);
+
                 animator.SetBool("attack", false);
                 animator.SetBool("about2attack", false);
                 //animator.SetBool("chasingPlayer", false);

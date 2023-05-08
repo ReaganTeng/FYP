@@ -45,7 +45,9 @@ public class SpawnerManager : MonoBehaviour
         {
             if (spawnerList[i].spawnerType == whichSpawner || All)
             {
-                spawnerList[i].whatSpawner.GetComponent<Spawner>().SetEnable(active);
+                //spawnerList[i].whatSpawner.GetComponent<Spawner>().SetEnable(active);
+
+                spawnerList[i].whatSpawner.GetComponent<Spawner>().SetEnable(true);
             }
         }
     }
