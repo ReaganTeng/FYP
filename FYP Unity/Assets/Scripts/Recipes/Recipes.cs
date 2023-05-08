@@ -65,7 +65,7 @@ public class Recipes : MonoBehaviour
         instance = this;
     }
 
-    public GameObject GetRecipeResult(GameObject ingredient1, GameObject ingredient2)
+    public GameObject GetRecipeResult(GameObject ingredient1, GameObject ingredient2, GameObject mixerReference)
     {
         List<recipes> rp = CheckFoodType(ingredient1);
         int ingredient1id = FoodManager.instance.GetItemID(ingredient1);
@@ -80,8 +80,7 @@ public class Recipes : MonoBehaviour
                 // if it is one of the ingredient, sum the id tgt and see if the sum number match, if it match, its that recipe
                 if (ingredient1id + ingredient2id == FoodManager.instance.GetItemID(rp[i].ingredient1) + FoodManager.instance.GetItemID(rp[i].ingredient2))
                 {
-                    GameObject PlayerInv = GameObject.FindGameObjectWithTag("Inventory");
-                    GameObject resultFood = Instantiate(emptyPrefab, PlayerInv.transform);
+                    GameObject resultFood = Instantiate(emptyPrefab, mixerReference.transform);
 
                     resultFood.GetComponent<Food>().SetValues(rp[i].Result.GetComponent<Food>());
 
@@ -106,10 +105,19 @@ public class Recipes : MonoBehaviour
         // if no valid recipe is found, return mushy or sus dish
         if (ingredient1.GetComponent<Food>().GetFoodType() == FoodManager.FoodType.INGREDIENT)
         {
+            GameObject mushy = Instantiate(emptyPrefab, mixerReference.transform);
+            mushy.GetComponent<Food>().SetValues(Mushy.GetComponent<Food>());
+            mushy.GetComponent<RefinedItem>().SetValues(Mushy.GetComponent<RefinedItem>());
+
+
             return Mushy;
         }
         else
         {
+            GameObject susDish = Instantiate(emptyPrefab, mixerReference.transform);
+            susDish.GetComponent<Food>().SetValues(Sus_Dish.GetComponent<Food>());
+            susDish.GetComponent<Dish>().SetValues(Sus_Dish.GetComponent<Dish>());
+
             return Sus_Dish;
         }
     }

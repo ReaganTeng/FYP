@@ -7,18 +7,13 @@ public class PlayerPickup : MonoBehaviour
     [SerializeField] Inventory PlayerInventory;
     List<GameObject> InteractableInRangeList = new List<GameObject>();
     InventoryImageControl ic;
-    public bool DisableControls;
-    public bool CannotInteractWithMixer;
-    public bool CannotInteractWithDrawer;
-    public bool CannotInteractWithDustbin;
+    public bool DisableControls = false;
+    public bool CannotInteractWithDustbin = false;
+    public bool CannotPickUpItems = false;
 
     private void Start()
     {
         ic = GameObject.FindGameObjectWithTag("GameManager").GetComponent<InventoryImageControl>();
-        DisableControls = false;
-        CannotInteractWithMixer = false;
-        CannotInteractWithDrawer = false;
-        CannotInteractWithDustbin = false;
     }
 
     // add the interactable objects into the list
@@ -74,14 +69,14 @@ public class PlayerPickup : MonoBehaviour
                         if (nearestGameObject == InteractableInRangeList[i].gameObject)
                         {
                             // make the item glow
-                            if (InteractableInRangeList[i].CompareTag("Ingredient"))
+                            if (InteractableInRangeList[i].CompareTag("Ingredient") && !CannotPickUpItems)
                                 InteractableInRangeList[i].GetComponent<ItemGlow>().TurnOnHighlight();
                         }
 
                         // if its not the closest, dont make it glow
                         else
                         {
-                            if (InteractableInRangeList[i].CompareTag("Ingredient"))
+                            if (InteractableInRangeList[i].CompareTag("Ingredient") && !CannotPickUpItems)
                                 InteractableInRangeList[i].GetComponent<ItemGlow>().TurnOffHighlight();
                         }
                     }
@@ -98,7 +93,7 @@ public class PlayerPickup : MonoBehaviour
                 if (pickupobject != null)
                 {
                     
-                    if (pickupobject.CompareTag("Ingredient") && !PlayerInventory.InventoryFull)
+                    if (pickupobject.CompareTag("Ingredient") && !PlayerInventory.InventoryFull && !CannotPickUpItems)
                     {
                         InteractableInRangeList.Remove(pickupobject);
                         // Add the item into ur inventory
@@ -108,7 +103,7 @@ public class PlayerPickup : MonoBehaviour
                         pickupobject.SetActive(false);
                     }
 
-                    else if (pickupobject.CompareTag("Mixer") && !CannotInteractWithMixer)
+                    else if (pickupobject.CompareTag("Mixer"))
                     {
                         pickupobject.GetComponent<Mixer>().InteractWithMixer();
                     }
@@ -119,10 +114,10 @@ public class PlayerPickup : MonoBehaviour
                         GameSoundManager.PlaySound("ServeDish");
                     }
 
-                    else if (pickupobject.CompareTag("Barrel") && !CannotInteractWithDrawer)
+                    else if (pickupobject.CompareTag("Barrel"))
                     {
                         pickupobject.GetComponent<IngredientBarrel>().GetIngredientFromBarrel();
-                        GameSoundManager.PlaySound("PickUpItem");
+                        //GameSoundManager.PlaySound("PickUpItem");
                     }
 
                     else if (pickupobject.CompareTag("DustBin") && !CannotInteractWithDustbin)

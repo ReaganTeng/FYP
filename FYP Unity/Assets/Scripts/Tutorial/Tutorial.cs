@@ -70,7 +70,7 @@ public class Tutorial : MonoBehaviour
         PICK_UP_DROPS,
         PROCEED_TO_KITCHEN,
         PICK_UP_SCENE_POTATO,
-        MAKE_A_REFINED_INGREDIENT,
+        SET_RAISU_ACTIVE,
         GRAB_REFINED_INGREDIENT,
         MAKE_AND_GET_REFINED_INGREDIENT,
         MAKE_A_DISH,
@@ -125,8 +125,8 @@ public class Tutorial : MonoBehaviour
             GameObject tempPlayer = GameObject.FindGameObjectWithTag("Player");
             tempPlayer.GetComponentInChildren<PlayerAttack>().SetCanSwapWeapon(false); // Disable swapping weapon
             tempPlayer.GetComponentInChildren<PlayerAttack>().SetCanDoHeavyAttack(false); // disable doing heavy attack
-            tempPlayer.GetComponentInChildren<PlayerPickup>().CannotInteractWithMixer = true; // disable interacting with mixer
-            tempPlayer.GetComponentInChildren<PlayerPickup>().CannotInteractWithDrawer = true; // disable interacting with drawer
+            MixerManager.instance.ToggleMixers(false); // Set all mixer to not be interactable
+            IngredientBarrelManager.instance.ToggleIngredientBarrel(false); // disable interacting with drawer
             tempPlayer.GetComponentInChildren<PlayerPickup>().CannotInteractWithDustbin = true; // disable interacting with dustbin
             tempPlayer.GetComponentInChildren<PlayerStats>().SetIfFervorActive(false);// disable fervor system
             MixerManager.instance.SetAllQTEActive(false); // disable cooke QTE
@@ -395,41 +395,34 @@ public class Tutorial : MonoBehaviour
                     break;
                 }
 
-            case Instructions.MAKE_A_REFINED_INGREDIENT:
+            case Instructions.SET_RAISU_ACTIVE:
                 {
-                    if (RunOnce())
-                    {
-                        GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerPickup>().CannotInteractWithMixer = false;
-                        MixerManager.instance.HighlightMixer(Mixer.MixerType.REFINER, true);
-                    }
-
-                    if (MixerManager.instance.CheckIfAnyFilled(Mixer.MixerType.REFINER) != null)
-                    {
-                        objectReference = MixerManager.instance.CheckIfAnyFilled(Mixer.MixerType.REFINER);
-                        ConditionTriggered = true;
-                        GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerPickup>().CannotInteractWithMixer = true;
-                        MixerManager.instance.HighlightMixer(Mixer.MixerType.REFINER, false);
-                        ResetRun();
-                    }
+                    SpawnerManager.instance.SetSpawner(SpawnerManager.SPAWNERTYPE.RAISUU, true);
+                    IngredientBarrelManager.instance.TutorialIngredientBarrel(IngredientBarrelManager.BarrelTypes.FLOUR, true);
+                    GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerPickup>().CannotInteractWithDustbin = false;
+                    GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerStats>().SetIfFervorActive(true);
+                    GameObject.FindGameObjectWithTag("DustBin").GetComponent<DustBin>().AddException(FoodManager.FoodType.REFINED_INGREDIENT, (int)RefinedItemManager.RItems.APPLE_MIX);
+                    GameObject.FindGameObjectWithTag("DustBin").GetComponent<DustBin>().AddException(FoodManager.FoodType.REFINED_INGREDIENT, (int)RefinedItemManager.RItems.DANGO);
+                    ConditionTriggered = true;
                     break;
                 }
 
-            case Instructions.GRAB_REFINED_INGREDIENT:
-                {
-                    if (RunOnce())
-                    {
-                        GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerPickup>().CannotInteractWithMixer = false;
-                    }
+            //case Instructions.GRAB_REFINED_INGREDIENT:
+            //    {
+            //        if (RunOnce())
+            //        {
+            //            GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerPickup>().CannotInteractWithMixer = false;
+            //        }
 
-                    if (objectReference.GetComponent<Mixer>().CheckIfEmptied())
-                    {
-                        ConditionTriggered = true;
-                        objectReference = null;
-                        GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerPickup>().CannotInteractWithMixer = true;
-                        ResetRun();
-                    }
-                    break;
-                }
+            //        if (objectReference.GetComponent<Mixer>().CheckIfEmptied())
+            //        {
+            //            ConditionTriggered = true;
+            //            objectReference = null;
+            //            GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerPickup>().CannotInteractWithMixer = true;
+            //            ResetRun();
+            //        }
+            //        break;
+            //    }
 
             case Instructions.MAKE_AND_GET_REFINED_INGREDIENT:
                 {
@@ -437,15 +430,15 @@ public class Tutorial : MonoBehaviour
                     {
                         objectReference = GameObject.FindGameObjectWithTag("Inventory");
                         numReference = objectReference.GetComponentsInChildren<RefinedItem>().Length;
-                        GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerPickup>().CannotInteractWithMixer = false;
+                        MixerManager.instance.TutorialMixer(Mixer.MixerType.REFINER, true);
                     }
 
-                    // if player has 2 mashed potato cup in their inventory
-                    if (CheckIfValidRefined() && MixerManager.instance.CheckIfAllAreEmpty(Mixer.MixerType.REFINER))
+                    // if player has a mashed potato cup in their inventory
+                    if (CheckIfValidRefined())
                     {
                         objectReference = null;
                         ConditionTriggered = true;
-                        GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerPickup>().CannotInteractWithMixer = true;
+                        MixerManager.instance.TutorialMixer(Mixer.MixerType.REFINER, false);
                         ResetRun();
                     }
                     break;
@@ -456,15 +449,14 @@ public class Tutorial : MonoBehaviour
                     if (RunOnce())
                     {
                         objectReference = GameObject.FindGameObjectWithTag("Inventory");
-                        GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerPickup>().CannotInteractWithMixer = false;
-                        MixerManager.instance.HighlightMixer(Mixer.MixerType.COOKER, true);
+                        MixerManager.instance.TutorialMixer(Mixer.MixerType.COOKER, true);
                     }
 
-                    if (objectReference.GetComponentsInChildren<Dish>().Length >= 1 && MixerManager.instance.CheckIfAllAreEmpty(Mixer.MixerType.COOKER))
+                    if (objectReference.GetComponentsInChildren<Dish>().Length >= 1)
                     {
                         objectReference = null;
                         ConditionTriggered = true;
-                        MixerManager.instance.HighlightMixer(Mixer.MixerType.COOKER, false);
+                        MixerManager.instance.TutorialMixer(Mixer.MixerType.COOKER, false);
                         ResetRun();
                     }
                     break;
@@ -494,6 +486,8 @@ public class Tutorial : MonoBehaviour
                     SpawnerManager.instance.SetSpawner(SpawnerManager.SPAWNERTYPE.OOTATOO, true);
                     ConditionTriggered = true;
                     ResetScore();
+                    MixerManager.instance.ToggleMixers(true);
+
                     break;
                 }
 
@@ -541,13 +535,13 @@ public class Tutorial : MonoBehaviour
                 {
                     if (RunOnce())
                     {
-                        objectReference = SpawnerManager.instance.GetSpawner(SpawnerManager.SPAWNERTYPE.OOTATOO).GetComponent<Spawner>().SpawnEnemy(3);
+                        objectReference = SpawnerManager.instance.GetSpawner(SpawnerManager.SPAWNERTYPE.OOTATOO).GetComponent<Spawner>().SpawnEnemy(8);
                         GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerAttack>().SetCanDoHeavyAttack(true);
                     }
 
                     if (objectReference != null && objectReference.GetComponent<EnemyScript>().GetEnemyHealth() > 0 && objectReference.GetComponent<EnemyScript>().GetEnemyHealth() < 3)
                     {
-                        objectReference.GetComponent<EnemyScript>().SetEnemyHealth(3);
+                        objectReference.GetComponent<EnemyScript>().SetEnemyHealth(8);
                     }
 
                     if (objectReference == null)
@@ -654,12 +648,12 @@ public class Tutorial : MonoBehaviour
                 {
                     if (RunOnce())
                     {
-                        GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerPickup>().CannotInteractWithMixer = false;
+                        MixerManager.instance.TutorialMixer(Mixer.MixerType.COOKER, true);
                     }
 
-                    if (MixerManager.instance.CheckIfAnyFilled(Mixer.MixerType.COOKER))
+                    if (GameObject.FindGameObjectWithTag("Inventory").GetComponentInChildren<RefinedItem>() == null)
                     {
-                        GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerPickup>().CannotInteractWithMixer = true;
+                        MixerManager.instance.TutorialMixer(Mixer.MixerType.COOKER, false);
                         ConditionTriggered = true;
                         ResetRun();
                     }
@@ -671,13 +665,13 @@ public class Tutorial : MonoBehaviour
                     if (RunOnce())
                     {
                         objectReference = GameObject.FindGameObjectWithTag("Inventory");
-                        GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerPickup>().CannotInteractWithMixer = false;
+                        MixerManager.instance.TutorialMixer(Mixer.MixerType.COOKER, true);
                         MixerManager.instance.SetAllQTEActive(true);
                     }
 
-                    if (objectReference.GetComponentsInChildren<Dish>().Length >= 1 && MixerManager.instance.CheckIfAllAreEmpty(Mixer.MixerType.COOKER))
+                    if (objectReference.GetComponentsInChildren<Dish>().Length >= 1)
                     {
-                        GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerPickup>().CannotInteractWithMixer = true;
+                        MixerManager.instance.TutorialMixer(Mixer.MixerType.COOKER, false);
                         SpecialChange(currentIndex, objectReference.GetComponentInChildren<Dish>().gameObject.GetComponent<Food>().GetAmtOfStars());
                         ConditionTriggered = true;
                         ResetRun();
@@ -727,6 +721,7 @@ public class Tutorial : MonoBehaviour
                     {
                         GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerAttack>().SetCanSwapWeapon(true);
                         objectReference = SpawnerManager.instance.GetSpawner(SpawnerManager.SPAWNERTYPE.AAPOLO).GetComponent<Spawner>().SpawnEnemy();
+                        GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerPickup>().CannotPickUpItems = true;
                     }
 
                     // if the apolo died
@@ -734,13 +729,32 @@ public class Tutorial : MonoBehaviour
                     {
                         GameObject dropReference = GameObject.FindGameObjectWithTag("Drops");
                         // if it is chopped apple
-                        if (dropReference.GetComponentInChildren<Item>().GetItemType() == ItemManager.Items.APPLE_CHOPPED)
+
+                        Item[] itemArray = dropReference.GetComponentsInChildren<Item>();
+
+                        for (int i = 0; i < itemArray.Length; i++)
                         {
-                            ConditionTriggered = true;
-                        }
-                        else
-                        {
-                            Destroy(dropReference.GetComponentInChildren<Item>().gameObject);
+                            if (itemArray[i].GetItemType() == ItemManager.Items.APPLE_CHOPPED)
+                            {
+                                ConditionTriggered = true;
+
+                                // destroy everything but the chopped apple
+
+                                for (int index = 0; index < itemArray.Length; index++)
+                                {
+                                    if (itemArray[index].GetItemType() != ItemManager.Items.APPLE_CHOPPED)
+                                    {
+                                        Destroy(itemArray[index].gameObject);
+                                    }
+
+                                    if (itemArray.Length == 1)
+                                    {
+                                        break;
+                                    }
+                                }
+
+                                GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerPickup>().CannotPickUpItems = false;
+                            }
                         }
                         ResetRun();
                     }
@@ -752,7 +766,7 @@ public class Tutorial : MonoBehaviour
                     if (RunOnce())
                     {
                         objectReference = GameObject.FindGameObjectWithTag("Inventory");
-                        GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerPickup>().CannotInteractWithDrawer = false;
+                        IngredientBarrelManager.instance.TutorialIngredientBarrel(IngredientBarrelManager.BarrelTypes.FLOUR, true);
                     }
 
                     // check to see if there is a flour in player inventory
@@ -762,7 +776,7 @@ public class Tutorial : MonoBehaviour
                         {
                             ConditionTriggered = true;
                             ResetRun();
-                            GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerPickup>().CannotInteractWithDrawer = true;
+                            IngredientBarrelManager.instance.TutorialIngredientBarrel(IngredientBarrelManager.BarrelTypes.FLOUR, false);
                         }
                     }
                     break;
@@ -779,10 +793,6 @@ public class Tutorial : MonoBehaviour
                     if (raisuCollider.GetComponent<InZone>().GetIsPlayerInZone())
                     {
                         ConditionTriggered = true;
-                        SpawnerManager.instance.SetSpawner(SpawnerManager.SPAWNERTYPE.RAISUU, true);
-                        GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerPickup>().CannotInteractWithDrawer = false;
-                        GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerPickup>().CannotInteractWithDustbin = false;
-                        GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerStats>().SetIfFervorActive(true);
                         ResetRun();
                     }
                     break;
@@ -795,6 +805,7 @@ public class Tutorial : MonoBehaviour
                     SpawnerManager.instance.SetSpawner(SpawnerManager.SPAWNERTYPE.AAPOLO, true);
                     ResetScore();
                     ConditionTriggered = true;
+                    MixerManager.instance.ToggleMixers(true);
                     // NOTE: REMOVE THIS COMMAND AND THE LINE AFTER THIS WHEN DOING VISUAL NOVEL
                     PlayerPrefs.SetInt("TutorialComplete", 1);
                     break;
@@ -845,7 +856,7 @@ public class Tutorial : MonoBehaviour
             }
         }
 
-        if (ValidRefinedAmt > numReference || ValidRefinedAmt == 2)
+        if (ValidRefinedAmt > numReference)
         {
             return true;
         }

@@ -8,6 +8,9 @@ public class IngredientBarrel : MonoBehaviour
     [SerializeField] GameObject ingredient;
     [SerializeField] Image ingredientDisplay;
     [SerializeField] GameObject emptyPrefab;
+    [SerializeField] IngredientBarrelManager.BarrelTypes barrelType;
+    private bool barrelActive = true;
+    
 
     private void Start()
     {
@@ -16,6 +19,9 @@ public class IngredientBarrel : MonoBehaviour
 
     public void GetIngredientFromBarrel()
     {
+        if (!barrelActive)
+            return;
+
         InventoryImageControl inv = GameObject.FindGameObjectWithTag("GameManager").GetComponent<InventoryImageControl>();
 
         // if inventory is not full, add the ingredient to the inventory
@@ -24,6 +30,7 @@ public class IngredientBarrel : MonoBehaviour
             GameObject PlayerInv = GameObject.FindGameObjectWithTag("Inventory");
             GameObject resultFood = Instantiate(emptyPrefab, PlayerInv.transform);
 
+            // create a copy of that item as an object reference
             resultFood.GetComponent<Food>().SetValues(ingredient.GetComponent<Food>());
             resultFood.GetComponent<Food>().SetPerfect(true);
             Destroy(resultFood.GetComponent<Dish>());
@@ -32,5 +39,15 @@ public class IngredientBarrel : MonoBehaviour
             resultFood.GetComponent<Item>().SetValueManually(ItemManager.Items.FLOUR, ingredientDisplay.sprite);
             inv.AddItem(resultFood);
         }
+    }
+
+    public void SetIsActive(bool active)
+    {
+        barrelActive = active;
+    }
+
+    public IngredientBarrelManager.BarrelTypes GetBarrelType()
+    {
+        return barrelType;
     }
 }

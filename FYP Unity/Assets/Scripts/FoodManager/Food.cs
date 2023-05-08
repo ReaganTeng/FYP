@@ -22,6 +22,12 @@ public class Food : MonoBehaviour
         this.amtOfStars = food.amtOfStars;
     }
 
+    public void SetValues(FoodManager.FoodType whatType, int FoodTypeID)
+    {
+        this.foodtype = whatType;
+        this.foodtypeid = FoodTypeID;
+    }
+
     public FoodManager.FoodType GetFoodType()
     {
         return foodtype;

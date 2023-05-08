@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 701a20e401001cb4da8667f74ba6ff37, type: 3}
   m_Name: Level 2
   m_EditorClassIdentifier: 
-  StarRatingActive: 1
   DialogueAndInstructions:
   - TextDisplay: Welcome back to the kitchen, I hope you have a good rest.
     conditions: 0
@@ -116,7 +115,8 @@ MonoBehaviour:
   - TextDisplay: Try you best to hit in a perfect zone, by pressing SPACE to stop.
     conditions: 0
     TimeTillPromptSkip: 4
-  - TextDisplay: ~ Grab the dish from the cooker~
+  - TextDisplay: ~ Grab the dish from the cooker, press SPACE to stop needle for
+      QTE~
     conditions: 26
     TimeTillPromptSkip: 4
   - TextDisplay: As you can see, your dish has 4 star quality.
@@ -203,6 +203,9 @@ MonoBehaviour:
   - TextDisplay: Getting hit will reset the combo and your fervor bar will drop.
     conditions: 0
     TimeTillPromptSkip: 3
+  - TextDisplay: Raisuuuuu
+    conditions: 12
+    TimeTillPromptSkip: 2
   - TextDisplay: ~Create a dango by getting the correct rice drop and mixing it with
       flour~
     conditions: 14
@@ -215,5 +218,8 @@ MonoBehaviour:
     TimeTillPromptSkip: 3
   - TextDisplay: "That\u2019s a lot to process right? Too bad. Get used to it, good
       luck for day 2."
+    conditions: 0
+    TimeTillPromptSkip: 3
+  - TextDisplay: ...
     conditions: 32
     TimeTillPromptSkip: 3
