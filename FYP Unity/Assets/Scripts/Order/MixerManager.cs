@@ -5,35 +5,17 @@ using UnityEngine;
 public class MixerManager : MonoBehaviour
 {
     public static MixerManager instance;
-    [SerializeField] List<Mixer> mixers;
+    List<Mixer> mixers = new List<Mixer>();
 
     private void Start()
     {
         instance = this;
-    }
 
-    public GameObject CheckIfAnyFilled(Mixer.MixerType whatType)
-    {
-        for (int i = 0; i < mixers.Count; i++)
+        Mixer[] tempMixerArray = gameObject.GetComponentsInChildren<Mixer>();
+        for (int i = 0; i < tempMixerArray.Length; i++)
         {
-            if ((mixers[i].GetMixerType() == whatType) && (mixers[i].CheckIfFilled()))
-            {
-                return mixers[i].gameObject;
-            }
+            mixers.Add(tempMixerArray[i]);
         }
-
-        return null;
-    }
-
-    public bool CheckIfAllAreEmpty(Mixer.MixerType whatType)
-    {
-        for (int i = 0; i < mixers.Count; i++)
-        {
-            if (!mixers[i].CheckIfEmptied() && whatType == mixers[i].GetMixerType())
-                return false;
-        }
-
-        return true;
     }
 
     public void SetAllQTEActive(bool ActiveOrNot)
@@ -47,14 +29,30 @@ public class MixerManager : MonoBehaviour
         }
     }
 
-    public void HighlightMixer(Mixer.MixerType whatType, bool active)
+    // Toggle the first mixer type that appear in the list.
+    public void ToggleMixers(bool active)
     {
         for (int i = 0; i < mixers.Count; i++)
         {
-            if (mixers[i].GetMixerType() == whatType)
+            mixers[i].SetIsActive(active);
+        }
+    }
+
+    public void TutorialMixer(Mixer.MixerType whichMixer, bool active)
+    {
+        for (int i = 0; i < mixers.Count; i++)
+        {
+            if (mixers[i].GetMixerType() == whichMixer)
             {
-                mixers[i].gameObject.GetComponent<ObjectHighlighted>().ToggleHighlight(active);
+                mixers[i].SetIsActive(active);
+                HighlightMixer(i, active);
+                break;
             }
         }
+    }
+
+    void HighlightMixer(int index, bool active)
+    {
+         mixers[index].gameObject.GetComponent<ObjectHighlighted>().ToggleHighlight(active);
     }
 }

@@ -8,6 +8,7 @@ public class PlayMusic : MonoBehaviour
     void Start()
     {
         GameSoundManager.PlayMusic("GameMusic");
+        Debug.Log("PlayMusic");
     }
 
   

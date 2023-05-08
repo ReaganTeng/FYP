@@ -25,7 +25,10 @@ public class Mixer : MonoBehaviour
     bool CanPutIntoMixer;
     bool MixerDone;
     bool QTEDone;
+
+    // to check stuff
     bool QTEActive;
+    bool MixerActive = true;
 
     // List that contains the ingredients inputted into the mixer
     List<GameObject> mixercontent = new List<GameObject>();
@@ -41,6 +44,9 @@ public class Mixer : MonoBehaviour
 
     public void InteractWithMixer()
     {
+        if (!MixerActive)
+            return;
+
         // If u can toss ingredients into the mixer, allow player to toss it inside
         if (CanPutIntoMixer)
         {
@@ -184,6 +190,8 @@ public class Mixer : MonoBehaviour
     {
         InventoryImageControl inv = GameObject.FindGameObjectWithTag("GameManager").GetComponent<InventoryImageControl>();
 
+        GameObject tempPlayerRef = GameObject.FindGameObjectWithTag("Inventory");
+
         // Check to see what type of mixer is it, if it is refiner, just give the ingredient, if it is cooker, go qte
         bool Successful = false;
         switch (mixerType)
@@ -201,7 +209,7 @@ public class Mixer : MonoBehaviour
                 // Check to see player inventory is not full
                 if (!Inventory.instance.InventoryFull)
                 {
-                    if (!QTEDone && QTEActive)
+                    if (!QTEDone && QTEActive && FoodManager.instance.GetItemID(RecipeResultObject) != 0)
                     {
                         QTE.instance.StartQTE(gameObject, RecipeResultObject);
                         QTEDone = true;
@@ -220,6 +228,7 @@ public class Mixer : MonoBehaviour
         if (Successful)
         {
             // reset it
+            RecipeResultObject.transform.SetParent(tempPlayerRef.transform);
             RecipeResultObject = null;
             ResetMixerEntirely();
         }
@@ -227,7 +236,7 @@ public class Mixer : MonoBehaviour
 
     GameObject CheckWhatIsOutput()
     {
-        GameObject temp = Recipes.instance.GetRecipeResult(mixercontent[0], mixercontent[1]);
+        GameObject temp = Recipes.instance.GetRecipeResult(mixercontent[0], mixercontent[1], gameObject);
 
         return temp;
     }
@@ -250,26 +259,6 @@ public class Mixer : MonoBehaviour
         }
     }
 
-    // a function to check if the mixer has 2 ingredients inside
-    public bool CheckIfFilled()
-    {
-        if (mixercontent.Count >= 2)
-        {
-            return true;
-        }
-        return false;
-    }
-
-    // a function to check if the result has been taken yet
-    public bool CheckIfEmptied()
-    {
-        if (CanPutIntoMixer && mixercontent.Count == 0)
-        {
-            return true;
-        }
-        return false;
-    }
-
     public MixerType GetMixerType()
     {
         return mixerType;
@@ -278,5 +267,10 @@ public class Mixer : MonoBehaviour
     public void SetQTEActive(bool QTEtoBeActiveOrNot)
     {
         QTEActive = QTEtoBeActiveOrNot;
+    }
+
+    public void SetIsActive(bool isActive)
+    {
+        MixerActive = isActive;
     }
 }

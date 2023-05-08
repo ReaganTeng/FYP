@@ -10,7 +10,7 @@ public class UnlockHallway : MonoBehaviour
     {
         int CurrentDay = gameObject.GetComponent<EndOfDay>().GetCurrentDay();
 
-        if (CurrentDay < lm.levelInfo.Count)
+        if (CurrentDay <= lm.levelInfo.Count)
         {
             for (int i = 0; i < lm.levelInfo.Count; i++)
             {

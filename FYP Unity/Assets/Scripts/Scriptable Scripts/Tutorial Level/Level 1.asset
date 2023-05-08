@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 701a20e401001cb4da8667f74ba6ff37, type: 3}
   m_Name: Level 1
   m_EditorClassIdentifier: 
-  StarRatingActive: 0
   DialogueAndInstructions:
   - TextDisplay: Oi! Wake up!
     conditions: 0
@@ -141,16 +140,15 @@ MonoBehaviour:
   - TextDisplay: There are 2 stages of cooking, first making the refined ingredients
     conditions: 0
     TimeTillPromptSkip: 3
-  - TextDisplay: ~Toss 2 mashed potato into any mixer by pressing E near it~
-    conditions: 12
+  - TextDisplay: ~Put 2 mashed potato into the mixer by pressing E and mix it, grab
+      it after mixed~
+    conditions: 14
     TimeTillPromptSkip: 3
-  - TextDisplay: You get a mashed potato cup by mixing 2 mashed potato inside the
-      mixer.
+  - TextDisplay: There ya go, it is that easy.
     conditions: 0
     TimeTillPromptSkip: 3
-  - TextDisplay: ~Make a mashed potato cup by pressing E near the mixer to start
-      mixing and grab it~
-    conditions: 13
+  - TextDisplay: ~Make another mashed potato cup~
+    conditions: 14
     TimeTillPromptSkip: 3
   - TextDisplay: Ok there you go, the second stage is to make the dish.
     conditions: 0
@@ -161,9 +159,6 @@ MonoBehaviour:
   - TextDisplay: Anyways lets make the dish now.
     conditions: 0
     TimeTillPromptSkip: 3
-  - TextDisplay: Anyways lets make the dish now.
-    conditions: 0
-    TimeTillPromptSkip: 2
   - TextDisplay: ~Make a potato salad by putting 2 mashed potato cup into cooker
       using E~
     conditions: 15
