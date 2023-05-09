@@ -25,14 +25,17 @@ public class EnemyAttack : MonoBehaviour
     int attacks_performed;
     bool attacking_present;
 
+    bool attacking;
+
     float delayTime;
 
     GameObject gamemanager;
     // Start is called before the first frame update
     void Start()
     {
-        gamemanager = GameObject.FindGameObjectWithTag("GameManager");
 
+        attacking = false;
+        gamemanager = GameObject.FindGameObjectWithTag("GameManager");
 
         player = GameObject.FindGameObjectWithTag("Player");
         attacking_present = false;
@@ -67,13 +70,13 @@ public class EnemyAttack : MonoBehaviour
             >= transform.parent.transform.parent.GetComponent<EnemyScript>().getCurrentAnimationLength() *
             attacks_performed*/
 
-            if (Attackcdtimer < AttackCD / 5)
-            {
-                if (attacks_performed < attacks_per_session)
-                {
-                    player.GetComponentInChildren<Animator>().SetBool("Hurt", false);
-                }
-            }
+            //if (Attackcdtimer < AttackCD / 5)
+            //{
+            //    if (attacks_performed < attacks_per_session)
+            //    {
+            //        player.GetComponentInChildren<Animator>().SetBool("Hurt", false);
+            //    }
+            //}
 
             //if (Attackcdtimer <= 0
             //    && attacks_performed < attacks_per_session)
@@ -83,12 +86,12 @@ public class EnemyAttack : MonoBehaviour
 
             //DELAY FOR CHASER
             if (transform.parent.transform.parent.GetComponent<EnemyScript>().return_attackptn() != EnemyScript.AttackPattern.PATTERN_3
-               && transform.parent.transform.parent.GetComponent<EnemyScript>().return_attackptn() != EnemyScript.AttackPattern.PATTERN_2)
+               && transform.parent.transform.parent.GetComponent<EnemyScript>().return_attackptn() != EnemyScript.AttackPattern.PATTERN_2
+               )
             {
                 if (animator.GetBool("about2attack")
                     && animator.GetCurrentAnimatorStateInfo(0).IsName("aboutattack"))
                 {
-
                     //Debug.Log("ABOUT 2 ATTACK");
                     delayTime += Time.deltaTime;
                     if (delayTime
@@ -101,34 +104,44 @@ public class EnemyAttack : MonoBehaviour
             }
             //
 
+            if(!transform.parent.transform.parent.GetComponent<EnemyScript>().getupdating()
+                || transform.parent.transform.parent.GetComponent<EnemyScript>().return_current_phase() == EnemyScript.Phases.AVOID)
+            {
+                attacking = false;
+            }
+
+            if(attacking)
+            {
+                transform.parent.transform.parent.GetComponent<NavMeshAgent>().enabled = false;
+            }
+            else
+            {
+                transform.parent.transform.parent.GetComponent<NavMeshAgent>().enabled = true;
+            }
+
             //ADD 1 ATTACK TO EACH LOOP
             if (attacking_present)
             {
-                
-
                 attacks_performed += 1;
                 attacking_present = false;
             }
             //
 
+
             //END THE LOOP WHEN ATTACKS PERFORM EXCEEDED
             if (attacks_performed >= attacks_per_session)
             {
+                attacking = false;
                 gamemanager.GetComponent<EnemyManager>().setupdating(false);
-
                 animator.SetBool("attack", false);
                 animator.SetBool("about2attack", false);
                 //animator.SetBool("chasingPlayer", false);
                 post_attack = true;
                 attacks_performed = 0;
                 transform.parent.transform.parent.GetComponent<NavMeshAgent>().enabled = true;
-
                 delayTime = 0.0f;
             }
             //
-
-            
-
         }
 
     }
@@ -164,7 +177,9 @@ public class EnemyAttack : MonoBehaviour
             && other.GetComponentInChildren<Animator>().GetNextAnimatorStateInfo(0).IsName("Dash") == false
             && attacks_performed < attacks_per_session)
         {
-            
+            attacking = true;
+
+
             //IF ENEMY IS A JUMPER
             if (transform.parent.transform.parent.GetComponent<EnemyScript>().return_enemyType()
                 == EnemyScript.EnemyType.JUMPER)
@@ -183,7 +198,7 @@ public class EnemyAttack : MonoBehaviour
                 {
                     //Debug.Log("ATTACK TRUE");
                     if (animator.GetCurrentAnimatorStateInfo(0).IsName("attack")
-                        && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+                        && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= .2f)
                     {
                         //HIT PLAYER EVERY TIME EACH LOOP ENDS
                         other.GetComponent<PlayerMovement>().setAnimator(true);
@@ -250,14 +265,13 @@ public class EnemyAttack : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+
             attacking_present = false;
             delayTime = 0.0f;
             AttackCD = 0;
             attacks_performed = 0;
             Attackcdtimer = 0;
-
-
-           
+            
 
             if (transform.parent.transform.parent.GetComponent<EnemyScript>().return_enemyType()
                            == EnemyScript.EnemyType.CHASER)

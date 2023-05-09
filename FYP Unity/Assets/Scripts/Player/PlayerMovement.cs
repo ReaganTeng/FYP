@@ -70,17 +70,27 @@ public class PlayerMovement : MonoBehaviour
             float horizontalInput = Input.GetAxis("Horizontal");
             float verticalInput = Input.GetAxis("Vertical");
 
-            GetComponentInChildren<Animator>().SetBool("walking", isWalking);
-            GetComponentInChildren<Animator>().SetBool("WalkFront", walkFront);
-            GetComponentInChildren<Animator>().SetBool("WalkBack", walkBack);
+
+            if (!GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("hurt_knife")
+                && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("hurt_pin")
+                && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("hurt_spatula"))
+            {
+                GetComponentInChildren<Animator>().SetBool("walking", isWalking);
+                GetComponentInChildren<Animator>().SetBool("WalkFront", walkFront);
+                GetComponentInChildren<Animator>().SetBool("WalkBack", walkBack);
+            }
+            else
+            {
+                GetComponentInChildren<Animator>().SetBool("walking", false);
+                GetComponentInChildren<Animator>().SetBool("WalkFront", false);
+                GetComponentInChildren<Animator>().SetBool("WalkBack", false);
+            }
 
 
             // If user is pressing any movement keys
             if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
                  //&& !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Dash")
-                                 && GetComponentInChildren<Animator>().GetBool("Dash") == false
-
-                )
+                && GetComponentInChildren<Animator>().GetBool("Dash") == false)
             {
                 playerRB.AddForce((orientation.forward * verticalInput + orientation.right * horizontalInput) * PlayerSpeed);
                 CheckDirection(ref Forwardrun, ref Rightrun, horizontalInput, verticalInput);

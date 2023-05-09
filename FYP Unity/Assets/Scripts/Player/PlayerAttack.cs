@@ -97,6 +97,8 @@ public class PlayerAttack : MonoBehaviour
 
         switchWeapon();
         spaculaHitbox.SetActive(false);
+
+        HitBox.transform.rotation = Quaternion.Euler(0, 180, 0);
         HitBox.SetActive(false);
 
         attackingtimer = attackingtime;
