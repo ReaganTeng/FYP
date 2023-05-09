@@ -89,9 +89,16 @@ public class PlayerMovement : MonoBehaviour
 
             // If user is pressing any movement keys
             if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
-                 //&& !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Dash")
-                && GetComponentInChildren<Animator>().GetBool("Dash") == false)
+                )
             {
+                /*if(!GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Dash")
+                  && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("attack_with_knife")
+                && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("attack_with_pin")
+                && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("attack_with_spatula")
+                && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("heavyattack_knife")
+                 && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("heavyattack_pin")
+                 && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("heavyattack_pin"))*/
+
                 playerRB.AddForce((orientation.forward * verticalInput + orientation.right * horizontalInput) * PlayerSpeed);
                 CheckDirection(ref Forwardrun, ref Rightrun, horizontalInput, verticalInput);
             }
@@ -103,8 +110,7 @@ public class PlayerMovement : MonoBehaviour
                 && !Input.GetKey(KeyCode.D)
                 && !Input.GetKey(KeyCode.LeftShift)
                  //&& !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Dash")
-                                 && GetComponentInChildren<Animator>().GetBool("Dash") == false
-
+                 && GetComponentInChildren<Animator>().GetBool("Dash") == false
                )
             {
                 walkBack = true;

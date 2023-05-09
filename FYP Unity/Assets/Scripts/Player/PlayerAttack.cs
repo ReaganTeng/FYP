@@ -62,6 +62,9 @@ public class PlayerAttack : MonoBehaviour
     // Start is called before the first frame update
 
     bool isclicked;
+    bool heavyattackclicked;
+    bool lightattackclicked;
+
     float click_timer;
 
     float currentAnimationLength;
@@ -80,6 +83,8 @@ public class PlayerAttack : MonoBehaviour
         UpdateWeaponDisplay();
         click_timer = 0.0f;
         isclicked = false;
+        heavyattackclicked = false;
+        lightattackclicked = false;
 
         chargeCurrentLvl = chargingduration;
         chargeMaxLvl = chargingduration;
@@ -177,7 +182,9 @@ public class PlayerAttack : MonoBehaviour
         }
         else 
         {
-            GameObject.FindGameObjectWithTag("playerspriterenderer").GetComponent<Animator>().SetBool("click", isclicked);
+            GameObject.FindGameObjectWithTag("playerspriterenderer").GetComponent<Animator>().SetBool("click", lightattackclicked);
+            GameObject.FindGameObjectWithTag("playerspriterenderer").GetComponent<Animator>().SetBool("heavyattackclick", heavyattackclicked);
+
 
             if (!GameObject.FindGameObjectWithTag("playerspriterenderer").GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("hurt_knife")
                 && !GameObject.FindGameObjectWithTag("playerspriterenderer").GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("hurt_pin")
@@ -193,7 +200,10 @@ public class PlayerAttack : MonoBehaviour
                     AttackWhichDirection(direction);
                     //HitBox.SetActive(true);
                     //attacking = true;
+
+                    lightattackclicked = true;
                     attackingtimer = attackingtime;
+                    //Debug.Log("LIGHT ATTACK" + transform.parent.GetComponent<PlayerStats>().GetPlayerAttack());
 
                     if (currentweapon == Weapon.ROLLINGPIN)
                     {
@@ -220,16 +230,21 @@ public class PlayerAttack : MonoBehaviour
                    // Debug.Log("HEAVY ATTACK");
                     isclicked = true;
                     transform.parent.GetComponent<PlayerStats>().setAttack(true);
+                    //Debug.Log("HEAVY ATTACK" + transform.parent.GetComponent<PlayerStats>().GetPlayerAttack());
+
+                    heavyattackclicked = true;
+
                     AttackWhichDirection(direction);
                     //HitBox.SetActive(true);
                     //attacking = true;
                     attackingtimer = attackingtime;
-
                     depletecharge();
                     click_timer = attackanimation.length;
                 }
                 //
             }
+
+            
 
             if (isclicked)
             {
@@ -249,21 +264,33 @@ public class PlayerAttack : MonoBehaviour
                     isclicked = false;
                 }
             }
-            //activate hitbox
+
+
+            /*if (!GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Dash")
+                  && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("attack_with_knife")
+                && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("attack_with_pin")
+                && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("attack_with_spatula")
+                && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("heavyattack_knife")
+                 && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("heavyattack_pin")
+                 && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("heavyattack_pin"))*/
+
+
+                //activate hitbox
             if (attacking)
             {
                 attackingtimer -= Time.deltaTime;
                 if (attackingtimer <= 0)
                 {
                     HitBox.SetActive(false);
-                    isclicked = false;
                     click_timer = 0.0f;
                     attackcdtimer = attackcd;
                     attacking = false;
+
+                    heavyattackclicked = false;
+                    lightattackclicked = false;
                 }
                 else
                 {
-                    isclicked = true;
                     HitBox.SetActive(true);
                 }
             }
