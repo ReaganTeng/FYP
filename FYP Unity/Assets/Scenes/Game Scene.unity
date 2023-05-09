@@ -2070,7 +2070,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 1ec4b41ee73fd8c469f8d5189242d756, type: 3}
+  m_audioClip: {fileID: 8300000, guid: b31b4a503b0a7754694d6fcc0013f722, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -3198,6 +3198,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 1270488943453101210, guid: 9c7efa639b08fad488193ca3c0ad2cbe, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1281323937378438019, guid: 9c7efa639b08fad488193ca3c0ad2cbe, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
@@ -3518,6 +3522,10 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2813597803896523489, guid: 9c7efa639b08fad488193ca3c0ad2cbe, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2825644474981102164, guid: 9c7efa639b08fad488193ca3c0ad2cbe, type: 3}
       propertyPath: m_NavMeshLayer
       value: 1
@@ -3565,6 +3573,10 @@ PrefabInstance:
     - target: {fileID: 2936347190317178343, guid: 9c7efa639b08fad488193ca3c0ad2cbe, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 2985215482257648286, guid: 9c7efa639b08fad488193ca3c0ad2cbe, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2988693273226264878, guid: 9c7efa639b08fad488193ca3c0ad2cbe, type: 3}
       propertyPath: m_TagString

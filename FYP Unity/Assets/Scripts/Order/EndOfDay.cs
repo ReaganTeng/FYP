@@ -91,6 +91,7 @@ public class EndOfDay : MonoBehaviour
 
     private void Update()
     {
+        
         if (DisplayDetails)
         {
             if (!SetCurrentActive)
