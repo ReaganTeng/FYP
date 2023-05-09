@@ -96,5 +96,7 @@ public class PlayerProgress : ScriptableObject
     {
         ResetCredibility();
         ResetInventory();
+        buffactive_reduction = 30;
+
     }
 }
