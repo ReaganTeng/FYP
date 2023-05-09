@@ -92,6 +92,7 @@ public class Tutorial : MonoBehaviour
         HEAD_TO_RAISUU,
         DAY2_OBJECTIVE,
         DAY2_DONE,
+        EXTRA_SECURITY,
     }
 
     List<TutorialPopUp> tut = new List<TutorialPopUp>();
@@ -324,6 +325,7 @@ public class Tutorial : MonoBehaviour
                         gm.GetComponent<UnlockHallway>().OpenHallway(LevelHallway.Hallway.KITCHEN_TO_OOTATOO);
                         whichHallway = LevelHallway.Hallway.KITCHEN_TO_OOTATOO;
                     }
+
                     if (ootatooCollider.GetComponent<InZone>().GetIsPlayerInZone())
                     {
                         gm.GetComponent<UnlockHallway>().LockHallway(whichHallway);
@@ -858,6 +860,14 @@ public class Tutorial : MonoBehaviour
                 {
                     lm.DaySelected = 3;
                     SceneManager.LoadScene("VNScene");
+                    break;
+                }
+
+            case Instructions.EXTRA_SECURITY:
+                {
+                    ResetRun();
+                    ResetRun();
+                    ConditionTriggered = true;
                     break;
                 }
         }
