@@ -20,7 +20,7 @@ public class GameSoundManager : MonoBehaviour
     [SerializeField] AudioSource[] music;
     private static IDictionary<string, AudioSource> musicDict = new Dictionary<string, AudioSource>();
 
-    private void Start()
+    private void Awake()
     {
         if (instance)
         {
