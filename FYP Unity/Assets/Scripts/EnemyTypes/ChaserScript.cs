@@ -307,7 +307,7 @@ public class ChaserScript : MonoBehaviour
                     {
 
                         beam_mode = false;
-                        chasingspeed = 0.0f;
+                        chasingspeed = 2.0f;
                         time_att_2 = 0.0f;
                         time_att_1 = 0.0f;
                         change_of_attk_type_1 = 0.0f;

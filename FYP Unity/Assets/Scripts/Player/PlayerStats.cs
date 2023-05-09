@@ -31,6 +31,13 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] Sprite C_Rank;
     [SerializeField] Sprite F_Rank;
 
+
+    [SerializeField] Sprite non_fervor_mode;
+    [SerializeField] Sprite fervor_mode;
+    [SerializeField] Image fillimage;
+
+
+
     [SerializeField] Slider fervorBar;
     [SerializeField] float fervorLevel;
     float fervor2Add;
@@ -43,11 +50,15 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] TextMeshProUGUI combo_timer_text;
     [SerializeField] TextMeshProUGUI combo_text;
 
+    [SerializeField] TextMeshProUGUI HitText;
+
+
     float hurt_period;
 
         // Enabling/Disabling Fervor bar (for tutorial purposes. DO NOT REMOVE)
     bool fervorBarActive = true;
 
+    float alpha_change;
 
     [SerializeField] PlayerProgress pp;
 
@@ -58,6 +69,8 @@ public class PlayerStats : MonoBehaviour
         fervor2Add = 0;
         buff_active = false;
 
+        alpha_change = 0.0f;
+
         if (fervorBar != null)
         {
             fervorBar.maxValue = fervorMaxLevel;
@@ -65,8 +78,9 @@ public class PlayerStats : MonoBehaviour
 
         fervorLevel = 0;
         numberConsecutiveHits = 0;
+
         hurt_period = 0;
-        RankSprite.SetActive(false);
+        //RankSprite.SetActive(false);
     }
 
 
@@ -130,6 +144,17 @@ public class PlayerStats : MonoBehaviour
         }
 
         //Debug.Log("BUFF " + pp.return_buffactive_requirement());
+        /*fervorBarActive = true;
+        //TEMPORARY, FOR TESTING PURPOSES
+        if (Input.GetMouseButtonDown(0))
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                addConsecutiveHit();
+                resetCombo_timer();
+                //Debug.Log("CONSECUTIVE HITS");
+            }
+        }*/
 
         if (fervorBarActive)
         {
@@ -156,46 +181,85 @@ public class PlayerStats : MonoBehaviour
             {
                 ResetConsecutiveHit();
                 numberConsecutiveHits = 0;
+                alpha_change = 0;
             }
             else
             {
-                combo_timer -= 1 * Time.deltaTime;
+                alpha_change += .1f  * numberConsecutiveHits * Time.deltaTime;
+                combo_timer -=  Time.deltaTime;
             }
 
             if(combo_timer < 0)
             {
+
                 combo_timer = 0;
             }
 
             if (combo_text != null)
             {
-                combo_text.enabled = true;
-                combo_text.text = numberConsecutiveHits.ToString();
+                if (numberConsecutiveHits > 0)
+                {
+                    combo_text.enabled = true;
+                    combo_text.text = numberConsecutiveHits.ToString();
+                }
+                else
+                {
+                    combo_text.enabled = false;
+
+                }
             }
 
+                if (HitText != null)
+            {
+                if (numberConsecutiveHits > 0)
+                {
+                    HitText.enabled = true;
+                    RankSprite.GetComponent<Image>().enabled = true;
+                }
+                else
+                {
+                    HitText.enabled = false;
+                    RankSprite.GetComponent<Image>().enabled = false;
+                }
+            }
 
             if (fervorLevel >= fervorMaxLevel - pp.return_buffactive_requirement())
             {
+                fillimage.sprite
+                    = fervor_mode;
                 buff_active = true;
-                Debug.Log("BUFF IS ACTIVE");
+                //Debug.Log("BUFF IS ACTIVE");
             }
             else
             {
+                fillimage.sprite
+                    = non_fervor_mode;
+
                 buff_active = false;
             }
 
 
-            if (numberConsecutiveHits <= 0)
+            //change the alpha of ranksprite
+            var alphaval = RankSprite.GetComponent<Image>().color;
+            if (alpha_change > 0)
             {
-                RankSprite.GetComponent<Image>().enabled = false;
+                alphaval.a = 1.0f / alpha_change;
+                RankSprite.GetComponent<Image>().color = alphaval;
             }
             else
             {
-                RankSprite.GetComponent<Image>().enabled = true;
+                alphaval.a = 0;
+                RankSprite.GetComponent<Image>().color = alphaval;
             }
         }
         else
         {
+
+            if (HitText != null)
+            {
+                HitText.enabled = false;
+            }
+
             if (combo_timer_text != null)
             {
                 combo_timer_text.enabled = false;
@@ -234,24 +298,12 @@ public class PlayerStats : MonoBehaviour
         }*/
 
 
-        //TEMPORARY, FOR TESTING PURPOSES
-        //if (Input.GetMouseButtonDown(0))
-        //{
-        //    for (int i = 0; i < 5; i++)
-        //    {
-        //        addConsecutiveHit();
-        //        resetCombo_timer();
-        //        //Debug.Log("CONSECUTIVE HITS");
-        //    }
-        //}
-
-
+        
     }
 
     public void decidefervor2add(float consecutive_stage_min, float consecutive_stage_max, float fervor_2add)
     {
-        
-
+       
         if (numberConsecutiveHits >= consecutive_stage_min
             && numberConsecutiveHits < consecutive_stage_max)
         {
@@ -260,7 +312,6 @@ public class PlayerStats : MonoBehaviour
     }
 
 
-    
 
     public void decidecombotimer(float consecutive_stage_min, float consecutive_stage_max, float comb_timer, Sprite rank_sprite)
     {
@@ -272,6 +323,7 @@ public class PlayerStats : MonoBehaviour
 
             combo_timer = comb_timer;
             RankSprite.GetComponent<Image>().sprite = rank_sprite;
+
         }
     }
 
@@ -290,7 +342,6 @@ public class PlayerStats : MonoBehaviour
             decidecombotimer(-999,
                    ConsecutiveHit_Stage1,
                    15.9f, F_Rank);
-
 
             //between 5 and 10
             decidecombotimer(ConsecutiveHit_Stage1,
@@ -315,6 +366,9 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
+
+
+   
     public void ResetConsecutiveHit()
     {
         if (fervorBarActive)
@@ -362,8 +416,11 @@ public class PlayerStats : MonoBehaviour
     public void addConsecutiveHit()
     {
         if (fervorBarActive)
-            numberConsecutiveHits += 1;
+        {
+            alpha_change = 0;
 
+            numberConsecutiveHits += 1;
+        }
         //Debug.Log("CON " + numberConsecutiveHits);
 
     }
