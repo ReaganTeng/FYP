@@ -144,7 +144,7 @@ public class EnemyManager : MonoBehaviour
                             //
                         }
                         //
-                        Debug.Log("UPDATE");
+                        //Debug.Log("UPDATE");
                         stopupdating = true;
                     }
                 }

@@ -396,8 +396,13 @@ public class EnemyScript : MonoBehaviour
 
             if (phase == Phases.AVOID)
             {
-                GetComponentInChildren<SpriteRenderer>().color = Color.black;
                 GetComponent<NavMeshAgent>().enabled = true;
+                if (enemy_type == EnemyType.CHARGER)
+                {
+                    GetComponent<ChargerScript>().DestroyBeams();
+                }
+
+                //GetComponentInChildren<SpriteRenderer>().color = Color.black;
                 //Debug.Log("AVOID");
                 GetComponentInChildren<Animator>().SetBool("chasingPlayer", true);
                 GetComponent<NavMeshAgent>().speed = 2.0f;
@@ -409,11 +414,16 @@ public class EnemyScript : MonoBehaviour
             }
             else
             {
-                GetComponentInChildren<SpriteRenderer>().color = Color.white;
+                //GetComponentInChildren<SpriteRenderer>().color = Color.white;
+
+                if(enemy_type == EnemyType.CHARGER)
+                {
+                    GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
+                }
 
                 //gamemanager.GetComponent<EnemyManager>().setupdating(true);
-                rand_x = Random.Range(-4, 5);
-                rand_y = Random.Range(-4, 5);
+                rand_x = Random.Range(-6, 7);
+                rand_y = Random.Range(-6, 7);
             }
 
 
@@ -505,6 +515,7 @@ public class EnemyScript : MonoBehaviour
                     if (phase3timer >= 20.0f)
                     {
                         phase = Phases.COOLDOWN;
+                        gamemanager.GetComponent<EnemyManager>().setupdating(false);
                     }
                 }
                 
@@ -532,6 +543,11 @@ public class EnemyScript : MonoBehaviour
         if (updating == false)
         {
             //GetComponent<NavMeshAgent>().enabled = false;
+
+            if (enemy_type == EnemyType.CHARGER)
+            {
+                GetComponent<ChargerScript>().DestroyBeams();
+            }
 
             Vector3 resultingVector = GetComponent<EnemyScript>().getparent().position - transform.position;
             resultingVector.y = 0;
@@ -913,7 +929,10 @@ public class EnemyScript : MonoBehaviour
     public void abouttoattackUpdate()
     {
         GetComponent<BoxCollider>().enabled = true;
-        GetComponentInChildren<Animator>().SetBool("chasingPlayer", true);
+        if (enemy_type != EnemyType.CHARGER)
+        {
+            GetComponentInChildren<Animator>().SetBool("chasingPlayer", true);
+        }
         GetComponentInChildren<SpriteRenderer>().color = Color.white;
         attackhitbox.GetComponent<BoxCollider>().enabled = false;
 
@@ -1014,7 +1033,7 @@ public class EnemyScript : MonoBehaviour
     {
         attackhitbox.GetComponent<BoxCollider>().enabled = false;
 
-        getparent().GetComponent<Spawner>().resetSpawnerTimer(5, false);
+        //getparent().GetComponent<Spawner>().resetSpawnerTimer(5, false);
 
         if (currentHealth == 0)
         {
