@@ -27,7 +27,7 @@ public class Mixer : MonoBehaviour
     bool QTEDone;
 
     // to check stuff
-    bool QTEActive;
+    bool QTEActive = true;
     bool MixerActive = true;
 
     // List that contains the ingredients inputted into the mixer
@@ -39,7 +39,6 @@ public class Mixer : MonoBehaviour
         CanPutIntoMixer = true;
         MixerDone = false;
         QTEDone = false;
-        QTEActive = true;
     }
 
     public void InteractWithMixer()
