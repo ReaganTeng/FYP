@@ -76,6 +76,11 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] LayerMask enemyLM;
     [SerializeField] Animator animator;
     [SerializeField] AnimationClip attackanimation;
+
+    [SerializeField] AnimationClip attackanimation_spatula;
+    [SerializeField] AnimationClip attackanimation_pin;
+
+
     [SerializeField] PlayerProgress pp;
 
     void Start()
@@ -239,7 +244,22 @@ public class PlayerAttack : MonoBehaviour
                     //attacking = true;
                     attackingtimer = attackingtime;
                     depletecharge();
-                    click_timer = attackanimation.length;
+
+                    if (
+                    currentweapon == Weapon.KNIFE)
+                    {
+
+                        click_timer = attackanimation.length;
+                    }
+                    else if (
+                    currentweapon == Weapon.ROLLINGPIN)
+                    {
+                        click_timer = attackanimation_pin.length;
+                    }
+                    else
+                    {
+                        click_timer = attackanimation_spatula.length;
+                    }
                 }
                 //
             }
@@ -250,8 +270,20 @@ public class PlayerAttack : MonoBehaviour
             {
                 //if is reaches 50% of the attack animation
                 click_timer -= Time.deltaTime;
-                if (click_timer <= (attackanimation.length  *.5f)
+
+                //SPATULA, //0
+                //ROLLINGPIN, //2
+
+                if (
+                    (currentweapon == Weapon.KNIFE &&  click_timer <= (attackanimation.length  *.5f)
                     / pp.return_heavyattackspeed())
+                    ||
+                     (currentweapon == Weapon.ROLLINGPIN && click_timer <= (attackanimation_pin.length * .25f)
+                    / pp.return_heavyattackspeed())
+                    ||
+                     (currentweapon == Weapon.SPATULA && click_timer <= (attackanimation_spatula.length * .5f)
+                    / pp.return_heavyattackspeed())
+                    )
                 {
                     animator.speed = pp.return_heavyattackspeed();
                     attacking = true;
