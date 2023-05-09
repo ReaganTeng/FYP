@@ -110,7 +110,7 @@ public class Recipes : MonoBehaviour
             mushy.GetComponent<RefinedItem>().SetValues(Mushy.GetComponent<RefinedItem>());
 
 
-            return Mushy;
+            return mushy;
         }
         else
         {
@@ -118,7 +118,7 @@ public class Recipes : MonoBehaviour
             susDish.GetComponent<Food>().SetValues(Sus_Dish.GetComponent<Food>());
             susDish.GetComponent<Dish>().SetValues(Sus_Dish.GetComponent<Dish>());
 
-            return Sus_Dish;
+            return susDish;
         }
     }
 

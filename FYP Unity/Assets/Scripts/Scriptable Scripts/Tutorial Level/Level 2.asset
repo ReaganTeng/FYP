@@ -216,10 +216,26 @@ MonoBehaviour:
   - TextDisplay: ~Serve the Apolo dango~
     conditions: 16
     TimeTillPromptSkip: 3
-  - TextDisplay: "That\u2019s a lot to process right? Too bad. Get used to it, good
-      luck for day 2."
+  - TextDisplay: "That\u2019s a lot to process right? Too bad. Get used to it."
     conditions: 0
     TimeTillPromptSkip: 3
-  - TextDisplay: ...
+  - TextDisplay: Let's put you into the test
+    conditions: 0
+    TimeTillPromptSkip: 1
+  - TextDisplay: ~Get at least a minimum of 50 score from these orders~
     conditions: 32
+    TimeTillPromptSkip: 3
+  - TextDisplay: I don't know if you are slacking or just bad. But is this a joke?
+      Try again!
+    conditions: 0
+    TimeTillPromptSkip: 3
+  - TextDisplay: angy
+    conditions: 13
+    TimeTillPromptSkip: 3
+  - TextDisplay: Ok, you have learnt enough. Be on time tomorow for ur actual day
+      service.
+    conditions: 0
+    TimeTillPromptSkip: 3
+  - TextDisplay: owo
+    conditions: 33
     TimeTillPromptSkip: 3

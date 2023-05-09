@@ -119,4 +119,10 @@ public class Spawner : MonoBehaviour
 
         return enemyObject;
     }
+
+    public void ModifySpawner(int amtSpawnPerInterval, float timeInterval)
+    {
+        enemies_per_spawn = amtSpawnPerInterval;
+        interval = timeInterval;
+    }
 }

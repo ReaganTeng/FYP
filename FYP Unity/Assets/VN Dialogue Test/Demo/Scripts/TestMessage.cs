@@ -7,33 +7,67 @@ using Doublsb.Dialog;
 public class TestMessage : MonoBehaviour
 {
     public DialogManager DialogManager;
-    public SceneName SceneNo;
+    SceneName SceneNo;
+    TutorialSceneName TutSceneNo;
     [SerializeField] LevelManager LM;
 
-    public enum SceneName {
-        INTRO,
-        DAY1TO2,
-        DAY2TOGAME,
-        TOTAL
+    enum TutorialSceneName
+    {
+        DAY1VN, // tutorial
+        DAY2VN, // tutorial
+        EDAY2VN, // tutorial
+    }
+
+    enum SceneName
+    {
+
     }
 
     private void Awake()
     {
-        if ((int)SceneNo <= LM.DaySelected)
-            SceneNo = (SceneName)(LM.DaySelected - 1);
-
-        switch(SceneNo)
+        // if it is tutorial levels, load those scene instead
+        if (LM.TutorialStage)
         {
-            case SceneName.INTRO:
-                introduction();
-                break;
-            case SceneName.DAY1TO2:
-                day1to2();
-                break;
-            case SceneName.DAY2TOGAME:
-                day2togame();
-                break;
-                
+            TutSceneNo = (TutorialSceneName)(LM.DaySelected - 1);
+            switch (TutSceneNo)
+            {
+                case TutorialSceneName.DAY1VN:
+                    {
+                        intro();
+                        break;
+                    }
+                case TutorialSceneName.DAY2VN:
+                    {
+                        tut2vn();
+                        break;
+                    }
+                case TutorialSceneName.EDAY2VN:
+                    {
+                        tut2end();
+                        break;
+                    }
+
+            }
+        }
+
+        // if it is not tutorial levels, load normal level VN instead
+        else
+        {
+            if ((int)SceneNo <= LM.DaySelected)
+                SceneNo = (SceneName)(LM.DaySelected - 1);
+
+            //switch (SceneNo)
+            //{
+            //    case SceneName.INTRO:
+            //        introduction();
+            //        break;
+            //    case SceneName.DAY1TO2:
+            //        day1to2();
+            //        break;
+            //    case SceneName.DAY2TOGAME:
+            //        day2togame();
+            //        break;
+            //}
         }
     }
 
@@ -69,7 +103,7 @@ public class TestMessage : MonoBehaviour
     //}
 
 
-    private void introduction()
+    private void intro()
     {
         var dialogTexts = new List<DialogData>();
 
@@ -122,7 +156,7 @@ public class TestMessage : MonoBehaviour
         
     }
 
-    private void day1to2()
+    private void tut2vn()
     {
         var dialogTexts = new List<DialogData>();
 
@@ -164,9 +198,15 @@ public class TestMessage : MonoBehaviour
         DialogManager.Show(dialogTexts);
     }
 
-    private void day2togame()
+    private void tut2end()
     {
+        var dialogTexts = new List<DialogData>();
 
+        dialogTexts.Add(new DialogData("Temp placeholder", "Knip"));
+
+        dialogTexts.Add(new DialogData("Bye Bye!", "Ramsay", () => SceneManager.LoadScene("Level Select")));
+
+        DialogManager.Show(dialogTexts);
     }
 
 

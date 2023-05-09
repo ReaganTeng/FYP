@@ -6,8 +6,10 @@ using UnityEngine;
 public class LevelManager : ScriptableObject
 {
     public List<Level> levelInfo;
-
     public int DaySelected;
+
+    public List<Level> TutorialLevel;
+    public bool TutorialStage = false;
 
     public void ResetGameLevel()
     {
