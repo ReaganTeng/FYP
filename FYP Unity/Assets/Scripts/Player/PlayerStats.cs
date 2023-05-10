@@ -181,17 +181,37 @@ public class PlayerStats : MonoBehaviour
             {
                 ResetConsecutiveHit();
                 numberConsecutiveHits = 0;
-                alpha_change = 0;
+            }
+            
+
+            if (combo_timer > 0)
+            {
+                combo_timer -= Time.deltaTime;
+                alpha_change += /*.4f */ /* numberConsecutiveHits*/ /** */Time.deltaTime;            
             }
             else
             {
-                alpha_change += .1f  * numberConsecutiveHits * Time.deltaTime;
-                combo_timer -=  Time.deltaTime;
+                numberConsecutiveHits = 0;
+                combo_timer = 0;
+                alpha_change = 0;
+                
             }
 
-            if(combo_timer < 0)
+            //change the alpha of ranksprite
+            var alphaval = RankSprite.GetComponent<Image>().color;
+            if (alpha_change > 0)
             {
+                alphaval.a = 1.0f / alpha_change;
+                RankSprite.GetComponent<Image>().color = alphaval;
+            }
+            else
+            {
+                alphaval.a = 0;
+                RankSprite.GetComponent<Image>().color = alphaval;
+            }
 
+            if (combo_timer < 0)
+            {
                 combo_timer = 0;
             }
 
@@ -209,7 +229,10 @@ public class PlayerStats : MonoBehaviour
                 }
             }
 
-                if (HitText != null)
+           
+
+
+            if (HitText != null)
             {
                 if (numberConsecutiveHits > 0)
                 {
@@ -239,18 +262,7 @@ public class PlayerStats : MonoBehaviour
             }
 
 
-            //change the alpha of ranksprite
-            var alphaval = RankSprite.GetComponent<Image>().color;
-            if (alpha_change > 0)
-            {
-                alphaval.a = 1.0f / alpha_change;
-                RankSprite.GetComponent<Image>().color = alphaval;
-            }
-            else
-            {
-                alphaval.a = 0;
-                RankSprite.GetComponent<Image>().color = alphaval;
-            }
+            
         }
         else
         {
@@ -347,6 +359,7 @@ public class PlayerStats : MonoBehaviour
             decidecombotimer(ConsecutiveHit_Stage1,
                     ConsecutiveHit_Stage2,
                     15.9f, F_Rank);
+
             //between 10 and 15
             decidecombotimer(ConsecutiveHit_Stage2,
                 ConsecutiveHit_Stage3,
@@ -400,8 +413,8 @@ public class PlayerStats : MonoBehaviour
                 fervor2Add = 0;
             }
 
-            numberConsecutiveHits = 0;
-            combo_timer = 0;
+            //numberConsecutiveHits = 0;
+            //combo_timer = 0;
         }
 
         //Debug.Log("CON " + numberConsecutiveHits);
