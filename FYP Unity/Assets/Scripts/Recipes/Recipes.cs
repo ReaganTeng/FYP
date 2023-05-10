@@ -108,7 +108,7 @@ public class Recipes : MonoBehaviour
             GameObject mushy = Instantiate(emptyPrefab, mixerReference.transform);
             mushy.GetComponent<Food>().SetValues(Mushy.GetComponent<Food>());
             mushy.GetComponent<RefinedItem>().SetValues(Mushy.GetComponent<RefinedItem>());
-
+            Destroy(mushy.GetComponent<Dish>());
 
             return mushy;
         }
@@ -117,6 +117,7 @@ public class Recipes : MonoBehaviour
             GameObject susDish = Instantiate(emptyPrefab, mixerReference.transform);
             susDish.GetComponent<Food>().SetValues(Sus_Dish.GetComponent<Food>());
             susDish.GetComponent<Dish>().SetValues(Sus_Dish.GetComponent<Dish>());
+            Destroy(susDish.GetComponent<RefinedItem>());
 
             return susDish;
         }

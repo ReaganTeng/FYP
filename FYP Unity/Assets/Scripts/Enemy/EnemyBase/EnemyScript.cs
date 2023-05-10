@@ -15,15 +15,14 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] LayerMask lm_2;
     [SerializeField] LayerMask player_lm;
 
-    [SerializeField] int EnemyHealth/* = 10*/;
+    [SerializeField] int EnemyHealth; // the base health of the enemy
+    int currentHealth; // the current health of the enemy
     [SerializeField] float AttackDamage;
     [SerializeField] GameObject prepPrefab;
     [SerializeField] GameObject choppedPefab;
     [SerializeField] GameObject smashedPrefab;
     [SerializeField] GameObject Mush;
-    float currentHealth;
     [SerializeField] GameObject attackhitbox;
-
 
     float rand_x;
     float rand_y;
@@ -1049,11 +1048,12 @@ public class EnemyScript : MonoBehaviour
 
     public int GetEnemyHealth()
     {
-        return EnemyHealth;
+        return currentHealth;
     }
 
     public void SetEnemyHealth(int enemyHealth)
     {
         EnemyHealth = enemyHealth;
+        currentHealth = EnemyHealth;
     }
 }

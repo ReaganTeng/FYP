@@ -10,6 +10,7 @@ public class PlayerPickup : MonoBehaviour
     public bool DisableControls = false;
     public bool CannotInteractWithDustbin = false;
     public bool CannotPickUpItems = false;
+    int selectedScroll = 1;
 
     private void Start()
     {
@@ -128,45 +129,40 @@ public class PlayerPickup : MonoBehaviour
             }
 
             // switch between selected items
-            if (Input.GetKeyDown(KeyCode.Alpha1))
+            if (Input.GetAxisRaw("Mouse ScrollWheel") != 0)
             {
-                ic.ChangeSelectedHotBar(0);
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                ic.ChangeSelectedHotBar(1);
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha3))
-            {
-                ic.ChangeSelectedHotBar(2);
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha4))
-            {
-                ic.ChangeSelectedHotBar(3);
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha5))
-            {
-                ic.ChangeSelectedHotBar(4);
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha6))
-            {
-                ic.ChangeSelectedHotBar(5);
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha7))
-            {
-                ic.ChangeSelectedHotBar(6);
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha8))
-            {
-                ic.ChangeSelectedHotBar(7);
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha9))
-            {
-                ic.ChangeSelectedHotBar(8);
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha0))
-            {
-                ic.ChangeSelectedHotBar(9);
+                // if it exceed the max due to removal of item, set it to the correct value
+                if (selectedScroll > Inventory.instance.GetList().Count)
+                    selectedScroll = Inventory.instance.GetList().Count;
+
+                //selectedScroll -= (int)Input.mouseScrollDelta.y;
+
+                float scrollwhat = Input.GetAxisRaw("Mouse ScrollWheel");
+                if (scrollwhat > 0)
+                    selectedScroll -= 1;
+                else if (scrollwhat < 0)
+                    selectedScroll += 1;
+
+                // if the inventory is not empty
+                if (Inventory.instance.GetList().Count > 0)
+                {
+                    // if scroll out of bound, below 1, warp to last one
+                    if (selectedScroll <= 0)
+                    {
+                        selectedScroll = Inventory.instance.GetList().Count;
+                    }
+                    // if scroll out of bound, above max item amt, warp to the first one
+                    if (selectedScroll > Inventory.instance.GetList().Count)
+                    {
+                        selectedScroll = 1;
+                    }
+
+                    ic.ChangeSelectedHotBar(selectedScroll - 1);
+                }
+                else
+                {
+                    selectedScroll = 1;
+                }
             }
         }
     }

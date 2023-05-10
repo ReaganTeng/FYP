@@ -92,7 +92,6 @@ public class Tutorial : MonoBehaviour
         HEAD_TO_RAISUU,
         DAY2_OBJECTIVE,
         DAY2_DONE,
-        EXTRA_SECURITY,
     }
 
     List<TutorialPopUp> tut = new List<TutorialPopUp>();
@@ -551,7 +550,7 @@ public class Tutorial : MonoBehaviour
                         GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerAttack>().SetCanDoHeavyAttack(true);
                     }
 
-                    if (objectReference != null && objectReference.GetComponent<EnemyScript>().GetEnemyHealth() > 0 && objectReference.GetComponent<EnemyScript>().GetEnemyHealth() < 3)
+                    if (objectReference != null && objectReference.GetComponent<EnemyScript>().GetEnemyHealth() > 0 && objectReference.GetComponent<EnemyScript>().GetEnemyHealth() < 8)
                     {
                         objectReference.GetComponent<EnemyScript>().SetEnemyHealth(8);
                     }
@@ -860,14 +859,6 @@ public class Tutorial : MonoBehaviour
                 {
                     lm.DaySelected = 3;
                     SceneManager.LoadScene("VNScene");
-                    break;
-                }
-
-            case Instructions.EXTRA_SECURITY:
-                {
-                    ResetRun();
-                    ResetRun();
-                    ConditionTriggered = true;
                     break;
                 }
         }
