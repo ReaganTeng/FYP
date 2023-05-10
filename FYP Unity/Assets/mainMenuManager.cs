@@ -19,12 +19,15 @@ public class mainMenuManager : MonoBehaviour
     public void NewGame()
     {
         LM.DaySelected = 1;
+        LM.TutorialStage = true;
         SceneManager.LoadScene("VNScene");
     }
     public void LoadGame()
     {
         if (PlayerPrefs.GetInt("TutorialComplete") == 0)
         {
+            LM.DaySelected = 1;
+            LM.TutorialStage = true;
             SceneManager.LoadScene("VNScene");
         }
 

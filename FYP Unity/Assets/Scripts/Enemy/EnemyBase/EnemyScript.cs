@@ -15,15 +15,14 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] LayerMask lm_2;
     [SerializeField] LayerMask player_lm;
 
-    [SerializeField] int EnemyHealth/* = 10*/;
+    [SerializeField] int EnemyHealth; // the base health of the enemy
+    int currentHealth; // the current health of the enemy
     [SerializeField] float AttackDamage;
     [SerializeField] GameObject prepPrefab;
     [SerializeField] GameObject choppedPefab;
     [SerializeField] GameObject smashedPrefab;
     [SerializeField] GameObject Mush;
-    float currentHealth;
     [SerializeField] GameObject attackhitbox;
-
 
     float rand_x;
     float rand_y;
@@ -50,6 +49,7 @@ public class EnemyScript : MonoBehaviour
 
     int attack_type;
 
+    int setzoneno;
 
     float post_attack_duration;
     bool updating;
@@ -193,6 +193,9 @@ public class EnemyScript : MonoBehaviour
         attackhitbox.GetComponent<BoxCollider>().enabled = false ;
        
         BoundaryCheck();
+
+        setzoneno = zoneno;
+
         timer = 0.0f;
 
         ray_distances = new List<float>();
@@ -353,6 +356,8 @@ public class EnemyScript : MonoBehaviour
 
     private void Update()
     {
+
+        //Debug.Log(setzoneno);
         gamemanager = GameObject.FindGameObjectWithTag("GameManager");
 
         hitbox = GameObject.FindGameObjectWithTag("Attack");
@@ -402,6 +407,12 @@ public class EnemyScript : MonoBehaviour
                     GetComponent<ChargerScript>().DestroyBeams();
                 }
 
+                if(enemy_type == EnemyType.JUMPER)
+                {
+                    GetComponentInChildren<SpriteRenderer>().transform.position = transform.position + new Vector3(0.0f, 0.66f, 0.0f);
+
+                }
+
                 //GetComponentInChildren<SpriteRenderer>().color = Color.black;
                 //Debug.Log("AVOID");
                 GetComponentInChildren<Animator>().SetBool("chasingPlayer", true);
@@ -422,8 +433,26 @@ public class EnemyScript : MonoBehaviour
                 }
 
                 //gamemanager.GetComponent<EnemyManager>().setupdating(true);
-                rand_x = Random.Range(-6, 7);
-                rand_y = Random.Range(-6, 7);
+                int rand_range_x = Random.Range(0, 11);
+                int rand_range_y = Random.Range(0, 11);
+
+                if (rand_range_x % 2 == 0)
+                {
+                    rand_x = Random.Range(-7, -6);
+                }
+                else
+                {
+                    rand_x = Random.Range(5, 7);
+                }
+
+                if (rand_range_y % 2 == 0)
+                {
+                    rand_y = Random.Range(-7, -6);
+                }
+                else
+                {
+                    rand_y = Random.Range(5, 7);
+                }
             }
 
 
@@ -483,8 +512,8 @@ public class EnemyScript : MonoBehaviour
                     //}
                     //
 
-
-                    if (GetComponentInChildren<Animator>().GetBool("attack"))
+                    if (GetComponentInChildren<Animator>().GetBool("attack") &&
+                        GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("attack"))
                     {
                         transitionFromAttackTimer += Time.deltaTime;
 
@@ -493,8 +522,11 @@ public class EnemyScript : MonoBehaviour
                             shoot();
                         }
 
+                        //GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f
                         if (transitionFromAttackTimer >=
                         currentAnimationLength)
+                            //if (
+                            //GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
                         {
                             if (projectile_shots >= projectile_numbers)
                             {
@@ -507,7 +539,7 @@ public class EnemyScript : MonoBehaviour
                             {
                                 shoot();
                             }
-
+                            //Debug.Log("SHOOT");
                             transitionFromAttackTimer = 0.0f;
                         }
                     }
@@ -535,14 +567,18 @@ public class EnemyScript : MonoBehaviour
             //}
 
         }
-        else
+        else if(zoneno != player.GetComponent<PlayerZoneCheck>().getZoneno()
+            || zoneno != setzoneno)
         {
 
             updating = false;
         }
+
+
         if (updating == false)
         {
             //GetComponent<NavMeshAgent>().enabled = false;
+            GetComponentInChildren<SpriteRenderer>().color = Color.white;
 
             if (enemy_type == EnemyType.CHARGER)
             {
@@ -672,7 +708,7 @@ public class EnemyScript : MonoBehaviour
 
         //if (projectile_shots == 0)
         //{
-            GetComponentInChildren<Animator>().SetBool("attack", true);
+            //GetComponentInChildren<Animator>().SetBool("attack", true);
             projectile = Instantiate(projectileGO,
             new Vector3(transform.position.x, transform.position.y + 1.0f, transform.position.z),
             Quaternion.Euler(0, 0, 0));
@@ -1049,11 +1085,12 @@ public class EnemyScript : MonoBehaviour
 
     public int GetEnemyHealth()
     {
-        return EnemyHealth;
+        return currentHealth;
     }
 
     public void SetEnemyHealth(int enemyHealth)
     {
         EnemyHealth = enemyHealth;
+        currentHealth = EnemyHealth;
     }
 }

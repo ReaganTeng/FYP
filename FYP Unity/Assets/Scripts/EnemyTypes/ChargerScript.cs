@@ -187,8 +187,6 @@ public class ChargerScript : MonoBehaviour
                 case EnemyScript.Phases.ABOUT_TO_ATTACK:
                     {
                         navMeshAgent.enabled = true;
-                        //GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
-
 
                         if (enemyScript.return_attackptn() != EnemyScript.AttackPattern.PATTERN_3)
                         {
@@ -213,8 +211,6 @@ public class ChargerScript : MonoBehaviour
 
                             }
                             //
-
-
                             pivot.transform.LookAt(
                                     new Vector3(ending_location.position.x, transform.position.y, ending_location.position.z));
                         }
@@ -226,8 +222,6 @@ public class ChargerScript : MonoBehaviour
                             GetComponent<Rigidbody>().velocity = resultingVector;
                             //
                         }
-                        //Debug.Log("CHARGER VELOCITY " + GetComponent<Rigidbody>().velocity);
-
                         //enemyScript.steering();
                         //enemyScript.steering_3();
                         //enemyScript.avoidanceCode(rand_z);

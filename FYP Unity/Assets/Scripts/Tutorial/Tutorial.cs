@@ -70,13 +70,13 @@ public class Tutorial : MonoBehaviour
         PICK_UP_DROPS,
         PROCEED_TO_KITCHEN,
         PICK_UP_SCENE_POTATO,
-        SET_RAISU_ACTIVE,
-        GRAB_REFINED_INGREDIENT,
+        SET_RAISU_ACTIVE, // d2
+        RESET_DAY_2_OBJECTIVE, // d2
         MAKE_AND_GET_REFINED_INGREDIENT,
         MAKE_A_DISH,
         SERVE_THE_DISH,
-        OPEN_HALLWAY,
-        SKIP_TUTORIAL,
+        DAY_ONE_OBJECTIVE,
+        DAY_ONE_DONE,
         POTATO_SALAD_COME_IN,
         DO_HEAVY_ATTACK,
         OOTATOO_DROP_CHECK,
@@ -90,7 +90,8 @@ public class Tutorial : MonoBehaviour
         KILL_APOLO_CORRECT,
         GET_FLOUR,
         HEAD_TO_RAISUU,
-        GAME_CONTINUE,
+        DAY2_OBJECTIVE,
+        DAY2_DONE,
     }
 
     List<TutorialPopUp> tut = new List<TutorialPopUp>();
@@ -99,11 +100,11 @@ public class Tutorial : MonoBehaviour
     {
         instance = this;
 
-        // If a tutorial exist and player has not gone thru a tutorial yet, set it as a tutorial
-        if (lm.levelInfo[lm.DaySelected - 1].isThereTutorial != null && PlayerPrefs.GetInt("TutorialComplete") == 0)
+        // If it is a tutorial level
+        if (lm.TutorialStage)
         {
             InTutorial = true; // Set to be a tutorial
-            tut = lm.levelInfo[lm.DaySelected - 1].isThereTutorial.DialogueAndInstructions; // Load in all the dialogues
+            tut = lm.TutorialLevel[lm.DaySelected - 1].isThereTutorial.DialogueAndInstructions; // Load in all the dialogues
             // Get the component for the dialogue chatbox
             SquidText = SquidChatBox.GetComponentInChildren<TextMeshProUGUI>();
             skipPromptText = SkipPrompt.GetComponent<TextMeshProUGUI>();
@@ -278,7 +279,6 @@ public class Tutorial : MonoBehaviour
                         GeneralTimer = DelayTime;
                         gm.GetComponent<OrderSystem>().SetWaitingTime(10000000);
                         gm.GetComponent<OrderSystem>().CreateAnOrder();
-                        gm.GetComponent<OrderSystem>().SetWaitingTime();
                     }
 
                     GeneralTimer -= Time.deltaTime;
@@ -324,6 +324,7 @@ public class Tutorial : MonoBehaviour
                         gm.GetComponent<UnlockHallway>().OpenHallway(LevelHallway.Hallway.KITCHEN_TO_OOTATOO);
                         whichHallway = LevelHallway.Hallway.KITCHEN_TO_OOTATOO;
                     }
+
                     if (ootatooCollider.GetComponent<InZone>().GetIsPlayerInZone())
                     {
                         gm.GetComponent<UnlockHallway>().LockHallway(whichHallway);
@@ -480,31 +481,41 @@ public class Tutorial : MonoBehaviour
                     break;
                 }
 
-            case Instructions.OPEN_HALLWAY:
+            case Instructions.DAY_ONE_OBJECTIVE:
                 {
-                    gm.GetComponent<UnlockHallway>().OpenHallway(LevelHallway.Hallway.KITCHEN_TO_OOTATOO);
-                    SpawnerManager.instance.SetSpawner(SpawnerManager.SPAWNERTYPE.OOTATOO, true);
-                    ConditionTriggered = true;
-                    ResetScore();
-                    MixerManager.instance.ToggleMixers(true);
+                    if (RunOnce())
+                    {
+                        gm.GetComponent<UnlockHallway>().OpenHallway(LevelHallway.Hallway.KITCHEN_TO_OOTATOO);
+                        SpawnerManager.instance.SetSpawner(SpawnerManager.SPAWNERTYPE.OOTATOO, true);
+                        SpawnerManager.instance.GetSpawner(SpawnerManager.SPAWNERTYPE.OOTATOO).GetComponent<Spawner>().ModifySpawner(4, 2);
+                        MixerManager.instance.ToggleMixers(true);
+                        for (int i = 0; i < 4; i++)
+                        {
+                            gm.GetComponent<OrderSystem>().CreateAnOrder();
+                        }
+                        numReference = gm.GetComponent<OrderSystem>().GetSuccessfulOrders();
+                    }
+
+                    if (gm.GetComponent<OrderSystem>().GetOrderCount() == 0)
+                    {
+                        ConditionTriggered = true;
+                    }
 
                     break;
                 }
 
-            case Instructions.SKIP_TUTORIAL:
+            case Instructions.DAY_ONE_DONE:
                 {
-                    if (Input.GetKeyDown(KeyCode.Y))
+                    // if tutorial hasnt been completed yet, bring them to the next visual novel scene
+                    if (PlayerPrefs.GetInt("TutorialComplete") == 0)
                     {
-                        // skip tutorial next time player comes back
-                        ConditionTriggered = true;
-                        InTutorial = false;
-                        PlayerPrefs.SetInt("TutorialComplete", 1);
-                        SceneManager.LoadScene("Level Select");
+                        lm.DaySelected = 2;
+                        SceneManager.LoadScene("VNScene");
                     }
-
-                    else if (Input.GetKeyDown(KeyCode.N))
+                    // if the tutorial has been completed, bring them to the Level Select Screen
+                    else
                     {
-                        ConditionTriggered = true;
+                        SceneManager.LoadScene("Level Select");
                     }
                     break;
                 }
@@ -539,7 +550,7 @@ public class Tutorial : MonoBehaviour
                         GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerAttack>().SetCanDoHeavyAttack(true);
                     }
 
-                    if (objectReference != null && objectReference.GetComponent<EnemyScript>().GetEnemyHealth() > 0 && objectReference.GetComponent<EnemyScript>().GetEnemyHealth() < 3)
+                    if (objectReference != null && objectReference.GetComponent<EnemyScript>().GetEnemyHealth() > 0 && objectReference.GetComponent<EnemyScript>().GetEnemyHealth() < 8)
                     {
                         objectReference.GetComponent<EnemyScript>().SetEnemyHealth(8);
                     }
@@ -798,16 +809,56 @@ public class Tutorial : MonoBehaviour
                     break;
                 }
 
-            case Instructions.GAME_CONTINUE:
+            case Instructions.DAY2_OBJECTIVE:
                 {
-                    gm.GetComponent<UnlockHallway>().OpenHallway(LevelHallway.Hallway.KITCHEN_TO_AAPOLO);
-                    SpawnerManager.instance.SetSpawner(SpawnerManager.SPAWNERTYPE.OOTATOO, true);
-                    SpawnerManager.instance.SetSpawner(SpawnerManager.SPAWNERTYPE.AAPOLO, true);
-                    ResetScore();
+                    if (RunOnce())
+                    {
+                        gm.GetComponent<UnlockHallway>().OpenHallway(LevelHallway.Hallway.KITCHEN_TO_OOTATOO);
+                        gm.GetComponent<UnlockHallway>().OpenHallway(LevelHallway.Hallway.OOTATOO_TO_RAISUU);
+                        gm.GetComponent<UnlockHallway>().OpenHallway(LevelHallway.Hallway.KITCHEN_TO_AAPOLO);
+                        SpawnerManager.instance.SetSpawner(SpawnerManager.SPAWNERTYPE.OOTATOO, true);
+                        SpawnerManager.instance.SetSpawner(SpawnerManager.SPAWNERTYPE.AAPOLO, true);
+                        MixerManager.instance.ToggleMixers(true);
+                        IngredientBarrelManager.instance.TutorialIngredientBarrel(IngredientBarrelManager.BarrelTypes.FLOUR, false);
+                        IngredientBarrelManager.instance.ToggleIngredientBarrel(true);
+                        OrderSystem os = gm.GetComponent<OrderSystem>();
+                        os.SetWaitingTime(100000);
+                        gm.GetComponent<EndOfDay>().ResetScore();
+
+                        for (int i = 0; i < 2; i++)
+                        {
+                            os.CreateAnOrder(0);
+                            os.CreateAnOrder(1);
+                        }
+                    }
+
+                    // if the player finished serving all the orders
+                    if (gm.GetComponent<OrderSystem>().GetOrderCount() == 0)
+                    {
+                        // if the score player obtained is greater or equal to 50 make them go to VN, else reset the objective
+                        if (gm.GetComponent<EndOfDay>().GetScore() >= 50)
+                            currentIndex += 2;
+
+                        ConditionTriggered = true;
+                        ResetRun();
+
+                        // NOTE: REMOVE THIS COMMAND AND THE LINE AFTER THIS WHEN DOING VISUAL NOVEL
+                        PlayerPrefs.SetInt("TutorialComplete", 1);
+                    }
+                    break;
+                }
+
+            case Instructions.RESET_DAY_2_OBJECTIVE:
+                {
+                    currentIndex -= 3;
                     ConditionTriggered = true;
-                    MixerManager.instance.ToggleMixers(true);
-                    // NOTE: REMOVE THIS COMMAND AND THE LINE AFTER THIS WHEN DOING VISUAL NOVEL
-                    PlayerPrefs.SetInt("TutorialComplete", 1);
+                    break;
+                }
+
+            case Instructions.DAY2_DONE:
+                {
+                    lm.DaySelected = 3;
+                    SceneManager.LoadScene("VNScene");
                     break;
                 }
         }
@@ -836,10 +887,10 @@ public class Tutorial : MonoBehaviour
 
     void SpecialChange(int theCurrentIndex, int starAmt)
     {
-        lm.levelInfo[lm.DaySelected - 1].isThereTutorial.DialogueAndInstructions[theCurrentIndex].TextDisplay =
+        lm.TutorialLevel[lm.DaySelected - 1].isThereTutorial.DialogueAndInstructions[theCurrentIndex].TextDisplay =
             "As you can see, your dish has " + starAmt + " star quality.";
 
-        lm.levelInfo[lm.DaySelected - 1].isThereTutorial.DialogueAndInstructions[theCurrentIndex + 1].TextDisplay =
+        lm.TutorialLevel[lm.DaySelected - 1].isThereTutorial.DialogueAndInstructions[theCurrentIndex + 1].TextDisplay =
             "2 from perfect mashed potato cup and " + (starAmt-2).ToString() + "from QTE.";
     }
 
@@ -862,10 +913,5 @@ public class Tutorial : MonoBehaviour
         }
 
         return false;
-    }
-
-    void ResetScore()
-    {
-        gm.GetComponent<EndOfDay>().ResetScore();
     }
 }
