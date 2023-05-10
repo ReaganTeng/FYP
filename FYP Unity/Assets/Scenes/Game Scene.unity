@@ -2893,7 +2893,7 @@ Camera:
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
-  m_HDR: 1
+  m_HDR: 0
   m_AllowMSAA: 1
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
@@ -6301,6 +6301,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 9, y: 4, z: 9}
   m_Center: {x: 0, y: 2, z: 0}
+--- !u!1 &1559172825 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7796120739152382758, guid: ca82672a69380f543913b71cd9083a02, type: 3}
+  m_PrefabInstance: {fileID: 449119655}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1559172827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1559172825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d44bec772ae9327499b201b022c9062a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xOffset: 0
 --- !u!1001 &1592779411
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6462,6 +6480,20 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6364222390018840587, guid: f57af34aa46580e4680221107f5a70d0, type: 3}
   m_PrefabInstance: {fileID: 1667161445}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1669105423 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5998096662004368452, guid: 9c7efa639b08fad488193ca3c0ad2cbe, type: 3}
+  m_PrefabInstance: {fileID: 1010130674}
+  m_PrefabAsset: {fileID: 0}
+--- !u!45 &1669105426
+Skybox:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1669105423}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 0}
 --- !u!1 &1674660540 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4310913063914309595, guid: 0d81f757dbf9ecc42b4e945194a01914, type: 3}
