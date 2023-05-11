@@ -43,6 +43,14 @@ public class ItemManager : MonoBehaviour
         TOTAL, //32
     }
 
+    public enum ItemVariant
+    {
+        CHOPPED,
+        MASHED,
+        PREP,
+        DRAWER,
+    }
+
     public Items GetItemType(int itemID)
     {
         return (Items)itemID;

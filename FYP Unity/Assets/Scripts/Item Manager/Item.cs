@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Item : MonoBehaviour
 {
     [SerializeField] ItemManager.Items itemtype;
+    [SerializeField] ItemManager.ItemVariant itemVariant;
     [SerializeField] Sprite image;
     private int itemID;
 
@@ -34,5 +35,10 @@ public class Item : MonoBehaviour
     {
         itemtype = theItem;
         image = theImage;
+    }
+
+    public ItemManager.ItemVariant GetItemVariant()
+    {
+        return itemVariant;
     }
 }
