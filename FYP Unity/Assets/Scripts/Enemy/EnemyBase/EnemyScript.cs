@@ -164,6 +164,7 @@ public class EnemyScript : MonoBehaviour
     GameObject gamemanager;
     void Start()
     {
+        currentHealth = EnemyHealth;
 
         gamemanager = GameObject.FindGameObjectWithTag("GameManager");
 
@@ -187,7 +188,6 @@ public class EnemyScript : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         transitionFromHurtTimer = 0.0f;
 
-        currentHealth = EnemyHealth;
         healthbar.maxValue = currentHealth;
         healthbar.minValue = 0;
 
@@ -359,10 +359,6 @@ public class EnemyScript : MonoBehaviour
     {
 
         //Debug.Log(setzoneno);
-        gamemanager = GameObject.FindGameObjectWithTag("GameManager");
-
-        hitbox = GameObject.FindGameObjectWithTag("Attack");
-        player = GameObject.FindGameObjectWithTag("Player");
 
         currentAnimationLength = GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).length;
         //healthtext.text = EnemyHealth.ToString();
@@ -393,8 +389,8 @@ public class EnemyScript : MonoBehaviour
         }
         //
 
-        zone = GameObject.FindGameObjectsWithTag("Zone");
         BoundaryCheck();
+
         //Debug.Log(zoneno);
         if (zoneno == player.GetComponent<PlayerZoneCheck>().getZoneno())
         {
@@ -414,7 +410,7 @@ public class EnemyScript : MonoBehaviour
 
                 }
 
-                //GetComponentInChildren<SpriteRenderer>().color = Color.black;
+                GetComponentInChildren<SpriteRenderer>().color = Color.black;
                 //Debug.Log("AVOID");
                 GetComponentInChildren<Animator>().SetBool("chasingPlayer", true);
                 GetComponent<NavMeshAgent>().speed = 2.0f;
@@ -426,7 +422,7 @@ public class EnemyScript : MonoBehaviour
             }
             else
             {
-                //GetComponentInChildren<SpriteRenderer>().color = Color.white;
+                GetComponentInChildren<SpriteRenderer>().color = Color.white;
 
                 if(enemy_type == EnemyType.CHARGER)
                 {
@@ -439,20 +435,20 @@ public class EnemyScript : MonoBehaviour
 
                 if (rand_range_x % 2 == 0)
                 {
-                    rand_x = Random.Range(-7, -6);
+                    rand_x = Random.Range(-6, -2);
                 }
                 else
                 {
-                    rand_x = Random.Range(5, 7);
+                    rand_x = Random.Range(3, 6);
                 }
 
                 if (rand_range_y % 2 == 0)
                 {
-                    rand_y = Random.Range(-7, -6);
+                    rand_y = Random.Range(-6, -2);
                 }
                 else
                 {
-                    rand_y = Random.Range(5, 7);
+                    rand_y = Random.Range(3, 6);
                 }
             }
 
@@ -1069,7 +1065,6 @@ public class EnemyScript : MonoBehaviour
     public void Death()
     {
         attackhitbox.GetComponent<BoxCollider>().enabled = false;
-
         //getparent().GetComponent<Spawner>().resetSpawnerTimer(5, false);
 
         if (currentHealth == 0)

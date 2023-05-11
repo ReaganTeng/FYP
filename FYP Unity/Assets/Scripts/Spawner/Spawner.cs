@@ -30,8 +30,6 @@ public class Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gamemanager = GameObject.FindGameObjectWithTag("GameManager");
-
         if (enable == false)
         {
             return;
@@ -51,6 +49,7 @@ public class Spawner : MonoBehaviour
             for (int i = 0; i < enemies_per_spawn; i++)
             {
                 SpawnEnemy();
+                gamemanager.GetComponent<EnemyManager>().setupdating(false);
             }
 
             time = 0;
@@ -103,11 +102,8 @@ public class Spawner : MonoBehaviour
 
     public GameObject SpawnEnemy(int presetHealth = -1)
     {
-        x_position = Random.Range(-5, 5);
-        z_position = Random.Range(-5, 5);
-
-        gamemanager.GetComponent<EnemyManager>().setupdating(false);
-
+        //x_position = Random.Range(-5, 5);
+        //z_position = Random.Range(-5, 5);
 
         GameObject enemyObject = Instantiate(enemy
             , transform.position /*+ new Vector3(x_position * enemy.transform.localScale.x, 0, z_position * enemy.transform.localScale.z)*/

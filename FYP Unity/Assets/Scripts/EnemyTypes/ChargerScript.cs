@@ -55,16 +55,8 @@ public class ChargerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playerGO = GameObject.FindGameObjectWithTag("Player");
         enemyScript = GetComponent<EnemyScript>();
         enemyPhase = GetComponent<EnemyScript>().return_current_phase();
-
-
-        gamemanager = GameObject.FindGameObjectWithTag("GameManager");
-
-
-        
-
 
         if (GetComponent<EnemyScript>().getupdating())
         {
