@@ -24,6 +24,7 @@ public class Spawner : MonoBehaviour
     {
         gamemanager = GameObject.FindGameObjectWithTag("GameManager");
 
+
         time = 0.0f;
     }
 
@@ -102,8 +103,10 @@ public class Spawner : MonoBehaviour
 
     public GameObject SpawnEnemy(int presetHealth = -1)
     {
-        //x_position = Random.Range(-5, 5);
-        //z_position = Random.Range(-5, 5);
+        /*x_position = Random.Range(-5, 5);
+        z_position = Random.Range(-5, 5);*/
+
+        gamemanager.GetComponent<EnemyManager>().setupdating(false);
 
         GameObject enemyObject = Instantiate(enemy
             , transform.position /*+ new Vector3(x_position * enemy.transform.localScale.x, 0, z_position * enemy.transform.localScale.z)*/
@@ -114,5 +117,11 @@ public class Spawner : MonoBehaviour
             enemyObject.GetComponent<EnemyScript>().SetEnemyHealth(presetHealth);
 
         return enemyObject;
+    }
+
+    public void ModifySpawner(int amtSpawnPerInterval, float timeInterval)
+    {
+        enemies_per_spawn = amtSpawnPerInterval;
+        interval = timeInterval;
     }
 }

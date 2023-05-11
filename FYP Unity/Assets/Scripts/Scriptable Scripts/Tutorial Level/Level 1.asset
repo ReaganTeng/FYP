@@ -19,10 +19,7 @@ MonoBehaviour:
   - TextDisplay: What do you think you are doing? Slacking your first day in.
     conditions: 0
     TimeTillPromptSkip: 2
-  - TextDisplay: ~Have you been abdu.. play this game before?           (Y)Yes (N)No~
-    conditions: 18
-    TimeTillPromptSkip: 2
-  - TextDisplay: Ok so its your first day here. So get ur butt up and move!
+  - TextDisplay: Get ur butt up and move!
     conditions: 0
     TimeTillPromptSkip: 2
   - TextDisplay: ~Press WASD to move around the map~
@@ -172,13 +169,24 @@ MonoBehaviour:
   - TextDisplay: ~Anyways, serve the dish at the serving counter.
     conditions: 16
     TimeTillPromptSkip: 3
-  - TextDisplay: That is all I will teach you for the day, I will leave the rest
-      to you
+  - TextDisplay: Quite simple isn't it?
     conditions: 0
     TimeTillPromptSkip: 3
-  - TextDisplay: Enjoy your first day at work.
+  - TextDisplay: Time to see how much have you have learnt
     conditions: 0
-    TimeTillPromptSkip: 3
-  - TextDisplay: owo
+    TimeTillPromptSkip: 2
+  - TextDisplay: ~Serve 4 potato salad~
     conditions: 17
     TimeTillPromptSkip: 3
+  - TextDisplay: Not that hard right?
+    conditions: 0
+    TimeTillPromptSkip: 2
+  - TextDisplay: That is all I shall teach you today
+    conditions: 0
+    TimeTillPromptSkip: 2
+  - TextDisplay: Be sure to be punctual on time tomorrow at 9am.
+    conditions: 0
+    TimeTillPromptSkip: 2
+  - TextDisplay: owo
+    conditions: 18
+    TimeTillPromptSkip: 2

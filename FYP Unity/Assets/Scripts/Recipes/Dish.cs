@@ -44,4 +44,9 @@ public class Dish : MonoBehaviour
     {
         return image;
     }
+
+    public int GetScore()
+    {
+        return BaseScore;
+    }
 }

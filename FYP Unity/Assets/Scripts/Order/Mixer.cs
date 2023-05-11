@@ -16,7 +16,7 @@ public class Mixer : MonoBehaviour
     [SerializeField] GameObject ingredient1;
     [SerializeField] GameObject ingredient2;
     [SerializeField] GameObject cookingBG;
-    [SerializeField] Text text;
+    [SerializeField] Image timer;
     [SerializeField] GameObject doneBG;
     [SerializeField] int MixingTime;
     float mixingtimer;
@@ -159,7 +159,7 @@ public class Mixer : MonoBehaviour
 
     void Mixing()
     {
-        text.text = ((int)mixingtimer).ToString();
+        timer.fillAmount = mixingtimer / MixingTime;
     }
 
     void DoneMixing()
@@ -169,6 +169,7 @@ public class Mixer : MonoBehaviour
         ingredient2.SetActive(false);
         cookingBG.SetActive(false);
         doneBG.SetActive(true);
+        timer.fillAmount = 1;
     }
 
     public void ResetMixerEntirely()

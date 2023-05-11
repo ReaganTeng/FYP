@@ -138,11 +138,14 @@ public class OrderSystem : MonoBehaviour
             for (int i = 0; i < orderList.Count; i++)
             {
                 int TimeTillExpire = orderList[i].GetComponent<OrderPanel>().GetTimeTillExpire();
-                // if it is closer to 0, save the index
-                if (TimeToExpire > TimeTillExpire)
+                // if it is closer to 0 and it is the right order, save the index
+                if (inventory.GetSelectedFoodID(FoodManager.FoodType.DISH) == orderList[i].GetComponent<OrderPanel>().GetDishID())
                 {
-                    TimeToExpire = TimeTillExpire;
-                    index = i;
+                    if (TimeToExpire > TimeTillExpire)
+                    {
+                        TimeToExpire = TimeTillExpire;
+                        index = i;
+                    }
                 }
             }
             
@@ -283,5 +286,10 @@ public class OrderSystem : MonoBehaviour
         {
             WaitingTime = i;
         }
+    }
+
+    public int GetOrderCount()
+    {
+        return orderList.Count;
     }
 }

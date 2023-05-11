@@ -12727,7 +12727,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35f5fcb7c4add9a43b5499a6b68385f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: {fileID: 11400000, guid: cf6ba5c86b1d27047ae184024faea28d, type: 2}
+  level: {fileID: 11400000, guid: 2484b9314b6f4aa498a830202434d220, type: 2}
   pp: {fileID: 11400000, guid: 80203a9d8037ee2449d6c18b30afe1f3, type: 2}
   levelname: {fileID: 6575597159861610437}
   leveldescription: {fileID: 7146405780087591079}
@@ -12919,7 +12919,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2071915581364610193
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13005,7 +13005,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35f5fcb7c4add9a43b5499a6b68385f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: {fileID: 11400000, guid: cf6ba5c86b1d27047ae184024faea28d, type: 2}
+  level: {fileID: 11400000, guid: ff85fde5a41dfed45ac917588367ac64, type: 2}
   pp: {fileID: 11400000, guid: 80203a9d8037ee2449d6c18b30afe1f3, type: 2}
   levelname: {fileID: 6809252529832009584}
   leveldescription: {fileID: 7355301712139397138}
@@ -13014,7 +13014,7 @@ MonoBehaviour:
   levelLocked: {fileID: 2036240775470259108}
   DisplayGrade: {fileID: 253065295126840491}
   PlayButton: {fileID: 7643496486073149436}
-  DisplayReq: {fileID: 253065295126840491}
+  DisplayReq: {fileID: 4684547091158347389}
   Srank: {fileID: 21300000, guid: 4a6ca92b421ab5f48a8530602ee062ba, type: 3}
   Arank: {fileID: 21300000, guid: ab485750a91f49248ac6dae7ccfd121d, type: 3}
   Brank: {fileID: 21300000, guid: 883df4b9c652a354ea88b3898472dbd1, type: 3}
@@ -14108,7 +14108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cffb8d2c30ef2fb46b16d5284ae27bff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: {fileID: 11400000, guid: cf6ba5c86b1d27047ae184024faea28d, type: 2}
+  level: {fileID: 11400000, guid: 2484b9314b6f4aa498a830202434d220, type: 2}
   levelManager: {fileID: 11400000, guid: b1ab7845fb897f94da5f204cb406165d, type: 2}
 --- !u!114 &5498198124552371330
 MonoBehaviour:
@@ -14122,7 +14122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cffb8d2c30ef2fb46b16d5284ae27bff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: {fileID: 11400000, guid: cf6ba5c86b1d27047ae184024faea28d, type: 2}
+  level: {fileID: 11400000, guid: ff85fde5a41dfed45ac917588367ac64, type: 2}
   levelManager: {fileID: 11400000, guid: b1ab7845fb897f94da5f204cb406165d, type: 2}
 --- !u!114 &5649389184134660768
 MonoBehaviour:

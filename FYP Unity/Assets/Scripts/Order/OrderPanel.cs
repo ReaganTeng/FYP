@@ -7,15 +7,16 @@ public class OrderPanel : MonoBehaviour
 {
     [SerializeField] Image ResultDish;
     [SerializeField] float OrderTimer;
-    [SerializeField] int score;
     [SerializeField] Slider Timer;
     Recipes.recipes OrderRecipe;
+    int score;
     float InitialTimer;
 
     public void SetOrder(Sprite ingre1, Sprite ingre2, Sprite dishresult, Recipes.recipes therecipe)
     {
         ResultDish.sprite = dishresult;
         OrderRecipe = therecipe;
+        score = therecipe.Result.GetComponent<Dish>().GetScore();
     }
 
     public void SetOrder(Sprite ingre1, Sprite ingre2, Sprite dishresult, Recipes.recipes therecipe, float waitingtime)
@@ -23,6 +24,7 @@ public class OrderPanel : MonoBehaviour
         ResultDish.sprite = dishresult;
         OrderRecipe = therecipe;
         OrderTimer = waitingtime;
+        score = therecipe.Result.GetComponent<Dish>().GetScore();
     }
 
     public int GetDishID()

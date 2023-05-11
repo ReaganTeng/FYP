@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Tutorial 1
   m_EditorClassIdentifier: 
   LevelName: Tutorial 1
-  LevelDescription: 
+  LevelDescription: Back to basic
   SReq: 0
   AReq: 0
   BReq: 0
@@ -22,13 +22,14 @@ MonoBehaviour:
   CCReq: 0
   HallwaysUnlock: 
   CustomizeOrderForThisDay:
-    theDish: []
+    theDish:
+    - {fileID: 396589628195105180, guid: 1aa4138ff3d4c74489890d40137af51c, type: 3}
     WaitingTime: 0
     penalty: 10
     Fixed: 1
     AmtOfDishes: 0
   WhatSpawnerActive: 
-  isThereTutorial: {fileID: 0}
+  isThereTutorial: {fileID: 11400000, guid: 84a06d9ee83697e47af32d190f97e879, type: 2}
   MaxOrders: 4
   TimeBeforeFirstOrder: 10
   IntervalBetweenOrders: 30
