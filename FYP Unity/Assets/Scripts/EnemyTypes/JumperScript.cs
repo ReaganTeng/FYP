@@ -66,15 +66,11 @@ public class JumperScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gamemanager = GameObject.FindGameObjectWithTag("GameManager");
-
-        playerGO = GameObject.FindGameObjectWithTag("Player");
         enemyScript = GetComponent<EnemyScript>();
-
         enemyPhase = GetComponent<EnemyScript>().return_current_phase();
-        currentdistance = Vector3.Distance(playerGO.transform.position, transform.position);
-
         attackhitbox = GetComponent<EnemyScript>().gethitbox();
+
+        currentdistance = Vector3.Distance(playerGO.transform.position, transform.position);
 
         //if (startupdating == true)
         //{

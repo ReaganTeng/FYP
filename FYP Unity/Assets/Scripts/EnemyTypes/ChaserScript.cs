@@ -63,13 +63,8 @@ public class ChaserScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gamemanager = GameObject.FindGameObjectWithTag("GameManager");
-
-
         enemyPhase = GetComponent<EnemyScript>().return_current_phase();
         enemyScript = GetComponent<EnemyScript>();
-
-        playerGO = GameObject.FindGameObjectWithTag("Player");
 
         navMeshAgent.speed = chasingspeed;
         navMeshAgent.acceleration = chasingspeed;

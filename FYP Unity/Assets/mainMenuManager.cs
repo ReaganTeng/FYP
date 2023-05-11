@@ -11,7 +11,7 @@ public class mainMenuManager : MonoBehaviour
 
     [SerializeField] LevelManager LM;
 
-    private void Awake()
+    private void Start()
     {
         GameSoundManager.PlayMusic("MainMenu");
     }

@@ -66,11 +66,10 @@ public class EnemyManager : MonoBehaviour
         //    Debug.Log("ALL NOT UPDATING");
         //}
 
-        player = GameObject.FindGameObjectWithTag("Player");
-        other_enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        //Debug.Log("AMT OF ENEMIES " + (other_enemies.Length)/*player.transform.position*/);
 
-        if (other_enemies != null)
-        {
+
+        
             for (int i = 0; i < other_enemies.Length; i++)
             {
                 if (other_enemies[i].GetComponent<EnemyScript>().getupdating())
@@ -84,10 +83,10 @@ public class EnemyManager : MonoBehaviour
                 }
             }
 
-            foreach (GameObject enemies in other_enemies)
-            {
-                if (enemies.GetComponent<EnemyScript>().getupdating())
-                {
+            //foreach (GameObject enemies in other_enemies)
+            //{
+            //    if (enemies.GetComponent<EnemyScript>().getupdating())
+            //    {
                     timer += Time.deltaTime;
                     if (timer >= .1f
                         && !stopupdating)
@@ -107,14 +106,14 @@ public class EnemyManager : MonoBehaviour
 
                         //choose a random enemy
                         int range = Random.Range(0, indexes.Count);
-
-
                         //Debug.Log("RANGE " + range);
                         for (int x = 0; x < indexes.Count; x++)
                         {
                             //if landed on chosen enemy
                             if (x == range)
                             {
+                                //other_enemies[indexes[x]].GetComponent<EnemyScript>().set_current_phase(EnemyScript.Phases.AVOID);
+
                                 other_enemies[indexes[x]].GetComponent<EnemyScript>().set_current_phase(EnemyScript.Phases.COOLDOWN);
                                 {
                                     /*if (other_enemies[indexes[x]].GetComponent<EnemyScript>().return_attackptn()
@@ -147,9 +146,9 @@ public class EnemyManager : MonoBehaviour
                         //Debug.Log("UPDATE");
                         stopupdating = true;
                     }
-                }
-            }
-        }
+            //    }
+            //}
+        
 
         }
 
@@ -162,6 +161,7 @@ public class EnemyManager : MonoBehaviour
         indexes.Clear();
         timer = 0;
         stopupdating = boolean;
+        other_enemies = GameObject.FindGameObjectsWithTag("Enemy");
         //Debug.Log("RESET");
     }
     void position_distribution(int i)
