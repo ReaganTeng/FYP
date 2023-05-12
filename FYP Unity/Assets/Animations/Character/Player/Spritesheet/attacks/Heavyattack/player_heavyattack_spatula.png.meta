@@ -1,0 +1,1323 @@
+fileFormatVersion: 2
+guid: 62921332f1b05c64391c643b25dd39bf
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6420.909
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d43ce477c1ba584e87d95ef100a718b
+      internalID: -945429593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_1
+      rect:
+        serializedVersion: 2
+        x: 730
+        y: 6420.909
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f0f39879a538114d8232ae99960a33d
+      internalID: -1932700375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_2
+      rect:
+        serializedVersion: 2
+        x: 1460
+        y: 6420.909
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81f1795286fdeb04cb0f91bceb5beb63
+      internalID: 2076938242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_3
+      rect:
+        serializedVersion: 2
+        x: 2190
+        y: 6420.909
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f8417a57f729404db244adfb145bc3f
+      internalID: -415729950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_4
+      rect:
+        serializedVersion: 2
+        x: 2920
+        y: 6420.909
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85baef3a4f8836f498a2e89d568e3ce4
+      internalID: 233946484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 5778.909
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7efdeee93077104bb7460f1a1630f92
+      internalID: -218010562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_6
+      rect:
+        serializedVersion: 2
+        x: 730
+        y: 5778.909
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fbde6242ad10c646a089cd18e123a14
+      internalID: -144616012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_7
+      rect:
+        serializedVersion: 2
+        x: 1460
+        y: 5778.909
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbc6d7b740e8e39409905a23a563f965
+      internalID: 808820290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_8
+      rect:
+        serializedVersion: 2
+        x: 2190
+        y: 5778.909
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4228020b52f0744da3ae0fc17799f76
+      internalID: 673521849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_9
+      rect:
+        serializedVersion: 2
+        x: 2920
+        y: 5778.909
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4dc6ae8b02b27d4aac64d006d3971f5
+      internalID: -1954144628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 5136.909
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfcc048c04d1c0947ba18f5405af67a3
+      internalID: 183868799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_11
+      rect:
+        serializedVersion: 2
+        x: 730
+        y: 5136.909
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3b1764a55afa9f43b1da82dc49bac41
+      internalID: 1641791157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_12
+      rect:
+        serializedVersion: 2
+        x: 1460
+        y: 5136.909
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2af7386da77d6ea43a702b6b69570b8d
+      internalID: 440014481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_13
+      rect:
+        serializedVersion: 2
+        x: 2190
+        y: 5136.909
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ac54e4270b7f7b4d87900d05662e123
+      internalID: 789412998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_14
+      rect:
+        serializedVersion: 2
+        x: 2920
+        y: 5136.909
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0eb5039c76f46724987960620e0f006b
+      internalID: 370658250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4494.909
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcc19fbcf864476499d4347c60493a7e
+      internalID: -1577905533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_16
+      rect:
+        serializedVersion: 2
+        x: 730
+        y: 4494.909
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db14be4659fcd914e8cd00c66bc2f4f2
+      internalID: -1075997476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_17
+      rect:
+        serializedVersion: 2
+        x: 1460
+        y: 4494.909
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 550cee9f19593bd48913d7fc8dd77145
+      internalID: 761496352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_18
+      rect:
+        serializedVersion: 2
+        x: 2190
+        y: 4494.909
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e882f694e44575468f34b55084ce2ff
+      internalID: -1737902657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_19
+      rect:
+        serializedVersion: 2
+        x: 2920
+        y: 4494.909
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73e123381c4261f40bffc36b0e484e27
+      internalID: 403035882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3852.9092
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d86012a6eb0b48e4c8f4189f42cf4a61
+      internalID: -148358049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_21
+      rect:
+        serializedVersion: 2
+        x: 730
+        y: 3852.9092
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99368a31b70947c4aa859ad30140282d
+      internalID: 548114700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_22
+      rect:
+        serializedVersion: 2
+        x: 1460
+        y: 3852.9092
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72c44e44c1a675545bd65432f22d3567
+      internalID: 356162457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_23
+      rect:
+        serializedVersion: 2
+        x: 2190
+        y: 3852.9092
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d75871de7c66484ea9ba5b2381b2057
+      internalID: -1518966038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_24
+      rect:
+        serializedVersion: 2
+        x: 2920
+        y: 3852.9092
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bd4e825aa3830c4bbe42a768db63fd9
+      internalID: -1457062579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_25
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3210.9092
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2ded22507d1fba4187cfc9c786c565d
+      internalID: -475026242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_26
+      rect:
+        serializedVersion: 2
+        x: 730
+        y: 3210.9092
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5880582166c50004d9ed5ff3a9cdfc16
+      internalID: 1665693748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_27
+      rect:
+        serializedVersion: 2
+        x: 1460
+        y: 3210.9092
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7742e053f3690b4895012ec7fd7aec9
+      internalID: 355999055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_28
+      rect:
+        serializedVersion: 2
+        x: 2190
+        y: 3210.9092
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 474424ee8850d1a42969a8c9dcc716a8
+      internalID: 1066467547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_29
+      rect:
+        serializedVersion: 2
+        x: 2920
+        y: 3210.9092
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22f789b826091a5449b345ead8ac6923
+      internalID: -440882191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2568.9092
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93cb170f5be950844880a47a5a5f45dd
+      internalID: 1711644321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_31
+      rect:
+        serializedVersion: 2
+        x: 730
+        y: 2568.9092
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21b384d1ce1df9445a4055a001805c0e
+      internalID: 788795519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_32
+      rect:
+        serializedVersion: 2
+        x: 1460
+        y: 2568.9092
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c05392958119894b8187c1396ff8524
+      internalID: -2073572652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_33
+      rect:
+        serializedVersion: 2
+        x: 2190
+        y: 2568.9092
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 397bde90ba7bb1f40a906661da33f8cc
+      internalID: 53843761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_34
+      rect:
+        serializedVersion: 2
+        x: 2920
+        y: 2568.9092
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34a4618fb3b68e74c9cd3764a42cee99
+      internalID: -448223814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1926.9092
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 963a3506d8afd934783df59707f25976
+      internalID: 91187203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_36
+      rect:
+        serializedVersion: 2
+        x: 730
+        y: 1926.9092
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c1950c32102a6247a9175d1691998d6
+      internalID: 2015165500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_37
+      rect:
+        serializedVersion: 2
+        x: 1460
+        y: 1926.9092
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40f26b65c8810e64f9a48789355b2bcf
+      internalID: 1941844424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_38
+      rect:
+        serializedVersion: 2
+        x: 2190
+        y: 1926.9092
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8c086b9600ebe9468860d1bd03ca843
+      internalID: 717954163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_39
+      rect:
+        serializedVersion: 2
+        x: 2920
+        y: 1926.9092
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 987d87c58494fdc41869c7748f55635f
+      internalID: 615461568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1284.9092
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8463f4efadd67844486b7271cf4adff9
+      internalID: 38576650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_41
+      rect:
+        serializedVersion: 2
+        x: 730
+        y: 1284.9092
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40520e3c84606a34ba1b6aa8b7a79b1f
+      internalID: 2119575616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_42
+      rect:
+        serializedVersion: 2
+        x: 1460
+        y: 1284.9092
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca0c47cee60ad2140a49f4cd979e8bc9
+      internalID: -206647301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_43
+      rect:
+        serializedVersion: 2
+        x: 2190
+        y: 1284.9092
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b0d2ebbb10d21e40a41ccb0f11efa4b
+      internalID: 1372933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_44
+      rect:
+        serializedVersion: 2
+        x: 2920
+        y: 1284.9092
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83c92c35e8ceeb94285e0a23ce55791a
+      internalID: 1118351040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_45
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 642.9091
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c099d34f89007cd4b87f4ca70a9c3923
+      internalID: -442056813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_46
+      rect:
+        serializedVersion: 2
+        x: 730
+        y: 642.9091
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d14678f5ee04f6b48bc09b18a452a6d0
+      internalID: 1769940285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_47
+      rect:
+        serializedVersion: 2
+        x: 1460
+        y: 642.9091
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af4858dd56601a44da655e2ef8838b13
+      internalID: 713205633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_48
+      rect:
+        serializedVersion: 2
+        x: 2190
+        y: 642.9091
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e744bb0c1bb7dd4a99fd65f6ddcbe76
+      internalID: 1988200877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_49
+      rect:
+        serializedVersion: 2
+        x: 2920
+        y: 642.9091
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f90d4334e4840224aa56d23e68cb21f0
+      internalID: 1033277169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_50
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0.90911865
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2850f6417b83f3b4d8a04327a1ead3ea
+      internalID: -1550138258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_51
+      rect:
+        serializedVersion: 2
+        x: 730
+        y: 0.90911865
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f9ab32bbb2eff64380b5bd6877e046f
+      internalID: -1415551051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_52
+      rect:
+        serializedVersion: 2
+        x: 1460
+        y: 0.90911865
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be8ec5cd6f41a3b46858e3f0fabc4b2d
+      internalID: -1291297336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_spatula_53
+      rect:
+        serializedVersion: 2
+        x: 2190
+        y: 0.90911865
+        width: 730
+        height: 642.0909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 942616d907302274087bc750ed6490c1
+      internalID: 1106229971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: f9cfccdfc65efc54bbc5b02bb5b1f09d
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      player_heavyattack_spatula_50: -1550138258
+      player_heavyattack_spatula_33: 53843761
+      player_heavyattack_spatula_9: -1954144628
+      player_heavyattack_spatula_28: 1066467547
+      player_heavyattack_spatula_1: -1932700375
+      player_heavyattack_spatula_21: 548114700
+      player_heavyattack_spatula_18: -1737902657
+      player_heavyattack_spatula_6: -144616012
+      player_heavyattack_spatula_24: -1457062579
+      player_heavyattack_spatula_2: 2076938242
+      player_heavyattack_spatula_11: 1641791157
+      player_heavyattack_spatula_34: -448223814
+      player_heavyattack_spatula_41: 2119575616
+      player_heavyattack_spatula_49: 1033277169
+      player_heavyattack_spatula_31: 788795519
+      player_heavyattack_spatula_15: -1577905533
+      player_heavyattack_spatula_40: 38576650
+      player_heavyattack_spatula_20: -148358049
+      player_heavyattack_spatula_0: -945429593
+      player_heavyattack_spatula_38: 717954163
+      player_heavyattack_spatula_16: -1075997476
+      player_heavyattack_spatula_35: 91187203
+      player_heavyattack_spatula_53: 1106229971
+      player_heavyattack_spatula_23: -1518966038
+      player_heavyattack_spatula_32: -2073572652
+      player_heavyattack_spatula_14: 370658250
+      player_heavyattack_spatula_17: 761496352
+      player_heavyattack_spatula_27: 355999055
+      player_heavyattack_spatula_39: 615461568
+      player_heavyattack_spatula_52: -1291297336
+      player_heavyattack_spatula_8: 673521849
+      player_heavyattack_spatula_26: 1665693748
+      player_heavyattack_spatula_36: 2015165500
+      player_heavyattack_spatula_5: -218010562
+      player_heavyattack_spatula_12: 440014481
+      player_heavyattack_spatula_7: 808820290
+      player_heavyattack_spatula_47: 713205633
+      player_heavyattack_spatula_10: 183868799
+      player_heavyattack_spatula_42: -206647301
+      player_heavyattack_spatula_29: -440882191
+      player_heavyattack_spatula_30: 1711644321
+      player_heavyattack_spatula_25: -475026242
+      player_heavyattack_spatula_45: -442056813
+      player_heavyattack_spatula_43: 1372933
+      player_heavyattack_spatula_51: -1415551051
+      player_heavyattack_spatula_48: 1988200877
+      player_heavyattack_spatula_13: 789412998
+      player_heavyattack_spatula_44: 1118351040
+      player_heavyattack_spatula_19: 403035882
+      player_heavyattack_spatula_37: 1941844424
+      player_heavyattack_spatula_4: 233946484
+      player_heavyattack_spatula_3: -415729950
+      player_heavyattack_spatula_22: 356162457
+      player_heavyattack_spatula_46: 1769940285
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

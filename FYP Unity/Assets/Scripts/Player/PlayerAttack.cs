@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.AI;
 using DigitalRuby.SoundManagerNamespace;
 
 public class PlayerAttack : MonoBehaviour
@@ -61,6 +62,8 @@ public class PlayerAttack : MonoBehaviour
     Weapon currentweapon = Weapon.ROLLINGPIN;
     // Start is called before the first frame update
 
+
+    GameObject closestenemy;
     bool isclicked;
     bool heavyattackclicked;
     bool lightattackclicked;
@@ -116,7 +119,9 @@ public class PlayerAttack : MonoBehaviour
         attacking = false;
         direction = 1;
     }
-  
+
+
+    
     void drawdivider()
     {
         if (chargeBar != null)
@@ -198,7 +203,8 @@ public class PlayerAttack : MonoBehaviour
                 //LIGHT ATTACK
                 if (Input.GetMouseButtonDown(0) && !attacking
                     && isclicked == false
-                    && click_timer <= 0)
+                    && click_timer <= 0
+                    && notlightattacking())
                 {
                     //Debug.Log("LIGHT ATTACK");
                     isclicked = true;
@@ -230,15 +236,14 @@ public class PlayerAttack : MonoBehaviour
                     && isclicked == false
                      && click_timer <= 0
                     && CanHeavyAttack
-                    && (int)chargeCurrentLvl >= (int)min_notch_value)
+                    && (int)chargeCurrentLvl >= (int)min_notch_value
+                    && notheavyattacking()
+                        )
                 {
-                   // Debug.Log("HEAVY ATTACK");
+                   //Debug.Log("HEAVY ATTACK");
                     isclicked = true;
                     transform.parent.GetComponent<PlayerStats>().setAttack(true);
-                    //Debug.Log("HEAVY ATTACK" + transform.parent.GetComponent<PlayerStats>().GetPlayerAttack());
-
                     heavyattackclicked = true;
-
                     AttackWhichDirection(direction);
                     //HitBox.SetActive(true);
                     //attacking = true;
@@ -248,7 +253,6 @@ public class PlayerAttack : MonoBehaviour
                     if (
                     currentweapon == Weapon.KNIFE)
                     {
-
                         click_timer = attackanimation.length;
                     }
                     else if (
@@ -260,20 +264,37 @@ public class PlayerAttack : MonoBehaviour
                     {
                         click_timer = attackanimation_spatula.length;
                     }
+
+                    //GET CLOSEST ENEMY
+                    closestenemy = GetClosestEnemy();
+                    //
                 }
                 //
             }
 
-            
+            //FIND CLOSEST ENEMY
+            //if(heavyattackclicked)
+            //{
+            //    //closestenemy.GetComponentInChildren<SpriteRenderer>().color = Color.blue;
+            //    closestenemy.GetComponent<NavMeshAgent>().speed= 0;
+            //    closestenemy.GetComponent<Rigidbody>().velocity = new Vector3 (0, 0, 0);
+            //}
+            //else
+            //{
+            //    if(closestenemy != null)
+            //    {
+            //        //closestenemy.GetComponentInChildren<SpriteRenderer>().color = Color.white;
+            //        closestenemy = null;
+            //    }
+            //}
+            //
 
             if (isclicked)
             {
                 //if is reaches 50% of the attack animation
                 click_timer -= Time.deltaTime;
-
                 //SPATULA, //0
                 //ROLLINGPIN, //2
-
                 if (
                     (currentweapon == Weapon.KNIFE &&  click_timer <= (attackanimation.length  *.5f)
                     / pp.return_heavyattackspeed())
@@ -307,10 +328,11 @@ public class PlayerAttack : MonoBehaviour
                  && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("heavyattack_pin"))*/
 
 
-                //activate hitbox
+            //activate hitbox
             if (attacking)
             {
                 attackingtimer -= Time.deltaTime;
+
                 if (attackingtimer <= 0)
                 {
                     HitBox.SetActive(false);
@@ -339,7 +361,8 @@ public class PlayerAttack : MonoBehaviour
         }
 
 
-        if (animator.GetBool("click") == false
+        if (!animator.GetBool("click")
+            && !animator.GetBool("heavyattackclick")
             && CanSwapWeapon)
         {
             // To swap between weapons
@@ -371,12 +394,50 @@ public class PlayerAttack : MonoBehaviour
         switchWeapon();
     }
 
+    public void resetattacking()
+    {
+        click_timer = 0;
+        attackingtimer = 0;
+        heavyattackclicked = false;
+        lightattackclicked = false;
+    }
+    public bool attacking_or_not()
+    {
+        return attacking;
+    }
+
     //public void OnDrawGizmos()
     //{
     //    Gizmos.color = Color.blue;
     //    Gizmos.DrawWireCube
     //        (HitBox.transform.position, HitBox.transform.lossyScale);
     //}
+
+
+    public GameObject GetClosestEnemy()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject closestEnemy = null;
+
+        float closestDistanceSqr = Mathf.Infinity;
+        Vector3 currentPosition = transform.position;
+        foreach(GameObject potentialTarget in enemies)
+        {
+            Vector3 directionToTarget = potentialTarget.transform.position - currentPosition;
+            float dSqrToTarget = directionToTarget.sqrMagnitude;
+            if (dSqrToTarget < closestDistanceSqr)
+            {
+                closestDistanceSqr = dSqrToTarget;
+                closestEnemy = potentialTarget;
+            }
+            else
+            {
+
+            }
+        }
+
+        return closestEnemy;
+    }
 
     public bool getHitbox()
     {
@@ -423,6 +484,51 @@ public class PlayerAttack : MonoBehaviour
                 break;
             default:
                 break;
+        }
+    }
+
+    public bool notlightattacking()
+    {
+        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("attack_with_pin")
+            && !animator.GetCurrentAnimatorStateInfo(0).IsName("attack_with_knife")
+            && !animator.GetCurrentAnimatorStateInfo(0).IsName("attack_with_spatula"))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public bool notheavyattacking()
+    {
+        if (
+        /*&& !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("attack_with_knife")
+        && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("attack_with_pin")
+        && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("attack_with_spatula")*/
+        !animator.GetCurrentAnimatorStateInfo(0).IsName("heavyattack_knife")
+        && !animator.GetCurrentAnimatorStateInfo(0).IsName("heavyattack_pin")
+        && !animator.GetCurrentAnimatorStateInfo(0).IsName("heavyattack_pin"))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public bool notswitchingweapons()
+    {
+        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("SpatulaEquip")
+            && !animator.GetCurrentAnimatorStateInfo(0).IsName("KnifeEquip")
+            && !animator.GetCurrentAnimatorStateInfo(0).IsName("PinEquip"))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
     public void updatecharge()

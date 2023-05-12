@@ -60,7 +60,13 @@ public class PlayerStats : MonoBehaviour
 
     float alpha_change;
 
+    bool flash_mode;
+    float flashtimer;
+
     [SerializeField] PlayerProgress pp;
+
+
+    [SerializeField] GameObject particles;
 
     public void Start()
     {
@@ -127,19 +133,23 @@ public class PlayerStats : MonoBehaviour
 
     public void Update()
     {
+        
         //when player is playing hurt animation
         if (GetComponentInChildren<Animator>().GetBool("Hurt"))
         {
             //Debug.Log("OUCH");
             hurt_period += Time.deltaTime;
+            particles.SetActive(true);
             if(hurt_period >= GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).length)
 
             {
+                particles.SetActive(false);
                 GetComponentInChildren<Animator>().SetBool("Hurt", false);
             }
         }
         else
         {
+            particles.SetActive(false);
             hurt_period = 0.0f;
         }
 

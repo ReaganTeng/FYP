@@ -48,10 +48,6 @@ public class EnemyAttack : MonoBehaviour
 
     private void Update()
     {
-
-        gamemanager = GameObject.FindGameObjectWithTag("GameManager");
-
-        player = GameObject.FindGameObjectWithTag("Player");
         if (Attackcdtimer > 0)
         {
             Attackcdtimer -= Time.deltaTime;
@@ -146,6 +142,7 @@ public class EnemyAttack : MonoBehaviour
 
     }
 
+    
 
     public void setpostattack(bool pa)
     {
@@ -175,7 +172,8 @@ public class EnemyAttack : MonoBehaviour
             && Attackcdtimer <= 0
             && GetComponent<BoxCollider>().enabled == true
             && other.GetComponentInChildren<Animator>().GetNextAnimatorStateInfo(0).IsName("Dash") == false
-            && attacks_performed < attacks_per_session)
+            && attacks_performed < attacks_per_session
+            && transform.parent.transform.parent.GetComponent<EnemyScript>().return_current_phase() != EnemyScript.Phases.AVOID)
         {
             attacking = true;
 

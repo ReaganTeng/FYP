@@ -62,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        notattackingordashing();
+        notheavyattackingordashing();
 
         if (dashcdtimer > 0)
         {
@@ -72,7 +72,9 @@ public class PlayerMovement : MonoBehaviour
         if (!GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("hurt_knife")
             && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("hurt_pin")
             && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("hurt_spatula")
-             && notattackingordashing())
+             //&& notheavyattackingordashing()
+             && !playerAttack.attacking_or_not()
+             )
         {
             GetComponentInChildren<Animator>().SetBool("walking", isWalking);
             GetComponentInChildren<Animator>().SetBool("WalkFront", walkFront);
@@ -92,7 +94,9 @@ public class PlayerMovement : MonoBehaviour
                 && !Input.GetKey(KeyCode.A)
                 && !Input.GetKey(KeyCode.D)
                 && !Input.GetKeyDown(KeyCode.LeftShift)
-               && notattackingordashing())
+               //&& notheavyattackingordashing()
+               && !playerAttack.attacking_or_not()
+               )
         {
             walkBack = true;
         }
@@ -107,7 +111,9 @@ public class PlayerMovement : MonoBehaviour
                 && !Input.GetKey(KeyCode.A)
                 && !Input.GetKey(KeyCode.D)
                 && !Input.GetKeyDown(KeyCode.LeftShift)
-               && notattackingordashing())
+               //&& notheavyattackingordashing()
+                && !playerAttack.attacking_or_not()
+               )
         {
             walkFront = true;
         }
@@ -118,21 +124,24 @@ public class PlayerMovement : MonoBehaviour
         //
 
         if (Input.GetKey(KeyCode.A)
-             && notattackingordashing()
+             && notheavyattackingordashing()
             )
         {
             spriteRenderer.flipX = false;
         }
 
         if (Input.GetKey(KeyCode.D)
-             && notattackingordashing())
+             //&& notheavyattackingordashing()
+             && !playerAttack.attacking_or_not()
+             )
         {
             spriteRenderer.flipX = true;
         }
 
         if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
             && !Input.GetKeyDown(KeyCode.LeftShift)
-           && notattackingordashing()
+           //&& notheavyattackingordashing()
+           && !playerAttack.attacking_or_not()
 
             )
         {
@@ -194,10 +203,12 @@ public class PlayerMovement : MonoBehaviour
             if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
             )
             {
-                if (notattackingordashing())
+                if (!playerAttack.attacking_or_not()
+                    /*notheavyattackingordashing()*/)
                 {
                     playerRB.AddForce((orientation.forward * verticalInput + orientation.right * horizontalInput) * PlayerSpeed);
                     CheckDirection(ref Forwardrun, ref Rightrun, horizontalInput, verticalInput);
+                    playerAttack.resetattacking();
                 }
             }
 
@@ -220,12 +231,12 @@ public class PlayerMovement : MonoBehaviour
 
 
     
-    public bool notattackingordashing()
+    public bool notheavyattackingordashing()
     {
         if(!GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Dash")
-        && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("attack_with_knife")
+        /*&& !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("attack_with_knife")
         && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("attack_with_pin")
-        && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("attack_with_spatula")
+        && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("attack_with_spatula")*/
         && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("heavyattack_knife")
         && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("heavyattack_pin")
         && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("heavyattack_pin"))

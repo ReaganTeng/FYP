@@ -70,6 +70,10 @@ public class EnemyScript : MonoBehaviour
     GameObject[] other_enemies;
 
     float currentAnimationLength;
+
+
+    [SerializeField] GameObject floatingText;
+    GameObject ft;
     public enum Phases
     {
         ABOUT_TO_ATTACK,
@@ -397,19 +401,24 @@ public class EnemyScript : MonoBehaviour
 
             if (phase == Phases.AVOID)
             {
+                //GetComponentInChildren<SpriteRenderer>().color = Color.black;
+
                 GetComponent<NavMeshAgent>().enabled = true;
                 if (enemy_type == EnemyType.CHARGER)
                 {
                     GetComponent<ChargerScript>().DestroyBeams();
                 }
 
-                if(enemy_type == EnemyType.JUMPER)
+                if (enemy_type == EnemyType.CHASER)
                 {
-                    GetComponentInChildren<SpriteRenderer>().transform.position = transform.position + new Vector3(0.0f, 0.66f, 0.0f);
-
+                    GetComponent<ChaserScript>().DestroyBeams();
                 }
 
-                GetComponentInChildren<SpriteRenderer>().color = Color.black;
+                if (enemy_type == EnemyType.JUMPER)
+                {
+                    GetComponentInChildren<SpriteRenderer>().transform.position = transform.position + new Vector3(0.0f, 0.66f, 0.0f);
+                }
+
                 //Debug.Log("AVOID");
                 GetComponentInChildren<Animator>().SetBool("chasingPlayer", true);
                 GetComponent<NavMeshAgent>().speed = 2.0f;
@@ -421,14 +430,13 @@ public class EnemyScript : MonoBehaviour
             }
             else
             {
-                GetComponentInChildren<SpriteRenderer>().color = Color.white;
+                //GetComponentInChildren<SpriteRenderer>().color = Color.white;
 
                 if(enemy_type == EnemyType.CHARGER)
                 {
                     GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
                 }
 
-                //gamemanager.GetComponent<EnemyManager>().setupdating(true);
                 int rand_range_x = Random.Range(0, 11);
                 int rand_range_y = Random.Range(0, 11);
 
@@ -1059,6 +1067,7 @@ public class EnemyScript : MonoBehaviour
       
         GetComponentInChildren<SpriteRenderer>().enabled = false;
         Destroy(gameObject);
+        gamemanager.GetComponent<EnemyManager>().recalculate_numberofenemies();
     }
 
     public void Death()
