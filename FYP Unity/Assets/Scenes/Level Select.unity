@@ -5866,6 +5866,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9dfd9ff8bb7309d4f81c9688c7a30c54, type: 2}
   - {fileID: 11400000, guid: b1b0b035633c6fe44bbc9329a51d0650, type: 2}
   - {fileID: 11400000, guid: 7ad94b338b4a9924db4ef3bf9f2e235b, type: 2}
+  - {fileID: 11400000, guid: 5cc0fe6a603734c46b3bf4ac924ed4d8, type: 2}
+  - {fileID: 11400000, guid: 330da6c9b09698d458c9c11fc046d3f0, type: 2}
+  - {fileID: 11400000, guid: cdd601ad74bcc44429339e58360d169b, type: 2}
   itemPanel: {fileID: 1968365978}
   CurrencyAmt: {fileID: 373480708}
   EnabledButton: {fileID: 21300000, guid: a0dc03dcf8ca8c0449030047eab9eb04, type: 3}
@@ -7029,6 +7032,18 @@ MonoBehaviour:
       - m_Target: {fileID: 989526963}
         m_TargetAssemblyTypeName: ShopSystem, Assembly-CSharp
         m_MethodName: ResetShopLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 80203a9d8037ee2449d6c18b30afe1f3, type: 2}
+        m_TargetAssemblyTypeName: PlayerProgress, Assembly-CSharp
+        m_MethodName: ResetPlayer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

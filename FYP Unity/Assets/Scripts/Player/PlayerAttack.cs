@@ -48,7 +48,7 @@ public class PlayerAttack : MonoBehaviour
     //the default charging duration in seconds
     [SerializeField] float chargingduration;
     //number of charges the player has
-    [SerializeField] float number_of_charges;
+    int number_of_charges;
     //how much % you want to reduce in charging duration
     public float reduction_in_percentage;
 
@@ -88,6 +88,14 @@ public class PlayerAttack : MonoBehaviour
 
     void Start()
     {
+        number_of_charges = 2;
+
+        if (pp.return_number_of_charges() > 0)
+        {
+            //Debug.Log("INCREASE");
+            number_of_charges += pp.return_number_of_charges();
+        }
+
         UpdateWeaponDisplay();
         click_timer = 0.0f;
         isclicked = false;
@@ -564,7 +572,7 @@ public class PlayerAttack : MonoBehaviour
         if ((int)chargeCurrentLvl< (int)chargeMaxLvl)
         {
             //chargeCurrentLvl+= chargingSpeed * Time.deltaTime;
-            chargeCurrentLvl+= Time.deltaTime;
+            chargeCurrentLvl+= Time.deltaTime * pp.return_heavyattackrecovery();
 
         }
         else if ((int)chargeCurrentLvl>= (int)chargeMaxLvl)

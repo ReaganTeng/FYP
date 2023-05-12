@@ -201,6 +201,7 @@ MonoBehaviour:
   attackclip: {fileID: 7400000, guid: aa5a6d25c2e20154a82a3810a8c34fcf, type: 2}
   about2atkclip: {fileID: 0}
   attacks_per_session: 1
+  pp: {fileID: 11400000, guid: 80203a9d8037ee2449d6c18b30afe1f3, type: 2}
 --- !u!33 &6339725102451940321
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -880,6 +881,7 @@ MonoBehaviour:
   cooldown_period: 1
   abouttoattack_period: 1
   projectile_numbers: 0
+  floatingText: {fileID: 0}
   atkPattern: 1
   phase: 1
   projectileGO: {fileID: 7347223109495145681, guid: 938809779cd6685419a064f5040f83af, type: 3}
@@ -1123,6 +1125,7 @@ MonoBehaviour:
   attackclip: {fileID: 7400000, guid: de08b9774f0d75b43ac89b6140d92f1f, type: 2}
   about2atkclip: {fileID: 0}
   attacks_per_session: 0
+  pp: {fileID: 0}
 --- !u!33 &1629224506573211108
 MeshFilter:
   m_ObjectHideFlags: 0

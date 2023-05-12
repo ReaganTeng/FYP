@@ -128,6 +128,7 @@ MonoBehaviour:
   attackclip: {fileID: 0}
   about2atkclip: {fileID: 0}
   attacks_per_session: 1
+  pp: {fileID: 0}
 --- !u!33 &3304654078046663064
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -403,9 +404,10 @@ MonoBehaviour:
   Mush: {fileID: 8494874157540663937, guid: 4255f020537c20a48857eb56b1b0f6d5, type: 3}
   attackhitbox: {fileID: 6394389417102634265}
   healthbar: {fileID: 1991363047688129694}
-  cooldown_period: 1
-  abouttoattack_period: 1
+  cooldown_period: 0.5
+  abouttoattack_period: 0.5
   projectile_numbers: 0
+  floatingText: {fileID: 0}
   atkPattern: 0
   phase: 0
   projectileGO: {fileID: 7347223109495145681, guid: 938809779cd6685419a064f5040f83af, type: 3}
@@ -1102,6 +1104,7 @@ MonoBehaviour:
   attackclip: {fileID: 7400000, guid: aa5a6d25c2e20154a82a3810a8c34fcf, type: 2}
   about2atkclip: {fileID: 0}
   attacks_per_session: 1
+  pp: {fileID: 11400000, guid: 80203a9d8037ee2449d6c18b30afe1f3, type: 2}
 --- !u!33 &2070871704927905011
 MeshFilter:
   m_ObjectHideFlags: 0

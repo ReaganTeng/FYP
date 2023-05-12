@@ -11,10 +11,18 @@ public class UpgradeSystem : MonoBehaviour
         INVENTORY_UPGRADE,
         HEAVY_ATTACK_BUFF,
         BUFF_MODE_AMOUNT_REQUIREMENT,
-        FERVOR_REDUCTION
+        FERVOR_REDUCTION,
+        CHARGE_INCREASE,
+        HEAVYATTACK_RECOVERY,
+        FERVORLOSS_PADDING
+
+
     }
 
     public static UpgradeSystem instance;
+
+
+
 
     void Start()
     {
@@ -37,6 +45,15 @@ public class UpgradeSystem : MonoBehaviour
                 break;
             case ShopItemType.HEAVY_ATTACK_BUFF:
                 pp.increase_heavyattackspeed();
+                break;
+            case ShopItemType.CHARGE_INCREASE:
+                pp.increase_number_of_charges();
+                break;
+            case ShopItemType.HEAVYATTACK_RECOVERY:
+                pp.decrease_heavyattackrecovery();
+                break;
+            case ShopItemType.FERVORLOSS_PADDING:
+                pp.increase_fevor_padding();
                 break;
         }
     }

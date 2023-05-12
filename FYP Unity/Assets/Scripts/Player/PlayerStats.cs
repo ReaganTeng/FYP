@@ -126,8 +126,7 @@ public class PlayerStats : MonoBehaviour
                 }
             }
         }
-
-        Debug.Log("Fervor: " + fervorLevel);
+        Debug.Log("Fervor: " + fervorLevel + "REDUCED BY " + Fervorchange);
     }
 
 

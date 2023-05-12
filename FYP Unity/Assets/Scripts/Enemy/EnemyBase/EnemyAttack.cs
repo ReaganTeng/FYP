@@ -29,6 +29,9 @@ public class EnemyAttack : MonoBehaviour
 
     float delayTime;
 
+
+    [SerializeField] PlayerProgress pp;
+
     GameObject gamemanager;
     // Start is called before the first frame update
     void Start()
@@ -106,7 +109,9 @@ public class EnemyAttack : MonoBehaviour
                 attacking = false;
             }
 
-            if(attacking)
+            //pp.return_fevor_padding();
+
+            if (attacking)
             {
                 transform.parent.transform.parent.GetComponent<NavMeshAgent>().enabled = false;
             }
@@ -128,13 +133,14 @@ public class EnemyAttack : MonoBehaviour
             if (attacks_performed >= attacks_per_session)
             {
                 attacking = false;
-                gamemanager.GetComponent<EnemyManager>().setupdating(false);
+                //gamemanager.GetComponent<EnemyManager>().setupdating(false);
                 animator.SetBool("attack", false);
                 animator.SetBool("about2attack", false);
                 //animator.SetBool("chasingPlayer", false);
                 post_attack = true;
                 attacks_performed = 0;
                 transform.parent.transform.parent.GetComponent<NavMeshAgent>().enabled = true;
+                //transform.parent.transform.parent.GetComponent<EnemyScript>().set_current_phase(EnemyScript.Phases.COOLDOWN);
                 delayTime = 0.0f;
             }
             //
@@ -167,6 +173,9 @@ public class EnemyAttack : MonoBehaviour
     //change collider size if want to increase attack range
     private void OnTriggerStay(Collider other)
     {
+        //all decrease by same amount, use upgrade to use
+
+
         // if it is the player
         if (other.CompareTag("Player")
             && Attackcdtimer <= 0
@@ -184,7 +193,9 @@ public class EnemyAttack : MonoBehaviour
             {
                 other.GetComponent<PlayerMovement>().setAnimator(true);
                 other.GetComponent<PlayerStats>().ResetConsecutiveHit();
-                other.GetComponent<PlayerStats>().ChangeFervor(-10.0f);
+                //other.GetComponent<PlayerStats>().ChangeFervor(-10.0f);
+                other.GetComponent<PlayerStats>().ChangeFervor(-15.0f * pp.return_fevor_padding());
+
             }
             //
 
@@ -201,7 +212,9 @@ public class EnemyAttack : MonoBehaviour
                         //HIT PLAYER EVERY TIME EACH LOOP ENDS
                         other.GetComponent<PlayerMovement>().setAnimator(true);
                         other.GetComponent<PlayerStats>().ResetConsecutiveHit();
-                        other.GetComponent<PlayerStats>().ChangeFervor(-5.0f);
+                        //other.GetComponent<PlayerStats>().ChangeFervor(-5.0f);
+                        other.GetComponent<PlayerStats>().ChangeFervor(-15.0f * pp.return_fevor_padding());
+
 
                         attacking_present = true;
                         Attackcdtimer = AttackCD;
@@ -223,9 +236,8 @@ public class EnemyAttack : MonoBehaviour
             {
                 other.GetComponent<PlayerMovement>().setAnimator(true);
                 other.GetComponent<PlayerStats>().ResetConsecutiveHit();
-                other.GetComponent<PlayerStats>().ChangeFervor(-15.0f);
+                other.GetComponent<PlayerStats>().ChangeFervor(-15.0f * pp.return_fevor_padding());
                 Attackcdtimer = AttackCD;
-
             }
             //
 
@@ -263,14 +275,12 @@ public class EnemyAttack : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-
             attacking_present = false;
             delayTime = 0.0f;
             AttackCD = 0;
             attacks_performed = 0;
             Attackcdtimer = 0;
             
-
             if (transform.parent.transform.parent.GetComponent<EnemyScript>().return_enemyType()
                            == EnemyScript.EnemyType.CHASER)
             {

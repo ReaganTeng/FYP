@@ -69,93 +69,102 @@ public class EnemyManager : MonoBehaviour
         //Debug.Log("AMT OF ENEMIES " + (other_enemies.Length)/*player.transform.position*/);
         if (timer_2 > .5f)
         {
-            for (int i = 0; i < other_enemies.Length; i++)
-            {
-                if (other_enemies[i].GetComponent<EnemyScript>().getupdating())
-                {
-                    enemies_updating = true;
-                    break;
-                }
-                else
-                {
-                    enemies_updating = false;
-                }
-            }
-
-            //foreach (GameObject enemies in other_enemies)
-            //{
-            //    if (enemies.GetComponent<EnemyScript>().getupdating())
-            //    {
-            timer += Time.deltaTime;
-            if (timer >= .1f
-                && !stopupdating)
-            {
-                //look at all enemies
+           
                 for (int i = 0; i < other_enemies.Length; i++)
                 {
-                    if (/*other_enemies[i].GetComponent<EnemyScript>().return_enemyType() == EnemyScript.EnemyType.CHASER
-                            && other_enemies[i].GetComponent<EnemyScript>().return_attackptn() != EnemyScript.AttackPattern.PATTERN_3
-                            && other_enemies[i].GetComponent<EnemyScript>().return_current_phase() == EnemyScript.Phases.COOLDOWN
-                                &&*/ other_enemies[i].GetComponent<EnemyScript>().getupdating())
+                    if (other_enemies[i] != null)
                     {
-                        indexes.Add(i);
+
+                        if (other_enemies[i].GetComponent<EnemyScript>().getupdating())
+                        {
+                            enemies_updating = true;
+                            break;
+                        }
+                        else
+                        {
+                            enemies_updating = false;
+                        }
                     }
                 }
-                //
 
-                //choose a random enemy
-                int range = Random.Range(0, indexes.Count);
-
-                //int range_2;
-                //if (indexes.Count > 1)
+                //foreach (GameObject enemies in other_enemies)
                 //{
-                //    range_2 = Random.Range(0, indexes.Count - 1);
-                //}
-
-                //Debug.Log("RANGE " + range);
-                for (int x = 0; x < indexes.Count; x++)
+                //    if (enemies.GetComponent<EnemyScript>().getupdating())
+                //    {
+                timer += Time.deltaTime;
+                if (timer >= .1f
+                    && !stopupdating)
                 {
-                    //if landed on chosen enemy
-                    if (x == range
-                        /*|| (indexes.Count > 1 && x == range_2)*/
-                        )
+                    //look at all enemies
+                    for (int i = 0; i < other_enemies.Length; i++)
                     {
-                        //other_enemies[indexes[x]].GetComponent<EnemyScript>().set_current_phase(EnemyScript.Phases.AVOID);
-
-                        other_enemies[indexes[x]].GetComponent<EnemyScript>().set_current_phase(EnemyScript.Phases.COOLDOWN);
+                        if (other_enemies[i] != null)
                         {
-                            /*if (other_enemies[indexes[x]].GetComponent<EnemyScript>().return_attackptn()
-                                == EnemyScript.AttackPattern.PATTERN_1)
+                            if (/*other_enemies[i].GetComponent<EnemyScript>().return_enemyType() == EnemyScript.EnemyType.CHASER
+                                && other_enemies[i].GetComponent<EnemyScript>().return_attackptn() != EnemyScript.AttackPattern.PATTERN_3
+                                && other_enemies[i].GetComponent<EnemyScript>().return_current_phase() == EnemyScript.Phases.COOLDOWN
+                                    &&*/ other_enemies[i].GetComponent<EnemyScript>().getupdating())
                             {
-                                other_enemies[indexes[x]].GetComponent<EnemyScript>().set_current_phase(EnemyScript.Phases.ATTACK_TYPE_1);
+                                indexes.Add(i);
                             }
-                            else if (other_enemies[indexes[x]].GetComponent<EnemyScript>().return_attackptn()
-                            == EnemyScript.AttackPattern.PATTERN_2)
-                            {
-                                other_enemies[indexes[x]].GetComponent<EnemyScript>().set_current_phase(EnemyScript.Phases.ATTACK_TYPE_2);
-                            }
-                            else if (other_enemies[indexes[x]].GetComponent<EnemyScript>().return_attackptn()
-                           == EnemyScript.AttackPattern.PATTERN_3)
-                            {
-                                other_enemies[indexes[x]].GetComponent<EnemyScript>().set_current_phase(EnemyScript.Phases.ATTACK_TYPE_3);
-                            }*/
                         }
                     }
                     //
-                    //non-selected enemmies stay in about to attackMode
-                    else
-                    {
 
-                        other_enemies[indexes[x]].GetComponent<EnemyScript>().set_current_phase(EnemyScript.Phases.AVOID);
+                    //choose a random enemy
+                    int range = Random.Range(0, indexes.Count);
+
+                    //int range_2;
+                    //if (indexes.Count > 1)
+                    //{
+                    //    range_2 = Random.Range(0, indexes.Count - 1);
+                    //}
+
+                    //Debug.Log("RANGE " + range);
+                    for (int x = 0; x < indexes.Count; x++)
+                    {
+                        //if landed on chosen enemy
+                        if (x == range
+                            /*|| (indexes.Count > 1 && x == range_2)*/
+                            )
+                        {
+                            //other_enemies[indexes[x]].GetComponent<EnemyScript>().set_current_phase(EnemyScript.Phases.AVOID);
+
+                            other_enemies[indexes[x]].GetComponent<EnemyScript>().set_current_phase(EnemyScript.Phases.COOLDOWN);
+                            {
+                                /*if (other_enemies[indexes[x]].GetComponent<EnemyScript>().return_attackptn()
+                                    == EnemyScript.AttackPattern.PATTERN_1)
+                                {
+                                    other_enemies[indexes[x]].GetComponent<EnemyScript>().set_current_phase(EnemyScript.Phases.ATTACK_TYPE_1);
+                                }
+                                else if (other_enemies[indexes[x]].GetComponent<EnemyScript>().return_attackptn()
+                                == EnemyScript.AttackPattern.PATTERN_2)
+                                {
+                                    other_enemies[indexes[x]].GetComponent<EnemyScript>().set_current_phase(EnemyScript.Phases.ATTACK_TYPE_2);
+                                }
+                                else if (other_enemies[indexes[x]].GetComponent<EnemyScript>().return_attackptn()
+                               == EnemyScript.AttackPattern.PATTERN_3)
+                                {
+                                    other_enemies[indexes[x]].GetComponent<EnemyScript>().set_current_phase(EnemyScript.Phases.ATTACK_TYPE_3);
+                                }*/
+                            }
+                        }
+                        //
+                        //non-selected enemmies stay in about to attackMode
+                        else
+                        {
+
+                            other_enemies[indexes[x]].GetComponent<EnemyScript>().set_current_phase(EnemyScript.Phases.AVOID);
+                        }
+                        //
                     }
                     //
+                    //Debug.Log("UPDATE");
+                    stopupdating = true;
                 }
-                //
-                //Debug.Log("UPDATE");
-                stopupdating = true;
-            }
-            //    }
-            //}
+                //    }
+                //}
+            
         }
         else
         {

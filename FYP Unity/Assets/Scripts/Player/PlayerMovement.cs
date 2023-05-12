@@ -72,7 +72,9 @@ public class PlayerMovement : MonoBehaviour
         if (!GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("hurt_knife")
             && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("hurt_pin")
             && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("hurt_spatula")
-             //&& notheavyattackingordashing()
+                         //&& notheavyattackingordashing()
+                         && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Dash")
+
              && !playerAttack.attacking_or_not()
              )
         {
@@ -94,7 +96,9 @@ public class PlayerMovement : MonoBehaviour
                 && !Input.GetKey(KeyCode.A)
                 && !Input.GetKey(KeyCode.D)
                 && !Input.GetKeyDown(KeyCode.LeftShift)
-               //&& notheavyattackingordashing()
+                           //&& notheavyattackingordashing()
+                           && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Dash")
+
                && !playerAttack.attacking_or_not()
                )
         {
@@ -111,7 +115,9 @@ public class PlayerMovement : MonoBehaviour
                 && !Input.GetKey(KeyCode.A)
                 && !Input.GetKey(KeyCode.D)
                 && !Input.GetKeyDown(KeyCode.LeftShift)
-               //&& notheavyattackingordashing()
+                           //&& notheavyattackingordashing()
+                           && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Dash")
+
                 && !playerAttack.attacking_or_not()
                )
         {
@@ -124,14 +130,18 @@ public class PlayerMovement : MonoBehaviour
         //
 
         if (Input.GetKey(KeyCode.A)
-             && notheavyattackingordashing()
+             //&& notheavyattackingordashing()
+            && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Dash")
+            && !playerAttack.attacking_or_not()
             )
         {
             spriteRenderer.flipX = false;
         }
 
         if (Input.GetKey(KeyCode.D)
-             //&& notheavyattackingordashing()
+                         //&& notheavyattackingordashing()
+                         && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Dash")
+
              && !playerAttack.attacking_or_not()
              )
         {
@@ -140,6 +150,7 @@ public class PlayerMovement : MonoBehaviour
 
         if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
             && !Input.GetKeyDown(KeyCode.LeftShift)
+            && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Dash")
            //&& notheavyattackingordashing()
            && !playerAttack.attacking_or_not()
 
@@ -157,6 +168,8 @@ public class PlayerMovement : MonoBehaviour
         {
             GetComponentInChildren<Animator>().SetBool("Dash", false);
         }
+
+
 
         if (Input.GetKeyDown(KeyCode.M) && !DisableControls)
         {
@@ -204,7 +217,9 @@ public class PlayerMovement : MonoBehaviour
             )
             {
                 if (!playerAttack.attacking_or_not()
-                    /*notheavyattackingordashing()*/)
+                                /*notheavyattackingordashing()*/
+                                && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Dash")
+)
                 {
                     playerRB.AddForce((orientation.forward * verticalInput + orientation.right * horizontalInput) * PlayerSpeed);
                     CheckDirection(ref Forwardrun, ref Rightrun, horizontalInput, verticalInput);
@@ -212,20 +227,20 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
 
-            // if shift is detected, sprint towards that direction
+            // dashing
             if (Input.GetKeyDown(KeyCode.LeftShift) &&
                 dashcdtimer <= 0)
             {
                 playerRB.AddForce((orientation.forward * Forwardrun + orientation.right * Rightrun) * PlayerSpeed * DashBy);
+                Physics.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer("Enemy"), true);
                 iframetimer = IFrame;
                 IFrameStart = true;
                 GetComponentInChildren<Animator>().SetBool("Dash", true);
-                //GetComponent<BoxCollider>().enabled = false;
-                Physics.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer("Enemy"), true);
                 dashcdtimer = DashCD;
                 GameSoundManager.PlaySound("Dash");
+                //Debug.Log("DASH");
             }
-            
+            //
         }
     }
 
