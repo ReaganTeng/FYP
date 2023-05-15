@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.09368814, g: 0.10748393, b: 0.11626453, a: 1}
+  m_IndirectSpecularColor: {r: 0.0091259, g: 0.011436728, b: 0.012926721, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -437,7 +437,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3462924137396006135, guid: d09965bd491c43742a512d3f4207781f, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3462924137396006135, guid: d09965bd491c43742a512d3f4207781f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2309,7 +2309,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &729180641 stripped
 GameObject:
@@ -2626,7 +2626,7 @@ Transform:
   - {fileID: 896483395}
   - {fileID: 1357489068}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &861213948
 MonoBehaviour:
@@ -5299,7 +5299,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4310913062584164564, guid: 0d81f757dbf9ecc42b4e945194a01914, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4310913062610768839, guid: 0d81f757dbf9ecc42b4e945194a01914, type: 3}
       propertyPath: m_Sprite
@@ -5383,11 +5383,11 @@ PrefabInstance:
       objectReference: {fileID: 8817321601248433814, guid: 567285de481a96846aea58defa8fb372, type: 2}
     - target: {fileID: 4310913064199954427, guid: 0d81f757dbf9ecc42b4e945194a01914, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4310913064199954427, guid: 0d81f757dbf9ecc42b4e945194a01914, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4758942013971256254, guid: 0d81f757dbf9ecc42b4e945194a01914, type: 3}
       propertyPath: m_fontAsset
@@ -5431,7 +5431,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8135394113109332616, guid: 0d81f757dbf9ecc42b4e945194a01914, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8664447684496990407, guid: 0d81f757dbf9ecc42b4e945194a01914, type: 3}
       propertyPath: m_AnchorMax.y
@@ -5504,7 +5504,7 @@ Transform:
   - {fileID: 319035279}
   - {fileID: 1667161446}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1044583845
 MonoBehaviour:
@@ -5736,7 +5736,6 @@ Transform:
   - {fileID: 746624977}
   - {fileID: 559946052}
   - {fileID: 1100199072}
-  - {fileID: 1080379588}
   - {fileID: 282306521}
   - {fileID: 1864492617}
   m_Father: {fileID: 0}
