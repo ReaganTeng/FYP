@@ -33,9 +33,13 @@ public class PlayerMovement : MonoBehaviour
     bool walkFront;
     bool walkBack;
 
+    bool shiftPressed = false;
+
     // Minimap
     GameObject minimapCanvas;
-   
+
+  
+    Animator mAnimator;
 
     private void Start()
     {
@@ -45,12 +49,17 @@ public class PlayerMovement : MonoBehaviour
         DisableControls = false;
         minimapCanvas = GameObject.FindGameObjectWithTag("MinimapCanvas");
         minimapCanvas.SetActive(false);
+
+        mAnimator = GetComponentInChildren<Animator>();
     }
 
 
 
     private void Update()
     {
+
+        
+
         if (IFrameStart)
         {
             if (iframetimer > 0)
@@ -69,69 +78,73 @@ public class PlayerMovement : MonoBehaviour
             dashcdtimer -= Time.deltaTime;
         }
 
-        if (!GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("hurt_knife")
-            && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("hurt_pin")
-            && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("hurt_spatula")
+        if (!mAnimator.GetCurrentAnimatorStateInfo(0).IsName("hurt_knife")
+            && !mAnimator.GetCurrentAnimatorStateInfo(0).IsName("hurt_pin")
+            && !mAnimator.GetCurrentAnimatorStateInfo(0).IsName("hurt_spatula")
                          //&& notheavyattackingordashing()
-                         && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Dash")
+                         && !mAnimator.GetCurrentAnimatorStateInfo(0).IsName("Dash")
 
              && !playerAttack.attacking_or_not()
              )
         {
-            GetComponentInChildren<Animator>().SetBool("walking", isWalking);
-            GetComponentInChildren<Animator>().SetBool("WalkFront", walkFront);
-            GetComponentInChildren<Animator>().SetBool("WalkBack", walkBack);
+            mAnimator.SetBool("walking", isWalking);
+            mAnimator.SetBool("WalkFront", walkFront);
+            mAnimator.SetBool("WalkBack", walkBack);
         }
         else
         {
-            GetComponentInChildren<Animator>().SetBool("walking", false);
-            GetComponentInChildren<Animator>().SetBool("WalkFront", false);
-            GetComponentInChildren<Animator>().SetBool("WalkBack", false);
+            mAnimator.SetBool("walking", false);
+            mAnimator.SetBool("WalkFront", false);
+            mAnimator.SetBool("WalkBack", false);
         }
 
 
         //BACKWALK
-        if (Input.GetKey(KeyCode.W)
-                && !Input.GetKey(KeyCode.S)
-                && !Input.GetKey(KeyCode.A)
-                && !Input.GetKey(KeyCode.D)
-                && !Input.GetKeyDown(KeyCode.LeftShift)
-                           //&& notheavyattackingordashing()
-                           && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Dash")
+        {
+            if (Input.GetKey(KeyCode.W)
+                    && !Input.GetKey(KeyCode.S)
+                    && !Input.GetKey(KeyCode.A)
+                    && !Input.GetKey(KeyCode.D)
+                    && !Input.GetKeyDown(KeyCode.LeftShift)
+                            //&& notheavyattackingordashing()
+                            && !mAnimator.GetCurrentAnimatorStateInfo(0).IsName("Dash")
 
-               && !playerAttack.attacking_or_not()
-               )
-        {
-            walkBack = true;
-        }
-        else
-        {
-            walkBack = false;
+                && !playerAttack.attacking_or_not()
+                )
+            {
+                walkBack = true;
+            }
+            else
+            {
+                walkBack = false;
+            }
         }
         //
         //FRONT WALK
-        if (!Input.GetKey(KeyCode.W)
-                && Input.GetKey(KeyCode.S)
-                && !Input.GetKey(KeyCode.A)
-                && !Input.GetKey(KeyCode.D)
-                && !Input.GetKeyDown(KeyCode.LeftShift)
-                           //&& notheavyattackingordashing()
-                           && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Dash")
+        {
+            if (!Input.GetKey(KeyCode.W)
+                    && Input.GetKey(KeyCode.S)
+                    && !Input.GetKey(KeyCode.A)
+                    && !Input.GetKey(KeyCode.D)
+                    && !Input.GetKeyDown(KeyCode.LeftShift)
+                            //&& notheavyattackingordashing()
+                            && !mAnimator.GetCurrentAnimatorStateInfo(0).IsName("Dash")
 
-                && !playerAttack.attacking_or_not()
-               )
-        {
-            walkFront = true;
-        }
-        else
-        {
-            walkFront = false;
+                    && !playerAttack.attacking_or_not()
+                )
+            {
+                walkFront = true;
+            }
+            else
+            {
+                walkFront = false;
+            }
         }
         //
 
         if (Input.GetKey(KeyCode.A)
              //&& notheavyattackingordashing()
-            && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Dash")
+            && !mAnimator.GetCurrentAnimatorStateInfo(0).IsName("Dash")
             && !playerAttack.attacking_or_not()
             )
         {
@@ -140,7 +153,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKey(KeyCode.D)
                          //&& notheavyattackingordashing()
-                         && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Dash")
+                         && !mAnimator.GetCurrentAnimatorStateInfo(0).IsName("Dash")
 
              && !playerAttack.attacking_or_not()
              )
@@ -150,7 +163,7 @@ public class PlayerMovement : MonoBehaviour
 
         if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
             && !Input.GetKeyDown(KeyCode.LeftShift)
-            && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Dash")
+            && !mAnimator.GetCurrentAnimatorStateInfo(0).IsName("Dash")
            //&& notheavyattackingordashing()
            && !playerAttack.attacking_or_not()
 
@@ -163,10 +176,10 @@ public class PlayerMovement : MonoBehaviour
             isWalking = false;
         }
 
-        if (GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Dash")
-            && GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+        if (mAnimator.GetCurrentAnimatorStateInfo(0).IsName("Dash")
+            && mAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
         {
-            GetComponentInChildren<Animator>().SetBool("Dash", false);
+            mAnimator.SetBool("Dash", false);
         }
 
 
@@ -182,6 +195,9 @@ public class PlayerMovement : MonoBehaviour
                 minimapCanvas.SetActive(true);
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift) && dashcdtimer <= 0 && !DisableControls)
+            shiftPressed = true;
     }
 
 
@@ -189,7 +205,7 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         //if hurt animation is playing 
-        /*if(GetComponentInChildren<Animator>().GetBool("Hurt"))
+        /*if(mAnimator.GetBool("Hurt"))
         {
             delaytime += Time.deltaTime;
             if (delaytime >= 0.9f)
@@ -206,7 +222,7 @@ public class PlayerMovement : MonoBehaviour
         //notattackingordashing();
 
         if (!DisableControls
-            && GetComponentInChildren<Animator>().GetBool("click") == false
+            && mAnimator.GetBool("click") == false
             )
         {
             float horizontalInput = Input.GetAxis("Horizontal");
@@ -218,7 +234,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (!playerAttack.attacking_or_not()
                                 /*notheavyattackingordashing()*/
-                                && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Dash")
+                                && !mAnimator.GetCurrentAnimatorStateInfo(0).IsName("Dash")
 )
                 {
                     playerRB.AddForce((orientation.forward * verticalInput + orientation.right * horizontalInput) * PlayerSpeed);
@@ -228,17 +244,17 @@ public class PlayerMovement : MonoBehaviour
             }
 
             // dashing
-            if (Input.GetKeyDown(KeyCode.LeftShift) &&
-                dashcdtimer <= 0)
+            if (shiftPressed)
             {
                 playerRB.AddForce((orientation.forward * Forwardrun + orientation.right * Rightrun) * PlayerSpeed * DashBy);
                 Physics.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer("Enemy"), true);
                 iframetimer = IFrame;
                 IFrameStart = true;
-                GetComponentInChildren<Animator>().SetBool("Dash", true);
+                mAnimator.SetBool("Dash", true);
                 dashcdtimer = DashCD;
                 GameSoundManager.PlaySound("Dash");
                 //Debug.Log("DASH");
+                shiftPressed = false;
             }
             //
         }
@@ -248,13 +264,13 @@ public class PlayerMovement : MonoBehaviour
     
     public bool notheavyattackingordashing()
     {
-        if(!GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Dash")
-        /*&& !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("attack_with_knife")
-        && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("attack_with_pin")
-        && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("attack_with_spatula")*/
-        && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("heavyattack_knife")
-        && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("heavyattack_pin")
-        && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("heavyattack_pin"))
+        if(!mAnimator.GetCurrentAnimatorStateInfo(0).IsName("Dash")
+        /*&& !mAnimator.GetCurrentAnimatorStateInfo(0).IsName("attack_with_knife")
+        && !mAnimator.GetCurrentAnimatorStateInfo(0).IsName("attack_with_pin")
+        && !mAnimator.GetCurrentAnimatorStateInfo(0).IsName("attack_with_spatula")*/
+        && !mAnimator.GetCurrentAnimatorStateInfo(0).IsName("heavyattack_knife")
+        && !mAnimator.GetCurrentAnimatorStateInfo(0).IsName("heavyattack_pin")
+        && !mAnimator.GetCurrentAnimatorStateInfo(0).IsName("heavyattack_pin"))
         {
             return true;
         }
@@ -265,7 +281,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void setAnimator(bool hurt)
     {
-       GetComponentInChildren<Animator>().SetBool("Hurt", hurt);
+       mAnimator.SetBool("Hurt", hurt);
     }
 
     public void DisablePlayerControls()
