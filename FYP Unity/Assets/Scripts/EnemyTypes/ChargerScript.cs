@@ -39,7 +39,7 @@ public class ChargerScript : MonoBehaviour
         gamemanager = GameObject.FindGameObjectWithTag("GameManager");
 
         GetComponent<EnemyScript>().set_enemyType(EnemyScript.EnemyType.CHARGER);
-        velocityspeed =10.0f;
+        velocityspeed =7.0f;
         number_of_bounces = 0;
         collided = false;
         navMeshAgent.enabled = false;
@@ -119,7 +119,7 @@ public class ChargerScript : MonoBehaviour
                             resultingVector = playerPos - transform.position;
                         }
 
-                        if (chargingtime >= 1.0f)
+                        if (chargingtime >= 2.0f)
                         {
                             if (number_of_bounces >= 2)
                             {
@@ -341,9 +341,7 @@ public class ChargerScript : MonoBehaviour
                 }
             case EnemyScript.Phases.ATTACK_TYPE_2:
                 {
-                    if (collision.gameObject.tag == "wall"
-                        || collision.gameObject.tag == "Player"
-                       )
+                    if (collision.gameObject.tag == "wall")
                     {
                         if (number_of_bounces >= 3)
                         {
@@ -353,18 +351,27 @@ public class ChargerScript : MonoBehaviour
                         else
                         {
                             number_of_bounces += 1;
-                            playerPos = playerGO.transform.position;
-                            if (collision.gameObject.tag == "Player")
-                            {
-                                resultingVector = -playerPos + transform.position;
-                            }
-                            else
-                            {
-                                resultingVector = playerPos - transform.position;
-                            }
+
+                            //playerPos = playerGO.transform.position;
+                            //if (collision.gameObject.tag == "Player")
+                            //{
+                            //    resultingVector = -playerPos + transform.position;
+                            //}
+                            //else
+                            //{
+                            //    resultingVector = playerPos - transform.position;
+                            //}
+
                             chargeAtplayer();
                         }
                         break;
+                    }
+                    else if  (collision.gameObject.tag == "Player")
+                    {
+                        playerPos = playerGO.transform.position;
+                        resultingVector = -playerPos + transform.position;
+                        collided = true;
+                        number_of_bounces = 0;
                     }
                     break;
                 }

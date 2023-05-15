@@ -1,0 +1,1455 @@
+fileFormatVersion: 2
+guid: 69390d8e81d2df843a3fe4bee77a1a13
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: player_heavyattack_pin_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 9163
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c60ade33646c9f74ab1c7b76a6cdf2cf
+      internalID: -79874366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_1
+      rect:
+        serializedVersion: 2
+        x: 1004
+        y: 9163
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8a4ac36fbe61c1498bb05b4f71b718e
+      internalID: 715630127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_2
+      rect:
+        serializedVersion: 2
+        x: 2008
+        y: 9163
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b3f10027e7bde545a90b950c88e4a64
+      internalID: -278071722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_3
+      rect:
+        serializedVersion: 2
+        x: 3012
+        y: 9163
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3c488374087c4e4db9d7169ab31f17c
+      internalID: -456330531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_4
+      rect:
+        serializedVersion: 2
+        x: 4016
+        y: 9163
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 656c882302b6fca458b2fc44fe44e954
+      internalID: 489641192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 8330
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 130dd6a8e5f389348bf8acd9e086ed7d
+      internalID: -1455833091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_6
+      rect:
+        serializedVersion: 2
+        x: 1004
+        y: 8330
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7eaf7ee7a4ffb249a7cdd6988795e0d
+      internalID: 197570332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_7
+      rect:
+        serializedVersion: 2
+        x: 2008
+        y: 8330
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 283b4f025861cff45a39ac3000490740
+      internalID: 584689470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_8
+      rect:
+        serializedVersion: 2
+        x: 3012
+        y: 8330
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fa84d030985bad4a85bb17313585994
+      internalID: 283395338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_9
+      rect:
+        serializedVersion: 2
+        x: 4016
+        y: 8330
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd8dc6275b7768342ba6763ff40acb39
+      internalID: 1927936543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 7497
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f11fd5b208ee6ff4ba5b9b76cbe0149b
+      internalID: 1427590928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_11
+      rect:
+        serializedVersion: 2
+        x: 1004
+        y: 7497
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fef560e14698e5e4e81a8f8050e7d0fe
+      internalID: -1000545388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_12
+      rect:
+        serializedVersion: 2
+        x: 2008
+        y: 7497
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 137de7cabc073ea448356117e7296b31
+      internalID: -374836852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_13
+      rect:
+        serializedVersion: 2
+        x: 3012
+        y: 7497
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d827ba8a59be0ef478324e746629cfc1
+      internalID: -1614172951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_14
+      rect:
+        serializedVersion: 2
+        x: 4016
+        y: 7497
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1779e8b39530d1c478b2b71e4fd11f38
+      internalID: -719327485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6664
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1dbcb1880dbecd7429640a7b7fb5c901
+      internalID: 502066760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_16
+      rect:
+        serializedVersion: 2
+        x: 1004
+        y: 6664
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0cf230fd187d30448b334b2582a23da
+      internalID: -775004176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_17
+      rect:
+        serializedVersion: 2
+        x: 2008
+        y: 6664
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1dddec0b8752ab74eb472e7e1a258db9
+      internalID: -2064923982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_18
+      rect:
+        serializedVersion: 2
+        x: 3012
+        y: 6664
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83fbf6062629f3141945b895f50b1f7a
+      internalID: -1548075176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_19
+      rect:
+        serializedVersion: 2
+        x: 4016
+        y: 6664
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec8dfed6b99448148a4e3a6766328cbd
+      internalID: -1719659701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 5831
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2937f172e191f14fbd8334e3f954a42
+      internalID: -1973159379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_21
+      rect:
+        serializedVersion: 2
+        x: 1004
+        y: 5831
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79cd9d4a0a3797c4bad39d48d0229e4c
+      internalID: 516430553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_22
+      rect:
+        serializedVersion: 2
+        x: 2008
+        y: 5831
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc4e0a36547cc2d468d3bb7b9ca19675
+      internalID: 918048893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_23
+      rect:
+        serializedVersion: 2
+        x: 3012
+        y: 5831
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be283f52625e2d343a0ac6d3e0016deb
+      internalID: -934416240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_24
+      rect:
+        serializedVersion: 2
+        x: 4016
+        y: 5831
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbfc9950f4cee0141bd55cd2c5103d0e
+      internalID: 1369506961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_25
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4998
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fccd78061f4201d41b7f7f37ab3925bf
+      internalID: 352597893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_26
+      rect:
+        serializedVersion: 2
+        x: 1004
+        y: 4998
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 961e9fe8d59544e4dbfe7d23fcf2ba2f
+      internalID: -157812450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_27
+      rect:
+        serializedVersion: 2
+        x: 2008
+        y: 4998
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5caffe8e2268d4a4baed89cbf03089d7
+      internalID: 1539018099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_28
+      rect:
+        serializedVersion: 2
+        x: 3012
+        y: 4998
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da1c5606273536d4c92f3bf4da126486
+      internalID: 1743676074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_29
+      rect:
+        serializedVersion: 2
+        x: 4016
+        y: 4998
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bfd68ffdba67544db2b9d311460623b
+      internalID: -1957624640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4165
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0016db6e513136149bcba34a381000bd
+      internalID: 1002123659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_31
+      rect:
+        serializedVersion: 2
+        x: 1004
+        y: 4165
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05b95941adb144d44af3510eb9394db7
+      internalID: -40967883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_32
+      rect:
+        serializedVersion: 2
+        x: 2008
+        y: 4165
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56a806a666e59e044bb140123d4a93e3
+      internalID: 489574192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_33
+      rect:
+        serializedVersion: 2
+        x: 3012
+        y: 4165
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5077b2a3be386a40bd1f55413c98b4d
+      internalID: 391238728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_34
+      rect:
+        serializedVersion: 2
+        x: 4016
+        y: 4165
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bb446f74419f6142ba168d32f277b50
+      internalID: 1439300275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3332
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6f6bc689d24f3d479e800e82df78a72
+      internalID: -1547853497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_36
+      rect:
+        serializedVersion: 2
+        x: 1004
+        y: 3332
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 823547080ebaa854bbf65781749d3a78
+      internalID: 338744592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_37
+      rect:
+        serializedVersion: 2
+        x: 2008
+        y: 3332
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 587ea1ed46a7e1e4fb74011520107128
+      internalID: 292602436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_38
+      rect:
+        serializedVersion: 2
+        x: 3012
+        y: 3332
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d398d72c23d710419149227cc99f271
+      internalID: -789890763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_39
+      rect:
+        serializedVersion: 2
+        x: 4016
+        y: 3332
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9feda7900b6ae5544ad6e3db190cec09
+      internalID: 222111776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2499
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5543f8e688ee4f4a95e7ac6162ecbf6
+      internalID: -1144267342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_41
+      rect:
+        serializedVersion: 2
+        x: 1004
+        y: 2499
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a725ddb04961e349be8f9afc7f1b63c
+      internalID: -8352411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_42
+      rect:
+        serializedVersion: 2
+        x: 2008
+        y: 2499
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4a4f0f2ae413fa4fb304dbffd88a962
+      internalID: -1502687662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_43
+      rect:
+        serializedVersion: 2
+        x: 3012
+        y: 2499
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 169d1feea5b8a144b9874bc3039229ec
+      internalID: -1630481760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_44
+      rect:
+        serializedVersion: 2
+        x: 4016
+        y: 2499
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23d583e5c2902484d945eecc766a5ac3
+      internalID: 2018733744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_45
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1666
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4dcea30d7fdc3554f98fb1eb13864f24
+      internalID: 2141894361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_46
+      rect:
+        serializedVersion: 2
+        x: 1004
+        y: 1666
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6c9f2e26597d664ebc1b9f19b41f384
+      internalID: -1673333830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_47
+      rect:
+        serializedVersion: 2
+        x: 2008
+        y: 1666
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4560614408238c4694c5fba9a7af610
+      internalID: 2020269632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_48
+      rect:
+        serializedVersion: 2
+        x: 3012
+        y: 1666
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c85306b225bdf9428497b96a919cdbb
+      internalID: -1553417439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_49
+      rect:
+        serializedVersion: 2
+        x: 4016
+        y: 1666
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54d213ab51a07364ca113f8e782497fa
+      internalID: -550041073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_50
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 833
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab51e374a422ea84499c811537ccf7e3
+      internalID: -41556561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_51
+      rect:
+        serializedVersion: 2
+        x: 1004
+        y: 833
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8195e4bcd97b0e6439b31a39582ba11e
+      internalID: 1287857487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_52
+      rect:
+        serializedVersion: 2
+        x: 2008
+        y: 833
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 613817bf85a3be44c93c3eedfe6c6202
+      internalID: 146070789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_53
+      rect:
+        serializedVersion: 2
+        x: 3012
+        y: 833
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdebdd0fec0812741ac9ad95996b5b0a
+      internalID: 1195776481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_54
+      rect:
+        serializedVersion: 2
+        x: 4016
+        y: 833
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c108e0067ed6394f84794114f42781c
+      internalID: 1601527616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_55
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4737a1a7d7e338447b537fa9b4b0c9bb
+      internalID: -1235501055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_56
+      rect:
+        serializedVersion: 2
+        x: 1004
+        y: 0
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65862c92f6dc05a47976bb4e8c21b164
+      internalID: -749473110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_57
+      rect:
+        serializedVersion: 2
+        x: 2008
+        y: 0
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ba34d3754efea4498d840acc3cfcb68
+      internalID: 2082461668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_58
+      rect:
+        serializedVersion: 2
+        x: 3012
+        y: 0
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b06d87d9c3a91ca4799061e37ceb4d5b
+      internalID: 1669973319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_pin_59
+      rect:
+        serializedVersion: 2
+        x: 4016
+        y: 0
+        width: 1004
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e3e8447d6bf0ce4a970b83912d4568b
+      internalID: 2000995090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: a760ce168716e5b4e9f65bd3185da6bc
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      player_heavyattack_pin_39: 222111776
+      player_heavyattack_pin_45: 2141894361
+      player_heavyattack_pin_9: 1927936543
+      player_heavyattack_pin_59: 2000995090
+      player_heavyattack_pin_44: 2018733744
+      player_heavyattack_pin_36: 338744592
+      player_heavyattack_pin_38: -789890763
+      player_heavyattack_pin_29: -1957624640
+      player_heavyattack_pin_13: -1614172951
+      player_heavyattack_pin_30: 1002123659
+      player_heavyattack_pin_26: -157812450
+      player_heavyattack_pin_20: -1973159379
+      player_heavyattack_pin_7: 584689470
+      player_heavyattack_pin_16: -775004176
+      player_heavyattack_pin_46: -1673333830
+      player_heavyattack_pin_28: 1743676074
+      player_heavyattack_pin_8: 283395338
+      player_heavyattack_pin_57: 2082461668
+      player_heavyattack_pin_55: -1235501055
+      player_heavyattack_pin_43: -1630481760
+      player_heavyattack_pin_10: 1427590928
+      player_heavyattack_pin_18: -1548075176
+      player_heavyattack_pin_27: 1539018099
+      player_heavyattack_pin_23: -934416240
+      player_heavyattack_pin_52: 146070789
+      player_heavyattack_pin_11: -1000545388
+      player_heavyattack_pin_14: -719327485
+      player_heavyattack_pin_24: 1369506961
+      player_heavyattack_pin_58: 1669973319
+      player_heavyattack_pin_50: -41556561
+      player_heavyattack_pin_41: -8352411
+      player_heavyattack_pin_4: 489641192
+      player_heavyattack_pin_2: -278071722
+      player_heavyattack_pin_6: 197570332
+      player_heavyattack_pin_49: -550041073
+      player_heavyattack_pin_33: 391238728
+      player_heavyattack_pin_48: -1553417439
+      player_heavyattack_pin_34: 1439300275
+      player_heavyattack_pin_5: -1455833091
+      player_heavyattack_pin_40: -1144267342
+      player_heavyattack_pin_53: 1195776481
+      player_heavyattack_pin_12: -374836852
+      player_heavyattack_pin_37: 292602436
+      player_heavyattack_pin_32: 489574192
+      player_heavyattack_pin_56: -749473110
+      player_heavyattack_pin_42: -1502687662
+      player_heavyattack_pin_21: 516430553
+      player_heavyattack_pin_51: 1287857487
+      player_heavyattack_pin_22: 918048893
+      player_heavyattack_pin_54: 1601527616
+      player_heavyattack_pin_31: -40967883
+      player_heavyattack_pin_17: -2064923982
+      player_heavyattack_pin_0: -79874366
+      player_heavyattack_pin_1: 715630127
+      player_heavyattack_pin_25: 352597893
+      player_heavyattack_pin_15: 502066760
+      player_heavyattack_pin_3: -456330531
+      player_heavyattack_pin_35: -1547853497
+      player_heavyattack_pin_19: -1719659701
+      player_heavyattack_pin_47: 2020269632
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

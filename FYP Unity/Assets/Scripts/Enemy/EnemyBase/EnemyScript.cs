@@ -7,6 +7,10 @@ using TMPro;
 
 public class EnemyScript : MonoBehaviour
 {
+
+    [SerializeField] GameObject particles;
+
+
     float targetVelocity;
     int numberOfRays;
     float angle;
@@ -70,6 +74,10 @@ public class EnemyScript : MonoBehaviour
     GameObject[] other_enemies;
 
     float currentAnimationLength;
+
+
+    [SerializeField] GameObject floatingText;
+    GameObject ft;
     public enum Phases
     {
         ABOUT_TO_ATTACK,
@@ -163,6 +171,8 @@ public class EnemyScript : MonoBehaviour
     GameObject gamemanager;
     void Start()
     {
+
+        particles.SetActive(false);
         currentHealth = EnemyHealth;
 
         gamemanager = GameObject.FindGameObjectWithTag("GameManager");
@@ -174,7 +184,7 @@ public class EnemyScript : MonoBehaviour
         phase3timer = 0.0f;
         chasingspeed = 0.0f;
         backawayTimer = 0.0f;
-        proejctilespeed = 2.0f;
+        proejctilespeed = 1.5f;
         post_attack_duration = 0.0f;
         targetVelocity = 1.5f;
         numberOfRays = 30;
@@ -376,11 +386,24 @@ public class EnemyScript : MonoBehaviour
             }
         }
 
+
+        //turn purple when get sus dish
+        if (AttackByOtherWeapon)
+        {
+            healthbar.GetComponentInChildren<Image>().color = new Color32(160, 32, 240, 100);// Color.blue;
+        }
+        else
+        {
+            healthbar.GetComponentInChildren<Image>().color = Color.white;
+
+        }
+
+
         //POST ATTACK
         if (GetComponentInChildren<EnemyAttack>().getpostattack())
         {
             post_attack_duration += Time.deltaTime;
-            if (post_attack_duration >= 8.0f)
+            if (post_attack_duration >= 3.0f)
             {
                 post_attack_duration = 0.0f;
                 GetComponentInChildren<EnemyAttack>().setpostattack(false);
@@ -395,21 +418,30 @@ public class EnemyScript : MonoBehaviour
         {
             updating = true;
 
-            if (phase == Phases.AVOID)
+            if (phase == Phases.AVOID
+                || (enemy_type == EnemyType.CHASER &&
+                (GetComponentInChildren<EnemyAttack>().getpostattack()
+                            || GetComponent<ChaserScript>().return_change_of_attk_type_1() >= 5.0f))
+                )
             {
+                //GetComponentInChildren<SpriteRenderer>().color = Color.black;
+
                 GetComponent<NavMeshAgent>().enabled = true;
                 if (enemy_type == EnemyType.CHARGER)
                 {
                     GetComponent<ChargerScript>().DestroyBeams();
                 }
 
-                if(enemy_type == EnemyType.JUMPER)
+                if (enemy_type == EnemyType.CHASER)
                 {
-                    GetComponentInChildren<SpriteRenderer>().transform.position = transform.position + new Vector3(0.0f, 0.66f, 0.0f);
-
+                    GetComponent<ChaserScript>().DestroyBeams();
                 }
 
-                GetComponentInChildren<SpriteRenderer>().color = Color.black;
+                if (enemy_type == EnemyType.JUMPER)
+                {
+                    GetComponentInChildren<SpriteRenderer>().transform.position = transform.position + new Vector3(0.0f, 0.66f, 0.0f);
+                }
+
                 //Debug.Log("AVOID");
                 GetComponentInChildren<Animator>().SetBool("chasingPlayer", true);
                 GetComponent<NavMeshAgent>().speed = 2.0f;
@@ -421,33 +453,32 @@ public class EnemyScript : MonoBehaviour
             }
             else
             {
-                GetComponentInChildren<SpriteRenderer>().color = Color.white;
+                //GetComponentInChildren<SpriteRenderer>().color = Color.white;
 
                 if(enemy_type == EnemyType.CHARGER)
                 {
                     GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
                 }
 
-                //gamemanager.GetComponent<EnemyManager>().setupdating(true);
                 int rand_range_x = Random.Range(0, 11);
                 int rand_range_y = Random.Range(0, 11);
 
                 if (rand_range_x % 2 == 0)
                 {
-                    rand_x = Random.Range(-6, -2);
+                    rand_x = Random.Range(-4, -1);
                 }
                 else
                 {
-                    rand_x = Random.Range(3, 6);
+                    rand_x = Random.Range(2, 5);
                 }
 
                 if (rand_range_y % 2 == 0)
                 {
-                    rand_y = Random.Range(-6, -2);
+                    rand_y = Random.Range(-4, -1);
                 }
                 else
                 {
-                    rand_y = Random.Range(3, 6);
+                    rand_y = Random.Range(2, 5);
                 }
             }
 
@@ -495,7 +526,6 @@ public class EnemyScript : MonoBehaviour
                     {
                         //GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
                         GetComponentInChildren<SpriteRenderer>().color = Color.red;
-
                         if (shootTimer >= 3.0f)
                         {
                             //play attack animation
@@ -1059,6 +1089,7 @@ public class EnemyScript : MonoBehaviour
       
         GetComponentInChildren<SpriteRenderer>().enabled = false;
         Destroy(gameObject);
+        gamemanager.GetComponent<EnemyManager>().recalculate_numberofenemies();
     }
 
     public void Death()
@@ -1069,6 +1100,7 @@ public class EnemyScript : MonoBehaviour
         if (currentHealth == 0)
         {
             Debug.Log("Precise Kill!");
+            particles.SetActive(true);
             EnemyDie(true);
         }
         else if (currentHealth < 0)

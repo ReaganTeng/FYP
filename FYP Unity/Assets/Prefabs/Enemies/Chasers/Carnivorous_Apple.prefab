@@ -201,6 +201,7 @@ MonoBehaviour:
   attackclip: {fileID: 7400000, guid: aa5a6d25c2e20154a82a3810a8c34fcf, type: 2}
   about2atkclip: {fileID: 0}
   attacks_per_session: 1
+  pp: {fileID: 11400000, guid: 80203a9d8037ee2449d6c18b30afe1f3, type: 2}
 --- !u!33 &6339725102451940321
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -880,10 +881,11 @@ MonoBehaviour:
   cooldown_period: 1
   abouttoattack_period: 1
   projectile_numbers: 0
+  floatingText: {fileID: 0}
   atkPattern: 1
   phase: 1
   projectileGO: {fileID: 7347223109495145681, guid: 938809779cd6685419a064f5040f83af, type: 3}
-  line: {fileID: 6922493218510129667, guid: 3f6a26fc70e9cfb42aed81987544b6ba, type: 3}
+  line: {fileID: 4302930331368835095, guid: 1434afd8d00d3ab40918b589eba6bdbd, type: 3}
   canvas: {fileID: 6615644707402866065}
   handle: {fileID: 5385007686471619809}
   healthtext: {fileID: 0}
@@ -965,14 +967,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.03676927, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 41ea43ed22c9094448300603913fff72, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1123,6 +1125,7 @@ MonoBehaviour:
   attackclip: {fileID: 7400000, guid: de08b9774f0d75b43ac89b6140d92f1f, type: 2}
   about2atkclip: {fileID: 0}
   attacks_per_session: 0
+  pp: {fileID: 0}
 --- !u!33 &1629224506573211108
 MeshFilter:
   m_ObjectHideFlags: 0
