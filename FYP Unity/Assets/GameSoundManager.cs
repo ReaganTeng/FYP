@@ -38,6 +38,8 @@ public class GameSoundManager : MonoBehaviour
         }
         instance = this;
         DontDestroyOnLoad(gameObject);
+
+        SoundManager.StopSoundsOnLevelLoad = false;
     }
 
     public static void PlaySound(string name)
