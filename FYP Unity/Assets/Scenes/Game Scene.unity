@@ -518,7 +518,7 @@ PrefabInstance:
     - target: {fileID: 4940691009673553818, guid: d09965bd491c43742a512d3f4207781f, type: 3}
       propertyPath: KnifeWeaponDisplay
       value: 
-      objectReference: {fileID: 1715986218}
+      objectReference: {fileID: 701331492}
     - target: {fileID: 4940691009673553818, guid: d09965bd491c43742a512d3f4207781f, type: 3}
       propertyPath: RollerWeaponDisplay
       value: 
@@ -558,15 +558,11 @@ PrefabInstance:
     - target: {fileID: 5545318540187160410, guid: d09965bd491c43742a512d3f4207781f, type: 3}
       propertyPath: combo_timer_text
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5818845080139474616, guid: d09965bd491c43742a512d3f4207781f, type: 3}
-      propertyPath: m_Size.z
-      value: 17.048792
-      objectReference: {fileID: 0}
-    - target: {fileID: 5818845080139474616, guid: d09965bd491c43742a512d3f4207781f, type: 3}
-      propertyPath: m_Center.z
-      value: 0.12476808
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1817794042}
+    - target: {fileID: 6301294397451754347, guid: d09965bd491c43742a512d3f4207781f, type: 3}
+      propertyPath: dashtimer_slider
+      value: 
+      objectReference: {fileID: 344222783}
     - target: {fileID: 6670536203559410289, guid: d09965bd491c43742a512d3f4207781f, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -2136,6 +2132,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8247579941133037295, guid: f28f9f6e61543e24c9fe8d3088efd1a6, type: 3}
   m_PrefabInstance: {fileID: 644085393}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &701331492 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2429570959170697404, guid: d09965bd491c43742a512d3f4207781f, type: 3}
+  m_PrefabInstance: {fileID: 222451779}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &705507993
 GameObject:

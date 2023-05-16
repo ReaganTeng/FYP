@@ -113,7 +113,60 @@ public class EnemyAttack : MonoBehaviour
 
             if (attacking)
             {
-                transform.parent.transform.parent.GetComponent<NavMeshAgent>().enabled = false;
+                //transform.parent.transform.parent.GetComponent<NavMeshAgent>().enabled = false;
+
+                //ADD 1 ATTACK TO EACH LOOP
+                if (attacking_present)
+                {
+                    //decrease the player's health
+                    if (animator.GetCurrentAnimatorStateInfo(0).IsName("attack")
+                        && animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 0.0f)
+                    {
+
+                        if (player_in_hitbox)
+                        {
+                            //HAVE A IF LOOP
+                            //HIT PLAYER EVERY TIME EACH LOOP ENDS
+                            player.GetComponent<PlayerMovement>().setAnimator(true);
+                            player.GetComponent<PlayerStats>().ResetConsecutiveHit();
+                            //other.GetComponent<PlayerStats>().ChangeFervor(-5.0f);
+                            player.GetComponent<PlayerStats>().ChangeFervor(-15.0f * pp.return_fevor_padding());
+                            player.GetComponent<PlayerStats>().Resetvar();
+
+                            ProCamera2DShake.Instance.ShakeUsingPreset("DamageShake");
+
+                        }
+
+                        Attackcdtimer = AttackCD;
+                        attacks_performed += 1;
+                    }
+
+                    //END THE LOOP WHEN ATTACKS PERFORM EXCEEDED
+                    if (attacks_performed >= attacks_per_session)
+                    {
+                        //gamemanager.GetComponent<EnemyManager>().setupdating(false);
+                        animator.SetBool("attack", false);
+                        animator.SetBool("about2attack", false);
+                        //animator.SetBool("chasingPlayer", false);
+                        post_attack = true;
+                        attacks_performed = 0;
+                        delayTime = 0.0f;
+                        attacking = false;
+                        attacking_present = false;
+                        transform.parent.transform.parent.GetComponent<NavMeshAgent>().enabled = true;
+
+                    }
+                    else
+                    {
+                        if (animator.GetCurrentAnimatorStateInfo(0).IsName("attack")
+                           && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0)
+                        {
+                            animator.Play("attack", 0, 0);
+                        }
+                    }
+                    //
+                }
+                //
             }
             else
             {
@@ -195,7 +248,9 @@ public class EnemyAttack : MonoBehaviour
                 other.GetComponent<PlayerStats>().ResetConsecutiveHit();
                 //other.GetComponent<PlayerStats>().ChangeFervor(-10.0f);
                 other.GetComponent<PlayerStats>().ChangeFervor(-15.0f * pp.return_fevor_padding());
+                other.GetComponent<PlayerStats>().Resetvar();
 
+                ProCamera2DShake.Instance.ShakeUsingPreset("DamageShake");
             }
             //
 
@@ -236,7 +291,11 @@ public class EnemyAttack : MonoBehaviour
             {
                 other.GetComponent<PlayerMovement>().setAnimator(true);
                 other.GetComponent<PlayerStats>().ResetConsecutiveHit();
-                other.GetComponent<PlayerStats>().ChangeFervor(-15.0f * pp.return_fevor_padding());
+                other.GetComponent<PlayerStats>().ChangeFervor(-15.0f * pp.return_fevor_padding())
+                    ;
+                other.GetComponent<PlayerStats>().Resetvar();
+                ProCamera2DShake.Instance.ShakeUsingPreset("DamageShake");
+
                 Attackcdtimer = AttackCD;
             }
             //
@@ -275,11 +334,18 @@ public class EnemyAttack : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            attacking_present = false;
-            delayTime = 0.0f;
-            AttackCD = 0;
-            attacks_performed = 0;
-            Attackcdtimer = 0;
+
+            player_in_hitbox = false;
+
+
+
+            //Debug.Log("PLAYER EXIT HITBOX");
+
+            //attacking_present = false;
+            //delayTime = 0.0f;
+            //AttackCD = 0;
+            //attacks_performed = 0;
+            //Attackcdtimer = 0;
             
             if (transform.parent.transform.parent.GetComponent<EnemyScript>().return_enemyType()
                            == EnemyScript.EnemyType.CHASER)
