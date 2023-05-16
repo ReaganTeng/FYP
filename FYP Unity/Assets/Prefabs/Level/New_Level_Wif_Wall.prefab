@@ -24528,6 +24528,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Snowman
       objectReference: {fileID: 0}
+    - target: {fileID: 195281209188268981, guid: b9a3bb1561aa04545b78112ca2c049d5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 195281209188268981, guid: b9a3bb1561aa04545b78112ca2c049d5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
     - target: {fileID: 776293739738204909, guid: b9a3bb1561aa04545b78112ca2c049d5, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -24558,7 +24566,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 776293739738204909, guid: b9a3bb1561aa04545b78112ca2c049d5, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.52169687
+      value: -0.43965632
       objectReference: {fileID: 0}
     - target: {fileID: 776293739738204909, guid: b9a3bb1561aa04545b78112ca2c049d5, type: 3}
       propertyPath: m_LocalRotation.x
@@ -24566,7 +24574,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 776293739738204909, guid: b9a3bb1561aa04545b78112ca2c049d5, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.85313094
+      value: 0.8981661
       objectReference: {fileID: 0}
     - target: {fileID: 776293739738204909, guid: b9a3bb1561aa04545b78112ca2c049d5, type: 3}
       propertyPath: m_LocalRotation.z
@@ -24578,7 +24586,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 776293739738204909, guid: b9a3bb1561aa04545b78112ca2c049d5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 242.892
+      value: 232.164
       objectReference: {fileID: 0}
     - target: {fileID: 776293739738204909, guid: b9a3bb1561aa04545b78112ca2c049d5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -24600,8 +24608,8 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 112066243259060311, guid: b9a3bb1561aa04545b78112ca2c049d5, type: 3}
   m_PrefabInstance: {fileID: 8780393953296077909}
   m_PrefabAsset: {fileID: 0}
---- !u!136 &4008303347015647157
-CapsuleCollider:
+--- !u!65 &1661814372
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -24610,7 +24618,6 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 1.4168895
-  m_Height: 5.0028515
-  m_Direction: 1
-  m_Center: {x: -0.08318594, y: 2.0014262, z: -0.08873195}
+  serializedVersion: 2
+  m_Size: {x: 3.9578152, y: 6.56, z: 8.127841}
+  m_Center: {x: 2.0795035, y: 3.32, z: -0.861909}
