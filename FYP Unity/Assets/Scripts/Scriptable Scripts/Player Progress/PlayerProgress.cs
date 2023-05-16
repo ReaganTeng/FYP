@@ -11,16 +11,48 @@ public class PlayerProgress : ScriptableObject
     private int CurrentInventorySlots;
 
     [SerializeField] float buffactive_reduction;
-
-
     [SerializeField] float fervorspeedreduction;
-
     [SerializeField] float heavyattackspeed;
+    [SerializeField] int number_of_charges;
 
+    //starting value 1
+    [SerializeField] float heavyattackspeed_reduction;
+
+    //starting value 1
+    [SerializeField] float fervorloss_padding;
+
+
+    public void increase_fevor_padding()
+    {
+        fervorloss_padding -= 0.15f;
+    }
+    public float return_fevor_padding()
+    {
+        return fervorloss_padding;
+    }
+
+    public void decrease_heavyattackrecovery()
+    {
+        heavyattackspeed_reduction += 0.15f;
+    }
+    public float return_heavyattackrecovery()
+    {
+        return heavyattackspeed_reduction;
+    }
+
+    public void increase_number_of_charges()
+    {
+        number_of_charges += 1;
+    }
+
+    public int return_number_of_charges()
+    {
+        return number_of_charges;
+    }
 
     public void increase_heavyattackspeed()
     {
-        heavyattackspeed += 1;
+        heavyattackspeed += 3;
     }
     public float return_heavyattackspeed()
     {
@@ -97,6 +129,12 @@ public class PlayerProgress : ScriptableObject
         ResetCredibility();
         ResetInventory();
         buffactive_reduction = 30;
+        number_of_charges = 0;
 
+        //starting value 1
+        heavyattackspeed_reduction = 1;
+
+        //starting value 1
+        fervorloss_padding = 1;
     }
 }

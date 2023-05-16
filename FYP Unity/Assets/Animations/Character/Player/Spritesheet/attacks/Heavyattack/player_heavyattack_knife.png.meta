@@ -1,0 +1,1169 @@
+fileFormatVersion: 2
+guid: 2173b553bcbe5e94b8d3ba872702c371
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: player_heavyattack_knife_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4995
+        width: 1154
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b0ebb32adee53b4a976f829a1b474b2
+      internalID: -484313534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_knife_1
+      rect:
+        serializedVersion: 2
+        x: 1154
+        y: 4995
+        width: 1154
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e9567e0869522541847e32377e346bc
+      internalID: -1602679590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_knife_2
+      rect:
+        serializedVersion: 2
+        x: 2308
+        y: 4995
+        width: 1154
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 828af6d4ea433bc48ab2f5300f1fb034
+      internalID: -11083010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_knife_3
+      rect:
+        serializedVersion: 2
+        x: 3462
+        y: 4995
+        width: 1154
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c103b59a06af22439caf15973d05b89
+      internalID: 693454815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_knife_4
+      rect:
+        serializedVersion: 2
+        x: 4616
+        y: 4995
+        width: 1154
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e38a612d0159814ead7c2d58d84d000
+      internalID: 2123012870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_knife_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4440
+        width: 1154
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8692bda14ffced64bb8dbab5208d34b3
+      internalID: -2070053559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_knife_6
+      rect:
+        serializedVersion: 2
+        x: 1154
+        y: 4440
+        width: 1154
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4a3478cab93c0d40b0173d1f5001ac2
+      internalID: 696978391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_knife_7
+      rect:
+        serializedVersion: 2
+        x: 2308
+        y: 4440
+        width: 1154
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e19176e75b63cdf4db2b70c9a1a962a3
+      internalID: 1839504312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_knife_8
+      rect:
+        serializedVersion: 2
+        x: 3462
+        y: 4440
+        width: 1154
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ca4a3ed5d1fa274bb3f2b1ac2da7fec
+      internalID: -1787054344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_knife_9
+      rect:
+        serializedVersion: 2
+        x: 4616
+        y: 4440
+        width: 1154
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d00417378e6e71745a06be67a7f3b306
+      internalID: -995162190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_knife_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3885
+        width: 1154
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 338fede3cb2390d4ebee8f155add32ca
+      internalID: 947247480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_knife_11
+      rect:
+        serializedVersion: 2
+        x: 1154
+        y: 3885
+        width: 1154
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8b3d1953f46f2a409fcf3daf84def36
+      internalID: 1267407000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_knife_12
+      rect:
+        serializedVersion: 2
+        x: 2308
+        y: 3885
+        width: 1154
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d10fec0d0ddd04b41a164107aec6f36d
+      internalID: -1198295730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_knife_13
+      rect:
+        serializedVersion: 2
+        x: 3462
+        y: 3885
+        width: 1154
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7195ca1262b7d0541a32e6fe40fa6348
+      internalID: -443762324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_knife_14
+      rect:
+        serializedVersion: 2
+        x: 4616
+        y: 3885
+        width: 1154
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b61357a31bd55446b2ab8ab2a05387d
+      internalID: -629503407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_knife_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3330
+        width: 1154
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a5cecee333e8fa44a4431185cb72388
+      internalID: -507418024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_knife_16
+      rect:
+        serializedVersion: 2
+        x: 1154
+        y: 3330
+        width: 1154
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3157579090366844982016fbfc65015f
+      internalID: 1210531436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_knife_17
+      rect:
+        serializedVersion: 2
+        x: 2308
+        y: 3330
+        width: 1154
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbc59ca3d278b42459cb518da93c82fb
+      internalID: -395009239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_knife_18
+      rect:
+        serializedVersion: 2
+        x: 3462
+        y: 3330
+        width: 1154
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 900330b2ac9784a4490de771afdfc630
+      internalID: 672186497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_knife_19
+      rect:
+        serializedVersion: 2
+        x: 4616
+        y: 3330
+        width: 1154
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f19c73698e849e5489bfb781ff517d17
+      internalID: 561587716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_knife_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2775
+        width: 1154
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1c98328596fe1040b37279099ed9fe3
+      internalID: -610112315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_knife_21
+      rect:
+        serializedVersion: 2
+        x: 1154
+        y: 2775
+        width: 1154
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b0022d30f2894a4087eb875ab521e0c
+      internalID: 299281639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_knife_22
+      rect:
+        serializedVersion: 2
+        x: 2308
+        y: 2775
+        width: 1154
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0efdefb11a44b6f4c876c92e59ad4039
+      internalID: 1569707992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_knife_23
+      rect:
+        serializedVersion: 2
+        x: 3462
+        y: 2775
+        width: 1154
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc8ebb9bd44e0be48ad8ba7ac1f458ce
+      internalID: -878851603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_knife_24
+      rect:
+        serializedVersion: 2
+        x: 4616
+        y: 2775
+        width: 1154
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d83d4e5cd2409a64ba1c89babcf2dee6
+      internalID: -946261032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_knife_25
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2220
+        width: 1154
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d779c4f5fd47f948838d71e1bc9a30b
+      internalID: 2010636905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_knife_26
+      rect:
+        serializedVersion: 2
+        x: 1154
+        y: 2220
+        width: 1154
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5e64db0dfd33bc4abb5b6f4e0c1084e
+      internalID: -1927724850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_knife_27
+      rect:
+        serializedVersion: 2
+        x: 2308
+        y: 2220
+        width: 1154
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b3686a4c146e0a4ea24983cc5f29cac
+      internalID: 1671518114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_knife_28
+      rect:
+        serializedVersion: 2
+        x: 3462
+        y: 2220
+        width: 1154
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fff3a233105653844baaae7dbc732fd3
+      internalID: -1791339603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_knife_29
+      rect:
+        serializedVersion: 2
+        x: 4616
+        y: 2220
+        width: 1154
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc1d3cb0a5b45254f836772c7adb764d
+      internalID: -797128982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_knife_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1665
+        width: 1154
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48be894d1e9b72e42958ba59fabd9d29
+      internalID: 280413256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_knife_31
+      rect:
+        serializedVersion: 2
+        x: 1154
+        y: 1665
+        width: 1154
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c7d497ecc3f8234db089cce39843f74
+      internalID: 1883009620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_knife_32
+      rect:
+        serializedVersion: 2
+        x: 2308
+        y: 1665
+        width: 1154
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7906e65e876706b45a9985f1ee30feaf
+      internalID: -1132908796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_knife_33
+      rect:
+        serializedVersion: 2
+        x: 3462
+        y: 1665
+        width: 1154
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31a5caf1f24569e4fb363669cbbfc6d7
+      internalID: -299863257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_knife_34
+      rect:
+        serializedVersion: 2
+        x: 4616
+        y: 1665
+        width: 1154
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 616583cd8098b9847a14a683ddcd3843
+      internalID: -1660444616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_knife_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1110
+        width: 1154
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13a0242e22699134bbf6e89da596436f
+      internalID: 991962386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_knife_36
+      rect:
+        serializedVersion: 2
+        x: 1154
+        y: 1110
+        width: 1154
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6c592f0ab8f82c42a7e8dd31669cd1b
+      internalID: -584371402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_knife_37
+      rect:
+        serializedVersion: 2
+        x: 2308
+        y: 1110
+        width: 1154
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 370e8d2c8aafccb4f941cf74d75d6288
+      internalID: -670147199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_knife_38
+      rect:
+        serializedVersion: 2
+        x: 3462
+        y: 1110
+        width: 1154
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9029f9ccf5caae6409d918a33dd2935f
+      internalID: 1571873113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_knife_39
+      rect:
+        serializedVersion: 2
+        x: 4616
+        y: 1110
+        width: 1154
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 634e422f9235a594fb64c0b052c0f9c7
+      internalID: -1792769631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_knife_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 555
+        width: 1154
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f63c99c619b4c74a99ed10969651192
+      internalID: 2058906171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_knife_41
+      rect:
+        serializedVersion: 2
+        x: 1154
+        y: 555
+        width: 1154
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3e2d23b5eb578f4fb579d2a22795708
+      internalID: -218251302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_knife_42
+      rect:
+        serializedVersion: 2
+        x: 2308
+        y: 555
+        width: 1154
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a067d0d9a8159d842baacc8089471260
+      internalID: 2029078666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_knife_43
+      rect:
+        serializedVersion: 2
+        x: 3462
+        y: 555
+        width: 1154
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9b2005adef47cb468cc0cde9101d617
+      internalID: -1356707562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_knife_44
+      rect:
+        serializedVersion: 2
+        x: 4616
+        y: 555
+        width: 1154
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7690130f59bc6846b04cb4db4571488
+      internalID: -288923012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_knife_45
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1154
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3614f30179287a4da07b0c59212c3c8
+      internalID: 2053924232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_heavyattack_knife_46
+      rect:
+        serializedVersion: 2
+        x: 1154
+        y: 0
+        width: 1154
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b064daf5ddbb4524db61ccd6d5f0f695
+      internalID: -1332319754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: d29683b54b2f53a44bbeced313fa616e
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      player_heavyattack_knife_40: 2058906171
+      player_heavyattack_knife_2: -11083010
+      player_heavyattack_knife_37: -670147199
+      player_heavyattack_knife_36: -584371402
+      player_heavyattack_knife_13: -443762324
+      player_heavyattack_knife_33: -299863257
+      player_heavyattack_knife_4: 2123012870
+      player_heavyattack_knife_24: -946261032
+      player_heavyattack_knife_46: -1332319754
+      player_heavyattack_knife_11: 1267407000
+      player_heavyattack_knife_25: 2010636905
+      player_heavyattack_knife_0: -484313534
+      player_heavyattack_knife_30: 280413256
+      player_heavyattack_knife_45: 2053924232
+      player_heavyattack_knife_14: -629503407
+      player_heavyattack_knife_3: 693454815
+      player_heavyattack_knife_28: -1791339603
+      player_heavyattack_knife_32: -1132908796
+      player_heavyattack_knife_35: 991962386
+      player_heavyattack_knife_44: -288923012
+      player_heavyattack_knife_41: -218251302
+      player_heavyattack_knife_21: 299281639
+      player_heavyattack_knife_6: 696978391
+      player_heavyattack_knife_23: -878851603
+      player_heavyattack_knife_10: 947247480
+      player_heavyattack_knife_38: 1571873113
+      player_heavyattack_knife_19: 561587716
+      player_heavyattack_knife_43: -1356707562
+      player_heavyattack_knife_26: -1927724850
+      player_heavyattack_knife_29: -797128982
+      player_heavyattack_knife_5: -2070053559
+      player_heavyattack_knife_8: -1787054344
+      player_heavyattack_knife_22: 1569707992
+      player_heavyattack_knife_12: -1198295730
+      player_heavyattack_knife_42: 2029078666
+      player_heavyattack_knife_9: -995162190
+      player_heavyattack_knife_15: -507418024
+      player_heavyattack_knife_17: -395009239
+      player_heavyattack_knife_31: 1883009620
+      player_heavyattack_knife_27: 1671518114
+      player_heavyattack_knife_20: -610112315
+      player_heavyattack_knife_39: -1792769631
+      player_heavyattack_knife_34: -1660444616
+      player_heavyattack_knife_18: 672186497
+      player_heavyattack_knife_7: 1839504312
+      player_heavyattack_knife_1: -1602679590
+      player_heavyattack_knife_16: 1210531436
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

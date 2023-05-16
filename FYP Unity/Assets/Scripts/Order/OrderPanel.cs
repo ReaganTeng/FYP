@@ -12,6 +12,8 @@ public class OrderPanel : MonoBehaviour
     int score;
     float InitialTimer;
 
+
+    float timer;
     public void SetOrder(Sprite ingre1, Sprite ingre2, Sprite dishresult, Recipes.recipes therecipe)
     {
         ResultDish.sprite = dishresult;
@@ -50,8 +52,38 @@ public class OrderPanel : MonoBehaviour
 
     private void Update()
     {
-        OrderTimer -= Time.deltaTime;
-        Timer.value -= Time.deltaTime / InitialTimer;
+        OrderTimer -=   Time.deltaTime;
+        Timer.value -=  Time.deltaTime / InitialTimer;
+
+        //create a scale up and down effect to indicate player is running out of time
+        if (OrderTimer < InitialTimer / 2
+            && OrderTimer > InitialTimer * (1 / 4))
+        {
+
+            Timer.fillRect.GetComponent<Image>().color = Color.yellow;
+
+            //timer += Time.deltaTime;
+            //if (timer > 1.0f)
+            //{
+            //    timer = 0;
+            //}
+            //if (timer > .5f)
+            //{
+            //Timer.GetComponent<RectTransform>().localScale += Timer.GetComponent<RectTransform>().localScale * Time.deltaTime;
+            //transform.GetComponentInChildren<Image>().color = Color.red;
+            //}
+            //else
+            //{
+            //Timer.GetComponent<RectTransform>().localScale -= Timer.GetComponent<RectTransform>().localScale * Time.deltaTime;
+            //}
+        }
+        //if timer has a quarter left
+        if (OrderTimer < InitialTimer / 4)
+        {
+            Timer.fillRect.GetComponent<Image>().color = Color.red;
+        }
+        //
+
 
         // Destroy itself if timer hits 0;
         if (OrderTimer <= 0.0f)

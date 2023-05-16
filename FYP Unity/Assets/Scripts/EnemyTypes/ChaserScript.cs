@@ -216,15 +216,15 @@ public class ChaserScript : MonoBehaviour
                             change_of_attk_type_1 = 0;
                         }
 
-                        if (change_of_attk_type_1 >= 15.0f)
+                        if (change_of_attk_type_1 >= 8.0f)
                         {
                             GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
                             change_of_attk_type_1 = 0.0f;
                         }
 
-                        //back away during post attack
+                        //avoid the player
                         if (GetComponentInChildren<EnemyAttack>().getpostattack()
-                            || change_of_attk_type_1 >= 7.0f)
+                            || change_of_attk_type_1 >= 5.0f)
                         {
                             if(GetComponentInChildren<EnemyAttack>().getpostattack())
                             {
@@ -233,35 +233,31 @@ public class ChaserScript : MonoBehaviour
 
                             chasingspeed = 2.0f;
 
+                            //enemyPhase =
+
                             //avoid player
-                            if (dist <= 5.0f)
-                            {
-                                navMeshAgent.enabled = false;
-                                //enemyScript.steering();
-                                enemyScript.avoidanceCode(rand_z);
-                            }
-                            //continue chasing player
-                            else
-                            {
-                                //Debug.Log("Moving sideways");
-                                //rand_z = Random.Range(-4, 4);
+                            //if (dist <= 5.0f)
+                            //{
+                            //    navMeshAgent.enabled = false;
+                            //    //enemyScript.steering();
+                            //    enemyScript.avoidanceCode(rand_z);
+                            //}
+                            ////continue chasing player
+                            //else
+                            //{
 
-                                if (GetComponentInChildren<Animator>().GetBool("about2attack")
-                                    && GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("aboutattack"))
-                                {
-                                    navMeshAgent.enabled = false;
-                                }
-                                else
-                                {
-                                    navMeshAgent.enabled = true;
-                                }
-
-
-
-                                GetComponent<Rigidbody>().velocity = new Vector3(rand_z, 0.0f, 0.0f);
-                                navMeshAgent.SetDestination(playerGO.transform.position);
-                                //enemyScript.steering();
-                            }
+                            //    /*if (GetComponentInChildren<Animator>().GetBool("about2attack")
+                            //        && GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("aboutattack"))
+                            //    {
+                            //        navMeshAgent.enabled = false;
+                            //    }
+                            //    else
+                            //    {
+                            //        navMeshAgent.enabled = true;
+                            //    }
+                            //    GetComponent<Rigidbody>().velocity = new Vector3(rand_z, 0.0f, 0.0f);
+                            //    navMeshAgent.SetDestination(playerGO.transform.position);*/
+                            //}
                         }
                         //
                         //continue to chase the player
@@ -350,7 +346,10 @@ public class ChaserScript : MonoBehaviour
 
     }
 
-
+    public float return_change_of_attk_type_1()
+    {
+        return change_of_attk_type_1;
+    }
     public void DestroyBeams()
     {
         if (hitbeam != null)
