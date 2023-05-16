@@ -321,6 +321,13 @@ public class PlayerAttack : MonoBehaviour
                     )
                 {
                     animator.speed = pp.return_heavyattackspeed();
+
+                    if (heavyattackclicked
+                        && !attacking)
+                    {
+                        depletecharge();
+                    }
+
                     attacking = true;
                 }
                 //
@@ -705,9 +712,6 @@ public class PlayerAttack : MonoBehaviour
     }
     void UpdateWeaponDisplay()
     {
-
-
-
         switch((Weapon)GetWeaponType())
         {
             case Weapon.KNIFE:
