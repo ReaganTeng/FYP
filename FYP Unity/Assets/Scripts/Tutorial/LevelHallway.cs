@@ -85,8 +85,7 @@ public class LevelHallway : MonoBehaviour
 
     private void Awake()
     {
-        //CloseHallway(Hallway.ALL);
-        OpenHallway(Hallway.ALL);
+        CloseHallway(Hallway.ALL);
 
         instance = this;
     }
