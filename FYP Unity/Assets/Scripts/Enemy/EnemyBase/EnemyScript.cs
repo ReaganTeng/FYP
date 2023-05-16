@@ -8,7 +8,7 @@ using TMPro;
 public class EnemyScript : MonoBehaviour
 {
 
-    [SerializeField] GameObject particles;
+    //[SerializeField] GameObject particles;
 
 
     float targetVelocity;
@@ -183,7 +183,7 @@ public class EnemyScript : MonoBehaviour
     void Start()
     {
 
-        particles.SetActive(false);
+        //particles.SetActive(false);
         currentHealth = EnemyHealth;
 
         gamemanager = GameObject.FindGameObjectWithTag("GameManager");
@@ -1041,7 +1041,7 @@ public class EnemyScript : MonoBehaviour
         if (currentHealth == 0)
         {
             Debug.Log("Precise Kill!");
-            particles.SetActive(true);
+            //particles.SetActive(true);
             EnemyDie(true);
         }
         else if (currentHealth < 0)

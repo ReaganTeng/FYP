@@ -106,7 +106,8 @@ public class Spawner : MonoBehaviour
         /*x_position = Random.Range(-5, 5);
         z_position = Random.Range(-5, 5);*/
 
-        gamemanager.GetComponent<EnemyManager>().setupdating(false);
+        if (gamemanager != null)
+            gamemanager.GetComponent<EnemyManager>().setupdating(false);
 
         GameObject enemyObject = Instantiate(enemy
             , transform.position /*+ new Vector3(x_position * enemy.transform.localScale.x, 0, z_position * enemy.transform.localScale.z)*/
