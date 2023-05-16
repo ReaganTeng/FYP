@@ -100,11 +100,11 @@ public class Tutorial : MonoBehaviour
     {
         instance = this;
 
-        // If it is a tutorial level
-        if (lm.TutorialStage)
+        // If it is a tutorial level, aka level -1,-2
+        if (lm.DaySelected < 0)
         {
             InTutorial = true; // Set to be a tutorial
-            tut = lm.TutorialLevel[lm.DaySelected - 1].isThereTutorial.DialogueAndInstructions; // Load in all the dialogues
+            tut = EndOfDay.instance.GetLevelReference().isThereTutorial.DialogueAndInstructions; // Load in all the dialogues
             // Get the component for the dialogue chatbox
             SquidText = SquidChatBox.GetComponentInChildren<TextMeshProUGUI>();
             skipPromptText = SkipPrompt.GetComponent<TextMeshProUGUI>();
@@ -489,7 +489,7 @@ public class Tutorial : MonoBehaviour
                         SpawnerManager.instance.SetSpawner(SpawnerManager.SPAWNERTYPE.OOTATOO, true);
                         SpawnerManager.instance.GetSpawner(SpawnerManager.SPAWNERTYPE.OOTATOO).GetComponent<Spawner>().ModifySpawner(4, 2);
                         MixerManager.instance.ToggleMixers(true);
-                        for (int i = 0; i < 4; i++)
+                        for (int i = 0; i < 2; i++)
                         {
                             gm.GetComponent<OrderSystem>().CreateAnOrder();
                         }
@@ -509,7 +509,7 @@ public class Tutorial : MonoBehaviour
                     // if tutorial hasnt been completed yet, bring them to the next visual novel scene
                     if (PlayerPrefs.GetInt("TutorialComplete") == 0)
                     {
-                        lm.DaySelected = 2;
+                        lm.DaySelected = -1;
                         SceneManager.LoadScene("VNScene");
                     }
                     // if the tutorial has been completed, bring them to the Level Select Screen
@@ -824,19 +824,15 @@ public class Tutorial : MonoBehaviour
                         OrderSystem os = gm.GetComponent<OrderSystem>();
                         os.SetWaitingTime(100000);
                         gm.GetComponent<EndOfDay>().ResetScore();
-
-                        for (int i = 0; i < 2; i++)
-                        {
-                            os.CreateAnOrder(0);
-                            os.CreateAnOrder(1);
-                        }
+                        os.CreateAnOrder(0);
+                        os.CreateAnOrder(1);
                     }
 
                     // if the player finished serving all the orders
                     if (gm.GetComponent<OrderSystem>().GetOrderCount() == 0)
                     {
-                        // if the score player obtained is greater or equal to 50 make them go to VN, else reset the objective
-                        if (gm.GetComponent<EndOfDay>().GetScore() >= 50)
+                        // if the score player obtained is greater or equal to 25 make them go to VN, else reset the objective
+                        if (gm.GetComponent<EndOfDay>().GetScore() >= 25)
                             currentIndex += 2;
 
                         ConditionTriggered = true;
@@ -857,7 +853,7 @@ public class Tutorial : MonoBehaviour
 
             case Instructions.DAY2_DONE:
                 {
-                    lm.DaySelected = 3;
+                    lm.DaySelected = 0;
                     SceneManager.LoadScene("VNScene");
                     break;
                 }
@@ -887,10 +883,10 @@ public class Tutorial : MonoBehaviour
 
     void SpecialChange(int theCurrentIndex, int starAmt)
     {
-        lm.TutorialLevel[lm.DaySelected - 1].isThereTutorial.DialogueAndInstructions[theCurrentIndex].TextDisplay =
+        EndOfDay.instance.GetLevelReference().isThereTutorial.DialogueAndInstructions[theCurrentIndex].TextDisplay =
             "As you can see, your dish has " + starAmt + " star quality.";
 
-        lm.TutorialLevel[lm.DaySelected - 1].isThereTutorial.DialogueAndInstructions[theCurrentIndex + 1].TextDisplay =
+        EndOfDay.instance.GetLevelReference().isThereTutorial.DialogueAndInstructions[theCurrentIndex + 1].TextDisplay =
             "2 from perfect mashed potato cup and " + (starAmt-2).ToString() + "from QTE.";
     }
 

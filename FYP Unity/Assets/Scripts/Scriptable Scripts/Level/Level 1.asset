@@ -12,25 +12,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec3504d56cb72c044b834f7858330e0d, type: 3}
   m_Name: Level 1
   m_EditorClassIdentifier: 
+  WhatDay: 1
   LevelName: Day 1
   LevelDescription: Potato Madness
   SReq: 100
-  AReq: 50
-  BReq: 30
-  CReq: 10
+  AReq: 70
+  BReq: 50
+  CReq: 20
   MaxCredibility: 4
   CCReq: 0
-  HallwaysUnlock: 00000000
+  HallwaysUnlock: 000000000100000007000000
   CustomizeOrderForThisDay:
-    theDish:
-    - {fileID: 396589628195105180, guid: 1aa4138ff3d4c74489890d40137af51c, type: 3}
+    dishList:
+    - theDish: {fileID: 396589628195105180, guid: 1aa4138ff3d4c74489890d40137af51c, type: 3}
+      whatDifficulty: 0
+      IsPrority: 0
+      HowManyPriority: 0
+      DishBeforePriority: 0
+      IntervalBetweenPriority: 0
+    - theDish: {fileID: 371815206722413681, guid: 8679ed47fc6fa454db4d8b6f99b5d19b, type: 3}
+      whatDifficulty: 1
+      IsPrority: 1
+      HowManyPriority: 2
+      DishBeforePriority: 0
+      IntervalBetweenPriority: 1
+    - theDish: {fileID: 6203881991820088434, guid: 7680b061897d9414980341ab7538bd8a, type: 3}
+      whatDifficulty: 0
+      IsPrority: 0
+      HowManyPriority: 0
+      DishBeforePriority: 0
+      IntervalBetweenPriority: 0
     WaitingTime: 0
-    penalty: 2
-    Fixed: 1
-    AmtOfDishes: 0
-  WhatSpawnerActive: 00000000
+    penalty: 5
+    EasyDishChance: 60
+    NormalDishChance: 40
+    HardDishChance: 0
+    ExtremeDishChance: 0
+  WhatSpawnerActive: 000000000100000007000000
   isThereTutorial: {fileID: 0}
   MaxOrders: 4
   TimeBeforeFirstOrder: 0
   IntervalBetweenOrders: 20
-  DayDuration: 200
+  DayDuration: 180

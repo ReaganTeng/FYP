@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Level", menuName = "Level")]
 public class Level : ScriptableObject
 {
+    public int WhatDay;
     public string LevelName;
     public string LevelDescription;
     public int SReq;

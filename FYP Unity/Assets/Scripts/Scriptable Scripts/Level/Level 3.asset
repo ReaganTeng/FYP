@@ -12,28 +12,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec3504d56cb72c044b834f7858330e0d, type: 3}
   m_Name: Level 3
   m_EditorClassIdentifier: 
+  WhatDay: 3
   LevelName: Day 3
   LevelDescription: Sushi and Noodles?
-  SReq: 400
-  AReq: 200
-  BReq: 100
+  SReq: 220
+  AReq: 180
+  BReq: 120
   CReq: 50
   MaxCredibility: 4
-  CCReq: 2
-  HallwaysUnlock: 00000000010000000500000006000000070000000a000000
+  CCReq: 3
+  HallwaysUnlock: 000000000100000002000000040000000500000006000000070000000a0000000c000000
   CustomizeOrderForThisDay:
-    theDish:
-    - {fileID: 396589628195105180, guid: 1aa4138ff3d4c74489890d40137af51c, type: 3}
-    - {fileID: 371815206722413681, guid: 8679ed47fc6fa454db4d8b6f99b5d19b, type: 3}
-    - {fileID: 5534141860452383926, guid: f7688709633b8d141ad509f9728a29b9, type: 3}
-    - {fileID: 6481460460889700096, guid: ef72916565dfb934aa4e955d1eecf63b, type: 3}
+    dishList:
+    - theDish: {fileID: 0}
+      whatDifficulty: 0
+      IsPrority: 0
+      HowManyPriority: 0
+      DishBeforePriority: 0
+      IntervalBetweenPriority: 0
+    - theDish: {fileID: 2570593248413926386, guid: 2cd76e66e57826d4db6c8ec56be4b390, type: 3}
+      whatDifficulty: 2
+      IsPrority: 1
+      HowManyPriority: 2
+      DishBeforePriority: 0
+      IntervalBetweenPriority: 5
+    - theDish: {fileID: 3441819759951336346, guid: aca9a167578818f46a8d36be143ee99c, type: 3}
+      whatDifficulty: 3
+      IsPrority: 1
+      HowManyPriority: 1
+      DishBeforePriority: 3
+      IntervalBetweenPriority: 0
     WaitingTime: 0
-    penalty: 5
-    Fixed: 1
-    AmtOfDishes: 0
-  WhatSpawnerActive: 0000000007000000010000000600000003000000
+    penalty: 15
+    EasyDishChance: 70
+    NormalDishChance: 0
+    HardDishChance: 20
+    ExtremeDishChance: 10
+  WhatSpawnerActive: 00000000070000000100000006000000030000000200000008000000
   isThereTutorial: {fileID: 0}
   MaxOrders: 4
   TimeBeforeFirstOrder: 0
-  IntervalBetweenOrders: 20
-  DayDuration: 300
+  IntervalBetweenOrders: 3
+  DayDuration: 210

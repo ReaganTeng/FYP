@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec3504d56cb72c044b834f7858330e0d, type: 3}
   m_Name: Tutorial 1
   m_EditorClassIdentifier: 
+  WhatDay: -2
   LevelName: Tutorial 1
   LevelDescription: Back to basic
   SReq: 0
@@ -22,12 +23,19 @@ MonoBehaviour:
   CCReq: 0
   HallwaysUnlock: 
   CustomizeOrderForThisDay:
-    theDish:
-    - {fileID: 396589628195105180, guid: 1aa4138ff3d4c74489890d40137af51c, type: 3}
+    dishList:
+    - theDish: {fileID: 396589628195105180, guid: 1aa4138ff3d4c74489890d40137af51c, type: 3}
+      whatDifficulty: 0
+      IsPrority: 0
+      HowManyPriority: 0
+      DishBeforePriority: 0
+      IntervalBetweenPriority: 0
     WaitingTime: 0
     penalty: 10
-    Fixed: 1
-    AmtOfDishes: 0
+    EasyDishChance: 0
+    NormalDishChance: 0
+    HardDishChance: 0
+    ExtremeDishChance: 0
   WhatSpawnerActive: 
   isThereTutorial: {fileID: 11400000, guid: 84a06d9ee83697e47af32d190f97e879, type: 2}
   MaxOrders: 4

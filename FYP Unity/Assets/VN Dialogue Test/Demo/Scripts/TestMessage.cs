@@ -8,66 +8,32 @@ public class TestMessage : MonoBehaviour
 {
     public DialogManager DialogManager;
     SceneName SceneNo;
-    TutorialSceneName TutSceneNo;
     [SerializeField] LevelManager LM;
-
-    enum TutorialSceneName
-    {
-        DAY1VN, // tutorial
-        DAY2VN, // tutorial
-        EDAY2VN, // tutorial
-    }
 
     enum SceneName
     {
-
+        TUT1VN, // tutorial //-2
+        TUT2VN, // tutorial // -1
+        ETUT2VN, // tutorial // 0
+        L1VN, // 1
     }
 
     private void Awake()
     {
         // if it is tutorial levels, load those scene instead
-        if (LM.TutorialStage)
+        SceneNo = (SceneName)(LM.DaySelected + 2);
+
+        switch (SceneNo)
         {
-            TutSceneNo = (TutorialSceneName)(LM.DaySelected - 1);
-            switch (TutSceneNo)
-            {
-                case TutorialSceneName.DAY1VN:
-                    {
-                        intro();
-                        break;
-                    }
-                case TutorialSceneName.DAY2VN:
-                    {
-                        tut2vn();
-                        break;
-                    }
-                case TutorialSceneName.EDAY2VN:
-                    {
-                        tut2end();
-                        break;
-                    }
-
-            }
-        }
-
-        // if it is not tutorial levels, load normal level VN instead
-        else
-        {
-            if ((int)SceneNo <= LM.DaySelected)
-                SceneNo = (SceneName)(LM.DaySelected - 1);
-
-            //switch (SceneNo)
-            //{
-            //    case SceneName.INTRO:
-            //        introduction();
-            //        break;
-            //    case SceneName.DAY1TO2:
-            //        day1to2();
-            //        break;
-            //    case SceneName.DAY2TOGAME:
-            //        day2togame();
-            //        break;
-            //}
+            case SceneName.TUT1VN:
+                intro();
+                break;
+            case SceneName.TUT2VN:
+                tut2vn();
+                break;
+            case SceneName.ETUT2VN:
+                tut2end();
+                break;
         }
     }
 
@@ -147,7 +113,7 @@ public class TestMessage : MonoBehaviour
 
         dialogTexts.Add(new DialogData("You will ensure that our restaurant too is revered by the masses. ", "Renge"));
 
-        LM.DaySelected = 1;
+        LM.DaySelected = -2;
 
         dialogTexts.Add(new DialogData("Sigh, where do I start.." , "Ramsay", () => SceneManager.LoadScene("Game Scene")));
 
@@ -191,7 +157,7 @@ public class TestMessage : MonoBehaviour
         dialogTexts.Add(new DialogData("Will improving my reputaion prevent me from getting murdured by the head chef?", "Ramsay"));
 
 
-        LM.DaySelected = 2;
+        LM.DaySelected = -1;
 
         dialogTexts.Add(new DialogData("Im leaving, bye.", "Ramsay", () => SceneManager.LoadScene("Game Scene")));
 

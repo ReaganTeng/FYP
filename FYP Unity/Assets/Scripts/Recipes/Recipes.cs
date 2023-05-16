@@ -55,9 +55,18 @@ public class Recipes : MonoBehaviour
         return null;
     }
 
-    public int GetDishRecipeListCount()
+    public List<recipes> GetDishList(DishManager.Difficulty whatDifficulty)
     {
-        return dishrecipeList.Count;
+        List<recipes> tempRecipeList = new List<recipes>();
+        for (int i = 0; i < dishrecipeList.Count; i++)
+        {
+            if (whatDifficulty == dishrecipeList[i].Result.GetComponent<Dish>().GetDifficulty())
+            {
+                tempRecipeList.Add(dishrecipeList[i]);
+            }
+        }
+
+        return tempRecipeList;
     }
 
     private void Awake()

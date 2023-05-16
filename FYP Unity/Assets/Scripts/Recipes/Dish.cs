@@ -8,6 +8,7 @@ public class Dish : MonoBehaviour
     [SerializeField] string dishName;
     [SerializeField] Sprite image;
     [SerializeField] int BaseScore;
+    [SerializeField] DishManager.Difficulty difficulty;
     private int dishID;
 
     private void Start()
@@ -48,5 +49,10 @@ public class Dish : MonoBehaviour
     public int GetScore()
     {
         return BaseScore;
+    }
+
+    public DishManager.Difficulty GetDifficulty()
+    {
+        return difficulty;
     }
 }

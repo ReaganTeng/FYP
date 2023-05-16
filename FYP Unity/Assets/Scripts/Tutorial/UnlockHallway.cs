@@ -8,20 +8,9 @@ public class UnlockHallway : MonoBehaviour
 
     private void Start()
     {
-        int CurrentDay = gameObject.GetComponent<EndOfDay>().GetCurrentDay();
-
-        if (CurrentDay <= lm.levelInfo.Count)
+        for (int index = 0; index < EndOfDay.instance.GetLevelReference().HallwaysUnlock.Count; index++)
         {
-            for (int i = 0; i < lm.levelInfo.Count; i++)
-            {
-                if (i == CurrentDay - 1)
-                {
-                    for (int index = 0; index < lm.levelInfo[i].HallwaysUnlock.Count; index++)
-                    {
-                        LevelHallway.instance.OpenHallway(lm.levelInfo[i].HallwaysUnlock[index]);
-                    }
-                }
-            }
+            LevelHallway.instance.OpenHallway(EndOfDay.instance.GetLevelReference().HallwaysUnlock[index]);
         }
     }
 

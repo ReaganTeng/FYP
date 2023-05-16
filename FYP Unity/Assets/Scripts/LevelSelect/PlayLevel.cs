@@ -14,21 +14,9 @@ public class PlayLevel : MonoBehaviour
         {
             if (level == levelManager.levelInfo[i])
             {
-                levelManager.DaySelected = i + 1;
-                levelManager.TutorialStage = false;
+                levelManager.DaySelected = levelManager.levelInfo[i].WhatDay;
                 SceneManager.LoadScene("Game Scene");
                 return;
-            }
-        }
-
-        // check to see if it is a tutorial stage
-        for (int i = 0; i < levelManager.TutorialLevel.Count; i++)
-        {
-            if (level == levelManager.TutorialLevel[i])
-            {
-                levelManager.DaySelected = i + 1;
-                levelManager.TutorialStage = true;
-                SceneManager.LoadScene("Game Scene");
             }
         }
     }

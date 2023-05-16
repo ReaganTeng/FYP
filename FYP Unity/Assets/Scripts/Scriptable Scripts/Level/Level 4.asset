@@ -12,27 +12,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec3504d56cb72c044b834f7858330e0d, type: 3}
   m_Name: Level 4
   m_EditorClassIdentifier: 
+  WhatDay: 4
   LevelName: Day 4
   LevelDescription: Getting the hang of it
-  SReq: 800
-  AReq: 500
-  BReq: 200
-  CReq: 80
+  SReq: 300
+  AReq: 220
+  BReq: 150
+  CReq: 60
   MaxCredibility: 4
-  CCReq: 3
-  HallwaysUnlock: 000000000100000002000000040000000500000006000000070000000a0000000c0000000c000000
+  CCReq: 6
+  HallwaysUnlock: 0e000000
   CustomizeOrderForThisDay:
-    theDish:
-    - {fileID: 3441819759951336346, guid: aca9a167578818f46a8d36be143ee99c, type: 3}
-    - {fileID: 6203881991820088434, guid: 7680b061897d9414980341ab7538bd8a, type: 3}
-    - {fileID: 2570593248413926386, guid: 2cd76e66e57826d4db6c8ec56be4b390, type: 3}
+    dishList:
+    - theDish: {fileID: 0}
+      whatDifficulty: 1
+      IsPrority: 0
+      HowManyPriority: 0
+      DishBeforePriority: 0
+      IntervalBetweenPriority: 0
+    - theDish: {fileID: 8212596620972106827, guid: 8ae6c2c9ec382134d9886c52212be67f, type: 3}
+      whatDifficulty: 2
+      IsPrority: 1
+      HowManyPriority: 2
+      DishBeforePriority: 4
+      IntervalBetweenPriority: 1
+    - theDish: {fileID: 2579599923237730691, guid: 6c8e185738eac494e9481c67b6010845, type: 3}
+      whatDifficulty: 3
+      IsPrority: 1
+      HowManyPriority: 1
+      DishBeforePriority: 0
+      IntervalBetweenPriority: 0
     WaitingTime: 0
-    penalty: 5
-    Fixed: 1
-    AmtOfDishes: 0
-  WhatSpawnerActive: 00000000010000000200000003000000060000000700000008000000
+    penalty: 20
+    EasyDishChance: 0
+    NormalDishChance: 60
+    HardDishChance: 25
+    ExtremeDishChance: 15
+  WhatSpawnerActive: 09000000
   isThereTutorial: {fileID: 0}
   MaxOrders: 4
   TimeBeforeFirstOrder: 0
-  IntervalBetweenOrders: 15
-  DayDuration: 300
+  IntervalBetweenOrders: 30
+  DayDuration: 240

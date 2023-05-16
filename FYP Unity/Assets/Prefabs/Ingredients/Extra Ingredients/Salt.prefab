@@ -122,9 +122,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 529236333757410801}
+  - component: {fileID: 4093803559264849140}
   - component: {fileID: 8051315669208263584}
   - component: {fileID: 3177705937263926576}
-  - component: {fileID: 4093803559264849140}
   m_Layer: 0
   m_Name: Salt
   m_TagString: Untagged
@@ -148,6 +148,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4093803559264849140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2280628867155604856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43a657e03a773364391ebd1ebdb6a1e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemtype: 30
+  itemVariant: 3
+  image: {fileID: 21300000, guid: 5660a1aec989ef246aabd0dfd821f80c, type: 3}
 --- !u!114 &8051315669208263584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,18 +188,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e1608a903999641b3cc6f2da0c035a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4093803559264849140
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2280628867155604856}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43a657e03a773364391ebd1ebdb6a1e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemtype: 30
-  itemVariant: 3
-  image: {fileID: 21300000, guid: 5660a1aec989ef246aabd0dfd821f80c, type: 3}

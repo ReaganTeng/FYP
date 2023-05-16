@@ -7,12 +7,13 @@ using UnityEngine.SceneManagement;
 
 public class EndOfDay : MonoBehaviour
 {
+    public static EndOfDay instance;
     [SerializeField] PlayerProgress ps;
     [SerializeField] OrderSystem os;
     [SerializeField] TextMeshProUGUI text;
     [SerializeField] int score;
     [SerializeField] LevelManager lm;
-    private int currentday;
+    private Level level;
     PlayerMovement playercontrols;
     private char GradeObtained;
     private bool EndOfDayAnimation;
@@ -216,7 +217,15 @@ public class EndOfDay : MonoBehaviour
 
     private void Awake()
     {
-        currentday = lm.DaySelected;
+        instance = this;
+        // find the level
+        for (int i = 0; i < lm.levelInfo.Count; i++)
+        {
+            if (lm.levelInfo[i].WhatDay == lm.DaySelected)
+            {
+                level = lm.levelInfo[i];
+            }
+        }
     }
 
     public int GetScore()
@@ -237,11 +246,6 @@ public class EndOfDay : MonoBehaviour
     void UpdateScore()
     {
         text.text = score.ToString();
-    }
-
-    public int GetCurrentDay()
-    {
-        return currentday;
     }
 
     public void ResetScore()
@@ -333,5 +337,10 @@ public class EndOfDay : MonoBehaviour
         {
             resultDisplay[i].SetActive(false);
         }
+    }
+
+    public Level GetLevelReference()
+    {
+        return level;
     }
 }

@@ -36,7 +36,7 @@ public class IngredientBarrel : MonoBehaviour
             Destroy(resultFood.GetComponent<Dish>());
             Destroy(resultFood.GetComponent<RefinedItem>());
             resultFood.AddComponent<Item>();
-            resultFood.GetComponent<Item>().SetValueManually(ItemManager.Items.FLOUR, ingredientDisplay.sprite);
+            resultFood.GetComponent<Item>().SetValueManually(GetItemType(), ingredientDisplay.sprite);
             inv.AddItem(resultFood);
         }
     }
@@ -49,5 +49,22 @@ public class IngredientBarrel : MonoBehaviour
     public IngredientBarrelManager.BarrelTypes GetBarrelType()
     {
         return barrelType;
+    }
+
+    private ItemManager.Items GetItemType()
+    {
+        switch (barrelType)
+        {
+            case IngredientBarrelManager.BarrelTypes.FLOUR:
+                return ItemManager.Items.FLOUR;
+            case IngredientBarrelManager.BarrelTypes.SEAWEED:
+                return ItemManager.Items.SEAWEED;
+            case IngredientBarrelManager.BarrelTypes.SUGAR:
+                return ItemManager.Items.SUGAR;
+            case IngredientBarrelManager.BarrelTypes.SALT:
+                return ItemManager.Items.SALT;
+            default:
+                return ItemManager.Items.FLOUR;
+        }
     }
 }

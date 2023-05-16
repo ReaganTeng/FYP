@@ -20,6 +20,14 @@ public class DishManager : MonoBehaviour
         UNHAPPY_MEAL, //9
     }
 
+    public enum Difficulty
+    {
+        EASY,
+        NORMAL,
+        HARD,
+        EXTREME
+    }
+
     public dishes GetItemType(int itemID)
     {
         return (dishes)itemID;

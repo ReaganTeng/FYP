@@ -119,7 +119,8 @@ public class OrderRecipeDisplay : MonoBehaviour
                 if (i == CurrentlySelectedIndex)
                 {
                     orderBGDisplay[i].GetComponent<Image>().sprite = SelectedPanel;
-                    AssignImage(orderBGDisplay[i].GetComponentInChildren<OrderPanel>());
+                    // Take the last orderpanel, aka the recently added
+                    AssignImage(orderBGDisplay[i].GetComponentsInChildren<OrderPanel>()[orderBGDisplay[i].GetComponentsInChildren<OrderPanel>().Length - 1]);
                     RecipeDisplay.SetActive(true);
                 }
                 else
@@ -247,12 +248,16 @@ public class OrderRecipeDisplay : MonoBehaviour
     void CheckWhatIsFulfilled()
     {
         SetTick(FoodManager.FoodType.DISH, false);
+
         bool HasDish = false;
         List<int> RefinedIndex = new List<int>();
         List<int> NormalIndex = new List<int>();
-        for (int i = 0; i < Inventory.instance.GetList().Count; i++)
+        GameObject inventory = GameObject.FindGameObjectWithTag("Inventory");
+
+        // find the index for each different variant of the ingredient
+        for (int i = 0; i < inventory.GetComponentsInChildren<Food>().Length; i++)
         {
-            GameObject foodobj = Inventory.instance.GetList()[i].food;
+            GameObject foodobj = inventory.GetComponentsInChildren<Food>()[i].gameObject;
 
             // if it contain a dish
             if (foodobj.GetComponent<Food>().GetFoodType() == FoodManager.FoodType.DISH && foodobj.GetComponent<Dish>().GetImage() == DishResult.sprite)
@@ -280,18 +285,16 @@ public class OrderRecipeDisplay : MonoBehaviour
 
         bool case1 = false;
         bool case2 = false;
-        bool NoRepeat = false;
         // after the loop, check for the refined first
         for (int i = 0; i < RefinedIndex.Count; i++)
         {
-            if (FoodManager.instance.GetImage(Inventory.instance.GetList()[RefinedIndex[i]].food) == RefinedIngredientResult1.sprite && !NoRepeat)
+            if (FoodManager.instance.GetImage(inventory.GetComponentsInChildren<Food>()[RefinedIndex[i]].gameObject) == RefinedIngredientResult1.sprite && !displayList[1].gameObject.activeSelf)
             {
                 SetTick(FoodManager.FoodType.REFINED_INGREDIENT, true, 1);
                 case1 = true;
-                NoRepeat = true;
             }
 
-            else if (FoodManager.instance.GetImage(Inventory.instance.GetList()[RefinedIndex[i]].food) == RefinedIngredientResult2.sprite)
+            else if (FoodManager.instance.GetImage(inventory.GetComponentsInChildren<Food>()[RefinedIndex[i]].gameObject) == RefinedIngredientResult2.sprite)
             {
                 SetTick(FoodManager.FoodType.REFINED_INGREDIENT, true, 2);
                 case2 = true;
@@ -302,23 +305,43 @@ public class OrderRecipeDisplay : MonoBehaviour
         if (case1 && case2)
                 return;
 
-        List<bool> IngredientDupe = new List<bool>();
-        for (int b = 0; b < 4; b++)
-        {
-            IngredientDupe.Add(false);
-        }
         // check for ingredient
         for (int i = 0; i < NormalIndex.Count; i++)
         {
             for (int index = 0; index < IngredientList.Count; index++)
             {
-                if (FoodManager.instance.GetImage(Inventory.instance.GetList()[NormalIndex[i]].food) == IngredientList[index].sprite && !IngredientDupe[index])
+                if (FoodManager.instance.GetImage(inventory.GetComponentsInChildren<Food>()[NormalIndex[i]].gameObject) == IngredientList[index].sprite && !displayList[index + 3].gameObject.activeSelf)
                 {
                     SetTick(FoodManager.FoodType.INGREDIENT, true, 0, index + 1);
-                    IngredientDupe[index] = true;
                     break;
                 }
             }
+        }
+
+        // Check what is in the mixer
+        GameObject mixerRef = GameObject.FindGameObjectWithTag("MixerManager");
+        for (int i = 0; i < mixerRef.GetComponentsInChildren<Food>().Length; i++)
+        {
+            // Check if a dish is inside the oven
+            if (FoodManager.instance.GetImage(mixerRef.GetComponentsInChildren<Food>()[i].gameObject) == DishResult.sprite)
+            {
+                SetTick(FoodManager.FoodType.REFINED_INGREDIENT, true, 1);
+                SetTick(FoodManager.FoodType.REFINED_INGREDIENT, true, 2);
+                break;
+            }
+
+            // Check if a refined ingredient is inside the oven
+            else if (FoodManager.instance.GetImage(mixerRef.GetComponentsInChildren<Food>()[i].gameObject) == RefinedIngredientResult1.sprite && !displayList[3].gameObject.activeSelf)
+            {
+                SetTick(FoodManager.FoodType.INGREDIENT, true, 0, 1);
+                SetTick(FoodManager.FoodType.INGREDIENT, true, 0, 2);
+            }
+            else if (FoodManager.instance.GetImage(mixerRef.GetComponentsInChildren<Food>()[i].gameObject) == RefinedIngredientResult2.sprite)
+            {
+                SetTick(FoodManager.FoodType.INGREDIENT, true, 0, 3);
+                SetTick(FoodManager.FoodType.INGREDIENT, true, 0, 4);
+            }
+
         }
     }
 
