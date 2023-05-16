@@ -235,27 +235,27 @@ public class EnemyScript : MonoBehaviour
         //    GetComponent<ChaserScript>().enabled = false;
         //}
 
-        shootTimer = 0.0f;
-        drawdivider();
-    }
+    //    shootTimer = 0.0f;
+    //    drawdivider();
+    //}
 
-        if (rand_range_x % 2 == 0)
-        {
-            rand_x = Random.Range(-6, -2);
-        }
-        else
-        {
-            rand_x = Random.Range(3, 7);
-        }
+    //    if (rand_range_x % 2 == 0)
+    //    {
+    //        rand_x = Random.Range(-6, -2);
+    //    }
+    //    else
+    //    {
+    //        rand_x = Random.Range(3, 7);
+    //    }
 
-        if (rand_range_y % 2 == 0)
-        {
-            rand_y = Random.Range(-6, -2);
-        }
-        else
-        {
-            rand_y = Random.Range(3, 7);
-        }
+    //    if (rand_range_y % 2 == 0)
+    //    {
+    //        rand_y = Random.Range(-6, -2);
+    //    }
+    //    else
+    //    {
+    //        rand_y = Random.Range(3, 7);
+    //    }
     }
     private void OnTriggerEnter(Collider other)
     //private void OnCollisionEnter(Collision other)

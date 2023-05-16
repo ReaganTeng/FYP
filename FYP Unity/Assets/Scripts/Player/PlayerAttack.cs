@@ -91,7 +91,7 @@ public class PlayerAttack : MonoBehaviour
 
     void Start()
     {
-        Selected = KnifeWeaponDisplay.GetComponent<Image>().color;
+        Selected = RollerWeaponDisplay.GetComponent<Image>().color;
         notSelected = Selected;
         notSelected.a = notSelectedAlpha;
         number_of_charges = 2;

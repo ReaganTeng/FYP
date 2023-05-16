@@ -33,6 +33,8 @@ public class EnemyAttack : MonoBehaviour
     [SerializeField] PlayerProgress pp;
 
     GameObject gamemanager;
+    private bool player_in_hitbox;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -133,7 +135,7 @@ public class EnemyAttack : MonoBehaviour
                             player.GetComponent<PlayerStats>().ChangeFervor(-15.0f * pp.return_fevor_padding());
                             player.GetComponent<PlayerStats>().Resetvar();
 
-                            ProCamera2DShake.Instance.ShakeUsingPreset("DamageShake");
+                            //ProCamera2DShake.Instance.ShakeUsingPreset("DamageShake");
 
                         }
 
@@ -250,7 +252,7 @@ public class EnemyAttack : MonoBehaviour
                 other.GetComponent<PlayerStats>().ChangeFervor(-15.0f * pp.return_fevor_padding());
                 other.GetComponent<PlayerStats>().Resetvar();
 
-                ProCamera2DShake.Instance.ShakeUsingPreset("DamageShake");
+                //ProCamera2DShake.Instance.ShakeUsingPreset("DamageShake");
             }
             //
 
@@ -294,7 +296,7 @@ public class EnemyAttack : MonoBehaviour
                 other.GetComponent<PlayerStats>().ChangeFervor(-15.0f * pp.return_fevor_padding())
                     ;
                 other.GetComponent<PlayerStats>().Resetvar();
-                ProCamera2DShake.Instance.ShakeUsingPreset("DamageShake");
+                //ProCamera2DShake.Instance.ShakeUsingPreset("DamageShake");
 
                 Attackcdtimer = AttackCD;
             }
