@@ -10023,6 +10023,7 @@ MonoBehaviour:
   knifeHitbox: {fileID: 2429570959170697404}
   pinHitbox: {fileID: 3136350151301332611}
   chargingduration: 30
+  number_of_charges: 10
   reduction_in_percentage: 0
   chargeBar: {fileID: 0}
   canvas: {fileID: 0}
@@ -10149,7 +10150,6 @@ MonoBehaviour:
   playerAttack: {fileID: 4940691009673553818}
   spriteRenderer: {fileID: 8852204268514479156}
   DashCD: 2
-  dashtimer_slider: {fileID: 0}
 --- !u!54 &5218877466719756691
 Rigidbody:
   m_ObjectHideFlags: 0

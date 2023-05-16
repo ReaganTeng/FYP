@@ -207,8 +207,6 @@ public class ChaserScript : MonoBehaviour
                         time_att_2 = 0;
                         time_att_1 += Time.deltaTime;
 
-                        //navMeshAgent.enabled = true;
-
                         if (GetComponentInChildren<EnemyAttack>().return_whether_back_away())
                         { 
                             change_of_attk_type_1 += Time.deltaTime;
@@ -224,12 +222,10 @@ public class ChaserScript : MonoBehaviour
                             change_of_attk_type_1 = 0.0f;
                         }
 
-
                         //avoid the player
                         if (GetComponentInChildren<EnemyAttack>().getpostattack()
                             || change_of_attk_type_1 >= 5.0f)
                         {
-
                             if(GetComponentInChildren<EnemyAttack>().getpostattack())
                             {
                                 change_of_attk_type_1 = 0.0f;
@@ -267,25 +263,24 @@ public class ChaserScript : MonoBehaviour
                         //continue to chase the player
                         else
                         {
-                            if (GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("aboutattack")
-                                 || GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("attack"))
+                            if (GetComponentInChildren<Animator>().GetBool("about2attack")
+                                     && GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("aboutattack"))
                             {
-                                GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
                                 navMeshAgent.enabled = false;
                             }
                             else
                             {
                                 navMeshAgent.enabled = true;
-                                GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
+                                //GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
                                 navMeshAgent.SetDestination(playerGO.transform.position);
                             }
 
-                            chasingspeed = 4.0f;
                             rand_z = Random.Range(-4, 4);
-                            //float rand = Random.Range(2, 8);
-                            //chasingspeed = rand /*dist * 0.2f*/;
+                            float rand = Random.Range(2, 8);
+                            chasingspeed = rand /*dist * 0.2f*/;
                             //GetComponent<Rigidbody>().velocity = chasingspeed * (navMeshAgent.destination - transform.position);
                             //Debug.Log("CHASING PLAYER " + GetComponent<Rigidbody>().velocity);
+
                             //chasingspeed = 8;
                         }
                         //
@@ -293,6 +288,7 @@ public class ChaserScript : MonoBehaviour
                         if (time_att_1 > 20.0f)
                         {
                             gamemanager.GetComponent<EnemyManager>().setupdating(false);
+
                             enemyScript.set_current_phase(EnemyScript.Phases.COOLDOWN);
                         }
 
@@ -300,6 +296,7 @@ public class ChaserScript : MonoBehaviour
                     }
                 case EnemyScript.Phases.COOLDOWN:
                     {
+
                         beam_mode = false;
                         chasingspeed = 2.0f;
                         time_att_2 = 0.0f;
@@ -308,6 +305,8 @@ public class ChaserScript : MonoBehaviour
 
                         //enemyScript.steering();
                         //enemyScript.avoidanceCode(rand_z);
+
+
                         GetComponent<EnemyScript>().cooldownUpdate();
                         break;
                     }
@@ -319,6 +318,7 @@ public class ChaserScript : MonoBehaviour
                         time_att_2 = 0.0f;
                         time_att_1 = 0.0f;
                         change_of_attk_type_1 = 0.0f;
+
 
                         //GetComponent<Rigidbody>().velocity =
 

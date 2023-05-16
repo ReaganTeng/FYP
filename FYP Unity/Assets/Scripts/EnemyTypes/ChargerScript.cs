@@ -39,7 +39,7 @@ public class ChargerScript : MonoBehaviour
         gamemanager = GameObject.FindGameObjectWithTag("GameManager");
 
         GetComponent<EnemyScript>().set_enemyType(EnemyScript.EnemyType.CHARGER);
-        velocityspeed =8.5f;
+        velocityspeed =7.0f;
         number_of_bounces = 0;
         collided = false;
         navMeshAgent.enabled = false;
@@ -104,6 +104,7 @@ public class ChargerScript : MonoBehaviour
                     {
                         DestroyBeams();
 
+
                         GetComponentInChildren<Animator>().SetBool("charge", true);
 
                         chargingtime += 1.0f * Time.deltaTime;
@@ -120,27 +121,17 @@ public class ChargerScript : MonoBehaviour
 
                         if (chargingtime >= 2.0f)
                         {
-                            playerPos = playerGO.transform.position;
-                            resultingVector = playerPos - transform.position;
-                            //if (number_of_bounces >= 2)
-                            //{
-                            //    collided = true;
-                            //    number_of_bounces = 0;
-                            //}
-                            //else
-                            //{
-                            //Debug.Log("BOUNCE 2");
+                            if (number_of_bounces >= 2)
+                            {
+                                collided = true;
+                                number_of_bounces = 0;
+                            }
+                            else
+                            {
                                 number_of_bounces += 1;
                                 chargeAtplayer();
-                            //}
+                            }
                             chargingtime = 0.0f;
-                        }
-
-
-                        if (number_of_bounces >= 3)
-                        {
-                            collided = true;
-                            number_of_bounces = 0;
                         }
 
                         //KEEP GOING FORWARD UNTIL HITS WALL
@@ -175,9 +166,11 @@ public class ChargerScript : MonoBehaviour
                         GetComponentInChildren<Animator>().SetBool("charge", false);
                         GetComponentInChildren<Animator>().SetBool("about2charge", false);
 
+
+
                         //enemyScript.steering();
                         //enemyScript.steering_3();
-                        //enemyScript.avoidanceCode(rand_z);
+                        enemyScript.avoidanceCode(rand_z);
 
 
                         GetComponent<EnemyScript>().cooldownUpdate();
@@ -292,6 +285,8 @@ public class ChargerScript : MonoBehaviour
             }
         }
 
+       
+
         //resulting vector.y = 0
         resultingVector.y = 0;
         //normalise resulting vector
@@ -330,6 +325,7 @@ public class ChargerScript : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
+
         switch (enemyPhase)
         {
             case EnemyScript.Phases.ATTACK_TYPE_1:
@@ -345,27 +341,16 @@ public class ChargerScript : MonoBehaviour
                 }
             case EnemyScript.Phases.ATTACK_TYPE_2:
                 {
-                    
-                    if  (collision.gameObject.tag == "Player")
+                    if (collision.gameObject.tag == "wall")
                     {
-                        playerPos = playerGO.transform.position;
-                        resultingVector = -playerPos + transform.position;
-                        collided = true;
-                        number_of_bounces = 0;
-                    }
-                    else
-                    {
-                        //if (number_of_bounces >= 2)
-                        //{
-                        //    collided = true;
-                        //    number_of_bounces = 0;
-                        //}
-                        //else
+                        if (number_of_bounces >= 3)
+                        {
+                            collided = true;
+                            number_of_bounces = 0;
+                        }
+                        else
                         {
                             number_of_bounces += 1;
-                            playerPos = playerGO.transform.position;
-                            resultingVector = playerPos - transform.position;
-
 
                             //playerPos = playerGO.transform.position;
                             //if (collision.gameObject.tag == "Player")
@@ -381,6 +366,13 @@ public class ChargerScript : MonoBehaviour
                         }
                         break;
                     }
+                    else if  (collision.gameObject.tag == "Player")
+                    {
+                        playerPos = playerGO.transform.position;
+                        resultingVector = -playerPos + transform.position;
+                        collided = true;
+                        number_of_bounces = 0;
+                    }
                     break;
                 }
 
@@ -389,6 +381,8 @@ public class ChargerScript : MonoBehaviour
                 break;
 
         }
+
+
 
 
         /*if (collision.gameObject.tag == "wall")
@@ -414,47 +408,11 @@ public class ChargerScript : MonoBehaviour
         }*/
     }
 
-    void OnTriggerEnter(Collider collision)
-    {
-        switch (enemyPhase)
-        {
-            case EnemyScript.Phases.ATTACK_TYPE_1:
-                //case EnemyScript.Phases.ATTACK_TYPE_2:
-                {
-                    if (collision.gameObject.tag == "wall"
-                       )
-                    {
-                        collided = true;
-                    }
-                    break;
-                }
-            case EnemyScript.Phases.ATTACK_TYPE_2:
-                {
-                    if (collision.gameObject.tag == "wall")
-                    {
-                        //if (number_of_bounces >= 2)
-                        //{
-                        //    collided = true;
-                        //    number_of_bounces = 0;
-                        //}
-                        //else
-                        {
-                            number_of_bounces += 1;
-                            playerPos = playerGO.transform.position;
-                            resultingVector = playerPos - transform.position;
-                            chargeAtplayer();
-                        }
-                        break;
-                    }
-                    break;
-                }
 
+   
+        
 
-            default:
-                break;
-
-        }
-    }
-
+        
+    
 
 }

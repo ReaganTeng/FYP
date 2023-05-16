@@ -47,12 +47,5 @@ public class projectile : MonoBehaviour
 
             }
         }
-
-       if (other.CompareTag("Attack"))
-        {
-            GetComponent<Rigidbody>().velocity = -GetComponent<Rigidbody>().velocity * 5.0f;
-        }
     }
-
-
 }

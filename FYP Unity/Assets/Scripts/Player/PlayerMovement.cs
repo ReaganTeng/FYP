@@ -2,9 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Reflection;
-using UnityEngine.UI;
-
-
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -44,12 +41,8 @@ public class PlayerMovement : MonoBehaviour
   
     Animator mAnimator;
 
-    [SerializeField] GameObject dashtimer_slider;
-
     private void Start()
     {
-       
-
         dashcdtimer = 0.0f;
         delaytime = 0.0f;
         isWalking = false;
@@ -57,14 +50,7 @@ public class PlayerMovement : MonoBehaviour
         minimapCanvas = GameObject.FindGameObjectWithTag("MinimapCanvas");
         minimapCanvas.SetActive(false);
 
-
         mAnimator = GetComponentInChildren<Animator>();
-
-        if (dashtimer_slider != null)
-        {
-            dashtimer_slider.GetComponent<Slider>().maxValue = DashCD;
-            dashtimer_slider.GetComponent<Slider>().minValue = 0;
-        }
     }
 
 
@@ -87,24 +73,10 @@ public class PlayerMovement : MonoBehaviour
 
         notheavyattackingordashing();
 
-        //for the dash timer bar
         if (dashcdtimer > 0)
         {
             dashcdtimer -= Time.deltaTime;
-            if (dashtimer_slider != null)
-            {
-                dashtimer_slider.SetActive(true);
-                dashtimer_slider.GetComponent<Slider>().value = dashcdtimer;
-            }
         }
-        else
-        {
-            if (dashtimer_slider != null)
-            {
-                dashtimer_slider.SetActive(false);
-            }
-        }
-        //
 
         if (!mAnimator.GetCurrentAnimatorStateInfo(0).IsName("hurt_knife")
             && !mAnimator.GetCurrentAnimatorStateInfo(0).IsName("hurt_pin")
@@ -182,8 +154,6 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.D)
                          //&& notheavyattackingordashing()
                          && !mAnimator.GetCurrentAnimatorStateInfo(0).IsName("Dash")
-            //&& notheavyattackingordashing()
-            && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Dash")
 
              && !playerAttack.attacking_or_not()
              )
@@ -208,15 +178,6 @@ public class PlayerMovement : MonoBehaviour
 
         if (mAnimator.GetCurrentAnimatorStateInfo(0).IsName("Dash")
             && mAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
-
-        
-
-       
-
-
-
-        if (GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Dash")
-            && GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
         {
             mAnimator.SetBool("Dash", false);
         }
@@ -236,24 +197,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.LeftShift) && dashcdtimer <= 0 && !DisableControls)
-        {
             shiftPressed = true;
-        }
-
-        // dashing
-        if (shiftPressed)
-        {
-            playerRB.AddForce((orientation.forward * Forwardrun + orientation.right * Rightrun) * PlayerSpeed * DashBy);
-            Physics.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer("Enemy"), true);
-            iframetimer = IFrame;
-            IFrameStart = true;
-            mAnimator.SetBool("Dash", true);
-            dashcdtimer = DashCD;
-            GameSoundManager.PlaySound("Dash");
-            //Debug.Log("DASH");
-            shiftPressed = false;
-        }
-        //
     }
 
 
@@ -299,15 +243,25 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
 
-            
-
+            // dashing
+            if (shiftPressed)
+            {
+                playerRB.AddForce((orientation.forward * Forwardrun + orientation.right * Rightrun) * PlayerSpeed * DashBy);
+                Physics.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer("Enemy"), true);
+                iframetimer = IFrame;
+                IFrameStart = true;
+                mAnimator.SetBool("Dash", true);
+                dashcdtimer = DashCD;
+                GameSoundManager.PlaySound("Dash");
+                //Debug.Log("DASH");
+                shiftPressed = false;
+            }
+            //
         }
-
-      
     }
 
 
-
+    
     public bool notheavyattackingordashing()
     {
         if(!mAnimator.GetCurrentAnimatorStateInfo(0).IsName("Dash")

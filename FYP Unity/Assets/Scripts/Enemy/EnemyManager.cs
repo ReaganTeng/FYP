@@ -19,12 +19,9 @@ public class EnemyManager : MonoBehaviour
 
     bool enemies_updating;
 
-    bool found_attacked_enemy;
-
     // Start is called before the first frame update
     void Start()
     {
-        found_attacked_enemy = false;
         player = GameObject.FindGameObjectWithTag("Player");
         other_enemies = GameObject.FindGameObjectsWithTag("Enemy");
         stopupdating = false;
@@ -90,6 +87,10 @@ public class EnemyManager : MonoBehaviour
                     }
                 }
 
+                //foreach (GameObject enemies in other_enemies)
+                //{
+                //    if (enemies.GetComponent<EnemyScript>().getupdating())
+                //    {
                 timer += Time.deltaTime;
                 if (timer >= .1f
                     && !stopupdating)
@@ -120,68 +121,50 @@ public class EnemyManager : MonoBehaviour
                     //}
 
                     //Debug.Log("RANGE " + range);
-                    //IF ENEMY HAS BEEN ATTACKED, SET THAT PARTICULAR ENEMY TO ATTACK MODE
                     for (int x = 0; x < indexes.Count; x++)
                     {
-                        if(other_enemies[indexes[x]].GetComponent<EnemyScript>().getbool())
+                        //if landed on chosen enemy
+                        if (x == range
+                            /*|| (indexes.Count > 1 && x == range_2)*/
+                            )
                         {
-                            //found the enemy that's attacked
+                            //other_enemies[indexes[x]].GetComponent<EnemyScript>().set_current_phase(EnemyScript.Phases.AVOID);
+
                             other_enemies[indexes[x]].GetComponent<EnemyScript>().set_current_phase(EnemyScript.Phases.COOLDOWN);
-                            other_enemies[indexes[x]].GetComponent<EnemyScript>().setbool(false);
-                            found_attacked_enemy = true;
-                            break;
+                            {
+                                /*if (other_enemies[indexes[x]].GetComponent<EnemyScript>().return_attackptn()
+                                    == EnemyScript.AttackPattern.PATTERN_1)
+                                {
+                                    other_enemies[indexes[x]].GetComponent<EnemyScript>().set_current_phase(EnemyScript.Phases.ATTACK_TYPE_1);
+                                }
+                                else if (other_enemies[indexes[x]].GetComponent<EnemyScript>().return_attackptn()
+                                == EnemyScript.AttackPattern.PATTERN_2)
+                                {
+                                    other_enemies[indexes[x]].GetComponent<EnemyScript>().set_current_phase(EnemyScript.Phases.ATTACK_TYPE_2);
+                                }
+                                else if (other_enemies[indexes[x]].GetComponent<EnemyScript>().return_attackptn()
+                               == EnemyScript.AttackPattern.PATTERN_3)
+                                {
+                                    other_enemies[indexes[x]].GetComponent<EnemyScript>().set_current_phase(EnemyScript.Phases.ATTACK_TYPE_3);
+                                }*/
+                            }
                         }
+                        //
+                        //non-selected enemmies stay in about to attackMode
                         else
                         {
+
                             other_enemies[indexes[x]].GetComponent<EnemyScript>().set_current_phase(EnemyScript.Phases.AVOID);
                         }
+                        //
                     }
-                    
-
-                    //IF NO ENEMY HAS BEEN FOUND ATTACKED
-                    if (!found_attacked_enemy)
-                    {
-                        for (int z = 0; z < indexes.Count; z++)
-                        {
-                            //if landed on chosen enemy
-                            if (z == range
-                                /*|| (indexes.Count > 1 && x == range_2)*/
-                                )
-                            {
-                                //other_enemies[indexes[x]].GetComponent<EnemyScript>().set_current_phase(EnemyScript.Phases.AVOID);
-                                other_enemies[indexes[z]].GetComponent<EnemyScript>().set_current_phase(EnemyScript.Phases.COOLDOWN);
-                                {
-                                    /*if (other_enemies[indexes[x]].GetComponent<EnemyScript>().return_attackptn()
-                                        == EnemyScript.AttackPattern.PATTERN_1)
-                                    {
-                                        other_enemies[indexes[x]].GetComponent<EnemyScript>().set_current_phase(EnemyScript.Phases.ATTACK_TYPE_1);
-                                    }
-                                    else if (other_enemies[indexes[x]].GetComponent<EnemyScript>().return_attackptn()
-                                    == EnemyScript.AttackPattern.PATTERN_2)
-                                    {
-                                        other_enemies[indexes[x]].GetComponent<EnemyScript>().set_current_phase(EnemyScript.Phases.ATTACK_TYPE_2);
-                                    }
-                                    else if (other_enemies[indexes[x]].GetComponent<EnemyScript>().return_attackptn()
-                                   == EnemyScript.AttackPattern.PATTERN_3)
-                                    {
-                                        other_enemies[indexes[x]].GetComponent<EnemyScript>().set_current_phase(EnemyScript.Phases.ATTACK_TYPE_3);
-                                    }*/
-                                }
-                            }
-                            //
-                            //non-selected enemmies stay in about to attackMode
-                            else
-                            {
-                                other_enemies[indexes[z]].GetComponent<EnemyScript>().set_current_phase(EnemyScript.Phases.AVOID);
-                            }
-                            //
-                        }
-
-                        found_attacked_enemy = true;
-                    }
+                    //
+                    //Debug.Log("UPDATE");
                     stopupdating = true;
                 }
-               
+                //    }
+                //}
+            
         }
         else
         {
@@ -199,8 +182,6 @@ public class EnemyManager : MonoBehaviour
         indexes.Clear();
         timer = 0;
         stopupdating = boolean;
-        found_attacked_enemy = boolean;
-
         other_enemies = GameObject.FindGameObjectsWithTag("Enemy");
         //Debug.Log("RESET");
     }

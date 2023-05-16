@@ -8,7 +8,7 @@ using TMPro;
 public class EnemyScript : MonoBehaviour
 {
 
-    //[SerializeField] GameObject particles;
+    [SerializeField] GameObject particles;
 
 
     float targetVelocity;
@@ -75,7 +75,6 @@ public class EnemyScript : MonoBehaviour
 
     float currentAnimationLength;
 
-    bool attacked;
 
     [SerializeField] GameObject floatingText;
     GameObject ft;
@@ -124,7 +123,6 @@ public class EnemyScript : MonoBehaviour
 
     Transform spawnerparent;
 
-
     float shootTimer;
     [SerializeField] GameObject projectileGO;
     float proejctilespeed;
@@ -139,10 +137,7 @@ public class EnemyScript : MonoBehaviour
 
     float chasingspeed;
 
-    float new_destination_interval;
-    float offset_x;
-    float offset_z;
-
+    float backawayTimer;
     public void setparent(Transform parentSpawner)
     {
         spawnerparent = parentSpawner;
@@ -185,14 +180,10 @@ public class EnemyScript : MonoBehaviour
     }
 
 
-
     void Start()
     {
-        attacked = false;
-        offset_z = 0;
-        offset_x = 0;
-        new_destination_interval = 0.0f;
-        //particles.SetActive(false);
+
+        particles.SetActive(false);
         currentHealth = EnemyHealth;
 
         gamemanager = GameObject.FindGameObjectWithTag("GameManager");
@@ -203,6 +194,7 @@ public class EnemyScript : MonoBehaviour
         transitionFromAttackTimer = 0.0f;
         phase3timer = 0.0f;
         chasingspeed = 0.0f;
+        backawayTimer = 0.0f;
         proejctilespeed = 1.5f;
         post_attack_duration = 0.0f;
         targetVelocity = 1.5f;
@@ -246,30 +238,12 @@ public class EnemyScript : MonoBehaviour
         shootTimer = 0.0f;
         drawdivider();
     }
-    public void set_newdestination()
-    {
-        int rand_range_x = Random.Range(0, 11);
-        int rand_range_y = Random.Range(0, 11);
 
-        if (rand_range_x % 2 == 0)
-        {
-            rand_x = Random.Range(-3, 0);
-        }
-        else
-        {
-            rand_x = Random.Range(1, 4);
-        }
 
-        if (rand_range_y % 2 == 0)
-        {
-            rand_y = Random.Range(-3, 0);
-        }
-        else
-        {
-            rand_y = Random.Range(1, 4);
-        }
-    }
+
+
     private void OnTriggerEnter(Collider other)
+    //private void OnCollisionEnter(Collision other)
     {
         if (other.CompareTag("Enemy") || other.CompareTag("Floor"))
             return;
@@ -280,9 +254,8 @@ public class EnemyScript : MonoBehaviour
 
         // If its from player attack
         if (
-            other.CompareTag("Attack") && !Iframe
+            other.CompareTag("Attack") && Iframe == false
             && GetComponent<BoxCollider>().enabled == true
-            && !other.GetComponentInParent<PlayerAttack>().getalready_attacked()
             //&& other.GetComponent<BoxCollider>().enabled == true
             //&& (!mAnimation.GetBool("jump") && enemy_type == EnemyType.JUMPER)
             )
@@ -311,6 +284,8 @@ public class EnemyScript : MonoBehaviour
             {
                 phase = Phases.COOLDOWN;
             }
+
+            //Debug.Log("Enemy Health Left: " + EnemyHealth);
 
             //SET THE ENEMY BACK TO IDLE MODE
             switch (enemy_type)
@@ -343,29 +318,28 @@ public class EnemyScript : MonoBehaviour
             //
 
             transitionFromHurtTimer = 0.0f;
+
             //play attacked animation
             mAnimation.SetBool("attacked", true);
             //
+
             gamemanager.GetComponent<EnemyManager>().setupdating(false);
-            attacked = true;
-            other.GetComponentInParent<PlayerAttack>().setalready_attacked(true);
+
             Iframe = true;
+
+            //Debug.Log("HIT");
         }
     }
 
-    public void setbool(bool attk)
-    {
-        attacked = attk;
-    }
 
-    public bool getbool()
-    {
-        return attacked;
-    }
     public void func()
     {
-        player.GetComponent<PlayerStats>().addConsecutiveHit();
-        player.GetComponent<PlayerStats>().resetCombo_timer();
+        //for (int i = 0; i < 2; i++)
+        //{
+            player.GetComponent<PlayerStats>().addConsecutiveHit();
+            player.GetComponent<PlayerStats>().resetCombo_timer();
+            
+        //}
     }
     void drawdivider()
     {
@@ -400,17 +374,6 @@ public class EnemyScript : MonoBehaviour
         }
     }
 
-    bool changed(float a, float b)
-    {
-        if ((int)a == (int)b)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
 
     private void Update()
     {
@@ -433,25 +396,6 @@ public class EnemyScript : MonoBehaviour
                 Iframe = false;
             }
         }
-
-
-        //flip the sprite
-        Vector3 mypos = transform.position;
-        var targetPos = player.transform.position;
-        if (player.transform.position.x < mypos.x && changed(mypos.y, targetPos.y))
-        {
-            //print("Left");
-            GetComponentInChildren<SpriteRenderer>().flipX = false;
-        }
-        else if (changed(mypos.y, targetPos.y))
-        {
-            //print("Right");
-            //flip the sprite
-            GetComponentInChildren<SpriteRenderer>().flipX = true;
-
-        }
-        //
-
 
 
         //turn purple when get sus dish
@@ -491,17 +435,7 @@ public class EnemyScript : MonoBehaviour
                             || GetComponent<ChaserScript>().return_change_of_attk_type_1() >= 5.0f))
                 )
             {
-                attackhitbox.GetComponent<BoxCollider>().enabled = true;
-
                 //GetComponentInChildren<SpriteRenderer>().color = Color.black;
-                new_destination_interval += Time.deltaTime;
-                if (new_destination_interval >= 3.0f)
-                {
-                    //set_newdestination();
-                    offset_x = Random.Range(-7, 8);
-                    offset_z = Random.Range(-7, 8);
-                    new_destination_interval = 0;
-                }
 
                 GetComponent<NavMeshAgent>().enabled = true;
                 if (enemy_type == EnemyType.CHARGER)
@@ -521,26 +455,42 @@ public class EnemyScript : MonoBehaviour
 
                 //Debug.Log("AVOID");
                 mAnimation.SetBool("chasingPlayer", true);
-
                 GetComponent<NavMeshAgent>().speed = 2.0f;
                 GetComponent<NavMeshAgent>().SetDestination(new Vector3(
-                player.transform.position.x + rand_x + (int)offset_x,
+                player.transform.position.x + rand_x,
                 transform.position.y,
-                player.transform.position.z + rand_y + (int)offset_z
+                player.transform.position.z + rand_y
                 ));
             }
             else
             {
-                //GetComponent<NavMeshAgent>().enabled = true;
                 //GetComponentInChildren<SpriteRenderer>().color = Color.white;
-                new_destination_interval = 0;
-                offset_x = 0;
-                offset_z = 0;
-                if (enemy_type == EnemyType.CHARGER)
+
+                if(enemy_type == EnemyType.CHARGER)
                 {
                     mAnimation.SetBool("chasingPlayer", false);
                 }
-                set_newdestination();
+
+                int rand_range_x = Random.Range(0, 11);
+                int rand_range_y = Random.Range(0, 11);
+
+                if (rand_range_x % 2 == 0)
+                {
+                    rand_x = Random.Range(-4, -1);
+                }
+                else
+                {
+                    rand_x = Random.Range(2, 5);
+                }
+
+                if (rand_range_y % 2 == 0)
+                {
+                    rand_y = Random.Range(-4, -1);
+                }
+                else
+                {
+                    rand_y = Random.Range(2, 5);
+                }
             }
 
 
@@ -580,17 +530,17 @@ public class EnemyScript : MonoBehaviour
 
                     //shoot every interval
                     shootTimer += Time.deltaTime;
-                    float count = 1.0f;
-                    if (shootTimer >= count)
+                    if (shootTimer >= 2)
                     {
                         //mAnimation.SetBool("chasingPlayer", false);
                         GetComponentInChildren<SpriteRenderer>().color = Color.red;
-                        if (shootTimer >= count + .5f)
+                        if (shootTimer >= 3.0f)
                         {
                             //play attack animation
                             mAnimation.SetBool("attack", true);
                             //
                             GetComponentInChildren<SpriteRenderer>().color = Color.white;
+                            //shoot();
                         }
                     }
                     //}
@@ -618,13 +568,12 @@ public class EnemyScript : MonoBehaviour
                                 projectile_shots = 0;
                                 mAnimation.SetBool("attack", false);
                                 mAnimation.SetBool("chasingPlayer", false);
-
-                                gamemanager.GetComponent<EnemyManager>().setupdating(false);
                             }
                             else
                             {
                                 shoot();
                             }
+                            //Debug.Log("SHOOT");
                             transitionFromAttackTimer = 0.0f;
                         }
                     }
@@ -634,8 +583,10 @@ public class EnemyScript : MonoBehaviour
                         phase = Phases.COOLDOWN;
                         gamemanager.GetComponent<EnemyManager>().setupdating(false);
                     }
-                }   
+                }
+                
             }
+           
             else
             {
                 shootTimer = 0.0f;
@@ -987,6 +938,7 @@ public class EnemyScript : MonoBehaviour
         }
         GetComponentInChildren<SpriteRenderer>().color = Color.white;
         attackhitbox.GetComponent<BoxCollider>().enabled = false;
+
      
         if (updating)
         {
@@ -994,11 +946,6 @@ public class EnemyScript : MonoBehaviour
         }
         if (timer >= abouttoattack_period)
         {
-            if (enemy_type == EnemyType.CHASER)
-            {
-                GetComponent<NavMeshAgent>().enabled = true;
-            }
-
             //attack_type = Random.Range(1, 3);
             if (atkPattern == AttackPattern.PATTERN_1)
             {
@@ -1094,7 +1041,7 @@ public class EnemyScript : MonoBehaviour
         if (currentHealth == 0)
         {
             Debug.Log("Precise Kill!");
-            //particles.SetActive(true);
+            particles.SetActive(true);
             EnemyDie(true);
         }
         else if (currentHealth < 0)
