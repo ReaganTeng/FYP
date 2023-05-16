@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0091259, g: 0.011436728, b: 0.012926721, a: 1}
+  m_IndirectSpecularColor: {r: 0.09368814, g: 0.10748393, b: 0.11626453, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2908,6 +2908,7 @@ GameObject:
   - component: {fileID: 963194231}
   - component: {fileID: 963194232}
   - component: {fileID: 963194233}
+  - component: {fileID: 963194234}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3125,6 +3126,38 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!114 &963194234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ac0ec3d6ad5f4a3d9d184bc3773a3a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ProCamera2D: {fileID: 963194230}
+  Strength: {x: 0.5, y: 10}
+  Duration: 0.4
+  Vibrato: 3
+  Randomness: 0.1
+  Smoothness: 0.1
+  InitialAngle: 0
+  UseRandomInitialAngle: 0
+  Rotation: {x: 0, y: 0, z: 0}
+  IgnoreTimeScale: 0
+  ShakePresets:
+  - Name: DamageShake
+    Strength: {x: 0.5, y: 10, z: 0}
+    Duration: 0.4
+    Vibrato: 3
+    Randomness: 0.1
+    Smoothness: 0.1
+    InitialAngle: 0
+    Rotation: {x: 0, y: 0, z: 0}
+    IgnoreTimeScale: 0
 --- !u!1001 &994716189
 PrefabInstance:
   m_ObjectHideFlags: 0
