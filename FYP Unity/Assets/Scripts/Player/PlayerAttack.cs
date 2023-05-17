@@ -8,7 +8,7 @@ using DigitalRuby.SoundManagerNamespace;
 
 public class PlayerAttack : MonoBehaviour
 {
-    
+
     public enum Weapon
     {
         SPATULA, //0
@@ -31,9 +31,6 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] GameObject KnifeWeaponDisplay;
     [SerializeField] GameObject RollerWeaponDisplay;
     [SerializeField] GameObject SpatulaWeaponDisplay;
-    [SerializeField] float notSelectedAlpha = 0.4f;
-    private Color notSelected;
-    private Color Selected;
 
     [SerializeField] GameObject spaculaHitbox;
     [SerializeField] GameObject knifeHitbox;
@@ -89,11 +86,12 @@ public class PlayerAttack : MonoBehaviour
 
     [SerializeField] PlayerProgress pp;
 
+
+    bool already_attacked;
+
     void Start()
     {
-        Selected = RollerWeaponDisplay.GetComponent<Image>().color;
-        notSelected = Selected;
-        notSelected.a = notSelectedAlpha;
+        already_attacked = false;
         number_of_charges = 2;
 
         if (pp.return_number_of_charges() > 0)
@@ -135,7 +133,7 @@ public class PlayerAttack : MonoBehaviour
     }
 
 
-    
+
     void drawdivider()
     {
         if (chargeBar != null)
@@ -151,11 +149,11 @@ public class PlayerAttack : MonoBehaviour
                             Quaternion.Euler(0, 0, 0)
                             );
                     l.transform.SetParent(canvas.transform);
-                    l.transform.position = new Vector2(chargeBar.handleRect.position.x, 
+                    l.transform.position = new Vector2(chargeBar.handleRect.position.x,
                         chargeBar.transform.position.y);
                     //l.transform.localScale = new Vector2(1, chargeBar.transform.lossyScale.y);
                     //yourUIElement.GetComponent(RectTransform).sizeDelta = new Vector2(width, height);
-                    l.GetComponentInChildren<RectTransform>().sizeDelta = 
+                    l.GetComponentInChildren<RectTransform>().sizeDelta =
                         new Vector2(5,
                             chargeBar.GetComponent<RectTransform>().rect.height);
                     i++;
@@ -170,6 +168,18 @@ public class PlayerAttack : MonoBehaviour
             chargeBar.value = chargeMaxLvl;
         }
     }
+
+
+    public bool getalready_attacked()
+    {
+        return already_attacked;
+    }
+
+    public void setalready_attacked(bool b)
+    {
+        already_attacked = b;
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -209,7 +219,6 @@ public class PlayerAttack : MonoBehaviour
             GameObject.FindGameObjectWithTag("playerspriterenderer").GetComponent<Animator>().SetBool("click", lightattackclicked);
             GameObject.FindGameObjectWithTag("playerspriterenderer").GetComponent<Animator>().SetBool("heavyattackclick", heavyattackclicked);
 
-
             if (!GameObject.FindGameObjectWithTag("playerspriterenderer").GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("hurt_knife")
                 && !GameObject.FindGameObjectWithTag("playerspriterenderer").GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("hurt_pin")
                 && !GameObject.FindGameObjectWithTag("playerspriterenderer").GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("hurt_spatula"))
@@ -218,17 +227,17 @@ public class PlayerAttack : MonoBehaviour
                 if (Input.GetMouseButtonDown(0) && !attacking
                     && isclicked == false
                     && click_timer <= 0
-                    && notlightattacking())
+                    //&& notheavyattacking()
+                    && notlightattacking()
+                    //&& !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Dash")
+                    //&& notswitchingweapons()
+                    )
                 {
-                    //Debug.Log("LIGHT ATTACK");
+                    Debug.Log("LIGHT ATTACK");
                     isclicked = true;
                     AttackWhichDirection(direction);
-                    //HitBox.SetActive(true);
-                    //attacking = true;
-
                     lightattackclicked = true;
                     attackingtimer = attackingtime;
-                    //Debug.Log("LIGHT ATTACK" + transform.parent.GetComponent<PlayerStats>().GetPlayerAttack());
 
                     if (currentweapon == Weapon.ROLLINGPIN)
                     {
@@ -252,17 +261,16 @@ public class PlayerAttack : MonoBehaviour
                     && CanHeavyAttack
                     && (int)chargeCurrentLvl >= (int)min_notch_value
                     && notheavyattacking()
+                    //&& notlightattacking()
+                    //&& !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Dash")
+                    //&& notswitchingweapons()
                         )
                 {
-                   //Debug.Log("HEAVY ATTACK");
                     isclicked = true;
                     transform.parent.GetComponent<PlayerStats>().setAttack(true);
                     heavyattackclicked = true;
                     AttackWhichDirection(direction);
-                    //HitBox.SetActive(true);
-                    //attacking = true;
                     attackingtimer = attackingtime;
-                    depletecharge();
 
                     if (
                     currentweapon == Weapon.KNIFE)
@@ -285,6 +293,13 @@ public class PlayerAttack : MonoBehaviour
                 }
                 //
             }
+
+
+
+            //if (Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(0))
+            //{
+            //    isclicked = true;
+            //}
 
             //FIND CLOSEST ENEMY
             //if(heavyattackclicked)
@@ -353,19 +368,19 @@ public class PlayerAttack : MonoBehaviour
             if (attacking)
             {
                 attackingtimer -= Time.deltaTime;
-
                 if (attackingtimer <= 0)
                 {
                     HitBox.SetActive(false);
                     click_timer = 0.0f;
-                    attackcdtimer = attackcd;
-                    attacking = false;
-
                     heavyattackclicked = false;
                     lightattackclicked = false;
+                    attackcdtimer = attackcd;
+                    attacking = false;
+                    already_attacked = false;
                 }
                 else
                 {
+                    Debug.Log("DAMAGE");
                     HitBox.SetActive(true);
                 }
             }
@@ -451,10 +466,6 @@ public class PlayerAttack : MonoBehaviour
                 closestDistanceSqr = dSqrToTarget;
                 closestEnemy = potentialTarget;
             }
-            else
-            {
-
-            }
         }
 
         return closestEnemy;
@@ -467,9 +478,6 @@ public class PlayerAttack : MonoBehaviour
 
     public void switchWeapon()
     {
-       // Debug.Log("WEAPON_EQUIPPED " + (int)currentweapon);
-
-
         switch (currentweapon)
         {
             case Weapon.SPATULA:
@@ -525,9 +533,6 @@ public class PlayerAttack : MonoBehaviour
     public bool notheavyattacking()
     {
         if (
-        /*&& !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("attack_with_knife")
-        && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("attack_with_pin")
-        && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("attack_with_spatula")*/
         !animator.GetCurrentAnimatorStateInfo(0).IsName("heavyattack_knife")
         && !animator.GetCurrentAnimatorStateInfo(0).IsName("heavyattack_pin")
         && !animator.GetCurrentAnimatorStateInfo(0).IsName("heavyattack_pin"))
@@ -630,25 +635,16 @@ public class PlayerAttack : MonoBehaviour
             int diff = (int)min_notch_value - 
                 (((int)next_known_notch + (int)min_notch_value) - 
                 (int)chargeCurrentLvl);
-            //Debug.Log("INITIAL CHARGES LEFT " + (((int)next_known_notch + (int)min_notch_value) - (int)chargeCurrentLvl));
-
             chargeCurrentLvl = (int)last_known_notch + diff;
-
-            //Debug.Log("CHARGES LEFT " + 
-            //    ((int)next_known_notch/*(int)min_notch_value*//*)*/ - (int)chargeCurrentLvl));
-
         }
         else
         {
             int diff = (int)min_notch_value - 
                 (((int)next_known_notch + (int)min_notch_value) - 
                 (int)chargeCurrentLvl);
-            //Debug.Log("INITIAL CHARGES LEFT" + (((int)next_known_notch + (int)min_notch_value) - (int)chargeCurrentLvl));
-
             chargeCurrentLvl = (int)last_known_notch + diff;
             last_known_notch = (int)last_known_notch - (int)min_notch_value;
             next_known_notch = (int)next_known_notch - (int)min_notch_value;
-            //Debug.Log("CHARGES LEFT" + (((int)next_known_notch + (int)min_notch_value) - (int)chargeCurrentLvl));
         }
     }
     void AttackWhichDirection(int direction)
@@ -715,22 +711,22 @@ public class PlayerAttack : MonoBehaviour
         switch((Weapon)GetWeaponType())
         {
             case Weapon.KNIFE:
-                KnifeWeaponDisplay.GetComponent<Image>().color= Selected;
-                RollerWeaponDisplay.GetComponent<Image>().color= notSelected;
-                SpatulaWeaponDisplay.GetComponent<Image>().color= notSelected;
+                 KnifeWeaponDisplay.SetActive(true);
+                SpatulaWeaponDisplay.SetActive(false);
+                RollerWeaponDisplay.SetActive(false);
 
                 break;
 
             case Weapon.ROLLINGPIN:
-                RollerWeaponDisplay.GetComponent<Image>().color = Selected;
-                KnifeWeaponDisplay.GetComponent<Image>().color = notSelected;
-                SpatulaWeaponDisplay.GetComponent<Image>().color = notSelected;
+                RollerWeaponDisplay.SetActive(true);
+                KnifeWeaponDisplay.SetActive(false);
+                SpatulaWeaponDisplay.SetActive(false);
                 break;
 
             case Weapon.SPATULA:
-                SpatulaWeaponDisplay.GetComponent<Image>().color = Selected;
-                KnifeWeaponDisplay.GetComponent<Image>().color = notSelected;
-                RollerWeaponDisplay.GetComponent<Image>().color = notSelected;
+                SpatulaWeaponDisplay.SetActive(true);
+                KnifeWeaponDisplay.SetActive(false);
+                RollerWeaponDisplay.SetActive(false);
                 break;
         }
     }    
