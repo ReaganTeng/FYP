@@ -18,6 +18,7 @@ public class Level : ScriptableObject
     private int HighScore;
     private char HighestGrade;
     private bool Locked;
+    public bool CanSkipVN = false;
 
     // Set level details
     public List<LevelHallway.Hallway> HallwaysUnlock;

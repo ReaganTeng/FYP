@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Doublsb.Dialog;
 
@@ -9,6 +10,8 @@ public class TestMessage : MonoBehaviour
     public DialogManager DialogManager;
     SceneName SceneNo;
     [SerializeField] LevelManager LM;
+    bool SkipVN;
+    public Button button;
 
     enum SceneName
     {
@@ -22,6 +25,16 @@ public class TestMessage : MonoBehaviour
     {
         // if it is tutorial levels, load those scene instead
         SceneNo = (SceneName)(LM.DaySelected + 2);
+
+        for (int i = 0; i < LM.levelInfo.Count; i++)
+        {
+            if (LM.levelInfo[i].WhatDay == LM.DaySelected)
+            {
+                SkipVN = LM.levelInfo[i].CanSkipVN;
+                break;
+            }
+        }
+
 
         switch (SceneNo)
         {
@@ -37,6 +50,15 @@ public class TestMessage : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        UpdateButtonState();
+    }
+
+    private void UpdateButtonState()
+    {
+        button.gameObject.SetActive(SkipVN); // Activate or deactivate the button based on the boolean value
+    }
     //private void Demo()
     //{
     //    var dialogTexts = new List<DialogData>();
@@ -139,6 +161,8 @@ public class TestMessage : MonoBehaviour
         dialogTexts.Add(new DialogData("The last chef before you is no where to be found after they failed too many orders", "Knip"));
 
         dialogTexts.Add(new DialogData("/size:up/ *gulp*", "Ramsay"));
+
+        dialogTexts.Add(new DialogData("/size:up/ /emote:nosprite/ *gulp*", "Chef"));
 
         dialogTexts.Add(new DialogData("Don't worry, he won't lay a tentacle on you if you keep up your work performance", "Renge"));
 
