@@ -269,7 +269,7 @@ public class PlayerMovement : MonoBehaviour
                                 && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Dash")
 )
                 {
-                    playerRB.AddForce((orientation.forward * verticalInput + orientation.right * horizontalInput) * PlayerSpeed);
+                    playerRB.AddForce((orientation.forward * verticalInput + orientation.right * horizontalInput) * PlayerSpeed * 1.5f);
                     CheckDirection(ref Forwardrun, ref Rightrun, horizontalInput, verticalInput);
                     playerAttack.resetattacking();
                 }

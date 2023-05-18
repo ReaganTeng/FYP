@@ -80,6 +80,11 @@ public class EnemyScript : MonoBehaviour
 
     [SerializeField] GameObject floatingText;
     GameObject ft;
+
+
+
+
+    [SerializeField] PlayerProgress pp;
     public enum Phases
     {
         ABOUT_TO_ATTACK,
@@ -1147,6 +1152,15 @@ public class EnemyScript : MonoBehaviour
             if (ExactKill)
             {
                 tempobj.GetComponent<Food>().SetPerfect(true);
+
+                //RATION POWER UP
+                for (int i = 0; i < pp.return_rations(); i++)
+                {
+                    GameObject additoional_drop = Instantiate(whichobject, gameObject.transform.position, Quaternion.identity);
+                    additoional_drop.transform.SetParent(GameObject.FindGameObjectWithTag("Drops").transform);
+                    additoional_drop.GetComponent<Food>().SetPerfect(false);
+                }
+                //
             }
         }
       

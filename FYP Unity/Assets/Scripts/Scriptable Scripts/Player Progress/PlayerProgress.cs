@@ -10,21 +10,61 @@ public class PlayerProgress : ScriptableObject
     [SerializeField] int TotalObtainedCredibility;
     private int CurrentInventorySlots;
 
-    [SerializeField] float buffactive_reduction;
-    [SerializeField] float fervorspeedreduction;
-    [SerializeField] float heavyattackspeed;
-    [SerializeField] int number_of_charges;
 
-    //starting value 1
-    [SerializeField] float heavyattackspeed_reduction;
 
-    //starting value 1
-    [SerializeField] float fervorloss_padding;
 
+    //RATION
+    //starting value 0
+    [SerializeField] int amt_of_rations;
+    public void increase_rations()
+    {
+        amt_of_rations += 2;
+    }
+    public int return_rations()
+    {
+        return amt_of_rations;
+    }
+    //
+
+
+    //JUST DIE ALREADY
+    //starting value = 0
+    [SerializeField] float fervor_requirement;
+    public void set_fervor_requirement()
+    {
+        if(fervor_requirement == 0)
+        {
+            fervor_requirement = 70;
+        }
+        else
+        {
+            fervor_requirement -= 10;
+        }
+    }
+    public float return_fervor_requirement()
+    {
+        return fervor_requirement;
+    }
+    //
+
+
+    //DINNER RUSH
+    [SerializeField] float burst_time;
+    public void set_burst_time()
+    {
+        burst_time += 5;
+    }
+    public float return_burst_time()
+    {
+        return burst_time;
+    }
+    //
+
+
+
+    //RUSH OF PERFECTION
     //starting value 0
     [SerializeField] int charge_reward;
-
-
     public void increase_charge_reward()
     {
         charge_reward += 1;
@@ -33,18 +73,25 @@ public class PlayerProgress : ScriptableObject
     {
         return charge_reward;
     }
+    //
 
-
-
-    public void increase_fevor_padding()
+    //THICK SKIN
+    //starting value 1
+    [SerializeField] float fervorloss_padding;
+    public void increase_thick_skin()
     {
         fervorloss_padding -= 0.15f;
     }
-    public float return_fevor_padding()
+    public float return_thick_skin()
     {
         return fervorloss_padding;
     }
+    //
 
+
+    //BETTER STAMINA
+    //starting value 1
+    [SerializeField] float heavyattackspeed_reduction;
     public void decrease_heavyattackrecovery()
     {
         heavyattackspeed_reduction += 0.15f;
@@ -53,26 +100,22 @@ public class PlayerProgress : ScriptableObject
     {
         return heavyattackspeed_reduction;
     }
+    //
 
+    //STURDY ARM
+    [SerializeField] int number_of_charges;
     public void increase_number_of_charges()
     {
         number_of_charges += 1;
     }
-
     public int return_number_of_charges()
     {
         return number_of_charges;
     }
+    //
 
-    public void increase_heavyattackspeed()
-    {
-        heavyattackspeed += 3;
-    }
-    public float return_heavyattackspeed()
-    {
-        return heavyattackspeed;
-    }
-
+    //CALM MIND
+    [SerializeField] float fervorspeedreduction;
     public void reduce_fervorspeed()
     {
         fervorspeedreduction -= .25f;
@@ -81,8 +124,10 @@ public class PlayerProgress : ScriptableObject
     {
         return fervorspeedreduction;
     }
+    //
 
-
+    //HYPER FOCUSED COOKING
+    [SerializeField] float buffactive_reduction;
     public void reduce_buffactive_requirement()
     {
         buffactive_reduction += 20;
@@ -91,6 +136,8 @@ public class PlayerProgress : ScriptableObject
     {
         return buffactive_reduction;
     }
+    //
+
 
     public void ResetInventory()
     {

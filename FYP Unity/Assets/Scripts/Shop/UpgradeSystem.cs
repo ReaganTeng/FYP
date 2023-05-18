@@ -9,13 +9,17 @@ public class UpgradeSystem : MonoBehaviour
     {
         NONE,
         INVENTORY_UPGRADE,
-        HEAVY_ATTACK_BUFF,
-        BUFF_MODE_AMOUNT_REQUIREMENT,
-        FERVOR_REDUCTION,
-        CHARGE_INCREASE,
-        HEAVYATTACK_RECOVERY,
-        FERVORLOSS_PADDING,
-        CHARGE_REWARD
+        HYPER_FOCUSED_COOKING,
+        CALM_MIND,
+        STURDY_ARM,
+        BETTER_STAMINA,
+        THICK_SKIN,
+
+        RUSH_OF_PERFECTION,
+        RATION,
+        JUST_DIE_ALREADY,
+        DINNER_RUSH
+
 
 
     }
@@ -38,26 +42,26 @@ public class UpgradeSystem : MonoBehaviour
                 pp.IncreaseInventorySize();
                 break;            
             
-            case ShopItemType.BUFF_MODE_AMOUNT_REQUIREMENT:
+            case ShopItemType.HYPER_FOCUSED_COOKING:
                 pp.reduce_buffactive_requirement();
                 break;
-            case ShopItemType.FERVOR_REDUCTION:
+            case ShopItemType.CALM_MIND:
                 pp.reduce_fervorspeed();
                 break;
-            case ShopItemType.HEAVY_ATTACK_BUFF:
-                pp.increase_heavyattackspeed();
-                break;
-            case ShopItemType.CHARGE_INCREASE:
+            case ShopItemType.STURDY_ARM:
                 pp.increase_number_of_charges();
                 break;
-            case ShopItemType.HEAVYATTACK_RECOVERY:
+            case ShopItemType.BETTER_STAMINA:
                 pp.decrease_heavyattackrecovery();
                 break;
-            case ShopItemType.FERVORLOSS_PADDING:
-                pp.increase_fevor_padding();
+            case ShopItemType.THICK_SKIN:
+                pp.increase_thick_skin();
                 break;
-            case ShopItemType.CHARGE_REWARD:
+            case ShopItemType.RUSH_OF_PERFECTION:
                 pp.increase_charge_reward();
+                break;
+            case ShopItemType.RATION:
+                pp.increase_rations();
                 break;
         }
     }

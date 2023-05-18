@@ -137,7 +137,7 @@ public class EnemyAttack : MonoBehaviour
                             player.GetComponent<PlayerMovement>().setAnimator(true);
                             player.GetComponent<PlayerStats>().ResetConsecutiveHit();
                             //other.GetComponent<PlayerStats>().ChangeFervor(-5.0f);
-                            player.GetComponent<PlayerStats>().ChangeFervor(-15.0f * pp.return_fevor_padding());
+                            player.GetComponent<PlayerStats>().ChangeFervor(-15.0f * pp.return_thick_skin());
                             ProCamera2DShake.Instance.ShakeUsingPreset("DamageShake");
                         }
 
@@ -255,7 +255,7 @@ public class EnemyAttack : MonoBehaviour
                 other.GetComponent<PlayerMovement>().setAnimator(true);
                 other.GetComponent<PlayerStats>().ResetConsecutiveHit();
                 //other.GetComponent<PlayerStats>().ChangeFervor(-10.0f);
-                other.GetComponent<PlayerStats>().ChangeFervor(-15.0f * pp.return_fevor_padding());
+                other.GetComponent<PlayerStats>().ChangeFervor(-15.0f * pp.return_thick_skin());
                 ProCamera2DShake.Instance.ShakeUsingPreset("DamageShake");
             }
             //
@@ -305,7 +305,7 @@ public class EnemyAttack : MonoBehaviour
             {
                 other.GetComponent<PlayerMovement>().setAnimator(true);
                 other.GetComponent<PlayerStats>().ResetConsecutiveHit();
-                other.GetComponent<PlayerStats>().ChangeFervor(-15.0f * pp.return_fevor_padding())
+                other.GetComponent<PlayerStats>().ChangeFervor(-15.0f * pp.return_thick_skin())
                     ;
                 ProCamera2DShake.Instance.ShakeUsingPreset("DamageShake");
 

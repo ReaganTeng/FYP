@@ -8,7 +8,7 @@ using DigitalRuby.SoundManagerNamespace;
 
 public class PlayerAttack : MonoBehaviour
 {
-
+    int enemykilled;
     public enum Weapon
     {
         SPATULA, //0
@@ -92,7 +92,8 @@ public class PlayerAttack : MonoBehaviour
 
     void Start()
     {
-        b = false;
+        enemykilled = 0;
+
         already_attacked = false;
         //number_of_charges = 2;
 
@@ -135,7 +136,20 @@ public class PlayerAttack : MonoBehaviour
         direction = 1;
     }
 
+    public void addenemykilled()
+    {
+        enemykilled += 1;  
+    }
 
+    public void resetenemykilled()
+    {
+        enemykilled = 0;
+    }
+
+    public int getenemykilled()
+    {
+        return enemykilled;
+    }
 
     void drawdivider()
     {
@@ -331,17 +345,15 @@ public class PlayerAttack : MonoBehaviour
                 //SPATULA, //0
                 //ROLLINGPIN, //2
                 if (
-                    (currentweapon == Weapon.KNIFE &&  click_timer <= (heavyattackanimation_knife.length  *.5f)
-                    / pp.return_heavyattackspeed())
+                    (currentweapon == Weapon.KNIFE &&  click_timer <= (heavyattackanimation_knife.length  *.5f))
                     ||
                      (currentweapon == Weapon.ROLLINGPIN && click_timer <= (heavyattackanimation_pin.length * .25f)
-                    / pp.return_heavyattackspeed())
+                    )
                     ||
                      (currentweapon == Weapon.SPATULA && click_timer <= (heavyattackanimation_spatula.length * .5f)
-                    / pp.return_heavyattackspeed())
+                    )
                     )
                 {
-                    animator.speed = pp.return_heavyattackspeed();
 
                     if (heavyattackclicked
                         && !attacking)
@@ -565,18 +577,18 @@ public class PlayerAttack : MonoBehaviour
     }
     public void updatecharge()
     {
-       if(Input.GetKey(KeyCode.C))
-        {
-            if (!b)
-            {
-                addcharge(3);
-                b = true;
-            }
-        }
-       else
-        {
-            b = false;
-        }
+       //if(Input.GetKey(KeyCode.C))
+       // {
+       //     if (!b)
+       //     {
+       //         addcharge(3);
+       //         b = true;
+       //     }
+       // }
+       //else
+       // {
+       //     b = false;
+       // }
 
         chargeBar.maxValue = chargeMaxLvl;
         min_notch_value = chargeMaxLvl / number_of_charges;
