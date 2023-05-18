@@ -178,7 +178,7 @@ public class Level : ScriptableObject
         HighScore = highScore;
     }
 
-    public int GetHighestGrade()
+    public char GetHighestGrade()
     {
         return HighestGrade;
     }
