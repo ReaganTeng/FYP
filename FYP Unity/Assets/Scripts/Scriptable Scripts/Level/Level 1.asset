@@ -21,6 +21,7 @@ MonoBehaviour:
   CReq: 20
   MaxCredibility: 4
   CCReq: 0
+  CanSkipVN: 0
   HallwaysUnlock: 000000000100000006000000
   CustomizeOrderForThisDay:
     dishList:
@@ -52,5 +53,5 @@ MonoBehaviour:
   isThereTutorial: {fileID: 0}
   MaxOrders: 4
   TimeBeforeFirstOrder: 0
-  IntervalBetweenOrders: 2
+  IntervalBetweenOrders: 20
   DayDuration: 180
