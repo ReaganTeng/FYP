@@ -31,6 +31,8 @@ public class PlayerMovement : MonoBehaviour
     private bool IFrameStart;
 
     float delaytime;
+    bool burstmode;
+    
 
     //
     bool isWalking;
@@ -43,9 +45,11 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] GameObject dashtimer_slider;
 
+
+    [SerializeField] PlayerProgress pp;
     private void Start()
     {
-       
+        burstmode = false;
 
         dashcdtimer = 0.0f;
         delaytime = 0.0f;
@@ -269,7 +273,15 @@ public class PlayerMovement : MonoBehaviour
                                 && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Dash")
 )
                 {
-                    playerRB.AddForce((orientation.forward * verticalInput + orientation.right * horizontalInput) * PlayerSpeed * 1.5f);
+                    if (burstmode)
+                    {
+                        playerRB.AddForce((orientation.forward * verticalInput + orientation.right * horizontalInput) * PlayerSpeed * 1.5f);
+                    }
+                    else
+                    {
+                        playerRB.AddForce((orientation.forward * verticalInput + orientation.right * horizontalInput) * PlayerSpeed);
+                    }
+
                     CheckDirection(ref Forwardrun, ref Rightrun, horizontalInput, verticalInput);
                     playerAttack.resetattacking();
                 }

@@ -49,6 +49,7 @@ public class PlayerProgress : ScriptableObject
 
 
     //DINNER RUSH
+    //starting value 0
     [SerializeField] float burst_time;
     public void set_burst_time()
     {
