@@ -21,6 +21,20 @@ public class PlayerProgress : ScriptableObject
     //starting value 1
     [SerializeField] float fervorloss_padding;
 
+    //starting value 0
+    [SerializeField] int charge_reward;
+
+
+    public void increase_charge_reward()
+    {
+        charge_reward += 1;
+    }
+    public int return_charge_reward()
+    {
+        return charge_reward;
+    }
+
+
 
     public void increase_fevor_padding()
     {
@@ -136,5 +150,7 @@ public class PlayerProgress : ScriptableObject
 
         //starting value 1
         fervorloss_padding = 1;
+
+        charge_reward = 0;
     }
 }

@@ -141,10 +141,10 @@ public class EndOfDay : MonoBehaviour
         {
             if (!LoadGrade)
             {
-                gradeSlider.minValue = lm.levelInfo[lm.DaySelected - 1].GetGradeReq(index);
+                gradeSlider.minValue = level.GetGradeReq(index);
                 minValue.GetComponent<TextMeshProUGUI>().text = gradeSlider.minValue.ToString();
                 index++;
-                gradeSlider.maxValue = lm.levelInfo[lm.DaySelected - 1].GetGradeReq(index);
+                gradeSlider.maxValue = level.GetGradeReq(index);
                 maxValue.GetComponent<TextMeshProUGUI>().text = gradeSlider.maxValue.ToString();
                 UpdateGrade((int)gradeSlider.minValue);
 
@@ -165,30 +165,32 @@ public class EndOfDay : MonoBehaviour
 
             else if (LoadGrade)
             {
-                if (gradeSlider.value >= score || gradeSlider.value >= lm.levelInfo[lm.DaySelected - 1].SReq)
-                {
-                    SetSquid();
-                    EndOfDayAnimation = false;
-                    LoadGrade = false;
-
-                    // Credit Obtained
-                    CreditObtained = lm.levelInfo[lm.DaySelected - 1].GetCredibility(GradeObtained);
-                    ps.AddCredibility(CreditObtained);
-                    lm.levelInfo[lm.DaySelected - 1].RemoveCredibilityFromLevel(CreditObtained);
-                    creditObtained.GetComponent<TextMeshProUGUI>().text = lm.levelInfo[lm.DaySelected - 1].GetCreditText();
-                    creditObtained.SetActive(true);
-                }
-
                 float timevalue = BarTimer / SliderDuration;
 
                 float tempscore;
-                if (score > lm.levelInfo[lm.DaySelected - 1].SReq)
-                    tempscore = lm.levelInfo[lm.DaySelected - 1].SReq;
+                if (score > level.SReq)
+                    tempscore = level.SReq;
                 else
                     tempscore = score;
 
                 gradeSlider.value = Mathf.SmoothStep(0, tempscore, timevalue);
                 BarTimer += Time.deltaTime;
+
+                // if player exceed S grade req
+                if (gradeSlider.value >= score || gradeSlider.value >= level.SReq)
+                {
+                    UpdateGrade((int)gradeSlider.maxValue);
+                    SetSquid();
+                    EndOfDayAnimation = false;
+                    LoadGrade = false;
+
+                    // Credit Obtained
+                    CreditObtained = level.GetCredibility(GradeObtained);
+                    ps.AddCredibility(CreditObtained);
+                    level.RemoveCredibilityFromLevel(CreditObtained);
+                    creditObtained.GetComponent<TextMeshProUGUI>().text = level.GetCreditText();
+                    creditObtained.SetActive(true);
+                }
 
                 if (gradeSlider.value >= gradeSlider.maxValue)
                 {
@@ -203,11 +205,13 @@ public class EndOfDay : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                if (score > lm.levelInfo[lm.DaySelected - 1].GetHighScore())
+                if (score > level.GetHighScore())
                 {
-                    lm.levelInfo[lm.DaySelected - 1].SetHighScore(score);
-                    lm.levelInfo[lm.DaySelected - 1].SetHighestGrade(GradeObtained);
+                    level.SetHighScore(score);
+                    level.SetHighestGrade(GradeObtained);
                 }
+                if (SaveFile.instance != null)
+                    SaveFile.instance.SaveGame();
 
                 SceneManager.LoadScene("Level Select");
             }
@@ -295,7 +299,7 @@ public class EndOfDay : MonoBehaviour
 
     void UpdateGrade(int thescore)
     {
-        GradeObtained = lm.levelInfo[lm.DaySelected - 1].GetGrade(thescore);
+        GradeObtained = level.GetGrade(thescore);
 
         switch (GradeObtained)
         {

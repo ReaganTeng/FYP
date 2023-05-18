@@ -28,7 +28,6 @@ public class ChaserScript : MonoBehaviour
     float dist;
     bool beam_mode;
 
-    float rand_z;
 
     EnemyScript enemyScript;
 
@@ -44,7 +43,6 @@ public class ChaserScript : MonoBehaviour
 
         gamemanager = GameObject.FindGameObjectWithTag("GameManager");
 
-        rand_z = 0;
         lockonbeam = null;
         hitbeam = null;
         pivot = null;
@@ -71,7 +69,7 @@ public class ChaserScript : MonoBehaviour
 
         dist = Vector3.Distance(transform.position, playerGO.transform.position);
 
-        float hitbeamsize = 15;
+        float hitbeamsize = 8;
         if (GetComponent<EnemyScript>().getupdating())
         {
             switch (enemyPhase)
@@ -92,7 +90,6 @@ public class ChaserScript : MonoBehaviour
                             && beam_mode == false)
                         {
                             //enemyScript.set_current_phase(EnemyScript.Phases.ATTACK_TYPE_1);
-                            rand_z = Random.Range(-4, 4);
                             navMeshAgent.enabled = true;
                             //GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
                             navMeshAgent.SetDestination(playerGO.transform.position);
@@ -114,7 +111,7 @@ public class ChaserScript : MonoBehaviour
                                 //PLACE LOCK ON BEAM
                                 starting_location = transform;
                                 ending_location = playerGO.transform;
-                                if (lockonbeam == null)
+                                if (pivot == null)
                                 {
                                     pivot = Instantiate(pivotpoint,
                                        transform.position,
@@ -123,19 +120,22 @@ public class ChaserScript : MonoBehaviour
                                     pivot.transform.SetParent(
                                         GetComponentInChildren<SpriteRenderer>().transform);
 
-                                    lockonbeam = Instantiate(lockon,
+                                    if (lockonbeam == null
+                                        && pivot != null)
+                                    {
+                                        lockonbeam = Instantiate(lockon,
                                         transform.position,
                                         Quaternion.Euler(0, 0, 0));
-                                    lockonbeam.transform.localScale =
-                                        new Vector3(.05f, 
-                                        lockon.transform.localScale.y,
-                                        hitbeamsize/10);
-                                   
-                                    lockonbeam.transform.SetParent(pivot.transform);
+                                        lockonbeam.transform.localScale =
+                                            new Vector3(.05f,
+                                            lockon.transform.localScale.y,
+                                            hitbeamsize / 10);
 
-                                    pivot.transform.LookAt(
-                                        new Vector3(ending_location.position.x, transform.position.y, ending_location.position.z));
-                                    //pivot.transform.ro
+                                        lockonbeam.transform.SetParent(pivot.transform);
+
+                                        pivot.transform.LookAt(
+                                            new Vector3(ending_location.position.x, transform.position.y, ending_location.position.z));
+                                    }
                                 }
                                 //
                             }
@@ -143,14 +143,18 @@ public class ChaserScript : MonoBehaviour
                             if (time_att_2 < 1.9f
                                 && time_att_2 >= 1.1f)
                             {
-                                pivot.transform.LookAt(
+                                if (pivot != null)
+                                {
+                                    pivot.transform.LookAt(
                                         new Vector3(ending_location.position.x, transform.position.y, ending_location.position.z));
+                                }
                             }
 
-                            if (time_att_2 >= 1.9f)
-                            {
-                                GetComponentInChildren<SpriteRenderer>().color = Color.red;
-                            }
+                            //if (time_att_2 >= 1.9f
+                            //    && time_att_2 < 2.3f)
+                            //{
+                            //    GetComponentInChildren<SpriteRenderer>().color = Color.red;
+                            //}
 
                             if (time_att_2 > 2.3f && time_att_2 < 2.7f)
                             {
@@ -160,7 +164,9 @@ public class ChaserScript : MonoBehaviour
                                 GetComponentInChildren<Animator>().SetBool("chasingPlayer", true);
                                 GetComponentInChildren<Animator>().SetBool("attack", true);
 
-                                if (hitbeam == null)
+                                if (hitbeam == null
+                                    && lockonbeam != null
+                                    && pivot != null)
                                 {
                                     hitbeam = Instantiate(hit,
                                        transform.position,
@@ -190,6 +196,7 @@ public class ChaserScript : MonoBehaviour
 
                                 //GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
                                 DestroyBeams();
+                                time_att_2 = 0.0f;
                                 enemyScript.set_current_phase(EnemyScript.Phases.COOLDOWN);
                             }
                         }
@@ -281,7 +288,6 @@ public class ChaserScript : MonoBehaviour
                             }
 
                             chasingspeed = 4.0f;
-                            rand_z = Random.Range(-4, 4);
                             //float rand = Random.Range(2, 8);
                             //chasingspeed = rand /*dist * 0.2f*/;
                             //GetComponent<Rigidbody>().velocity = chasingspeed * (navMeshAgent.destination - transform.position);
@@ -305,6 +311,8 @@ public class ChaserScript : MonoBehaviour
                         time_att_2 = 0.0f;
                         time_att_1 = 0.0f;
                         change_of_attk_type_1 = 0.0f;
+                        GetComponentInChildren<SpriteRenderer>().color = Color.white;
+
 
                         //enemyScript.steering();
                         //enemyScript.avoidanceCode(rand_z);
@@ -319,6 +327,7 @@ public class ChaserScript : MonoBehaviour
                         time_att_2 = 0.0f;
                         time_att_1 = 0.0f;
                         change_of_attk_type_1 = 0.0f;
+                        GetComponentInChildren<SpriteRenderer>().color = Color.white;
 
                         //GetComponent<Rigidbody>().velocity =
 

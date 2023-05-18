@@ -40,12 +40,13 @@ public class FreezeGame : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !startGameResumeTimer)
+        // if player press escape when it is not paused(except if during a menupause)
+        if (Input.GetKeyDown(KeyCode.Escape) && !startGameResumeTimer && !startUpfreeze)
         {
-            PauseGame();
+            TogglePause();
         }
 
-
+        // for startUpFreeze, when it reach 0, the game officially start
         if (startUpfreeze)
         {
             freezeGameTimer -= Time.deltaTime;
@@ -71,14 +72,14 @@ public class FreezeGame : MonoBehaviour
             }
         }
 
+        // For any pauses during the game, when it hit 0, the game will unfreeze
         if (MenuPause && startGameResumeTimer)
         {
             gameResumeTimer -= Time.unscaledDeltaTime;
             if (gameResumeTimer <= 0)
             {
-                FreezeTheGame();
+                TogglePause(true);
                 startGameResumeTimer = false;
-                ActionText.SetActive(false);
             }
 
             // Greather than 2/3 of the time remaining
@@ -98,35 +99,37 @@ public class FreezeGame : MonoBehaviour
         }
     }
 
-    void FreezeTheGame()
+    public void TogglePause(bool UnPauseGame = false)
     {
+        // if game is not pause, pause the game
         if (!MenuPause)
         {
+            PauseMenu.SetActive(true); // Render the pause menu
+            gameResumeTimer = timeTillGameResume; // reset the countdown timer
+            Debug.Log("Pause");
+            // pause the game
             Time.timeScale = 0;
             MenuPause = true;
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().DisablePlayerControls();
         }
-        else
+        // if game is paused, toggling it will start the countdown
+        else if (MenuPause && !startGameResumeTimer)
         {
+            ActionText.SetActive(true);
+            startGameResumeTimer = true;
+            PauseMenu.SetActive(false);
+        }
+
+        // if the countdown is over, unpause the game
+        else if (UnPauseGame)
+        {
+            // stop rendering the Action text
+            ActionText.SetActive(false);
+            // Unpause the game
             Time.timeScale = 1;
             MenuPause = false;
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().EnablePlayerControls();
         }
-    }
-
-    public void PauseGame()
-    {
-        FreezeTheGame();
-        PauseMenu.SetActive(true);
-        gameResumeTimer = timeTillGameResume;
-        Debug.Log("Pause");
-    }
-
-    public void UnpauseGame()
-    {
-        ActionText.SetActive(true);
-        startGameResumeTimer = true;
-        PauseMenu.SetActive(false);
     }
 
     public void IgnoreStartUp()

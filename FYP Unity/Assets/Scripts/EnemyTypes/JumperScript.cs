@@ -26,9 +26,7 @@ public class JumperScript : MonoBehaviour
     Vector3 endpoint;
     //
 
-
     float timer;
-
 
     float currentdistance;
     public NavMeshAgent navMeshAgent;
@@ -36,12 +34,8 @@ public class JumperScript : MonoBehaviour
     public bool startupdating;
     EnemyScript enemyScript;
 
-
-    /*[SerializeField] */
     GameObject attackhitbox;
     bool jumpmode;
-
-    int rand_z;
 
     GameObject gamemanager;
 
@@ -50,7 +44,6 @@ public class JumperScript : MonoBehaviour
     {
         gamemanager = GameObject.FindGameObjectWithTag("GameManager");
 
-        rand_z = 0;
         GetComponent<EnemyScript>().set_enemyType(EnemyScript.EnemyType.JUMPER);
         startupdating = false;
         count = 0;
@@ -221,9 +214,6 @@ public class JumperScript : MonoBehaviour
             enemyScript.ifUpdatingfalse();
 
         }
-
-        //enemyScript.steering();
-
     }
 
 
@@ -240,7 +230,6 @@ public class JumperScript : MonoBehaviour
             count += jumpspeed * Time.deltaTime;
             Vector3 m1 = Vector3.Lerp(startpos, controlPoint, count);
             Vector3 m2 = Vector3.Lerp(controlPoint, endpoint, count);
-
 
             if (count < .85f)
             {

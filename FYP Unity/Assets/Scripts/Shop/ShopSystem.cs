@@ -17,6 +17,7 @@ public class ShopSystem : MonoBehaviour
     [SerializeField] Sprite EnabledButton;
     [SerializeField] Sprite DisabledButton;
     [SerializeField] Sprite MaxedButton;
+    [SerializeField] ShopManager sm;
     int CurrentPanel;
     ShopItem panelItem;
 
@@ -26,6 +27,11 @@ public class ShopSystem : MonoBehaviour
         CurrentPanel = 0;
         itemPanel.SetActive(false);
         panelItem = null;
+        if (sm.LoadUpgrade)
+        {
+            sm.AssignUpgrades();
+            sm.LoadUpgrade = false;
+        }
     }
 
     public void SelectItem(int itemNo)
