@@ -6871,16 +6871,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4313756680446486567, guid: b97d9f470c4c4b346bcf863e170b04bf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4313756680446486567, guid: b97d9f470c4c4b346bcf863e170b04bf, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 374321691}
+    - target: {fileID: 4313756680446486567, guid: b97d9f470c4c4b346bcf863e170b04bf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TogglePause
+      objectReference: {fileID: 0}
+    - target: {fileID: 4313756680446486567, guid: b97d9f470c4c4b346bcf863e170b04bf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6907352626341242758, guid: b97d9f470c4c4b346bcf863e170b04bf, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4313756680446486567, guid: b97d9f470c4c4b346bcf863e170b04bf, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6907352626341242758, guid: b97d9f470c4c4b346bcf863e170b04bf, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -6889,10 +6897,6 @@ PrefabInstance:
     - target: {fileID: 6907352626341242758, guid: b97d9f470c4c4b346bcf863e170b04bf, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4313756680446486567, guid: b97d9f470c4c4b346bcf863e170b04bf, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: UnpauseGame
       objectReference: {fileID: 0}
     - target: {fileID: 6907352626341242758, guid: b97d9f470c4c4b346bcf863e170b04bf, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
