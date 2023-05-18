@@ -26,9 +26,7 @@ public class JumperScript : MonoBehaviour
     Vector3 endpoint;
     //
 
-
     float timer;
-
 
     float currentdistance;
     public NavMeshAgent navMeshAgent;
@@ -36,12 +34,8 @@ public class JumperScript : MonoBehaviour
     public bool startupdating;
     EnemyScript enemyScript;
 
-
-    /*[SerializeField] */
     GameObject attackhitbox;
     bool jumpmode;
-
-    int rand_z;
 
     GameObject gamemanager;
 
@@ -50,7 +44,6 @@ public class JumperScript : MonoBehaviour
     {
         gamemanager = GameObject.FindGameObjectWithTag("GameManager");
 
-        rand_z = 0;
         GetComponent<EnemyScript>().set_enemyType(EnemyScript.EnemyType.JUMPER);
         startupdating = false;
         count = 0;
@@ -135,14 +128,14 @@ public class JumperScript : MonoBehaviour
                             GetComponent<BoxCollider>().enabled = false;
 
                             //while it's jumping, disable attackhitbox;
-                            if (currentdistance < 1.5f)
+                            /*if (currentdistance < 1.5f)
                             {
                                 attackhitbox.GetComponent<BoxCollider>().enabled = true;
                             }
                             else
                             {
                                 attackhitbox.GetComponent<BoxCollider>().enabled = false;
-                            }
+                            }*/
                             //
 
                             if (currentdistance < 0.5f)
@@ -184,7 +177,7 @@ public class JumperScript : MonoBehaviour
 
                     //enemyScript.steering();
                     //enemyScript.steering_3();
-                    enemyScript.avoidanceCode(rand_z);
+                    //enemyScript.avoidanceCode(rand_z);
 
                     GetComponent<NavMeshAgent>().speed = 0.0f;
                     GetComponent<EnemyScript>().cooldownUpdate();
@@ -221,9 +214,6 @@ public class JumperScript : MonoBehaviour
             enemyScript.ifUpdatingfalse();
 
         }
-
-        //enemyScript.steering();
-
     }
 
 
@@ -240,6 +230,16 @@ public class JumperScript : MonoBehaviour
             count += jumpspeed * Time.deltaTime;
             Vector3 m1 = Vector3.Lerp(startpos, controlPoint, count);
             Vector3 m2 = Vector3.Lerp(controlPoint, endpoint, count);
+
+            if (count < .85f)
+            {
+                attackhitbox.GetComponent<BoxCollider>().enabled = false;
+            }
+            else
+            {
+                attackhitbox.GetComponent<BoxCollider>().enabled = true;
+            }
+
 
             spriteRenderer.transform.position = Vector3.Lerp(
                 new Vector3(transform.position.x, m1.y, transform.position.z),

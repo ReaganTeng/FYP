@@ -389,13 +389,8 @@ public class PlayerStats : MonoBehaviour
     }
 
 
-    public void Resetvar()
-    {
-        numberConsecutiveHits = 0;
-        combo_timer = 0;
-        alpha_change = 0;
-    }
 
+   
     public void ResetConsecutiveHit()
     {
         if (fervorBarActive)

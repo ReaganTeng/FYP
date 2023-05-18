@@ -10019,12 +10019,11 @@ MonoBehaviour:
   KnifeWeaponDisplay: {fileID: 0}
   RollerWeaponDisplay: {fileID: 0}
   SpatulaWeaponDisplay: {fileID: 0}
-  notSelectedAlpha: 0.4
   spaculaHitbox: {fileID: 6670536203559410289}
   knifeHitbox: {fileID: 2429570959170697404}
   pinHitbox: {fileID: 3136350151301332611}
-  chargingduration: 30
-  reduction_in_percentage: 0
+  regeneration_rate_per_notch: 5
+  number_of_charges: 5
   chargeBar: {fileID: 0}
   canvas: {fileID: 0}
   chargertimertext: {fileID: 0}
@@ -10034,9 +10033,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   animator: {fileID: 5881152895048556901}
-  attackanimation: {fileID: 7400000, guid: 8d56feadd7064c643a4980a10ec168d2, type: 2}
-  attackanimation_spatula: {fileID: 7400000, guid: 8af0838cd8e9b284eafc7d7970dd054b, type: 2}
-  attackanimation_pin: {fileID: 7400000, guid: dd2bc2a887e454247a359807b702a3c3, type: 2}
+  heavyattackanimation_knife: {fileID: 7400000, guid: 8d56feadd7064c643a4980a10ec168d2, type: 2}
+  heavyattackanimation_spatula: {fileID: 7400000, guid: dd2bc2a887e454247a359807b702a3c3, type: 2}
+  heavyattackanimation_pin: {fileID: 7400000, guid: 8af0838cd8e9b284eafc7d7970dd054b, type: 2}
   pp: {fileID: 11400000, guid: 80203a9d8037ee2449d6c18b30afe1f3, type: 2}
 --- !u!1 &3136350151301332611
 GameObject:
@@ -10150,6 +10149,7 @@ MonoBehaviour:
   playerAttack: {fileID: 4940691009673553818}
   spriteRenderer: {fileID: 8852204268514479156}
   DashCD: 2
+  dashtimer_slider: {fileID: 0}
 --- !u!54 &5218877466719756691
 Rigidbody:
   m_ObjectHideFlags: 0

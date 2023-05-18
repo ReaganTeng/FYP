@@ -14,7 +14,10 @@ public class UpgradeSystem : MonoBehaviour
         FERVOR_REDUCTION,
         CHARGE_INCREASE,
         HEAVYATTACK_RECOVERY,
-        FERVORLOSS_PADDING
+        FERVORLOSS_PADDING,
+        CHARGE_REWARD
+
+
     }
 
     public static UpgradeSystem instance;
@@ -49,6 +52,9 @@ public class UpgradeSystem : MonoBehaviour
                 break;
             case ShopItemType.FERVORLOSS_PADDING:
                 pp.increase_fevor_padding();
+                break;
+            case ShopItemType.CHARGE_REWARD:
+                pp.increase_charge_reward();
                 break;
         }
     }

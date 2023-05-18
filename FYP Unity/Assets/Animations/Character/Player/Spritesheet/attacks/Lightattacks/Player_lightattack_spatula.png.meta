@@ -1,0 +1,1125 @@
+fileFormatVersion: 2
+guid: 8994334d321763b4d89ce9677dae722e
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Player_lightattack_spatula_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4640
+        width: 630
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7359abd15dd71bb4183dc8b235d5b8eb
+      internalID: 419098888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_spatula_1
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 4640
+        width: 630
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84d13287382c3ab4fa6acfe3584c63e9
+      internalID: 1202364037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_spatula_2
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 4640
+        width: 630
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f97771f27d8e4a4a8812e18298e0a80
+      internalID: 2012434663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_spatula_3
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 4640
+        width: 630
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8c4fe85f6481464490f4e40a0a8826b
+      internalID: 612389486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_spatula_4
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 4640
+        width: 630
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9e5514cd3f2c954c978bcf014761890
+      internalID: 205635398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_spatula_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4060
+        width: 630
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ae7ab5675a32394eafd87be11a1332e
+      internalID: 2096948680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_spatula_6
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 4060
+        width: 630
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83ca7fe02937e50419d22abc28efbe6d
+      internalID: 42480693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_spatula_7
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 4060
+        width: 630
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37b073147510ad1479addc2858be0b50
+      internalID: -1364469842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_spatula_8
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 4060
+        width: 630
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71ad284d59af8d247a11c8e1a572b5fc
+      internalID: -170019497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_spatula_9
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 4060
+        width: 630
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e712a1f4ed2400498dc9ef99479fd7c
+      internalID: 1604974086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_spatula_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3480
+        width: 630
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78c85fce608727a45a584d875ebe3bd6
+      internalID: -1860948471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_spatula_11
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 3480
+        width: 630
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 697d002dae68dc844b96566bd7dad716
+      internalID: -1540806547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_spatula_12
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 3480
+        width: 630
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56736f49962059f4486eb1f425fe693f
+      internalID: 1442736366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_spatula_13
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 3480
+        width: 630
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bbf50fb1e5461048b6ec61cc264c229
+      internalID: 543955874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_spatula_14
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 3480
+        width: 630
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2c927a22d84d2e4790f3b1d211dc92d
+      internalID: 398744292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_spatula_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2900
+        width: 630
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a06760618c5f5a041b2bb6c067853725
+      internalID: -250392031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_spatula_16
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 2900
+        width: 630
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00ca3840ca5712147aa1fd5a1c639689
+      internalID: 805452830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_spatula_17
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 2900
+        width: 630
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 581c3e88f0c95f743abb5bda6ae4e695
+      internalID: 1080919415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_spatula_18
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 2900
+        width: 630
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b2f12150a86b29418b75c50afa4cc1f
+      internalID: -1287392473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_spatula_19
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 2900
+        width: 630
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e4a68de44ab15a42b0165cb6f3c75ca
+      internalID: 2138185330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_spatula_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2320
+        width: 630
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f9edc6be55b856438e75c3e40dec94f
+      internalID: -1678201249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_spatula_21
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 2320
+        width: 630
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffecf33d61eb4f6469723972b2b721e0
+      internalID: -193632672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_spatula_22
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 2320
+        width: 630
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cb8ecee8b1d579429f3f76a4f418595
+      internalID: 1629447938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_spatula_23
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 2320
+        width: 630
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfc3a63966c290e41b9a1382ee6a1dac
+      internalID: -743555126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_spatula_24
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 2320
+        width: 630
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7a1beaf01678694ca7507f930891d54
+      internalID: -1530431191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_spatula_25
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1740
+        width: 630
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2af57eb0836a4ac44b250bffce250196
+      internalID: 1435238458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_spatula_26
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 1740
+        width: 630
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17419c3764cb1ea4380acf30d7e3d886
+      internalID: 1915106417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_spatula_27
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 1740
+        width: 630
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52a76d9373116cb4ebae5ea646bd22b8
+      internalID: -1389736188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_spatula_28
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 1740
+        width: 630
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f08077139bf0ce44b9b79028fa3f6d2d
+      internalID: 1425806394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_spatula_29
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 1740
+        width: 630
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68c7b42ca7ce3ac4fb1a435da2c38d20
+      internalID: 617294709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_spatula_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1160
+        width: 630
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf3ff630cf6fb784eaad97c9f0995045
+      internalID: -42891703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_spatula_31
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 1160
+        width: 630
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 764cdcaf35440684c929bc9a11726a0f
+      internalID: 1335747925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_spatula_32
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 1160
+        width: 630
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d13cbab09bba4884ab57f8a664520d0c
+      internalID: 484531444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_spatula_33
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 1160
+        width: 630
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 712e730fa460a82409841ecf5a41689e
+      internalID: 1433963644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_spatula_34
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 1160
+        width: 630
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6edddee07ee41bc4283d5fd3ac9a4485
+      internalID: -69274879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_spatula_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 580
+        width: 630
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f7337fd6734d0a4abc13751f143ad73
+      internalID: -1022328266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_spatula_36
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 580
+        width: 630
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c0cb93d60e298e4b96a3311267ca8d3
+      internalID: -625982069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_spatula_37
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 580
+        width: 630
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a756a3309b2f26f4faa09c995b01bc54
+      internalID: 1106077205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_spatula_38
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 580
+        width: 630
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd6a96bca024635429f4d860f2b3a78f
+      internalID: -727772317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_spatula_39
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 580
+        width: 630
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca249d7f920aef44db3fc1d6f19ba6d3
+      internalID: 2145889187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_spatula_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 630
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8f44a09117377c44b7407c110ccecea
+      internalID: 680222310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_spatula_41
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 0
+        width: 630
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c52ed07bf66fb3f42bd8599124712592
+      internalID: -1964271597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_spatula_42
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 0
+        width: 630
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14efa69e9eb3c5442b0a07d573c7badd
+      internalID: -2008605159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_spatula_43
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 0
+        width: 630
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4044d90577993d041a90666fa031c0cf
+      internalID: -904711036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_spatula_44
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 0
+        width: 630
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 877e5d0d08705ff489050735a4413be3
+      internalID: 1835386602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5f71533e03a75944582d31503dc37103
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Player_lightattack_spatula_9: 1604974086
+      Player_lightattack_spatula_40: 680222310
+      Player_lightattack_spatula_44: 1835386602
+      Player_lightattack_spatula_3: 612389486
+      Player_lightattack_spatula_27: -1389736188
+      Player_lightattack_spatula_23: -743555126
+      Player_lightattack_spatula_8: -170019497
+      Player_lightattack_spatula_6: 42480693
+      Player_lightattack_spatula_42: -2008605159
+      Player_lightattack_spatula_20: -1678201249
+      Player_lightattack_spatula_24: -1530431191
+      Player_lightattack_spatula_21: -193632672
+      Player_lightattack_spatula_22: 1629447938
+      Player_lightattack_spatula_33: 1433963644
+      Player_lightattack_spatula_7: -1364469842
+      Player_lightattack_spatula_2: 2012434663
+      Player_lightattack_spatula_11: -1540806547
+      Player_lightattack_spatula_0: 419098888
+      Player_lightattack_spatula_28: 1425806394
+      Player_lightattack_spatula_34: -69274879
+      Player_lightattack_spatula_29: 617294709
+      Player_lightattack_spatula_16: 805452830
+      Player_lightattack_spatula_38: -727772317
+      Player_lightattack_spatula_43: -904711036
+      Player_lightattack_spatula_32: 484531444
+      Player_lightattack_spatula_30: -42891703
+      Player_lightattack_spatula_37: 1106077205
+      Player_lightattack_spatula_36: -625982069
+      Player_lightattack_spatula_13: 543955874
+      Player_lightattack_spatula_14: 398744292
+      Player_lightattack_spatula_17: 1080919415
+      Player_lightattack_spatula_35: -1022328266
+      Player_lightattack_spatula_41: -1964271597
+      Player_lightattack_spatula_26: 1915106417
+      Player_lightattack_spatula_4: 205635398
+      Player_lightattack_spatula_10: -1860948471
+      Player_lightattack_spatula_18: -1287392473
+      Player_lightattack_spatula_12: 1442736366
+      Player_lightattack_spatula_39: 2145889187
+      Player_lightattack_spatula_25: 1435238458
+      Player_lightattack_spatula_31: 1335747925
+      Player_lightattack_spatula_1: 1202364037
+      Player_lightattack_spatula_5: 2096948680
+      Player_lightattack_spatula_15: -250392031
+      Player_lightattack_spatula_19: 2138185330
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
