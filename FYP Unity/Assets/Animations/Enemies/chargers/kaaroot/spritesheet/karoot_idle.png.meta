@@ -67,7 +67,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 4096
+    maxTextureSize: 16384
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -120,10 +120,10 @@ TextureImporter:
       name: karoot_idle_0
       rect:
         serializedVersion: 2
-        x: 35
-        y: 4735
-        width: 169
-        height: 209
+        x: 0
+        y: 4257.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,10 +141,10 @@ TextureImporter:
       name: karoot_idle_1
       rect:
         serializedVersion: 2
-        x: 257
-        y: 4735
-        width: 168
-        height: 209
+        x: 200
+        y: 4257.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -162,10 +162,10 @@ TextureImporter:
       name: karoot_idle_2
       rect:
         serializedVersion: 2
-        x: 479
-        y: 4735
-        width: 169
-        height: 209
+        x: 400
+        y: 4257.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -183,10 +183,10 @@ TextureImporter:
       name: karoot_idle_3
       rect:
         serializedVersion: 2
-        x: 701
-        y: 4735
-        width: 171
-        height: 209
+        x: 600
+        y: 4257.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -204,10 +204,10 @@ TextureImporter:
       name: karoot_idle_4
       rect:
         serializedVersion: 2
-        x: 923
-        y: 4735
-        width: 176
-        height: 209
+        x: 800
+        y: 4257.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -226,9 +226,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 4530
-        width: 214
-        height: 203
+        y: 4072.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -246,10 +246,10 @@ TextureImporter:
       name: karoot_idle_6
       rect:
         serializedVersion: 2
-        x: 257
-        y: 4530
-        width: 181
-        height: 203
+        x: 200
+        y: 4072.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -267,10 +267,10 @@ TextureImporter:
       name: karoot_idle_7
       rect:
         serializedVersion: 2
-        x: 479
-        y: 4530
-        width: 186
-        height: 203
+        x: 400
+        y: 4072.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -288,10 +288,10 @@ TextureImporter:
       name: karoot_idle_8
       rect:
         serializedVersion: 2
-        x: 703
-        y: 4530
-        width: 185
-        height: 203
+        x: 600
+        y: 4072.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -309,10 +309,10 @@ TextureImporter:
       name: karoot_idle_9
       rect:
         serializedVersion: 2
-        x: 925
-        y: 4532
-        width: 185
-        height: 203
+        x: 800
+        y: 4072.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -330,10 +330,10 @@ TextureImporter:
       name: karoot_idle_10
       rect:
         serializedVersion: 2
-        x: 30
-        y: 4329
-        width: 199
-        height: 199
+        x: 0
+        y: 3887.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -351,10 +351,10 @@ TextureImporter:
       name: karoot_idle_11
       rect:
         serializedVersion: 2
-        x: 250
-        y: 4323
+        x: 200
+        y: 3887.875
         width: 200
-        height: 205
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -372,10 +372,10 @@ TextureImporter:
       name: karoot_idle_12
       rect:
         serializedVersion: 2
-        x: 469
-        y: 4120
-        width: 181
-        height: 206
+        x: 400
+        y: 3887.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -393,10 +393,10 @@ TextureImporter:
       name: karoot_idle_13
       rect:
         serializedVersion: 2
-        x: 479
-        y: 4325
-        width: 186
-        height: 204
+        x: 600
+        y: 3887.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -414,10 +414,10 @@ TextureImporter:
       name: karoot_idle_14
       rect:
         serializedVersion: 2
-        x: 683
-        y: 4119
-        width: 188
-        height: 194
+        x: 800
+        y: 3887.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -435,10 +435,10 @@ TextureImporter:
       name: karoot_idle_15
       rect:
         serializedVersion: 2
-        x: 904
-        y: 4120
-        width: 181
-        height: 207
+        x: 0
+        y: 3702.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -456,10 +456,10 @@ TextureImporter:
       name: karoot_idle_16
       rect:
         serializedVersion: 2
-        x: 921
-        y: 4325
-        width: 185
-        height: 205
+        x: 200
+        y: 3702.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -477,10 +477,10 @@ TextureImporter:
       name: karoot_idle_17
       rect:
         serializedVersion: 2
-        x: 11
-        y: 3912
-        width: 181
-        height: 210
+        x: 400
+        y: 3702.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -498,10 +498,10 @@ TextureImporter:
       name: karoot_idle_18
       rect:
         serializedVersion: 2
-        x: 228
-        y: 3912
-        width: 181
-        height: 210
+        x: 600
+        y: 3702.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -519,10 +519,10 @@ TextureImporter:
       name: karoot_idle_19
       rect:
         serializedVersion: 2
-        x: 445
-        y: 3912
-        width: 186
-        height: 210
+        x: 800
+        y: 3702.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -540,10 +540,10 @@ TextureImporter:
       name: karoot_idle_20
       rect:
         serializedVersion: 2
-        x: 884
-        y: 3912
-        width: 191
-        height: 205
+        x: 0
+        y: 3517.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -561,10 +561,10 @@ TextureImporter:
       name: karoot_idle_21
       rect:
         serializedVersion: 2
-        x: 0
-        y: 3707
-        width: 189
-        height: 203
+        x: 200
+        y: 3517.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -582,10 +582,10 @@ TextureImporter:
       name: karoot_idle_22
       rect:
         serializedVersion: 2
-        x: 218
-        y: 3707
-        width: 193
-        height: 200
+        x: 400
+        y: 3517.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -603,10 +603,10 @@ TextureImporter:
       name: karoot_idle_23
       rect:
         serializedVersion: 2
-        x: 443
-        y: 3707
-        width: 193
-        height: 200
+        x: 600
+        y: 3517.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -624,10 +624,10 @@ TextureImporter:
       name: karoot_idle_24
       rect:
         serializedVersion: 2
-        x: 666
-        y: 3707
-        width: 194
-        height: 200
+        x: 800
+        y: 3517.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -645,10 +645,10 @@ TextureImporter:
       name: karoot_idle_25
       rect:
         serializedVersion: 2
-        x: 889
-        y: 3707
-        width: 221
-        height: 202
+        x: 0
+        y: 3332.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -666,10 +666,10 @@ TextureImporter:
       name: karoot_idle_26
       rect:
         serializedVersion: 2
-        x: 4
-        y: 3499
-        width: 190
-        height: 203
+        x: 200
+        y: 3332.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -687,10 +687,10 @@ TextureImporter:
       name: karoot_idle_27
       rect:
         serializedVersion: 2
-        x: 228
-        y: 3499
-        width: 191
-        height: 203
+        x: 400
+        y: 3332.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -708,10 +708,10 @@ TextureImporter:
       name: karoot_idle_28
       rect:
         serializedVersion: 2
-        x: 450
-        y: 3499
-        width: 191
-        height: 203
+        x: 600
+        y: 3332.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -729,10 +729,10 @@ TextureImporter:
       name: karoot_idle_29
       rect:
         serializedVersion: 2
-        x: 674
-        y: 3499
-        width: 191
-        height: 203
+        x: 800
+        y: 3332.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -750,10 +750,10 @@ TextureImporter:
       name: karoot_idle_30
       rect:
         serializedVersion: 2
-        x: 899
-        y: 3499
-        width: 188
-        height: 203
+        x: 0
+        y: 3147.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -771,10 +771,10 @@ TextureImporter:
       name: karoot_idle_31
       rect:
         serializedVersion: 2
-        x: 11
-        y: 3294
-        width: 190
-        height: 203
+        x: 200
+        y: 3147.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -792,10 +792,10 @@ TextureImporter:
       name: karoot_idle_32
       rect:
         serializedVersion: 2
-        x: 234
-        y: 3294
-        width: 192
-        height: 202
+        x: 400
+        y: 3147.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -813,10 +813,10 @@ TextureImporter:
       name: karoot_idle_33
       rect:
         serializedVersion: 2
-        x: 457
-        y: 3294
-        width: 193
-        height: 200
+        x: 600
+        y: 3147.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -834,10 +834,10 @@ TextureImporter:
       name: karoot_idle_34
       rect:
         serializedVersion: 2
-        x: 682
-        y: 3294
-        width: 193
-        height: 200
+        x: 800
+        y: 3147.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -855,10 +855,10 @@ TextureImporter:
       name: karoot_idle_35
       rect:
         serializedVersion: 2
-        x: 906
-        y: 3294
-        width: 193
-        height: 199
+        x: 0
+        y: 2962.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -876,10 +876,10 @@ TextureImporter:
       name: karoot_idle_36
       rect:
         serializedVersion: 2
-        x: 21
-        y: 3089
-        width: 190
-        height: 198
+        x: 200
+        y: 2962.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -897,10 +897,10 @@ TextureImporter:
       name: karoot_idle_37
       rect:
         serializedVersion: 2
-        x: 245
-        y: 3089
-        width: 191
-        height: 198
+        x: 400
+        y: 2962.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -918,10 +918,10 @@ TextureImporter:
       name: karoot_idle_38
       rect:
         serializedVersion: 2
-        x: 472
-        y: 3089
-        width: 186
-        height: 200
+        x: 600
+        y: 2962.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -939,10 +939,10 @@ TextureImporter:
       name: karoot_idle_39
       rect:
         serializedVersion: 2
-        x: 694
-        y: 3089
-        width: 186
-        height: 200
+        x: 800
+        y: 2962.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -960,10 +960,10 @@ TextureImporter:
       name: karoot_idle_40
       rect:
         serializedVersion: 2
-        x: 918
-        y: 3089
-        width: 185
-        height: 200
+        x: 0
+        y: 2777.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -981,10 +981,10 @@ TextureImporter:
       name: karoot_idle_41
       rect:
         serializedVersion: 2
-        x: 33
-        y: 2881
-        width: 182
-        height: 201
+        x: 200
+        y: 2777.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1002,10 +1002,10 @@ TextureImporter:
       name: karoot_idle_42
       rect:
         serializedVersion: 2
-        x: 255
-        y: 2881
-        width: 183
-        height: 203
+        x: 400
+        y: 2777.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1023,10 +1023,10 @@ TextureImporter:
       name: karoot_idle_43
       rect:
         serializedVersion: 2
-        x: 479
-        y: 2881
-        width: 180
-        height: 201
+        x: 600
+        y: 2777.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1044,10 +1044,10 @@ TextureImporter:
       name: karoot_idle_44
       rect:
         serializedVersion: 2
-        x: 701
-        y: 2881
-        width: 179
-        height: 201
+        x: 800
+        y: 2777.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1065,10 +1065,10 @@ TextureImporter:
       name: karoot_idle_45
       rect:
         serializedVersion: 2
-        x: 923
-        y: 2881
-        width: 179
-        height: 201
+        x: 0
+        y: 2592.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1086,10 +1086,10 @@ TextureImporter:
       name: karoot_idle_46
       rect:
         serializedVersion: 2
-        x: 37
-        y: 2676
-        width: 177
-        height: 199
+        x: 200
+        y: 2592.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1107,10 +1107,10 @@ TextureImporter:
       name: karoot_idle_47
       rect:
         serializedVersion: 2
-        x: 259
-        y: 2676
-        width: 176
-        height: 199
+        x: 400
+        y: 2592.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1128,10 +1128,10 @@ TextureImporter:
       name: karoot_idle_48
       rect:
         serializedVersion: 2
-        x: 481
-        y: 2676
-        width: 174
-        height: 198
+        x: 600
+        y: 2592.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1149,10 +1149,10 @@ TextureImporter:
       name: karoot_idle_49
       rect:
         serializedVersion: 2
-        x: 703
-        y: 2676
-        width: 174
-        height: 198
+        x: 800
+        y: 2592.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1170,10 +1170,10 @@ TextureImporter:
       name: karoot_idle_50
       rect:
         serializedVersion: 2
-        x: 925
-        y: 2676
-        width: 173
-        height: 198
+        x: 0
+        y: 2407.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1191,10 +1191,10 @@ TextureImporter:
       name: karoot_idle_51
       rect:
         serializedVersion: 2
-        x: 37
-        y: 2471
-        width: 172
-        height: 198
+        x: 200
+        y: 2407.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1212,10 +1212,10 @@ TextureImporter:
       name: karoot_idle_52
       rect:
         serializedVersion: 2
-        x: 259
-        y: 2471
-        width: 171
-        height: 198
+        x: 400
+        y: 2407.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1233,10 +1233,10 @@ TextureImporter:
       name: karoot_idle_53
       rect:
         serializedVersion: 2
-        x: 481
-        y: 2471
-        width: 169
-        height: 198
+        x: 600
+        y: 2407.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1254,10 +1254,10 @@ TextureImporter:
       name: karoot_idle_54
       rect:
         serializedVersion: 2
-        x: 703
-        y: 2471
-        width: 168
-        height: 198
+        x: 800
+        y: 2407.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1275,10 +1275,10 @@ TextureImporter:
       name: karoot_idle_55
       rect:
         serializedVersion: 2
-        x: 925
-        y: 2471
-        width: 167
-        height: 195
+        x: 0
+        y: 2222.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1296,10 +1296,10 @@ TextureImporter:
       name: karoot_idle_56
       rect:
         serializedVersion: 2
-        x: 35
-        y: 2263
-        width: 169
-        height: 198
+        x: 200
+        y: 2222.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1317,10 +1317,10 @@ TextureImporter:
       name: karoot_idle_57
       rect:
         serializedVersion: 2
-        x: 257
-        y: 2263
-        width: 168
-        height: 198
+        x: 400
+        y: 2222.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1338,10 +1338,10 @@ TextureImporter:
       name: karoot_idle_58
       rect:
         serializedVersion: 2
-        x: 479
-        y: 2263
-        width: 169
-        height: 200
+        x: 600
+        y: 2222.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1359,10 +1359,10 @@ TextureImporter:
       name: karoot_idle_59
       rect:
         serializedVersion: 2
-        x: 701
-        y: 2263
-        width: 171
-        height: 201
+        x: 800
+        y: 2222.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1380,10 +1380,10 @@ TextureImporter:
       name: karoot_idle_60
       rect:
         serializedVersion: 2
-        x: 923
-        y: 2263
-        width: 176
-        height: 203
+        x: 0
+        y: 2037.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1401,10 +1401,10 @@ TextureImporter:
       name: karoot_idle_61
       rect:
         serializedVersion: 2
-        x: 0
-        y: 2058
-        width: 214
-        height: 203
+        x: 200
+        y: 2037.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1422,10 +1422,10 @@ TextureImporter:
       name: karoot_idle_62
       rect:
         serializedVersion: 2
-        x: 257
-        y: 2058
-        width: 181
-        height: 203
+        x: 400
+        y: 2037.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1443,10 +1443,10 @@ TextureImporter:
       name: karoot_idle_63
       rect:
         serializedVersion: 2
-        x: 479
-        y: 2058
-        width: 186
-        height: 203
+        x: 600
+        y: 2037.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1464,10 +1464,10 @@ TextureImporter:
       name: karoot_idle_64
       rect:
         serializedVersion: 2
-        x: 703
-        y: 2058
-        width: 185
-        height: 203
+        x: 800
+        y: 2037.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1485,10 +1485,10 @@ TextureImporter:
       name: karoot_idle_65
       rect:
         serializedVersion: 2
-        x: 925
-        y: 2060
-        width: 185
-        height: 203
+        x: 0
+        y: 1852.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1506,10 +1506,10 @@ TextureImporter:
       name: karoot_idle_66
       rect:
         serializedVersion: 2
-        x: 30
-        y: 1852
-        width: 187
-        height: 204
+        x: 200
+        y: 1852.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1527,10 +1527,10 @@ TextureImporter:
       name: karoot_idle_67
       rect:
         serializedVersion: 2
-        x: 250
-        y: 1856
-        width: 188
-        height: 204
+        x: 400
+        y: 1852.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1548,10 +1548,10 @@ TextureImporter:
       name: karoot_idle_68
       rect:
         serializedVersion: 2
-        x: 469
-        y: 1648
-        width: 181
-        height: 206
+        x: 600
+        y: 1852.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1569,10 +1569,10 @@ TextureImporter:
       name: karoot_idle_69
       rect:
         serializedVersion: 2
-        x: 479
-        y: 1853
-        width: 186
-        height: 204
+        x: 800
+        y: 1852.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1590,10 +1590,10 @@ TextureImporter:
       name: karoot_idle_70
       rect:
         serializedVersion: 2
-        x: 691
-        y: 1848
-        width: 194
-        height: 210
+        x: 0
+        y: 1667.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1611,10 +1611,10 @@ TextureImporter:
       name: karoot_idle_71
       rect:
         serializedVersion: 2
-        x: 904
-        y: 1648
-        width: 181
-        height: 207
+        x: 200
+        y: 1667.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1632,10 +1632,10 @@ TextureImporter:
       name: karoot_idle_72
       rect:
         serializedVersion: 2
-        x: 921
-        y: 1853
-        width: 185
-        height: 205
+        x: 400
+        y: 1667.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1653,10 +1653,10 @@ TextureImporter:
       name: karoot_idle_73
       rect:
         serializedVersion: 2
-        x: 11
-        y: 1440
-        width: 181
-        height: 210
+        x: 600
+        y: 1667.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1674,10 +1674,10 @@ TextureImporter:
       name: karoot_idle_74
       rect:
         serializedVersion: 2
-        x: 228
-        y: 1440
-        width: 181
-        height: 210
+        x: 800
+        y: 1667.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1695,10 +1695,10 @@ TextureImporter:
       name: karoot_idle_75
       rect:
         serializedVersion: 2
-        x: 445
-        y: 1440
-        width: 186
-        height: 210
+        x: 0
+        y: 1482.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1716,10 +1716,10 @@ TextureImporter:
       name: karoot_idle_76
       rect:
         serializedVersion: 2
-        x: 884
-        y: 1440
-        width: 191
-        height: 205
+        x: 200
+        y: 1482.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1737,10 +1737,10 @@ TextureImporter:
       name: karoot_idle_77
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1235
-        width: 189
-        height: 203
+        x: 400
+        y: 1482.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1758,10 +1758,10 @@ TextureImporter:
       name: karoot_idle_78
       rect:
         serializedVersion: 2
-        x: 218
-        y: 1235
-        width: 193
-        height: 200
+        x: 600
+        y: 1482.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1779,10 +1779,10 @@ TextureImporter:
       name: karoot_idle_79
       rect:
         serializedVersion: 2
-        x: 443
-        y: 1235
-        width: 193
-        height: 200
+        x: 800
+        y: 1482.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1800,10 +1800,10 @@ TextureImporter:
       name: karoot_idle_80
       rect:
         serializedVersion: 2
-        x: 666
-        y: 1235
-        width: 194
-        height: 200
+        x: 0
+        y: 1297.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1821,10 +1821,10 @@ TextureImporter:
       name: karoot_idle_81
       rect:
         serializedVersion: 2
-        x: 889
-        y: 1235
-        width: 221
-        height: 202
+        x: 200
+        y: 1297.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1842,10 +1842,10 @@ TextureImporter:
       name: karoot_idle_82
       rect:
         serializedVersion: 2
-        x: 4
-        y: 1027
-        width: 190
-        height: 203
+        x: 400
+        y: 1297.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1863,10 +1863,10 @@ TextureImporter:
       name: karoot_idle_83
       rect:
         serializedVersion: 2
-        x: 228
-        y: 1027
-        width: 191
-        height: 203
+        x: 600
+        y: 1297.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1884,10 +1884,10 @@ TextureImporter:
       name: karoot_idle_84
       rect:
         serializedVersion: 2
-        x: 450
-        y: 1027
-        width: 191
-        height: 203
+        x: 800
+        y: 1297.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1905,10 +1905,10 @@ TextureImporter:
       name: karoot_idle_85
       rect:
         serializedVersion: 2
-        x: 674
-        y: 1027
-        width: 191
-        height: 203
+        x: 0
+        y: 1112.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1926,10 +1926,10 @@ TextureImporter:
       name: karoot_idle_86
       rect:
         serializedVersion: 2
-        x: 899
-        y: 1027
-        width: 188
-        height: 203
+        x: 200
+        y: 1112.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1947,10 +1947,10 @@ TextureImporter:
       name: karoot_idle_87
       rect:
         serializedVersion: 2
-        x: 11
-        y: 822
-        width: 190
-        height: 203
+        x: 400
+        y: 1112.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1968,10 +1968,10 @@ TextureImporter:
       name: karoot_idle_88
       rect:
         serializedVersion: 2
-        x: 234
-        y: 822
-        width: 192
-        height: 202
+        x: 600
+        y: 1112.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1989,10 +1989,10 @@ TextureImporter:
       name: karoot_idle_89
       rect:
         serializedVersion: 2
-        x: 457
-        y: 822
-        width: 193
-        height: 200
+        x: 800
+        y: 1112.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2010,10 +2010,10 @@ TextureImporter:
       name: karoot_idle_90
       rect:
         serializedVersion: 2
-        x: 682
-        y: 822
-        width: 193
-        height: 200
+        x: 0
+        y: 927.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2031,10 +2031,10 @@ TextureImporter:
       name: karoot_idle_91
       rect:
         serializedVersion: 2
-        x: 906
-        y: 822
-        width: 193
-        height: 199
+        x: 200
+        y: 927.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2052,10 +2052,10 @@ TextureImporter:
       name: karoot_idle_92
       rect:
         serializedVersion: 2
-        x: 21
-        y: 617
-        width: 190
-        height: 198
+        x: 400
+        y: 927.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2073,10 +2073,10 @@ TextureImporter:
       name: karoot_idle_93
       rect:
         serializedVersion: 2
-        x: 245
-        y: 617
-        width: 191
-        height: 198
+        x: 600
+        y: 927.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2094,10 +2094,10 @@ TextureImporter:
       name: karoot_idle_94
       rect:
         serializedVersion: 2
-        x: 472
-        y: 617
-        width: 186
-        height: 200
+        x: 800
+        y: 927.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2115,10 +2115,10 @@ TextureImporter:
       name: karoot_idle_95
       rect:
         serializedVersion: 2
-        x: 694
-        y: 617
-        width: 186
-        height: 200
+        x: 0
+        y: 742.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2136,10 +2136,10 @@ TextureImporter:
       name: karoot_idle_96
       rect:
         serializedVersion: 2
-        x: 918
-        y: 617
-        width: 185
-        height: 200
+        x: 200
+        y: 742.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2157,10 +2157,10 @@ TextureImporter:
       name: karoot_idle_97
       rect:
         serializedVersion: 2
-        x: 33
-        y: 409
-        width: 182
-        height: 201
+        x: 400
+        y: 742.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2178,10 +2178,10 @@ TextureImporter:
       name: karoot_idle_98
       rect:
         serializedVersion: 2
-        x: 255
-        y: 409
-        width: 183
-        height: 201
+        x: 600
+        y: 742.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2199,10 +2199,10 @@ TextureImporter:
       name: karoot_idle_99
       rect:
         serializedVersion: 2
-        x: 479
-        y: 409
-        width: 179
-        height: 201
+        x: 800
+        y: 742.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2220,10 +2220,10 @@ TextureImporter:
       name: karoot_idle_100
       rect:
         serializedVersion: 2
-        x: 701
-        y: 409
-        width: 179
-        height: 201
+        x: 0
+        y: 557.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2241,10 +2241,10 @@ TextureImporter:
       name: karoot_idle_101
       rect:
         serializedVersion: 2
-        x: 923
-        y: 409
-        width: 178
-        height: 200
+        x: 200
+        y: 557.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2262,10 +2262,10 @@ TextureImporter:
       name: karoot_idle_102
       rect:
         serializedVersion: 2
-        x: 35
-        y: 204
-        width: 176
-        height: 198
+        x: 400
+        y: 557.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2283,10 +2283,10 @@ TextureImporter:
       name: karoot_idle_103
       rect:
         serializedVersion: 2
-        x: 257
-        y: 204
-        width: 176
-        height: 198
+        x: 600
+        y: 557.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2304,10 +2304,10 @@ TextureImporter:
       name: karoot_idle_104
       rect:
         serializedVersion: 2
-        x: 479
-        y: 204
-        width: 175
-        height: 198
+        x: 800
+        y: 557.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2325,10 +2325,10 @@ TextureImporter:
       name: karoot_idle_105
       rect:
         serializedVersion: 2
-        x: 701
-        y: 204
-        width: 174
-        height: 198
+        x: 0
+        y: 372.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2346,10 +2346,10 @@ TextureImporter:
       name: karoot_idle_106
       rect:
         serializedVersion: 2
-        x: 923
-        y: 204
-        width: 171
-        height: 197
+        x: 200
+        y: 372.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2367,10 +2367,10 @@ TextureImporter:
       name: karoot_idle_107
       rect:
         serializedVersion: 2
-        x: 35
-        y: 0
-        width: 171
-        height: 194
+        x: 400
+        y: 372.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2388,10 +2388,10 @@ TextureImporter:
       name: karoot_idle_108
       rect:
         serializedVersion: 2
-        x: 257
-        y: 0
-        width: 170
-        height: 194
+        x: 600
+        y: 372.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2409,10 +2409,10 @@ TextureImporter:
       name: karoot_idle_109
       rect:
         serializedVersion: 2
-        x: 479
-        y: 0
-        width: 169
-        height: 194
+        x: 800
+        y: 372.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2430,10 +2430,10 @@ TextureImporter:
       name: karoot_idle_110
       rect:
         serializedVersion: 2
-        x: 701
-        y: 0
-        width: 169
-        height: 194
+        x: 0
+        y: 187.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2451,10 +2451,10 @@ TextureImporter:
       name: karoot_idle_111
       rect:
         serializedVersion: 2
-        x: 923
-        y: 0
-        width: 169
-        height: 194
+        x: 200
+        y: 187.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2472,10 +2472,10 @@ TextureImporter:
       name: karoot_idle_112
       rect:
         serializedVersion: 2
-        x: 250
-        y: 1651
-        width: 188
-        height: 189
+        x: 400
+        y: 187.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2493,10 +2493,10 @@ TextureImporter:
       name: karoot_idle_113
       rect:
         serializedVersion: 2
-        x: 25
-        y: 1646
-        width: 188
-        height: 204
+        x: 600
+        y: 187.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2514,10 +2514,10 @@ TextureImporter:
       name: karoot_idle_114
       rect:
         serializedVersion: 2
-        x: 688
-        y: 1644
-        width: 194
-        height: 210
+        x: 800
+        y: 187.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2535,10 +2535,10 @@ TextureImporter:
       name: karoot_idle_115
       rect:
         serializedVersion: 2
-        x: 667
-        y: 1436
-        width: 194
-        height: 210
+        x: 0
+        y: 2.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2556,10 +2556,10 @@ TextureImporter:
       name: karoot_idle_116
       rect:
         serializedVersion: 2
-        x: 697
-        y: 4333
-        width: 192
-        height: 197
+        x: 200
+        y: 2.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2577,10 +2577,10 @@ TextureImporter:
       name: karoot_idle_117
       rect:
         serializedVersion: 2
-        x: 664
-        y: 3912
-        width: 188
-        height: 205
+        x: 400
+        y: 2.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2598,10 +2598,10 @@ TextureImporter:
       name: karoot_idle_118
       rect:
         serializedVersion: 2
-        x: 246
-        y: 4119
+        x: 600
+        y: 2.875
         width: 200
-        height: 205
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2619,10 +2619,10 @@ TextureImporter:
       name: karoot_idle_119
       rect:
         serializedVersion: 2
-        x: 24
-        y: 4123
-        width: 199
-        height: 199
+        x: 800
+        y: 2.875
+        width: 200
+        height: 185.125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

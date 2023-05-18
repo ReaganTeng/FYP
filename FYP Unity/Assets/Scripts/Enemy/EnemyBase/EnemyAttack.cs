@@ -109,11 +109,14 @@ public class EnemyAttack : MonoBehaviour
             }
             //
 
-            if(!transform.parent.transform.parent.GetComponent<EnemyScript>().getupdating()
-                /*|| transform.parent.transform.parent.GetComponent<EnemyScript>().return_current_phase() == EnemyScript.Phases.AVOID*/)
-            {
-                attacking = false;
-            }
+            //if(!transform.parent.transform.parent.GetComponent<EnemyScript>().getupdating()
+            //    /*|| transform.parent.transform.parent.GetComponent<EnemyScript>().return_current_phase() == EnemyScript.Phases.AVOID*/)
+            //{
+            //    if (attacks_performed >= attacks_per_session)
+            //    {
+            //        attacking = false;
+            //    }
+            //}
 
             if (attacking)
             {
@@ -136,7 +139,6 @@ public class EnemyAttack : MonoBehaviour
                             //other.GetComponent<PlayerStats>().ChangeFervor(-5.0f);
                             player.GetComponent<PlayerStats>().ChangeFervor(-15.0f * pp.return_fevor_padding());
                             ProCamera2DShake.Instance.ShakeUsingPreset("DamageShake");
-
                         }
 
                         Attackcdtimer = AttackCD;
@@ -156,6 +158,7 @@ public class EnemyAttack : MonoBehaviour
                         attacking = false;
                         attacking_present = false;
                         transform.parent.transform.parent.GetComponent<NavMeshAgent>().enabled = true;
+                        Debug.Log("FINISHED ATTACKING");
 
                     }
                     else
@@ -239,18 +242,15 @@ public class EnemyAttack : MonoBehaviour
             && GetComponent<BoxCollider>().enabled == true
             && other.GetComponentInChildren<Animator>().GetNextAnimatorStateInfo(0).IsName("Dash") == false
             && attacks_performed < attacks_per_session
-
             //transform.parent.transform.parent.GetComponent<EnemyScript>().return_current_phase() != EnemyScript.Phases.AVOID
             /*&& transform.parent.transform.parent.GetComponent<EnemyScript>().return_current_phase() != EnemyScript.Phases.AVOID*/)
         {
             attacking = true;
 
-
             //IF ENEMY IS A JUMPER
             if (transform.parent.transform.parent.GetComponent<EnemyScript>().return_enemyType()
                 == EnemyScript.EnemyType.JUMPER             
-                && transform.parent.transform.parent.GetComponent<EnemyScript>().return_current_phase() != EnemyScript.Phases.AVOID
-)
+                && transform.parent.transform.parent.GetComponent<EnemyScript>().return_current_phase() != EnemyScript.Phases.AVOID)
             {
                 other.GetComponent<PlayerMovement>().setAnimator(true);
                 other.GetComponent<PlayerStats>().ResetConsecutiveHit();

@@ -43,14 +43,14 @@ public class PlayerAttack : MonoBehaviour
     //[SerializeField] float chargingSpeed;
     float last_known_notch;
     float next_known_notch;
-    //[SerializeField] float percentage_reduction;
 
     //the default charging duration in seconds
-    [SerializeField] float chargingduration;
+    float chargingduration;
+    [SerializeField] float regeneration_rate_per_notch;
     //number of charges the player has
-    int number_of_charges;
-    //how much % you want to reduce in charging duration
-    public float reduction_in_percentage;
+    [SerializeField]  int number_of_charges;
+
+
 
     float min_notch_value;
     [SerializeField] Slider chargeBar;
@@ -62,6 +62,7 @@ public class PlayerAttack : MonoBehaviour
     Weapon currentweapon = Weapon.ROLLINGPIN;
     // Start is called before the first frame update
 
+    bool b;
 
     GameObject closestenemy;
     bool isclicked;
@@ -78,10 +79,10 @@ public class PlayerAttack : MonoBehaviour
 
     [SerializeField] LayerMask enemyLM;
     [SerializeField] Animator animator;
-    [SerializeField] AnimationClip attackanimation;
+    [SerializeField] AnimationClip heavyattackanimation_knife;
 
-    [SerializeField] AnimationClip attackanimation_spatula;
-    [SerializeField] AnimationClip attackanimation_pin;
+    [SerializeField] AnimationClip heavyattackanimation_spatula;
+    [SerializeField] AnimationClip heavyattackanimation_pin;
 
 
     [SerializeField] PlayerProgress pp;
@@ -91,8 +92,9 @@ public class PlayerAttack : MonoBehaviour
 
     void Start()
     {
+        b = false;
         already_attacked = false;
-        number_of_charges = 2;
+        //number_of_charges = 2;
 
         if (pp.return_number_of_charges() > 0)
         {
@@ -106,6 +108,7 @@ public class PlayerAttack : MonoBehaviour
         heavyattackclicked = false;
         lightattackclicked = false;
 
+        chargingduration = regeneration_rate_per_notch * number_of_charges;
         chargeCurrentLvl = chargingduration;
         chargeMaxLvl = chargingduration;
         if (chargeBar != null)
@@ -233,6 +236,9 @@ public class PlayerAttack : MonoBehaviour
                     //&& notswitchingweapons()
                     )
                 {
+
+                    //depletecharge();
+
                     Debug.Log("LIGHT ATTACK");
                     isclicked = true;
                     AttackWhichDirection(direction);
@@ -275,16 +281,16 @@ public class PlayerAttack : MonoBehaviour
                     if (
                     currentweapon == Weapon.KNIFE)
                     {
-                        click_timer = attackanimation.length;
+                        click_timer = heavyattackanimation_knife.length;
                     }
                     else if (
                     currentweapon == Weapon.ROLLINGPIN)
                     {
-                        click_timer = attackanimation_pin.length;
+                        click_timer = heavyattackanimation_pin.length;
                     }
                     else
                     {
-                        click_timer = attackanimation_spatula.length;
+                        click_timer = heavyattackanimation_spatula.length;
                     }
 
                     //GET CLOSEST ENEMY
@@ -325,13 +331,13 @@ public class PlayerAttack : MonoBehaviour
                 //SPATULA, //0
                 //ROLLINGPIN, //2
                 if (
-                    (currentweapon == Weapon.KNIFE &&  click_timer <= (attackanimation.length  *.5f)
+                    (currentweapon == Weapon.KNIFE &&  click_timer <= (heavyattackanimation_knife.length  *.5f)
                     / pp.return_heavyattackspeed())
                     ||
-                     (currentweapon == Weapon.ROLLINGPIN && click_timer <= (attackanimation_pin.length * .25f)
+                     (currentweapon == Weapon.ROLLINGPIN && click_timer <= (heavyattackanimation_pin.length * .25f)
                     / pp.return_heavyattackspeed())
                     ||
-                     (currentweapon == Weapon.SPATULA && click_timer <= (attackanimation_spatula.length * .5f)
+                     (currentweapon == Weapon.SPATULA && click_timer <= (heavyattackanimation_spatula.length * .5f)
                     / pp.return_heavyattackspeed())
                     )
                 {
@@ -559,28 +565,17 @@ public class PlayerAttack : MonoBehaviour
     }
     public void updatecharge()
     {
-        if (Input.GetKey(KeyCode.G))
+       if(Input.GetKey(KeyCode.C))
         {
-            reduction_in_percentage = 50;
-        }
-        else
-        {
-            reduction_in_percentage = 0;
-            
-            if(chargeCurrentLvl >= chargeMaxLvl)
+            if (!b)
             {
-                chargeCurrentLvl = chargeMaxLvl;
+                addcharge(3);
+                b = true;
             }
         }
-
-
-        if (reduction_in_percentage > 0)
+       else
         {
-            chargeMaxLvl = chargingduration - (chargingduration * reduction_in_percentage / 100);
-        }
-        else
-        {
-            chargeMaxLvl = chargingduration;
+            b = false;
         }
 
         chargeBar.maxValue = chargeMaxLvl;
@@ -624,9 +619,6 @@ public class PlayerAttack : MonoBehaviour
         {
             chargertimertext.text = time.ToString();
         }
-
-
-       
     }
     public void depletecharge()
     {
@@ -647,6 +639,25 @@ public class PlayerAttack : MonoBehaviour
             next_known_notch = (int)next_known_notch - (int)min_notch_value;
         }
     }
+
+
+    public void addcharge(int number_of_times)
+    {
+        for (int i = 0; i < number_of_times; i++)
+        {
+            int diff = (int)min_notch_value -
+                (
+                ((int)next_known_notch + (int)min_notch_value) -
+                (int)chargeCurrentLvl);
+
+            chargeCurrentLvl = ((int)next_known_notch + (int)min_notch_value) +  diff;
+
+            last_known_notch = (int)last_known_notch - (int)min_notch_value;
+            next_known_notch = (int)next_known_notch - (int)min_notch_value;
+        }
+       
+    }
+
     void AttackWhichDirection(int direction)
     {
         Quaternion newrotation;

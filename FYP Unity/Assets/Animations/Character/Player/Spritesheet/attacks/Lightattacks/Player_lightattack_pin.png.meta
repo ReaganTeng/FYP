@@ -1,0 +1,1266 @@
+fileFormatVersion: 2
+guid: b3c8109cf743eed46945889761dbb958
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Player_lightattack_pin_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6729
+        width: 940
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a24dd8b110dc2114badcbd2207acd172
+      internalID: 2052304524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_pin_1
+      rect:
+        serializedVersion: 2
+        x: 940
+        y: 6729
+        width: 940
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e6d8262a45ca8c428e87260ac125770
+      internalID: 794641792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_pin_2
+      rect:
+        serializedVersion: 2
+        x: 1880
+        y: 6729
+        width: 940
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9843ed34b47d7284fac50e56a407d462
+      internalID: 1883707199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_pin_3
+      rect:
+        serializedVersion: 2
+        x: 2820
+        y: 6729
+        width: 940
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a3efff3465fdc2408e85c0a7d5c930f
+      internalID: -1989795890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_pin_4
+      rect:
+        serializedVersion: 2
+        x: 3760
+        y: 6729
+        width: 940
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2450cdef429ac66499363134f027af2b
+      internalID: 787558268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_pin_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6031
+        width: 940
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 807092dd213f27f418657b18fb251363
+      internalID: 433001000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_pin_6
+      rect:
+        serializedVersion: 2
+        x: 940
+        y: 6031
+        width: 940
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6281d93ba7e216942a2f0cce576c46df
+      internalID: -1122564197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_pin_7
+      rect:
+        serializedVersion: 2
+        x: 1880
+        y: 6031
+        width: 940
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da1c91dd90eff01449496b879ace739a
+      internalID: -1095080339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_pin_8
+      rect:
+        serializedVersion: 2
+        x: 2820
+        y: 6031
+        width: 940
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d61d8dc2b7920574090e085e59e0e10d
+      internalID: -953734137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_pin_9
+      rect:
+        serializedVersion: 2
+        x: 3760
+        y: 6031
+        width: 940
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a37606648db326459cd4e57c337d142
+      internalID: -1359243523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_pin_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 5372
+        width: 940
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc03952bf12812c438939030f48bd1f4
+      internalID: 2145137942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_pin_11
+      rect:
+        serializedVersion: 2
+        x: 940
+        y: 5372
+        width: 940
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d1acf3a37133a64abb61c3db0e33f4e
+      internalID: -565366766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_pin_12
+      rect:
+        serializedVersion: 2
+        x: 1880
+        y: 5372
+        width: 940
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2e4089f41f768b4189b8483253a9b8d
+      internalID: 211835853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_pin_13
+      rect:
+        serializedVersion: 2
+        x: 2820
+        y: 5372
+        width: 940
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f82f794a071fbcb448231cd65ee56f1c
+      internalID: 839529618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_pin_14
+      rect:
+        serializedVersion: 2
+        x: 3760
+        y: 5372
+        width: 940
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0ad6649223882f46b3b71fc7cf9b2ca
+      internalID: 1679326552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_pin_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4713
+        width: 940
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06dd36529ba68e74dafddf1af6be2f6f
+      internalID: -2041315865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_pin_16
+      rect:
+        serializedVersion: 2
+        x: 940
+        y: 4713
+        width: 940
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7aaec5392d2b7a47b3458955345059b
+      internalID: -789021280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_pin_17
+      rect:
+        serializedVersion: 2
+        x: 1880
+        y: 4713
+        width: 940
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3f61aaf20bfa384ab157e8ea032a9c2
+      internalID: 647131286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_pin_18
+      rect:
+        serializedVersion: 2
+        x: 2820
+        y: 4713
+        width: 940
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fda00354953967448c9304833531cbc
+      internalID: -1217770997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_pin_19
+      rect:
+        serializedVersion: 2
+        x: 3760
+        y: 4713
+        width: 940
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ce5fe2684b9be94da7a3f7240e5bc64
+      internalID: 280968150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_pin_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4054
+        width: 940
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ababd11e7d7a96e448fd7ba1e0f3d1de
+      internalID: -1636761425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_pin_21
+      rect:
+        serializedVersion: 2
+        x: 940
+        y: 4054
+        width: 940
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92a44f9f31740f74ebbea2c43a3f921a
+      internalID: -455272429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_pin_22
+      rect:
+        serializedVersion: 2
+        x: 1880
+        y: 4054
+        width: 940
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2de8bd6ead0d94e4bb2ab2487893ca4a
+      internalID: -292794744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_pin_23
+      rect:
+        serializedVersion: 2
+        x: 2820
+        y: 4054
+        width: 940
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 280393c623b84f447b88372b641b376d
+      internalID: 988913397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_pin_24
+      rect:
+        serializedVersion: 2
+        x: 3760
+        y: 4054
+        width: 940
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6198834c4af460b42be7aee63630a1a6
+      internalID: 969757859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_pin_25
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3395
+        width: 940
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 472a170046e9ba245b0e1bc0f558c479
+      internalID: 1915432558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_pin_26
+      rect:
+        serializedVersion: 2
+        x: 940
+        y: 3395
+        width: 940
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c77a6df24ebfa1e4b84640fd91502079
+      internalID: 1529782718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_pin_27
+      rect:
+        serializedVersion: 2
+        x: 1880
+        y: 3395
+        width: 940
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7dcba9f67a245f4288656a0506c3bae
+      internalID: 1327743099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_pin_28
+      rect:
+        serializedVersion: 2
+        x: 2820
+        y: 3395
+        width: 940
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0125493406469084f889d0fc512a1569
+      internalID: 853496038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_pin_29
+      rect:
+        serializedVersion: 2
+        x: 3760
+        y: 3395
+        width: 940
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4eba8a46889ce3645908d9067298997b
+      internalID: -852952318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_pin_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2736
+        width: 940
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b2d6b0c6a640a54d848a6bf97ee03db
+      internalID: 1179988296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_pin_31
+      rect:
+        serializedVersion: 2
+        x: 940
+        y: 2736
+        width: 940
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afaab6168cdac4349825f5c00f4c7111
+      internalID: -1541412849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_pin_32
+      rect:
+        serializedVersion: 2
+        x: 1880
+        y: 2736
+        width: 940
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c488ae1d5b805af488a1147537ff0362
+      internalID: 235182666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_pin_33
+      rect:
+        serializedVersion: 2
+        x: 2820
+        y: 2736
+        width: 940
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63af2cbfa281d8641995e7b38a253024
+      internalID: 1344284985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_pin_34
+      rect:
+        serializedVersion: 2
+        x: 3760
+        y: 2736
+        width: 940
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 759da84079384d34fa0a08719738896d
+      internalID: -1065661570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_pin_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2077
+        width: 940
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88f55bcbad52d2244b4251c91c07ab88
+      internalID: 1483097575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_pin_41
+      rect:
+        serializedVersion: 2
+        x: 940
+        y: 2077
+        width: 940
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23d6cafce353676459ef2c2c1707a596
+      internalID: 311853580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_pin_42
+      rect:
+        serializedVersion: 2
+        x: 1880
+        y: 2077
+        width: 940
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e06838be2cc60c644883576109ba7195
+      internalID: -19324560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_pin_43
+      rect:
+        serializedVersion: 2
+        x: 2820
+        y: 2077
+        width: 940
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03d46424f83f3664a8a094ce8d231f2b
+      internalID: -583336451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_pin_44
+      rect:
+        serializedVersion: 2
+        x: 3760
+        y: 2077
+        width: 940
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 841d3252825d24946bbe686337d1fecf
+      internalID: 1526329037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_pin_45
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1418
+        width: 940
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 610c5d0b0fea69c46a110cba0e054858
+      internalID: -979178480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_pin_46
+      rect:
+        serializedVersion: 2
+        x: 940
+        y: 1418
+        width: 940
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc18e5ea997daed4488336958af48d0a
+      internalID: 1676608559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_pin_47
+      rect:
+        serializedVersion: 2
+        x: 1880
+        y: 1418
+        width: 940
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2a484f21cce6c04cb229ec30bb023dd
+      internalID: 1794824120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_pin_48
+      rect:
+        serializedVersion: 2
+        x: 2820
+        y: 1418
+        width: 940
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1579677fb340e7f43ac71d41f8d89c3b
+      internalID: -1022940467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_pin_49
+      rect:
+        serializedVersion: 2
+        x: 3760
+        y: 1418
+        width: 940
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f862c4caaac276d4b96c52179a2904d8
+      internalID: -1846694277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_pin_50
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 759
+        width: 940
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef1c44a4b1d53314cbe8d02d8862531f
+      internalID: 540110336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_pin_51
+      rect:
+        serializedVersion: 2
+        x: 940
+        y: 759
+        width: 940
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c04123bfd638824ab0bac29df610d61
+      internalID: -378804986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_pin_52
+      rect:
+        serializedVersion: 2
+        x: 1880
+        y: 759
+        width: 940
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 954ec948d97b24246bfa54e118f89ef3
+      internalID: -1202391241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_pin_53
+      rect:
+        serializedVersion: 2
+        x: 2820
+        y: 759
+        width: 940
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89ff8e6245d512347b2d4731c8b057b3
+      internalID: -1666217533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_pin_54
+      rect:
+        serializedVersion: 2
+        x: 3760
+        y: 759
+        width: 940
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8beeb9be6c0611a49af6646c026ad24a
+      internalID: -1440231357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_lightattack_pin_55
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 100
+        width: 940
+        height: 600
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec78d04b0124ce542a8aa3c7f7f6a14c
+      internalID: -214265757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 1b162c1dd9b4313449ef4a4a3403710f
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Player_lightattack_pin_36: -662826984
+      Player_lightattack_pin_15: -2041315865
+      Player_lightattack_pin_34: -1065661570
+      Player_lightattack_pin_39: 1601224465
+      Player_lightattack_pin_33: 1344284985
+      Player_lightattack_pin_44: 1526329037
+      Player_lightattack_pin_52: -1202391241
+      Player_lightattack_pin_41: 311853580
+      Player_lightattack_pin_3: -1989795890
+      Player_lightattack_pin_8: -953734137
+      Player_lightattack_pin_16: -789021280
+      Player_lightattack_pin_10: 2145137942
+      Player_lightattack_pin_1: 794641792
+      Player_lightattack_pin_12: 211835853
+      Player_lightattack_pin_31: -1541412849
+      Player_lightattack_pin_54: -1440231357
+      Player_lightattack_pin_17: 647131286
+      Player_lightattack_pin_13: 839529618
+      Player_lightattack_pin_21: -455272429
+      Player_lightattack_pin_6: -1122564197
+      Player_lightattack_pin_14: 1679326552
+      Player_lightattack_pin_0: 2052304524
+      Player_lightattack_pin_25: 1915432558
+      Player_lightattack_pin_24: 969757859
+      Player_lightattack_pin_11: -565366766
+      Player_lightattack_pin_47: 1794824120
+      Player_lightattack_pin_7: -1095080339
+      Player_lightattack_pin_28: 853496038
+      Player_lightattack_pin_38: 26324294
+      Player_lightattack_pin_56: -817646721
+      Player_lightattack_pin_18: -1217770997
+      Player_lightattack_pin_2: 1883707199
+      Player_lightattack_pin_35: 739052912
+      Player_lightattack_pin_49: -1846694277
+      Player_lightattack_pin_19: 280968150
+      Player_lightattack_pin_59: 206365829
+      Player_lightattack_pin_9: -1359243523
+      Player_lightattack_pin_23: 988913397
+      Player_lightattack_pin_58: -2128147426
+      Player_lightattack_pin_48: -1022940467
+      Player_lightattack_pin_55: -214265757
+      Player_lightattack_pin_22: -292794744
+      Player_lightattack_pin_45: -979178480
+      Player_lightattack_pin_29: -852952318
+      Player_lightattack_pin_27: 1327743099
+      Player_lightattack_pin_42: -19324560
+      Player_lightattack_pin_43: -583336451
+      Player_lightattack_pin_51: -378804986
+      Player_lightattack_pin_57: -429118451
+      Player_lightattack_pin_32: 235182666
+      Player_lightattack_pin_5: 433001000
+      Player_lightattack_pin_30: 1179988296
+      Player_lightattack_pin_50: 540110336
+      Player_lightattack_pin_46: 1676608559
+      Player_lightattack_pin_40: 1483097575
+      Player_lightattack_pin_53: -1666217533
+      Player_lightattack_pin_26: 1529782718
+      Player_lightattack_pin_20: -1636761425
+      Player_lightattack_pin_4: 787558268
+      Player_lightattack_pin_37: 1243547064
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

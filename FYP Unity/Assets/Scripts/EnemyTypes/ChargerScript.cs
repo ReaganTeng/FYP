@@ -20,8 +20,6 @@ public class ChargerScript : MonoBehaviour
     public GameObject attackhitbox;
     EnemyScript enemyScript;
 
-    int rand_z;
-
     GameObject gamemanager;
 
     GameObject pivot;
@@ -34,7 +32,6 @@ public class ChargerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rand_z = 0;
 
         gamemanager = GameObject.FindGameObjectWithTag("GameManager");
 
@@ -63,29 +60,20 @@ public class ChargerScript : MonoBehaviour
             switch (enemyPhase)
             {
                 case EnemyScript.Phases.ATTACK_TYPE_1:
-                    //case EnemyScript.Phases.ATTACK_TYPE_2:
                     {
                         DestroyBeams();
-
                         navMeshAgent.enabled = false;
-
                         GetComponentInChildren<Animator>().SetBool("charge", true);
                         chargingtime += 1.0f * Time.deltaTime;
-
-                        rand_z = Random.Range(-4, 4);
-
                         if (chargingtime < 0.1f)
                         {
                             playerPos = playerGO.transform.position;
                             resultingVector = playerPos - transform.position;
                         }
-
                         if (chargingtime >= 1.0f)
                         {
-
                             chargingtime = 0;
                             collided = true;
-
                         }
                         //KEEP GOING FORWARD UNTIL HITS WALL
                         if (collided)
@@ -110,7 +98,6 @@ public class ChargerScript : MonoBehaviour
 
                         navMeshAgent.enabled = false;
 
-                        rand_z = Random.Range(-4, 4);
 
                         if (chargingtime < 0.1f)
                         {

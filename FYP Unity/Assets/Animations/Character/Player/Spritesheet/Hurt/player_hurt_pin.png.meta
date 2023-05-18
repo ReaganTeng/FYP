@@ -67,7 +67,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 16384
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -673,8 +673,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      player_hurt_pin_21: 738491162
-      player_hurt_pin_25: 1395238536
+      player_hurt_pin_10: 666041986
       player_hurt_pin_2: 442727542
       player_hurt_pin_13: 1745410327
       player_hurt_pin_15: 1525555085
@@ -692,12 +691,13 @@ TextureImporter:
       player_hurt_pin_6: 516470226
       player_hurt_pin_9: 344253951
       player_hurt_pin_3: 1192607279
-      player_hurt_pin_14: 1377328519
-      player_hurt_pin_7: 1381274479
-      player_hurt_pin_4: -239794864
-      player_hurt_pin_12: -277700616
-      player_hurt_pin_10: 666041986
       player_hurt_pin_19: 1555069256
+      player_hurt_pin_25: 1395238536
+      player_hurt_pin_4: -239794864
+      player_hurt_pin_21: 738491162
+      player_hurt_pin_7: 1381274479
+      player_hurt_pin_14: 1377328519
+      player_hurt_pin_12: -277700616
       player_hurt_pin_20: -1692946422
   spritePackingTag: 
   pSDRemoveMatte: 0
