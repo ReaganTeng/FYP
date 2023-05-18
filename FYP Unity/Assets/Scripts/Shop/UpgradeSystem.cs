@@ -26,10 +26,7 @@ public class UpgradeSystem : MonoBehaviour
 
     public static UpgradeSystem instance;
 
-
-
-
-    void Start()
+    void Awake()
     {
         instance = this;
     }
@@ -65,4 +62,6 @@ public class UpgradeSystem : MonoBehaviour
                 break;
         }
     }
+
+    
 }

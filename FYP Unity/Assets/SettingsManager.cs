@@ -79,6 +79,7 @@ public class SettingsManager : MonoBehaviour
     public void ResetGame()
     {
         Debug.Log("Game Reset");
+        PlayerPrefs.DeleteAll();
         PlayerPrefs.SetInt("TutorialComplete", 0);
         lm.ResetGameLevel();
         lm.DaySelected = -1;

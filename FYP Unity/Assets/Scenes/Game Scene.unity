@@ -1172,6 +1172,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1031948284}
     - target: {fileID: 1793855428296037514, guid: 3469af5157eaf574ba40b0341056896a, type: 3}
+      propertyPath: score
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1793855428296037514, guid: 3469af5157eaf574ba40b0341056896a, type: 3}
       propertyPath: Textbox
       value: 
       objectReference: {fileID: 1031948283}
@@ -3864,6 +3868,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 7319727303424407926, guid: 9c7efa639b08fad488193ca3c0ad2cbe, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7335706394391974455, guid: 9c7efa639b08fad488193ca3c0ad2cbe, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.89
@@ -3919,6 +3927,14 @@ PrefabInstance:
     - target: {fileID: 7412881007906782826, guid: 9c7efa639b08fad488193ca3c0ad2cbe, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7421456622944882317, guid: 9c7efa639b08fad488193ca3c0ad2cbe, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7421456622944882317, guid: 9c7efa639b08fad488193ca3c0ad2cbe, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7421456622944882317, guid: 9c7efa639b08fad488193ca3c0ad2cbe, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -6868,7 +6884,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4313756680446486567, guid: b97d9f470c4c4b346bcf863e170b04bf, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4313756680446486567, guid: b97d9f470c4c4b346bcf863e170b04bf, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -6880,7 +6896,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4313756680446486567, guid: b97d9f470c4c4b346bcf863e170b04bf, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: UnpauseGame
+      value: TogglePause
       objectReference: {fileID: 0}
     - target: {fileID: 4313756680446486567, guid: b97d9f470c4c4b346bcf863e170b04bf, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName

@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class mainMenuManager : MonoBehaviour
 {
-
+    bool SkipTutorial = false;
     [SerializeField] LevelManager LM;
 
     private void Start()
@@ -18,19 +18,17 @@ public class mainMenuManager : MonoBehaviour
 
     public void NewGame()
     {
-        LM.DaySelected = -1;
-        SceneManager.LoadScene("VNScene");
+        CreateNewGame();
     }
     public void LoadGame()
     {
-        if (PlayerPrefs.GetInt("TutorialComplete") == 0)
+        if (PlayerPrefs.GetInt("TutorialComplete", 0) == 0 && !SkipTutorial)
         {
-            LM.DaySelected = -1;
-            SceneManager.LoadScene("VNScene");
+            CreateNewGame();
         }
-
         else
         {
+            SaveFile.instance.LoadSave();
             SceneManager.LoadScene("Level Select");
         }
     }
@@ -38,5 +36,23 @@ public class mainMenuManager : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+    }
+
+    void CreateNewGame()
+    {
+        LM.DaySelected = -2;
+        SceneManager.LoadScene("VNScene");
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.SetInt("TutorialComplete", 0);
+    }
+
+    // temp
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Slash))
+        {
+            SkipTutorial = true;
+            PlayerPrefs.SetInt("TutorialComplete", 1);
+        }
     }
 }
