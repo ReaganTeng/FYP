@@ -42,6 +42,7 @@ public class SaveFile : MonoBehaviour
     {
         // Note to self, allocate the cc lefttobtained later
         // Load in the details of each level select
+        lm.ResetGameLevel();
         for (int i = 0; i < lm.levelInfo.Count; i++)
         {
             // NOTE!!! DO NOT CHANGE ANY KEY NAMING, IF U DO, RESET PLAYERPREF PLS
@@ -58,6 +59,7 @@ public class SaveFile : MonoBehaviour
         }
 
         // Get the shop lvl
+        sm.ResetShopLevel();
         for (int i = 0; i < sm.shopList.Count; i++)
         {
             // NOTE!!! DO NOT CHANGE ANY KEY NAMING, IF U DO, RESET PLAYERPREF PLS
@@ -69,6 +71,7 @@ public class SaveFile : MonoBehaviour
 
         // Get the player stats
         // NOTE!!! DO NOT CHANGE ANY KEY NAMING, IF U DO, RESET PLAYERPREF PLS
+        pp.ResetPlayer();
         int Rep = PlayerPrefs.GetInt("REP", 0);
         int CC = PlayerPrefs.GetInt("CC", 0);
         int RepAndCCDiff = Rep - CC;

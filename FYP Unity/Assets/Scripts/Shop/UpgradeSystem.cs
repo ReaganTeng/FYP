@@ -15,9 +15,12 @@ public class UpgradeSystem : MonoBehaviour
         CHARGE_INCREASE,
         HEAVYATTACK_RECOVERY,
         FERVORLOSS_PADDING,
-        CHARGE_REWARD
-
-
+        CHARGE_REWARD,
+        FASTER_COOKER,
+        BETTER_COOKER,
+        LONGER_ORDERS,
+        BETTER_PERFECT,
+        PERFECT_FRENZY,
     }
 
     public static UpgradeSystem instance;
@@ -55,6 +58,21 @@ public class UpgradeSystem : MonoBehaviour
                 break;
             case ShopItemType.CHARGE_REWARD:
                 pp.increase_charge_reward();
+                break;
+            case ShopItemType.FASTER_COOKER:
+                pp.IncreaseMixerReduction();
+                break;
+            case ShopItemType.BETTER_COOKER:
+                pp.IncreaseBetterCooker();
+                break;
+            case ShopItemType.LONGER_ORDERS:
+                pp.IncreaseLongerOrderTime();
+                break;
+            case ShopItemType.BETTER_PERFECT:
+                pp.IncreasePerfectDishBoost();
+                break;
+            case ShopItemType.PERFECT_FRENZY:
+                pp.IncreaseFrenzyModeMaxStack();
                 break;
         }
     }

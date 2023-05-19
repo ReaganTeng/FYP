@@ -24,6 +24,12 @@ public class PlayerProgress : ScriptableObject
     //starting value 0
     [SerializeField] int charge_reward;
 
+    private int mixer_Reduction = 0;
+    private int better_cooker = 0;
+    private int longer_order = 0;
+    private float perfect_dish_boost = 0;
+    private int frenzy_mode_Max_stack = 0;
+
 
     public void increase_charge_reward()
     {
@@ -92,6 +98,52 @@ public class PlayerProgress : ScriptableObject
         return buffactive_reduction;
     }
 
+
+    public void IncreaseMixerReduction()
+    {
+        mixer_Reduction += 5;
+    }
+    public int GetMixerReduction()
+    {
+        return mixer_Reduction;
+    }
+    
+    public void IncreaseBetterCooker()
+    {
+        better_cooker += 1;
+    }
+    public int GetBetterCooker()
+    {
+        return better_cooker;
+    }
+
+    public void IncreaseLongerOrderTime()
+    {
+        longer_order += 10;
+    }
+    public int GetLongerOrderTime()
+    {
+        return longer_order;
+    }
+
+    public void IncreasePerfectDishBoost()
+    {
+        perfect_dish_boost += 0.2f;
+    }
+    public float GetPerfectDishBoost()
+    {
+        return perfect_dish_boost;
+    }
+
+    public void IncreaseFrenzyModeMaxStack()
+    {
+        frenzy_mode_Max_stack += 1;
+    }
+    public int GetFrenzyModeMaxStack()
+    {
+        return frenzy_mode_Max_stack;
+    }
+
     public void ResetInventory()
     {
         CurrentInventorySlots = MaxInventorySlots;
@@ -100,8 +152,8 @@ public class PlayerProgress : ScriptableObject
     // Increase inventory slot by one
     public void IncreaseInventorySize()
     {
-        if (CurrentInventorySlots < 10)
-            CurrentInventorySlots += 1;
+        if (MaxInventorySlots < 10)
+            MaxInventorySlots += 1;
     }
 
     public int GetInventorySize()
@@ -128,6 +180,11 @@ public class PlayerProgress : ScriptableObject
         TotalObtainedCredibility = 0;
     }
 
+    public void RefundCredibility()
+    {
+        CosmicCredibility = TotalObtainedCredibility;
+    }
+
     public int GetCurrentCC()
     {
         return CosmicCredibility;
@@ -141,6 +198,17 @@ public class PlayerProgress : ScriptableObject
     public void ResetPlayer()
     {
         ResetCredibility();
+        ResetShopStats();
+    }
+
+    public void ResetShopPlayer()
+    {
+        RefundCredibility();
+        ResetShopStats();
+    }
+
+    void ResetShopStats()
+    {
         ResetInventory();
         buffactive_reduction = 30;
         number_of_charges = 0;
@@ -152,5 +220,11 @@ public class PlayerProgress : ScriptableObject
         fervorloss_padding = 1;
 
         charge_reward = 0;
+
+        mixer_Reduction = 0;
+        better_cooker = 0; 
+        longer_order = 0;
+        perfect_dish_boost = 0;
+        frenzy_mode_Max_stack = 0;
     }
 }

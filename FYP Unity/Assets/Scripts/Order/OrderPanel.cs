@@ -14,13 +14,6 @@ public class OrderPanel : MonoBehaviour
 
 
     float timer;
-    public void SetOrder(Sprite ingre1, Sprite ingre2, Sprite dishresult, Recipes.recipes therecipe)
-    {
-        ResultDish.sprite = dishresult;
-        OrderRecipe = therecipe;
-        score = therecipe.Result.GetComponent<Dish>().GetScore();
-    }
-
     public void SetOrder(Sprite ingre1, Sprite ingre2, Sprite dishresult, Recipes.recipes therecipe, float waitingtime)
     {
         ResultDish.sprite = dishresult;
