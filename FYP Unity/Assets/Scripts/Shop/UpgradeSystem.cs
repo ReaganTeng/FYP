@@ -58,7 +58,14 @@ public class UpgradeSystem : MonoBehaviour
                 pp.increase_charge_reward();
                 break;
             case ShopItemType.RATION:
-                pp.increase_rations();
+                pp.decrease_enemykilledrequirement();
+                break;
+
+            case ShopItemType.JUST_DIE_ALREADY:
+                pp.set_instantkill_requirement();
+                break;
+            case ShopItemType.DINNER_RUSH:
+                pp.set_burst_time();
                 break;
         }
     }

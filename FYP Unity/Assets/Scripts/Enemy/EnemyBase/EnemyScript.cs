@@ -72,19 +72,12 @@ public class EnemyScript : MonoBehaviour
 
     float furthestdistance;
 
-    GameObject[] other_enemies;
 
     float currentAnimationLength;
 
     bool attacked;
 
-    [SerializeField] GameObject floatingText;
-    GameObject ft;
 
-
-
-
-    [SerializeField] PlayerProgress pp;
     public enum Phases
     {
         ABOUT_TO_ATTACK,
@@ -92,10 +85,7 @@ public class EnemyScript : MonoBehaviour
         ATTACK_TYPE_1,
         ATTACK_TYPE_2,
         ATTACK_TYPE_3,
-
         AVOID,
-
-
         TOTAL
     }
 
@@ -211,18 +201,12 @@ public class EnemyScript : MonoBehaviour
         hitbox = GameObject.FindGameObjectWithTag("Attack");
         player = GameObject.FindGameObjectWithTag("Player");
         transitionFromHurtTimer = 0.0f;
-
         healthbar.maxValue = currentHealth;
         healthbar.minValue = 0;
-
         attackhitbox.GetComponent<BoxCollider>().enabled = false ;
-       
         BoundaryCheck();
-
         setzoneno = zoneno;
-
         timer = 0.0f;
-
         ray_distances = new List<float>();
         ray_distance_n_direction = new Dictionary<float, Vector3>();
 
@@ -271,6 +255,16 @@ public class EnemyScript : MonoBehaviour
             )
         {
             currentHealth -= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().GetPlayerAttack();
+            //currentHealth -= 999;
+
+            //JUST DIE ALREADY POWERUP
+            if (other.GetComponentInParent<PlayerAttack>().getheavyattacked()
+                && player.GetComponent<PlayerStats>().getinstantkillmode())
+            {
+                player.GetComponent<PlayerStats>().reducefervor();
+                currentHealth -= 999;
+            }
+            //
 
             //ADD CONSECUTIVE HITS
             func();
@@ -342,7 +336,6 @@ public class EnemyScript : MonoBehaviour
             //
             gamemanager.GetComponent<EnemyManager>().setupdating(false);
             attacked = true;
-            other.GetComponentInParent<PlayerAttack>().setalready_attacked(true);
             ProCamera2DShake.Instance.ShakeUsingPreset("HitShake");
 
             Iframe = true;
@@ -412,6 +405,7 @@ public class EnemyScript : MonoBehaviour
     {
 
         //Debug.Log(setzoneno);
+        GetComponent<NavMeshAgent>().enabled = false;
 
         currentAnimationLength = GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).length;
         //healthtext.text = EnemyHealth.ToString();
@@ -864,6 +858,203 @@ public class EnemyScript : MonoBehaviour
         }
         GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
     }
+   
+
+    public GameObject gethitbox()
+    {
+        return attackhitbox;
+    }
+
+    public int getzoneno()
+    {
+        return zoneno;
+    }
+
+    public bool getupdating()
+    {
+        return updating;
+    }
+
+
+
+    public void cooldownUpdate()
+    {
+        GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
+        
+        shootTimer = 0.0f;
+        phase3timer = 0.0f;
+        //turn off attack hitbox
+        attackhitbox.GetComponent<BoxCollider>().enabled = false;
+        timer += 1.0f * Time.deltaTime;
+        GetComponent<BoxCollider>().enabled = true;
+        if (timer >= cooldown_period)
+        {
+            timer = 0.0f;
+            rand_gen = Random.Range(1, 5);
+            phase = Phases.ABOUT_TO_ATTACK;
+        }
+    }
+    public void abouttoattackUpdate()
+    {
+        GetComponent<BoxCollider>().enabled = true;
+        if (enemy_type != EnemyType.CHARGER)
+        {
+            GetComponentInChildren<Animator>().SetBool("chasingPlayer", true);
+        }
+        GetComponentInChildren<SpriteRenderer>().color = Color.white;
+        attackhitbox.GetComponent<BoxCollider>().enabled = false;
+     
+        if (updating)
+        {
+            timer += Time.deltaTime;
+        }
+        if (timer >= abouttoattack_period)
+        {
+            if (enemy_type == EnemyType.CHASER)
+            {
+                GetComponent<NavMeshAgent>().enabled = true;
+            }
+
+            //attack_type = Random.Range(1, 3);
+            if (atkPattern == AttackPattern.PATTERN_1)
+            {
+                phase = Phases.ATTACK_TYPE_1;
+            }
+            else if (atkPattern == AttackPattern.PATTERN_2)
+            {
+                phase = Phases.ATTACK_TYPE_2;
+            }
+            else if (atkPattern == AttackPattern.PATTERN_3)
+            {
+                phase = Phases.ATTACK_TYPE_3;
+            }
+            timer = 0.0f;
+        }
+    }
+
+    
+
+    public void avoidanceCode(float random_number_z)
+    {
+        Vector3 resultingVector = -player.transform.position + transform.position;
+        resultingVector.y = 0;
+        GetComponent<Rigidbody>().velocity = resultingVector + new Vector3(random_number_z, 0, 0);
+    }
+
+
+    public void avoidanceCode_2(float random_number_x, float random_number_z)
+    {
+        float x = random_number_x;
+        float z = random_number_z;
+
+        GetComponent<NavMeshAgent>().SetDestination(new Vector3(player.transform.position.x + x,
+                 transform.position.y,
+                 player.transform.position.z + z));
+    }
+
+    public float gettimer()
+    {
+        return timer;
+    }
+
+    public float getcooldownend()
+    {
+        return cooldown_period;
+    }
+
+    void EnemyDie(bool ExactKill)
+    {
+        // if the enemy was attack by another weapon before drop mush
+        if (AttackByOtherWeapon)
+        {
+            GameObject temp = Instantiate(Mush, gameObject.transform.position, Quaternion.identity);
+            temp.transform.SetParent(GameObject.FindGameObjectWithTag("Drops").transform);
+        }
+        else
+        {
+            GameObject whichobject = null;
+
+            switch (AttackByWhatWeapon)
+            {
+                // 0 is spatula, 1 is knife, 2 is rolling pin
+                case 0:
+                    whichobject = prepPrefab;
+                    break;
+                case 1:
+                    whichobject = choppedPefab;
+                    break;
+                case 2:
+                    whichobject = smashedPrefab;
+                    break;
+            }
+            GameObject tempobj = Instantiate(whichobject, gameObject.transform.position, Quaternion.identity);
+            tempobj.transform.SetParent(GameObject.FindGameObjectWithTag("Drops").transform);
+
+            //RATION POWER UP
+            player.GetComponentInChildren<PlayerAttack>().addenemykilled();
+            if (player.GetComponentInChildren<PlayerAttack>().getenemykilled() >= player.GetComponentInChildren<PlayerStats>().getpp().return_enemykilledrequirement()
+                && player.GetComponentInChildren<PlayerStats>().getpp().return_enemykilledrequirement() > 0)
+            {
+                //Debug.Log("RATIONED");
+                GameObject additoional_drop = Instantiate(whichobject, gameObject.transform.position, Quaternion.identity);
+                additoional_drop.transform.SetParent(GameObject.FindGameObjectWithTag("Drops").transform);
+                additoional_drop.GetComponent<Food>().SetPerfect(false);
+                player.GetComponentInChildren<PlayerAttack>().resetenemykilled();
+            }
+            //
+
+            // if it is exact kill
+            if (ExactKill)
+            {
+                tempobj.GetComponent<Food>().SetPerfect(true);
+            }
+        }
+
+
+
+        GetComponentInChildren<SpriteRenderer>().enabled = false;
+        Destroy(gameObject);
+        gamemanager.GetComponent<EnemyManager>().recalculate_numberofenemies();
+    }
+
+    public void Death()
+    {
+        attackhitbox.GetComponent<BoxCollider>().enabled = false;
+        //getparent().GetComponent<Spawner>().resetSpawnerTimer(5, false);
+
+        if (currentHealth == 0)
+        {
+            Debug.Log("Precise Kill!");
+            //particles.SetActive(true);
+            EnemyDie(true);
+        }
+        else if (currentHealth < 0)
+        {
+            Debug.Log("Killed!");
+            EnemyDie(false);
+        }
+    }
+
+    public int GetEnemyHealth()
+    {
+        return currentHealth;
+    }
+
+    public void SetEnemyHealth(int enemyHealth)
+    {
+        EnemyHealth = enemyHealth;
+        currentHealth = EnemyHealth;
+    }
+
+
+
+
+
+
+
+
+
+
     public void steering()
     {
         var deltaPosition = Vector3.zero;
@@ -1010,191 +1201,11 @@ public class EnemyScript : MonoBehaviour
         ray_distances.Sort();
         furthestdistance = ray_distances[ray_distances.Count - 1];
         //get the direction using the key, which is the furthestdistance
-        Vector3 resultingVector =  transform.position - (furthestdistance *
+        Vector3 resultingVector = transform.position - (furthestdistance *
             ray_distance_n_direction[furthestdistance]);
         resultingVector.y = 0;
         //normalise resulting vector
         resultingVector.Normalize();
         GetComponent<Rigidbody>().velocity = resultingVector * 5.0f;
-    }
-
-    public GameObject gethitbox()
-    {
-        return attackhitbox;
-    }
-
-    public int getzoneno()
-    {
-        return zoneno;
-    }
-
-    public bool getupdating()
-    {
-        return updating;
-    }
-
-
-
-    public void cooldownUpdate()
-    {
-        GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
-        
-        shootTimer = 0.0f;
-        phase3timer = 0.0f;
-        //turn off attack hitbox
-        attackhitbox.GetComponent<BoxCollider>().enabled = false;
-        timer += 1.0f * Time.deltaTime;
-        GetComponent<BoxCollider>().enabled = true;
-        if (timer >= cooldown_period)
-        {
-            timer = 0.0f;
-            rand_gen = Random.Range(1, 5);
-            phase = Phases.ABOUT_TO_ATTACK;
-        }
-    }
-    public void abouttoattackUpdate()
-    {
-        GetComponent<BoxCollider>().enabled = true;
-        if (enemy_type != EnemyType.CHARGER)
-        {
-            GetComponentInChildren<Animator>().SetBool("chasingPlayer", true);
-        }
-        GetComponentInChildren<SpriteRenderer>().color = Color.white;
-        attackhitbox.GetComponent<BoxCollider>().enabled = false;
-     
-        if (updating)
-        {
-            timer += Time.deltaTime;
-        }
-        if (timer >= abouttoattack_period)
-        {
-            if (enemy_type == EnemyType.CHASER)
-            {
-                GetComponent<NavMeshAgent>().enabled = true;
-            }
-
-            //attack_type = Random.Range(1, 3);
-            if (atkPattern == AttackPattern.PATTERN_1)
-            {
-                phase = Phases.ATTACK_TYPE_1;
-            }
-            else if (atkPattern == AttackPattern.PATTERN_2)
-            {
-                phase = Phases.ATTACK_TYPE_2;
-            }
-            else if (atkPattern == AttackPattern.PATTERN_3)
-            {
-                phase = Phases.ATTACK_TYPE_3;
-            }
-            timer = 0.0f;
-        }
-    }
-
-    
-
-    public void avoidanceCode(float random_number_z)
-    {
-        Vector3 resultingVector = -player.transform.position + transform.position;
-        resultingVector.y = 0;
-        GetComponent<Rigidbody>().velocity = resultingVector + new Vector3(random_number_z, 0, 0);
-    }
-
-
-    public void avoidanceCode_2(float random_number_x, float random_number_z)
-    {
-        float x = random_number_x;
-        float z = random_number_z;
-
-        GetComponent<NavMeshAgent>().SetDestination(new Vector3(player.transform.position.x + x,
-                 transform.position.y,
-                 player.transform.position.z + z));
-    }
-
-    public float gettimer()
-    {
-        return timer;
-    }
-
-    public float getcooldownend()
-    {
-        return cooldown_period;
-    }
-
-    void EnemyDie(bool ExactKill)
-    {
-        // if the enemy was attack by another weapon before drop mush
-        if (AttackByOtherWeapon)
-        {
-            GameObject temp = Instantiate(Mush, gameObject.transform.position, Quaternion.identity);
-            temp.transform.SetParent(GameObject.FindGameObjectWithTag("Drops").transform);
-        }
-        else
-        {
-            GameObject whichobject = null;
-
-            switch (AttackByWhatWeapon)
-            {
-                // 0 is spatula, 1 is knife, 2 is rolling pin
-                case 0:
-                    whichobject = prepPrefab;
-                    break;
-                case 1:
-                    whichobject = choppedPefab;
-                    break;
-                case 2:
-                    whichobject = smashedPrefab;
-                    break;
-            }
-            GameObject tempobj = Instantiate(whichobject, gameObject.transform.position, Quaternion.identity);
-            tempobj.transform.SetParent(GameObject.FindGameObjectWithTag("Drops").transform);
-
-            // if it is exact kill
-            if (ExactKill)
-            {
-                tempobj.GetComponent<Food>().SetPerfect(true);
-
-                //RATION POWER UP
-                for (int i = 0; i < pp.return_rations(); i++)
-                {
-                    GameObject additoional_drop = Instantiate(whichobject, gameObject.transform.position, Quaternion.identity);
-                    additoional_drop.transform.SetParent(GameObject.FindGameObjectWithTag("Drops").transform);
-                    additoional_drop.GetComponent<Food>().SetPerfect(false);
-                }
-                //
-            }
-        }
-      
-        GetComponentInChildren<SpriteRenderer>().enabled = false;
-        Destroy(gameObject);
-        gamemanager.GetComponent<EnemyManager>().recalculate_numberofenemies();
-    }
-
-    public void Death()
-    {
-        attackhitbox.GetComponent<BoxCollider>().enabled = false;
-        //getparent().GetComponent<Spawner>().resetSpawnerTimer(5, false);
-
-        if (currentHealth == 0)
-        {
-            Debug.Log("Precise Kill!");
-            //particles.SetActive(true);
-            EnemyDie(true);
-        }
-        else if (currentHealth < 0)
-        {
-            Debug.Log("Killed!");
-            EnemyDie(false);
-        }
-    }
-
-    public int GetEnemyHealth()
-    {
-        return currentHealth;
-    }
-
-    public void SetEnemyHealth(int enemyHealth)
-    {
-        EnemyHealth = enemyHealth;
-        currentHealth = EnemyHealth;
     }
 }

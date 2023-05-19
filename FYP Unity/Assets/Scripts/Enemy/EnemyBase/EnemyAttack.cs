@@ -34,8 +34,6 @@ public class EnemyAttack : MonoBehaviour
     float delayTime;
 
 
-    [SerializeField] PlayerProgress pp;
-
     GameObject gamemanager;
     // Start is called before the first frame update
 
@@ -129,7 +127,6 @@ public class EnemyAttack : MonoBehaviour
                     if (animator.GetCurrentAnimatorStateInfo(0).IsName("attack")
                         && animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 0.0f)
                     {
-
                         if (player_in_hitbox)
                         {
                             //HAVE A IF LOOP
@@ -137,7 +134,10 @@ public class EnemyAttack : MonoBehaviour
                             player.GetComponent<PlayerMovement>().setAnimator(true);
                             player.GetComponent<PlayerStats>().ResetConsecutiveHit();
                             //other.GetComponent<PlayerStats>().ChangeFervor(-5.0f);
-                            player.GetComponent<PlayerStats>().ChangeFervor(-15.0f * pp.return_thick_skin());
+                            //THICK SKIN POWERUP
+                            player.GetComponent<PlayerStats>().ChangeFervor(-15.0f * player.GetComponent<PlayerStats>().getpp().return_thick_skin());
+                            //
+
                             ProCamera2DShake.Instance.ShakeUsingPreset("DamageShake");
                         }
 
@@ -145,9 +145,12 @@ public class EnemyAttack : MonoBehaviour
                         attacks_performed += 1;
                     }
 
+
                     //END THE LOOP WHEN ATTACKS PERFORM EXCEEDED
                     if (attacks_performed >= attacks_per_session)
                     {
+                        player.GetComponent<PlayerStats>().resetval();
+
                         //gamemanager.GetComponent<EnemyManager>().setupdating(false);
                         animator.SetBool("attack", false);
                         animator.SetBool("about2attack", false);
@@ -158,8 +161,7 @@ public class EnemyAttack : MonoBehaviour
                         attacking = false;
                         attacking_present = false;
                         transform.parent.transform.parent.GetComponent<NavMeshAgent>().enabled = true;
-                        Debug.Log("FINISHED ATTACKING");
-
+                        //Debug.Log("FINISHED ATTACKING");
                     }
                     else
                     {
@@ -178,9 +180,6 @@ public class EnemyAttack : MonoBehaviour
                 //Debug.Log("FALSE");
                 transform.parent.transform.parent.GetComponent<NavMeshAgent>().enabled = true;
             }
-
-            
-
 
             //END THE LOOP WHEN ATTACKS PERFORM EXCEEDED
             /*if (attacks_performed >= attacks_per_session)
@@ -227,7 +226,6 @@ public class EnemyAttack : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         //all decrease by same amount, use upgrade to use
-
         if (other.CompareTag("Player"))
         {
             if (!post_attack)
@@ -255,7 +253,10 @@ public class EnemyAttack : MonoBehaviour
                 other.GetComponent<PlayerMovement>().setAnimator(true);
                 other.GetComponent<PlayerStats>().ResetConsecutiveHit();
                 //other.GetComponent<PlayerStats>().ChangeFervor(-10.0f);
-                other.GetComponent<PlayerStats>().ChangeFervor(-15.0f * pp.return_thick_skin());
+                //THICK SKIN POWERUP
+                other.GetComponent<PlayerStats>().ChangeFervor(-15.0f * other.GetComponent<PlayerStats>().getpp().return_thick_skin());
+                //
+                other.GetComponent<PlayerStats>().resetval();
                 ProCamera2DShake.Instance.ShakeUsingPreset("DamageShake");
             }
             //
@@ -305,8 +306,10 @@ public class EnemyAttack : MonoBehaviour
             {
                 other.GetComponent<PlayerMovement>().setAnimator(true);
                 other.GetComponent<PlayerStats>().ResetConsecutiveHit();
-                other.GetComponent<PlayerStats>().ChangeFervor(-15.0f * pp.return_thick_skin())
-                    ;
+                //THICK SKIN POWERUP
+                other.GetComponent<PlayerStats>().ChangeFervor(-15.0f * other.GetComponent<PlayerStats>().getpp().return_thick_skin());
+                //
+                other.GetComponent<PlayerStats>().resetval();
                 ProCamera2DShake.Instance.ShakeUsingPreset("DamageShake");
 
                 Attackcdtimer = AttackCD;
