@@ -83,6 +83,7 @@ public class UpgradeSystem : MonoBehaviour
                 break;
             case ShopItemType.PERFECT_FRENZY:
                 pp.IncreaseFrenzyModeMaxStack();
+                break;
             case ShopItemType.RATION:
                 pp.increase_rations();
                 break;

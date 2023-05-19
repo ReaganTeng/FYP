@@ -48,8 +48,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dishtype: 0
   dishName: Sus Dish
-  image: {fileID: 21300000, guid: 72430f12fab60e14197be14fc8e78685, type: 3}
+  image: {fileID: 21300000, guid: 6c50d8c5000e65e449a8bfe4b65d7d53, type: 3}
   BaseScore: -69
+  difficulty: 0
 --- !u!114 &-5822538559100206850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,7 +126,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ff497477b6542ea4483e3b32db2ffe99, type: 2}
+  - {fileID: 2100000, guid: 560777506b3e12948852b31b09bfe9c2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
