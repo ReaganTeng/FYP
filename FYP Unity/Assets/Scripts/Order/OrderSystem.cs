@@ -5,6 +5,7 @@ using TMPro;
 
 public class OrderSystem : MonoBehaviour
 {
+    [SerializeField] PlayerProgress pp;
     [SerializeField] LevelManager lm;
     [SerializeField] InventoryImageControl inventory;
     [SerializeField] GameObject OrderPrefab;
@@ -22,7 +23,15 @@ public class OrderSystem : MonoBehaviour
     private int SuccessfulOrders;
     private int FailedOrders;
     private int ObtainedStars;
+    [SerializeField] float DefaultWaitingTime = 120;
     private float WaitingTime;
+
+    [SerializeField] float NoStarDishMultipler = 0.25f;
+    [SerializeField] float OneStarDishMultipler = 0.5f;
+    [SerializeField] float TwoStarDishMultipler = 0.75f;
+    [SerializeField] float ThreeStarDishMultipler = 1.0f;
+    [SerializeField] float FourStarDishMultipler = 1.25f;
+    [SerializeField] float FiveStarDishMultipler = 2.0f;
 
     List<GameObject> orderList = new List<GameObject>();
 
@@ -63,7 +72,9 @@ public class OrderSystem : MonoBehaviour
         StopComingOrders = false;
         SuccessfulOrders = 0;
         FailedOrders = 0;
+        DefaultWaitingTime += pp.GetLongerOrderTime();
         SetWaitingTime();
+        FiveStarDishMultipler += pp.GetPerfectDishBoost();
     }
 
     private void Update()
@@ -109,10 +120,7 @@ public class OrderSystem : MonoBehaviour
     {
         OrderPanel orderPanel = order.GetComponent<OrderPanel>();
         Recipes.recipes theorder = OrderManager.instance.GetSelectedOrderFromCurrentDay(index);
-        if (WaitingTime == 0)
-            orderPanel.SetOrder(FoodManager.instance.GetImage(theorder.ingredient1), FoodManager.instance.GetImage(theorder.ingredient2), FoodManager.instance.GetImage(theorder.Result), theorder);
-        else
-            orderPanel.SetOrder(FoodManager.instance.GetImage(theorder.ingredient1), FoodManager.instance.GetImage(theorder.ingredient2), FoodManager.instance.GetImage(theorder.Result), theorder, WaitingTime);
+        orderPanel.SetOrder(FoodManager.instance.GetImage(theorder.ingredient1), FoodManager.instance.GetImage(theorder.ingredient2), FoodManager.instance.GetImage(theorder.Result), theorder, WaitingTime);
     }
 
     public void Serving()
@@ -160,22 +168,29 @@ public class OrderSystem : MonoBehaviour
                 switch (starsobtained)
                 {
                     case 0:
-                        Score *= 0.25f;
+                        Score *= NoStarDishMultipler;
                         break;
                     case 1:
-                        Score *= 0.5f;
+                        Score *= OneStarDishMultipler;
                         break;
                     case 2:
-                        Score *= 0.75f;
+                        Score *= TwoStarDishMultipler;
                         break;
                     case 3:
-                        Score *= 1.0f;
+                        Score *= ThreeStarDishMultipler;
                         break;
                     case 4:
-                        Score *= 1.25f;
+                        Score *= FourStarDishMultipler;
                         break;
                     case 5:
-                        Score *= 2.0f;
+                        Score *= FiveStarDishMultipler;
+                        // Activate frenzy
+                        FrenzyMode.instance.ActivateFrenzyMode();
+
+                        if (FrenzyMode.instance.GetCanGoFrenzy())
+                        {
+                            Score *= (1 + FrenzyMode.instance.GetFrenzyStack());
+                        }
                         break;
                 }
 
@@ -280,7 +295,7 @@ public class OrderSystem : MonoBehaviour
     {
         if (i == 0)
         {
-            WaitingTime = OrderManager.instance.GetCurrentDayWaitingTime();
+            WaitingTime = DefaultWaitingTime;
         }
         else
         {

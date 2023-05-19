@@ -31,6 +31,9 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] GameObject KnifeWeaponDisplay;
     [SerializeField] GameObject RollerWeaponDisplay;
     [SerializeField] GameObject SpatulaWeaponDisplay;
+    [SerializeField] float notSelectedAlpha = 0.4f;
+    private Color notSelected;
+    private Color Selected;
 
     [SerializeField] GameObject spaculaHitbox;
     [SerializeField] GameObject knifeHitbox;
@@ -92,6 +95,12 @@ public class PlayerAttack : MonoBehaviour
 
     void Start()
     {
+        Selected = KnifeWeaponDisplay.GetComponent<Image>().color;
+        notSelected = Selected;
+        notSelected.a = notSelectedAlpha;
+        UpdateWeaponDisplay();
+
+        b = false;
         enemykilled = 0;
 
         already_attacked = false;
@@ -103,7 +112,6 @@ public class PlayerAttack : MonoBehaviour
             number_of_charges += pp.return_number_of_charges();
         }
 
-        UpdateWeaponDisplay();
         click_timer = 0.0f;
         isclicked = false;
         heavyattackclicked = false;
@@ -736,25 +744,25 @@ public class PlayerAttack : MonoBehaviour
     }
     void UpdateWeaponDisplay()
     {
-        switch((Weapon)GetWeaponType())
+        switch ((Weapon)GetWeaponType())
         {
             case Weapon.KNIFE:
-                 KnifeWeaponDisplay.SetActive(true);
-                SpatulaWeaponDisplay.SetActive(false);
-                RollerWeaponDisplay.SetActive(false);
+                KnifeWeaponDisplay.GetComponent<Image>().color = Selected;
+                RollerWeaponDisplay.GetComponent<Image>().color = notSelected;
+                SpatulaWeaponDisplay.GetComponent<Image>().color = notSelected;
 
                 break;
 
             case Weapon.ROLLINGPIN:
-                RollerWeaponDisplay.SetActive(true);
-                KnifeWeaponDisplay.SetActive(false);
-                SpatulaWeaponDisplay.SetActive(false);
+                RollerWeaponDisplay.GetComponent<Image>().color = Selected;
+                KnifeWeaponDisplay.GetComponent<Image>().color = notSelected;
+                SpatulaWeaponDisplay.GetComponent<Image>().color = notSelected;
                 break;
 
             case Weapon.SPATULA:
-                SpatulaWeaponDisplay.SetActive(true);
-                KnifeWeaponDisplay.SetActive(false);
-                RollerWeaponDisplay.SetActive(false);
+                SpatulaWeaponDisplay.GetComponent<Image>().color = Selected;
+                KnifeWeaponDisplay.GetComponent<Image>().color = notSelected;
+                RollerWeaponDisplay.GetComponent<Image>().color = notSelected;
                 break;
         }
     }    

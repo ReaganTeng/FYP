@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MixerManager : MonoBehaviour
 {
+    [SerializeField] PlayerProgress pp;
+    [SerializeField] LevelManager lm;
     public static MixerManager instance;
     List<Mixer> mixers = new List<Mixer>();
 
@@ -15,6 +17,13 @@ public class MixerManager : MonoBehaviour
         for (int i = 0; i < tempMixerArray.Length; i++)
         {
             mixers.Add(tempMixerArray[i]);
+        }
+
+        if (lm.DaySelected >= 1)
+        {
+            // adjust the mixer accordingly
+            AdjustMixerTime(Mixer.MixerType.REFINER, GetMixerTime(Mixer.MixerType.REFINER) - pp.GetMixerReduction());
+            AdjustMixerTime(Mixer.MixerType.COOKER, GetMixerTime(Mixer.MixerType.COOKER) - pp.GetMixerReduction());
         }
     }
 
@@ -55,4 +64,32 @@ public class MixerManager : MonoBehaviour
     {
          mixers[index].gameObject.GetComponent<ObjectHighlighted>().ToggleHighlight(active);
     }
+
+    public void AdjustMixerTime(Mixer.MixerType mixerType, int changeTo)
+    {
+        for (int i = 0; i < mixers.Count; i++)
+        {
+            if (mixers[i].GetMixerType() == mixerType)
+            {
+                mixers[i].AdjustMixingTime(changeTo);
+            }
+        }
+    }
+
+    public int GetMixerTime(Mixer.MixerType mixerType)
+    {
+        for (int i = 0; i < mixers.Count; i++)
+        {
+            if (mixers[i].GetMixerType() == mixerType)
+            {
+                return mixers[i].GetMixingTime();
+            }
+        }
+        return 0;
+    }
+
+    void AdjustQTEZone()
+    {
+
+    }    
 }

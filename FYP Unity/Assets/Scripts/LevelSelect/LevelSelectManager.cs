@@ -10,7 +10,7 @@ public class LevelSelectManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI Currency;
     [SerializeField] TextMeshProUGUI Reputation;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         UpdateUI();
     }

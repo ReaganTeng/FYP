@@ -12,9 +12,6 @@ public class InventoryImageControl : MonoBehaviour
     [SerializeField] Sprite SliverStar;
     [SerializeField] Sprite GoldStar;
     [SerializeField] Sprite IridiumStar;
-    [SerializeField] GameObject tempfood;
-    [SerializeField] bool IsPerfect;
-    [SerializeField] int amtofStars;
 
     // Stores the Currently selected inventory slot
     int SelectedSlot;
@@ -27,19 +24,11 @@ public class InventoryImageControl : MonoBehaviour
         SelectedSlot = -1;
         Transform[] inventory = inventoryEmpty.GetComponentsInChildren<Transform>();
 
-        foreach(var gm in inventory)
+        foreach (var gm in inventory)
         {
             gm.gameObject.SetActive(false);
             inventorySlots.Add(gm.gameObject);
         }
-
-        //for (int i = 0; i < 4; i++)
-        //{
-        //    GameObject pt = tempfood;
-        //    pt.GetComponent<Food>().SetPerfect(IsPerfect);
-        //    pt.GetComponent<Food>().SetAmountOfStars(amtofStars);
-        //    AddItem(pt);
-        //}
 
         // Set active
         inventorySlots[0].SetActive(true);
