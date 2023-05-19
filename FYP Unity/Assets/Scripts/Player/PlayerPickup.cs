@@ -107,11 +107,12 @@ public class PlayerPickup : MonoBehaviour
                         ic.AddItem(pickupobject.GetComponentInParent<Food>().gameObject);
                         pickupobject.GetComponent<ItemGlow>().GetParent().transform.SetParent(GameObject.FindGameObjectWithTag("Inventory").transform);
 
-                        //IF GET IS PERFECT
-                        if(pickupobject.GetComponentInParent<Food>().GetIsPerfect())
+                        //RUSH OF PERFECTION
+                        if(pickupobject.GetComponentInParent<Food>().GetIsPerfect()
+                            && pp.return_charge_reward() > 0)
                         {
                             Debug.Log("CONGRATS YOU REGAINED CHARGES");
-                            playerAttackScript.addcharge(3);
+                            playerAttackScript.addcharge(pp.return_charge_reward());
                         }
                         //
 
@@ -127,6 +128,15 @@ public class PlayerPickup : MonoBehaviour
                     else if (pickupobject.CompareTag("Serve"))
                     {
                         pickupobject.GetComponent<Serving>().Serve();
+
+                        //DINNER RUSH
+                        if(pp.return_burst_time() > 0)
+                        {
+                            Debug.Log("BURST");
+                            GetComponentInParent<PlayerStats>().setbursttime(pp.return_burst_time());
+                        }
+                        //
+
                         GameSoundManager.PlaySound("ServeDish");
                     }
 

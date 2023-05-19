@@ -146,6 +146,7 @@ public class PlayerAttack : MonoBehaviour
 
     public void addenemykilled()
     {
+        //Debug.Log("RATI");
         enemykilled += 1;  
     }
 
@@ -300,13 +301,11 @@ public class PlayerAttack : MonoBehaviour
                     AttackWhichDirection(direction);
                     attackingtimer = attackingtime;
 
-                    if (
-                    currentweapon == Weapon.KNIFE)
+                    if (currentweapon == Weapon.KNIFE)
                     {
                         click_timer = heavyattackanimation_knife.length;
                     }
-                    else if (
-                    currentweapon == Weapon.ROLLINGPIN)
+                    else if (currentweapon == Weapon.ROLLINGPIN)
                     {
                         click_timer = heavyattackanimation_pin.length;
                     }
@@ -454,6 +453,12 @@ public class PlayerAttack : MonoBehaviour
         //}
 
         switchWeapon();
+    }
+
+
+    public bool getheavyattacked()
+    {
+        return heavyattackclicked;
     }
 
     public void resetattacking()

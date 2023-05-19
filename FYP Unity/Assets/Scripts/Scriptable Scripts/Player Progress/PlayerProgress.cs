@@ -12,14 +12,21 @@ public class PlayerProgress : ScriptableObject
 
     //RATION
     //starting value 0
-    [SerializeField] int amt_of_rations;
-    public void increase_rations()
+    [SerializeField] int enemy_killed_requirement;
+    public void decrease_enemykilledrequirement()
     {
-        amt_of_rations += 2;
+        if (enemy_killed_requirement == 0)
+        {
+            enemy_killed_requirement = 10;
+        }
+        else
+        {
+            enemy_killed_requirement -= 2;
+        }
     }
-    public int return_rations()
+    public int return_enemykilledrequirement()
     {
-        return amt_of_rations;
+        return enemy_killed_requirement;
     }
     //
 
@@ -27,7 +34,7 @@ public class PlayerProgress : ScriptableObject
     //JUST DIE ALREADY
     //starting value = 0
     [SerializeField] float fervor_requirement;
-    public void set_fervor_requirement()
+    public void set_instantkill_requirement()
     {
         if(fervor_requirement == 0)
         {
@@ -38,12 +45,15 @@ public class PlayerProgress : ScriptableObject
             fervor_requirement -= 10;
         }
     }
-    public float return_fervor_requirement()
+    public float return_instantkill_requirement()
     {
         return fervor_requirement;
     }
     //
 
+
+
+    
 
     //DINNER RUSH
     //starting value 0
@@ -259,6 +269,10 @@ public class PlayerProgress : ScriptableObject
         buffactive_reduction = 30;
         number_of_charges = 0;
 
+
+        //starting value 1
+        fervorspeedreduction = 1;
+
         //starting value 1
         heavyattackspeed_reduction = 1;
 
@@ -266,6 +280,14 @@ public class PlayerProgress : ScriptableObject
         fervorloss_padding = 1;
 
         charge_reward = 0;
+
+        //starting value 0
+        enemy_killed_requirement = 0;
+        //starting value = 0
+        fervor_requirement = 0;
+        //starting value 0
+        burst_time = 0;
+        
 
         mixer_Reduction = 0;
         better_cooker = 0; 

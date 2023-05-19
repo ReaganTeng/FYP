@@ -68,8 +68,22 @@ public class PlayerStats : MonoBehaviour
 
     [SerializeField] GameObject particles;
 
+    bool instant_kill_mode;
+
+    bool burstmode;
+    float bursttime;
+
+    bool b;
+
     public void Start()
     {
+        b = false;
+
+        instant_kill_mode = false;
+
+        burstmode = false;
+        bursttime = 0.0f;
+
         setAttack(false);
         fervorMaxLevel = 100;
         fervor2Add = 0;
@@ -80,6 +94,7 @@ public class PlayerStats : MonoBehaviour
         if (fervorBar != null)
         {
             fervorBar.maxValue = fervorMaxLevel;
+            fervorBar.minValue = 0;
         }
 
         fervorLevel = 0;
@@ -90,6 +105,10 @@ public class PlayerStats : MonoBehaviour
     }
 
 
+    public PlayerProgress getpp()
+    {
+        return pp;
+    }
 
     public void setAttack(bool Isheavy)
     {
@@ -126,13 +145,77 @@ public class PlayerStats : MonoBehaviour
                 }
             }
         }
-        Debug.Log("Fervor: " + fervorLevel + "REDUCED BY " + Fervorchange);
+        //Debug.Log("Fervor: " + fervorLevel + "REDUCED BY " + Fervorchange);
     }
 
+    public void setbursttime(float bt)
+    {
+        bursttime = bt;
+    }
+
+    public bool getburstmode()
+    {
+        return burstmode;
+    }
+
+    public bool getinstantkillmode()
+    {
+        return instant_kill_mode;
+    }
+
+
+    public void reducefervor()
+    {
+        fervorLevel -= pp.return_instantkill_requirement();
+    }
 
     public void Update()
     {
         
+        //if(Input.GetKeyDown("1") &&
+        //    !b)
+        //{
+        //    fervorLevel += 15;
+        //    b = true;
+        //}
+        //else if (Input.GetKeyDown("2") &&
+        //    !b)
+        //{
+        //    fervorLevel -= 15;
+        //    b = true;
+        //}
+        //else
+        //{
+        //    b = false;
+        //}
+
+
+        if (bursttime > 0)
+        {
+            bursttime -= Time.deltaTime;
+            burstmode = true;
+        }
+        else
+        {
+            burstmode = false;
+        }
+
+        if(fervorLevel > pp.return_instantkill_requirement()
+            && pp.return_instantkill_requirement() > 0)
+        {
+            instant_kill_mode = true;
+        }
+        else
+        {
+            instant_kill_mode = false;
+        }
+
+        if(instant_kill_mode)
+        {
+            Debug.Log("INSTANT KILL MODE");
+        }
+
+
         //when player is playing hurt animation
         if (GetComponentInChildren<Animator>().GetBool("Hurt"))
         {
@@ -153,7 +236,6 @@ public class PlayerStats : MonoBehaviour
         }
 
         //Debug.Log("BUFF " + pp.return_buffactive_requirement());
-        /*fervorBarActive = true;
         //TEMPORARY, FOR TESTING PURPOSES
         if (Input.GetMouseButtonDown(0))
         {
@@ -163,7 +245,7 @@ public class PlayerStats : MonoBehaviour
                 resetCombo_timer();
                 //Debug.Log("CONSECUTIVE HITS");
             }
-        }*/
+        }
 
         if (fervorBarActive)
         {
@@ -181,13 +263,21 @@ public class PlayerStats : MonoBehaviour
             }
             if (fervorLevel > 0)
             {
-                fervorLevel -= pp.return_fervorspeed() * Time.deltaTime;
+                fervorLevel -= pp.return_fervorspeed() *  3.0f * Time.deltaTime;
+            }
+
+
+            if(fervorLevel < 0)
+            {
+                fervorLevel = 0;
             }
 
             if (combo_timer <= 0
                 && numberConsecutiveHits >= 5
-                && !Input.GetMouseButtonDown(0))
+                && !Input.GetMouseButtonDown(0)
+                 && !Input.GetMouseButtonDown(1))
             {
+                Debug.Log("RESET");
                 ResetConsecutiveHit();
                 numberConsecutiveHits = 0;
             }
@@ -239,8 +329,6 @@ public class PlayerStats : MonoBehaviour
             }
 
            
-
-
             if (HitText != null)
             {
                 if (numberConsecutiveHits > 0)
@@ -336,8 +424,6 @@ public class PlayerStats : MonoBehaviour
 
     public void decidecombotimer(float consecutive_stage_min, float consecutive_stage_max, float comb_timer, Sprite rank_sprite)
     {
-        
-
         if (numberConsecutiveHits >= consecutive_stage_min
             && numberConsecutiveHits < consecutive_stage_max)
         {
@@ -433,7 +519,11 @@ public class PlayerStats : MonoBehaviour
         return fervor2Add;
     }
 
-
+    public void resetval()
+    {
+        numberConsecutiveHits = 0;
+        combo_timer = 0;
+    }
 
     public void addConsecutiveHit()
     {

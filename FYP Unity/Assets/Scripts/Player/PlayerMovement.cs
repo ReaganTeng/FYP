@@ -31,7 +31,6 @@ public class PlayerMovement : MonoBehaviour
     private bool IFrameStart;
 
     float delaytime;
-    bool burstmode;
     
 
     //
@@ -49,7 +48,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] PlayerProgress pp;
     private void Start()
     {
-        burstmode = false;
 
         dashcdtimer = 0.0f;
         delaytime = 0.0f;
@@ -273,8 +271,9 @@ public class PlayerMovement : MonoBehaviour
                                 && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Dash")
 )
                 {
-                    if (burstmode)
+                    if (GetComponentInParent<PlayerStats>().getburstmode())
                     {
+                        Debug.Log("FAST MODE");
                         playerRB.AddForce((orientation.forward * verticalInput + orientation.right * horizontalInput) * PlayerSpeed * 1.5f);
                     }
                     else

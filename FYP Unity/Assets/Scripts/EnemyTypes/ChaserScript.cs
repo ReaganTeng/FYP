@@ -140,6 +140,16 @@ public class ChaserScript : MonoBehaviour
                                 //
                             }
 
+                            if(lockonbeam != null)
+                            {
+                                //lockonbeam.GetComponentInChildren<Transform>().GetComponentInChildren<SpriteRenderer>().color 
+                                //    = new Color(1 * time_att_2, 0, 0, 255);
+
+                                lockonbeam.transform.localScale = new Vector3(.05f/ (time_att_2 * 3),
+                                            lockon.transform.localScale.y,
+                                            hitbeamsize / 10);
+                            }
+
                             if (time_att_2 < 1.9f
                                 && time_att_2 >= 1.1f)
                             {
@@ -158,6 +168,9 @@ public class ChaserScript : MonoBehaviour
 
                             if (time_att_2 > 2.3f && time_att_2 < 2.7f)
                             {
+
+                                lockonbeam.GetComponentInChildren<Transform>().GetComponentInChildren<SpriteRenderer>().enabled = false;
+
                                 GetComponentInChildren<SpriteRenderer>().color = Color.white;
 
                                 //PLACE HIT BEAM

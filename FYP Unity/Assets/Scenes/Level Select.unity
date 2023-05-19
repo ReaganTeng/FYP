@@ -6145,6 +6145,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5ccc0a3c3e8628442a145dfe5e5ba01c, type: 2}
   - {fileID: 11400000, guid: 0dcef02725d4d574cace1d729220342b, type: 2}
   - {fileID: 11400000, guid: 9dfd9ff8bb7309d4f81c9688c7a30c54, type: 2}
+  - {fileID: 11400000, guid: 7ad94b338b4a9924db4ef3bf9f2e235b, type: 2}
+  - {fileID: 11400000, guid: 5cc0fe6a603734c46b3bf4ac924ed4d8, type: 2}
+  - {fileID: 11400000, guid: 330da6c9b09698d458c9c11fc046d3f0, type: 2}
+  - {fileID: 11400000, guid: cdd601ad74bcc44429339e58360d169b, type: 2}
+  - {fileID: 11400000, guid: d817413f36d8dd14f9b21f08bce263df, type: 2}
+  - {fileID: 11400000, guid: 95ab1c00ff6c4814c817c240da6710c0, type: 2}
+  - {fileID: 11400000, guid: ee3d71910cd06f64ba1fbd5b286be0f4, type: 2}
+  - {fileID: 11400000, guid: 9c16da0203018e44eb45bd903a1406d7, type: 2}
   - {fileID: 11400000, guid: cdd601ad74bcc44429339e58360d169b, type: 2}
   - {fileID: 11400000, guid: 330da6c9b09698d458c9c11fc046d3f0, type: 2}
   - {fileID: 11400000, guid: 5cc0fe6a603734c46b3bf4ac924ed4d8, type: 2}
@@ -9516,7 +9524,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6535883988053222510, guid: 9931a0e2909fccd42a85a603245ec92e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6863704830019760248, guid: 9931a0e2909fccd42a85a603245ec92e, type: 3}
       propertyPath: m_PlayOnAwake

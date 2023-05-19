@@ -15,10 +15,13 @@ MonoBehaviour:
   MaxInventorySlots: 10
   CosmicCredibility: 40
   TotalObtainedCredibility: 0
-  buffactive_reduction: 30
-  fervorspeedreduction: -0.75
-  heavyattackspeed: 1
-  number_of_charges: 0
-  heavyattackspeed_reduction: 1
-  fervorloss_padding: 1
+  enemy_killed_requirement: 0
+  fervor_requirement: 0
+  burst_time: 15
   charge_reward: 0
+  fervorloss_padding: 1
+  heavyattackspeed_reduction: 1
+  number_of_charges: 0
+  fervorspeedreduction: 0.25
+  buffactive_reduction: 30
+  heavyattackspeed: 1

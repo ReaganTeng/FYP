@@ -93,8 +93,8 @@ MonoBehaviour:
   DisableControls: 0
   CannotInteractWithDustbin: 0
   CannotPickUpItems: 0
-  playerAttackScript: {fileID: 0}
-  pp: {fileID: 0}
+  playerAttackScript: {fileID: 4940691009673553818}
+  pp: {fileID: 11400000, guid: 80203a9d8037ee2449d6c18b30afe1f3, type: 2}
 --- !u!1 &1870835460741592842
 GameObject:
   m_ObjectHideFlags: 0
@@ -10152,6 +10152,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 8852204268514479156}
   DashCD: 2
   dashtimer_slider: {fileID: 0}
+  pp: {fileID: 0}
 --- !u!54 &5218877466719756691
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10711,9 +10712,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1642481363
-  m_SortingLayer: 3
-  m_SortingOrder: 99
+  m_SortingLayerID: 1235318631
+  m_SortingLayer: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 1679598921, guid: 2e8d9d2f19434824f93eb89c973ec5fc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
