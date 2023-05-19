@@ -12,6 +12,12 @@ public class PlayerPickup : MonoBehaviour
     public bool CannotPickUpItems = false;
     int selectedScroll = 1;
 
+
+
+
+    [SerializeField] PlayerAttack playerAttackScript;
+    [SerializeField] PlayerProgress pp;
+
     private void Start()
     {
         ic = GameObject.FindGameObjectWithTag("GameManager").GetComponent<InventoryImageControl>();
@@ -100,6 +106,15 @@ public class PlayerPickup : MonoBehaviour
                         // Add the item into ur inventory
                         ic.AddItem(pickupobject.GetComponentInParent<Food>().gameObject);
                         pickupobject.GetComponent<ItemGlow>().GetParent().transform.SetParent(GameObject.FindGameObjectWithTag("Inventory").transform);
+
+                        //IF GET IS PERFECT
+                        if(pickupobject.GetComponentInParent<Food>().GetIsPerfect())
+                        {
+                            Debug.Log("CONGRATS YOU REGAINED CHARGES");
+                            playerAttackScript.addcharge(3);
+                        }
+                        //
+
                         GameSoundManager.PlaySound("PickUpItem");
                         pickupobject.SetActive(false);
                     }
