@@ -9,7 +9,6 @@ public class OrderManager : MonoBehaviour
     public class DayOrder
     {
         public List<DifficultyPriority> dishList = new List<DifficultyPriority>(); // contains the list of dishes that will appear that day
-        public float WaitingTime = 0; // Time till order expire, default is 100 if set to 0
         public int penalty = 10; // Penalty for not serving a dish
         public int EasyDishChance = 0; // Set the chance for easy dish to appear
         public int NormalDishChance = 0; // Set the chance for normal dish to appear
@@ -293,11 +292,6 @@ public class OrderManager : MonoBehaviour
         }
 
         return GetRandomOrderFromCurrentDay();
-    }
-
-    public float GetCurrentDayWaitingTime()
-    {
-        return presetday.WaitingTime;
     }
 
     public int GetPenalty()

@@ -61,6 +61,7 @@ public class ShopSystem : MonoBehaviour
 
     public void CloseShop()
     {
+        SaveFile.instance.SaveGame();
         ShopUI.SetActive(false);
         lsm.UpdateUI();
         CurrentPanel = 0;
@@ -73,7 +74,7 @@ public class ShopSystem : MonoBehaviour
         for (int i = 0; i < ItemPerPanel; i++)
         {
             DisplayShopItem dsi = shopItemSlots[i].GetComponent<DisplayShopItem>();
-            if (i + (CurrentPanel * ItemPerPanel) < shopItem.Count)
+            if (i + (CurrentPanel * ItemPerPanel) < shopItem.Count && shopItem[i + (CurrentPanel * ItemPerPanel)] != null)
             {
                 dsi.UpdateShopItemDisplay(shopItem[CurrentPanel * ItemPerPanel + i], DisableGlow);
             }
@@ -156,8 +157,10 @@ public class ShopSystem : MonoBehaviour
     {
         for (int i = 0; i < shopItem.Count; i++)
         {
-            shopItem[i].ResetLevel();
+            if (shopItem[i] != null)
+                shopItem[i].ResetLevel();
         }
+        pp.ResetShopPlayer();
         UpdateShopUI();
     }
 }

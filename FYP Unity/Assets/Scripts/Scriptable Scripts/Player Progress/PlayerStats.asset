@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e1f2b043ad744040a60d7715414c240, type: 3}
   m_Name: PlayerStats
   m_EditorClassIdentifier: 
-  MaxInventorySlots: 5
-  CosmicCredibility: 0
+  MaxInventorySlots: 10
+  CosmicCredibility: 40
   TotalObtainedCredibility: 0
   buffactive_reduction: 30
-  fervorspeedreduction: 0.25
+  fervorspeedreduction: -0.75
   heavyattackspeed: 1
   number_of_charges: 0
   heavyattackspeed_reduction: 1
-  fervorloss_padding: 0
+  fervorloss_padding: 1
+  charge_reward: 0

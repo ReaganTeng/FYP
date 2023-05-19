@@ -31,6 +31,7 @@ public class QTE : MonoBehaviour
 
     [SerializeField] GameObject TheText;
     [SerializeField] float QTEResultMaxTime;
+    [SerializeField] PlayerProgress pp;
     float QTEResulttimer;
     bool DisplayResult;
 
@@ -47,6 +48,10 @@ public class QTE : MonoBehaviour
         QTEResulttimer = QTEResultMaxTime;
         DisplayResult = false;
         TheText.SetActive(false);
+
+        IncreaseGreatZone(pp.GetBetterCooker() * 5);
+        IncreasePerfectZone(pp.GetBetterCooker() * 1.5f);
+
     }
 
     // Update is called once per frame

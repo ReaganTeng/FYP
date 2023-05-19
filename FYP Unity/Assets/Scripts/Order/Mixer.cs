@@ -273,4 +273,12 @@ public class Mixer : MonoBehaviour
     {
         MixerActive = isActive;
     }
+    public void AdjustMixingTime(int mixingTime)
+    {
+        MixingTime = mixingTime;
+    }
+    public int GetMixingTime()
+    {
+        return MixingTime;
+    }
 }
