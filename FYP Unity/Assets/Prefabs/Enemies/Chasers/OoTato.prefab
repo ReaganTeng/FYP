@@ -154,8 +154,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -499965009
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 234313706, guid: d9be3ef8b22a11c4382fa422a5b1b794, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -326,9 +326,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   es: {fileID: 2042661433135484003}
   animator: {fileID: 8240658424474279918}
-  attackclip: {fileID: 7400000, guid: aa5a6d25c2e20154a82a3810a8c34fcf, type: 2}
-  about2atkclip: {fileID: 7400000, guid: ecf590d481436c34187959d9813d97dc, type: 2}
-  attacks_per_session: 1
 --- !u!33 &2689928030107387971
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -5462,11 +5459,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5082159772648344802}
+  - component: {fileID: 3005328288323005774}
   - component: {fileID: 7635779896414046657}
   - component: {fileID: 6767964955574019102}
   - component: {fileID: 942897001748356901}
   - component: {fileID: 2042661433135484003}
-  - component: {fileID: 3005328288323005774}
   - component: {fileID: 5671295273701510108}
   - component: {fileID: 2943286938488171656}
   m_Layer: 7
@@ -5494,6 +5491,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3005328288323005774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7031070655414662128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24c3145410f4e6d45bb6c84cffe8aa2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attacks_per_session: 1
 --- !u!65 &7635779896414046657
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5505,7 +5515,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.2, z: 1}
+  m_Size: {x: 1, y: 1.2, z: 0.3}
   m_Center: {x: 0, y: 0.6, z: 0}
 --- !u!54 &6767964955574019102
 Rigidbody:
@@ -5567,31 +5577,12 @@ MonoBehaviour:
   healthbar: {fileID: 5587016419435450507}
   cooldown_period: 0.5
   abouttoattack_period: 0.5
-  projectile_numbers: 0
   atkPattern: 0
   phase: 0
-  projectileGO: {fileID: 7347223109495145681, guid: 938809779cd6685419a064f5040f83af, type: 3}
   line: {fileID: 4302930331368835095, guid: 1434afd8d00d3ab40918b589eba6bdbd, type: 3}
   canvas: {fileID: 535106012554628807}
   handle: {fileID: 6829261942005889155}
   healthtext: {fileID: 0}
---- !u!114 &3005328288323005774
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7031070655414662128}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24c3145410f4e6d45bb6c84cffe8aa2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lockon: {fileID: 0}
-  hit: {fileID: 0}
-  pivotpoint: {fileID: 0}
-  navMeshAgent: {fileID: 5671295273701510108}
-  attackhitbox: {fileID: 5045888562720546165}
 --- !u!195 &5671295273701510108
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -10627,7 +10618,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
+  m_SortingLayerID: -499965009
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &2420694914173652963

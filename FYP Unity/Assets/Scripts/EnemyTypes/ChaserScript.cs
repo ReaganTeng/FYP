@@ -2,234 +2,170 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Com.LuisPedroFonseca.ProCamera2D;
 
 
 public class ChaserScript : MonoBehaviour
 {
-    [SerializeField] GameObject lockon;
-    GameObject lockonbeam;
-    [SerializeField] GameObject hit;
-    GameObject hitbeam;
-    [SerializeField] GameObject pivotpoint;
-    GameObject pivot;
-
-    [SerializeField] NavMeshAgent navMeshAgent;
-
-    GameObject playerGO;
-    float chasingspeed;
-    EnemyScript.Phases enemyPhase;
-
-    float time_att_1;
-    float time_att_2;
+    float timer;
     float change_of_attk_type_1;
+
+    float delayTime;
+
 
     Transform starting_location;
     Transform ending_location;
     float dist;
-    bool beam_mode;
 
+    //determine how many times the player can attack at once
+    [SerializeField] int attacks_per_session;
 
+    int attacks_performed;
+
+    GameObject player;
+    EnemyManager em;
+    GameObject hitbox;
+    NavMeshAgent navmeshagent;
+    Animator anim;
+    EnemyScript.Phases enemyPhase;
     EnemyScript enemyScript;
 
-    [SerializeField] GameObject attackhitbox;
 
-    GameObject gamemanager;
 
 
     // Start is called before the first frame update
     void Start()
-    { 
-        GetComponent<EnemyScript>().set_enemyType(EnemyScript.EnemyType.CHASER);
+    {
+        
+        player = GameObject.FindGameObjectWithTag("Player");
+        em = GameObject.FindGameObjectWithTag("GameManager").GetComponent<EnemyManager>();
+        navmeshagent = gameObject.GetComponent<NavMeshAgent>();
+        anim = gameObject.GetComponentInChildren<Animator>();
+        enemyScript = gameObject.GetComponent<EnemyScript>();
+        enemyPhase = enemyScript.return_current_phase();
+        hitbox = enemyScript.returnhitbox();
 
-        gamemanager = GameObject.FindGameObjectWithTag("GameManager");
+        attacks_performed = 0;
+        enemyScript.set_enemyType(EnemyScript.EnemyType.CHASER);
 
-        lockonbeam = null;
-        hitbeam = null;
-        pivot = null;
 
-        beam_mode = false;
-        time_att_1 = 0;
-        time_att_2 = 0;
+        timer = 0;
+        delayTime = 0;
         change_of_attk_type_1 = 0;
 
-        playerGO = GameObject.FindGameObjectWithTag("Player");
 
-        chasingspeed = 4.0f;
-        attackhitbox.GetComponent<BoxCollider>().enabled = true;
+        hitbox.GetComponent<BoxCollider>().enabled = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        enemyPhase = GetComponent<EnemyScript>().return_current_phase();
+        navmeshagent = GetComponent<NavMeshAgent>();
+        anim = GetComponentInChildren<Animator>();
         enemyScript = GetComponent<EnemyScript>();
+        enemyPhase = enemyScript.return_current_phase();
+        hitbox = enemyScript.returnhitbox();
 
-        navMeshAgent.speed = chasingspeed;
-        navMeshAgent.acceleration = chasingspeed;
 
-        dist = Vector3.Distance(transform.position, playerGO.transform.position);
+        navmeshagent.speed = enemyScript.getchasingspeed();
+        navmeshagent.acceleration = enemyScript.getchasingspeed();
 
-        float hitbeamsize = 8;
-        if (GetComponent<EnemyScript>().getupdating())
+        dist = Vector3.Distance(transform.position, player.transform.position);
+
+
+        //DELAY FOR CHASER
+        if (anim.GetBool("about2attack")
+            && anim.GetCurrentAnimatorStateInfo(0).IsName("aboutattack"))
+        {
+            Debug.Log("ABOUT 2 ATTACK");
+            delayTime += Time.deltaTime;
+            if (delayTime
+                >=
+                anim.GetCurrentAnimatorStateInfo(0).length)
+            {
+                anim.SetBool("attack", true);
+            }
+        }
+        //
+
+
+        
+
+
+        if (hitbox.GetComponent<EnemyAttack>().get_attacking())
+        {
+            //ADD 1 ATTACK TO EACH LOOP
+            if (hitbox.GetComponent<EnemyAttack>().get_attacking_present())
+            {
+                //decrease the player's health
+                if (anim.GetCurrentAnimatorStateInfo(0).IsName("attack")
+                    && anim.GetCurrentAnimatorStateInfo(0).normalizedTime <= 0.0f)
+                {
+                    if (hitbox.GetComponent<EnemyAttack>().playerinhitbox())
+                    {
+                        player.GetComponent<PlayerMovement>().setAnimator(true);
+                        player.GetComponent<PlayerStats>().ResetConsecutiveHit();
+                        //other.GetComponent<PlayerStats>().ChangeFervor(-5.0f);
+                        //THICK SKIN POWERUP
+                        player.GetComponent<PlayerStats>().ChangeFervor(-15.0f * player.GetComponent<PlayerStats>().getpp().return_thick_skin());
+                        //
+                        player.GetComponent<PlayerStats>().resetval();
+                        ProCamera2DShake.Instance.ShakeUsingPreset("DamageShake");
+                        Debug.Log("HIT");
+                    }
+                    hitbox.GetComponent<EnemyAttack>().setattackCDtimer(
+                        hitbox.GetComponent<EnemyAttack>().getattackCD());
+                    attacks_performed += 1;
+                }
+
+
+                //END THE LOOP WHEN ATTACKS PERFORM EXCEEDED
+                if (attacks_performed >= attacks_per_session)
+                {
+                    
+                    anim.SetBool("attack", false);
+                    anim.SetBool("about2attack", false);
+                    hitbox.GetComponent<EnemyAttack>().setpostattack(true);
+                    attacks_performed = 0;
+                    delayTime = 0.0f;
+                    hitbox.GetComponent<EnemyAttack>().set_attacking(false);
+                    hitbox.GetComponent<EnemyAttack>().setattacking_present(false);
+                    navmeshagent.enabled = true;
+                }
+                else
+                {
+                    if (anim.GetCurrentAnimatorStateInfo(0).IsName("attack")
+                       && anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0)
+                    {
+                        anim.Play("attack", 0, 0);
+                    }
+                }
+                //
+            }
+            //
+        }
+        else
+        {
+            navmeshagent.enabled = true;
+        }
+        //
+
+
+
+        if (enemyScript.getupdating())
         {
             switch (enemyPhase)
             {
-                case EnemyScript.Phases.ATTACK_TYPE_2:
-                    //case EnemyScript.Phases.ATTACK_TYPE_1:
-                    {
-                        attackhitbox.GetComponent<BoxCollider>().enabled = false;
-                        GetComponent<BoxCollider>().enabled = true;
-
-                        time_att_1 = 0;
-                        if (dist <= 2.0f)
-                        {
-                            beam_mode = true;
-                        }
-                        //chase the player
-                        else if (dist > 2.0f
-                            && beam_mode == false)
-                        {
-                            //enemyScript.set_current_phase(EnemyScript.Phases.ATTACK_TYPE_1);
-                            navMeshAgent.enabled = true;
-                            //GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
-                            navMeshAgent.SetDestination(playerGO.transform.position);
-                            GetComponentInChildren<Animator>().SetBool("chasingPlayer", true);
-
-                            chasingspeed = 2.0f;
-                        }
-
-                        if (beam_mode == true)
-                        {
-                            GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
-
-                            navMeshAgent.enabled = false;
-                            time_att_2 += Time.deltaTime;
-                            chasingspeed = 0.0f;
-
-                            if (time_att_2 < 1.1f && time_att_2 > 1.0f)
-                            {
-                                //PLACE LOCK ON BEAM
-                                starting_location = transform;
-                                ending_location = playerGO.transform;
-                                if (pivot == null)
-                                {
-                                    pivot = Instantiate(pivotpoint,
-                                       transform.position,
-                                       Quaternion.Euler(0, 0, 0));
-                                    //pivot.transform.SetParent(transform);
-                                    pivot.transform.SetParent(
-                                        GetComponentInChildren<SpriteRenderer>().transform);
-
-                                    if (lockonbeam == null
-                                        && pivot != null)
-                                    {
-                                        lockonbeam = Instantiate(lockon,
-                                        transform.position,
-                                        Quaternion.Euler(0, 0, 0));
-                                        lockonbeam.transform.localScale =
-                                            new Vector3(.05f,
-                                            lockon.transform.localScale.y,
-                                            hitbeamsize / 10);
-
-                                        lockonbeam.transform.SetParent(pivot.transform);
-
-                                        pivot.transform.LookAt(
-                                            new Vector3(ending_location.position.x, transform.position.y, ending_location.position.z));
-                                    }
-                                }
-                                //
-                            }
-
-                            if(lockonbeam != null)
-                            {
-                                //lockonbeam.GetComponentInChildren<Transform>().GetComponentInChildren<SpriteRenderer>().color 
-                                //    = new Color(1 * time_att_2, 0, 0, 255);
-
-                                lockonbeam.transform.localScale = new Vector3(.05f/ (time_att_2 * 3),
-                                            lockon.transform.localScale.y,
-                                            hitbeamsize / 10);
-                            }
-
-                            if (time_att_2 < 1.9f
-                                && time_att_2 >= 1.1f)
-                            {
-                                if (pivot != null)
-                                {
-                                    pivot.transform.LookAt(
-                                        new Vector3(ending_location.position.x, transform.position.y, ending_location.position.z));
-                                }
-                            }
-
-                            //if (time_att_2 >= 1.9f
-                            //    && time_att_2 < 2.3f)
-                            //{
-                            //    GetComponentInChildren<SpriteRenderer>().color = Color.red;
-                            //}
-
-                            if (time_att_2 > 2.3f && time_att_2 < 2.7f)
-                            {
-
-                                lockonbeam.GetComponentInChildren<Transform>().GetComponentInChildren<SpriteRenderer>().enabled = false;
-
-                                GetComponentInChildren<SpriteRenderer>().color = Color.white;
-
-                                //PLACE HIT BEAM
-                                GetComponentInChildren<Animator>().SetBool("chasingPlayer", true);
-                                GetComponentInChildren<Animator>().SetBool("attack", true);
-
-                                if (hitbeam == null
-                                    && lockonbeam != null
-                                    && pivot != null)
-                                {
-                                    hitbeam = Instantiate(hit,
-                                       transform.position,
-                                       Quaternion.Euler(0, 0, 0));
-
-                                    hitbeam.transform.localScale =
-                                        new Vector3(hit.transform.localScale.x, 
-                                        hit.transform.localScale.y,
-                                        hitbeamsize);
-
-                                    hitbeam.transform.SetParent(pivot.transform);
-                                    hitbeam.transform.rotation = /*Quaternion.Euler(0,*/ pivot.transform.rotation/*.y, 0)*/;
-                                    //hitbeam.GetComponentInChildren<SpriteRenderer>().transform.rotation =
-                                    //    Quaternion.Euler(0, 90, 0);
-                                }
-                                //
-                            }
-
-                            if (time_att_2 > 2.8f)
-                            {
-                                navMeshAgent.enabled = true;
-
-                                GetComponentInChildren<Animator>().SetBool("attack", false);
-                                GetComponentInChildren<SpriteRenderer>().color = Color.white;
-
-                                gamemanager.GetComponent<EnemyManager>().setupdating(false);
-
-                                //GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
-                                DestroyBeams();
-                                time_att_2 = 0.0f;
-                                enemyScript.set_current_phase(EnemyScript.Phases.COOLDOWN);
-                            }
-                        }
-                       // enemyScript.steering();
-
-                        break;
-                    }
                 case EnemyScript.Phases.ATTACK_TYPE_1:
+                case EnemyScript.Phases.ATTACK_TYPE_2:
                     {
-                        attackhitbox.GetComponent<BoxCollider>().enabled = true;
                         GetComponent<BoxCollider>().enabled = true;
-                        GetComponentInChildren<Animator>().SetBool("chasingPlayer", true);
-                        beam_mode = false;
+                        anim.SetBool("chasingPlayer", true);
                         //chasingspeed = 2.0f;
-                        time_att_2 = 0;
-                        time_att_1 += Time.deltaTime;
+                        timer += Time.deltaTime;
 
-                        //navMeshAgent.enabled = true;
 
-                        if (GetComponentInChildren<EnemyAttack>().return_whether_back_away())
+                        if (hitbox.GetComponent<EnemyAttack>().return_whether_back_away())
                         { 
                             change_of_attk_type_1 += Time.deltaTime;
                         }
@@ -244,18 +180,18 @@ public class ChaserScript : MonoBehaviour
                             change_of_attk_type_1 = 0.0f;
                         }
 
-
+                       
                         //avoid the player
-                        if (GetComponentInChildren<EnemyAttack>().getpostattack()
+                        if (hitbox.GetComponent<EnemyAttack>().getpostattack()
                             || change_of_attk_type_1 >= 5.0f)
                         {
 
-                            if(GetComponentInChildren<EnemyAttack>().getpostattack())
+                            if(hitbox.GetComponent<EnemyAttack>().getpostattack())
                             {
                                 change_of_attk_type_1 = 0.0f;
                             }
 
-                            chasingspeed = 2.0f;
+                            enemyScript.setchasingspeed(2.0f);
 
                             //enemyPhase =
 
@@ -287,31 +223,28 @@ public class ChaserScript : MonoBehaviour
                         //continue to chase the player
                         else
                         {
-                            if (GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("aboutattack")
-                                 || GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("attack"))
+                            hitbox.GetComponent<BoxCollider>().enabled = true;
+
+                            if (anim.GetCurrentAnimatorStateInfo(0).IsName("aboutattack")
+                                 || anim.GetCurrentAnimatorStateInfo(0).IsName("attack"))
                             {
                                 GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
-                                navMeshAgent.enabled = false;
+                                navmeshagent.enabled = false;
                             }
                             else
                             {
-                                navMeshAgent.enabled = true;
+                                navmeshagent.enabled = true;
                                 GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
-                                navMeshAgent.SetDestination(playerGO.transform.position);
+                                navmeshagent.SetDestination(player.transform.position);
                             }
 
-                            chasingspeed = 4.0f;
-                            //float rand = Random.Range(2, 8);
-                            //chasingspeed = rand /*dist * 0.2f*/;
-                            //GetComponent<Rigidbody>().velocity = chasingspeed * (navMeshAgent.destination - transform.position);
-                            //Debug.Log("CHASING PLAYER " + GetComponent<Rigidbody>().velocity);
-                            //chasingspeed = 8;
+                            enemyScript.setchasingspeed(4.0f);
                         }
                         //
 
-                        if (time_att_1 > 20.0f)
+                        if (timer > 20.0f)
                         {
-                            gamemanager.GetComponent<EnemyManager>().setupdating(false);
+                            em.setupdating(false);
                             enemyScript.set_current_phase(EnemyScript.Phases.COOLDOWN);
                         }
 
@@ -319,28 +252,16 @@ public class ChaserScript : MonoBehaviour
                     }
                 case EnemyScript.Phases.COOLDOWN:
                     {
-                        beam_mode = false;
-                        chasingspeed = 2.0f;
-                        time_att_2 = 0.0f;
-                        time_att_1 = 0.0f;
+                        enemyScript.setchasingspeed(2.0f);
+                        timer = 0.0f;
                         change_of_attk_type_1 = 0.0f;
-                        GetComponentInChildren<SpriteRenderer>().color = Color.white;
 
-
-                        //enemyScript.steering();
-                        //enemyScript.avoidanceCode(rand_z);
-                        GetComponent<EnemyScript>().cooldownUpdate();
+                        enemyScript.cooldownUpdate();
                         break;
                     }
                 case EnemyScript.Phases.ABOUT_TO_ATTACK:
                     {
-                        beam_mode = false;
-                        //chasingspeed = 0.0f;
-                        chasingspeed = 2.0f;
-                        time_att_2 = 0.0f;
-                        time_att_1 = 0.0f;
-                        change_of_attk_type_1 = 0.0f;
-                        GetComponentInChildren<SpriteRenderer>().color = Color.white;
+                        
 
                         //GetComponent<Rigidbody>().velocity =
 
@@ -363,7 +284,6 @@ public class ChaserScript : MonoBehaviour
 
             //Debug.Log("UPDATING FALSE");
             enemyScript.ifUpdatingfalse();
-            DestroyBeams();
         }
 
     }
@@ -372,20 +292,6 @@ public class ChaserScript : MonoBehaviour
     {
         return change_of_attk_type_1;
     }
-    public void DestroyBeams()
-    {
-        if (hitbeam != null)
-        {
-            Destroy(hitbeam);
-        }
-        if (lockonbeam != null)
-        {
-            Destroy(lockonbeam);
-        }
-        if (pivot != null)
-        {
-            Destroy(pivot);
-        }
-    }
+   
 
 }

@@ -237,15 +237,15 @@ public class PlayerStats : MonoBehaviour
 
         //Debug.Log("BUFF " + pp.return_buffactive_requirement());
         //TEMPORARY, FOR TESTING PURPOSES
-        if (Input.GetMouseButtonDown(0))
-        {
-            for (int i = 0; i < 5; i++)
-            {
-                addConsecutiveHit();
-                resetCombo_timer();
-                //Debug.Log("CONSECUTIVE HITS");
-            }
-        }
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    for (int i = 0; i < 5; i++)
+        //    {
+        //        addConsecutiveHit();
+        //        resetCombo_timer();
+        //        //Debug.Log("CONSECUTIVE HITS");
+        //    }
+        //}
 
         if (fervorBarActive)
         {

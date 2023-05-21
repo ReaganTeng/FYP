@@ -8,66 +8,73 @@ public class ChargerScript : MonoBehaviour
 {
     int number_of_bounces;
     bool collided;
-    GameObject playerGO;
-    Vector3 playerPos;
     Vector3 resultingVector;
     float currentdistance;
     float chargingtime;
     [SerializeField] LayerMask lm;
     float velocityspeed;
-    EnemyScript.Phases enemyPhase;
-    [SerializeField] NavMeshAgent navMeshAgent;
-    public GameObject attackhitbox;
-    EnemyScript enemyScript;
+    Vector3 playerPos;
 
-    GameObject gamemanager;
-
-    GameObject pivot;
-    [SerializeField] GameObject pivotpoint;
-
-    [SerializeField]GameObject lockon;
+    GameObject pivotpoint;
+    [SerializeField] GameObject pivotpointGO;
+    [SerializeField]GameObject lockonbeamGO;
      GameObject lockonbeam;
+
+
+    GameObject player;
+    EnemyManager em;
+    GameObject hitbox;
+    NavMeshAgent navmeshagent;
+    Animator anim;
+    EnemyScript.Phases enemyPhase;
+    EnemyScript enemyScript;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
+        em = GameObject.FindGameObjectWithTag("GameManager").GetComponent<EnemyManager>();
+        navmeshagent = gameObject.GetComponent<NavMeshAgent>();
+        anim = gameObject.GetComponentInChildren<Animator>();
+        enemyScript = gameObject.GetComponent<EnemyScript>();
+        enemyPhase = enemyScript.return_current_phase();
+        hitbox = enemyScript.returnhitbox();
 
-        gamemanager = GameObject.FindGameObjectWithTag("GameManager");
-
-        GetComponent<EnemyScript>().set_enemyType(EnemyScript.EnemyType.CHARGER);
+        enemyScript.set_enemyType(EnemyScript.EnemyType.CHARGER);
         velocityspeed =8.5f;
         number_of_bounces = 0;
         collided = false;
-        navMeshAgent.enabled = false;
-        playerGO = GameObject.FindGameObjectWithTag("Player");
-        playerPos = playerGO.transform.position;
-        resultingVector = playerPos - transform.position;
+        
+        resultingVector = player.transform.position - transform.position;
         resultingVector.y = 0;
         resultingVector.Normalize();
         chargingtime = 0.0f;
-        currentdistance = Vector3.Distance(playerGO.transform.position, transform.position);
+        currentdistance = Vector3.Distance(player.transform.position, transform.position);
     }
 
     // Update is called once per frame
     void Update()
     {
+        navmeshagent = GetComponent<NavMeshAgent>();
+        anim = GetComponentInChildren<Animator>();
         enemyScript = GetComponent<EnemyScript>();
-        enemyPhase = GetComponent<EnemyScript>().return_current_phase();
+        enemyPhase = enemyScript.return_current_phase();
+        hitbox = enemyScript.returnhitbox();
 
-        if (GetComponent<EnemyScript>().getupdating())
+        if (enemyScript.getupdating())
         {
             switch (enemyPhase)
             {
                 case EnemyScript.Phases.ATTACK_TYPE_1:
                     {
                         DestroyBeams();
-                        navMeshAgent.enabled = false;
-                        GetComponentInChildren<Animator>().SetBool("charge", true);
+                        navmeshagent.enabled = false;
+                        anim.SetBool("charge", true);
                         chargingtime += 1.0f * Time.deltaTime;
                         if (chargingtime < 0.1f)
                         {
-                            playerPos = playerGO.transform.position;
+                            playerPos = player.transform.position;
                             resultingVector = playerPos - transform.position;
                         }
                         if (chargingtime >= 1.0f)
@@ -92,34 +99,25 @@ public class ChargerScript : MonoBehaviour
                     {
                         DestroyBeams();
 
-                        GetComponentInChildren<Animator>().SetBool("charge", true);
+                        anim.SetBool("charge", true);
 
                         chargingtime += 1.0f * Time.deltaTime;
 
-                        navMeshAgent.enabled = false;
+                        navmeshagent.enabled = false;
 
 
                         if (chargingtime < 0.1f)
                         {
-                            playerPos = playerGO.transform.position;
+                            playerPos = player.transform.position;
                             resultingVector = playerPos - transform.position;
                         }
 
                         if (chargingtime >= 2.0f)
                         {
-                            playerPos = playerGO.transform.position;
+                            playerPos = player.transform.position;
                             resultingVector = playerPos - transform.position;
-                            //if (number_of_bounces >= 2)
-                            //{
-                            //    collided = true;
-                            //    number_of_bounces = 0;
-                            //}
-                            //else
-                            //{
-                            //Debug.Log("BOUNCE 2");
-                                number_of_bounces += 1;
-                                chargeAtplayer();
-                            //}
+                            number_of_bounces += 1;
+                            chargeAtplayer();
                             chargingtime = 0.0f;
                         }
 
@@ -146,60 +144,57 @@ public class ChargerScript : MonoBehaviour
                 case EnemyScript.Phases.COOLDOWN:
                     {
                         DestroyBeams();
-                        navMeshAgent.enabled = true;
+                        navmeshagent.enabled = true;
 
-                        attackhitbox.GetComponent<BoxCollider>().enabled = false;
+                        hitbox.GetComponent<BoxCollider>().enabled = false;
                         GetComponent<BoxCollider>().enabled = true;
                         //grab player location
-                        playerPos = playerGO.transform.position;
+                        playerPos = player.transform.position;
                         //subtract between player.transform.psoition and enemy.transform.position
 
                         chargingtime = 0.0f;
                         collided = false;
-                        GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
-
-
-                        GetComponentInChildren<Animator>().SetBool("charge", false);
-                        GetComponentInChildren<Animator>().SetBool("about2charge", false);
+                        anim.SetBool("chasingPlayer", false);
+                        anim.SetBool("charge", false);
+                        anim.SetBool("about2charge", false);
 
                         //enemyScript.steering();
                         //enemyScript.steering_3();
                         //enemyScript.avoidanceCode(rand_z);
 
 
-                        GetComponent<EnemyScript>().cooldownUpdate();
+                        enemyScript.cooldownUpdate();
                         break;
                     }
                 case EnemyScript.Phases.ABOUT_TO_ATTACK:
                     {
-                        navMeshAgent.enabled = true;
+                        navmeshagent.enabled = true;
 
-                        if (enemyScript.return_attackptn() != EnemyScript.AttackPattern.PATTERN_3)
+                        
+                        //Debug.Log("AAA");
+                        Transform ending_location = player.transform;
+                        if (lockonbeam == null)
                         {
-                            //Debug.Log("AAA");
-                            Transform ending_location = playerGO.transform;
-                            if (lockonbeam == null)
-                            {
-                                //Debug.Log("INSTANTIATE BEAM");
-                                pivot = Instantiate(pivotpoint,
-                                   transform.position,
-                                   Quaternion.Euler(0, 0, 0));
-                                pivot.transform.SetParent(
-                                    GetComponentInChildren<SpriteRenderer>().transform);
-                                lockonbeam = Instantiate(lockon,
-                                    transform.position,
-                                    Quaternion.Euler(0, 0, 0));
-                                lockonbeam.transform.localScale =
-                                    new Vector3(.05f,
-                                    lockon.transform.localScale.y,
-                                    10 / 10);
-                                lockonbeam.transform.SetParent(pivot.transform);
+                            //Debug.Log("INSTANTIATE BEAM");
+                            pivotpoint = Instantiate(pivotpointGO,
+                                transform.position,
+                                Quaternion.Euler(0, 0, 0));
+                            pivotpoint.transform.SetParent(
+                                GetComponentInChildren<SpriteRenderer>().transform);
+                            lockonbeam = Instantiate(lockonbeamGO,
+                                transform.position,
+                                Quaternion.Euler(0, 0, 0));
+                            lockonbeam.transform.localScale =
+                                new Vector3(.05f,
+                                lockonbeamGO.transform.localScale.y,
+                                10 / 10);
+                            lockonbeam.transform.SetParent(pivotpoint.transform);
 
-                            }
-                            //
-                            pivot.transform.LookAt(
-                                    new Vector3(ending_location.position.x, transform.position.y, ending_location.position.z));
                         }
+                        //
+                        pivotpoint.transform.LookAt(
+                                new Vector3(ending_location.position.x, transform.position.y, ending_location.position.z));
+                        
 
                         if (currentdistance <= 5.0f)
                         {
@@ -214,8 +209,8 @@ public class ChargerScript : MonoBehaviour
 
                         //GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
                         //GetComponentInChildren<Animator>().SetBool("charge", false);
-                        GetComponentInChildren<Animator>().SetBool("about2charge", true);
-                        GetComponent<EnemyScript>().abouttoattackUpdate();
+                        anim.SetBool("about2charge", true);
+                       enemyScript.abouttoattackUpdate();
                         break;
                     }
                 default:
@@ -227,8 +222,7 @@ public class ChargerScript : MonoBehaviour
             enemyScript.ifUpdatingfalse();
         }
 
-        //enemyScript.steering();
-        if (GetComponent<EnemyScript>().getzoneno() == 0)
+        if (enemyScript.getzoneno() == 0)
         {
             resultingVector = GetComponent<EnemyScript>().getparent().position - transform.position;
             resultingVector.y = 0;
@@ -246,9 +240,9 @@ public class ChargerScript : MonoBehaviour
         {
             Destroy(lockonbeam);
         }
-        if (pivot != null)
+        if (pivotpoint != null)
         {
-            Destroy(pivot);
+            Destroy(pivotpoint);
         }
     }
 
@@ -256,9 +250,7 @@ public class ChargerScript : MonoBehaviour
     {
 
         DestroyBeams();
-
-        //attackhitbox.SetActive(true);
-        attackhitbox.GetComponent<BoxCollider>().enabled = true;
+        hitbox.GetComponent<BoxCollider>().enabled = true;
 
         if (enemyPhase == EnemyScript.Phases.ATTACK_TYPE_2)
         {
@@ -291,27 +283,19 @@ public class ChargerScript : MonoBehaviour
 
     public void recovering()
     {
-        //attackhitbox.SetActive(false);
-        attackhitbox.GetComponent<BoxCollider>().enabled = false;
-
-
+        hitbox.GetComponent<BoxCollider>().enabled = false;
         GetComponent<BoxCollider>().enabled = true;
-        //Debug.Log("Recovering");
-
         GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
-        //chargecooldown -= 1.0f * Time.deltaTime;
        
         //grab player location
-        playerPos = playerGO.transform.position;
+        playerPos = player.transform.position;
         //subtract between player.transform.psoition and enemy.transform.position
         resultingVector = playerPos - transform.position;
         chargingtime = 0.0f;
         collided = false;
 
-
-
         enemyScript.set_current_phase(EnemyScript.Phases.COOLDOWN);
-        gamemanager.GetComponent<EnemyManager>().setupdating(false);
+        em.GetComponent<EnemyManager>().setupdating(false);
     }
 
 
@@ -335,7 +319,7 @@ public class ChargerScript : MonoBehaviour
                     
                     if  (collision.gameObject.tag == "Player")
                     {
-                        playerPos = playerGO.transform.position;
+                        playerPos = player.transform.position;
                         resultingVector = -playerPos + transform.position;
                         collided = true;
                         number_of_bounces = 0;
@@ -350,7 +334,7 @@ public class ChargerScript : MonoBehaviour
                         //else
                         {
                             number_of_bounces += 1;
-                            playerPos = playerGO.transform.position;
+                            playerPos = player.transform.position;
                             resultingVector = playerPos - transform.position;
 
 
@@ -427,7 +411,7 @@ public class ChargerScript : MonoBehaviour
                         //else
                         {
                             number_of_bounces += 1;
-                            playerPos = playerGO.transform.position;
+                            playerPos = player.transform.position;
                             resultingVector = playerPos - transform.position;
                             chargeAtplayer();
                         }

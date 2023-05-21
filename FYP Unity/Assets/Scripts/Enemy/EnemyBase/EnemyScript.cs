@@ -9,9 +9,8 @@ using Com.LuisPedroFonseca.ProCamera2D;
 public class EnemyScript : MonoBehaviour
 {
 
-    //[SerializeField] GameObject particles;
-
-
+    //UNUSED CODE
+    List<float> ray_distances;
     float targetVelocity;
     int numberOfRays;
     float angle;
@@ -19,6 +18,11 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] LayerMask lm;
     [SerializeField] LayerMask lm_2;
     [SerializeField] LayerMask player_lm;
+    //
+    Dictionary<float, Vector3> ray_distance_n_direction;
+    float furthestdistance;
+    //
+
 
     [SerializeField] int EnemyHealth; // the base health of the enemy
     int currentHealth; // the current health of the enemy
@@ -44,7 +48,6 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] Slider healthbar;
      GameObject player;
 
-    float phase3timer;
     float timer;
     [SerializeField] float cooldown_period;
     [SerializeField] float abouttoattack_period;
@@ -62,16 +65,6 @@ public class EnemyScript : MonoBehaviour
     GameObject[] zone;
     GameObject hitbox;
 
-    List<float> ray_distances;
-
-    Dictionary<float, Vector3> ray_distance_n_direction;
-
-    [SerializeField] int projectile_numbers;
-    int projectile_shots;
-    float interval_between_shots;
-
-    float furthestdistance;
-
 
     float currentAnimationLength;
 
@@ -84,7 +77,6 @@ public class EnemyScript : MonoBehaviour
         COOLDOWN,
         ATTACK_TYPE_1,
         ATTACK_TYPE_2,
-        ATTACK_TYPE_3,
         AVOID,
         TOTAL
     }
@@ -96,7 +88,7 @@ public class EnemyScript : MonoBehaviour
         CHARGER,
         CHASER,
         SHOOTER,
-
+        RANGER,
         TOTAL
     }
 
@@ -105,7 +97,6 @@ public class EnemyScript : MonoBehaviour
     {
         PATTERN_1,
         PATTERN_2,
-        PATTERN_3,
 
         TOTAL
     }
@@ -118,23 +109,26 @@ public class EnemyScript : MonoBehaviour
     Transform spawnerparent;
 
 
-    float shootTimer;
-    [SerializeField] GameObject projectileGO;
-    float proejctilespeed;
-    GameObject projectile;
-
-
     [SerializeField] GameObject line;
     [SerializeField] Canvas canvas;
     [SerializeField] GameObject handle;
 
-    [SerializeField] TextMeshProUGUI healthtext;
 
     float chasingspeed;
 
     float new_destination_interval;
     float offset_x;
     float offset_z;
+
+    public void setchasingspeed(float cs)
+    {
+        chasingspeed = cs;
+    }
+    public float getchasingspeed()
+    {
+        return chasingspeed;
+    }
+
 
     public void setparent(Transform parentSpawner)
     {
@@ -183,13 +177,8 @@ public class EnemyScript : MonoBehaviour
 
         gamemanager = GameObject.FindGameObjectWithTag("GameManager");
 
-        projectile_shots = 0;
-        interval_between_shots = 0.0f;
-
         transitionFromAttackTimer = 0.0f;
-        phase3timer = 0.0f;
         chasingspeed = 0.0f;
-        proejctilespeed = 1.5f;
         post_attack_duration = 0.0f;
         targetVelocity = 1.5f;
         numberOfRays = 30;
@@ -203,14 +192,16 @@ public class EnemyScript : MonoBehaviour
         transitionFromHurtTimer = 0.0f;
         healthbar.maxValue = currentHealth;
         healthbar.minValue = 0;
-        attackhitbox.GetComponent<BoxCollider>().enabled = false ;
+        attackhitbox.GetComponent<BoxCollider>().enabled = false;
         BoundaryCheck();
         setzoneno = zoneno;
         timer = 0.0f;
+
+
+
         ray_distances = new List<float>();
         ray_distance_n_direction = new Dictionary<float, Vector3>();
 
-        shootTimer = 0.0f;
         drawdivider();
     }
     public void set_newdestination()
@@ -306,7 +297,6 @@ public class EnemyScript : MonoBehaviour
                         GetComponentInChildren<Animator>().SetBool("about2attack", false);
                         GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
                         GetComponentInChildren<Animator>().SetBool("attack", false);
-                        GetComponent<ChaserScript>().DestroyBeams();
 
                         break;
                     }
@@ -320,15 +310,18 @@ public class EnemyScript : MonoBehaviour
                        
                         break;
                     }
+                case EnemyType.SHOOTER:
+                    {
+                        GetComponentInChildren<Animator>().SetBool("about2shoot", false);
+                        GetComponentInChildren<Animator>().SetBool("attack", false);
+                        GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
+
+                        break;
+                    }
             }
             //
 
-            if(atkPattern == AttackPattern.PATTERN_3)
-            {
-                GetComponentInChildren<Animator>().SetBool("about2shoot", false);
-                GetComponentInChildren<Animator>().SetBool("attack", false);
-                GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
-            }
+           
 
             transitionFromHurtTimer = 0.0f;
             //play attacked animation
@@ -389,7 +382,7 @@ public class EnemyScript : MonoBehaviour
         }
     }
 
-    bool changed(float a, float b)
+    bool side_checking(float a, float b)
     {
         if ((int)a == (int)b)
         {
@@ -401,11 +394,36 @@ public class EnemyScript : MonoBehaviour
         }
     }
 
+    public GameObject returnhitbox()
+    {
+        return attackhitbox;
+    }
+
+
+    public void set_transitionfromattacktimer(float time)
+    {
+        transitionFromAttackTimer = time;
+    }
+    public void add_transitionfromattacktimer(float time)
+    {
+        transitionFromAttackTimer += time;
+    }
+    public float return_transitionfromatktimer()
+    {
+        return transitionFromAttackTimer;
+    }
+
+
+    public float return_transitionfromhurttimer()
+    {
+        return transitionFromHurtTimer;
+    }
+
     private void Update()
     {
 
         //Debug.Log(setzoneno);
-        GetComponent<NavMeshAgent>().enabled = false;
+        //GetComponent<NavMeshAgent>().enabled = false;
 
         currentAnimationLength = GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).length;
         //healthtext.text = EnemyHealth.ToString();
@@ -428,12 +446,12 @@ public class EnemyScript : MonoBehaviour
         //flip the sprite
         Vector3 mypos = transform.position;
         var targetPos = player.transform.position;
-        if (player.transform.position.x < mypos.x && changed(mypos.y, targetPos.y))
+        if (player.transform.position.x < mypos.x && side_checking(mypos.y, targetPos.y))
         {
             //print("Left");
             GetComponentInChildren<SpriteRenderer>().flipX = false;
         }
-        else if (changed(mypos.y, targetPos.y))
+        else if (side_checking(mypos.y, targetPos.y))
         {
             //print("Right");
             //flip the sprite
@@ -441,8 +459,6 @@ public class EnemyScript : MonoBehaviour
 
         }
         //
-
-
 
         //turn purple when get sus dish
         if (AttackByOtherWeapon)
@@ -497,9 +513,9 @@ public class EnemyScript : MonoBehaviour
                     GetComponent<ChargerScript>().DestroyBeams();
                 }
 
-                if (enemy_type == EnemyType.CHASER)
+                if (enemy_type == EnemyType.RANGER)
                 {
-                    GetComponent<ChaserScript>().DestroyBeams();
+                    GetComponent<RangerScript>().DestroyBeams();
                 }
 
                 if (enemy_type == EnemyType.JUMPER)
@@ -527,119 +543,6 @@ public class EnemyScript : MonoBehaviour
                     GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
                 }
                 set_newdestination();
-            }
-
-
-            if (GetComponentInChildren<Animator>().GetBool("attacked") == false)
-            {
-                if (phase == Phases.ATTACK_TYPE_3)
-                {
-                    //Debug.Log("SHOOTER");
-                    phase3timer += Time.deltaTime;
-
-                    attackhitbox.GetComponent<BoxCollider>().enabled = false;
-                    float dist = Vector3.Distance(transform.position, player.transform.position);
-                    GetComponentInChildren<NavMeshAgent>().speed = chasingspeed;
-                    GetComponentInChildren<NavMeshAgent>().acceleration = chasingspeed;
-
-                    //continue to chase the player
-                    //else
-                    //{
-                    if (dist <= 5.0f
-                        && shootTimer >= 2)
-                    {
-                        chasingspeed = 0;
-                        GetComponentInChildren<NavMeshAgent>().enabled = false;
-                        Vector3 resultingVector = -player.transform.position + transform.position;
-                        resultingVector.y = 0;
-                        GetComponent<Rigidbody>().velocity = resultingVector * .5f;
-                    }
-                    else
-                    {
-                        GetComponentInChildren<NavMeshAgent>().enabled = true;
-                        //GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
-                        GetComponentInChildren<NavMeshAgent>().SetDestination(player.transform.position);
-                        chasingspeed = dist;
-                    }
-
-                    //GetComponentInChildren<NavMeshAgent>().enabled = true;
-                    //GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
-                    //GetComponentInChildren<NavMeshAgent>().SetDestination(player.transform.position);
-                    GetComponentInChildren<Animator>().SetBool("chasingPlayer", true);
-
-                    //shoot every interval
-                    shootTimer += Time.deltaTime;
-                    float count = 1.0f;
-                    if (shootTimer >= count)
-                    {
-                        GetComponent<NavMeshAgent>().enabled = false;
-
-                        GetComponentInChildren<Animator>().SetBool("about2shoot", true);
-
-                        //GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
-                        //GetComponentInChildren<SpriteRenderer>().color = Color.red;
-
-                        if (shootTimer >= count + 0.7f)
-                        {
-                            GetComponent<NavMeshAgent>().enabled = true;
-
-                            //play attack animation
-                            GetComponentInChildren<Animator>().SetBool("attack", true);
-                            //
-                            GetComponentInChildren<SpriteRenderer>().color = Color.white;
-                        }
-                    }
-                    //}
-                    //
-
-                    if (GetComponentInChildren<Animator>().GetBool("attack") &&
-                        GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("attack"))
-                    {
-                        transitionFromAttackTimer += Time.deltaTime;
-
-                        if (projectile_shots == 0
-                            //&& transitionFromAttackTimer >=
-                        //currentAnimationLength
-                            )
-                        {
-                            shoot();
-                        }
-
-                        //GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f
-                        if (transitionFromAttackTimer >=
-                        currentAnimationLength)
-                            //if (
-                            //GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
-                        {
-                            if (projectile_shots >= projectile_numbers)
-                            {
-                                shootTimer = 0.0f;
-
-                                projectile_shots = 0;
-                                GetComponentInChildren<Animator>().SetBool("about2shoot", false);
-                                GetComponentInChildren<Animator>().SetBool("attack", false);
-                                GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
-
-                                gamemanager.GetComponent<EnemyManager>().setupdating(false);
-                            }
-                            else
-                            {
-                                shoot();
-                            }
-                            transitionFromAttackTimer = 0.0f;
-                        }
-                    }
-
-                    if (phase3timer >= 20.0f)
-                    {
-                        phase = Phases.COOLDOWN;
-                        gamemanager.GetComponent<EnemyManager>().setupdating(false);
-                    }
-                }   
-            }
-            else
-            {
-                shootTimer = 0.0f;
             }
 
             //if (GetComponent<EnemyScript>().getzoneno() == 0)
@@ -695,6 +598,8 @@ public class EnemyScript : MonoBehaviour
         }
         //
 
+
+        //IF ENEMY IS HURT
         if (GetComponentInChildren<Animator>().GetBool("attacked"))
         {
             transitionFromHurtTimer += Time.deltaTime;
@@ -710,111 +615,23 @@ public class EnemyScript : MonoBehaviour
                 }
             }
         }
+        //
 
         transform.LookAt(player.transform.position);
         GetComponentInChildren<SpriteRenderer>().transform.rotation = Quaternion.Euler(0, 0, 0);
-
-        //back away while one of the enemies is in attack mode
-        //other_enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        //foreach (GameObject enemies in other_enemies)
-        //{
-        //    if (enemies.GetComponent<EnemyScript>().getzoneno() == getzoneno())
-        //    {
-        //        if (GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("attack")
-        //            || GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("about2attack"))
-        //        {
-        //            if (enemies.GetComponent<EnemyScript>().return_enemyType() == EnemyType.CHASER
-        //            && enemies.GetComponent<EnemyScript>().return_attackptn() != AttackPattern.PATTERN_3)
-        //            {
-        //                //Debug.Log("AVOID");
-        //                enemies.GetComponent<EnemyScript>().avoidanceCode(3);
-        //                    break;
-        //            }
-        //        }
-
-
-
-        //        //IF ENEMY IS JUMPER
-        //        if (enemies.GetComponent<EnemyScript>().return_enemyType() == EnemyType.JUMPER
-        //            && enemies.GetComponent<EnemyScript>().return_attackptn() != AttackPattern.PATTERN_3)
-        //        {
-        //            if (/*enemies.GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("about2jump")
-        //                &&*/ GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("about2jump"))
-        //            {
-        //                enemies.GetComponent<EnemyScript>().avoidanceCode(3);
-        //            }
-        //        }
-        //        //
-
-        //        //IF ENEMY IS CHARGER
-        //        if (enemies.GetComponent<EnemyScript>().return_enemyType() == EnemyType.CHARGER
-        //            && enemies.GetComponent<EnemyScript>().return_attackptn() != AttackPattern.PATTERN_3)
-        //        {
-        //            if (enemies.GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("about2charge")
-        //                && GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("about2charge"))
-        //            {
-        //                enemies.GetComponent<EnemyScript>().avoidanceCode(3);
-        //                break;
-
-        //            }
-        //        }
-        //        //
-
-        //        if (GetComponent<EnemyScript>().return_attackptn() == AttackPattern.PATTERN_3
-        //            && enemies.GetComponent<EnemyScript>().return_attackptn() == AttackPattern.PATTERN_3)
-        //        {
-        //            if (enemies.GetComponent<EnemyScript>().getst() > 2)
-        //            {
-        //                enemies.GetComponent<EnemyScript>().avoidanceCode(3);
-        //                break;
-        //            }
-        //        }
-        //    }
-        //    break;
-        //}
-
     }
 
-    public float getst()
-    {
-        return shootTimer;
-    }
+    
 
     public float getCurrentAnimationLength()
     {
         return currentAnimationLength;
     }
 
-    public void shoot()
-    {
-        Vector3 resultingVector = player.transform.position - transform.position;
-        resultingVector.y = 0;
+    
+   
 
-        //if (projectile_shots == 0)
-        //{
-            //GetComponentInChildren<Animator>().SetBool("attack", true);
-            projectile = Instantiate(projectileGO,
-            new Vector3(transform.position.x, transform.position.y + 1.0f, transform.position.z),
-            Quaternion.Euler(0, 0, 0));
-            projectile.GetComponent<Rigidbody>().velocity = resultingVector * proejctilespeed;
-            projectile_shots += 1;
-            //Debug.Log("SHOOT");
-        //}
 
-        /*if (interval_between_shots > 1.0f
-            && transitionFromAttackTimer >= currentAnimationLength)
-        {
-            GetComponentInChildren<Animator>().SetBool("attack", true);
-            projectile = Instantiate(projectileGO,
-            new Vector3(transform.position.x, transform.position.y + 1.0f, transform.position.z),
-            Quaternion.Euler(0, 0, 0));
-            projectile.GetComponent<Rigidbody>().velocity = resultingVector * proejctilespeed;
-            projectile_shots += 1;
-            Debug.Log("SHOOT2");
-        }*/
-
-        
-    }
 
     public void BoundaryCheck()
     {
@@ -881,8 +698,7 @@ public class EnemyScript : MonoBehaviour
     {
         GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
         
-        shootTimer = 0.0f;
-        phase3timer = 0.0f;
+        
         //turn off attack hitbox
         attackhitbox.GetComponent<BoxCollider>().enabled = false;
         timer += 1.0f * Time.deltaTime;
@@ -924,10 +740,7 @@ public class EnemyScript : MonoBehaviour
             {
                 phase = Phases.ATTACK_TYPE_2;
             }
-            else if (atkPattern == AttackPattern.PATTERN_3)
-            {
-                phase = Phases.ATTACK_TYPE_3;
-            }
+            
             timer = 0.0f;
         }
     }
@@ -1020,7 +833,6 @@ public class EnemyScript : MonoBehaviour
     public void Death()
     {
         attackhitbox.GetComponent<BoxCollider>().enabled = false;
-        //getparent().GetComponent<Spawner>().resetSpawnerTimer(5, false);
 
         if (currentHealth == 0)
         {
@@ -1045,15 +857,6 @@ public class EnemyScript : MonoBehaviour
         EnemyHealth = enemyHealth;
         currentHealth = EnemyHealth;
     }
-
-
-
-
-
-
-
-
-
 
     public void steering()
     {

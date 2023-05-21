@@ -10021,6 +10021,7 @@ MonoBehaviour:
   KnifeWeaponDisplay: {fileID: 0}
   RollerWeaponDisplay: {fileID: 0}
   SpatulaWeaponDisplay: {fileID: 0}
+  notSelectedAlpha: 0.4
   spaculaHitbox: {fileID: 6670536203559410289}
   knifeHitbox: {fileID: 2429570959170697404}
   pinHitbox: {fileID: 3136350151301332611}
@@ -10712,8 +10713,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1235318631
-  m_SortingLayer: 1
+  m_SortingLayerID: -499965009
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 1679598921, guid: 2e8d9d2f19434824f93eb89c973ec5fc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

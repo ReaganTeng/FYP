@@ -8,7 +8,7 @@ using Com.LuisPedroFonseca.ProCamera2D;
 public class EnemyAttack : MonoBehaviour
 {
     [SerializeField] EnemyScript es;
-   /* [SerializeField]*/ float AttackCD;
+   float AttackCD;
     float Attackcdtimer;
 
     [SerializeField] Animator animator;
@@ -16,18 +16,8 @@ public class EnemyAttack : MonoBehaviour
 
     bool post_attack;
 
-
-    [SerializeField] AnimationClip attackclip;
-    [SerializeField] AnimationClip about2atkclip;
-
-    //determine how many times the player can attack at once
-    [SerializeField] int attacks_per_session;
-
-    int attacks_performed;
     bool attacking_present;
     bool player_in_hitbox;
-
-
 
     bool attacking;
 
@@ -48,7 +38,6 @@ public class EnemyAttack : MonoBehaviour
         attacking_present = false;
         delayTime = 0.0f;
         AttackCD = 0;
-        attacks_performed = 0;
         Attackcdtimer = 0;
         post_attack = false;
     }
@@ -66,141 +55,48 @@ public class EnemyAttack : MonoBehaviour
             transform.parent.transform.parent.GetComponent<BoxCollider>().enabled = true;
         }
 
-        if (transform.parent.transform.parent.GetComponent<EnemyScript>().return_enemyType()
-            == EnemyScript.EnemyType.CHASER)
-        {
-            /*&& delayTime
-            >= transform.parent.transform.parent.GetComponent<EnemyScript>().getCurrentAnimationLength() *
-            attacks_performed*/
-
-            //if (Attackcdtimer < AttackCD / 5)
-            //{
-            //    if (attacks_performed < attacks_per_session)
-            //    {
-            //        player.GetComponentInChildren<Animator>().SetBool("Hurt", false);
-            //    }
-            //}
-
-            //if (Attackcdtimer <= 0
-            //    && attacks_performed < attacks_per_session)
-            //{
-            //    Attackcdtimer = AttackCD;
-            //}
-
-            //DELAY FOR CHASER
-            if (transform.parent.transform.parent.GetComponent<EnemyScript>().return_attackptn() != EnemyScript.AttackPattern.PATTERN_3
-               && transform.parent.transform.parent.GetComponent<EnemyScript>().return_attackptn() != EnemyScript.AttackPattern.PATTERN_2
-               )
-            {
-                if (animator.GetBool("about2attack")
-                    && animator.GetCurrentAnimatorStateInfo(0).IsName("aboutattack"))
-                {
-                    //Debug.Log("ABOUT 2 ATTACK");
-                    delayTime += Time.deltaTime;
-                    if (delayTime
-                        >= /*transform.parent.transform.parent.GetComponent<EnemyScript>().getCurrentAnimationLength()*/
-                        animator.GetCurrentAnimatorStateInfo(0).length)
-                    {
-                        animator.SetBool("attack", true);
-                    }
-                }
-            }
-            //
-
-            //if(!transform.parent.transform.parent.GetComponent<EnemyScript>().getupdating()
-            //    /*|| transform.parent.transform.parent.GetComponent<EnemyScript>().return_current_phase() == EnemyScript.Phases.AVOID*/)
-            //{
-            //    if (attacks_performed >= attacks_per_session)
-            //    {
-            //        attacking = false;
-            //    }
-            //}
-
-            if (attacking)
-            {
-                //transform.parent.transform.parent.GetComponent<NavMeshAgent>().enabled = false;
-
-                //ADD 1 ATTACK TO EACH LOOP
-                if (attacking_present)
-                {
-                    //decrease the player's health
-                    if (animator.GetCurrentAnimatorStateInfo(0).IsName("attack")
-                        && animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 0.0f)
-                    {
-                        if (player_in_hitbox)
-                        {
-                            //HAVE A IF LOOP
-                            //HIT PLAYER EVERY TIME EACH LOOP ENDS
-                            player.GetComponent<PlayerMovement>().setAnimator(true);
-                            player.GetComponent<PlayerStats>().ResetConsecutiveHit();
-                            //other.GetComponent<PlayerStats>().ChangeFervor(-5.0f);
-                            //THICK SKIN POWERUP
-                            player.GetComponent<PlayerStats>().ChangeFervor(-15.0f * player.GetComponent<PlayerStats>().getpp().return_thick_skin());
-                            //
-
-                            ProCamera2DShake.Instance.ShakeUsingPreset("DamageShake");
-                        }
-
-                        Attackcdtimer = AttackCD;
-                        attacks_performed += 1;
-                    }
-
-
-                    //END THE LOOP WHEN ATTACKS PERFORM EXCEEDED
-                    if (attacks_performed >= attacks_per_session)
-                    {
-                        player.GetComponent<PlayerStats>().resetval();
-
-                        //gamemanager.GetComponent<EnemyManager>().setupdating(false);
-                        animator.SetBool("attack", false);
-                        animator.SetBool("about2attack", false);
-                        //animator.SetBool("chasingPlayer", false);
-                        post_attack = true;
-                        attacks_performed = 0;
-                        delayTime = 0.0f;
-                        attacking = false;
-                        attacking_present = false;
-                        transform.parent.transform.parent.GetComponent<NavMeshAgent>().enabled = true;
-                        //Debug.Log("FINISHED ATTACKING");
-                    }
-                    else
-                    {
-                        if (animator.GetCurrentAnimatorStateInfo(0).IsName("attack")
-                           && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0)
-                        {
-                            animator.Play("attack", 0, 0);
-                        }
-                    }
-                    //
-                }
-                //
-            }
-            else
-            {
-                //Debug.Log("FALSE");
-                transform.parent.transform.parent.GetComponent<NavMeshAgent>().enabled = true;
-            }
-
-            //END THE LOOP WHEN ATTACKS PERFORM EXCEEDED
-            /*if (attacks_performed >= attacks_per_session)
-            {
-                attacking = false;
-                //gamemanager.GetComponent<EnemyManager>().setupdating(false);
-                animator.SetBool("attack", false);
-                animator.SetBool("about2attack", false);
-                //animator.SetBool("chasingPlayer", false);
-                post_attack = true;
-                attacks_performed = 0;
-                transform.parent.transform.parent.GetComponent<NavMeshAgent>().enabled = true;
-                //transform.parent.transform.parent.GetComponent<EnemyScript>().set_current_phase(EnemyScript.Phases.COOLDOWN);
-                delayTime = 0.0f;
-            }*/
-            //
-        }
-
     }
 
-    
+
+    public float getattackCD()
+    {
+        return AttackCD;
+    }
+
+    public void setattackCDtimer(float t)
+    {
+        Attackcdtimer = AttackCD;
+    }
+    public float getattackCDtimer()
+    {
+        return Attackcdtimer;
+    }
+
+    public void setattacking_present(bool t)
+    {
+        attacking_present = t;
+    }
+    public bool get_attacking_present()
+    {
+        return attacking_present;
+    }
+
+    public void set_attacking(bool t)
+    {
+        attacking = t;
+    }
+    public bool get_attacking()
+    {
+        return attacking;
+    }
+
+
+    public bool playerinhitbox()
+    {
+        return player_in_hitbox;
+    }
+
+
 
     public void setpostattack(bool pa)
     {
@@ -239,10 +135,10 @@ public class EnemyAttack : MonoBehaviour
             && Attackcdtimer <= 0
             && GetComponent<BoxCollider>().enabled == true
             && other.GetComponentInChildren<Animator>().GetNextAnimatorStateInfo(0).IsName("Dash") == false
-            && attacks_performed < attacks_per_session
-            //transform.parent.transform.parent.GetComponent<EnemyScript>().return_current_phase() != EnemyScript.Phases.AVOID
-            /*&& transform.parent.transform.parent.GetComponent<EnemyScript>().return_current_phase() != EnemyScript.Phases.AVOID*/)
+            )
         {
+
+
             attacking = true;
 
             //IF ENEMY IS A JUMPER
@@ -268,7 +164,6 @@ public class EnemyAttack : MonoBehaviour
                 if (!post_attack)
                 {
                     attacking_present = true;
-                    player_in_hitbox = true;
 
                     //Attackcdtimer = AttackCD;
                     if (!animator.GetCurrentAnimatorStateInfo(0).IsName("attack"))
@@ -328,14 +223,9 @@ public class EnemyAttack : MonoBehaviour
                 Attackcdtimer = AttackCD;
             }
 
-            if (transform.parent.transform.parent.GetComponent<EnemyScript>().return_enemyType() == EnemyScript.EnemyType.CHARGER)
-            {
-                AttackCD = attackclip.length;
-            }
-            else
-            {
-                AttackCD = 1.0f;
-            }
+           
+           AttackCD = 1.0f;
+           
         }
         
     }
