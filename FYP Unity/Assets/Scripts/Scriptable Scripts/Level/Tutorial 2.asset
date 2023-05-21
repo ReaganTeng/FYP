@@ -21,6 +21,7 @@ MonoBehaviour:
   CReq: 0
   MaxCredibility: 0
   CCReq: 0
+  CanSkipVN: 0
   HallwaysUnlock: 
   CustomizeOrderForThisDay:
     dishList:
@@ -36,9 +37,8 @@ MonoBehaviour:
       HowManyPriority: 0
       DishBeforePriority: 0
       IntervalBetweenPriority: 0
-    WaitingTime: 0
     penalty: 10
-    EasyDishChance: 0
+    EasyDishChance: 100
     NormalDishChance: 0
     HardDishChance: 0
     ExtremeDishChance: 0
