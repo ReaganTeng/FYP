@@ -132,7 +132,7 @@ public class Tutorial : MonoBehaviour
             tempPlayer.GetComponentInChildren<PlayerStats>().SetIfFervorActive(false);// disable fervor system
             MixerManager.instance.SetAllQTEActive(false); // disable cooke QTE
             MixerManager.instance.AdjustMixerTime(Mixer.MixerType.REFINER, 5);
-            MixerManager.instance.AdjustMixerTime(Mixer.MixerType.REFINER, 5);
+            MixerManager.instance.AdjustMixerTime(Mixer.MixerType.COOKER, 5);
         }
         else
         {
