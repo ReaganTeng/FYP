@@ -367,6 +367,7 @@ public class PlayerStats : MonoBehaviour
             if (HitText != null)
             {
                 HitText.enabled = false;
+                RankSprite.GetComponent<Image>().enabled = false;
             }
 
             if (combo_timer_text != null)
