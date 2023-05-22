@@ -107,12 +107,13 @@ public class PlayerPickup : MonoBehaviour
                         ic.AddItem(pickupobject.GetComponentInParent<Food>().gameObject);
                         pickupobject.GetComponent<ItemGlow>().GetParent().transform.SetParent(GameObject.FindGameObjectWithTag("Inventory").transform);
 
-                        //RUSH OF PERFECTION
+                        //ADD BACK THE NUMBER OF CHARGES WHEN INGREDIENT IS PERFECT, AND RUSH OF PERFECTION SHOP UPGRADE
+                        //IS USED
                         if(pickupobject.GetComponentInParent<Food>().GetIsPerfect()
-                            && pp.return_charge_reward() > 0)
+                            && pp.return_rush_of_perfection() > 0)
                         {
-                            Debug.Log("CONGRATS YOU REGAINED CHARGES");
-                            playerAttackScript.addcharge(pp.return_charge_reward());
+                            //Debug.Log("CONGRATS YOU REGAINED CHARGES");
+                            playerAttackScript.addcharge(pp.return_rush_of_perfection());
                         }
                         //
 
@@ -129,11 +130,11 @@ public class PlayerPickup : MonoBehaviour
                     {
                         pickupobject.GetComponent<Serving>().Serve();
 
-                        //DINNER RUSH
-                        if(pp.return_burst_time() > 0)
+                        //SET BURST TIME BASE ON THE DINNER RUSH SHOP UPGRADE
+                        if(pp.return_dinner_rush() > 0)
                         {
-                            Debug.Log("BURST");
-                            GetComponentInParent<PlayerStats>().setbursttime(pp.return_burst_time());
+                            //Debug.Log("BURST");
+                            GetComponentInParent<PlayerStats>().setbursttime(pp.return_dinner_rush());
                         }
                         //
 

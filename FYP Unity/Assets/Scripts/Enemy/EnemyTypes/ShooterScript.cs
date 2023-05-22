@@ -5,26 +5,41 @@ using UnityEngine.AI;
 
 public class ShooterScript : MonoBehaviour
 {
+    GameObject projectile;
+    //PROJECTILE GAMEOBJECT
     [SerializeField] GameObject projectileGO;
+    //THE SPEED OF PROJECTILE
+    float proejctilespeed;
+
+    //THE NUMBER OF PROJECTILES THAT ENEMY WILL SHOOT
     [SerializeField] int projectile_numbers;
 
-
+    //DETERMINE WHEN TO SHOOT THE PROJECTILES
     float shootTimer;
-    float proejctilespeed;
-    GameObject projectile;
+
+    
     float timer;
+
+    //THE NUMBER OF PROJECTILES SHOT
     int projectile_shots;
-    float interval_between_shots;
 
-    EnemyScript enemyScript;
-    EnemyScript.Phases enemyPhase;
+    
 
 
+    //THE PLAYER PREFAB
     GameObject player;
+    //THE ENEMY MANAGER SCRIPT IN GAME MANAGER PREFAB
     EnemyManager em;
+    //ENEMY'S HITBOX
     GameObject hitbox;
+    //ENEMY'S NAVMESHAGENT
     NavMeshAgent navmeshagent;
+    //ENEMY'S ANIMATION CONTROLLER
     Animator anim;
+    //ENEMEY'S PHASE IN ENEMYSCRIPT
+    EnemyScript.Phases enemyPhase;
+    //ENEMY'S ENEMYSCRIPT
+    EnemyScript enemyScript;
 
     // Start is called before the first frame update
     void Start()
@@ -46,7 +61,7 @@ public class ShooterScript : MonoBehaviour
         timer = 0;
     }
 
-
+    //FUNCTION TO SHOOT A PROJECTILE
     public void shoot()
     {
         Vector3 resultingVector = player.transform.position - transform.position;
@@ -58,7 +73,7 @@ public class ShooterScript : MonoBehaviour
         projectile.GetComponent<Rigidbody>().velocity = resultingVector * proejctilespeed;
         projectile_shots += 1;
     }
-
+    //
 
     // Update is called once per frame
     void Update()
@@ -77,16 +92,18 @@ public class ShooterScript : MonoBehaviour
                 case EnemyScript.Phases.ATTACK_TYPE_2:
                     if (anim.GetBool("attacked") == false)
                     {
+                        anim.SetBool("chasingPlayer", true);
+
                         timer += Time.deltaTime;
                         hitbox.GetComponent<BoxCollider>().enabled = false;
-                        navmeshagent.speed = enemyScript.getchasingspeed();
-                        navmeshagent.acceleration = enemyScript.getchasingspeed();
+                        navmeshagent.speed = enemyScript.getnavmeshspeed();
+                        navmeshagent.acceleration = enemyScript.getnavmeshspeed();
 
                         float dist = Vector3.Distance(transform.position, player.transform.position);
                         if (dist <= 5.0f
                             || shootTimer >= 2)
                         {
-                            enemyScript.setchasingspeed(0);
+                            enemyScript.setnavmeshspeed(0);
                             navmeshagent.enabled = false;
                             Vector3 resultingVector = -player.transform.position + transform.position;
                             resultingVector.y = 0;
@@ -96,13 +113,12 @@ public class ShooterScript : MonoBehaviour
                         {
                             navmeshagent.enabled = true;
                             navmeshagent.SetDestination(player.transform.position);
-                            enemyScript.setchasingspeed(2);
+                            enemyScript.setnavmeshspeed(2);
                         }
 
 
-                        anim.SetBool("chasingPlayer", true);
 
-                        //shoot every interval
+                        //ENEMY ABOUT TO SHOOT
                         shootTimer += Time.deltaTime;
                         float count = 1.0f;
                         if (shootTimer >= count)
@@ -118,8 +134,10 @@ public class ShooterScript : MonoBehaviour
                                 //
                             }
                         }
-                       
+                       //
 
+
+                        //ENEMY STARTS TO SHOOT
                         if (anim.GetBool("attack") &&
                             anim.GetCurrentAnimatorStateInfo(0).IsName("attack"))
                         {
@@ -151,6 +169,7 @@ public class ShooterScript : MonoBehaviour
                                 enemyScript.set_transitionfromattacktimer(0.0f);
                             }
                         }
+                        //
 
                         if (timer >= 20.0f)
                         {

@@ -29,7 +29,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Entities
   - Water
   - UI
   - Player
@@ -40,7 +40,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Wall
   - 
   - 
   - 
@@ -62,12 +62,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Wall
-    uniqueID: 626124477
-    locked: 0
   - name: Floor
     uniqueID: 3593545875
     locked: 0
   - name: Entities
     uniqueID: 3795002287
+    locked: 0
+  - name: WallthatBlocks
+    uniqueID: 3576165207
+    locked: 0
+  - name: Wall
+    uniqueID: 626124477
     locked: 0

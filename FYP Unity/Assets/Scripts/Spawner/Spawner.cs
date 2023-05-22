@@ -45,7 +45,8 @@ public class Spawner : MonoBehaviour
             time = 0.0f;
         }
 
-        if (time >= interval && transform.childCount < max_enemies)
+        if (time >= interval 
+            && transform.childCount < max_enemies)
         {
             for (int i = 0; i < enemies_per_spawn; i++)
             {

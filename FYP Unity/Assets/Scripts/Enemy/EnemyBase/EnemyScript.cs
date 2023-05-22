@@ -10,7 +10,7 @@ public class EnemyScript : MonoBehaviour
 {
 
     //UNUSED CODE
-    List<float> ray_distances;
+    /*List<float> ray_distances;
     float targetVelocity;
     int numberOfRays;
     float angle;
@@ -20,33 +20,31 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] LayerMask player_lm;
     //
     Dictionary<float, Vector3> ray_distance_n_direction;
-    float furthestdistance;
+    float furthestdistance;*/
     //
 
+    // THE BASE HEALTH OF THE ENEMY
+    [SerializeField] int EnemyHealth; 
+    //THE CURRENT HEALTH OF THE ENEMY
+    int currentHealth;
 
-    [SerializeField] int EnemyHealth; // the base health of the enemy
-    int currentHealth; // the current health of the enemy
-    [SerializeField] float AttackDamage;
+    //THE DIFFERENT STATES OF THE INGREDIENTS THE ENEMY WILL DROP
     [SerializeField] GameObject prepPrefab;
     [SerializeField] GameObject choppedPefab;
     [SerializeField] GameObject smashedPrefab;
     [SerializeField] GameObject Mush;
-    [SerializeField] GameObject attackhitbox;
+    //
 
-    float rand_x;
-    float rand_y;
-
-    int rand_gen;
 
     float Iframemaxtime = 0.1f;
     float Iframetimer = 0.1f;
     bool Iframe = false;
+    
     bool FirstAttack = false;
+    
     int AttackByWhatWeapon = 0;
     bool AttackByOtherWeapon = false;
 
-    [SerializeField] Slider healthbar;
-     GameObject player;
 
     float timer;
     [SerializeField] float cooldown_period;
@@ -55,22 +53,23 @@ public class EnemyScript : MonoBehaviour
     float transitionFromHurtTimer;
     float transitionFromAttackTimer;
 
-    int attack_type;
 
-    int setzoneno;
-
-    float post_attack_duration;
     bool updating;
+
+    //THE CURRENT ZONE THE PLAYER IS IN
+    //THE DESIGNATED ZONE THE ENEMY IS SPAWNED IN
+    int setzoneno;
     int zoneno;
     GameObject[] zone;
-    GameObject hitbox;
-
 
     float currentAnimationLength;
 
+    //WHETHER THE ENEMY IS ATTACKED BY THE PLAYER
     bool attacked;
 
 
+    //THE CURRENT PHASE THE ENEMY CURRENTLY IS IN
+    [SerializeField] Phases phase;
     public enum Phases
     {
         ABOUT_TO_ATTACK,
@@ -82,6 +81,8 @@ public class EnemyScript : MonoBehaviour
     }
 
 
+    //THE TYPE OF ENEMY
+    EnemyType enemy_type;
     public enum EnemyType
     {
         JUMPER,
@@ -93,6 +94,8 @@ public class EnemyScript : MonoBehaviour
     }
 
 
+    //THE ATTACK PATTERN THE ENEMY WILL PERFORM, WHICH DECIDES WHAT TYPE OF ATTACK TYPE THE ENEMY WILL GO TO
+    [SerializeField] AttackPattern atkPattern;
     public enum AttackPattern
     {
         PATTERN_1,
@@ -100,33 +103,58 @@ public class EnemyScript : MonoBehaviour
 
         TOTAL
     }
-    [SerializeField] AttackPattern atkPattern;
 
 
-    [SerializeField] Phases phase;
-    EnemyType enemy_type;
 
+    //THE ENEMY'S SPAWNER
     Transform spawnerparent;
+    
 
-
+    //PROPERTIES OF THE HEALTH BAR
+    //HEALTH BAR SLIDER
+    [SerializeField] Slider healthbar;
+    //LINE PREFAB
     [SerializeField] GameObject line;
+    //THE CANVAS FOR THE HEALTH BAR
     [SerializeField] Canvas canvas;
+    //THE HANDLE FOR THE HEALTH BAR SLIDER
     [SerializeField] GameObject handle;
+    //
 
 
-    float chasingspeed;
+    //THE SPEED OF THE NAVMESH
+    float navmeshspeed;
 
     float new_destination_interval;
+    //HOW FAR YOU WANT THE NAVMESH DESTINATION TO BE FROM THE PLAYER BY THE X AXIS AT EVERY INTERVAL
     float offset_x;
+    //HOW FAR YOU WANT THE NAVMESH DESTINATION TO BE FROM THE PLAYER BY THE Z AXIS AT EVERY INTERVAL
     float offset_z;
+    //HOW FAR YOU WANT THE NAVMESH DESTINATION TO BE FROM THE PLAYER BY THE X AXIS
+    float rand_x;
+    //HOW FAR YOU WANT THE NAVMESH DESTINATION TO BE FROM THE PLAYER BY THE Z AXIS
+    float rand_y;
 
-    public void setchasingspeed(float cs)
+
+
+    //ENEMY'S HITBOX
+    [SerializeField] GameObject hitbox;
+    //THE PLAYER PREFAB
+    GameObject player;
+    //THE ENEMY MANAGER SCRIPT IN GAME MANAGER PREFAB
+    EnemyManager em;
+    //ENEMY'S NAVMESHAGENT
+    NavMeshAgent navmeshagent;
+    //ENEMY'S ANIMATION CONTROLLER
+    Animator anim;
+
+    public void setnavmeshspeed(float cs)
     {
-        chasingspeed = cs;
+        navmeshspeed = cs;
     }
-    public float getchasingspeed()
+    public float getnavmeshspeed()
     {
-        return chasingspeed;
+        return navmeshspeed;
     }
 
 
@@ -164,7 +192,6 @@ public class EnemyScript : MonoBehaviour
         enemy_type = type;
     }
 
-    GameObject gamemanager;
 
     void Start()
     {
@@ -172,38 +199,43 @@ public class EnemyScript : MonoBehaviour
         offset_z = 0;
         offset_x = 0;
         new_destination_interval = 0.0f;
-        //particles.SetActive(false);
         currentHealth = EnemyHealth;
 
-        gamemanager = GameObject.FindGameObjectWithTag("GameManager");
 
         transitionFromAttackTimer = 0.0f;
-        chasingspeed = 0.0f;
-        post_attack_duration = 0.0f;
-        targetVelocity = 1.5f;
+        navmeshspeed = 0.0f;
+
+
+        /*targetVelocity = 1.5f;
         numberOfRays = 30;
         angle = 90.0f;
         rayRange = 1.0f;
+        ray_distances = new List<float>();
+        ray_distance_n_direction = new Dictionary<float, Vector3>();*/
 
         updating = false;
         zone = GameObject.FindGameObjectsWithTag("Zone");
-        hitbox = GameObject.FindGameObjectWithTag("Attack");
-        player = GameObject.FindGameObjectWithTag("Player");
         transitionFromHurtTimer = 0.0f;
         healthbar.maxValue = currentHealth;
         healthbar.minValue = 0;
-        attackhitbox.GetComponent<BoxCollider>().enabled = false;
         BoundaryCheck();
         setzoneno = zoneno;
         timer = 0.0f;
 
 
+        player = GameObject.FindGameObjectWithTag("Player");
+        hitbox.GetComponent<BoxCollider>().enabled = false;
+        em = GameObject.FindGameObjectWithTag("GameManager").GetComponent<EnemyManager>();
+        navmeshagent = GetComponent<NavMeshAgent>();
+        anim = GetComponentInChildren<Animator>();
 
-        ray_distances = new List<float>();
-        ray_distance_n_direction = new Dictionary<float, Vector3>();
+
+        
 
         drawdivider();
     }
+
+    //CALCULATE THE NEW DESTINATION FOR THE ENEMY TO GO NEXT IN AVOID MODE
     public void set_newdestination()
     {
         int rand_range_x = Random.Range(0, 11);
@@ -227,7 +259,7 @@ public class EnemyScript : MonoBehaviour
             rand_y = Random.Range(1, 4);
         }
     }
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Enemy") || other.CompareTag("Floor"))
             return;
@@ -241,8 +273,12 @@ public class EnemyScript : MonoBehaviour
             other.CompareTag("Attack") && !Iframe
             && GetComponent<BoxCollider>().enabled == true
             && !other.GetComponentInParent<PlayerAttack>().getalready_attacked()
-            //&& other.GetComponent<BoxCollider>().enabled == true
-            //&& (!GetComponentInChildren<Animator>().GetBool("jump") && enemy_type == EnemyType.JUMPER)
+            && phase != Phases.COOLDOWN
+            /*&& (enemy_type == EnemyType.JUMPER
+            && !anim.GetCurrentAnimatorStateInfo(0).IsName("jump")
+            && !anim.GetBool("jump"))
+             && (enemy_type == EnemyType.CHASER 
+            && phase != Phases.ABOUT_TO_ATTACK)*/
             )
         {
             currentHealth -= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().GetPlayerAttack();
@@ -258,7 +294,8 @@ public class EnemyScript : MonoBehaviour
             //
 
             //ADD CONSECUTIVE HITS
-            func();
+            player.GetComponent<PlayerStats>().addConsecutiveHit();
+            player.GetComponent<PlayerStats>().resetCombo_timer();
             //
 
             if (!FirstAttack)
@@ -285,7 +322,7 @@ public class EnemyScript : MonoBehaviour
             {
                 case EnemyType.JUMPER:
                     {
-                        GetComponentInChildren<Animator>().SetBool("jump", false);
+                        anim.SetBool("jump", false);
                         GetComponentInChildren<SpriteRenderer>().transform.position 
                             = transform.position + new Vector3(0.0f, 0.66f, 0.0f);
 
@@ -294,16 +331,16 @@ public class EnemyScript : MonoBehaviour
                     }
                 case EnemyType.CHASER:
                     {
-                        GetComponentInChildren<Animator>().SetBool("about2attack", false);
-                        GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
-                        GetComponentInChildren<Animator>().SetBool("attack", false);
+                        anim.SetBool("about2attack", false);
+                        anim.SetBool("chasingPlayer", false);
+                        anim.SetBool("attack", false);
 
                         break;
                     }
                 case EnemyType.CHARGER:
                     {
-                        GetComponentInChildren<Animator>().SetBool("charge", false);
-                        GetComponentInChildren<Animator>().SetBool("about2charge", false);
+                        anim.SetBool("charge", false);
+                        anim.SetBool("about2charge", false);
                         GetComponent<ChargerScript>().DestroyBeams();
 
                         GetComponent<Rigidbody>().velocity = -GetComponent<Rigidbody>().velocity * 7.0f;
@@ -312,30 +349,28 @@ public class EnemyScript : MonoBehaviour
                     }
                 case EnemyType.SHOOTER:
                     {
-                        GetComponentInChildren<Animator>().SetBool("about2shoot", false);
-                        GetComponentInChildren<Animator>().SetBool("attack", false);
-                        GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
+                        anim.SetBool("about2shoot", false);
+                        anim.SetBool("attack", false);
+                        anim.SetBool("chasingPlayer", false);
 
                         break;
                     }
             }
             //
 
-           
-
             transitionFromHurtTimer = 0.0f;
-            //play attacked animation
-            GetComponentInChildren<Animator>().SetBool("attacked", true);
-            //
-            gamemanager.GetComponent<EnemyManager>().setupdating(false);
+            anim.SetBool("attacked", true);
+            em.setupdating(false);
             attacked = true;
+
+          
             ProCamera2DShake.Instance.ShakeUsingPreset("HitShake");
 
             Iframe = true;
         }
     }
 
-    public void setbool(bool attk)
+    public void setattacked(bool attk)
     {
         attacked = attk;
     }
@@ -344,11 +379,9 @@ public class EnemyScript : MonoBehaviour
     {
         return attacked;
     }
-    public void func()
-    {
-        player.GetComponent<PlayerStats>().addConsecutiveHit();
-        player.GetComponent<PlayerStats>().resetCombo_timer();
-    }
+    
+
+    //USE TO INSTANTIATE LINES BASE ON THE NUMBER OF HEALTH THE ENEMY HAS
     void drawdivider()
     {
         if (healthbar != null)
@@ -381,7 +414,10 @@ public class EnemyScript : MonoBehaviour
             healthbar.value = EnemyHealth;
         }
     }
+    //
 
+
+    //CHECK WHICH SIDE PLAYER IS ON RELATIVE TO THE ENEMY, LEFT OR RIGHT
     bool side_checking(float a, float b)
     {
         if ((int)a == (int)b)
@@ -393,10 +429,11 @@ public class EnemyScript : MonoBehaviour
             return false;
         }
     }
+    //
 
     public GameObject returnhitbox()
     {
-        return attackhitbox;
+        return hitbox;
     }
 
 
@@ -421,14 +458,16 @@ public class EnemyScript : MonoBehaviour
 
     private void Update()
     {
+        navmeshagent = GetComponent<NavMeshAgent>();
+        anim = GetComponentInChildren<Animator>();
 
-        //Debug.Log(setzoneno);
-        //GetComponent<NavMeshAgent>().enabled = false;
+       
+        BoundaryCheck();
 
-        currentAnimationLength = GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).length;
-        //healthtext.text = EnemyHealth.ToString();
 
-        GetComponentInChildren<Animator>().SetFloat("health", currentHealth);
+        currentAnimationLength = anim.GetCurrentAnimatorStateInfo(0).length;
+
+        anim.SetFloat("health", currentHealth);
         healthbar.value = currentHealth;
 
         if (Iframe)
@@ -443,24 +482,23 @@ public class EnemyScript : MonoBehaviour
         }
 
 
-        //flip the sprite
+        //FLIP SPRITE BASE ON WHICH SIDE THE PLAYER IS IN
         Vector3 mypos = transform.position;
         var targetPos = player.transform.position;
         if (player.transform.position.x < mypos.x && side_checking(mypos.y, targetPos.y))
         {
-            //print("Left");
+            //LEFT
             GetComponentInChildren<SpriteRenderer>().flipX = false;
         }
         else if (side_checking(mypos.y, targetPos.y))
         {
-            //print("Right");
-            //flip the sprite
+            //RIGHT
             GetComponentInChildren<SpriteRenderer>().flipX = true;
 
         }
         //
 
-        //turn purple when get sus dish
+        //TURN PURPLE WHEN ENEMY IS ATTACKED BY A DIFFERNT WEAPON THAN PREVIOUS
         if (AttackByOtherWeapon)
         {
             healthbar.GetComponentInChildren<Image>().color = new Color32(160, 32, 240, 100);// Color.blue;
@@ -468,46 +506,45 @@ public class EnemyScript : MonoBehaviour
         else
         {
             healthbar.GetComponentInChildren<Image>().color = Color.white;
-
-        }
-
-
-        //POST ATTACK
-        if (GetComponentInChildren<EnemyAttack>().getpostattack())
-        {
-            post_attack_duration += Time.deltaTime;
-            if (post_attack_duration >= 3.0f)
-            {
-                post_attack_duration = 0.0f;
-                GetComponentInChildren<EnemyAttack>().setpostattack(false);
-            }
         }
         //
 
-        BoundaryCheck();
-        if (zoneno == player.GetComponent<PlayerZoneCheck>().getZoneno())
+
+        //IF ENEMY IS IN THE SAME ZONE AS THE PLAYER, AND CURRENT ZONE THE ENEMY IS IN ITS DESIGNATED ZONE
+        if (zoneno == player.GetComponent<PlayerZoneCheck>().getZoneno()
+            && zoneno == setzoneno)
         {
             updating = true;
 
-            if (phase == Phases.AVOID
-                || (enemy_type == EnemyType.CHASER &&
-                (GetComponentInChildren<EnemyAttack>().getpostattack()
-                            || GetComponent<ChaserScript>().return_change_of_attk_type_1() >= 5.0f))
-                )
+        }
+        //IF PLAYER LEFT THE ZONE, OR ENEMY LEFT IT'S DESIGNATED ZONE
+        else if(zoneno != player.GetComponent<PlayerZoneCheck>().getZoneno()
+            || zoneno != setzoneno)
+        {
+
+            updating = false;
+        }
+
+
+        if (updating)
+        {
+            //IF PLAYER IS IN AVOID STATE
+            if (phase == Phases.AVOID)
             {
-                attackhitbox.GetComponent<BoxCollider>().enabled = true;
+                hitbox.GetComponent<BoxCollider>().enabled = true;
 
                 //GetComponentInChildren<SpriteRenderer>().color = Color.black;
+                //CONSTANTLY SET THE NEWDESTINATION TO BE THE OFFSET OF THE CURRENT DESTINATION BY THE X AND Z AXIS DURING AVOID MODE
                 new_destination_interval += Time.deltaTime;
                 if (new_destination_interval >= 3.0f)
                 {
-                    //set_newdestination();
                     offset_x = Random.Range(-7, 8);
                     offset_z = Random.Range(-7, 8);
                     new_destination_interval = 0;
                 }
+                //
 
-                GetComponent<NavMeshAgent>().enabled = true;
+                navmeshagent.enabled = true;
                 if (enemy_type == EnemyType.CHARGER)
                 {
                     GetComponent<ChargerScript>().DestroyBeams();
@@ -523,49 +560,33 @@ public class EnemyScript : MonoBehaviour
                     GetComponentInChildren<SpriteRenderer>().transform.position = transform.position + new Vector3(0.0f, 0.66f, 0.0f);
                 }
 
-                GetComponentInChildren<Animator>().SetBool("chasingPlayer", true);
-                GetComponent<NavMeshAgent>().speed = 2.0f;
-                GetComponent<NavMeshAgent>().SetDestination(new Vector3(
+                anim.SetBool("chasingPlayer", true);
+                navmeshagent.speed = 2.0f;
+                navmeshagent.SetDestination(new Vector3(
                 player.transform.position.x + rand_x + (int)offset_x,
                 transform.position.y,
                 player.transform.position.z + rand_y + (int)offset_z
                 ));
             }
+            //
+            //CONSTANTLY CALCULATE THE NEW DESTINATION FOR THE ENEMY TO GO NEXT IN AVOID MODE
             else
             {
-                //GetComponent<NavMeshAgent>().enabled = true;
-                //GetComponentInChildren<SpriteRenderer>().color = Color.white;
+               
                 new_destination_interval = 0;
                 offset_x = 0;
                 offset_z = 0;
                 if (enemy_type == EnemyType.CHARGER)
                 {
-                    GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
+                    anim.SetBool("chasingPlayer", false);
                 }
                 set_newdestination();
             }
-
-            //if (GetComponent<EnemyScript>().getzoneno() == 0)
-            //{
-            //    Vector3 resultingVector = GetComponent<EnemyScript>().getparent().position - transform.position;
-            //    resultingVector.y = 0;
-            //    resultingVector.Normalize();
-            //    GetComponent<Rigidbody>().velocity = resultingVector;
-            //}
-
+            //
+            
         }
-        else if(zoneno != player.GetComponent<PlayerZoneCheck>().getZoneno()
-            || zoneno != setzoneno)
+        else
         {
-
-            updating = false;
-        }
-
-
-        if (updating == false)
-        {
-            //GetComponent<NavMeshAgent>().enabled = false;
-            GetComponentInChildren<SpriteRenderer>().color = Color.white;
 
             if (enemy_type == EnemyType.CHARGER)
             {
@@ -576,12 +597,11 @@ public class EnemyScript : MonoBehaviour
             resultingVector.y = 0;
             resultingVector.Normalize();
             GetComponent<Rigidbody>().velocity = resultingVector;
-            //Debug.Log("GO BACK");
 
-            //if all enemies are not updating
-            if (!gamemanager.GetComponent<EnemyManager>().getEnemy_update())
+            //IF ALL ENEMIES ARE NOT UPDATING
+            if (!em.getEnemy_update())
             {
-                gamemanager.GetComponent<EnemyManager>().setupdating(false);
+                em.setupdating(false);
             }
             //
 
@@ -589,7 +609,7 @@ public class EnemyScript : MonoBehaviour
             phase = Phases.COOLDOWN;
         }
 
-        //if player left the zone
+        //IF PLAYER LEFT THE ZONE
         if(player.GetComponent<PlayerZoneCheck>().getZoneno() == 0)
         {
             FirstAttack = false;
@@ -599,25 +619,26 @@ public class EnemyScript : MonoBehaviour
         //
 
 
-        //IF ENEMY IS HURT
-        if (GetComponentInChildren<Animator>().GetBool("attacked"))
+        //IF ENEMY IS HURT, PLAY HURT ANIMATION
+        if (anim.GetBool("attacked"))
         {
             transitionFromHurtTimer += Time.deltaTime;
             if (transitionFromHurtTimer >=
                 currentAnimationLength)
             {
-                GetComponentInChildren<Animator>().SetBool("attacked", false);
+                anim.SetBool("attacked", false);
 
                 if (enemy_type == EnemyType.JUMPER)
                 {
-                    GetComponentInChildren<Animator>().SetBool("about2jump", false);
-                    GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
+                    anim.SetBool("about2jump", false);
+                    anim.SetBool("chasingPlayer", false);
                 }
             }
         }
         //
 
         transform.LookAt(player.transform.position);
+        //ENSURE ENEMY'S SPRITE ALWAYS FACE THE FRONT
         GetComponentInChildren<SpriteRenderer>().transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
@@ -656,31 +677,24 @@ public class EnemyScript : MonoBehaviour
 
     public void ifUpdatingfalse()
     {
-        //GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
-        attackhitbox.GetComponent<BoxCollider>().enabled = false;
-        GetComponent<NavMeshAgent>().enabled = true;
+        hitbox.GetComponent<BoxCollider>().enabled = false;
+        navmeshagent.enabled = true;
 
-        //Debug.Log("UPDATING FALSE");
-
-        //if (GetComponent<NavMeshAgent>().enabled == true)
-        //{
-            GetComponent<NavMeshAgent>().speed = 5.0f;
-            GetComponent<NavMeshAgent>().SetDestination(getparent().position);
-        //}
+       
+        navmeshagent.speed = 5.0f;
+        navmeshagent.SetDestination(getparent().position);
+        
 
         GetComponentInChildren<Canvas>().transform.localPosition = new Vector3(0, 0, 0);
         if (enemy_type == EnemyType.JUMPER)
         {
             GetComponentInChildren<SpriteRenderer>().transform.localPosition = new Vector3(0, 0.66f, 0);
         }
-        GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
+        anim.SetBool("chasingPlayer", false);
     }
    
 
-    public GameObject gethitbox()
-    {
-        return attackhitbox;
-    }
+    
 
     public int getzoneno()
     {
@@ -696,17 +710,15 @@ public class EnemyScript : MonoBehaviour
 
     public void cooldownUpdate()
     {
-        GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
-        
+        anim.SetBool("chasingPlayer", false);
         
         //turn off attack hitbox
-        attackhitbox.GetComponent<BoxCollider>().enabled = false;
+        hitbox.GetComponent<BoxCollider>().enabled = false;
         timer += 1.0f * Time.deltaTime;
         GetComponent<BoxCollider>().enabled = true;
         if (timer >= cooldown_period)
         {
             timer = 0.0f;
-            rand_gen = Random.Range(1, 5);
             phase = Phases.ABOUT_TO_ATTACK;
         }
     }
@@ -715,10 +727,10 @@ public class EnemyScript : MonoBehaviour
         GetComponent<BoxCollider>().enabled = true;
         if (enemy_type != EnemyType.CHARGER)
         {
-            GetComponentInChildren<Animator>().SetBool("chasingPlayer", true);
+            anim.SetBool("chasingPlayer", true);
         }
         GetComponentInChildren<SpriteRenderer>().color = Color.white;
-        attackhitbox.GetComponent<BoxCollider>().enabled = false;
+        hitbox.GetComponent<BoxCollider>().enabled = false;
      
         if (updating)
         {
@@ -728,7 +740,7 @@ public class EnemyScript : MonoBehaviour
         {
             if (enemy_type == EnemyType.CHASER)
             {
-                GetComponent<NavMeshAgent>().enabled = true;
+               navmeshagent.enabled = true;
             }
 
             //attack_type = Random.Range(1, 3);
@@ -747,23 +759,7 @@ public class EnemyScript : MonoBehaviour
 
     
 
-    public void avoidanceCode(float random_number_z)
-    {
-        Vector3 resultingVector = -player.transform.position + transform.position;
-        resultingVector.y = 0;
-        GetComponent<Rigidbody>().velocity = resultingVector + new Vector3(random_number_z, 0, 0);
-    }
-
-
-    public void avoidanceCode_2(float random_number_x, float random_number_z)
-    {
-        float x = random_number_x;
-        float z = random_number_z;
-
-        GetComponent<NavMeshAgent>().SetDestination(new Vector3(player.transform.position.x + x,
-                 transform.position.y,
-                 player.transform.position.z + z));
-    }
+    
 
     public float gettimer()
     {
@@ -803,12 +799,11 @@ public class EnemyScript : MonoBehaviour
             GameObject tempobj = Instantiate(whichobject, gameObject.transform.position, Quaternion.identity);
             tempobj.transform.SetParent(GameObject.FindGameObjectWithTag("Drops").transform);
 
-            //RATION POWER UP
+            //DROP AN EXTRA INGREDIENT WHEN RATION POWER UP IS ACTIVATED, AND PLAYER KILL A CERTAIN NUMBER OF ENEMIES
             player.GetComponentInChildren<PlayerAttack>().addenemykilled();
-            if (player.GetComponentInChildren<PlayerAttack>().getenemykilled() >= player.GetComponentInChildren<PlayerStats>().getpp().return_enemykilledrequirement()
-                && player.GetComponentInChildren<PlayerStats>().getpp().return_enemykilledrequirement() > 0)
+            if (player.GetComponentInChildren<PlayerAttack>().getenemykilled() >= player.GetComponentInChildren<PlayerStats>().getpp().return_ration()
+                && player.GetComponentInChildren<PlayerStats>().getpp().return_ration() > 0)
             {
-                //Debug.Log("RATIONED");
                 GameObject additoional_drop = Instantiate(whichobject, gameObject.transform.position, Quaternion.identity);
                 additoional_drop.transform.SetParent(GameObject.FindGameObjectWithTag("Drops").transform);
                 additoional_drop.GetComponent<Food>().SetPerfect(false);
@@ -827,17 +822,17 @@ public class EnemyScript : MonoBehaviour
 
         GetComponentInChildren<SpriteRenderer>().enabled = false;
         Destroy(gameObject);
-        gamemanager.GetComponent<EnemyManager>().recalculate_numberofenemies();
+        em.recalculate_numberofenemies();
     }
 
     public void Death()
     {
-        attackhitbox.GetComponent<BoxCollider>().enabled = false;
+        hitbox.GetComponent<BoxCollider>().enabled = false;
+
 
         if (currentHealth == 0)
         {
             Debug.Log("Precise Kill!");
-            //particles.SetActive(true);
             EnemyDie(true);
         }
         else if (currentHealth < 0)
@@ -858,6 +853,26 @@ public class EnemyScript : MonoBehaviour
         currentHealth = EnemyHealth;
     }
 
+
+    //UNUSED CODES
+    /*public void avoidanceCode(float random_number_z)
+    {
+        Vector3 resultingVector = -player.transform.position + transform.position;
+        resultingVector.y = 0;
+        GetComponent<Rigidbody>().velocity = resultingVector + new Vector3(random_number_z, 0, 0);
+    }
+
+
+    public void avoidanceCode_2(float random_number_x, float random_number_z)
+    {
+        float x = random_number_x;
+        float z = random_number_z;
+
+       navmeshagent.SetDestination(new Vector3(player.transform.position.x + x,
+                 transform.position.y,
+                 player.transform.position.z + z));
+    }
+    
     public void steering()
     {
         var deltaPosition = Vector3.zero;
@@ -925,7 +940,7 @@ public class EnemyScript : MonoBehaviour
     }
     public void steering_2()
     {
-        GetComponent<NavMeshAgent>().enabled = false;
+       navmeshagent.enabled = false;
 
         var deltaPosition = Vector3.zero;
         for (int i = 0; i < numberOfRays; i++)
@@ -1010,5 +1025,5 @@ public class EnemyScript : MonoBehaviour
         //normalise resulting vector
         resultingVector.Normalize();
         GetComponent<Rigidbody>().velocity = resultingVector * 5.0f;
-    }
+    }*/
 }

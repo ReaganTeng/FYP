@@ -216,7 +216,6 @@ GameObject:
   - component: {fileID: 4193819076522141233}
   - component: {fileID: 1020180911251508206}
   - component: {fileID: 2121389376857138220}
-  - component: {fileID: 6832271475201945813}
   - component: {fileID: 5736513518625203091}
   m_Layer: 7
   m_Name: Flappy_Salmon
@@ -306,19 +305,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &6832271475201945813
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3627558122910260224}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab6dde5c16dcfc44c9317a74554a55fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  navMeshAgent: {fileID: 2121389376857138220}
 --- !u!114 &5736513518625203091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,31 +317,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddbf992b6a200604983e66a200d7330d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lm:
-    serializedVersion: 2
-    m_Bits: 128
-  lm_2:
-    serializedVersion: 2
-    m_Bits: 2097216
-  player_lm:
-    serializedVersion: 2
-    m_Bits: 64
   EnemyHealth: 17
-  AttackDamage: 5
   prepPrefab: {fileID: 1561627430489754311, guid: 57abb08eeb115de42936e21dff3348b3, type: 3}
   choppedPefab: {fileID: 230456148176578982, guid: aec9b270e882f1445a5590829cab4627, type: 3}
   smashedPrefab: {fileID: 3580705257214053582, guid: 70300863893e0d647a641ef681e072b2, type: 3}
   Mush: {fileID: 8494874157540663937, guid: 4255f020537c20a48857eb56b1b0f6d5, type: 3}
-  attackhitbox: {fileID: 1130457652550265538}
-  healthbar: {fileID: 1358595043026121292}
   cooldown_period: 0.5
   abouttoattack_period: 0.5
-  atkPattern: 0
   phase: 0
+  atkPattern: 0
+  healthbar: {fileID: 1358595043026121292}
   line: {fileID: 4302930331368835095, guid: 1434afd8d00d3ab40918b589eba6bdbd, type: 3}
   canvas: {fileID: 3791774888921157571}
   handle: {fileID: 8773321961550248004}
-  healthtext: {fileID: 0}
+  hitbox: {fileID: 1130457652550265538}
 --- !u!1 &4373100511456285643
 GameObject:
   m_ObjectHideFlags: 0

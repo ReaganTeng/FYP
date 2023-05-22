@@ -6,31 +6,29 @@ public class UpgradeSystem : MonoBehaviour
 {
     [SerializeField] PlayerProgress pp;
     public enum ShopItemType
-    {
-        NONE,
-        INVENTORY_UPGRADE,
-        HEAVY_ATTACK_BUFF,
-        BUFF_MODE_AMOUNT_REQUIREMENT,
-        FERVOR_REDUCTION,
-        CHARGE_INCREASE,
-        HEAVYATTACK_RECOVERY,
-        FERVORLOSS_PADDING,
-        CHARGE_REWARD,
-        FASTER_COOKER,
+    {        
         BETTER_COOKER,
         LONGER_ORDERS,
         BETTER_PERFECT,
         PERFECT_FRENZY,
+
+        /// GENERAL
+        INVENTORY_UPGRADE,
         HYPER_FOCUSED_COOKING,
         CALM_MIND,
+        THICK_SKIN,
         STURDY_ARM,
         BETTER_STAMINA,
-        THICK_SKIN,
+        /// 
 
-        RUSH_OF_PERFECTION,
+        /// FAST SERVING
+        FASTER_COOKER,
         RATION,
         JUST_DIE_ALREADY,
-        DINNER_RUSH
+        DINNER_RUSH,
+        /// 
+
+        RUSH_OF_PERFECTION,
 
 
 
@@ -47,27 +45,29 @@ public class UpgradeSystem : MonoBehaviour
     {
         switch (item.GetShopItemType())
         {
+            ///GENERAL SHOP ITEMS
             case ShopItemType.INVENTORY_UPGRADE:
                 pp.IncreaseInventorySize();
                 break;            
-            
             case ShopItemType.HYPER_FOCUSED_COOKING:
-                pp.reduce_buffactive_requirement();
+                pp.update_hyper_focused_cooking();
                 break;
             case ShopItemType.CALM_MIND:
-                pp.reduce_fervorspeed();
-                break;
-            case ShopItemType.STURDY_ARM:
-                pp.increase_number_of_charges();
-                break;
-            case ShopItemType.BETTER_STAMINA:
-                pp.decrease_heavyattackrecovery();
+                pp.update_calmmind();
                 break;
             case ShopItemType.THICK_SKIN:
-                pp.increase_thick_skin();
+                pp.update_thick_skin();
                 break;
+            case ShopItemType.STURDY_ARM:
+                pp.update_sturdy_arm();
+                break;
+            case ShopItemType.BETTER_STAMINA:
+                pp.update_better_stamina();
+                break;
+            ///
+
             case ShopItemType.RUSH_OF_PERFECTION:
-                pp.increase_charge_reward();
+                pp.update_rush_of_perfection();
                 break;
             case ShopItemType.FASTER_COOKER:
                 pp.IncreaseMixerReduction();
@@ -85,14 +85,14 @@ public class UpgradeSystem : MonoBehaviour
                 pp.IncreaseFrenzyModeMaxStack();
                 break;
             case ShopItemType.RATION:
-                pp.decrease_enemykilledrequirement();
+                pp.update_ration();
                 break;
 
             case ShopItemType.JUST_DIE_ALREADY:
-                pp.set_instantkill_requirement();
+                pp.update_justdiealready();
                 break;
             case ShopItemType.DINNER_RUSH:
-                pp.set_burst_time();
+                pp.update_dinner_rush();
                 break;
         }
     }

@@ -7,27 +7,46 @@ using Com.LuisPedroFonseca.ProCamera2D;
 
 public class ChaserScript : MonoBehaviour
 {
-    float timer;
-    float change_of_attk_type_1;
+    //POST ATTACK DURATION
+    float post_attack_duration;
 
+    //TIMER OF THE OVERALL UPDATE
+    float timer;
+
+    //TIMER TO INDICATE WHEN TO AVOID PLAYER
+    float timer_avoid;
+
+    //TIMER FOR ABOUT TO ATTACK
     float delayTime;
 
 
-    Transform starting_location;
-    Transform ending_location;
+    //HOW FAR YOU WANT THE NAVMESH DESTINATION TO BE AWAY FROM THE PLAYER BY THE X AXIS
+    float offset_x;
+    //HOW FAR YOU WANT THE NAVMESH DESTINATION TO BE AWAY FROM THE PLAYER BY THE Z AXIS
+    float offset_z;
+
+
+    //THE DISTANCE BEWTEEN THE PLAYER AND ENEMY
     float dist;
 
-    //determine how many times the player can attack at once
+    //DETERMINE THE NUMBER OF HITS ENEMY CAN PERFORM
     [SerializeField] int attacks_per_session;
 
     int attacks_performed;
 
+    //THE PLAYER PREFAB
     GameObject player;
+    //THE ENEMY MANAGER SCRIPT IN GAME MANAGER PREFAB
     EnemyManager em;
+    //ENEMY'S HITBOX
     GameObject hitbox;
+    //ENEMY'S NAVMESHAGENT
     NavMeshAgent navmeshagent;
+    //ENEMY'S ANIMATION CONTROLLER
     Animator anim;
+    //ENEMEY'S PHASE IN ENEMYSCRIPT
     EnemyScript.Phases enemyPhase;
+    //ENEMY'S ENEMYSCRIPT
     EnemyScript enemyScript;
 
 
@@ -36,7 +55,7 @@ public class ChaserScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        post_attack_duration = 0.0f;
         player = GameObject.FindGameObjectWithTag("Player");
         em = GameObject.FindGameObjectWithTag("GameManager").GetComponent<EnemyManager>();
         navmeshagent = gameObject.GetComponent<NavMeshAgent>();
@@ -48,14 +67,41 @@ public class ChaserScript : MonoBehaviour
         attacks_performed = 0;
         enemyScript.set_enemyType(EnemyScript.EnemyType.CHASER);
 
+        offset_x = 0;
+        offset_z = 0;
 
         timer = 0;
         delayTime = 0;
-        change_of_attk_type_1 = 0;
+        timer_avoid = 0;
 
 
         hitbox.GetComponent<BoxCollider>().enabled = true;
     }
+
+    public void set_newdestination()
+    {
+        int rand_range_x = Random.Range(0, 11);
+        int rand_range_y = Random.Range(0, 11);
+
+        if (rand_range_x % 2 == 0)
+        {
+            offset_x = Random.Range(-3, 0);
+        }
+        else
+        {
+            offset_x = Random.Range(1, 4);
+        }
+
+        if (rand_range_y % 2 == 0)
+        {
+            offset_z = Random.Range(-3, 0);
+        }
+        else
+        {
+            offset_z = Random.Range(1, 4);
+        }
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -67,8 +113,8 @@ public class ChaserScript : MonoBehaviour
         hitbox = enemyScript.returnhitbox();
 
 
-        navmeshagent.speed = enemyScript.getchasingspeed();
-        navmeshagent.acceleration = enemyScript.getchasingspeed();
+        navmeshagent.speed = enemyScript.getnavmeshspeed();
+        navmeshagent.acceleration = enemyScript.getnavmeshspeed();
 
         dist = Vector3.Distance(transform.position, player.transform.position);
 
@@ -87,9 +133,6 @@ public class ChaserScript : MonoBehaviour
             }
         }
         //
-
-
-        
 
 
         if (hitbox.GetComponent<EnemyAttack>().get_attacking())
@@ -111,7 +154,7 @@ public class ChaserScript : MonoBehaviour
                         //
                         player.GetComponent<PlayerStats>().resetval();
                         ProCamera2DShake.Instance.ShakeUsingPreset("DamageShake");
-                        Debug.Log("HIT");
+                        //Debug.Log("HIT");
                     }
                     hitbox.GetComponent<EnemyAttack>().setattackCDtimer(
                         hitbox.GetComponent<EnemyAttack>().getattackCD());
@@ -150,7 +193,17 @@ public class ChaserScript : MonoBehaviour
         }
         //
 
-
+        //POST ATTACK
+        if (GetComponentInChildren<EnemyAttack>().getpostattack())
+        {
+            post_attack_duration += Time.deltaTime;
+            if (post_attack_duration >= 3.0f)
+            {
+                post_attack_duration = 0.0f;
+                hitbox.GetComponent<EnemyAttack>().setpostattack(false);
+            }
+        }
+        //
 
         if (enemyScript.getupdating())
         {
@@ -161,68 +214,44 @@ public class ChaserScript : MonoBehaviour
                     {
                         GetComponent<BoxCollider>().enabled = true;
                         anim.SetBool("chasingPlayer", true);
-                        //chasingspeed = 2.0f;
                         timer += Time.deltaTime;
-
-
-                        if (hitbox.GetComponent<EnemyAttack>().return_whether_back_away())
-                        { 
-                            change_of_attk_type_1 += Time.deltaTime;
-                        }
-                        else
-                        {
-                            change_of_attk_type_1 = 0;
-                        }
-
-                        if (change_of_attk_type_1 >= 8.0f)
+                        
+                        timer_avoid += Time.deltaTime;
+                        if (timer_avoid >= 8.0f)
                         {
                             GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
-                            change_of_attk_type_1 = 0.0f;
+                            timer_avoid = 0.0f;
                         }
-
-                       
-                        //avoid the player
+                      
+                        //AVOID THE PLAYER WHEN ENEMY MANAGES TO HIT PLAYER, OR TIMER_AVOID >= 5
                         if (hitbox.GetComponent<EnemyAttack>().getpostattack()
-                            || change_of_attk_type_1 >= 5.0f)
+                            || timer_avoid >= 5.0f)
                         {
+                            enemyScript.setnavmeshspeed(4.0f);
 
-                            if(hitbox.GetComponent<EnemyAttack>().getpostattack())
+
+                            if (hitbox.GetComponent<EnemyAttack>().getpostattack())
                             {
-                                change_of_attk_type_1 = 0.0f;
+                                timer_avoid = 0.0f;
                             }
 
-                            enemyScript.setchasingspeed(2.0f);
-
-                            //enemyPhase =
-
-                            //avoid player
-                            //if (dist <= 5.0f)
-                            //{
-                            //    navMeshAgent.enabled = false;
-                            //    //enemyScript.steering();
-                            //    enemyScript.avoidanceCode(rand_z);
-                            //}
-                            ////continue chasing player
-                            //else
-                            //{
-
-                            //    /*if (GetComponentInChildren<Animator>().GetBool("about2attack")
-                            //        && GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("aboutattack"))
-                            //    {
-                            //        navMeshAgent.enabled = false;
-                            //    }
-                            //    else
-                            //    {
-                            //        navMeshAgent.enabled = true;
-                            //    }
-                            //    GetComponent<Rigidbody>().velocity = new Vector3(rand_z, 0.0f, 0.0f);
-                            //    navMeshAgent.SetDestination(playerGO.transform.position);*/
-                            //}
+                            if (dist <= 5.0f)
+                            {
+                                navmeshagent.SetDestination(
+                                    new Vector3(player.transform.position.x + offset_x, 
+                                    transform.position.y,
+                                    player.transform.position.z + offset_z)
+                                    );
+                            }
                         }
                         //
-                        //continue to chase the player
+                        //CONTINUE TO CHASE THE PLAYER
                         else
                         {
+
+                            enemyScript.setnavmeshspeed(2.0f);
+
+                            set_newdestination();
                             hitbox.GetComponent<BoxCollider>().enabled = true;
 
                             if (anim.GetCurrentAnimatorStateInfo(0).IsName("aboutattack")
@@ -238,41 +267,30 @@ public class ChaserScript : MonoBehaviour
                                 navmeshagent.SetDestination(player.transform.position);
                             }
 
-                            enemyScript.setchasingspeed(4.0f);
                         }
                         //
 
+                        //SET TO COOLDOWN MODE IF TIMER >= 20
                         if (timer > 20.0f)
                         {
                             em.setupdating(false);
                             enemyScript.set_current_phase(EnemyScript.Phases.COOLDOWN);
                         }
+                        //
 
                         break;
                     }
                 case EnemyScript.Phases.COOLDOWN:
                     {
-                        enemyScript.setchasingspeed(2.0f);
+                        enemyScript.setnavmeshspeed(2.0f);
                         timer = 0.0f;
-                        change_of_attk_type_1 = 0.0f;
+                        timer_avoid = 0.0f;
 
                         enemyScript.cooldownUpdate();
                         break;
                     }
                 case EnemyScript.Phases.ABOUT_TO_ATTACK:
                     {
-                        
-
-                        //GetComponent<Rigidbody>().velocity =
-
-                        //if (dist <= 5.0f)
-                        //{
-                        //    Vector3 resultingVector = -playerGO.transform.position + transform.position;
-                        //    resultingVector.y = 0;
-                        //    GetComponent<Rigidbody>().velocity = resultingVector;
-                        //}
-
-                        //enemyScript.avoidanceCode(rand_z);
                         GetComponent<EnemyScript>().abouttoattackUpdate();
                         break;
                     }
@@ -280,18 +298,13 @@ public class ChaserScript : MonoBehaviour
         }
         else
         {
-            //Debug.Log("VEL " + GetComponent<Rigidbody>().velocity);
-
-            //Debug.Log("UPDATING FALSE");
+            
             enemyScript.ifUpdatingfalse();
         }
 
     }
 
-    public float return_change_of_attk_type_1()
-    {
-        return change_of_attk_type_1;
-    }
+    
    
 
 }

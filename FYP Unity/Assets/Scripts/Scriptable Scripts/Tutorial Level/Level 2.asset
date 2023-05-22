@@ -165,6 +165,19 @@ MonoBehaviour:
   - TextDisplay: Press Z for Spatula, X for knife and C for Rolling pin.
     conditions: 0
     TimeTillPromptSkip: 3
+  - TextDisplay: Look at the color of the ingredient display in the recipes.
+    conditions: 0
+    TimeTillPromptSkip: 3
+  - TextDisplay: Then look at the color of the weapon UI
+    conditions: 0
+    TimeTillPromptSkip: 3
+  - TextDisplay: Notice the corresponding colors, this means you get that ingredient
+      with the tool.
+    conditions: 0
+    TimeTillPromptSkip: 3
+  - TextDisplay: ill let you figure the enemy out yourself
+    conditions: 0
+    TimeTillPromptSkip: 3
   - TextDisplay: ~Get the correct apple ingredient using the correct weapon to kill~
     conditions: 29
     TimeTillPromptSkip: 3
@@ -222,7 +235,7 @@ MonoBehaviour:
   - TextDisplay: Let's put you into the test
     conditions: 0
     TimeTillPromptSkip: 1
-  - TextDisplay: ~Get at least a minimum of 25 score from these orders~
+  - TextDisplay: ~Get at least a minimum of 20 score from these orders~
     conditions: 32
     TimeTillPromptSkip: 3
   - TextDisplay: I don't know if you are slacking or just bad. But is this a joke?

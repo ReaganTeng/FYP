@@ -4981,7 +4981,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3204651176866639284
 Transform:
   m_ObjectHideFlags: 0
@@ -4990,8 +4990,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2429570959170697404}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.362, y: -0.951, z: 0.17}
-  m_LocalScale: {x: 2.3775244, y: 0.82, z: 0.032217603}
+  m_LocalPosition: {x: -0.21, y: -0.54, z: 0.17}
+  m_LocalScale: {x: 1.3041673, y: 0.82, z: 0.032217603}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2402127068353431887}
@@ -10025,18 +10025,14 @@ MonoBehaviour:
   spaculaHitbox: {fileID: 6670536203559410289}
   knifeHitbox: {fileID: 2429570959170697404}
   pinHitbox: {fileID: 3136350151301332611}
-  regeneration_rate_per_notch: 5
-  number_of_charges: 5
+  regeneration_rate_per_notch: 10
   chargeBar: {fileID: 0}
   canvas: {fileID: 0}
   chargertimertext: {fileID: 0}
   line: {fileID: 6922493218510129667, guid: 3f6a26fc70e9cfb42aed81987544b6ba, type: 3}
   handle: {fileID: 0}
-  enemyLM:
-    serializedVersion: 2
-    m_Bits: 128
   animator: {fileID: 5881152895048556901}
-  heavyattackanimation_knife: {fileID: 7400000, guid: 8d56feadd7064c643a4980a10ec168d2, type: 2}
+  heavyattackanimation_knife: {fileID: 7400000, guid: 258099a980fc2674981409c2da502640, type: 2}
   heavyattackanimation_spatula: {fileID: 7400000, guid: dd2bc2a887e454247a359807b702a3c3, type: 2}
   heavyattackanimation_pin: {fileID: 7400000, guid: 8af0838cd8e9b284eafc7d7970dd054b, type: 2}
   pp: {fileID: 11400000, guid: 80203a9d8037ee2449d6c18b30afe1f3, type: 2}
@@ -10056,7 +10052,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8345731961288334518
 Transform:
   m_ObjectHideFlags: 0
@@ -10065,8 +10061,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3136350151301332611}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.01, y: -1.38, z: 0.4}
-  m_LocalScale: {x: 0.9906351, y: 1.269706, z: 0.0510112}
+  m_LocalPosition: {x: -0.21, y: -0.54, z: 0.17}
+  m_LocalScale: {x: 1.3041673, y: 0.82, z: 0.032217603}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2877500651753619872}
@@ -10084,8 +10080,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.5971272, y: 1.4044484, z: 17.048792}
-  m_Center: {x: 1.2985636, y: 1.2013415, z: 0.12476808}
+  m_Size: {x: 0.9875318, y: 1.4059663, z: 25.044714}
+  m_Center: {x: 0.7460452, y: 0.9499999, z: 3.6473403}
 --- !u!1 &3462924137396006120
 GameObject:
   m_ObjectHideFlags: 0
@@ -10153,7 +10149,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 8852204268514479156}
   DashCD: 2
   dashtimer_slider: {fileID: 0}
-  pp: {fileID: 0}
+  pp: {fileID: 11400000, guid: 80203a9d8037ee2449d6c18b30afe1f3, type: 2}
 --- !u!54 &5218877466719756691
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10611,7 +10607,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2710275217042273377
 Transform:
   m_ObjectHideFlags: 0
@@ -10620,8 +10616,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6670536203559410289}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.01, y: -1.38, z: 0.37}
-  m_LocalScale: {x: 0.9906351, y: 1.269706, z: 0.0686554}
+  m_LocalPosition: {x: -0.21, y: -0.54, z: 0.17}
+  m_LocalScale: {x: 1.3041673, y: 0.82, z: 0.032217603}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 938169736312787799}
@@ -10639,8 +10635,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.45137522, y: 0.4618963, z: 8.010609}
-  m_Center: {x: 0.22568761, y: 1.0528613, z: -2.2145104}
+  m_Size: {x: 0.9875318, y: 1.4059663, z: 25.044714}
+  m_Center: {x: 0.7460452, y: 0.9499999, z: 3.6473403}
 --- !u!1 &8221724153166463230
 GameObject:
   m_ObjectHideFlags: 0
@@ -10714,11 +10710,11 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -499965009
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 1679598921, guid: 2e8d9d2f19434824f93eb89c973ec5fc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 4, y: 5.001221}

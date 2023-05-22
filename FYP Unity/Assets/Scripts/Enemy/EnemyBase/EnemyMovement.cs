@@ -23,7 +23,6 @@ public class EnemyMovement : MonoBehaviour
     {
         Vector3 Playerpos = new Vector3(Player.transform.position.x, 0, Player.transform.position.z);
         Vector3 Enemypos = new Vector3(gameObject.transform.position.x, 0, gameObject.transform.position.z);
-
       
     }
 }

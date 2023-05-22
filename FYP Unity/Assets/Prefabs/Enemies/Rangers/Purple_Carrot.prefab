@@ -161,7 +161,6 @@ GameObject:
   - component: {fileID: 3812054416498822111}
   - component: {fileID: 70995825211418112}
   - component: {fileID: 1415505873347774914}
-  - component: {fileID: 5766096006965288251}
   - component: {fileID: 4704119587021868669}
   - component: {fileID: 115761172698336802}
   - component: {fileID: 2745127824109599453}
@@ -241,19 +240,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &5766096006965288251
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4360609880674071022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab6dde5c16dcfc44c9317a74554a55fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  navMeshAgent: {fileID: 1415505873347774914}
 --- !u!114 &4704119587021868669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -266,31 +252,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddbf992b6a200604983e66a200d7330d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lm:
-    serializedVersion: 2
-    m_Bits: 128
-  lm_2:
-    serializedVersion: 2
-    m_Bits: 2097216
-  player_lm:
-    serializedVersion: 2
-    m_Bits: 64
   EnemyHealth: 31
-  AttackDamage: 5
   prepPrefab: {fileID: 7368843607024631289, guid: 648a42146f7acb941b8b41586f912caa, type: 3}
   choppedPefab: {fileID: 8056949394039048984, guid: 7c79344810096434cae7c421864cd1d2, type: 3}
   smashedPrefab: {fileID: 2588285224337378375, guid: fd3f4b75877932e43b2e4e265e888e5b, type: 3}
   Mush: {fileID: 8494874157540663937, guid: 4255f020537c20a48857eb56b1b0f6d5, type: 3}
-  attackhitbox: {fileID: 3808063470164777748}
-  healthbar: {fileID: 5033738875903249284}
   cooldown_period: 0.5
   abouttoattack_period: 0.5
-  atkPattern: 1
   phase: 0
+  atkPattern: 1
+  healthbar: {fileID: 5033738875903249284}
   line: {fileID: 6922493218510129667, guid: 3f6a26fc70e9cfb42aed81987544b6ba, type: 3}
   canvas: {fileID: 8210305914193063901}
   handle: {fileID: 8199411161038485324}
-  healthtext: {fileID: 0}
+  hitbox: {fileID: 3808063470164777748}
 --- !u!114 &115761172698336802
 MonoBehaviour:
   m_ObjectHideFlags: 0
