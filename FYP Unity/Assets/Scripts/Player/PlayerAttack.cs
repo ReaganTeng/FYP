@@ -50,8 +50,8 @@ public class PlayerAttack : MonoBehaviour
     //the default charging duration in seconds
     float chargingduration;
     [SerializeField] float regeneration_rate_per_notch;
-    //number of charges the player has
-    [SerializeField]  int number_of_charges;
+    //number of heavy attack charges the player has
+    int number_of_charges;
 
 
 
@@ -65,7 +65,6 @@ public class PlayerAttack : MonoBehaviour
     Weapon currentweapon = Weapon.ROLLINGPIN;
     // Start is called before the first frame update
 
-    bool b;
 
     GameObject closestenemy;
     bool isclicked;
@@ -80,10 +79,10 @@ public class PlayerAttack : MonoBehaviour
     bool CanHeavyAttack = true;
 
 
-    [SerializeField] LayerMask enemyLM;
+    //[SerializeField] LayerMask enemyLM;
+
     [SerializeField] Animator animator;
     [SerializeField] AnimationClip heavyattackanimation_knife;
-
     [SerializeField] AnimationClip heavyattackanimation_spatula;
     [SerializeField] AnimationClip heavyattackanimation_pin;
 
@@ -100,17 +99,18 @@ public class PlayerAttack : MonoBehaviour
         notSelected.a = notSelectedAlpha;
         UpdateWeaponDisplay();
 
-        b = false;
         enemykilled = 0;
 
         already_attacked = false;
-        //number_of_charges = 2;
 
-        if (pp.return_number_of_charges() > 0)
+        number_of_charges = 2;
+        //INCREASE THE NUMBER OF CHARGES AVAILABLE BASE ON STURDY ARM UPGRADE
+        if (pp.return_sturdy_arm() > 0)
         {
             //Debug.Log("INCREASE");
-            number_of_charges += pp.return_number_of_charges();
+            number_of_charges += pp.return_sturdy_arm();
         }
+        //
 
         click_timer = 0.0f;
         isclicked = false;
@@ -322,32 +322,33 @@ public class PlayerAttack : MonoBehaviour
             }
 
 
+            {
+                //if (Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(0))
+                //{
+                //    isclicked = true;
+                //}
 
-            //if (Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(0))
-            //{
-            //    isclicked = true;
-            //}
-
-            //FIND CLOSEST ENEMY
-            //if(heavyattackclicked)
-            //{
-            //    //closestenemy.GetComponentInChildren<SpriteRenderer>().color = Color.blue;
-            //    closestenemy.GetComponent<NavMeshAgent>().speed= 0;
-            //    closestenemy.GetComponent<Rigidbody>().velocity = new Vector3 (0, 0, 0);
-            //}
-            //else
-            //{
-            //    if(closestenemy != null)
-            //    {
-            //        //closestenemy.GetComponentInChildren<SpriteRenderer>().color = Color.white;
-            //        closestenemy = null;
-            //    }
-            //}
-            //
+                //FIND CLOSEST ENEMY
+                //if(heavyattackclicked)
+                //{
+                //    //closestenemy.GetComponentInChildren<SpriteRenderer>().color = Color.blue;
+                //    closestenemy.GetComponent<NavMeshAgent>().speed= 0;
+                //    closestenemy.GetComponent<Rigidbody>().velocity = new Vector3 (0, 0, 0);
+                //}
+                //else
+                //{
+                //    if(closestenemy != null)
+                //    {
+                //        //closestenemy.GetComponentInChildren<SpriteRenderer>().color = Color.white;
+                //        closestenemy = null;
+                //    }
+                //}
+                //
+            }
 
             if (isclicked)
             {
-                //if is reaches 50% of the attack animation
+                //IF IT REACHES A CERTAIN % OF THE ATTACK ANIMATION
                 click_timer -= Time.deltaTime;
                 //SPATULA, //0
                 //ROLLINGPIN, //2
@@ -361,7 +362,6 @@ public class PlayerAttack : MonoBehaviour
                     )
                     )
                 {
-
                     if (heavyattackclicked
                         && !attacking)
                     {
@@ -379,20 +379,16 @@ public class PlayerAttack : MonoBehaviour
                 }
             }
 
-
-            /*if (!GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Dash")
-                  && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("attack_with_knife")
-                && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("attack_with_pin")
-                && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("attack_with_spatula")
-                && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("heavyattack_knife")
-                 && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("heavyattack_pin")
-                 && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("heavyattack_pin"))*/
-
-
-            //activate hitbox
+            //ACTIVATE HITBOX
             if (attacking)
             {
                 attackingtimer -= Time.deltaTime;
+
+                if(attackingtimer < .90f * attackingtime)
+                {
+                    already_attacked = true;
+                }
+
                 if (attackingtimer <= 0)
                 {
                     HitBox.SetActive(false);
@@ -590,18 +586,7 @@ public class PlayerAttack : MonoBehaviour
     }
     public void updatecharge()
     {
-       //if(Input.GetKey(KeyCode.C))
-       // {
-       //     if (!b)
-       //     {
-       //         addcharge(3);
-       //         b = true;
-       //     }
-       // }
-       //else
-       // {
-       //     b = false;
-       // }
+       
 
         chargeBar.maxValue = chargeMaxLvl;
         min_notch_value = chargeMaxLvl / number_of_charges;
@@ -609,9 +594,8 @@ public class PlayerAttack : MonoBehaviour
         //CONTINUE TO INCREASE chargeCurrentLvlBAR WHEN IT'S BELOW MAXIMUM VALUE
         if ((int)chargeCurrentLvl< (int)chargeMaxLvl)
         {
-            //chargeCurrentLvl+= chargingSpeed * Time.deltaTime;
-            chargeCurrentLvl+= Time.deltaTime * pp.return_heavyattackrecovery();
-
+            //INCREASE THE CHARGE BAR OF THE PLAYER BASE ON THE SPEED OF BETTER STAMINA UPGRADE ALSO
+            chargeCurrentLvl+= Time.deltaTime * pp.return_better_stamina();
         }
         else if ((int)chargeCurrentLvl>= (int)chargeMaxLvl)
         {

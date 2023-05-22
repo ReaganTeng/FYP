@@ -6,27 +6,44 @@ using UnityEngine.AI;
 
 public class ChargerScript : MonoBehaviour
 {
+    //THE NUMBER OF BOUNCES THE CHARGER WILL PERFORM
     int number_of_bounces;
-    bool collided;
-    Vector3 resultingVector;
+    //DETERMINE WHETHER ENEMY STOPS CHARGING
+    bool stop_colliding;
+
+
+    //THE DIRECTION THE ENEMY WILL MOVE TO USING VELOCITY
+    Vector3 velocity_direction;
+    //THE DISTANCE BEWTEEN PLAYER AND ENEMY
     float currentdistance;
+    //HOW LONG THE PLAYER WILL CHARGE
     float chargingtime;
-    [SerializeField] LayerMask lm;
+    //THE SPEED OF THE CHARGING
     float velocityspeed;
+    //THE PLAYER'S LAST KNOWN POSITION BEFOR ECHARGING
     Vector3 playerPos;
 
-    GameObject pivotpoint;
+    //THE PIVOTPOINT GAMEOBJECT
     [SerializeField] GameObject pivotpointGO;
+    GameObject pivotpoint;
+    //THE LOCKONBEAM GAMEOBJECT
     [SerializeField]GameObject lockonbeamGO;
-     GameObject lockonbeam;
+    GameObject lockonbeam;
 
 
+    //THE PLAYER PREFAB
     GameObject player;
+    //THE ENEMY MANAGER SCRIPT IN GAME MANAGER PREFAB
     EnemyManager em;
+    //ENEMY'S HITBOX
     GameObject hitbox;
+    //ENEMY'S NAVMESHAGENT
     NavMeshAgent navmeshagent;
+    //ENEMY'S ANIMATION CONTROLLER
     Animator anim;
+    //ENEMEY'S PHASE IN ENEMYSCRIPT
     EnemyScript.Phases enemyPhase;
+    //ENEMY'S ENEMYSCRIPT
     EnemyScript enemyScript;
 
 
@@ -44,11 +61,11 @@ public class ChargerScript : MonoBehaviour
         enemyScript.set_enemyType(EnemyScript.EnemyType.CHARGER);
         velocityspeed =8.5f;
         number_of_bounces = 0;
-        collided = false;
+        stop_colliding = false;
         
-        resultingVector = player.transform.position - transform.position;
-        resultingVector.y = 0;
-        resultingVector.Normalize();
+        velocity_direction = player.transform.position - transform.position;
+        velocity_direction.y = 0;
+        velocity_direction.Normalize();
         chargingtime = 0.0f;
         currentdistance = Vector3.Distance(player.transform.position, transform.position);
     }
@@ -75,15 +92,15 @@ public class ChargerScript : MonoBehaviour
                         if (chargingtime < 0.1f)
                         {
                             playerPos = player.transform.position;
-                            resultingVector = playerPos - transform.position;
+                            velocity_direction = playerPos - transform.position;
                         }
                         if (chargingtime >= 1.0f)
                         {
                             chargingtime = 0;
-                            collided = true;
+                            stop_colliding = true;
                         }
                         //KEEP GOING FORWARD UNTIL HITS WALL
-                        if (collided)
+                        if (stop_colliding)
                         {
                             recovering();
                         }
@@ -109,13 +126,13 @@ public class ChargerScript : MonoBehaviour
                         if (chargingtime < 0.1f)
                         {
                             playerPos = player.transform.position;
-                            resultingVector = playerPos - transform.position;
+                            velocity_direction = playerPos - transform.position;
                         }
 
                         if (chargingtime >= 2.0f)
                         {
                             playerPos = player.transform.position;
-                            resultingVector = playerPos - transform.position;
+                            velocity_direction = playerPos - transform.position;
                             number_of_bounces += 1;
                             chargeAtplayer();
                             chargingtime = 0.0f;
@@ -124,12 +141,12 @@ public class ChargerScript : MonoBehaviour
 
                         if (number_of_bounces >= 3)
                         {
-                            collided = true;
+                            stop_colliding = true;
                             number_of_bounces = 0;
                         }
 
                         //KEEP GOING FORWARD UNTIL HITS WALL
-                        if (collided)
+                        if (stop_colliding)
                         {
                             recovering();
                         }
@@ -153,7 +170,7 @@ public class ChargerScript : MonoBehaviour
                         //subtract between player.transform.psoition and enemy.transform.position
 
                         chargingtime = 0.0f;
-                        collided = false;
+                        stop_colliding = false;
                         anim.SetBool("chasingPlayer", false);
                         anim.SetBool("charge", false);
                         anim.SetBool("about2charge", false);
@@ -196,11 +213,11 @@ public class ChargerScript : MonoBehaviour
                                 new Vector3(ending_location.position.x, transform.position.y, ending_location.position.z));
                         
 
-                        if (currentdistance <= 5.0f)
+                        if (currentdistance <= 4.0f)
                         {
                             //BACK AWAY
-                            resultingVector = -playerPos + transform.position;
-                            GetComponent<Rigidbody>().velocity = resultingVector;
+                            velocity_direction = -playerPos + transform.position;
+                            GetComponent<Rigidbody>().velocity = velocity_direction;
                             //
                         }
                         //enemyScript.steering();
@@ -224,10 +241,10 @@ public class ChargerScript : MonoBehaviour
 
         if (enemyScript.getzoneno() == 0)
         {
-            resultingVector = GetComponent<EnemyScript>().getparent().position - transform.position;
-            resultingVector.y = 0;
-            resultingVector.Normalize();
-            GetComponent<Rigidbody>().velocity = resultingVector * velocityspeed;
+            velocity_direction = GetComponent<EnemyScript>().getparent().position - transform.position;
+            velocity_direction.y = 0;
+            velocity_direction.Normalize();
+            GetComponent<Rigidbody>().velocity = velocity_direction * velocityspeed;
         }
     }
 
@@ -272,12 +289,12 @@ public class ChargerScript : MonoBehaviour
         }
 
         //resulting vector.y = 0
-        resultingVector.y = 0;
+        velocity_direction.y = 0;
         //normalise resulting vector
-        resultingVector.Normalize();
+        velocity_direction.Normalize();
 
         //CHARGE TOWARDS THE PLAYER'S OVERALL DIRECTION, velocity = resulting vector
-        GetComponent<Rigidbody>().velocity = resultingVector  * velocityspeed; 
+        GetComponent<Rigidbody>().velocity = velocity_direction  * velocityspeed; 
     }
 
 
@@ -290,9 +307,9 @@ public class ChargerScript : MonoBehaviour
         //grab player location
         playerPos = player.transform.position;
         //subtract between player.transform.psoition and enemy.transform.position
-        resultingVector = playerPos - transform.position;
+        velocity_direction = playerPos - transform.position;
         chargingtime = 0.0f;
-        collided = false;
+        stop_colliding = false;
 
         enemyScript.set_current_phase(EnemyScript.Phases.COOLDOWN);
         em.GetComponent<EnemyManager>().setupdating(false);
@@ -310,7 +327,7 @@ public class ChargerScript : MonoBehaviour
                         || collision.gameObject.tag == "Player"
                        )
                     {
-                        collided = true;
+                        stop_colliding = true;
                     }
                     break;
                 }
@@ -320,36 +337,19 @@ public class ChargerScript : MonoBehaviour
                     if  (collision.gameObject.tag == "Player")
                     {
                         playerPos = player.transform.position;
-                        resultingVector = -playerPos + transform.position;
-                        collided = true;
+                        velocity_direction = -playerPos + transform.position;
+                        stop_colliding = true;
                         number_of_bounces = 0;
                     }
                     else
                     {
-                        //if (number_of_bounces >= 2)
-                        //{
-                        //    collided = true;
-                        //    number_of_bounces = 0;
-                        //}
-                        //else
-                        {
-                            number_of_bounces += 1;
-                            playerPos = player.transform.position;
-                            resultingVector = playerPos - transform.position;
+                       
+                        number_of_bounces += 1;
+                        playerPos = player.transform.position;
+                        velocity_direction = playerPos - transform.position;
 
-
-                            //playerPos = playerGO.transform.position;
-                            //if (collision.gameObject.tag == "Player")
-                            //{
-                            //    resultingVector = -playerPos + transform.position;
-                            //}
-                            //else
-                            //{
-                            //    resultingVector = playerPos - transform.position;
-                            //}
-
-                            chargeAtplayer();
-                        }
+                        chargeAtplayer();
+                        
                         break;
                     }
                     break;
@@ -362,27 +362,7 @@ public class ChargerScript : MonoBehaviour
         }
 
 
-        /*if (collision.gameObject.tag == "wall")
-        {
-            if (number_of_bounces >= 3)
-            {
-                collided = true;
-                number_of_bounces = 0;
-            }
-            else
-            {
-                number_of_bounces += 1;
-                playerPos = playerGO.transform.position;
-                
-                resultingVector = playerPos - transform.position;
-                
-                chargeAtplayer();
-            }
-        }
-         else if(collision.gameObject.tag == "Player")
-        {
-            collided = true;
-        }*/
+    
     }
 
     void OnTriggerEnter(Collider collision)
@@ -390,12 +370,11 @@ public class ChargerScript : MonoBehaviour
         switch (enemyPhase)
         {
             case EnemyScript.Phases.ATTACK_TYPE_1:
-                //case EnemyScript.Phases.ATTACK_TYPE_2:
                 {
                     if (collision.gameObject.tag == "wall"
                        )
                     {
-                        collided = true;
+                        stop_colliding = true;
                     }
                     break;
                 }
@@ -403,19 +382,10 @@ public class ChargerScript : MonoBehaviour
                 {
                     if (collision.gameObject.tag == "wall")
                     {
-                        //if (number_of_bounces >= 2)
-                        //{
-                        //    collided = true;
-                        //    number_of_bounces = 0;
-                        //}
-                        //else
-                        {
-                            number_of_bounces += 1;
-                            playerPos = player.transform.position;
-                            resultingVector = playerPos - transform.position;
-                            chargeAtplayer();
-                        }
-                        break;
+                        number_of_bounces += 1;
+                        playerPos = player.transform.position;
+                        velocity_direction = playerPos - transform.position;
+                        chargeAtplayer();   
                     }
                     break;
                 }

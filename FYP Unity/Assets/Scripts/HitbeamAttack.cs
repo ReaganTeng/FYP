@@ -7,17 +7,13 @@ public class HitbeamAttack : MonoBehaviour
     [SerializeField] float AttackCD;
     float Attackcdtimer;
 
-    GameObject player;
-
     void Start()
     {
         Attackcdtimer = 0;
-        player = GameObject.FindGameObjectWithTag("Player");
     }
    
     private void Update()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
         if (Attackcdtimer > 0)
             Attackcdtimer -= Time.deltaTime;
     }
@@ -30,13 +26,13 @@ public class HitbeamAttack : MonoBehaviour
             && Attackcdtimer <= 0)
         {
             //Debug.Log("PLAYER ATTACKED");
-            player.GetComponent<PlayerStats>().ChangeHealth(-5);
+            other.GetComponent<PlayerStats>().ChangeHealth(-5);
 
             //PLAY HURT ANIMATION
-            player.GetComponent<PlayerMovement>().setAnimator(true);
+            other.GetComponent<PlayerMovement>().setAnimator(true);
             //
-            player.GetComponent<PlayerStats>().ResetConsecutiveHit();
-            player.GetComponent<PlayerStats>().ChangeFervor(-10.0f);
+            other.GetComponent<PlayerStats>().ChangeFervor(-10.0f);
+            other.GetComponent<PlayerStats>().resetval();
 
             Attackcdtimer = AttackCD;
         }

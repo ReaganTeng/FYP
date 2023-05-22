@@ -17,6 +17,9 @@ public class EnemyManager : MonoBehaviour
     List<int> indexes;
     bool stopupdating;
 
+
+    int attacked_enemy;
+
     bool enemies_updating;
 
     bool found_attacked_enemy;
@@ -24,6 +27,8 @@ public class EnemyManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        attacked_enemy = -1;
+
         found_attacked_enemy = false;
         player = GameObject.FindGameObjectWithTag("Player");
         other_enemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -40,36 +45,7 @@ public class EnemyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*if (timer >= abouttoattack_period)
-        {
-            //attack_type = Random.Range(1, 3);
-            if (atkPattern == AttackPattern.PATTERN_1)
-            {
-                phase = Phases.ATTACK_TYPE_1;
-            }
-            else if (atkPattern == AttackPattern.PATTERN_2)
-            {
-                phase = Phases.ATTACK_TYPE_2;
-            }
-            else if (atkPattern == AttackPattern.PATTERN_3)
-            {
-                phase = Phases.ATTACK_TYPE_3;
-            }
-            timer = 0.0f;
-        }*/
-
-
-
-        //if(enemies_updating)
-        //{ 
-        //    Debug.Log("SOME UPDATING");
-        //}
-        //else
-        //{
-        //    Debug.Log("ALL NOT UPDATING");
-        //}
-
-        //Debug.Log("AMT OF ENEMIES " + (other_enemies.Length)/*player.transform.position*/);
+       
         if (timer_2 > .5f)
         {
            
@@ -94,15 +70,12 @@ public class EnemyManager : MonoBehaviour
                 if (timer >= .1f
                     && !stopupdating)
                 {
-                    //look at all enemies
+                    //LOOK AT ALL ENEMIES
                     for (int i = 0; i < other_enemies.Length; i++)
                     {
                         if (other_enemies[i] != null)
                         {
-                            if (/*other_enemies[i].GetComponent<EnemyScript>().return_enemyType() == EnemyScript.EnemyType.CHASER
-                                && other_enemies[i].GetComponent<EnemyScript>().return_attackptn() != EnemyScript.AttackPattern.PATTERN_3
-                                && other_enemies[i].GetComponent<EnemyScript>().return_current_phase() == EnemyScript.Phases.COOLDOWN
-                                    &&*/ other_enemies[i].GetComponent<EnemyScript>().getupdating())
+                            if (other_enemies[i].GetComponent<EnemyScript>().getupdating())
                             {
                                 indexes.Add(i);
                             }
@@ -110,33 +83,43 @@ public class EnemyManager : MonoBehaviour
                     }
                     //
 
-                    //choose a random enemy
+                    //CHOOSE A RANDOM ENEMY
                     int range = Random.Range(0, indexes.Count);
 
-                    //int range_2;
-                    //if (indexes.Count > 1)
-                    //{
-                    //    range_2 = Random.Range(0, indexes.Count - 1);
-                    //}
 
-                    //Debug.Log("RANGE " + range);
                     //IF ENEMY HAS BEEN ATTACKED, SET THAT PARTICULAR ENEMY TO ATTACK MODE
-                    for (int x = 0; x < indexes.Count; x++)
+                    if (!found_attacked_enemy)
                     {
-                        if(other_enemies[indexes[x]].GetComponent<EnemyScript>().getbool())
+                        for (int x = 0; x < indexes.Count; x++)
                         {
-                            //found the enemy that's attacked
-                            other_enemies[indexes[x]].GetComponent<EnemyScript>().set_current_phase(EnemyScript.Phases.COOLDOWN);
-                            other_enemies[indexes[x]].GetComponent<EnemyScript>().setbool(false);
-                            found_attacked_enemy = true;
-                            break;
-                        }
-                        else
-                        {
-                            other_enemies[indexes[x]].GetComponent<EnemyScript>().set_current_phase(EnemyScript.Phases.AVOID);
+                            if (other_enemies[indexes[x]].GetComponent<EnemyScript>().getbool())
+                            {
+                                //FOUND THE ENEMY THAT'S ATTACKED
+                                other_enemies[indexes[x]].GetComponent<EnemyScript>().set_current_phase(EnemyScript.Phases.COOLDOWN);
+                                other_enemies[indexes[x]].GetComponent<EnemyScript>().setattacked(false);
+                                found_attacked_enemy = true;
+                                attacked_enemy = x;
+                                break;
+                            }
+                            else
+                            {
+                                other_enemies[indexes[x]].GetComponent<EnemyScript>().set_current_phase(EnemyScript.Phases.AVOID);
+                            }
                         }
                     }
-                    
+                    //
+
+
+                    //SET THE REST OF THE ATTACKED ENEMY TO ATTACKED = FALSE
+                    for(int a = 0; a < indexes.Count; a++)
+                    {
+                        if (a != attacked_enemy)
+                        {
+                            other_enemies[indexes[a]].GetComponent<EnemyScript>().setattacked(false);
+                            other_enemies[indexes[a]].GetComponent<EnemyScript>().set_current_phase(EnemyScript.Phases.AVOID);
+                        }
+                    }
+                    //
 
                     //IF NO ENEMY HAS BEEN FOUND ATTACKED
                     if (!found_attacked_enemy)
@@ -144,29 +127,11 @@ public class EnemyManager : MonoBehaviour
                         for (int z = 0; z < indexes.Count; z++)
                         {
                             //if landed on chosen enemy
-                            if (z == range
-                                /*|| (indexes.Count > 1 && x == range_2)*/
-                                )
+                            if (z == range)
                             {
                                 //other_enemies[indexes[x]].GetComponent<EnemyScript>().set_current_phase(EnemyScript.Phases.AVOID);
                                 other_enemies[indexes[z]].GetComponent<EnemyScript>().set_current_phase(EnemyScript.Phases.COOLDOWN);
-                                {
-                                    /*if (other_enemies[indexes[x]].GetComponent<EnemyScript>().return_attackptn()
-                                        == EnemyScript.AttackPattern.PATTERN_1)
-                                    {
-                                        other_enemies[indexes[x]].GetComponent<EnemyScript>().set_current_phase(EnemyScript.Phases.ATTACK_TYPE_1);
-                                    }
-                                    else if (other_enemies[indexes[x]].GetComponent<EnemyScript>().return_attackptn()
-                                    == EnemyScript.AttackPattern.PATTERN_2)
-                                    {
-                                        other_enemies[indexes[x]].GetComponent<EnemyScript>().set_current_phase(EnemyScript.Phases.ATTACK_TYPE_2);
-                                    }
-                                    else if (other_enemies[indexes[x]].GetComponent<EnemyScript>().return_attackptn()
-                                   == EnemyScript.AttackPattern.PATTERN_3)
-                                    {
-                                        other_enemies[indexes[x]].GetComponent<EnemyScript>().set_current_phase(EnemyScript.Phases.ATTACK_TYPE_3);
-                                    }*/
-                                }
+                               
                             }
                             //
                             //non-selected enemmies stay in about to attackMode
@@ -179,6 +144,8 @@ public class EnemyManager : MonoBehaviour
 
                         found_attacked_enemy = true;
                     }
+
+                    attacked_enemy = -1;
                     stopupdating = true;
                 }
                
@@ -200,9 +167,7 @@ public class EnemyManager : MonoBehaviour
         timer = 0;
         stopupdating = boolean;
         found_attacked_enemy = boolean;
-
         other_enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        //Debug.Log("RESET");
     }
 
     public void recalculate_numberofenemies()
@@ -210,7 +175,10 @@ public class EnemyManager : MonoBehaviour
         other_enemies = GameObject.FindGameObjectsWithTag("Enemy");
         timer_2 = 0.0f;
     }
-    void position_distribution(int i)
+
+
+    //UNUSED
+    /*void position_distribution(int i)
     {
         float rand_x = Random.Range(-10, 10);
         float rand_z = Random.Range(-10, 10);
@@ -249,11 +217,10 @@ public class EnemyManager : MonoBehaviour
                     );
                 }
             }
-            //Debug.Log("POSITION " + /*destinations[*/destinations.Count/* - 1]*/);
             //other_enemies[i].GetComponent<NavMeshAgent>().SetDestination(destinations[destinations.Count - 1]);
         }
         //enemies.GetComponent<EnemyScript>().avoidanceCode(1);
         //Debug.Log("DONE");
-    }
+    }*/
     
 }

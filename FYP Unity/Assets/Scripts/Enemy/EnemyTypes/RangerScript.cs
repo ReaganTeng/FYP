@@ -6,28 +6,39 @@ using UnityEngine.AI;
 
 public class RangerScript : MonoBehaviour
 {
-
+    //THE LOCKONBEAM GAMEOBJECT
     [SerializeField] GameObject lockonbeamGO;
     GameObject lockonbeam;
+    //THE HITBEAM GAMEOBJECT
     [SerializeField] GameObject hitbeamGO;
     GameObject hitbeam;
+    //THE PIVOTPOINT GAMEOBJECT
     [SerializeField] GameObject pivotpointGO;
     GameObject pivotpoint;
+
+    //DETERMINE WHETHER THE ENEMY STARTS SHOOTING BEAM
     bool beam_mode;
-
-
-    float timer;
-    Transform starting_location;
-    Transform ending_location;
+    //DISTANCE BETWEEN ENEMY AND PLAYER
     float dist;
 
+    float timer;
 
+    
+
+
+    //THE PLAYER PREFAB
     GameObject player;
+    //THE ENEMY MANAGER SCRIPT IN GAME MANAGER PREFAB
     EnemyManager em;
+    //ENEMY'S HITBOX
     GameObject hitbox;
+    //ENEMY'S NAVMESHAGENT
     NavMeshAgent navmeshagent;
+    //ENEMY'S ANIMATION CONTROLLER
     Animator anim;
+    //ENEMEY'S PHASE IN ENEMYSCRIPT
     EnemyScript.Phases enemyPhase;
+    //ENEMY'S ENEMYSCRIPT
     EnemyScript enemyScript;
 
 
@@ -67,8 +78,8 @@ public class RangerScript : MonoBehaviour
 
 
 
-        navmeshagent.speed = enemyScript.getchasingspeed();
-        navmeshagent.acceleration = enemyScript.getchasingspeed();
+        navmeshagent.speed = enemyScript.getnavmeshspeed();
+        navmeshagent.acceleration = enemyScript.getnavmeshspeed();
 
         dist = Vector3.Distance(transform.position, player.transform.position);
 
@@ -82,32 +93,32 @@ public class RangerScript : MonoBehaviour
                     {
                         GetComponent<BoxCollider>().enabled = true;
 
+                        
                         if (dist <= 2.0f)
                         {
                             beam_mode = true;
                         }
-                        //chase the player
+                        //CHASE THE PLAYER
                         else if (dist > 2.0f
                             && beam_mode == false)
                         {
                             navmeshagent.enabled = true;
                             navmeshagent.SetDestination(player.transform.position);
                             anim.SetBool("chasingPlayer", true);
-                            enemyScript.setchasingspeed(2.0f);
+                            enemyScript.setnavmeshspeed(2.0f);
                         }
+                        //
 
                         if (beam_mode == true)
                         {
                             anim.SetBool("chasingPlayer", false);
                             navmeshagent.enabled = false;
                             timer += Time.deltaTime;
-                            enemyScript.setchasingspeed(0.0f);
+                            enemyScript.setnavmeshspeed(0.0f);
 
+                            //PLACE LOCK ON BEAM
                             if (timer < 1.1f && timer > 1.0f)
                             {
-                                //PLACE LOCK ON BEAM
-                                starting_location = transform;
-                                ending_location = player.transform;
                                 if (pivotpoint == null)
                                 {
                                     pivotpoint = Instantiate(pivotpointGO,
@@ -128,11 +139,11 @@ public class RangerScript : MonoBehaviour
                                             hitbeamsize / 10);
                                         lockonbeam.transform.SetParent(pivotpoint.transform);
                                         pivotpoint.transform.LookAt(
-                                            new Vector3(ending_location.position.x, transform.position.y, ending_location.position.z));
+                                            new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
                                     }
                                 }
-                                //
                             }
+                            //
 
                             if (lockonbeam != null)
                             {
@@ -147,16 +158,16 @@ public class RangerScript : MonoBehaviour
                                 if (pivotpoint != null)
                                 {
                                     pivotpoint.transform.LookAt(
-                                        new Vector3(ending_location.position.x, transform.position.y, ending_location.position.z));
+                                         new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
                                 }
                             }
 
+                            //PLACE HIT BEAM/LASER
                             if (timer > 2.3f && timer < 2.7f)
                             {
                                 lockonbeam.GetComponentInChildren<Transform>().GetComponentInChildren<SpriteRenderer>().enabled = false;
                                 GetComponentInChildren<SpriteRenderer>().color = Color.white;
 
-                                //PLACE HIT BEAM
                                 anim.SetBool("chasingPlayer", true);
                                 anim.SetBool("attack", true);
 
@@ -176,8 +187,8 @@ public class RangerScript : MonoBehaviour
                                     hitbeam.transform.SetParent(pivotpoint.transform);
                                     hitbeam.transform.rotation = pivotpoint.transform.rotation;
                                 }
-                                //
                             }
+                            //  
 
                             if (timer > 2.8f)
                             {
@@ -196,13 +207,15 @@ public class RangerScript : MonoBehaviour
                     {
                         beam_mode = false;
                         timer = 0.0f;
+                        enemyScript.setnavmeshspeed(0.0f);
+
                         enemyScript.cooldownUpdate();
                         break;
                     }
                 case EnemyScript.Phases.ABOUT_TO_ATTACK:
                     {
                         beam_mode = false;
-                        enemyScript.setchasingspeed(2.0f);
+                        enemyScript.setnavmeshspeed(2.0f);
                         enemyScript.abouttoattackUpdate();
                         break;
                     }

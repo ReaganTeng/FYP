@@ -211,7 +211,6 @@ GameObject:
   - component: {fileID: 4309780673406036170}
   - component: {fileID: 1140663775111267605}
   - component: {fileID: 2057207063808142039}
-  - component: {fileID: 6858138082267119150}
   - component: {fileID: 8184284538792154973}
   - component: {fileID: 960079756805818448}
   m_Layer: 7
@@ -256,7 +255,6 @@ MonoBehaviour:
   jumpheight: 5
   jumpspeed: 1.5
   jumpClip: {fileID: 7400000, guid: acf8fe81a1dc55649930df1a64a678d0, type: 2}
-  startupdating: 0
 --- !u!114 &5647560301601598824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,31 +267,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddbf992b6a200604983e66a200d7330d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lm:
-    serializedVersion: 2
-    m_Bits: 128
-  lm_2:
-    serializedVersion: 2
-    m_Bits: 2097216
-  player_lm:
-    serializedVersion: 2
-    m_Bits: 64
   EnemyHealth: 19
-  AttackDamage: 5
   prepPrefab: {fileID: 8909789117250201433, guid: ed6a5afdf38bce944b9bae790ad1d529, type: 3}
   choppedPefab: {fileID: 8602201685715977874, guid: 2d74bdd6e93a720419190ef68a48c8e8, type: 3}
   smashedPrefab: {fileID: 4529497177189070630, guid: 5880399b2692b604d9c8cf0d6a343696, type: 3}
   Mush: {fileID: 8494874157540663937, guid: 4255f020537c20a48857eb56b1b0f6d5, type: 3}
-  attackhitbox: {fileID: 6394389417102634265}
-  healthbar: {fileID: 1991363047688129694}
   cooldown_period: 0.5
   abouttoattack_period: 0.5
-  atkPattern: 0
   phase: 0
+  atkPattern: 0
+  healthbar: {fileID: 1991363047688129694}
   line: {fileID: 4302930331368835095, guid: 1434afd8d00d3ab40918b589eba6bdbd, type: 3}
   canvas: {fileID: 2817103938705262069}
   handle: {fileID: 7681950297083653069}
-  healthtext: {fileID: 0}
+  hitbox: {fileID: 6394389417102634265}
 --- !u!65 &4309780673406036170
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -345,19 +332,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &6858138082267119150
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3723270102129840891}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab6dde5c16dcfc44c9317a74554a55fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  navMeshAgent: {fileID: 2057207063808142039}
 --- !u!33 &8184284538792154973
 MeshFilter:
   m_ObjectHideFlags: 0

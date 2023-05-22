@@ -6,36 +6,51 @@ using UnityEngine.AI;
 
 public class JumperScript : MonoBehaviour
 {
+    //THE COOLDOWN PERIOD AFTER JUMPING
     [SerializeField] float jumpcooldown;
+    float jumpcooldown_timer;
+
+
+    ///FOR SPRITE JUMPING
+    //THE CANVAS OF THE ENEMY
     [SerializeField] GameObject jumperCanvas;
+    //THE SPRITE OF THE ENEMY
     [SerializeField] GameObject spriteRenderer;
+    //CONTROLS THE HEIGHT OF THE SPRITE WHEN JUMPING
     [SerializeField] float jumpheight;
-
+    //CONTROLS THE SPEED OF THE JUMP
     [SerializeField] float jumpspeed;
-
-    float speedfactor;
-
     [SerializeField] AnimationClip jumpClip;
-
-    //FOR SPRITE JUMPING
     float count;
     Vector3 startpos;
     Vector3 controlPoint;
     Vector3 endpoint;
-    //
+    ///
 
-    float timer;
+
+    float speedfactor;
+
+
+
+    //THE DISTANCE BETWEEN PLAYER AND ENEMY
     float currentdistance;
-    public bool startupdating;
+    float timer;
     bool jumpmode;
 
 
+    //THE PLAYER PREFAB
     GameObject player;
+    //THE ENEMY MANAGER SCRIPT IN GAME MANAGER PREFAB
     EnemyManager em;
+    //ENEMY'S HITBOX
     GameObject hitbox;
+    //ENEMY'S NAVMESHAGENT
     NavMeshAgent navmeshagent;
+    //ENEMY'S ANIMATION CONTROLLER
     Animator anim;
+    //ENEMEY'S PHASE IN ENEMYSCRIPT
     EnemyScript.Phases enemyPhase;
+    //ENEMY'S ENEMYSCRIPT
     EnemyScript enemyScript;
 
 
@@ -50,17 +65,9 @@ public class JumperScript : MonoBehaviour
         enemyScript = gameObject.GetComponent<EnemyScript>();
         enemyPhase = enemyScript.return_current_phase();
         hitbox = enemyScript.returnhitbox();
-
-
         navmeshagent.acceleration = 20.0f;
 
-
-
-
-
-
         enemyScript.set_enemyType(EnemyScript.EnemyType.JUMPER);
-        startupdating = false;
         count = 0;
         startpos = transform.position;
         timer = 0.0f;
@@ -80,8 +87,7 @@ public class JumperScript : MonoBehaviour
 
         currentdistance = Vector3.Distance(player.transform.position, transform.position);
 
-        //if (startupdating == true)
-        //{
+        
 
         if (enemyScript.getupdating())
         { 
@@ -102,7 +108,6 @@ public class JumperScript : MonoBehaviour
                         anim.SetBool("chasingPlayer", true);
                         GetComponent<BoxCollider>().enabled = true;
                         hitbox.GetComponent<BoxCollider>().enabled = true;
-
                         navmeshagent.speed = 5.0f;
                         startpos = transform.position;
                         navmeshagent.SetDestination(player.transform.position);
@@ -117,16 +122,16 @@ public class JumperScript : MonoBehaviour
                     {
                         timer += Time.deltaTime;
 
-                        //prepare to jump
+                        //PREPARE TO JUMP
                         if (timer < enemyScript.getCurrentAnimationLength())
                         {
-                                anim.SetBool("about2jump", true);
+                            anim.SetBool("about2jump", true);
                             GetComponent<BoxCollider>().enabled = true;
 
                             //BACK AWAY
                             Vector3 resultingVector = -player.transform.position + transform.position;
                             GetComponent<Rigidbody>().velocity = resultingVector * 0.2f;
-                                //
+                            //
 
                             navmeshagent.speed = 0.0f;
                             startpos = transform.position;
@@ -139,23 +144,12 @@ public class JumperScript : MonoBehaviour
                         //JUMP
                         if (timer > enemyScript.getCurrentAnimationLength() + 0.1f)
                         {
-                                anim.SetBool("jump", true);
+                             anim.SetBool("jump", true);
                             GetComponent<BoxCollider>().enabled = false;
-
-                            //while it's jumping, disable attackhitbox;
-                            /*if (currentdistance < 1.5f)
-                            {
-                                attackhitbox.GetComponent<BoxCollider>().enabled = true;
-                            }
-                            else
-                            {
-                                attackhitbox.GetComponent<BoxCollider>().enabled = false;
-                            }*/
-                            //
 
                             if (currentdistance < 0.5f)
                             {
-                                    navmeshagent.speed = 0;
+                                navmeshagent.speed = 0;
                             }
                             else
                             {
@@ -179,20 +173,13 @@ public class JumperScript : MonoBehaviour
                         }
 
                     }
-
-
-                        break;
+                    break;
                 }
             case EnemyScript.Phases.COOLDOWN:
                 {
                     jumpmode = false;
-                    jumpcooldown = 0.3f;
-
-                        //enemyScript.steering();
-                        //enemyScript.steering_3();
-                        //enemyScript.avoidanceCode(rand_z);
-
-                        navmeshagent.speed = 0.0f;
+                    jumpcooldown_timer = jumpcooldown;
+                    enemyScript.setnavmeshspeed(0.0f);
                     enemyScript.cooldownUpdate();
 
                     break;
@@ -200,21 +187,9 @@ public class JumperScript : MonoBehaviour
 
             case EnemyScript.Phases.ABOUT_TO_ATTACK:
                 {
-                        //if (currentdistance <= 5.0f)
-                        //{
-                        //    //BACK AWAY
-                        //    Vector3 resultingVector = -playerGO.transform.position + transform.position;
-                        //    GetComponent<Rigidbody>().velocity = resultingVector;
-                        //    //
-                        //}
 
-                        //enemyScript.steering();
-                        //enemyScript.steering_3();
-                        //enemyScript.avoidanceCode(rand_z);
-
-                        //GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
-                        navmeshagent.speed = 0.0f;
-                        enemyScript.abouttoattackUpdate();
+                    enemyScript.setnavmeshspeed(0.0f);
+                    enemyScript.abouttoattackUpdate();
 
                     break;
                 }
@@ -264,7 +239,7 @@ public class JumperScript : MonoBehaviour
                 count);
         }
          //if player landed on ground
-        else /*if(count > 1.0f)*/
+        else 
         {
             jumprest();
         }
@@ -275,13 +250,13 @@ public class JumperScript : MonoBehaviour
 
     public void jumprest()
     {
-        jumpcooldown -= 1.0f * Time.deltaTime;
+        jumpcooldown_timer -= 1.0f * Time.deltaTime;
 
         spriteRenderer.transform.position = transform.position + new Vector3(0.0f, 0.66f, 0.0f);
         jumperCanvas.transform.position = transform.position + new Vector3(0.0f, 0.66f, 0.0f);
         hitbox.GetComponent<BoxCollider>().enabled = false;
 
-        if (jumpcooldown <= 0.0f)
+        if (jumpcooldown_timer <= 0.0f)
         {
             startpos = transform.position;
             timer = 0.0f;

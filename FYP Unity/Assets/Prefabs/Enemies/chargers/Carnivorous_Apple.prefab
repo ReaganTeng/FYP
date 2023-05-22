@@ -617,7 +617,6 @@ GameObject:
   - component: {fileID: 6502948376677876838}
   - component: {fileID: 7936472845424175545}
   - component: {fileID: 9042345439354291835}
-  - component: {fileID: 4529908294734533250}
   - component: {fileID: 3427342138385154500}
   - component: {fileID: 1808615462392398947}
   m_Layer: 7
@@ -695,19 +694,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 3
---- !u!114 &4529908294734533250
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5934549991798046295}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab6dde5c16dcfc44c9317a74554a55fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  navMeshAgent: {fileID: 9042345439354291835}
 --- !u!114 &3427342138385154500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -720,31 +706,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddbf992b6a200604983e66a200d7330d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lm:
-    serializedVersion: 2
-    m_Bits: 128
-  lm_2:
-    serializedVersion: 2
-    m_Bits: 0
-  player_lm:
-    serializedVersion: 2
-    m_Bits: 0
   EnemyHealth: 14
-  AttackDamage: 5
   prepPrefab: {fileID: 5640140278021557923, guid: 877aad5ebbb5f7b4ea17dd738c22f5fa, type: 3}
   choppedPefab: {fileID: 568297875779090178, guid: 9031fceed79e84b4ea688fbd77c831c0, type: 3}
   smashedPrefab: {fileID: 3320338801699120423, guid: 74500f70982b1624f91594f2616f5dd0, type: 3}
   Mush: {fileID: 8494874157540663937, guid: 4255f020537c20a48857eb56b1b0f6d5, type: 3}
-  attackhitbox: {fileID: 701992234877166531}
-  healthbar: {fileID: 325279557420243459}
   cooldown_period: 1
   abouttoattack_period: 1
-  atkPattern: 1
   phase: 1
+  atkPattern: 1
+  healthbar: {fileID: 325279557420243459}
   line: {fileID: 4302930331368835095, guid: 1434afd8d00d3ab40918b589eba6bdbd, type: 3}
   canvas: {fileID: 6615644707402866065}
   handle: {fileID: 5385007686471619809}
-  healthtext: {fileID: 0}
+  hitbox: {fileID: 701992234877166531}
 --- !u!114 &1808615462392398947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -757,9 +732,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87d1958d059d9c84aa331df7920cee67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lm:
-    serializedVersion: 2
-    m_Bits: 0
   pivotpointGO: {fileID: 129147275652241997, guid: 79e72203afd5b9b41aab14adeb466e06, type: 3}
   lockonbeamGO: {fileID: 4849614319482764723, guid: 97bda6bfe2f517a48b63689ced6691fb, type: 3}
 --- !u!1 &8087204890753726635
