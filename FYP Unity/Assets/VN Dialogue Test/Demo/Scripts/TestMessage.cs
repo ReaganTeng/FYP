@@ -13,6 +13,9 @@ public class TestMessage : MonoBehaviour
     bool SkipVN;
     public Button button;
 
+    [SerializeField] Image background;
+    public Sprite[] imageList;
+
     enum SceneName
     {
         TUT1VN, // tutorial //-2
@@ -97,7 +100,7 @@ public class TestMessage : MonoBehaviour
 
         dialogTexts.Add(new DialogData("…?", "Chef"));
 
-        dialogTexts.Add(new DialogData("It seemth that the human hast awaketh.", "Alien1"));
+        dialogTexts.Add(new DialogData("It seemth that the human hast awaketh.", "Alien1", () => background.sprite = imageList[0])); //background imgs need to be called 1 line before
 
         dialogTexts.Add(new DialogData("About time it did.", "Alien2"));
 

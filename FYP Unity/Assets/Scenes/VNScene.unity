@@ -170,6 +170,10 @@ MonoBehaviour:
   DialogManager: {fileID: 325689816}
   LM: {fileID: 11400000, guid: b1ab7845fb897f94da5f204cb406165d, type: 2}
   button: {fileID: 289792727}
+  background: {fileID: 283696072}
+  imageList:
+  - {fileID: 21300000, guid: 3447381751e18c74aaa1fbab8ff27ea7, type: 3}
+  - {fileID: 21300000, guid: 7ab56845373d50647b233620b04066ae, type: 3}
 --- !u!1 &76003758
 GameObject:
   m_ObjectHideFlags: 0
