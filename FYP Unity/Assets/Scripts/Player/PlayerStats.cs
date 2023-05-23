@@ -142,7 +142,7 @@ public class PlayerStats : MonoBehaviour
                 }
             }
         }
-        //Debug.Log("Fervor: " + fervorLevel + "REDUCED BY " + Fervorchange);
+        Debug.Log("Fervor: " + fervorLevel + "REDUCED BY " + Fervorchange);
     }
 
     //DINNER RUSH UPGRADE

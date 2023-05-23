@@ -51,6 +51,7 @@ public class EnemyAttack : MonoBehaviour
         if (Attackcdtimer < AttackCD / 5)
         {
             transform.parent.transform.parent.GetComponent<BoxCollider>().enabled = true;
+
         }
         //
     }
@@ -120,13 +121,11 @@ public class EnemyAttack : MonoBehaviour
 
         // if it is the player
             if (other.CompareTag("Player")
+                        && other.GetComponentInChildren<Animator>().GetNextAnimatorStateInfo(0).IsName("Dash") == false
             && Attackcdtimer <= 0
             && GetComponent<BoxCollider>().enabled == true
-            && other.GetComponentInChildren<Animator>().GetNextAnimatorStateInfo(0).IsName("Dash") == false
             )
         {
-
-
             attacking = true;
 
             //IF ENEMY IS A JUMPER

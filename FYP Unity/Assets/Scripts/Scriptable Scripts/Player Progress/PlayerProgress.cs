@@ -236,7 +236,7 @@ public class PlayerProgress : ScriptableObject
 
     public void ResetCredibility()
     {
-        CosmicCredibility = 0;
+        CosmicCredibility = 2;
         TotalObtainedCredibility = 0;
     }
 
