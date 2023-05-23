@@ -92,7 +92,7 @@ public class ShooterScript : MonoBehaviour
                 case EnemyScript.Phases.ATTACK_TYPE_2:
                     if (anim.GetBool("attacked") == false)
                     {
-                        anim.SetBool("chasingPlayer", true);
+                        anim.SetBool("run", true);
 
                         timer += Time.deltaTime;
                         hitbox.GetComponent<BoxCollider>().enabled = false;
@@ -158,7 +158,7 @@ public class ShooterScript : MonoBehaviour
                                     projectile_shots = 0;
                                     anim.SetBool("about2shoot", false);
                                     anim.SetBool("attack", false);
-                                    anim.SetBool("chasingPlayer", false);
+                                    anim.SetBool("run", false);
 
                                     em.setupdating(false);
                                 }

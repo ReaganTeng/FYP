@@ -213,7 +213,7 @@ public class ChaserScript : MonoBehaviour
                 case EnemyScript.Phases.ATTACK_TYPE_2:
                     {
                         GetComponent<BoxCollider>().enabled = true;
-                        anim.SetBool("chasingPlayer", true);
+                        anim.SetBool("run", true);
                         timer += Time.deltaTime;
                         
                         timer_avoid += Time.deltaTime;

@@ -9,7 +9,7 @@ public class UpgradeSystem : MonoBehaviour
     {        
         BETTER_COOKER,
         LONGER_ORDERS,
-        BETTER_PERFECT,
+        BETTER_PERFECT_DISH,
         PERFECT_FRENZY,
 
         /// GENERAL
@@ -78,7 +78,7 @@ public class UpgradeSystem : MonoBehaviour
             case ShopItemType.LONGER_ORDERS:
                 pp.IncreaseLongerOrderTime();
                 break;
-            case ShopItemType.BETTER_PERFECT:
+            case ShopItemType.BETTER_PERFECT_DISH:
                 pp.IncreasePerfectDishBoost();
                 break;
             case ShopItemType.PERFECT_FRENZY:

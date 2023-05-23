@@ -105,7 +105,7 @@ public class JumperScript : MonoBehaviour
                     if(jumpmode == false /*&&
                             currentdistance >= 4.5f*/)
                     {
-                        anim.SetBool("chasingPlayer", true);
+                        anim.SetBool("run", true);
                         GetComponent<BoxCollider>().enabled = true;
                         hitbox.GetComponent<BoxCollider>().enabled = true;
                         navmeshagent.speed = 5.0f;
@@ -262,7 +262,7 @@ public class JumperScript : MonoBehaviour
             timer = 0.0f;
 
             anim.SetBool("about2jump", false);
-            anim.SetBool("chasingPlayer", false);
+            anim.SetBool("run", false);
             anim.SetBool("jump", false);
 
             navmeshagent.SetDestination(player.transform.position
