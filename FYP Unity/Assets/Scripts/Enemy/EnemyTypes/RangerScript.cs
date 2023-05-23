@@ -104,14 +104,14 @@ public class RangerScript : MonoBehaviour
                         {
                             navmeshagent.enabled = true;
                             navmeshagent.SetDestination(player.transform.position);
-                            anim.SetBool("chasingPlayer", true);
+                            anim.SetBool("run", true);
                             enemyScript.setnavmeshspeed(2.0f);
                         }
                         //
 
                         if (beam_mode == true)
                         {
-                            anim.SetBool("chasingPlayer", false);
+                            anim.SetBool("run", false);
                             navmeshagent.enabled = false;
                             timer += Time.deltaTime;
                             enemyScript.setnavmeshspeed(0.0f);
@@ -168,7 +168,7 @@ public class RangerScript : MonoBehaviour
                                 lockonbeam.GetComponentInChildren<Transform>().GetComponentInChildren<SpriteRenderer>().enabled = false;
                                 GetComponentInChildren<SpriteRenderer>().color = Color.white;
 
-                                anim.SetBool("chasingPlayer", true);
+                                anim.SetBool("run", true);
                                 anim.SetBool("attack", true);
 
                                 if (hitbeam == null

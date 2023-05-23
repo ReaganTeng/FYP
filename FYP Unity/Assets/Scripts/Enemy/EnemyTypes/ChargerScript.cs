@@ -171,7 +171,7 @@ public class ChargerScript : MonoBehaviour
 
                         chargingtime = 0.0f;
                         stop_colliding = false;
-                        anim.SetBool("chasingPlayer", false);
+                        anim.SetBool("run", false);
                         anim.SetBool("charge", false);
                         anim.SetBool("about2charge", false);
 
@@ -224,7 +224,7 @@ public class ChargerScript : MonoBehaviour
                         //enemyScript.steering_3();
                         //enemyScript.avoidanceCode(rand_z);
 
-                        //GetComponentInChildren<Animator>().SetBool("chasingPlayer", false);
+                        //GetComponentInChildren<Animator>().SetBool("run", false);
                         //GetComponentInChildren<Animator>().SetBool("charge", false);
                         anim.SetBool("about2charge", true);
                        enemyScript.abouttoattackUpdate();

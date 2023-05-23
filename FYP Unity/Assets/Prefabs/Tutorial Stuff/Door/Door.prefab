@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 3233643155881366552}
   - component: {fileID: 793972845859201234}
   - component: {fileID: 6335086607805055608}
-  m_Layer: 0
+  - component: {fileID: 4974107648466443616}
+  m_Layer: 14
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1154116023194075399}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 11}
-  m_LocalScale: {x: 200, y: 100, z: 200}
+  m_LocalScale: {x: 200, y: 100.00002, z: 200.00005}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -97,3 +98,14 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.02, y: 0.00019999985, z: 0.020000005}
   m_Center: {x: 0, y: 0, z: 0.010000003}
+--- !u!210 &4974107648466443616
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154116023194075399}
+  m_Enabled: 1
+  m_SortingLayerID: -499965009
+  m_SortingLayer: 2
+  m_SortingOrder: 0

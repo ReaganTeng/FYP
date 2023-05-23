@@ -325,16 +325,14 @@ public class EnemyScript : MonoBehaviour
                         anim.SetBool("jump", false);
                         GetComponentInChildren<SpriteRenderer>().transform.position 
                             = transform.position + new Vector3(0.0f, 0.66f, 0.0f);
-
                         canvas.transform.position = transform.position + new Vector3(0.0f, 0.66f, 0.0f);
                         break;
                     }
                 case EnemyType.CHASER:
                     {
                         anim.SetBool("about2attack", false);
-                        anim.SetBool("chasingPlayer", false);
+                        anim.SetBool("run", false);
                         anim.SetBool("attack", false);
-
                         break;
                     }
                 case EnemyType.CHARGER:
@@ -342,17 +340,21 @@ public class EnemyScript : MonoBehaviour
                         anim.SetBool("charge", false);
                         anim.SetBool("about2charge", false);
                         GetComponent<ChargerScript>().DestroyBeams();
-
                         GetComponent<Rigidbody>().velocity = -GetComponent<Rigidbody>().velocity * 7.0f;
-                       
                         break;
                     }
                 case EnemyType.SHOOTER:
                     {
                         anim.SetBool("about2shoot", false);
                         anim.SetBool("attack", false);
-                        anim.SetBool("chasingPlayer", false);
-
+                        anim.SetBool("run", false);
+                        break;
+                    }
+                case EnemyType.RANGER:
+                    {
+                        anim.SetBool("run", false);
+                        anim.SetBool("attack", false);
+                        GetComponent<RangerScript>().DestroyBeams();
                         break;
                     }
             }
@@ -560,7 +562,7 @@ public class EnemyScript : MonoBehaviour
                     GetComponentInChildren<SpriteRenderer>().transform.position = transform.position + new Vector3(0.0f, 0.66f, 0.0f);
                 }
 
-                anim.SetBool("chasingPlayer", true);
+                anim.SetBool("run", true);
                 navmeshagent.speed = 2.0f;
                 navmeshagent.SetDestination(new Vector3(
                 player.transform.position.x + rand_x + (int)offset_x,
@@ -578,7 +580,7 @@ public class EnemyScript : MonoBehaviour
                 offset_z = 0;
                 if (enemy_type == EnemyType.CHARGER)
                 {
-                    anim.SetBool("chasingPlayer", false);
+                    anim.SetBool("run", false);
                 }
                 set_newdestination();
             }
@@ -591,6 +593,11 @@ public class EnemyScript : MonoBehaviour
             if (enemy_type == EnemyType.CHARGER)
             {
                 GetComponent<ChargerScript>().DestroyBeams();
+            }
+
+            if (enemy_type == EnemyType.RANGER)
+            {
+                GetComponent<RangerScript>().DestroyBeams();
             }
 
             Vector3 resultingVector = GetComponent<EnemyScript>().getparent().position - transform.position;
@@ -631,7 +638,7 @@ public class EnemyScript : MonoBehaviour
                 if (enemy_type == EnemyType.JUMPER)
                 {
                     anim.SetBool("about2jump", false);
-                    anim.SetBool("chasingPlayer", false);
+                    anim.SetBool("run", false);
                 }
             }
         }
@@ -690,7 +697,7 @@ public class EnemyScript : MonoBehaviour
         {
             GetComponentInChildren<SpriteRenderer>().transform.localPosition = new Vector3(0, 0.66f, 0);
         }
-        anim.SetBool("chasingPlayer", false);
+        anim.SetBool("run", false);
     }
    
 
@@ -710,7 +717,7 @@ public class EnemyScript : MonoBehaviour
 
     public void cooldownUpdate()
     {
-        anim.SetBool("chasingPlayer", false);
+        anim.SetBool("run", false);
         
         //turn off attack hitbox
         hitbox.GetComponent<BoxCollider>().enabled = false;
@@ -727,7 +734,7 @@ public class EnemyScript : MonoBehaviour
         GetComponent<BoxCollider>().enabled = true;
         if (enemy_type != EnemyType.CHARGER)
         {
-            anim.SetBool("chasingPlayer", true);
+            anim.SetBool("run", true);
         }
         GetComponentInChildren<SpriteRenderer>().color = Color.white;
         hitbox.GetComponent<BoxCollider>().enabled = false;
