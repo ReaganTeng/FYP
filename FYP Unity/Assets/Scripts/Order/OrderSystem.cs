@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class OrderSystem : MonoBehaviour
 {
@@ -256,7 +257,23 @@ public class OrderSystem : MonoBehaviour
     {
         if (StopComingOrders & orderList.Count == 0)
         {
-            eod.EndDay();
+            if (lm.DaySelected != 8)
+                eod.EndDay();
+            else
+            {
+                // check to see if player meet the requirement
+                if (eod.GetScore() >= eod.GetLevelReference().CReq)
+                {
+                    // 10 is if u meet req
+                    lm.DaySelected = 10;
+                }
+                else
+                {
+                    // 9 is if u meet req
+                    lm.DaySelected = 9;
+                }
+                SceneManager.LoadScene("VNScene");
+            }    
         }
     }
 

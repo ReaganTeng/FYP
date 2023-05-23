@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec3504d56cb72c044b834f7858330e0d, type: 3}
-  m_Name: Level 7
+  m_Name: Level 8
   m_EditorClassIdentifier: 
-  WhatDay: 7
-  LevelName: Day 7
-  LevelDescription: The Actual rush day
-  SReq: 300
-  AReq: 240
-  BReq: 180
-  CReq: 100
-  MaxCredibility: 4
-  CCReq: 16
+  WhatDay: 8
+  LevelName: Final Day
+  LevelDescription: Want to go home?
+  SReq: 0
+  AReq: 0
+  BReq: 0
+  CReq: 250
+  MaxCredibility: 0
+  CCReq: 24
   CanSkipVN: 0
   HallwaysUnlock: 0e000000
   CustomizeOrderForThisDay:
@@ -79,14 +79,14 @@ MonoBehaviour:
       HowManyPriority: 0
       DishBeforePriority: 0
       IntervalBetweenPriority: 0
-    penalty: 30
-    EasyDishChance: 25
-    NormalDishChance: 25
-    HardDishChance: 25
-    ExtremeDishChance: 25
+    penalty: 50
+    EasyDishChance: 20
+    NormalDishChance: 20
+    HardDishChance: 30
+    ExtremeDishChance: 30
   WhatSpawnerActive: 09000000
   isThereTutorial: {fileID: 0}
   MaxOrders: 4
   TimeBeforeFirstOrder: 0
-  IntervalBetweenOrders: 15
+  IntervalBetweenOrders: 10
   DayDuration: 300
