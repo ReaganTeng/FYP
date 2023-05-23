@@ -36,7 +36,7 @@ public class IngredientBarrel : MonoBehaviour
             Destroy(resultFood.GetComponent<Dish>());
             Destroy(resultFood.GetComponent<RefinedItem>());
             resultFood.AddComponent<Item>();
-            resultFood.GetComponent<Item>().SetValueManually(GetItemType(), ingredientDisplay.sprite);
+            resultFood.GetComponent<Item>().SetValueManually(GetItemType());
             inv.AddItem(resultFood);
         }
     }

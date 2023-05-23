@@ -32,6 +32,8 @@ public class projectile : MonoBehaviour
                 other.GetComponent<PlayerMovement>().setAnimator(true);
                 other.GetComponent<PlayerStats>().ResetConsecutiveHit();
                 other.GetComponent<PlayerStats>().ChangeFervor(-10.0f);
+                other.GetComponent<PlayerStats>().resetval();
+
             }
 
             if (other.tag == "wall")

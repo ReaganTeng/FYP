@@ -31,10 +31,9 @@ public class Item : MonoBehaviour
         return image;
     }
 
-    public void SetValueManually(ItemManager.Items theItem, Sprite theImage)
+    public void SetValueManually(ItemManager.Items theItem)
     {
         itemtype = theItem;
-        image = theImage;
     }
 
     public ItemManager.ItemVariant GetItemVariant()

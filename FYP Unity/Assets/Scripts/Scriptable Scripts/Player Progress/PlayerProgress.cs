@@ -13,7 +13,7 @@ public class PlayerProgress : ScriptableObject
     //RATION
     //starting value 0
     [SerializeField] int enemy_killed_requirement;
-    public void decrease_enemykilledrequirement()
+    public void update_ration()
     {
         if (enemy_killed_requirement == 0)
         {
@@ -24,7 +24,7 @@ public class PlayerProgress : ScriptableObject
             enemy_killed_requirement -= 2;
         }
     }
-    public int return_enemykilledrequirement()
+    public int return_ration()
     {
         return enemy_killed_requirement;
     }
@@ -34,7 +34,7 @@ public class PlayerProgress : ScriptableObject
     //JUST DIE ALREADY
     //starting value = 0
     [SerializeField] float fervor_requirement;
-    public void set_instantkill_requirement()
+    public void update_justdiealready()
     {
         if(fervor_requirement == 0)
         {
@@ -45,7 +45,7 @@ public class PlayerProgress : ScriptableObject
             fervor_requirement -= 10;
         }
     }
-    public float return_instantkill_requirement()
+    public float return_justdiealready()
     {
         return fervor_requirement;
     }
@@ -58,21 +58,17 @@ public class PlayerProgress : ScriptableObject
     //DINNER RUSH
     //starting value 0
     [SerializeField] float burst_time;
-    public void set_burst_time()
+    public void update_dinner_rush()
     {
         burst_time += 5;
     }
-    public float return_burst_time()
+    public float return_dinner_rush()
     {
         return burst_time;
     }
     //
 
 
-
-    //RUSH OF PERFECTION
-    //starting value 0
-    [SerializeField] int charge_reward;
 
     private int mixer_Reduction = 0;
     private int better_cooker = 0;
@@ -81,11 +77,14 @@ public class PlayerProgress : ScriptableObject
     private int frenzy_mode_Max_stack = 0;
 
 
-    public void increase_charge_reward()
+    //RUSH OF PERFECTION
+    //starting value 0
+    [SerializeField] int charge_reward;
+    public void update_rush_of_perfection()
     {
         charge_reward += 1;
     }
-    public int return_charge_reward()
+    public int return_rush_of_perfection()
     {
         return charge_reward;
     }
@@ -94,7 +93,7 @@ public class PlayerProgress : ScriptableObject
     //THICK SKIN
     //starting value 1
     [SerializeField] float fervorloss_padding;
-    public void increase_thick_skin()
+    public void update_thick_skin()
     {
         fervorloss_padding -= 0.15f;
     }
@@ -108,47 +107,52 @@ public class PlayerProgress : ScriptableObject
     //BETTER STAMINA
     //starting value 1
     [SerializeField] float heavyattackspeed_reduction;
-    public void decrease_heavyattackrecovery()
+    public void update_better_stamina()
     {
-        heavyattackspeed_reduction += 0.15f;
+        heavyattackspeed_reduction += 0.20f;
     }
-    public float return_heavyattackrecovery()
+    public float return_better_stamina()
     {
         return heavyattackspeed_reduction;
     }
     //
 
+
+
     //STURDY ARM
+    //starting value 0
     [SerializeField] int number_of_charges;
-    public void increase_number_of_charges()
+    public void update_sturdy_arm()
     {
         number_of_charges += 1;
     }
-    public int return_number_of_charges()
+    public int return_sturdy_arm()
     {
         return number_of_charges;
     }
     //
 
     //CALM MIND
+    //starting value 1
     [SerializeField] float fervorspeedreduction;
-    public void reduce_fervorspeed()
+    public void update_calmmind()
     {
-        fervorspeedreduction -= .25f;
+        fervorspeedreduction -= .18f;
     }
-    public float return_fervorspeed()
+    public float return_calmmind()
     {
         return fervorspeedreduction;
     }
     //
 
     //HYPER FOCUSED COOKING
+    //starting value 30
     [SerializeField] float buffactive_reduction;
-    public void reduce_buffactive_requirement()
+    public void update_hyper_focused_cooking()
     {
-        buffactive_reduction += 20;
+        buffactive_reduction += 13;
     }
-    public float return_buffactive_requirement()
+    public float return_hyper_focused_cooking()
     {
         return buffactive_reduction;
     }
@@ -158,7 +162,7 @@ public class PlayerProgress : ScriptableObject
 
     public void IncreaseMixerReduction()
     {
-        mixer_Reduction += 5;
+        mixer_Reduction += 3;
     }
     public int GetMixerReduction()
     {
@@ -266,7 +270,11 @@ public class PlayerProgress : ScriptableObject
     void ResetShopStats()
     {
         ResetInventory();
+
+        //starting value 30
         buffactive_reduction = 30;
+
+        
         number_of_charges = 0;
 
 

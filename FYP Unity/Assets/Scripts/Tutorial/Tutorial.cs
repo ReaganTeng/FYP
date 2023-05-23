@@ -834,7 +834,7 @@ public class Tutorial : MonoBehaviour
                     if (gm.GetComponent<OrderSystem>().GetOrderCount() == 0)
                     {
                         // if the score player obtained is greater or equal to 25 make them go to VN, else reset the objective
-                        if (gm.GetComponent<EndOfDay>().GetScore() >= 25)
+                        if (gm.GetComponent<EndOfDay>().GetScore() >= 20)
                             currentIndex += 2;
 
                         ConditionTriggered = true;

@@ -60,8 +60,7 @@ public class PlayerStats : MonoBehaviour
 
     float alpha_change;
 
-    bool flash_mode;
-    float flashtimer;
+   
 
     [SerializeField] PlayerProgress pp;
 
@@ -70,14 +69,12 @@ public class PlayerStats : MonoBehaviour
 
     bool instant_kill_mode;
 
+    //DINNER RUSH UPGRADE
     bool burstmode;
     float bursttime;
-
-    bool b;
-
+    //
     public void Start()
     {
-        b = false;
 
         instant_kill_mode = false;
 
@@ -148,48 +145,32 @@ public class PlayerStats : MonoBehaviour
         //Debug.Log("Fervor: " + fervorLevel + "REDUCED BY " + Fervorchange);
     }
 
+    //DINNER RUSH UPGRADE
     public void setbursttime(float bt)
     {
         bursttime = bt;
     }
-
     public bool getburstmode()
     {
         return burstmode;
     }
+    //
 
+    //FOR JUST DIE ALREADY UPGRADE
     public bool getinstantkillmode()
     {
         return instant_kill_mode;
     }
-
+    //
 
     public void reducefervor()
     {
-        fervorLevel -= pp.return_instantkill_requirement();
+        fervorLevel -= pp.return_justdiealready();
     }
 
     public void Update()
     {
-        
-        //if(Input.GetKeyDown("1") &&
-        //    !b)
-        //{
-        //    fervorLevel += 15;
-        //    b = true;
-        //}
-        //else if (Input.GetKeyDown("2") &&
-        //    !b)
-        //{
-        //    fervorLevel -= 15;
-        //    b = true;
-        //}
-        //else
-        //{
-        //    b = false;
-        //}
-
-
+        //DINNER RUSH UPGRADE
         if (bursttime > 0)
         {
             bursttime -= Time.deltaTime;
@@ -199,9 +180,12 @@ public class PlayerStats : MonoBehaviour
         {
             burstmode = false;
         }
+        //
 
-        if(fervorLevel > pp.return_instantkill_requirement()
-            && pp.return_instantkill_requirement() > 0)
+        //GO INSTANT KILL MODE WHEN FERVOR REQUIREMENT IS MORE THAN THE FERVOR REQUIREMENT TO GO THERE
+        //BASE ON JUST_DIE_ALREADY UPGRADE
+        if(fervorLevel > pp.return_justdiealready()
+            && pp.return_justdiealready() > 0)
         {
             instant_kill_mode = true;
         }
@@ -209,11 +193,7 @@ public class PlayerStats : MonoBehaviour
         {
             instant_kill_mode = false;
         }
-
-        if(instant_kill_mode)
-        {
-            Debug.Log("INSTANT KILL MODE");
-        }
+        //
 
 
         //when player is playing hurt animation
@@ -235,7 +215,7 @@ public class PlayerStats : MonoBehaviour
             hurt_period = 0.0f;
         }
 
-        //Debug.Log("BUFF " + pp.return_buffactive_requirement());
+        //Debug.Log("BUFF " + pp.return_hyper_focused_cooking());
         //TEMPORARY, FOR TESTING PURPOSES
         //if (Input.GetMouseButtonDown(0))
         //{
@@ -261,10 +241,13 @@ public class PlayerStats : MonoBehaviour
                 fervorBar.enabled = true;
                 fervorBar.value = fervorLevel;
             }
-            if (fervorLevel > 0)
+            if (fervorLevel > 0
+                )
             {
-                fervorLevel -= pp.return_fervorspeed() *  3.0f * Time.deltaTime;
+                //REDUCE THE FERVOR, AND CAN CHANGE ITS SPEED BASE OF CALM MIND SHOP UPGRADE
+                fervorLevel -= pp.return_calmmind() *  3.0f * Time.deltaTime;
             }
+            
 
 
             if(fervorLevel < 0)
@@ -343,12 +326,14 @@ public class PlayerStats : MonoBehaviour
                 }
             }
 
-            if (fervorLevel >= fervorMaxLevel - pp.return_buffactive_requirement())
+
+            //IF FERVOR REACHES FERVOR REQUIREMENT TO GO BUFF MODE
+            //CAN BE REDUCED BY HYPER FOCUSED COOKING SHOP UPGRADE
+            if (fervorLevel >= fervorMaxLevel - pp.return_hyper_focused_cooking())
             {
                 fillimage.sprite
                     = fervor_mode;
                 buff_active = true;
-                //Debug.Log("BUFF IS ACTIVE");
             }
             else
             {

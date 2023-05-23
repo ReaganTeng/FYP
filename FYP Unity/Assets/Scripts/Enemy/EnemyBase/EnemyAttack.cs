@@ -8,7 +8,7 @@ using Com.LuisPedroFonseca.ProCamera2D;
 public class EnemyAttack : MonoBehaviour
 {
     [SerializeField] EnemyScript es;
-   float AttackCD;
+    float AttackCD;
     float Attackcdtimer;
 
     [SerializeField] Animator animator;
@@ -21,7 +21,6 @@ public class EnemyAttack : MonoBehaviour
 
     bool attacking;
 
-    float delayTime;
 
 
     GameObject gamemanager;
@@ -36,7 +35,6 @@ public class EnemyAttack : MonoBehaviour
 
         player = GameObject.FindGameObjectWithTag("Player");
         attacking_present = false;
-        delayTime = 0.0f;
         AttackCD = 0;
         Attackcdtimer = 0;
         post_attack = false;
@@ -49,12 +47,12 @@ public class EnemyAttack : MonoBehaviour
             Attackcdtimer -= Time.deltaTime;
         }
 
-
+        //TO MINIMISE THE BOXCOLLIDER OF ENEMY AND PLAYER GETTING STUCK TOGETHER FOR JUMPERS
         if (Attackcdtimer < AttackCD / 5)
         {
             transform.parent.transform.parent.GetComponent<BoxCollider>().enabled = true;
         }
-
+        //
     }
 
 
@@ -107,17 +105,7 @@ public class EnemyAttack : MonoBehaviour
         return post_attack;
     }
 
-    public bool return_whether_back_away()
-    {
-        if (Attackcdtimer <= 0)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
+   
     //change collider size if want to increase attack range
     private void OnTriggerStay(Collider other)
     {
