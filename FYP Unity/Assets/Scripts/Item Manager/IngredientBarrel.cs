@@ -6,16 +6,10 @@ using UnityEngine.UI;
 public class IngredientBarrel : MonoBehaviour
 {
     [SerializeField] GameObject ingredient;
-    [SerializeField] Image ingredientDisplay;
     [SerializeField] GameObject emptyPrefab;
     [SerializeField] IngredientBarrelManager.BarrelTypes barrelType;
     private bool barrelActive = true;
     
-
-    private void Start()
-    {
-        ingredientDisplay.sprite = FoodManager.instance.GetImage(ingredient);
-    }
 
     public void GetIngredientFromBarrel()
     {
@@ -36,7 +30,7 @@ public class IngredientBarrel : MonoBehaviour
             Destroy(resultFood.GetComponent<Dish>());
             Destroy(resultFood.GetComponent<RefinedItem>());
             resultFood.AddComponent<Item>();
-            resultFood.GetComponent<Item>().SetValueManually(GetItemType());
+            resultFood.GetComponent<Item>().SetValueManually(ingredient);
             inv.AddItem(resultFood);
         }
     }
@@ -51,20 +45,20 @@ public class IngredientBarrel : MonoBehaviour
         return barrelType;
     }
 
-    private ItemManager.Items GetItemType()
-    {
-        switch (barrelType)
-        {
-            case IngredientBarrelManager.BarrelTypes.FLOUR:
-                return ItemManager.Items.FLOUR;
-            case IngredientBarrelManager.BarrelTypes.SEAWEED:
-                return ItemManager.Items.SEAWEED;
-            case IngredientBarrelManager.BarrelTypes.SUGAR:
-                return ItemManager.Items.SUGAR;
-            case IngredientBarrelManager.BarrelTypes.SALT:
-                return ItemManager.Items.SALT;
-            default:
-                return ItemManager.Items.FLOUR;
-        }
-    }
+    //private ItemManager.Items GetItemType()
+    //{
+    //    switch (barrelType)
+    //    {
+    //        case IngredientBarrelManager.BarrelTypes.FLOUR:
+    //            return ItemManager.Items.FLOUR;
+    //        case IngredientBarrelManager.BarrelTypes.SEAWEED:
+    //            return ItemManager.Items.SEAWEED;
+    //        case IngredientBarrelManager.BarrelTypes.SUGAR:
+    //            return ItemManager.Items.SUGAR;
+    //        case IngredientBarrelManager.BarrelTypes.SALT:
+    //            return ItemManager.Items.SALT;
+    //        default:
+    //            return ItemManager.Items.FLOUR;
+    //    }
+    //}
 }

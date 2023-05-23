@@ -31,9 +31,10 @@ public class Item : MonoBehaviour
         return image;
     }
 
-    public void SetValueManually(ItemManager.Items theItem)
+    public void SetValueManually(GameObject itemReference)
     {
-        itemtype = theItem;
+        itemtype = itemReference.GetComponent<Item>().GetItemType();
+        image = itemReference.GetComponent<Item>().GetImage();
     }
 
     public ItemManager.ItemVariant GetItemVariant()
