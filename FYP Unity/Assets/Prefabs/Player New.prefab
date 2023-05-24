@@ -10029,7 +10029,6 @@ MonoBehaviour:
   base_number_of_charges: 2
   chargeBar: {fileID: 0}
   canvas: {fileID: 0}
-  chargertimertext: {fileID: 0}
   line: {fileID: 6922493218510129667, guid: 3f6a26fc70e9cfb42aed81987544b6ba, type: 3}
   handle: {fileID: 0}
   animator: {fileID: 5881152895048556901}
@@ -10180,7 +10179,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerProgress: {fileID: 11400000, guid: 80203a9d8037ee2449d6c18b30afe1f3, type: 2}
-  PlayerHealth: 0
   NormalAttackDamage: 3
   HeavyAttackDamage: 8
   numberConsecutiveHits: 0

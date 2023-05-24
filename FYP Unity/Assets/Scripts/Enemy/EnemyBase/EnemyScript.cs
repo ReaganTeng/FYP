@@ -172,10 +172,7 @@ public class EnemyScript : MonoBehaviour
     {
         return phase;
     }
-    public AttackPattern return_attackptn()
-    {
-        return atkPattern;
-    }
+    
 
     public void set_current_phase(Phases current_phase)
     {
@@ -377,7 +374,7 @@ public class EnemyScript : MonoBehaviour
         attacked = attk;
     }
 
-    public bool getbool()
+    public bool getattacked()
     {
         return attacked;
     }
@@ -438,7 +435,6 @@ public class EnemyScript : MonoBehaviour
         return hitbox;
     }
 
-
     public void set_transitionfromattacktimer(float time)
     {
         transitionFromAttackTimer = time;
@@ -453,12 +449,12 @@ public class EnemyScript : MonoBehaviour
     }
 
 
-    public float return_transitionfromhurttimer()
-    {
-        return transitionFromHurtTimer;
-    }
+    //public float return_transitionfromhurttimer()
+    //{
+    //    return transitionFromHurtTimer;
+    //}
 
-    private void Update()
+    void Update()
     {
         navmeshagent = GetComponent<NavMeshAgent>();
         anim = GetComponentInChildren<Animator>();
@@ -533,6 +529,7 @@ public class EnemyScript : MonoBehaviour
             //IF PLAYER IS IN AVOID STATE
             if (phase == Phases.AVOID)
             {
+
                 hitbox.GetComponent<BoxCollider>().enabled = true;
 
                 //GetComponentInChildren<SpriteRenderer>().color = Color.black;
@@ -545,7 +542,6 @@ public class EnemyScript : MonoBehaviour
                     new_destination_interval = 0;
                 }
                 //
-
                 navmeshagent.enabled = true;
                 if (enemy_type == EnemyType.CHARGER)
                 {
@@ -563,7 +559,7 @@ public class EnemyScript : MonoBehaviour
                 }
 
                 anim.SetBool("run", true);
-                navmeshagent.speed = 2.0f;
+                navmeshagent.speed = 4.0f;
                 navmeshagent.SetDestination(new Vector3(
                 player.transform.position.x + rand_x + (int)offset_x,
                 transform.position.y,
@@ -657,10 +653,7 @@ public class EnemyScript : MonoBehaviour
     }
 
     
-   
-
-
-
+  
     public void BoundaryCheck()
     {
         for (int i = 0; i < zone.Length; i++)
@@ -703,10 +696,7 @@ public class EnemyScript : MonoBehaviour
 
     
 
-    public int getzoneno()
-    {
-        return zoneno;
-    }
+   
 
     public bool getupdating()
     {
@@ -714,7 +704,7 @@ public class EnemyScript : MonoBehaviour
     }
 
 
-
+    
     public void cooldownUpdate()
     {
         anim.SetBool("run", false);
@@ -768,15 +758,9 @@ public class EnemyScript : MonoBehaviour
 
     
 
-    public float gettimer()
-    {
-        return timer;
-    }
+    
 
-    public float getcooldownend()
-    {
-        return cooldown_period;
-    }
+    
 
     void EnemyDie(bool ExactKill)
     {

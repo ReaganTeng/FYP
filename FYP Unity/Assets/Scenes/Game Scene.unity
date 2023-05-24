@@ -532,10 +532,6 @@ PrefabInstance:
       propertyPath: reduction_in_percentage
       value: 50
       objectReference: {fileID: 0}
-    - target: {fileID: 4940691009673553818, guid: d09965bd491c43742a512d3f4207781f, type: 3}
-      propertyPath: regeneration_rate_per_notch
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 5545318540187160410, guid: d09965bd491c43742a512d3f4207781f, type: 3}
       propertyPath: HitText
       value: 
@@ -1226,6 +1222,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1031948284}
     - target: {fileID: 1793855428296037514, guid: 3469af5157eaf574ba40b0341056896a, type: 3}
+      propertyPath: score
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1793855428296037514, guid: 3469af5157eaf574ba40b0341056896a, type: 3}
+      propertyPath: DayText
+      value: 
+      objectReference: {fileID: 451877509}
+    - target: {fileID: 1793855428296037514, guid: 3469af5157eaf574ba40b0341056896a, type: 3}
       propertyPath: Textbox
       value: 
       objectReference: {fileID: 1031948283}
@@ -1309,6 +1313,10 @@ PrefabInstance:
       propertyPath: ord
       value: 
       objectReference: {fileID: 557516378}
+    - target: {fileID: 1793855428296037515, guid: 3469af5157eaf574ba40b0341056896a, type: 3}
+      propertyPath: DefaultWaitingTime
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 1793855428296037518, guid: 3469af5157eaf574ba40b0341056896a, type: 3}
       propertyPath: inventoryEmpty
       value: 

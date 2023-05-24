@@ -633,13 +633,17 @@ public class PlayerAttack : MonoBehaviour
                 (((int)next_known_notch + (int)min_notch_value) -
                 (int)chargeCurrentLvl);
 
+        //CASE 1 - IF LAST_KNOWN_NOTCH IS <= 0
         if ((int)last_known_notch <= 0)
         {
             chargeCurrentLvl = (int)last_known_notch + diff;
         }
+        //CASE 2 - IF LAST_KNOWN_NOTCH IS > 0
         else
         {
+            //2.1
             chargeCurrentLvl = (int)last_known_notch + diff;
+            //2.2
             last_known_notch = (int)last_known_notch - (int)min_notch_value;
             next_known_notch = (int)next_known_notch - (int)min_notch_value;
         }

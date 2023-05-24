@@ -239,13 +239,13 @@ public class ChargerScript : MonoBehaviour
             enemyScript.ifUpdatingfalse();
         }
 
-        if (enemyScript.getzoneno() == 0)
-        {
-            velocity_direction = GetComponent<EnemyScript>().getparent().position - transform.position;
-            velocity_direction.y = 0;
-            velocity_direction.Normalize();
-            GetComponent<Rigidbody>().velocity = velocity_direction * velocityspeed;
-        }
+        //if (enemyScript.getzoneno() == 0)
+        //{
+        //    velocity_direction = GetComponent<EnemyScript>().getparent().position - transform.position;
+        //    velocity_direction.y = 0;
+        //    velocity_direction.Normalize();
+        //    GetComponent<Rigidbody>().velocity = velocity_direction * velocityspeed;
+        //}
     }
 
 
