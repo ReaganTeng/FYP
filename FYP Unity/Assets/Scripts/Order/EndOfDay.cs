@@ -23,6 +23,7 @@ public class EndOfDay : MonoBehaviour
     [SerializeField] GameObject EndOfDayBackground;
 
     [SerializeField] List<GameObject> resultDisplay;
+    [SerializeField] GameObject DayText;
     [SerializeField] GameObject ClearedText;
     [SerializeField] GameObject FailedText;
     [SerializeField] GameObject TotalText;
@@ -179,7 +180,7 @@ public class EndOfDay : MonoBehaviour
                 // if player exceed S grade req
                 if (gradeSlider.value >= score || gradeSlider.value >= level.SReq)
                 {
-                    UpdateGrade((int)gradeSlider.maxValue);
+                    UpdateGrade(score);
                     SetSquid();
                     EndOfDayAnimation = false;
                     LoadGrade = false;
@@ -324,6 +325,7 @@ public class EndOfDay : MonoBehaviour
 
     void SetResult()
     {
+        DayText.GetComponent<TextMeshProUGUI>().text = "DAY" + level.WhatDay.ToString();
         // Setting the total completed order for the day
         ClearedText.GetComponentsInChildren<TextMeshProUGUI>()[0].text = "COMPLETED x " + os.GetSuccessfulOrders();
         // Setting then total score obtaining from completed orders for the day
