@@ -171,10 +171,10 @@ public class ShooterScript : MonoBehaviour
                         }
                         //
 
-                        if (timer >= 20.0f)
+                        if (timer > 20.0f)
                         {
-                            enemyPhase = EnemyScript.Phases.COOLDOWN;
                             em.setupdating(false);
+                            enemyScript.set_current_phase(EnemyScript.Phases.COOLDOWN);
                         }
                     }
                     else

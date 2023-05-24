@@ -114,7 +114,9 @@ public class Spawner : MonoBehaviour
             , transform.position /*+ new Vector3(x_position * enemy.transform.localScale.x, 0, z_position * enemy.transform.localScale.z)*/
             , transform.rotation);
         enemyObject.transform.SetParent(transform);
+        //TO KEEP CHECK ON HOW MANY ENEMIES ARE IN THE ROOM RIGHT NOW
         enemyObject.GetComponent<EnemyScript>().setparent(transform);
+        //
         if (presetHealth != -1)
             enemyObject.GetComponent<EnemyScript>().SetEnemyHealth(presetHealth);
 

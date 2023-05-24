@@ -92,7 +92,7 @@ public class EnemyManager : MonoBehaviour
                     {
                         for (int x = 0; x < indexes.Count; x++)
                         {
-                            if (other_enemies[indexes[x]].GetComponent<EnemyScript>().getbool())
+                            if (other_enemies[indexes[x]].GetComponent<EnemyScript>().getattacked())
                             {
                                 //FOUND THE ENEMY THAT'S ATTACKED
                                 other_enemies[indexes[x]].GetComponent<EnemyScript>().set_current_phase(EnemyScript.Phases.COOLDOWN);
