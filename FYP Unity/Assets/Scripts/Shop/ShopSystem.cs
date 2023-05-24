@@ -61,7 +61,9 @@ public class ShopSystem : MonoBehaviour
 
     public void CloseShop()
     {
-        SaveFile.instance.SaveGame();
+        // if the savefile.instance is not null, save the shop
+        if (SaveFile.instance != null)
+            SaveFile.instance.SaveGame();
         ShopUI.SetActive(false);
         lsm.UpdateUI();
         CurrentPanel = 0;
