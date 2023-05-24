@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class PlayMusic : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] string musicName;
+
     void Start()
     {
-        GameSoundManager.PlayMusic("GameMusic");
+        GameSoundManager.PlayMusic(musicName);
         Debug.Log("PlayMusic");
     }
-
-  
 }

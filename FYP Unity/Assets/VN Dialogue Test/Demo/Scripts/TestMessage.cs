@@ -51,11 +51,14 @@ public class TestMessage : MonoBehaviour
                 tut2end();
                 break;
         }
+
+        
     }
 
     private void Start()
     {
         UpdateButtonState();
+        GameSoundManager.PlayMusic("VNMusic");
     }
 
     private void UpdateButtonState()

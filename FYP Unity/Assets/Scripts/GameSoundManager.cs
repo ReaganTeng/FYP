@@ -7,8 +7,6 @@ using DigitalRuby.SoundManagerNamespace;
 
 public class GameSoundManager : MonoBehaviour
 {
-
-    private static GameSoundManager instance;
     public Slider soundSlider;
     public Slider musicSlider;
 
@@ -22,11 +20,8 @@ public class GameSoundManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance)
-        {
-            Destroy(gameObject);
-            return;
-        }
+        soundDict.Clear();
+        musicDict.Clear();
 
         for (int i = 0; i < soundName.Length; i++)
         {
@@ -36,8 +31,11 @@ public class GameSoundManager : MonoBehaviour
         {
             musicDict.Add(musicName[i], music[i]);
         }
-        instance = this;
-        DontDestroyOnLoad(gameObject);
+
+        if (PlayerPrefs.HasKey("SoundVolume"))
+            soundSlider.value = PlayerPrefs.GetFloat("SoundVolume");
+        if (PlayerPrefs.HasKey("MusicVolume"))
+            soundSlider.value = PlayerPrefs.GetFloat("MusicVolume");
 
         SoundManager.StopSoundsOnLevelLoad = false;
     }
@@ -52,17 +50,15 @@ public class GameSoundManager : MonoBehaviour
         musicDict[name].PlayLoopingMusicManaged(1.0f, 1.0f, false);
     }
 
- 
-
-
-
     public void SoundVolumeChanged()
     {
         SoundManager.SoundVolume = soundSlider.value;
+        PlayerPrefs.SetFloat("SoundVolume", soundSlider.value);
     }
 
     public void MusicVolumeChanged()
     {
         SoundManager.MusicVolume = musicSlider.value;
+        PlayerPrefs.SetFloat("MusicVolume", musicSlider.value);
     }
 }

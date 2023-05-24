@@ -13,7 +13,7 @@ public class mainMenuManager : MonoBehaviour
 
     private void Start()
     {
-        GameSoundManager.PlayMusic("LevelSelect");
+        GameSoundManager.PlayMusic("MainMenu");
     }
 
     public void NewGame()
