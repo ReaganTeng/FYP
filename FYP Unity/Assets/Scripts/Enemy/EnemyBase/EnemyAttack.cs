@@ -51,6 +51,7 @@ public class EnemyAttack : MonoBehaviour
         if (Attackcdtimer < AttackCD / 5)
         {
             transform.parent.transform.parent.GetComponent<BoxCollider>().enabled = true;
+
         }
         //
     }
@@ -120,13 +121,11 @@ public class EnemyAttack : MonoBehaviour
 
         // if it is the player
             if (other.CompareTag("Player")
+                        && other.GetComponentInChildren<Animator>().GetNextAnimatorStateInfo(0).IsName("Dash") == false
             && Attackcdtimer <= 0
             && GetComponent<BoxCollider>().enabled == true
-            && other.GetComponentInChildren<Animator>().GetNextAnimatorStateInfo(0).IsName("Dash") == false
             )
         {
-
-
             attacking = true;
 
             //IF ENEMY IS A JUMPER
@@ -134,7 +133,7 @@ public class EnemyAttack : MonoBehaviour
                 == EnemyScript.EnemyType.JUMPER             
                 && transform.parent.transform.parent.GetComponent<EnemyScript>().return_current_phase() != EnemyScript.Phases.AVOID)
             {
-                other.GetComponent<PlayerMovement>().setAnimator(true);
+                other.GetComponent<PlayerMovement>().setHurtAnimation(true);
                 other.GetComponent<PlayerStats>().ResetConsecutiveHit();
                 //other.GetComponent<PlayerStats>().ChangeFervor(-10.0f);
                 //THICK SKIN POWERUP
@@ -187,7 +186,7 @@ public class EnemyAttack : MonoBehaviour
                 && transform.parent.transform.parent.GetComponent<EnemyScript>().return_current_phase() != EnemyScript.Phases.AVOID
                 )
             {
-                other.GetComponent<PlayerMovement>().setAnimator(true);
+                other.GetComponent<PlayerMovement>().setHurtAnimation(true);
                 other.GetComponent<PlayerStats>().ResetConsecutiveHit();
                 //THICK SKIN POWERUP
                 other.GetComponent<PlayerStats>().ChangeFervor(-15.0f * other.GetComponent<PlayerStats>().getpp().return_thick_skin());

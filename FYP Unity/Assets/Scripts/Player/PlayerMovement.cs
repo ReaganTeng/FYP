@@ -4,11 +4,16 @@ using UnityEngine;
 using System.Reflection;
 using UnityEngine.UI;
 using Com.LuisPedroFonseca.ProCamera2D;
-
+using UnityEngine.SceneManagement;
 
 
 public class PlayerMovement : MonoBehaviour
 {
+    
+
+
+
+
     [SerializeField] Rigidbody playerRB;
     [SerializeField] Transform orientation;
     [SerializeField] float PlayerSpeed;
@@ -68,6 +73,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        
+
         if (IFrameStart)
         {
             if (iframetimer > 0)
@@ -255,6 +262,7 @@ public class PlayerMovement : MonoBehaviour
 
         //notattackingordashing();
 
+        //MOVEMENT
         if (!DisableControls
             && GetComponentInChildren<Animator>().GetBool("click") == false
             )
@@ -267,13 +275,12 @@ public class PlayerMovement : MonoBehaviour
             )
             {
                 if (!playerAttack.attacking_or_not()
-                                /*notheavyattackingordashing()*/
                                 && !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Dash")
 )
                 {
                     if (GetComponentInParent<PlayerStats>().getburstmode())
                     {
-                        Debug.Log("FAST MODE");
+                        //Debug.Log("FAST MODE");
                         playerRB.AddForce((orientation.forward * verticalInput + orientation.right * horizontalInput) * PlayerSpeed * 1.5f);
                     }
                     else
@@ -286,6 +293,7 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
+        //
 
       
     }
@@ -309,7 +317,10 @@ public class PlayerMovement : MonoBehaviour
             return false;
         }
     }
-    public void setAnimator(bool hurt)
+    
+    
+    
+    public void setHurtAnimation(bool hurt)
     {
        GetComponentInChildren<Animator>().SetBool("Hurt", hurt);
     }
@@ -345,6 +356,8 @@ public class PlayerMovement : MonoBehaviour
         else
             foward = 0;
 
+
+        // If player is moving sideways
         if (horizontalInput > 0)
             right = 1;
 

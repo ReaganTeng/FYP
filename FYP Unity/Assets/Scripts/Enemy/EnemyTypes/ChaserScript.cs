@@ -146,7 +146,7 @@ public class ChaserScript : MonoBehaviour
                 {
                     if (hitbox.GetComponent<EnemyAttack>().playerinhitbox())
                     {
-                        player.GetComponent<PlayerMovement>().setAnimator(true);
+                        player.GetComponent<PlayerMovement>().setHurtAnimation(true);
                         player.GetComponent<PlayerStats>().ResetConsecutiveHit();
                         //other.GetComponent<PlayerStats>().ChangeFervor(-5.0f);
                         //THICK SKIN POWERUP

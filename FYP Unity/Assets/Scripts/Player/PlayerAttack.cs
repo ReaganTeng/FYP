@@ -8,7 +8,10 @@ using DigitalRuby.SoundManagerNamespace;
 
 public class PlayerAttack : MonoBehaviour
 {
+    //FOR THE RATION SHOP ITEM REFERENCE
+
     int enemykilled;
+    //
     public enum Weapon
     {
         SPATULA, //0
@@ -28,45 +31,60 @@ public class PlayerAttack : MonoBehaviour
 
     // Set the attack for the player
 
+    //FOR THE WEAPONS DISPLAY UI
     [SerializeField] GameObject KnifeWeaponDisplay;
     [SerializeField] GameObject RollerWeaponDisplay;
     [SerializeField] GameObject SpatulaWeaponDisplay;
     [SerializeField] float notSelectedAlpha = 0.4f;
     private Color notSelected;
     private Color Selected;
+    //
 
+
+    //SPATULA'S HITBOX
     [SerializeField] GameObject spaculaHitbox;
+    //KNIFE'S HITBOX
     [SerializeField] GameObject knifeHitbox;
+    //ROLLING PIN'S HITBOX
     [SerializeField] GameObject pinHitbox;
+
     bool disableControls;
     bool CanSwapWeapon = true;
 
-    float chargeCurrentLvl;
-    float chargeMaxLvl;
-    //[SerializeField] float chargingSpeed;
-    float last_known_notch;
-    float next_known_notch;
 
-    //the default charging duration in seconds
+    //THE CURRENT LEVEL OF THE CHARGE BAR
+    float chargeCurrentLvl;
+    //THE MAX LEVEL OF THE CHARGE BAR
+    float chargeMaxLvl;
+    
+    //THE TIME IT TAKES TO CHARGE UP THE WHOLE BAR IN SECONDS
     float chargingduration;
+    //HOW LONG IT TAKES TO CHARGE UP ONE HEAVY ATTACK CHARGE IN SECONDS
     [SerializeField] float regeneration_rate_per_notch;
-    //number of heavy attack charges the player has
+    //THE BASE NUMBER OF HEAVY ATTACK CHARGES THE PLAYER WILL HAVE
+    [SerializeField] int base_number_of_charges;
+    //THE NUMBER OF HEAVY ATTACK CHARGES THAT WILL BE INITIALISED
     int number_of_charges;
 
 
-
+    //THE MINIMUM AMOUNT FOR THE CHARGEBAR THAT PLAYER NEEDS IN ORDER TO DO HEAVY ATTACK
     float min_notch_value;
+
+
+    float last_known_notch;
+    float next_known_notch;
+
     [SerializeField] Slider chargeBar;
     [SerializeField] Canvas canvas;
     int time;
-    [SerializeField] TextMeshProUGUI chargertimertext;
+    //[SerializeField] TextMeshProUGUI chargertimertext;
+    //THE DIVIDER ON THE HEAVY ATTACK BAR TO ILLUSTRATE HOW MANY CHARGES THE PLAYER HAS
     [SerializeField] GameObject line;
     [SerializeField] GameObject handle;
     Weapon currentweapon = Weapon.ROLLINGPIN;
     // Start is called before the first frame update
 
 
-    GameObject closestenemy;
     bool isclicked;
     bool heavyattackclicked;
     bool lightattackclicked;
@@ -86,7 +104,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] AnimationClip heavyattackanimation_spatula;
     [SerializeField] AnimationClip heavyattackanimation_pin;
 
-
+    //THE SCRIPTABLE OBJECT PLAYERPROGRESS
     [SerializeField] PlayerProgress pp;
 
 
@@ -103,13 +121,8 @@ public class PlayerAttack : MonoBehaviour
 
         already_attacked = false;
 
-        number_of_charges = 2;
         //INCREASE THE NUMBER OF CHARGES AVAILABLE BASE ON STURDY ARM UPGRADE
-        if (pp.return_sturdy_arm() > 0)
-        {
-            //Debug.Log("INCREASE");
-            number_of_charges += pp.return_sturdy_arm();
-        }
+        number_of_charges += base_number_of_charges + pp.return_sturdy_arm();
         //
 
         click_timer = 0.0f;
@@ -130,7 +143,9 @@ public class PlayerAttack : MonoBehaviour
         next_known_notch = chargingduration;
         last_known_notch = (int)next_known_notch - (int)min_notch_value;
 
+        //DRAW THE DIVIDERS IN THE HEAVY ATTACK CHARGE BAR
         drawdivider();
+        //
 
         switchWeapon();
         spaculaHitbox.SetActive(false);
@@ -144,21 +159,21 @@ public class PlayerAttack : MonoBehaviour
         direction = 1;
     }
 
+    //FOR THE RATION SHOP ITEM REFERENCE
     public void addenemykilled()
     {
-        //Debug.Log("RATI");
         enemykilled += 1;  
     }
-
     public void resetenemykilled()
     {
         enemykilled = 0;
     }
-
     public int getenemykilled()
     {
         return enemykilled;
     }
+    //
+
 
     void drawdivider()
     {
@@ -177,8 +192,6 @@ public class PlayerAttack : MonoBehaviour
                     l.transform.SetParent(canvas.transform);
                     l.transform.position = new Vector2(chargeBar.handleRect.position.x,
                         chargeBar.transform.position.y);
-                    //l.transform.localScale = new Vector2(1, chargeBar.transform.lossyScale.y);
-                    //yourUIElement.GetComponent(RectTransform).sizeDelta = new Vector2(width, height);
                     l.GetComponentInChildren<RectTransform>().sizeDelta =
                         new Vector2(5,
                             chargeBar.GetComponent<RectTransform>().rect.height);
@@ -201,10 +214,7 @@ public class PlayerAttack : MonoBehaviour
         return already_attacked;
     }
 
-    public void setalready_attacked(bool b)
-    {
-        already_attacked = b;
-    }
+    
 
 
     // Update is called once per frame
@@ -218,17 +228,17 @@ public class PlayerAttack : MonoBehaviour
             updatecharge();
         }
 
-        if (chargertimertext != null)
-        {
-            if (chargeBar.value >= chargeBar.maxValue)
-            {
-                chargertimertext.enabled = false;
-            }
-            else
-            {
-                chargertimertext.enabled = true;
-            }
-        }
+        //if (chargertimertext != null)
+        //{
+        //    if (chargeBar.value >= chargeBar.maxValue)
+        //    {
+        //        chargertimertext.enabled = false;
+        //    }
+        //    else
+        //    {
+        //        chargertimertext.enabled = true;
+        //    }
+        //}
         //
 
         GameObject.FindGameObjectWithTag("playerspriterenderer").GetComponent<Animator>().SetInteger("WeaponEquipped", (int)currentweapon);
@@ -247,20 +257,20 @@ public class PlayerAttack : MonoBehaviour
 
             if (!GameObject.FindGameObjectWithTag("playerspriterenderer").GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("hurt_knife")
                 && !GameObject.FindGameObjectWithTag("playerspriterenderer").GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("hurt_pin")
-                && !GameObject.FindGameObjectWithTag("playerspriterenderer").GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("hurt_spatula"))
+                && !GameObject.FindGameObjectWithTag("playerspriterenderer").GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("hurt_spatula")
+                && !animator.GetCurrentAnimatorStateInfo(0).IsName("Dash"))
+                
             {
                 //LIGHT ATTACK
                 if (Input.GetMouseButtonDown(0) && !attacking
                     && isclicked == false
                     && click_timer <= 0
-                    //&& notheavyattacking()
+                    && notheavyattacking()
                     && notlightattacking()
-                    //&& !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Dash")
-                    //&& notswitchingweapons()
+                    && notswitchingweapons()                  
                     )
                 {
 
-                    //depletecharge();
 
                     Debug.Log("LIGHT ATTACK");
                     isclicked = true;
@@ -290,9 +300,8 @@ public class PlayerAttack : MonoBehaviour
                     && CanHeavyAttack
                     && (int)chargeCurrentLvl >= (int)min_notch_value
                     && notheavyattacking()
-                    //&& notlightattacking()
-                    //&& !GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Dash")
-                    //&& notswitchingweapons()
+                    && notlightattacking()
+                    && notswitchingweapons()
                         )
                 {
                     isclicked = true;
@@ -314,9 +323,7 @@ public class PlayerAttack : MonoBehaviour
                         click_timer = heavyattackanimation_spatula.length;
                     }
 
-                    //GET CLOSEST ENEMY
-                    closestenemy = GetClosestEnemy();
-                    //
+                    
                 }
                 //
             }
@@ -374,7 +381,6 @@ public class PlayerAttack : MonoBehaviour
 
                 if (click_timer < 0)
                 {
-                    animator.speed = 1;
                     isclicked = false;
                 }
             }
@@ -440,13 +446,7 @@ public class PlayerAttack : MonoBehaviour
             }
         }
 
-        //Collider[] hitEnemy = Physics.OverlapBox(HitBox.transform.position, HitBox.transform.lossyScale,
-        //    HitBox.transform.rotation, enemyLM);
-
-        //foreach(Collider enemies in hitEnemy)
-        //{
-        //    Debug.Log("Enemy hit");
-        //}
+        
 
         switchWeapon();
     }
@@ -469,15 +469,10 @@ public class PlayerAttack : MonoBehaviour
         return attacking;
     }
 
-    //public void OnDrawGizmos()
-    //{
-    //    Gizmos.color = Color.blue;
-    //    Gizmos.DrawWireCube
-    //        (HitBox.transform.position, HitBox.transform.lossyScale);
-    //}
+   
 
 
-    public GameObject GetClosestEnemy()
+    /*public GameObject GetClosestEnemy()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         GameObject closestEnemy = null;
@@ -496,7 +491,7 @@ public class PlayerAttack : MonoBehaviour
         }
 
         return closestEnemy;
-    }
+    }*/
 
     public bool getHitbox()
     {
@@ -562,7 +557,7 @@ public class PlayerAttack : MonoBehaviour
         if (
         !animator.GetCurrentAnimatorStateInfo(0).IsName("heavyattack_knife")
         && !animator.GetCurrentAnimatorStateInfo(0).IsName("heavyattack_pin")
-        && !animator.GetCurrentAnimatorStateInfo(0).IsName("heavyattack_pin"))
+        && !animator.GetCurrentAnimatorStateInfo(0).IsName("heavyattack_spatula"))
         {
             return true;
         }
@@ -584,10 +579,11 @@ public class PlayerAttack : MonoBehaviour
             return false;
         }
     }
+
+    //UPDATE HEAVY ATTACK BAR
     public void updatecharge()
     {
        
-
         chargeBar.maxValue = chargeMaxLvl;
         min_notch_value = chargeMaxLvl / number_of_charges;
 
@@ -605,19 +601,19 @@ public class PlayerAttack : MonoBehaviour
 
         chargeBar.value = chargeCurrentLvl;
 
+        //CONSTANTLY UPDATE THE NEXT KNOWN NOTCH AND LAST KNOWN NOTCH
         if ((int)chargeCurrentLvl>= (int)next_known_notch + (int)min_notch_value
             && (int)next_known_notch < (int)chargeMaxLvl)
         {
             last_known_notch = (int)next_known_notch;
             next_known_notch = (int)next_known_notch  + (int)min_notch_value;
         }
+        //
 
-
-        if(chargeCurrentLvl <= (int)min_notch_value)
+        /*if(chargeCurrentLvl <= (int)min_notch_value)
         {
             time = ((int)min_notch_value - (int)chargeCurrentLvl);
         }
-
         else
         {
             time = (((int)next_known_notch + (int)min_notch_value)
@@ -627,22 +623,22 @@ public class PlayerAttack : MonoBehaviour
         if (chargertimertext != null)
         {
             chargertimertext.text = time.ToString();
-        }
+        }*/
     }
+    //
+
     public void depletecharge()
     {
+        int diff = (int)min_notch_value -
+                (((int)next_known_notch + (int)min_notch_value) -
+                (int)chargeCurrentLvl);
+
         if ((int)last_known_notch <= 0)
         {
-            int diff = (int)min_notch_value - 
-                (((int)next_known_notch + (int)min_notch_value) - 
-                (int)chargeCurrentLvl);
             chargeCurrentLvl = (int)last_known_notch + diff;
         }
         else
         {
-            int diff = (int)min_notch_value - 
-                (((int)next_known_notch + (int)min_notch_value) - 
-                (int)chargeCurrentLvl);
             chargeCurrentLvl = (int)last_known_notch + diff;
             last_known_notch = (int)last_known_notch - (int)min_notch_value;
             next_known_notch = (int)next_known_notch - (int)min_notch_value;
@@ -660,7 +656,6 @@ public class PlayerAttack : MonoBehaviour
                 (int)chargeCurrentLvl);
 
             chargeCurrentLvl = ((int)next_known_notch + (int)min_notch_value) +  diff;
-
             last_known_notch = (int)last_known_notch - (int)min_notch_value;
             next_known_notch = (int)next_known_notch - (int)min_notch_value;
         }

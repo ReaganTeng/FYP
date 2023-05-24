@@ -35,28 +35,14 @@ public class PlayerMenuMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        //if hurt animation is playing 
-        /*if(GetComponentInChildren<Animator>().GetBool("Hurt"))
-        {
-            delaytime += Time.deltaTime;
-            if (delaytime >= 0.9f)
-            {
-                DisableControls = true;
-            }
-        }
-        //
-        else
-        {
-            DisableControls = false;   
-        }*/
+       
 
         if (!DisableControls
             && GetComponentInChildren<Animator>().GetBool("click") == false
             )
         {
             float horizontalInput = Input.GetAxis("Horizontal");
-            float verticalInput = Input.GetAxis("Vertical");
-            playerRB.AddForce((orientation.forward * verticalInput + orientation.right * horizontalInput) * PlayerSpeed);
+            playerRB.AddForce((orientation.right * horizontalInput) * PlayerSpeed);
 
             GetComponentInChildren<Animator>().SetBool("walking", isWalking);
 
@@ -66,7 +52,7 @@ public class PlayerMenuMovement : MonoBehaviour
             {
                 //isWalking = true;
                 //Debug.Log("MOVING");
-                CheckDirection(ref Forwardrun, ref Rightrun, horizontalInput, verticalInput);
+                CheckDirection(ref Rightrun, horizontalInput);
             }
 
 
@@ -119,18 +105,10 @@ public class PlayerMenuMovement : MonoBehaviour
         DisableControls = false;
     }
 
-    void CheckDirection(ref float foward, ref float right, float horizontalInput, float verticalInput)
+    void CheckDirection(ref float right, float horizontalInput)
     {
-        // If player is moving foward
-        if (verticalInput > 0)
-            foward = 1;
-
-        else if (verticalInput < 0)
-            foward = -1;
-
-        else
-            foward = 0;
-
+       
+        //for player to move sideways
         if (horizontalInput > 0)
             right = 1;
 

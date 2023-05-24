@@ -61,7 +61,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
+  m_SortingLayerID: -499965009
   m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!114 &1721148089188587134
@@ -674,6 +674,7 @@ GameObject:
   - component: {fileID: 7479599038217425703}
   - component: {fileID: 414434038699745125}
   - component: {fileID: 7949269356760060647}
+  - component: {fileID: 516707358459454076}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -759,6 +760,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   xOffset: 1
+--- !u!210 &516707358459454076
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7694542412269029645}
+  m_Enabled: 1
+  m_SortingLayerID: -499965009
+  m_SortingLayer: 2
+  m_SortingOrder: 0
 --- !u!1001 &6826869989813552069
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -225,7 +225,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6364222390018840587, guid: f57af34aa46580e4680221107f5a70d0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.8
+      value: 3.13
       objectReference: {fileID: 0}
     - target: {fileID: 6364222390018840587, guid: f57af34aa46580e4680221107f5a70d0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1033,10 +1033,6 @@ PrefabInstance:
       propertyPath: Squid
       value: 
       objectReference: {fileID: 1031948284}
-    - target: {fileID: 1793855428296037514, guid: 3469af5157eaf574ba40b0341056896a, type: 3}
-      propertyPath: score
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1793855428296037514, guid: 3469af5157eaf574ba40b0341056896a, type: 3}
       propertyPath: Textbox
       value: 
@@ -2956,6 +2952,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1291450958625330637, guid: 9c7efa639b08fad488193ca3c0ad2cbe, type: 3}
+      propertyPath: m_Size.y
+      value: 2.220447e-16
+      objectReference: {fileID: 0}
     - target: {fileID: 2555657462969722984, guid: 9c7efa639b08fad488193ca3c0ad2cbe, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -4646,7 +4646,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5127853515188181809, guid: 6e885474360640d4a91ee6c3d039fc96, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6203936707640940158, guid: 6e885474360640d4a91ee6c3d039fc96, type: 3}
       propertyPath: m_AnchorMax.y

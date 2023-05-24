@@ -61,7 +61,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
+  m_SortingLayerID: -499965009
   m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!114 &2806765559087646437
@@ -597,6 +597,7 @@ GameObject:
   - component: {fileID: 3762294992746658362}
   - component: {fileID: 2388998031223091444}
   - component: {fileID: 5387060066326771998}
+  - component: {fileID: 2107225999038586682}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -669,6 +670,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!210 &2107225999038586682
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7796120739152382758}
+  m_Enabled: 1
+  m_SortingLayerID: -499965009
+  m_SortingLayer: 2
+  m_SortingOrder: 0
 --- !u!1 &8595025285926748008
 GameObject:
   m_ObjectHideFlags: 0

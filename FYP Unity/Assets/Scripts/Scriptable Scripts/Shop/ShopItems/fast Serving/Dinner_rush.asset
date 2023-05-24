@@ -16,7 +16,7 @@ MonoBehaviour:
   Name: Dinner Rush
   Description: Gives you 1.5x movement speed for every dish you served, each upgrade
     increases the time by 5 seconds
-  BaseCost: 0
-  CostIncrement: 0
+  BaseCost: 1
+  CostIncrement: 1
   UpgradeLevels: 5
   image: {fileID: 21300000, guid: 7339195b201d24142b4e1d28325262e6, type: 3}

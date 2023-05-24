@@ -9,7 +9,7 @@ public class PlayerStats : MonoBehaviour
     public PlayerProgress playerProgress;
 
     //WON'T BE USED FOR NOW
-    [SerializeField] float PlayerHealth;
+    //[SerializeField] float PlayerHealth;
     //
     
     // Set the attack for the player
@@ -117,16 +117,16 @@ public class PlayerStats : MonoBehaviour
             PlayerAttack = NormalAttackDamage;
     }
 
-    public void ChangeHealth(float Healthchange)
-    {
-        PlayerHealth += Healthchange;
-        Debug.Log("Player Health: " + PlayerHealth);
+    //public void ChangeHealth(float Healthchange)
+    //{
+    //    PlayerHealth += Healthchange;
+    //    Debug.Log("Player Health: " + PlayerHealth);
 
-        if (PlayerHealth <= 0)
-        {
-            Debug.Log("Imagine dying to ingredients!!");
-        }
-    }
+    //    if (PlayerHealth <= 0)
+    //    {
+    //        Debug.Log("Imagine dying to ingredients!!");
+    //    }
+    //}
 
     public void ChangeFervor(float Fervorchange)
     {
@@ -142,7 +142,7 @@ public class PlayerStats : MonoBehaviour
                 }
             }
         }
-        //Debug.Log("Fervor: " + fervorLevel + "REDUCED BY " + Fervorchange);
+        Debug.Log("Fervor: " + fervorLevel + "REDUCED BY " + Fervorchange);
     }
 
     //DINNER RUSH UPGRADE
@@ -161,12 +161,13 @@ public class PlayerStats : MonoBehaviour
     {
         return instant_kill_mode;
     }
-    //
-
     public void reducefervor()
     {
         fervorLevel -= pp.return_justdiealready();
     }
+    //
+
+
 
     public void Update()
     {
@@ -500,10 +501,7 @@ public class PlayerStats : MonoBehaviour
 
         //Debug.Log("CON " + numberConsecutiveHits);
     }
-    public float getfervor2add()
-    {
-        return fervor2Add;
-    }
+    
 
     public void resetval()
     {
@@ -528,13 +526,7 @@ public class PlayerStats : MonoBehaviour
     }
 
 
-    private void OnTriggerStay(Collider other)
-    {
-        /*if (other.CompareTag("Enemy"))
-        {
-            Debug.Log("COLLIDED WITH ENEMY");
-        }*/
-    }
+    
 
     public void SetIfFervorActive(bool fervorActive)
     {
