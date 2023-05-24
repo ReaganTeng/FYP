@@ -320,7 +320,7 @@ public class PlayerMovement : MonoBehaviour
     
     
     
-    public void setAnimator(bool hurt)
+    public void setHurtAnimation(bool hurt)
     {
        GetComponentInChildren<Animator>().SetBool("Hurt", hurt);
     }

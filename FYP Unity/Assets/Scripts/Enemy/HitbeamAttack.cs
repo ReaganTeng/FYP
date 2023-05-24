@@ -26,10 +26,10 @@ public class HitbeamAttack : MonoBehaviour
             && Attackcdtimer <= 0)
         {
             //Debug.Log("PLAYER ATTACKED");
-            other.GetComponent<PlayerStats>().ChangeHealth(-5);
+            //other.GetComponent<PlayerStats>().ChangeHealth(-5);
 
             //PLAY HURT ANIMATION
-            other.GetComponent<PlayerMovement>().setAnimator(true);
+            other.GetComponent<PlayerMovement>().setHurtAnimation(true);
             //
             other.GetComponent<PlayerStats>().ChangeFervor(-10.0f);
             other.GetComponent<PlayerStats>().resetval();

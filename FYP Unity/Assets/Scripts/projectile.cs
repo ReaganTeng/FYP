@@ -29,7 +29,7 @@ public class projectile : MonoBehaviour
             if (other.tag == "Player"
                 && other.GetComponent<BoxCollider>().enabled == true)
             {
-                other.GetComponent<PlayerMovement>().setAnimator(true);
+                other.GetComponent<PlayerMovement>().setHurtAnimation(true);
                 other.GetComponent<PlayerStats>().ResetConsecutiveHit();
                 other.GetComponent<PlayerStats>().ChangeFervor(-10.0f);
                 other.GetComponent<PlayerStats>().resetval();
