@@ -1121,6 +1121,10 @@ PrefabInstance:
       propertyPath: ord
       value: 
       objectReference: {fileID: 557516378}
+    - target: {fileID: 1793855428296037515, guid: 3469af5157eaf574ba40b0341056896a, type: 3}
+      propertyPath: DefaultWaitingTime
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 1793855428296037518, guid: 3469af5157eaf574ba40b0341056896a, type: 3}
       propertyPath: inventoryEmpty
       value: 
