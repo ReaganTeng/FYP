@@ -241,7 +241,7 @@ public class PlayerAttack : MonoBehaviour
         //}
         //
 
-        GameObject.FindGameObjectWithTag("playerspriterenderer").GetComponent<Animator>().SetInteger("WeaponEquipped", (int)currentweapon);
+       animator.SetInteger("WeaponEquipped", (int)currentweapon);
 
         currentAnimationLength = animator.GetCurrentAnimatorStateInfo(0).length;
 
@@ -252,12 +252,12 @@ public class PlayerAttack : MonoBehaviour
         }
         else 
         {
-            GameObject.FindGameObjectWithTag("playerspriterenderer").GetComponent<Animator>().SetBool("click", lightattackclicked);
-            GameObject.FindGameObjectWithTag("playerspriterenderer").GetComponent<Animator>().SetBool("heavyattackclick", heavyattackclicked);
+            animator.SetBool("click", lightattackclicked);
+            animator.SetBool("heavyattackclick", heavyattackclicked);
 
-            if (!GameObject.FindGameObjectWithTag("playerspriterenderer").GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("hurt_knife")
-                && !GameObject.FindGameObjectWithTag("playerspriterenderer").GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("hurt_pin")
-                && !GameObject.FindGameObjectWithTag("playerspriterenderer").GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("hurt_spatula")
+            if (!animator.GetCurrentAnimatorStateInfo(0).IsName("hurt_knife")
+                && !animator.GetCurrentAnimatorStateInfo(0).IsName("hurt_pin")
+                && !animator.GetCurrentAnimatorStateInfo(0).IsName("hurt_spatula")
                 && !animator.GetCurrentAnimatorStateInfo(0).IsName("Dash"))
                 
             {
@@ -270,8 +270,6 @@ public class PlayerAttack : MonoBehaviour
                     && notswitchingweapons()                  
                     )
                 {
-
-
                     Debug.Log("LIGHT ATTACK");
                     isclicked = true;
                     AttackWhichDirection(direction);
@@ -601,6 +599,7 @@ public class PlayerAttack : MonoBehaviour
 
         chargeBar.value = chargeCurrentLvl;
 
+        //CASE 1
         //CONSTANTLY UPDATE THE NEXT KNOWN NOTCH AND LAST KNOWN NOTCH
         if ((int)chargeCurrentLvl>= (int)next_known_notch + (int)min_notch_value
             && (int)next_known_notch < (int)chargeMaxLvl)
@@ -608,6 +607,7 @@ public class PlayerAttack : MonoBehaviour
             last_known_notch = (int)next_known_notch;
             next_known_notch = (int)next_known_notch  + (int)min_notch_value;
         }
+        //
         //
 
         /*if(chargeCurrentLvl <= (int)min_notch_value)

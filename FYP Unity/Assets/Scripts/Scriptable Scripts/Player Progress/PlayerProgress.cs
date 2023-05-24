@@ -242,7 +242,7 @@ public class PlayerProgress : ScriptableObject
 
     public void RefundCredibility()
     {
-        CosmicCredibility = TotalObtainedCredibility;
+        CosmicCredibility = TotalObtainedCredibility + 2;
     }
 
     public int GetCurrentCC()
@@ -274,7 +274,6 @@ public class PlayerProgress : ScriptableObject
         //starting value 30
         buffactive_reduction = 30;
 
-        
         number_of_charges = 0;
 
 

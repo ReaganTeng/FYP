@@ -820,7 +820,6 @@ public class EnemyScript : MonoBehaviour
     {
         hitbox.GetComponent<BoxCollider>().enabled = false;
 
-
         if (currentHealth == 0)
         {
             Debug.Log("Precise Kill!");

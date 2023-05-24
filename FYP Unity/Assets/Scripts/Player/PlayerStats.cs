@@ -39,10 +39,10 @@ public class PlayerStats : MonoBehaviour
 
 
     [SerializeField] Slider fervorBar;
-    [SerializeField] float fervorLevel;
+    float fervorLevel;
     float fervor2Add;
     float fervorMaxLevel;
-    [SerializeField] float combo_timer;
+    float combo_timer;
 
     //If fervorlevel >= 70, this is true, else false
     bool buff_active;
@@ -248,7 +248,6 @@ public class PlayerStats : MonoBehaviour
                 //REDUCE THE FERVOR, AND CAN CHANGE ITS SPEED BASE OF CALM MIND SHOP UPGRADE
                 fervorLevel -= pp.return_calmmind() *  3.0f * Time.deltaTime;
             }
-            
 
 
             if(fervorLevel < 0)

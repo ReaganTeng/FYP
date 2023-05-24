@@ -73,8 +73,8 @@ public class SaveFile : MonoBehaviour
         // NOTE!!! DO NOT CHANGE ANY KEY NAMING, IF U DO, RESET PLAYERPREF PLS
         pp.ResetPlayer();
         int Rep = PlayerPrefs.GetInt("REP", 0);
-        int CC = PlayerPrefs.GetInt("CC", 0);
-        int RepAndCCDiff = Rep - CC;
+        int CC = PlayerPrefs.GetInt("CC", 2);
+        int RepAndCCDiff = (Rep + 2) - CC;
         pp.AddCredibility(Rep);
         pp.DecreaseCredibility(RepAndCCDiff);
     }
