@@ -21,6 +21,7 @@ MonoBehaviour:
   CReq: 80
   MaxCredibility: 4
   CCReq: 10
+  CanSkipVN: 0
   HallwaysUnlock: 0e000000
   CustomizeOrderForThisDay:
     dishList:
@@ -48,7 +49,6 @@ MonoBehaviour:
       HowManyPriority: 0
       DishBeforePriority: 0
       IntervalBetweenPriority: 0
-    WaitingTime: 0
     penalty: 20
     EasyDishChance: 30
     NormalDishChance: 30
@@ -57,6 +57,6 @@ MonoBehaviour:
   WhatSpawnerActive: 09000000
   isThereTutorial: {fileID: 0}
   MaxOrders: 4
-  TimeBeforeFirstOrder: 10
+  TimeBeforeFirstOrder: 0
   IntervalBetweenOrders: 30
   DayDuration: 300
