@@ -487,6 +487,7 @@ public class Tutorial : MonoBehaviour
                 {
                     if (RunOnce())
                     {
+                        gm.GetComponent<OrderSystem>().SetWaitingTime(10000000);
                         gm.GetComponent<UnlockHallway>().OpenHallway(LevelHallway.Hallway.KITCHEN_TO_OOTATOO);
                         SpawnerManager.instance.SetSpawner(SpawnerManager.SPAWNERTYPE.OOTATOO, true);
                         SpawnerManager.instance.GetSpawner(SpawnerManager.SPAWNERTYPE.OOTATOO).GetComponent<Spawner>().ModifySpawner(4, 2);
@@ -722,6 +723,7 @@ public class Tutorial : MonoBehaviour
                     if (apoloCollider.GetComponent<InZone>().GetIsPlayerInZone())
                     {
                         gm.GetComponent<UnlockHallway>().LockHallway(whichHallway);
+                        GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerAttack>().SetCanSwapWeapon(true);
                         ConditionTriggered = true;
                         ResetRun();
                     }
@@ -732,7 +734,6 @@ public class Tutorial : MonoBehaviour
                 {
                     if (RunOnce())
                     {
-                        GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerAttack>().SetCanSwapWeapon(true);
                         objectReference = SpawnerManager.instance.GetSpawner(SpawnerManager.SPAWNERTYPE.AAPOLO).GetComponent<Spawner>().SpawnEnemy();
                         GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerPickup>().CannotPickUpItems = true;
                     }

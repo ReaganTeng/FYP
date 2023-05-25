@@ -178,7 +178,8 @@ MonoBehaviour:
   - TextDisplay: ill let you figure the enemy out yourself
     conditions: 0
     TimeTillPromptSkip: 3
-  - TextDisplay: ~Get the correct apple ingredient using the correct weapon to kill~
+  - TextDisplay: ~Get the correct apple ingredient using the correct weapon to kill
+      (Check Color)~
     conditions: 29
     TimeTillPromptSkip: 3
   - TextDisplay: ~Pick up that ingredient~
@@ -235,7 +236,7 @@ MonoBehaviour:
   - TextDisplay: Let's put you into the test
     conditions: 0
     TimeTillPromptSkip: 1
-  - TextDisplay: ~Get at least a minimum of 20 score from these orders~
+  - TextDisplay: ~Get at least a minimum of 20 score(Throw unwanted waste using dustbin)~
     conditions: 32
     TimeTillPromptSkip: 3
   - TextDisplay: I don't know if you are slacking or just bad. But is this a joke?
