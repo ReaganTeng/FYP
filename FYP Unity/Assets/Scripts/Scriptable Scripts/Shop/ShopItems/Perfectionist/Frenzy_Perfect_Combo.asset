@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Itemtype: 3
   Name: Perfect Dish Frenzy mode
-  Description: Serving a perfect dish enter frenzy mode for 5 sec. Gain a frenzy
-    stack when serving another perfect dish (+100% * frenzy stack dish boost) (Stack
-    up to upgrade lvl)
+  Description: Serving a perfect dish enter frenzy mode for 5 sec, in which you will
+    gain some scoring boost. Serve more perfect dish within the 5 second to stack
+    up the score.
   BaseCost: 1
   CostIncrement: 0
   UpgradeLevels: 5

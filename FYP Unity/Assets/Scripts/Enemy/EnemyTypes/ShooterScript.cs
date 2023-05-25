@@ -55,10 +55,13 @@ public class ShooterScript : MonoBehaviour
 
         enemyScript.set_enemyType(EnemyScript.EnemyType.SHOOTER);
 
+        hitbox.GetComponent<BoxCollider>().enabled = false;
 
         proejctilespeed = 1.5f;
         shootTimer = 0;
         timer = 0;
+
+
     }
 
     //FUNCTION TO SHOOT A PROJECTILE
@@ -95,7 +98,6 @@ public class ShooterScript : MonoBehaviour
                         anim.SetBool("run", true);
 
                         timer += Time.deltaTime;
-                        hitbox.GetComponent<BoxCollider>().enabled = false;
                         navmeshagent.speed = enemyScript.getnavmeshspeed();
                         navmeshagent.acceleration = enemyScript.getnavmeshspeed();
 

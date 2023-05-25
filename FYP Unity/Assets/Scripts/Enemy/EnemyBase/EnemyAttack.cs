@@ -14,7 +14,10 @@ public class EnemyAttack : MonoBehaviour
     [SerializeField] Animator animator;
     GameObject player;
 
+
+    //THIS DECIDES WHEN THE CHASER WILL AVOID THE PLAYER AFTER ATTACKING
     bool post_attack;
+    //
 
     bool attacking_present;
     bool player_in_hitbox;
@@ -56,7 +59,7 @@ public class EnemyAttack : MonoBehaviour
         //
     }
 
-
+    //FOR CHASERS
     public float getattackCD()
     {
         return AttackCD;
@@ -66,10 +69,7 @@ public class EnemyAttack : MonoBehaviour
     {
         Attackcdtimer = AttackCD;
     }
-    public float getattackCDtimer()
-    {
-        return Attackcdtimer;
-    }
+    
 
     public void setattacking_present(bool t)
     {
@@ -96,7 +96,7 @@ public class EnemyAttack : MonoBehaviour
     }
 
 
-
+    
     public void setpostattack(bool pa)
     {
         post_attack = pa;
@@ -105,12 +105,10 @@ public class EnemyAttack : MonoBehaviour
     {
         return post_attack;
     }
-
+    //
    
-    //change collider size if want to increase attack range
     private void OnTriggerStay(Collider other)
     {
-        //all decrease by same amount, use upgrade to use
         if (other.CompareTag("Player"))
         {
             if (!post_attack)
@@ -201,10 +199,12 @@ public class EnemyAttack : MonoBehaviour
             if (transform.parent.transform.parent.GetComponent<EnemyScript>().return_enemyType()
                 == EnemyScript.EnemyType.JUMPER)
             {
+                //PUSH BACK THE PLAYER, MAINLY TO PREVENT THEM FROM GETTING ATUCK
                 other.GetComponent<Rigidbody>().AddForce(
                 (other.GetComponent<Transform>().position - GetComponentInParent<Transform>().position).normalized * 10.0f,
                 ForceMode.Impulse
                 );
+                //
 
                 transform.parent.transform.parent.GetComponent<BoxCollider>().enabled = false;
                 Attackcdtimer = AttackCD;

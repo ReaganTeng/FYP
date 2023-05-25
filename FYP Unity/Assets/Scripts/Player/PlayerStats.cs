@@ -246,7 +246,7 @@ public class PlayerStats : MonoBehaviour
                 )
             {
                 //REDUCE THE FERVOR, AND CAN CHANGE ITS SPEED BASE OF CALM MIND SHOP UPGRADE
-                fervorLevel -= pp.return_calmmind() *  3.0f * Time.deltaTime;
+                fervorLevel -= pp.return_calmmind() *  2.0f * Time.deltaTime;
             }
 
 

@@ -48,22 +48,25 @@ public class EnemyManager : MonoBehaviour
        
         if (timer_2 > .5f)
         {
+                //CHECK IF ANY OF THE ENEMIES ARE UPDATING
                 for (int i = 0; i < other_enemies.Length; i++)
                 {
                     if (other_enemies[i] != null)
                     {
-
+                        //IF THERE'S AT LEAST ONE ENEMY UPDATING
                         if (other_enemies[i].GetComponent<EnemyScript>().getupdating())
                         {
                             enemies_updating = true;
                             break;
                         }
+                        //IF NONE OF THE ENEMIES ARE UPDATING
                         else
                         {
                             enemies_updating = false;
                         }
                     }
                 }
+                //
 
                 timer += Time.deltaTime;
                 if (timer >= .1f

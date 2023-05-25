@@ -148,47 +148,7 @@ public class EnemyScript : MonoBehaviour
     //ENEMY'S ANIMATION CONTROLLER
     Animator anim;
 
-    public void setnavmeshspeed(float cs)
-    {
-        navmeshspeed = cs;
-    }
-    public float getnavmeshspeed()
-    {
-        return navmeshspeed;
-    }
-
-
-    public void setparent(Transform parentSpawner)
-    {
-        spawnerparent = parentSpawner;
-    }
-
-    public Transform getparent()
-    {
-        return spawnerparent;
-    }
-
-    public Phases return_current_phase()
-    {
-        return phase;
-    }
-    
-
-    public void set_current_phase(Phases current_phase)
-    {
-        phase = current_phase;
-    }
-
-    public EnemyType return_enemyType()
-    {
-        return enemy_type;
-    }
-
-    public void set_enemyType(EnemyType type)
-    {
-        enemy_type = type;
-    }
-
+   
 
     void Start()
     {
@@ -378,7 +338,50 @@ public class EnemyScript : MonoBehaviour
     {
         return attacked;
     }
-    
+
+    public void setnavmeshspeed(float cs)
+    {
+        navmeshspeed = cs;
+    }
+    public float getnavmeshspeed()
+    {
+        return navmeshspeed;
+    }
+
+
+    public void setparent(Transform parentSpawner)
+    {
+        spawnerparent = parentSpawner;
+    }
+
+    public Transform getparent()
+    {
+        return spawnerparent;
+    }
+
+    public Phases return_current_phase()
+    {
+        return phase;
+    }
+
+
+    public void set_current_phase(Phases current_phase)
+    {
+        phase = current_phase;
+    }
+
+    public EnemyType return_enemyType()
+    {
+        return enemy_type;
+    }
+
+    public void set_enemyType(EnemyType type)
+    {
+        enemy_type = type;
+    }
+
+
+
 
     //USE TO INSTANTIATE LINES BASE ON THE NUMBER OF HEALTH THE ENEMY HAS
     void drawdivider()
@@ -390,6 +393,7 @@ public class EnemyScript : MonoBehaviour
                 if (i < EnemyHealth - 1)
                 {
                     healthbar.value += 1;
+                    //INSTANTIATE A LINE ON ENEMY'S HEALTH BAR FOR EVERY LOOP BASE ON THE ENEMY HEALTH SET, USING THE SLIDER'S HANDLE AREA AS REFERENCE
                     GameObject l = Instantiate(line,
                            new Vector3(0, 0, 0),
                            Quaternion.Euler(0, 0, 0)
@@ -401,10 +405,12 @@ public class EnemyScript : MonoBehaviour
                         new Vector2(healthbar.GetComponent<RectTransform>().rect.width
                         * canvas.GetComponent<RectTransform>().lossyScale.x,
                             .015f);
+                    //
                     i++;
                 }
                 else
                 {
+                    //DISABLE THE HANDLE
                     handle.SetActive(false);
                     break;
                 }
