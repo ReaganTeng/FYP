@@ -17,9 +17,6 @@ public class SettingsManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SoundSlider.value = PlayerPrefs.GetFloat("SoundLVL", 1);
-        MusicSlider.value = PlayerPrefs.GetFloat("MusicLVL", 1);
-
         if (PlayerPrefs.GetInt("WindowedMode", 0) == 0)
         {
             screenSizeToggle.isOn = false;
@@ -49,17 +46,6 @@ public class SettingsManager : MonoBehaviour
     //    }
 
     //}
-
-    public void changeSoundVolume()
-    {
-        PlayerPrefs.SetFloat("SoundLVL", SoundSlider.value);
-    }
-
-    public void changeMusicVolume()
-    {
-        PlayerPrefs.SetFloat("MusicLVL", MusicSlider.value);
-    }
-
 
     public void windowedMode()
     {

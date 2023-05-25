@@ -223,6 +223,10 @@ public class RangerScript : MonoBehaviour
         }
         else
         {
+            beam_mode = false;
+            timer = 0.0f;
+            anim.SetBool("run", false);
+            anim.SetBool("attack", false);
             enemyScript.ifUpdatingfalse();
             DestroyBeams();
         }

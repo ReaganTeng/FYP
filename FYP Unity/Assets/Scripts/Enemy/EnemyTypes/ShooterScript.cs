@@ -55,10 +55,13 @@ public class ShooterScript : MonoBehaviour
 
         enemyScript.set_enemyType(EnemyScript.EnemyType.SHOOTER);
 
+        hitbox.GetComponent<BoxCollider>().enabled = false;
 
         proejctilespeed = 1.5f;
         shootTimer = 0;
         timer = 0;
+
+
     }
 
     //FUNCTION TO SHOOT A PROJECTILE
@@ -95,7 +98,6 @@ public class ShooterScript : MonoBehaviour
                         anim.SetBool("run", true);
 
                         timer += Time.deltaTime;
-                        hitbox.GetComponent<BoxCollider>().enabled = false;
                         navmeshagent.speed = enemyScript.getnavmeshspeed();
                         navmeshagent.acceleration = enemyScript.getnavmeshspeed();
 
@@ -171,10 +173,10 @@ public class ShooterScript : MonoBehaviour
                         }
                         //
 
-                        if (timer >= 20.0f)
+                        if (timer > 20.0f)
                         {
-                            enemyPhase = EnemyScript.Phases.COOLDOWN;
                             em.setupdating(false);
+                            enemyScript.set_current_phase(EnemyScript.Phases.COOLDOWN);
                         }
                     }
                     else
@@ -200,7 +202,12 @@ public class ShooterScript : MonoBehaviour
         }
         else
         {
-            
+            shootTimer = 0.0f;
+            timer = 0.0f;
+            anim.SetBool("about2shoot", false);
+            anim.SetBool("attack", false);
+            anim.SetBool("run", false);
+
             enemyScript.ifUpdatingfalse();
         }
     }

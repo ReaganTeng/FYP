@@ -148,50 +148,7 @@ public class EnemyScript : MonoBehaviour
     //ENEMY'S ANIMATION CONTROLLER
     Animator anim;
 
-    public void setnavmeshspeed(float cs)
-    {
-        navmeshspeed = cs;
-    }
-    public float getnavmeshspeed()
-    {
-        return navmeshspeed;
-    }
-
-
-    public void setparent(Transform parentSpawner)
-    {
-        spawnerparent = parentSpawner;
-    }
-
-    public Transform getparent()
-    {
-        return spawnerparent;
-    }
-
-    public Phases return_current_phase()
-    {
-        return phase;
-    }
-    public AttackPattern return_attackptn()
-    {
-        return atkPattern;
-    }
-
-    public void set_current_phase(Phases current_phase)
-    {
-        phase = current_phase;
-    }
-
-    public EnemyType return_enemyType()
-    {
-        return enemy_type;
-    }
-
-    public void set_enemyType(EnemyType type)
-    {
-        enemy_type = type;
-    }
-
+   
 
     void Start()
     {
@@ -377,11 +334,54 @@ public class EnemyScript : MonoBehaviour
         attacked = attk;
     }
 
-    public bool getbool()
+    public bool getattacked()
     {
         return attacked;
     }
-    
+
+    public void setnavmeshspeed(float cs)
+    {
+        navmeshspeed = cs;
+    }
+    public float getnavmeshspeed()
+    {
+        return navmeshspeed;
+    }
+
+
+    public void setparent(Transform parentSpawner)
+    {
+        spawnerparent = parentSpawner;
+    }
+
+    public Transform getparent()
+    {
+        return spawnerparent;
+    }
+
+    public Phases return_current_phase()
+    {
+        return phase;
+    }
+
+
+    public void set_current_phase(Phases current_phase)
+    {
+        phase = current_phase;
+    }
+
+    public EnemyType return_enemyType()
+    {
+        return enemy_type;
+    }
+
+    public void set_enemyType(EnemyType type)
+    {
+        enemy_type = type;
+    }
+
+
+
 
     //USE TO INSTANTIATE LINES BASE ON THE NUMBER OF HEALTH THE ENEMY HAS
     void drawdivider()
@@ -393,6 +393,7 @@ public class EnemyScript : MonoBehaviour
                 if (i < EnemyHealth - 1)
                 {
                     healthbar.value += 1;
+                    //INSTANTIATE A LINE ON ENEMY'S HEALTH BAR FOR EVERY LOOP BASE ON THE ENEMY HEALTH SET, USING THE SLIDER'S HANDLE AREA AS REFERENCE
                     GameObject l = Instantiate(line,
                            new Vector3(0, 0, 0),
                            Quaternion.Euler(0, 0, 0)
@@ -404,10 +405,12 @@ public class EnemyScript : MonoBehaviour
                         new Vector2(healthbar.GetComponent<RectTransform>().rect.width
                         * canvas.GetComponent<RectTransform>().lossyScale.x,
                             .015f);
+                    //
                     i++;
                 }
                 else
                 {
+                    //DISABLE THE HANDLE
                     handle.SetActive(false);
                     break;
                 }
@@ -438,7 +441,6 @@ public class EnemyScript : MonoBehaviour
         return hitbox;
     }
 
-
     public void set_transitionfromattacktimer(float time)
     {
         transitionFromAttackTimer = time;
@@ -453,12 +455,12 @@ public class EnemyScript : MonoBehaviour
     }
 
 
-    public float return_transitionfromhurttimer()
-    {
-        return transitionFromHurtTimer;
-    }
+    //public float return_transitionfromhurttimer()
+    //{
+    //    return transitionFromHurtTimer;
+    //}
 
-    private void Update()
+    void Update()
     {
         navmeshagent = GetComponent<NavMeshAgent>();
         anim = GetComponentInChildren<Animator>();
@@ -533,6 +535,7 @@ public class EnemyScript : MonoBehaviour
             //IF PLAYER IS IN AVOID STATE
             if (phase == Phases.AVOID)
             {
+
                 hitbox.GetComponent<BoxCollider>().enabled = true;
 
                 //GetComponentInChildren<SpriteRenderer>().color = Color.black;
@@ -545,7 +548,6 @@ public class EnemyScript : MonoBehaviour
                     new_destination_interval = 0;
                 }
                 //
-
                 navmeshagent.enabled = true;
                 if (enemy_type == EnemyType.CHARGER)
                 {
@@ -563,7 +565,7 @@ public class EnemyScript : MonoBehaviour
                 }
 
                 anim.SetBool("run", true);
-                navmeshagent.speed = 2.0f;
+                navmeshagent.speed = 4.0f;
                 navmeshagent.SetDestination(new Vector3(
                 player.transform.position.x + rand_x + (int)offset_x,
                 transform.position.y,
@@ -657,10 +659,7 @@ public class EnemyScript : MonoBehaviour
     }
 
     
-   
-
-
-
+  
     public void BoundaryCheck()
     {
         for (int i = 0; i < zone.Length; i++)
@@ -703,10 +702,7 @@ public class EnemyScript : MonoBehaviour
 
     
 
-    public int getzoneno()
-    {
-        return zoneno;
-    }
+   
 
     public bool getupdating()
     {
@@ -714,7 +710,7 @@ public class EnemyScript : MonoBehaviour
     }
 
 
-
+    
     public void cooldownUpdate()
     {
         anim.SetBool("run", false);
@@ -768,15 +764,9 @@ public class EnemyScript : MonoBehaviour
 
     
 
-    public float gettimer()
-    {
-        return timer;
-    }
+    
 
-    public float getcooldownend()
-    {
-        return cooldown_period;
-    }
+    
 
     void EnemyDie(bool ExactKill)
     {
@@ -835,7 +825,6 @@ public class EnemyScript : MonoBehaviour
     public void Death()
     {
         hitbox.GetComponent<BoxCollider>().enabled = false;
-
 
         if (currentHealth == 0)
         {

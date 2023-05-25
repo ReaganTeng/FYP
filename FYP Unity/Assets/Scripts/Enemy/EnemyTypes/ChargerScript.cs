@@ -236,16 +236,30 @@ public class ChargerScript : MonoBehaviour
         }
         else
         {
+            DestroyBeams();
+            navmeshagent.enabled = true;
+            hitbox.GetComponent<BoxCollider>().enabled = false;
+            GetComponent<BoxCollider>().enabled = true;
+            //grab player location
+            playerPos = player.transform.position;
+            //subtract between player.transform.psoition and enemy.transform.position
+            chargingtime = 0.0f;
+            stop_colliding = false;
+            anim.SetBool("run", false);
+            anim.SetBool("charge", false);
+            anim.SetBool("about2charge", false);
+
+
             enemyScript.ifUpdatingfalse();
         }
 
-        if (enemyScript.getzoneno() == 0)
-        {
-            velocity_direction = GetComponent<EnemyScript>().getparent().position - transform.position;
-            velocity_direction.y = 0;
-            velocity_direction.Normalize();
-            GetComponent<Rigidbody>().velocity = velocity_direction * velocityspeed;
-        }
+        //if (enemyScript.getzoneno() == 0)
+        //{
+        //    velocity_direction = GetComponent<EnemyScript>().getparent().position - transform.position;
+        //    velocity_direction.y = 0;
+        //    velocity_direction.Normalize();
+        //    GetComponent<Rigidbody>().velocity = velocity_direction * velocityspeed;
+        //}
     }
 
 

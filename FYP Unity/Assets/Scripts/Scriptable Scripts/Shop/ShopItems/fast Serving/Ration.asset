@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Itemtype: 11
   Name: Ration
-  Description: Gives you extra ingredient for every amt of enemy you killed
+  Description: Gives you extra ingredient for every certain amt of enemy you killed,
+    starting with 10
   BaseCost: 1
-  CostIncrement: 1
+  CostIncrement: 0
   UpgradeLevels: 5
   image: {fileID: 21300000, guid: b74d237807c68754a9a5cab6a3313771, type: 3}
