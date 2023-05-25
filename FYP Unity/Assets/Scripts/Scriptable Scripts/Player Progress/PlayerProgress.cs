@@ -242,7 +242,7 @@ public class PlayerProgress : ScriptableObject
 
     public void RefundCredibility()
     {
-        CosmicCredibility = TotalObtainedCredibility;
+        CosmicCredibility = TotalObtainedCredibility + 2;
     }
 
     public int GetCurrentCC()
