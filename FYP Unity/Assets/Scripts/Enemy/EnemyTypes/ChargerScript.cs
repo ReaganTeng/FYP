@@ -236,6 +236,20 @@ public class ChargerScript : MonoBehaviour
         }
         else
         {
+            DestroyBeams();
+            navmeshagent.enabled = true;
+            hitbox.GetComponent<BoxCollider>().enabled = false;
+            GetComponent<BoxCollider>().enabled = true;
+            //grab player location
+            playerPos = player.transform.position;
+            //subtract between player.transform.psoition and enemy.transform.position
+            chargingtime = 0.0f;
+            stop_colliding = false;
+            anim.SetBool("run", false);
+            anim.SetBool("charge", false);
+            anim.SetBool("about2charge", false);
+
+
             enemyScript.ifUpdatingfalse();
         }
 

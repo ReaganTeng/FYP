@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0091259, g: 0.011436728, b: 0.012926721, a: 1}
+  m_IndirectSpecularColor: {r: 0.09368814, g: 0.10748393, b: 0.11626453, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -364,7 +364,7 @@ PrefabInstance:
       objectReference: {fileID: 5934549991798046295, guid: c8037abadd80b924d8c27ac495211f8b, type: 3}
     - target: {fileID: 2994583381017202772, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: interval
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2994583381017202772, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: max_enemies
@@ -1759,7 +1759,7 @@ PrefabInstance:
       objectReference: {fileID: 7125573617903473902, guid: 3573e7e7f544198419ba08da2c5f8ef2, type: 3}
     - target: {fileID: 2994583381017202772, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: interval
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2994583381017202772, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: max_enemies
@@ -2811,7 +2811,7 @@ PrefabInstance:
       objectReference: {fileID: 1671092470314281019, guid: d0159085be553e74aa74930994e093e9, type: 3}
     - target: {fileID: 2994583381017202772, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: interval
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2994583381017202772, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: max_enemies
@@ -3573,7 +3573,7 @@ PrefabInstance:
       objectReference: {fileID: 7031070655414662128, guid: e6043d80fa0fdb648b90463fecfdc618, type: 3}
     - target: {fileID: 2994583381017202772, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: interval
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2994583381017202772, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: max_enemies
@@ -3659,7 +3659,7 @@ PrefabInstance:
       objectReference: {fileID: 4360609880674071022, guid: 1ad4b933e38c489498e00d35484f54a7, type: 3}
     - target: {fileID: 2994583381017202772, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: interval
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2994583381017202772, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: max_enemies
@@ -3966,7 +3966,7 @@ PrefabInstance:
       objectReference: {fileID: 3723270102129840891, guid: a42402c414ddad64da993c581e5881cd, type: 3}
     - target: {fileID: 2994583381017202772, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: interval
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2994583381017202772, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: max_enemies
@@ -4190,7 +4190,7 @@ PrefabInstance:
       objectReference: {fileID: 7469970714494630345, guid: 3e934a76974cf2c4a8c9a2144787e885, type: 3}
     - target: {fileID: 2994583381017202772, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: interval
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2994583381017202772, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: max_enemies
@@ -4421,7 +4421,7 @@ PrefabInstance:
       objectReference: {fileID: 822327260789156509, guid: a5310b84fa4cfe842bb5c33914e92601, type: 3}
     - target: {fileID: 2994583381017202772, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: interval
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2994583381017202772, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: max_enemies
@@ -4779,7 +4779,7 @@ PrefabInstance:
       objectReference: {fileID: 3627558122910260224, guid: 2ca5b25732cc4ef418bf214bfbdddcb1, type: 3}
     - target: {fileID: 2994583381017202772, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: interval
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2994583381017202772, guid: 289bcdcd1d542f54e84bcaed22ea7205, type: 3}
       propertyPath: max_enemies

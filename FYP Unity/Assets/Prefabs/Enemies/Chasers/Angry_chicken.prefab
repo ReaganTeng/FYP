@@ -121,7 +121,7 @@ MonoBehaviour:
   Mush: {fileID: 8494874157540663937, guid: 4255f020537c20a48857eb56b1b0f6d5, type: 3}
   cooldown_period: 0.5
   abouttoattack_period: 0.5
-  phase: 0
+  phase: 1
   atkPattern: 0
   healthbar: {fileID: 8970289839755826402}
   line: {fileID: 4302930331368835095, guid: 1434afd8d00d3ab40918b589eba6bdbd, type: 3}
@@ -770,7 +770,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -499965009
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 208863089, guid: 6dd8054130b17de40a4585a954d4f444, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
