@@ -14,13 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WhatDay: 3
   LevelName: Day 3
-  LevelDescription: Sushi and Noodles?
+  LevelDescription: Veggetales
   SReq: 220
   AReq: 180
   BReq: 120
   CReq: 50
   MaxCredibility: 4
   CCReq: 3
+  CanSkipVN: 0
   HallwaysUnlock: 000000000100000002000000040000000500000006000000070000000a0000000c000000
   CustomizeOrderForThisDay:
     dishList:
@@ -42,7 +43,6 @@ MonoBehaviour:
       HowManyPriority: 1
       DishBeforePriority: 3
       IntervalBetweenPriority: 0
-    WaitingTime: 0
     penalty: 15
     EasyDishChance: 70
     NormalDishChance: 0

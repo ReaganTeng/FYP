@@ -14,13 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WhatDay: 5
   LevelName: Day 5
-  LevelDescription: The true Test
+  LevelDescription: A slow day
   SReq: 300
   AReq: 240
   BReq: 160
   CReq: 70
   MaxCredibility: 4
   CCReq: 8
+  CanSkipVN: 0
   HallwaysUnlock: 0e000000
   CustomizeOrderForThisDay:
     dishList:
@@ -48,7 +49,6 @@ MonoBehaviour:
       HowManyPriority: 0
       DishBeforePriority: 0
       IntervalBetweenPriority: 0
-    WaitingTime: 0
     penalty: 20
     EasyDishChance: 50
     NormalDishChance: 0
