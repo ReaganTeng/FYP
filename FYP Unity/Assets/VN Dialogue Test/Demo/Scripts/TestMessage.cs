@@ -64,6 +64,33 @@ public class TestMessage : MonoBehaviour
             case SceneName.L1VN:
                 lvl1vn();
                 break;
+            case SceneName.L2VN:
+                lvl1vn();
+                break;
+            case SceneName.L3VN:
+                lvl1vn();
+                break;
+            case SceneName.L4VN:
+                lvl1vn();
+                break;
+            case SceneName.L5VN:
+                lvl1vn();
+                break;
+            case SceneName.L6VN:
+                lvl1vn();
+                break;
+            case SceneName.L7VN:
+                lvl1vn();
+                break;
+            case SceneName.L8VN:
+                lvl1vn();
+                break;
+            case SceneName.L8VN_Win:
+                lvl1vn();
+                break;
+            case SceneName.L8VN_Lose:
+                lvl1vn();
+                break;
 
         }
 
@@ -205,6 +232,8 @@ public class TestMessage : MonoBehaviour
 
         dialogTexts.Add(new DialogData("/emote:worried/ Will improving my reputaion prevent me from getting murdured by the head chef?", "Ramses"));
 
+        dialogTexts.Add(new DialogData("Probabaly?", "Knip"));
+
 
         LM.DaySelected = -1;
 
@@ -270,6 +299,9 @@ public class TestMessage : MonoBehaviour
 
     private void lvl1vn()
     {
+
+        LM.DaySelected = 1;
+
         var dialogTexts = new List<DialogData>();
 
 
@@ -286,12 +318,34 @@ public class TestMessage : MonoBehaviour
 
         dialogTexts.Add(new DialogData("/emote:nosprite/ We will slowly add more and more ingredient diversity into the mix but lets start with the basics just for today.", "HeadChef"));
 
-        dialogTexts.Add(new DialogData("/emote:nosprite/You are correct. Today we will be serving some classic food that most of the alien population here is used to already.", "HeadChef", () => background.sprite = imageList[2]));
+        dialogTexts.Add(new DialogData("/emote:nosprite/Im sure you are already familiar with these ingredients but lets quickly go over them again", "HeadChef", () => background.sprite = imageList[3]));
 
+        dialogTexts.Add(new DialogData("/emote:nosprite/ First up, is the easiest ingredient to prepare, the Ootatoo.", "HeadChef"));
 
-        LM.DaySelected = 1;
+        dialogTexts.Add(new DialogData("/emote:nosprite/ Its extremely easy to kill and can be killed in batches easily since they love to group up.", "HeadChef", () => background.sprite = imageList[4]));
 
-        dialogTexts.Add(new DialogData("Bye Bye!", "Ramses", () => SceneManager.LoadScene("Game Scene")));
+        dialogTexts.Add(new DialogData("/emote:nosprite/ Next, we have the Appoloo", "HeadChef"));
+
+        dialogTexts.Add(new DialogData("/emote:nosprite/ Appoloo's charging attacks can be easily deflected with a well timed attack while they are charging ", "HeadChef"));
+
+        dialogTexts.Add(new DialogData("/emote:nosprite/ They are also fairly easy to kill but they often spread out, making it hard to hit multiple of them with one attack", "HeadChef", () => background.sprite = imageList[5]));
+
+        dialogTexts.Add(new DialogData("/emote:nosprite/ Last but not least, We have Raisuu! One of the most used ingredients in our kitchen due to how many delicacies stem from them", "HeadChef"));
+
+        dialogTexts.Add(new DialogData("/emote:nosprite/ Raisuu's will be abit challenging for you as they have quite alot of HP and on top of that they love to jump around.", "HeadChef"));
+
+        dialogTexts.Add(new DialogData("/emote:nosprite/ So they will probably take awhile more to kill than the other 2 ingredients but the dishes made from it is worth alot points, so its very well worth the effort.", "HeadChef"));
+
+        dialogTexts.Add(new DialogData("/emote:nosprite/ Well, I think that about covers all the ingredients that are currently availible to use at the moment, and it almost opening time", "HeadChef", () => background.sprite = imageList[1]));
+
+        dialogTexts.Add(new DialogData("/emote:nosprite/ Hopefully those tips will aid you in bringing glory to Isarata's name", "HeadChef", () => background.sprite = imageList[12]));
+
+        dialogTexts.Add(new DialogData("/emote:worried/ That's alot to take in, but thanks anyways. You seem to be in an awfully good mood today", "Ramses", () => background.sprite = imageList[1]));
+
+        dialogTexts.Add(new DialogData("/emote:nosprite/ Well, I want this restuarant to succeed as much as you want to go home human. So quickly get to work station, the first customers are about to order up", "HeadChef", () => SceneManager.LoadScene("Game Scene")));
+
+        
+
 
 
 

@@ -15,7 +15,7 @@ public class PlayLevel : MonoBehaviour
             if (level == levelManager.levelInfo[i])
             {
                 levelManager.DaySelected = levelManager.levelInfo[i].WhatDay;
-                SceneManager.LoadScene("Game Scene");
+                SceneManager.LoadScene("VNScene");
                 return;
             }
         }

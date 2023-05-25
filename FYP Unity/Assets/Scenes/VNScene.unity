@@ -172,8 +172,8 @@ MonoBehaviour:
   button: {fileID: 289792727}
   background: {fileID: 283696072}
   imageList:
-  - {fileID: 21300000, guid: 3447381751e18c74aaa1fbab8ff27ea7, type: 3}
-  - {fileID: 21300000, guid: 7ab56845373d50647b233620b04066ae, type: 3}
+  - {fileID: 21300000, guid: a3c01c16c0185c248934f2c79fbc3fe2, type: 3}
+  - {fileID: 21300000, guid: 169ec0dd82da0f54ab2dabe501f4a7c9, type: 3}
   - {fileID: 21300000, guid: efb88a0e7f91a2e4995b1d2c7cfc0f9a, type: 3}
   - {fileID: 21300000, guid: 21a77821cc97b574e97a2868160fccf1, type: 3}
   - {fileID: 21300000, guid: 7c6d7b84eda40fe4b809cea6454c088c, type: 3}
@@ -184,6 +184,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 56d059e317c5114439bd1e24222cd6c3, type: 3}
   - {fileID: 21300000, guid: 26eb633d59dafdd4abcfbb72a42dff45, type: 3}
   - {fileID: 21300000, guid: b148fec6773e8d14aa73c2bd80c8b780, type: 3}
+  - {fileID: 21300000, guid: 3cb67e5119e155e44848b524f56a9ffc, type: 3}
 --- !u!1 &76003758
 GameObject:
   m_ObjectHideFlags: 0
@@ -400,7 +401,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3447381751e18c74aaa1fbab8ff27ea7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a3c01c16c0185c248934f2c79fbc3fe2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -512,25 +513,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 79958225, guid: d536fa71dd00cf349a228e41212ace48, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 289792728, guid: d536fa71dd00cf349a228e41212ace48, type: 3}
-      propertyPath: m_Type
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 289792728, guid: d536fa71dd00cf349a228e41212ace48, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: f8fb4aebf8e83574f8eb2ea23c5aa693, type: 3}
-    - target: {fileID: 432172636, guid: d536fa71dd00cf349a228e41212ace48, type: 3}
+    - target: {fileID: 1622782072, guid: d536fa71dd00cf349a228e41212ace48, type: 3}
       propertyPath: m_text
-      value: Head Chef
-      objectReference: {fileID: 0}
-    - target: {fileID: 4094011681938070649, guid: d536fa71dd00cf349a228e41212ace48, type: 3}
-      propertyPath: m_IsActive
-      value: 1
+      value: Ramses
       objectReference: {fileID: 0}
     - target: {fileID: 4094011683184476936, guid: d536fa71dd00cf349a228e41212ace48, type: 3}
       propertyPath: m_Name
@@ -623,134 +608,6 @@ PrefabInstance:
     - target: {fileID: 4094011683457312917, guid: d536fa71dd00cf349a228e41212ace48, type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8206358604803033668, guid: d536fa71dd00cf349a228e41212ace48, type: 3}
-      propertyPath: m_Name
-      value: Amanuid (not used)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8206358604832546316, guid: d536fa71dd00cf349a228e41212ace48, type: 3}
-      propertyPath: CallSE.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8206358604937171124, guid: d536fa71dd00cf349a228e41212ace48, type: 3}
-      propertyPath: CallSE.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8206358605174205205, guid: d536fa71dd00cf349a228e41212ace48, type: 3}
-      propertyPath: m_Name
-      value: Ramses
-      objectReference: {fileID: 0}
-    - target: {fileID: 8206358605174205211, guid: d536fa71dd00cf349a228e41212ace48, type: 3}
-      propertyPath: CallSE.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8206358605174205211, guid: d536fa71dd00cf349a228e41212ace48, type: 3}
-      propertyPath: Emotion._sprite.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8206358605174205211, guid: d536fa71dd00cf349a228e41212ace48, type: 3}
-      propertyPath: Emotion._emotion.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8206358605174205211, guid: d536fa71dd00cf349a228e41212ace48, type: 3}
-      propertyPath: Emotion._sprite.Array.data[0]
-      value: 
-      objectReference: {fileID: 21300000, guid: eb5bfd7a3536ab54b8e1fca0f9ecd005, type: 3}
-    - target: {fileID: 8206358605174205211, guid: d536fa71dd00cf349a228e41212ace48, type: 3}
-      propertyPath: Emotion._sprite.Array.data[1]
-      value: 
-      objectReference: {fileID: 21300000, guid: e880871871f149d4097c5eb9e1dc7d2a, type: 3}
-    - target: {fileID: 8206358605174205211, guid: d536fa71dd00cf349a228e41212ace48, type: 3}
-      propertyPath: Emotion._sprite.Array.data[2]
-      value: 
-      objectReference: {fileID: 21300000, guid: e0fcfeb12253ca741874dcdffebbda53, type: 3}
-    - target: {fileID: 8206358605174205211, guid: d536fa71dd00cf349a228e41212ace48, type: 3}
-      propertyPath: Emotion._sprite.Array.data[3]
-      value: 
-      objectReference: {fileID: 21300000, guid: 2ddcda06979723b45be3d8c70bd072aa, type: 3}
-    - target: {fileID: 8206358605174205211, guid: d536fa71dd00cf349a228e41212ace48, type: 3}
-      propertyPath: Emotion._sprite.Array.data[4]
-      value: 
-      objectReference: {fileID: 21300000, guid: 77120741086f2f644ae8421da29ab929, type: 3}
-    - target: {fileID: 8206358605174205211, guid: d536fa71dd00cf349a228e41212ace48, type: 3}
-      propertyPath: Emotion._sprite.Array.data[5]
-      value: 
-      objectReference: {fileID: 21300000, guid: d7bd2e6154ea7a146b1cfdcfe8b8e038, type: 3}
-    - target: {fileID: 8206358605174205211, guid: d536fa71dd00cf349a228e41212ace48, type: 3}
-      propertyPath: Emotion._emotion.Array.data[1]
-      value: worried
-      objectReference: {fileID: 0}
-    - target: {fileID: 8206358605174205211, guid: d536fa71dd00cf349a228e41212ace48, type: 3}
-      propertyPath: Emotion._emotion.Array.data[2]
-      value: sad
-      objectReference: {fileID: 0}
-    - target: {fileID: 8206358605174205211, guid: d536fa71dd00cf349a228e41212ace48, type: 3}
-      propertyPath: Emotion._emotion.Array.data[3]
-      value: awkward
-      objectReference: {fileID: 0}
-    - target: {fileID: 8206358605174205211, guid: d536fa71dd00cf349a228e41212ace48, type: 3}
-      propertyPath: Emotion._emotion.Array.data[4]
-      value: angry
-      objectReference: {fileID: 0}
-    - target: {fileID: 8206358605174205211, guid: d536fa71dd00cf349a228e41212ace48, type: 3}
-      propertyPath: Emotion._emotion.Array.data[5]
-      value: nosprite
-      objectReference: {fileID: 0}
-    - target: {fileID: 8206358606122131798, guid: d536fa71dd00cf349a228e41212ace48, type: 3}
-      propertyPath: CallSE.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8206358606262715910, guid: d536fa71dd00cf349a228e41212ace48, type: 3}
-      propertyPath: CallSE.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8206358606262715910, guid: d536fa71dd00cf349a228e41212ace48, type: 3}
-      propertyPath: Emotion._sprite.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8206358606262715910, guid: d536fa71dd00cf349a228e41212ace48, type: 3}
-      propertyPath: Emotion._emotion.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8206358606262715910, guid: d536fa71dd00cf349a228e41212ace48, type: 3}
-      propertyPath: Emotion._sprite.Array.data[0]
-      value: 
-      objectReference: {fileID: 21300000, guid: 94ec22a6618d7c944a196417aba79164, type: 3}
-    - target: {fileID: 8206358606262715910, guid: d536fa71dd00cf349a228e41212ace48, type: 3}
-      propertyPath: Emotion._sprite.Array.data[1]
-      value: 
-      objectReference: {fileID: 21300000, guid: d7bd2e6154ea7a146b1cfdcfe8b8e038, type: 3}
-    - target: {fileID: 8206358606262715910, guid: d536fa71dd00cf349a228e41212ace48, type: 3}
-      propertyPath: Emotion._emotion.Array.data[1]
-      value: nosprite
-      objectReference: {fileID: 0}
-    - target: {fileID: 8206358606262715912, guid: d536fa71dd00cf349a228e41212ace48, type: 3}
-      propertyPath: m_Name
-      value: HeadChef
-      objectReference: {fileID: 0}
-    - target: {fileID: 8206358606262715912, guid: d536fa71dd00cf349a228e41212ace48, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8206358606436790737, guid: d536fa71dd00cf349a228e41212ace48, type: 3}
-      propertyPath: m_Name
-      value: Li (Not used)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8206358606460476877, guid: d536fa71dd00cf349a228e41212ace48, type: 3}
-      propertyPath: CallSE.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8206358606497157378, guid: d536fa71dd00cf349a228e41212ace48, type: 3}
-      propertyPath: m_Name
-      value: Sa (not used)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8206358606520371168, guid: d536fa71dd00cf349a228e41212ace48, type: 3}
-      propertyPath: m_Name
-      value: Rico (not used)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8206358606593469702, guid: d536fa71dd00cf349a228e41212ace48, type: 3}
-      propertyPath: m_Name
-      value: Niko (not used)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d536fa71dd00cf349a228e41212ace48, type: 3}
