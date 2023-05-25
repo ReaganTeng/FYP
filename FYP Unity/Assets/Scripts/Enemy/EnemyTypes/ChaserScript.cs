@@ -119,7 +119,7 @@ public class ChaserScript : MonoBehaviour
         dist = Vector3.Distance(transform.position, player.transform.position);
 
 
-        //DELAY FOR CHASER
+        //ABOUT TO ATTACL
         if (anim.GetBool("about2attack")
             && anim.GetCurrentAnimatorStateInfo(0).IsName("aboutattack"))
         {
@@ -140,10 +140,10 @@ public class ChaserScript : MonoBehaviour
             //ADD 1 ATTACK TO EACH LOOP
             if (hitbox.GetComponent<EnemyAttack>().get_attacking_present())
             {
-                //decrease the player's health
                 if (anim.GetCurrentAnimatorStateInfo(0).IsName("attack")
                     && anim.GetCurrentAnimatorStateInfo(0).normalizedTime <= 0.0f)
                 {
+                    //DECREASE THE PLAYER'S FERVOR If PLAYER'S IN HITBOX
                     if (hitbox.GetComponent<EnemyAttack>().playerinhitbox())
                     {
                         player.GetComponent<PlayerMovement>().setHurtAnimation(true);

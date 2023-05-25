@@ -84,9 +84,11 @@ public class PlayerAttack : MonoBehaviour
     Weapon currentweapon = Weapon.ROLLINGPIN;
     // Start is called before the first frame update
 
-
+    //CHECK WHETHER MOUSE IS CLICKED
     bool isclicked;
+    //CHECKE WHETHER HEAVY ATTACK IS CLICKED
     bool heavyattackclicked;
+    //CHECK WHETHER LIGHT ATTACKED IS CLICKED
     bool lightattackclicked;
 
     float click_timer;
@@ -130,6 +132,7 @@ public class PlayerAttack : MonoBehaviour
         heavyattackclicked = false;
         lightattackclicked = false;
 
+        ///CHARGE BAR
         chargingduration = regeneration_rate_per_notch * number_of_charges;
         chargeCurrentLvl = chargingduration;
         chargeMaxLvl = chargingduration;
@@ -142,10 +145,10 @@ public class PlayerAttack : MonoBehaviour
         min_notch_value = chargeMaxLvl / number_of_charges;
         next_known_notch = chargingduration;
         last_known_notch = (int)next_known_notch - (int)min_notch_value;
-
         //DRAW THE DIVIDERS IN THE HEAVY ATTACK CHARGE BAR
         drawdivider();
         //
+        ///
 
         switchWeapon();
         spaculaHitbox.SetActive(false);
@@ -185,6 +188,7 @@ public class PlayerAttack : MonoBehaviour
                 {
                     chargeBar.value += min_notch_value;
 
+                    //INSTANTIATE A LINE FOR EVERY LOOP BASE ON THE NUMBER OF CHARGES IN PLAYER'S FERVORBAR, USING THE SLIDER'S HANDLE AREA AS REFERENCE
                     GameObject l = Instantiate(line,
                             new Vector3(0, 0),
                             Quaternion.Euler(0, 0, 0)
@@ -196,9 +200,11 @@ public class PlayerAttack : MonoBehaviour
                         new Vector2(5,
                             chargeBar.GetComponent<RectTransform>().rect.height);
                     i++;
+                    //
                 }
                 else
                 {
+                    //DISABLE THE HANDLE
                     handle.SetActive(false);
                     break;
                 }
@@ -412,18 +418,20 @@ public class PlayerAttack : MonoBehaviour
             //
         }
 
+        //IF PLAYER IS NOT ATTACKING, CAN SWITCH DIRECTION OF HITBOX
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
-            if (animator.GetBool("click") == false)
+            if (notheavyattacking()
+                    && notlightattacking())
             {
                 direction = pm.GetDirection(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
                 AttackWhichDirection(direction);
             }
         }
+        //
 
-
-        if (!animator.GetBool("click")
-            && !animator.GetBool("heavyattackclick")
+        if (notheavyattacking()
+            && notlightattacking()
             && CanSwapWeapon)
         {
             // To swap between weapons
@@ -444,8 +452,6 @@ public class PlayerAttack : MonoBehaviour
             }
         }
 
-        
-
         switchWeapon();
     }
 
@@ -462,11 +468,13 @@ public class PlayerAttack : MonoBehaviour
         heavyattackclicked = false;
         lightattackclicked = false;
     }
+
+    //CHECK IF HITBOX IS ACTIVE OR NOT
     public bool attacking_or_not()
     {
         return attacking;
     }
-
+    //
    
 
 
@@ -649,14 +657,13 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-
+    //FOR RUSH OF PERFECTION
     public void addcharge(int number_of_times)
     {
         for (int i = 0; i < number_of_times; i++)
         {
             int diff = (int)min_notch_value -
-                (
-                ((int)next_known_notch + (int)min_notch_value) -
+                (((int)next_known_notch + (int)min_notch_value) -
                 (int)chargeCurrentLvl);
 
             chargeCurrentLvl = ((int)next_known_notch + (int)min_notch_value) +  diff;
@@ -665,7 +672,10 @@ public class PlayerAttack : MonoBehaviour
         }
        
     }
+    //
 
+
+    //DECIDES THE DIRECTION OF THE HITBOX
     void AttackWhichDirection(int direction)
     {
         Quaternion newrotation;
