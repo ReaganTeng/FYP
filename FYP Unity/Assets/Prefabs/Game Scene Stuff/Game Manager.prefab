@@ -250,7 +250,7 @@ MonoBehaviour:
   ps: {fileID: 11400000, guid: 80203a9d8037ee2449d6c18b30afe1f3, type: 2}
   os: {fileID: 1793855428296037515}
   text: {fileID: 0}
-  score: 0
+  score: 20
   lm: {fileID: 11400000, guid: b1ab7845fb897f94da5f204cb406165d, type: 2}
   EndOfDayBackground: {fileID: 0}
   resultDisplay:
@@ -263,6 +263,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  DayText: {fileID: 0}
   ClearedText: {fileID: 0}
   FailedText: {fileID: 0}
   TotalText: {fileID: 0}

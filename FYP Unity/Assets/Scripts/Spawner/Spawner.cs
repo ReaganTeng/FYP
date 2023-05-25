@@ -19,12 +19,16 @@ public class Spawner : MonoBehaviour
 
     GameObject gamemanager;
 
+    //CHECK WHETEHER PLAYER IS ON SPAWNER LOCATION
+    bool playerinspawner;
+    //
+
     // Start is called before the first frame update
     void Start()
     {
         gamemanager = GameObject.FindGameObjectWithTag("GameManager");
 
-
+        playerinspawner = false;
         time = 0.0f;
     }
 
@@ -36,7 +40,8 @@ public class Spawner : MonoBehaviour
             return;
         }
 
-        if (transform.childCount < max_enemies)
+        if (transform.childCount < max_enemies
+            && !playerinspawner)
         {
             time += 1 * Time.deltaTime;
         }
@@ -104,8 +109,8 @@ public class Spawner : MonoBehaviour
 
     public GameObject SpawnEnemy(int presetHealth = -1)
     {
-        /*x_position = Random.Range(-5, 5);
-        z_position = Random.Range(-5, 5);*/
+        //x_position = Random.Range(-1, 2);
+        //z_position = Random.Range(-1, 2);
 
         if (gamemanager != null)
             gamemanager.GetComponent<EnemyManager>().setupdating(false);
@@ -127,5 +132,23 @@ public class Spawner : MonoBehaviour
     {
         enemies_per_spawn = amtSpawnPerInterval;
         interval = timeInterval;
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Player"))
+        {
+            Debug.Log("PLAYER IN SPAWNER");
+            playerinspawner = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerinspawner = false;
+        }
     }
 }
