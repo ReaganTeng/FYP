@@ -298,7 +298,12 @@ public class ChaserScript : MonoBehaviour
         }
         else
         {
-            
+            anim.SetBool("run", false);
+            anim.SetBool("attack", false);
+            anim.SetBool("about2attack", false);
+            enemyScript.setnavmeshspeed(2.0f);
+            timer = 0.0f;
+            timer_avoid = 0.0f;
             enemyScript.ifUpdatingfalse();
         }
 

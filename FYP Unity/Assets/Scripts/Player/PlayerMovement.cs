@@ -9,11 +9,6 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
-    
-
-
-
-
     [SerializeField] Rigidbody playerRB;
     [SerializeField] Transform orientation;
     [SerializeField] float PlayerSpeed;

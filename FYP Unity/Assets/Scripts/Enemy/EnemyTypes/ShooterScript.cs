@@ -202,7 +202,12 @@ public class ShooterScript : MonoBehaviour
         }
         else
         {
-            
+            shootTimer = 0.0f;
+            timer = 0.0f;
+            anim.SetBool("about2shoot", false);
+            anim.SetBool("attack", false);
+            anim.SetBool("run", false);
+
             enemyScript.ifUpdatingfalse();
         }
     }

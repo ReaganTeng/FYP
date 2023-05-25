@@ -214,6 +214,9 @@ public class EndOfDay : MonoBehaviour
                 if (SaveFile.instance != null)
                     SaveFile.instance.SaveGame();
 
+                if (!level.CanSkipVN)
+                    level.CanSkipVN = true;
+
                 SceneManager.LoadScene("Level Select");
             }
         }

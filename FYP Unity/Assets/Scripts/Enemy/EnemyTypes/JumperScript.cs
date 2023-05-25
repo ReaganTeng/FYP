@@ -105,7 +105,8 @@ public class JumperScript : MonoBehaviour
                     if(jumpmode == false /*&&
                             currentdistance >= 4.5f*/)
                     {
-                        anim.SetBool("run", true);
+                           
+                            anim.SetBool("run", true);
                         GetComponent<BoxCollider>().enabled = true;
                         hitbox.GetComponent<BoxCollider>().enabled = true;
                         navmeshagent.speed = 5.0f;
@@ -125,7 +126,8 @@ public class JumperScript : MonoBehaviour
                         //PREPARE TO JUMP
                         if (timer < enemyScript.getCurrentAnimationLength())
                         {
-                            anim.SetBool("about2jump", true);
+
+                                anim.SetBool("about2jump", true);
                             GetComponent<BoxCollider>().enabled = true;
 
                             //BACK AWAY
@@ -199,6 +201,14 @@ public class JumperScript : MonoBehaviour
         }      
         else
         {
+
+            jumpmode = false;
+            jumpcooldown_timer = jumpcooldown;
+
+            anim.SetBool("jump", false);
+            anim.SetBool("about2jump", false);
+            anim.SetBool("run", false);
+
             enemyScript.ifUpdatingfalse();
 
         }

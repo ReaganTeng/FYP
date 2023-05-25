@@ -74,7 +74,7 @@ public class SaveFile : MonoBehaviour
         pp.ResetPlayer();
         int Rep = PlayerPrefs.GetInt("REP", 0);
         int CC = PlayerPrefs.GetInt("CC", 2);
-        int RepAndCCDiff = (Rep + 2) - CC;
+        int RepAndCCDiff = Rep + 2 - CC;
         pp.AddCredibility(Rep);
         pp.DecreaseCredibility(RepAndCCDiff);
     }
