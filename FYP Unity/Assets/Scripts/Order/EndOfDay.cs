@@ -217,7 +217,19 @@ public class EndOfDay : MonoBehaviour
                 if (!level.CanSkipVN)
                     level.CanSkipVN = true;
 
-                SceneManager.LoadScene("Level Select");
+                // final day
+                if (level.WhatDay == 8)
+                {
+                    if (score >= level.CReq)
+                    {
+                        if (SaveFile.instance != null)
+                            SaveFile.instance.SetIfWin(true);
+                    }
+
+                    SceneManager.LoadScene("GameOver");
+                }
+                else
+                    SceneManager.LoadScene("Level Select");
             }
         }
     }

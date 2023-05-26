@@ -10,6 +10,7 @@ public class SaveFile : MonoBehaviour
     [SerializeField] LevelManager lm;
     [SerializeField] ShopManager sm;
     [SerializeField] PlayerProgress pp;
+    private bool GameWon = false;
 
     public void SaveGame()
     {
@@ -83,5 +84,15 @@ public class SaveFile : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
         instance = this;
+    }
+
+    public void SetIfWin(bool win)
+    {
+        GameWon = win;
+    }
+
+    public bool GetIfWin()
+    {
+        return GameWon;
     }
 }
